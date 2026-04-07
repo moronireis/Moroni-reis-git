@@ -294,17 +294,36 @@ export default function ContentOverlay({
       checkpoint:   'Notas sobre este checkpoint...',
     };
 
-    // Checkpoint: admin-only approval
+    // Checkpoint: student leaves feedback and continues
     if (content_type === 'checkpoint' && !isAdmin) {
+      const canSubmitCheckpoint = submissionNote.trim().length >= 10;
       return (
-        <div style={{
-          padding: '14px 16px', borderRadius: '10px',
-          background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.15)',
-          marginTop: '20px',
-        }}>
-          <p style={{ fontSize: '13px', color: '#F59E0B', margin: 0 }}>
-            Este checkpoint sera validado pelo mentor na proxima call.
-          </p>
+        <div style={{ background: '#111111', borderRadius: '10px', padding: '16px', marginTop: '20px' }}>
+          <div style={{
+            padding: '12px 14px', borderRadius: '8px', marginBottom: '16px',
+            background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.12)',
+          }}>
+            <p style={{ fontSize: '13px', color: '#F59E0B', margin: 0 }}>
+              Deixe seu feedback sobre esta etapa. O mentor vai receber e acompanhar seu progresso.
+            </p>
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <label style={labelStyle}>Seu feedback *</label>
+            <textarea rows={4} placeholder="Como foi até aqui? Dúvidas, dificuldades, conquistas..."
+              value={submissionNote} onChange={(e) => setSubmissionNote(e.target.value)}
+              style={{ ...inputStyle, resize: 'vertical' }} />
+            {!canSubmitCheckpoint && submissionNote.length > 0 && (
+              <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', marginTop: '4px' }}>Mínimo 10 caracteres</p>
+            )}
+          </div>
+          <button onClick={handleComplete}
+            style={{
+              ...primaryButtonStyle, background: canSubmitCheckpoint ? '#F59E0B' : 'rgba(255,255,255,0.08)',
+              color: canSubmitCheckpoint ? '#fff' : 'rgba(255,255,255,0.25)',
+              cursor: canSubmitCheckpoint && !loading ? 'pointer' : 'not-allowed',
+            }} disabled={!canSubmitCheckpoint || loading}>
+            {loading ? 'Enviando...' : 'Enviar Feedback e Continuar'}
+          </button>
         </div>
       );
     }

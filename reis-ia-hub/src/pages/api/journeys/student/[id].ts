@@ -128,11 +128,15 @@ export const PATCH: APIRoute = async ({ params, request, locals }) => {
 
     // If completing a node, update XP, check phase unlocks, and notify
     if (status === 'completed' && nodeData) {
-      // Notify admins about progress
+      // Notify admins — include feedback for checkpoints
+      const isCheckpoint = nodeData.content_type === 'checkpoint';
+      const feedbackText = submission_note || '';
       notifyAdmins({
-        type: 'system',
-        title: 'Node concluido',
-        body: `${profile.full_name || 'Aluno'} concluiu "${nodeData.title}" na jornada`,
+        type: isCheckpoint ? 'mentoria' : 'system',
+        title: isCheckpoint ? `Checkpoint: ${profile.full_name || 'Aluno'}` : 'Node concluído',
+        body: isCheckpoint && feedbackText
+          ? `${profile.full_name || 'Aluno'} — "${nodeData.title}"\n\nFeedback: ${feedbackText}`
+          : `${profile.full_name || 'Aluno'} concluiu "${nodeData.title}"`,
         link: `/journey/${id}`,
       });
       // Add XP

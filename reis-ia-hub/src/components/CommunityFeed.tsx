@@ -346,10 +346,14 @@ function PostCard({
           </h3>
         )}
 
-        {/* Post content */}
-        <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.62)', lineHeight: 1.65, marginBottom: needsTruncation ? '6px' : '14px' }}>
-          {displayContent}
-        </p>
+        {/* Post content — with clickable links and line breaks */}
+        <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.62)', lineHeight: 1.65, marginBottom: needsTruncation ? '6px' : '14px', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+          {displayContent.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+            /^https?:\/\//.test(part)
+              ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#4A90FF', textDecoration: 'underline', wordBreak: 'break-all' }}>{part}</a>
+              : <span key={i}>{part}</span>
+          )}
+        </div>
         {needsTruncation && (
           <button
             onClick={() => setContentExpanded(!contentExpanded)}
@@ -524,9 +528,13 @@ function PostCard({
                                 {relativeTime(comment.created_at)}
                               </span>
                             </div>
-                            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.55, margin: '0 0 6px' }}>
-                              {comment.content}
-                            </p>
+                            <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.55, margin: '0 0 6px', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                              {comment.content.split(/(https?:\/\/[^\s]+)/g).map((part: string, ci: number) =>
+                                /^https?:\/\//.test(part)
+                                  ? <a key={ci} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#4A90FF', textDecoration: 'underline' }}>{part}</a>
+                                  : <span key={ci}>{part}</span>
+                              )}
+                            </div>
                             <button
                               onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
                               style={{
