@@ -139,6 +139,21 @@ export const PATCH: APIRoute = async ({ params, request, locals }) => {
           : `${profile.full_name || 'Aluno'} concluiu "${nodeData.title}"`,
         link: `/journey/${id}`,
       });
+
+      // Save checkpoint feedback to hub_knowledge
+      if (isCheckpoint && feedbackText) {
+        await supabase.from('hub_knowledge').insert({
+          user_id: profile.id,
+          user_name: profile.full_name || null,
+          category: 'checkpoint_feedback',
+          title: `Checkpoint: ${nodeData.title} — ${profile.full_name || 'Aluno'}`,
+          summary: feedbackText.substring(0, 200),
+          content: feedbackText,
+          source: `journey:${id}`,
+          tags: ['checkpoint', 'feedback', 'journey'],
+          journey_id: id,
+        }).then(() => {}).catch(() => {});
+      }
       // Add XP
       const { data: journeyData } = await supabase
         .from('student_journeys')

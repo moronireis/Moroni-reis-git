@@ -8,7 +8,7 @@ export const prerender = false;
 
 interface Props {
   title: string;
-  activeSection?: 'dashboard' | 'projects' | 'academy' | 'journey' | 'community' | 'vault' | 'settings' | 'tasks' | 'crm' | 'admin-projects' | 'admin-academy' | 'admin-vault' | 'mentoria' | 'admin-analytics' | 'admin-mentoria' | 'admin-journeys' | 'admin-users' | 'admin-notifications';
+  activeSection?: 'dashboard' | 'projects' | 'academy' | 'journey' | 'community' | 'vault' | 'settings' | 'tasks' | 'crm' | 'admin-projects' | 'admin-academy' | 'admin-vault' | 'mentoria' | 'admin-analytics' | 'admin-mentoria' | 'admin-journeys' | 'admin-users' | 'admin-notifications' | 'admin-knowledge';
 }
 
 const { title, activeSection = 'dashboard' } = Astro.props;
@@ -79,6 +79,7 @@ const navItems = [
 const adminNavItems = [
   { id: 'admin-users', label: 'Usuários', href: '/admin/users', icon: 'users' },
   { id: 'admin-notifications', label: 'Notificações', href: '/admin/notifications', icon: 'bell' },
+  { id: 'admin-knowledge', label: 'Banco de Dados', href: '/admin/knowledge', icon: 'database' },
   { id: 'tasks', label: 'Tasks', href: '/admin/tasks', icon: 'check-square' },
   { id: 'crm', label: 'CRM', href: '/admin/crm', icon: 'briefcase' },
   { id: 'admin-analytics', label: 'Analytics', href: '/admin/analytics', icon: 'bar-chart' },

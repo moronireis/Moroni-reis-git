@@ -132,6 +132,19 @@ export const PATCH: APIRoute = async ({ params, request, locals }) => {
 
       await supabase.from('notifications').insert(notifications);
     }
+
+    // Save to hub_knowledge for permanent record
+    const formContent = typeof updated.data === 'object' ? JSON.stringify(updated.data, null, 2) : String(updated.data || '');
+    await supabase.from('hub_knowledge').insert({
+      user_id: profile.id,
+      user_name: userName,
+      category: 'form_response',
+      title: `${formLabel} — ${userName}`,
+      summary: `Formulário ${formLabel} enviado por ${userName}`,
+      content: formContent,
+      source: `branding_form:${updated.form_type}`,
+      tags: [updated.form_type, 'branding', 'form'],
+    }).then(() => {}).catch(() => {});
   }
 
   return new Response(JSON.stringify(updated), { status: 200 });
