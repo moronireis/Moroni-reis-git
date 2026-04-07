@@ -100,29 +100,52 @@ export const onRequest = defineMiddleware(async (context, next) => {
     import.meta.env.SUPABASE_SERVICE_ROLE_KEY
   );
 
-  const { data: profile } = await serverClient
+  // Check real admin profile first (needed for impersonation check)
+  const { data: realProfile } = await serverClient
     .from('profiles')
     .select('*')
     .eq('id', context.locals.user!.id)
     .single();
 
-  if (profile) {
-    context.locals.profile = profile;
+  // Admin impersonation: if admin is impersonating another user, load that user's profile
+  const impersonateAs = context.cookies.get('sb-impersonate-as')?.value;
+  const impersonatingFrom = context.cookies.get('sb-impersonating-from')?.value;
+
+  if (impersonateAs && impersonatingFrom && realProfile?.role === 'admin') {
+    const { data: impersonatedProfile } = await serverClient
+      .from('profiles')
+      .select('*')
+      .eq('id', impersonateAs)
+      .single();
+
+    if (impersonatedProfile) {
+      context.locals.profile = impersonatedProfile;
+      context.locals.impersonating = true;
+      context.locals.realAdminId = realProfile.id;
+    } else {
+      // Invalid impersonation target — clear cookies and use real profile
+      context.cookies.delete('sb-impersonate-as', { path: '/' });
+      context.cookies.delete('sb-impersonating-from', { path: '/' });
+      context.locals.profile = realProfile;
+    }
+  } else {
+    if (realProfile) {
+      context.locals.profile = realProfile;
+    }
   }
 
-  // Block admin routes for non-admins
-  if (pathname.startsWith('/admin') && profile?.role !== 'admin') {
+  const profile = context.locals.profile;
+  // For admin route access, check the REAL user (not impersonated)
+  const isRealAdmin = realProfile?.role === 'admin';
+
+  // Block admin routes for non-admins (use real identity, not impersonated)
+  if (pathname.startsWith('/admin') && !isRealAdmin) {
     return context.redirect('/dashboard');
   }
 
-  // Admin-only API routes — all other API routes handle their own auth checks
-  const adminOnlyApiPrefixes = [
-    '/api/admin',
-  ];
-
-  const isAdminOnlyApi = adminOnlyApiPrefixes.some(prefix => pathname.startsWith(prefix));
-
-  if (isAdminOnlyApi && profile?.role !== 'admin') {
+  // Admin-only API routes
+  const isAdminOnlyApi = pathname.startsWith('/api/admin');
+  if (isAdminOnlyApi && !isRealAdmin) {
     return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
   }
 

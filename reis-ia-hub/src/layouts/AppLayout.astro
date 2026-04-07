@@ -8,13 +8,15 @@ export const prerender = false;
 
 interface Props {
   title: string;
-  activeSection?: 'dashboard' | 'projects' | 'academy' | 'journey' | 'community' | 'vault' | 'settings' | 'tasks' | 'crm' | 'admin-projects' | 'admin-academy' | 'admin-vault' | 'mentoria' | 'admin-analytics' | 'admin-mentoria' | 'admin-journeys';
+  activeSection?: 'dashboard' | 'projects' | 'academy' | 'journey' | 'community' | 'vault' | 'settings' | 'tasks' | 'crm' | 'admin-projects' | 'admin-academy' | 'admin-vault' | 'mentoria' | 'admin-analytics' | 'admin-mentoria' | 'admin-journeys' | 'admin-users';
 }
 
 const { title, activeSection = 'dashboard' } = Astro.props;
 
 const profile = Astro.locals.profile;
+const isRealAdmin = Astro.locals.realAdminId || profile?.role === 'admin';
 const isAdmin = profile?.role === 'admin';
+const isImpersonating = !!Astro.locals.impersonating;
 const userRole = (profile?.role || 'starter') as 'starter' | 'builder' | 'mentoria' | 'admin';
 
 // Lock icon determination per nav item based on role
@@ -72,6 +74,7 @@ const navItems = [
 ];
 
 const adminNavItems = [
+  { id: 'admin-users', label: 'Usuarios', href: '/admin/users', icon: 'users' },
   { id: 'tasks', label: 'Tasks', href: '/admin/tasks', icon: 'check-square' },
   { id: 'crm', label: 'CRM', href: '/admin/crm', icon: 'briefcase' },
   { id: 'admin-analytics', label: 'Analytics', href: '/admin/analytics', icon: 'bar-chart' },
@@ -184,8 +187,8 @@ const adminNavItems = [
         );
       })}
 
-      {/* Admin section — only shown for admin role */}
-      {isAdmin && (
+      {/* Admin section — shown for admin role or when impersonating */}
+      {(isAdmin || isRealAdmin) && (
         <>
           <div style="height: 1px; background: var(--border-subtle); margin: 12px 0 4px;"></div>
           <div style="font-size: var(--text-label); color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.1em; padding: 0 12px; margin-bottom: 4px;">Admin</div>
@@ -313,6 +316,27 @@ const adminNavItems = [
       </div>
     </header>
 
+    <!-- Impersonation Banner -->
+    {isImpersonating && (
+      <div style="background: rgba(245,158,11,0.06); border-bottom: 1px solid rgba(245,158,11,0.15); padding: 8px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span style="font-size: 12px; color: #F59E0B; font-weight: 500;">
+            Visualizando como: {profile?.full_name}
+          </span>
+        </div>
+        <button
+          id="global-stop-impersonate"
+          style="padding: 4px 12px; border-radius: 6px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: #F59E0B; font-size: 11px; cursor: pointer;"
+        >
+          Voltar ao admin
+        </button>
+      </div>
+    )}
+
     <!-- Page Content -->
     <div class="px-8 py-8 page-content" transition:animate="fade">
       <slot />
@@ -434,4 +458,13 @@ const adminNavItems = [
 
   // Close sidebar on page navigation
   document.addEventListener('astro:before-preparation', closeSidebar);
+
+  // Stop impersonation
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('#global-stop-impersonate')) {
+      await fetch('/api/admin/impersonate', { method: 'DELETE' });
+      window.location.href = '/admin/users';
+    }
+  });
 </script>

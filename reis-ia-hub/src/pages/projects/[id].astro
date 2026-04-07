@@ -41,6 +41,13 @@ const { data: clientActions } = await supabase
   .eq('project_id', id)
   .order('created_at', { ascending: true });
 
+// Fetch tasks linked to this project
+const { data: projectTasks } = await supabase
+  .from('tasks')
+  .select('id, title, status, priority, assignee_name')
+  .eq('project_id', id)
+  .order('created_at', { ascending: false });
+
 function statusLabel(status: string) {
   const labels: Record<string, string> = {
     em_andamento: 'Em andamento',
@@ -189,12 +196,34 @@ function formatDate(dateStr: string | null) {
         )}
       </div>
 
-      <!-- Messages -->
+      <!-- Project Tasks -->
       <div class="rounded-xl p-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
-        <h3 class="font-medium mb-4 text-sm" style="color: var(--text-primary);">Mensagens</h3>
-        <div class="text-center py-4">
-          <p class="text-sm" style="color: var(--text-quaternary);">Chat em breve</p>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-medium text-sm" style="color: var(--text-primary);">Tasks</h3>
+          {isAdmin && (
+            <a href={`/admin/tasks?project=${id}`} class="text-xs" style="color: var(--accent-blue);">Ver todas</a>
+          )}
         </div>
+        {projectTasks && projectTasks.length > 0 ? (
+          <div class="flex flex-col gap-2">
+            {projectTasks.slice(0, 5).map(task => (
+              <div class="flex items-center gap-3 p-2.5 rounded-lg" style="background: var(--surface-2); border: 1px solid var(--border-subtle);">
+                <div
+                  class="w-2 h-2 rounded-full shrink-0"
+                  style={`background: ${task.status === 'done' ? '#22C55E' : task.status === 'in_progress' ? '#4A90FF' : 'rgba(255,255,255,0.2)'};`}
+                ></div>
+                <span class="text-xs flex-1" style={`color: ${task.status === 'done' ? 'var(--text-quaternary)' : 'var(--text-secondary)'}; ${task.status === 'done' ? 'text-decoration: line-through;' : ''}`}>
+                  {task.title}
+                </span>
+              </div>
+            ))}
+            {projectTasks.length > 5 && (
+              <p class="text-xs text-center mt-1" style="color: var(--text-quaternary);">+{projectTasks.length - 5} tasks</p>
+            )}
+          </div>
+        ) : (
+          <p class="text-sm" style="color: var(--text-quaternary);">Nenhuma task vinculada.</p>
+        )}
       </div>
     </div>
   </div>

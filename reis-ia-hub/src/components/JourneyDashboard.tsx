@@ -345,119 +345,25 @@ function EmptyState() {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function JourneyDashboard({ journeys: initialJourneys, isAdmin, students = [], currentUserId }: JourneyDashboardProps) {
-  const [journeys, setJourneys] = useState<Journey[]>(initialJourneys);
-  const [viewAsUserId, setViewAsUserId] = useState<string>('');
-  const [loadingView, setLoadingView] = useState(false);
-  const [viewingAs, setViewingAs] = useState<string | null>(null);
-
-  async function handleViewAs(userId: string) {
-    if (!userId) {
-      setJourneys(initialJourneys);
-      setViewingAs(null);
-      return;
-    }
-    setLoadingView(true);
-    try {
-      const res = await fetch(`/api/journeys/student?student_id=${userId}`);
-      if (res.ok) {
-        const data = await res.json();
-        setJourneys(data);
-        const student = students.find(s => s.id === userId);
-        setViewingAs(student?.full_name || userId);
-      }
-    } catch { /* silent */ }
-    setLoadingView(false);
-  }
-
+export default function JourneyDashboard({ journeys: initialJourneys, isAdmin }: JourneyDashboardProps) {
   return (
     <div style={{ padding: '16px 0', maxWidth: '800px' }}>
       {/* Page Header */}
       <div style={{ marginBottom: '28px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
-          <div>
-            <h1 style={{ fontSize: '20px', fontWeight: 600, color: '#fff', margin: '0 0 6px 0' }}>
-              Journey
-            </h1>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.50)', margin: 0 }}>
-              {viewingAs
-                ? `Visualizando como: ${viewingAs}`
-                : 'Sua jornada personalizada de aprendizado em IA.'}
-            </p>
-          </div>
-        </div>
-
-        {/* Admin: View as another user */}
-        {isAdmin && students.length > 0 && (
-          <div style={{
-            marginTop: '16px',
-            padding: '14px 16px',
-            background: 'rgba(74,144,255,0.04)',
-            border: '1px solid rgba(74,144,255,0.10)',
-            borderRadius: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            flexWrap: 'wrap',
-          }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            <span style={{ fontSize: '12px', color: '#4A90FF', fontWeight: 500, flexShrink: 0 }}>
-              Visualizar como:
-            </span>
-            <select
-              value={viewAsUserId}
-              onChange={(e) => { setViewAsUserId(e.target.value); handleViewAs(e.target.value); }}
-              style={{
-                flex: 1,
-                minWidth: '180px',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                background: '#161616',
-                border: '1px solid rgba(255,255,255,0.08)',
-                color: '#fff',
-                fontSize: '13px',
-                outline: 'none',
-              }}
-            >
-              <option value="">Minha visao (admin)</option>
-              {students.map(s => (
-                <option key={s.id} value={s.id}>{s.full_name} — {s.email}</option>
-              ))}
-            </select>
-            {loadingView && (
-              <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.30)' }}>Carregando...</span>
-            )}
-            {viewingAs && (
-              <button
-                onClick={() => { setViewAsUserId(''); handleViewAs(''); }}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: '6px',
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  color: 'rgba(255,255,255,0.50)',
-                  fontSize: '11px',
-                  cursor: 'pointer',
-                }}
-              >
-                Voltar a minha visao
-              </button>
-            )}
-          </div>
-        )}
+        <h1 style={{ fontSize: '20px', fontWeight: 600, color: '#fff', margin: '0 0 6px 0' }}>
+          Journey
+        </h1>
+        <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.50)', margin: 0 }}>
+          Sua jornada personalizada de aprendizado em IA.
+        </p>
       </div>
 
       {/* Content */}
-      {journeys.length === 0 ? (
+      {initialJourneys.length === 0 ? (
         <EmptyState />
       ) : (
         <div>
-          {journeys.map(journey => (
+          {initialJourneys.map(journey => (
             <JourneyCard key={journey.id} journey={journey} isAdmin={isAdmin} />
           ))}
         </div>

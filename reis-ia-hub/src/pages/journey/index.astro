@@ -13,7 +13,7 @@ if (!profile?.id) {
 const supabase = createServerClient();
 const isAdmin = profile.role === 'admin';
 
-// Fetch active journeys for this student (or all for admin)
+// Fetch journeys for current user (admin sees all)
 let query = supabase
   .from('student_journeys')
   .select(`
@@ -32,24 +32,12 @@ if (!isAdmin) {
 
 const { data: journeys } = await query;
 
-// Sort phases within each journey
 if (journeys) {
   journeys.forEach((j: any) => {
     if (j.phases) {
       j.phases.sort((a: any, b: any) => a.sort_order - b.sort_order);
     }
   });
-}
-
-// Fetch students list for admin user selector
-let students: any[] = [];
-if (isAdmin) {
-  const { data: studentData } = await supabase
-    .from('profiles')
-    .select('id, full_name, email')
-    .neq('role', 'admin')
-    .order('full_name', { ascending: true });
-  students = studentData || [];
 }
 ---
 
@@ -58,7 +46,5 @@ if (isAdmin) {
     client:load
     journeys={journeys || []}
     isAdmin={isAdmin}
-    students={students}
-    currentUserId={profile.id}
   />
 </AppLayout>

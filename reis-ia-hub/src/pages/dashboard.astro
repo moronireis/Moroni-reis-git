@@ -10,311 +10,299 @@ const supabase = createServerClient();
 const profile = Astro.locals.profile;
 const isAdmin = profile?.role === 'admin';
 const userRole = (profile?.role || 'starter') as UserRole;
-
-const canAccessVault = hasAccess(userRole, 'builder');
 const canAccessProjects = hasAccess(userRole, 'mentoria');
-const canAccessMentoria = hasAccess(userRole, 'mentoria');
+const canAccessVault = hasAccess(userRole, 'builder');
 
-// Academy: count published courses
-const { count: coursesCount } = await supabase
-  .from('courses')
-  .select('id', { count: 'exact', head: true })
-  .eq('status', 'published');
+// ── Admin metrics ──
+let openDeals = 0;
+let dealsValue = 0;
+let activeProjects = 0;
+let pendingTasks = 0;
+let activeStudents = 0;
 
-// Community: count recent posts (last 7 days)
-const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-const { count: recentPostsCount } = await supabase
-  .from('posts')
-  .select('id', { count: 'exact', head: true })
-  .gte('created_at', sevenDaysAgo);
-
-// Vault: count accessible resources (only if user can access)
-let resourcesCount: number | null = null;
-if (canAccessVault) {
-  let vaultQuery = supabase
-    .from('vault_resources')
-    .select('id', { count: 'exact', head: true });
-  if (!isAdmin) {
-    vaultQuery = vaultQuery.neq('access_level', 'admin');
-  }
-  const { count } = await vaultQuery;
-  resourcesCount = count;
+if (isAdmin) {
+  const [dealsRes, projectsRes, tasksRes, studentsRes] = await Promise.all([
+    supabase.from('deals').select('value, stage').not('stage', 'in', '("won","lost")'),
+    supabase.from('projects').select('id', { count: 'exact', head: true }).neq('status', 'concluido').neq('status', 'cancelado'),
+    supabase.from('tasks').select('id', { count: 'exact', head: true }).neq('status', 'done'),
+    supabase.from('student_journeys').select('id', { count: 'exact', head: true }).eq('status', 'active'),
+  ]);
+  openDeals = dealsRes.data?.length || 0;
+  dealsValue = dealsRes.data?.reduce((s: number, d: any) => s + (d.value || 0), 0) || 0;
+  activeProjects = projectsRes.count || 0;
+  pendingTasks = tasksRes.count || 0;
+  activeStudents = studentsRes.count || 0;
 }
 
-// Active projects (only if user can access)
-let activeProjects: any[] = [];
-if (canAccessProjects) {
-  const projectsQuery = supabase
-    .from('projects')
-    .select('id, name, type, status, progress, start_date, estimated_end_date')
-    .neq('status', 'concluido')
-    .neq('status', 'cancelado')
-    .order('created_at', { ascending: false })
-    .limit(4);
+// ── Student data ──
+let studentJourney: any = null;
+let studentMentorship: any = null;
+let recentNotifications: any[] = [];
+let coursesInProgress = 0;
 
-  if (!isAdmin && profile?.id) {
-    projectsQuery.eq('client_id', profile.id);
-  }
-
-  const { data } = await projectsQuery;
-  activeProjects = data || [];
+if (!isAdmin && profile?.id) {
+  const [journeyRes, mentorshipRes, notifsRes, progressRes] = await Promise.all([
+    supabase.from('student_journeys').select('id, title, total_xp, status').eq('student_id', profile.id).eq('status', 'active').limit(1).single(),
+    supabase.from('mentorships').select('id, program, status, mentor:profiles!mentorships_mentor_id_fkey(full_name)').eq('mentee_id', profile.id).eq('status', 'active').limit(1).single(),
+    supabase.from('notifications').select('id, title, body, link, created_at, read').eq('user_id', profile.id).order('created_at', { ascending: false }).limit(5),
+    supabase.from('user_progress').select('course_id').eq('user_id', profile.id),
+  ]);
+  studentJourney = journeyRes.data;
+  studentMentorship = mentorshipRes.data;
+  recentNotifications = notifsRes.data || [];
+  const uniqueCourses = new Set((progressRes.data || []).map((p: any) => p.course_id));
+  coursesInProgress = uniqueCourses.size;
 }
 
-function statusLabel(status: string) {
-  const labels: Record<string, string> = {
-    em_andamento: 'Em andamento',
-    pendente: 'Pendente',
-    concluido: 'Concluído',
-    cancelado: 'Cancelado',
-  };
-  return labels[status] || status;
-}
-
-function statusStyle(status: string) {
-  const styles: Record<string, string> = {
-    em_andamento: 'background: var(--color-success-bg); color: var(--color-success);',
-    pendente: 'background: rgba(245,158,11,0.1); color: #F59E0B;',
-    concluido: 'background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5);',
-    cancelado: 'background: rgba(239,68,68,0.1); color: #EF4444;',
-  };
-  return styles[status] || 'background: var(--blue-10); color: var(--accent-blue);';
-}
+// Check if profile is incomplete
+const profileIncomplete = !profile?.company || !profile?.phone;
 ---
 
 <AppLayout title="Dashboard" activeSection="dashboard">
   <!-- Welcome -->
   <div class="mb-8">
     <h2 class="text-2xl font-medium mb-2" style="color: var(--text-primary);">
-      Bem-vindo ao <span style="color: var(--accent-blue);">HUB</span>
+      {isAdmin ? 'Painel' : 'Bem-vindo'}, <span style="color: var(--accent-blue);">{profile?.full_name?.split(' ')[0] || 'usuario'}</span>
     </h2>
     <p style="color: var(--text-secondary); font-size: var(--text-body);">
-      Olá, {profile?.full_name || 'usuário'}. Acesse seus projetos, formações e comunidade em um só lugar.
+      {isAdmin ? 'Visao geral do seu negocio.' : 'Acesse seus projetos, formacoes e comunidade em um so lugar.'}
     </p>
   </div>
 
-  <!-- Module Cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-    <!-- Projects Card -->
-    {canAccessProjects ? (
-      <a href="/projects" class="module-card rounded-xl p-6 transition-all duration-300" style="background: var(--surface-2); border: 1px solid var(--border-subtle);">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2 2 7l10 5 10-5-10-5z" />
-              <path d="m2 17 10 5 10-5" />
-              <path d="m2 12 10 5 10-5" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="font-medium" style="color: var(--text-primary);">Meus Projetos</h3>
-            <p class="text-sm" style="color: var(--text-tertiary);">
-              {activeProjects && activeProjects.length > 0
-                ? `${activeProjects.length} projeto${activeProjects.length > 1 ? 's' : ''} ativo${activeProjects.length > 1 ? 's' : ''}`
-                : 'Acompanhe o andamento dos seus projetos'}
-            </p>
-          </div>
+  {/* ── ADMIN DASHBOARD ── */}
+  {isAdmin && (
+    <>
+      {/* Metrics Row */}
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <a href="/admin/crm" class="metric-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 24px; font-weight: 700; color: var(--accent-blue);">{openDeals}</div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 2px;">Deals abertos</div>
+          <div style="font-size: 11px; color: var(--text-quaternary); margin-top: 4px;">R$ {dealsValue.toLocaleString('pt-BR')}</div>
+        </a>
+        <a href="/admin/projects" class="metric-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 24px; font-weight: 700; color: #22C55E;">{activeProjects}</div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 2px;">Projetos ativos</div>
+        </a>
+        <a href="/admin/tasks" class="metric-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 24px; font-weight: 700; color: #F59E0B;">{pendingTasks}</div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 2px;">Tasks pendentes</div>
+        </a>
+        <a href="/admin/journeys" class="metric-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 24px; font-weight: 700; color: #8B5CF6;">{activeStudents}</div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 2px;">Alunos em jornada</div>
+        </a>
+      </div>
+
+      {/* Quick Actions */}
+      <div class="rounded-xl p-5 mb-8" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+        <h3 class="font-medium text-sm mb-4" style="color: var(--text-primary);">Acoes rapidas</h3>
+        <div class="flex flex-wrap gap-3">
+          <a href="/admin/crm" class="quick-action" style="padding: 8px 16px; border-radius: 8px; background: var(--blue-10); border: 1px solid rgba(74,144,255,0.15); color: var(--accent-blue); font-size: 13px; font-weight: 500; text-decoration: none;">
+            Novo Deal
+          </a>
+          <a href="/admin/tasks" class="quick-action" style="padding: 8px 16px; border-radius: 8px; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.15); color: #F59E0B; font-size: 13px; font-weight: 500; text-decoration: none;">
+            Nova Task
+          </a>
+          <a href="/admin/journeys" class="quick-action" style="padding: 8px 16px; border-radius: 8px; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.15); color: #8B5CF6; font-size: 13px; font-weight: 500; text-decoration: none;">
+            Atribuir Jornada
+          </a>
+          <a href="/admin/mentoria" class="quick-action" style="padding: 8px 16px; border-radius: 8px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15); color: #22C55E; font-size: 13px; font-weight: 500; text-decoration: none;">
+            Nova Mentoria
+          </a>
+          <a href="/admin/users" class="quick-action" style="padding: 8px 16px; border-radius: 8px; background: var(--surface-3); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 13px; font-weight: 500; text-decoration: none;">
+            Gerenciar Usuarios
+          </a>
         </div>
-        <div class="flex items-center gap-2 text-sm" style="color: var(--accent-blue);">
-          <span>Ver projetos</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-    ) : (
-      <a href="/projects" class="module-card rounded-xl p-6 transition-all duration-300" style="background: var(--surface-2); border: 1px solid var(--border-subtle); opacity: 0.7;">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.04);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2 2 7l10 5 10-5-10-5z" />
-              <path d="m2 17 10 5 10-5" />
-              <path d="m2 12 10 5 10-5" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <h3 class="font-medium" style="color: var(--text-secondary);">Meus Projetos</h3>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      </div>
+
+      {/* Module Links */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/admin/crm" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+          <h3 class="font-medium text-sm mb-1" style="color: var(--text-primary);">CRM Pipeline</h3>
+          <p class="text-xs" style="color: var(--text-quaternary);">Deals, contatos, pipeline de vendas</p>
+        </a>
+        <a href="/admin/academy" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+          <h3 class="font-medium text-sm mb-1" style="color: var(--text-primary);">Academy</h3>
+          <p class="text-xs" style="color: var(--text-quaternary);">Cursos, aulas, conteudo</p>
+        </a>
+        <a href="/community" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+          <h3 class="font-medium text-sm mb-1" style="color: var(--text-primary);">Comunidade</h3>
+          <p class="text-xs" style="color: var(--text-quaternary);">Posts, discussoes, membros</p>
+        </a>
+      </div>
+    </>
+  )}
+
+  {/* ── STUDENT DASHBOARD ── */}
+  {!isAdmin && (
+    <>
+      {/* Onboarding prompt for incomplete profiles */}
+      {profileIncomplete && (
+        <a href="/settings" class="block rounded-xl p-5 mb-6" style="background: rgba(74,144,255,0.04); border: 1px solid rgba(74,144,255,0.12);">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style="background: var(--blue-10);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            <p class="text-sm" style="color: var(--text-quaternary);">Disponivel no plano Mentoria</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 text-sm" style="color: rgba(255,255,255,0.25);">
-          <span>Saiba mais</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-    )}
-
-    <!-- Academy Card -->
-    <a href="/academy" class="module-card rounded-xl p-6 transition-all duration-300" style="background: var(--surface-2); border: 1px solid var(--border-subtle);">
-      <div class="flex items-center gap-4 mb-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="5,3 19,12 5,21" />
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-medium" style="color: var(--text-primary);">Academy</h3>
-          <p class="text-sm" style="color: var(--text-tertiary);">
-            {coursesCount && coursesCount > 0
-              ? `${coursesCount} curso${coursesCount > 1 ? 's' : ''} disponivel${coursesCount > 1 ? 'is' : ''}`
-              : 'Formacoes, mentorias e masterclasses'}
-          </p>
-        </div>
-      </div>
-      <div class="flex items-center gap-2 text-sm" style="color: var(--accent-blue);">
-        <span>Acessar academy</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </div>
-    </a>
-
-    <!-- Community Card -->
-    <a href="/community" class="module-card rounded-xl p-6 transition-all duration-300" style="background: var(--surface-2); border: 1px solid var(--border-subtle);">
-      <div class="flex items-center gap-4 mb-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-medium" style="color: var(--text-primary);">Comunidade</h3>
-          <p class="text-sm" style="color: var(--text-tertiary);">
-            {recentPostsCount && recentPostsCount > 0
-              ? `${recentPostsCount} publicac${recentPostsCount > 1 ? 'oes' : 'ao'} esta semana`
-              : 'Conecte-se com outros membros'}
-          </p>
-        </div>
-      </div>
-      <div class="flex items-center gap-2 text-sm" style="color: var(--accent-blue);">
-        <span>Entrar na comunidade</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </div>
-    </a>
-
-    <!-- Vault Card -->
-    {canAccessVault ? (
-      <a href="/vault" class="module-card rounded-xl p-6 transition-all duration-300" style="background: var(--surface-2); border: 1px solid var(--border-subtle);">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 8v13H3V8" />
-              <path d="M1 3h22v5H1z" />
-              <path d="M10 12h4" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="font-medium" style="color: var(--text-primary);">Vault</h3>
-            <p class="text-sm" style="color: var(--text-tertiary);">
-              {resourcesCount && resourcesCount > 0
-                ? `${resourcesCount} recurso${resourcesCount > 1 ? 's' : ''} disponivel${resourcesCount > 1 ? 'is' : ''}`
-                : 'Templates, frameworks e recursos'}
-            </p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 text-sm" style="color: var(--accent-blue);">
-          <span>Explorar vault</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-    ) : (
-      <a href="/vault" class="module-card rounded-xl p-6 transition-all duration-300" style="background: var(--surface-2); border: 1px solid var(--border-subtle); opacity: 0.7;">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.04);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 8v13H3V8" />
-              <path d="M1 3h22v5H1z" />
-              <path d="M10 12h4" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <h3 class="font-medium" style="color: var(--text-secondary);">Vault</h3>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
+            <div>
+              <p class="text-sm font-medium" style="color: var(--accent-blue);">Complete seu perfil</p>
+              <p class="text-xs" style="color: var(--text-quaternary);">Adicione empresa e telefone para uma experiencia personalizada</p>
             </div>
-            <p class="text-sm" style="color: var(--text-quaternary);">Disponivel no plano Builder</p>
           </div>
-        </div>
-        <div class="flex items-center gap-2 text-sm" style="color: rgba(255,255,255,0.25);">
-          <span>Saiba mais</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-    )}
-  </div>
+        </a>
+      )}
 
-  <!-- Active Projects Quick View — only for users with access -->
-  {canAccessProjects && (
-    <div class="rounded-xl p-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
-      <div class="flex items-center justify-between mb-5">
-        <h3 class="font-medium" style="color: var(--text-primary);">Projetos Ativos</h3>
-        <a href="/projects" class="text-sm" style="color: var(--accent-blue);">Ver todos</a>
-      </div>
-
-      {activeProjects && activeProjects.length > 0 ? (
-        <div class="flex flex-col gap-4">
-          {activeProjects.map((project: any) => (
-            <a href={`/projects/${project.id}`} class="flex items-center justify-between p-4 rounded-lg transition-all dashboard-project-row" style="background: var(--surface-2); border: 1px solid var(--border-subtle);">
-              <div class="flex items-center gap-4">
-                <div>
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-sm font-medium" style="color: var(--text-primary);">{project.name}</span>
-                    <span class="px-2 py-0.5 rounded text-xs" style="background: var(--blue-10); color: var(--accent-blue);">{project.type}</span>
-                  </div>
-                  <span class="text-xs px-2 py-0.5 rounded" style={statusStyle(project.status)}>{statusLabel(project.status)}</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-4">
-                <div class="text-right">
-                  <div class="text-xs mb-1" style="color: var(--text-quaternary);">{project.progress || 0}%</div>
-                  <div class="w-24 h-1.5 rounded-full" style="background: var(--surface-4);">
-                    <div class="h-full rounded-full" style={`width: ${project.progress || 0}%; background: var(--accent-blue);`}></div>
-                  </div>
-                </div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-quaternary);">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        {/* Journey Card */}
+        {studentJourney ? (
+          <a href={`/journey/${studentJourney.id}`} class="module-card rounded-xl p-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(139,92,246,0.1);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2" />
+                  <line x1="8" y1="2" x2="8" y2="18" />
+                  <line x1="16" y1="6" x2="16" y2="22" />
                 </svg>
               </div>
-            </a>
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-8">
-          <p style="color: var(--text-tertiary); font-size: var(--text-body-sm);">
-            Nenhum projeto ativo no momento.
-          </p>
+              <div>
+                <h3 class="font-medium text-sm" style="color: var(--text-primary);">Minha Jornada</h3>
+                <p class="text-xs" style="color: var(--text-tertiary);">{studentJourney.title}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-semibold" style="color: #8B5CF6;">{studentJourney.total_xp} XP</span>
+              <span class="text-xs" style="color: var(--accent-blue);">Continuar →</span>
+            </div>
+          </a>
+        ) : (
+          <div class="rounded-xl p-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.04);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-medium text-sm" style="color: var(--text-secondary);">Jornada</h3>
+                <p class="text-xs" style="color: var(--text-quaternary);">Sua jornada sera atribuida em breve</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Mentorship Card */}
+        {studentMentorship ? (
+          <a href="/mentoria" class="module-card rounded-xl p-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(34,197,94,0.1);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-medium text-sm" style="color: var(--text-primary);">Mentoria</h3>
+                <p class="text-xs" style="color: var(--text-tertiary);">{studentMentorship.program} — {studentMentorship.mentor?.full_name}</p>
+              </div>
+            </div>
+            <span class="text-xs" style="color: #22C55E;">Ativa</span>
+          </a>
+        ) : (
+          <div class="rounded-xl p-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.04);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-medium text-sm" style="color: var(--text-secondary);">Mentoria</h3>
+                <p class="text-xs" style="color: var(--text-quaternary);">Disponivel no plano Mentoria</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Module Links */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <a href="/academy" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5"><polygon points="5,3 19,12 5,21" /></svg>
+            </div>
+            <div>
+              <h3 class="font-medium text-sm" style="color: var(--text-primary);">Academy</h3>
+              <p class="text-xs" style="color: var(--text-quaternary);">{coursesInProgress > 0 ? `${coursesInProgress} curso${coursesInProgress > 1 ? 's' : ''} em andamento` : 'Cursos e formacoes'}</p>
+            </div>
+          </div>
+        </a>
+        <a href="/community" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+            </div>
+            <div>
+              <h3 class="font-medium text-sm" style="color: var(--text-primary);">Comunidade</h3>
+              <p class="text-xs" style="color: var(--text-quaternary);">Conecte-se com outros membros</p>
+            </div>
+          </div>
+        </a>
+        {canAccessVault ? (
+          <a href="/vault" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5"><path d="M21 8v13H3V8" /><path d="M1 3h22v5H1z" /></svg>
+              </div>
+              <div>
+                <h3 class="font-medium text-sm" style="color: var(--text-primary);">Vault</h3>
+                <p class="text-xs" style="color: var(--text-quaternary);">Templates e recursos</p>
+              </div>
+            </div>
+          </a>
+        ) : (
+          <div class="rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); opacity: 0.6;">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.04);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><path d="M21 8v13H3V8" /><path d="M1 3h22v5H1z" /></svg>
+              </div>
+              <div>
+                <h3 class="font-medium text-sm" style="color: var(--text-secondary);">Vault</h3>
+                <p class="text-xs" style="color: var(--text-quaternary);">Disponivel no plano Builder</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Recent Activity */}
+      {recentNotifications.length > 0 && (
+        <div class="rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+          <h3 class="font-medium text-sm mb-4" style="color: var(--text-primary);">Atividade recente</h3>
+          <div class="flex flex-col gap-2">
+            {recentNotifications.map(n => (
+              <a href={n.link || '#'} class="flex items-start gap-3 p-3 rounded-lg activity-row" style="text-decoration: none;">
+                <div class="w-1.5 h-1.5 rounded-full shrink-0 mt-1.5" style={`background: ${n.read ? 'rgba(255,255,255,0.1)' : 'var(--accent-blue)'};`}></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-xs font-medium" style={`color: ${n.read ? 'var(--text-tertiary)' : 'var(--text-primary)'};`}>{n.title}</p>
+                  <p class="text-xs" style="color: var(--text-quaternary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{n.body}</p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       )}
-    </div>
+    </>
   )}
 </AppLayout>
 
 <style>
-  .module-card:hover {
-    border-color: var(--border-visible) !important;
-    background: var(--surface-3) !important;
-  }
-  .dashboard-project-row:hover {
-    border-color: var(--border-visible) !important;
-    background: var(--surface-3) !important;
-  }
+  .module-card:hover { border-color: var(--border-visible) !important; background: var(--surface-2) !important; }
+  .metric-card:hover { border-color: var(--border-visible) !important; background: var(--surface-2) !important; }
+  .metric-card { text-decoration: none; transition: all 150ms; }
+  .quick-action:hover { filter: brightness(1.15); }
+  .activity-row:hover { background: var(--surface-2); }
 </style>
