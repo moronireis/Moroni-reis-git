@@ -797,11 +797,14 @@ export default function CommunityFeed({
     return slug === 'geral';
   }
 
-  // Anúncios: read-only for everyone except admin
+  // Can the user post in the current space?
   const isAnuncios = activeSpace?.slug === 'anuncios';
-  const canPost = !isStarterMode && !isJourneyMode
-    ? (!activeSpace?.admin_only || isAdmin) && !isAnuncios
-    : isJourneyMode && canAccessSpace(activeSpace?.slug || '') && !isAnuncios;
+  const hasSpaceAccess = canAccessSpace(activeSpace?.slug || '');
+  const canPost = isAdmin
+    ? true
+    : isStarterMode
+      ? false
+      : hasSpaceAccess && !isAnuncios && !activeSpace?.admin_only;
 
   // Pinned posts first
   const sortedPosts = [...posts].sort((a, b) => {
