@@ -216,7 +216,8 @@ function JourneyCard({ journey, isAdmin }: { journey: Journey; isAdmin: boolean 
   };
 
   const headerStyle: React.CSSProperties = {
-    height: '140px',
+    height: 'auto',
+    minHeight: '100px',
     background: 'linear-gradient(135deg, #0A0A0A 0%, rgba(74,144,255,0.12) 50%, #0A0A0A 100%)',
     padding: '24px',
     position: 'relative',
@@ -282,10 +283,11 @@ function JourneyCard({ journey, isAdmin }: { journey: Journey; isAdmin: boolean 
         <div style={{
           display: 'flex',
           alignItems: 'flex-start',
-          gap: '32px',
-          marginTop: '20px',
-          marginBottom: '24px',
-          paddingBottom: '20px',
+          gap: '20px',
+          flexWrap: 'wrap' as const,
+          marginTop: '16px',
+          marginBottom: '20px',
+          paddingBottom: '16px',
           borderBottom: '1px solid rgba(255,255,255,0.04)',
         }}>
           <StatBlock label="Progresso" value={`${progress}%`} />
@@ -369,7 +371,7 @@ export default function JourneyDashboard({ journeys: initialJourneys, isAdmin, s
   }
 
   return (
-    <div style={{ padding: '32px 24px', maxWidth: '800px' }}>
+    <div style={{ padding: '16px 0', maxWidth: '800px' }}>
       {/* Page Header */}
       <div style={{ marginBottom: '28px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>

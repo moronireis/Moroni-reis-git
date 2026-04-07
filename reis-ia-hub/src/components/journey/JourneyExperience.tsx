@@ -1217,8 +1217,8 @@ export default function JourneyExperience({
         fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
       }}
     >
-      {/* Background atmosphere */}
-      <BackgroundAtmosphere />
+      {/* Background atmosphere — desktop only for performance */}
+      {!isMobile && <BackgroundAtmosphere />}
 
       {/* Secondary top bar */}
       <div
