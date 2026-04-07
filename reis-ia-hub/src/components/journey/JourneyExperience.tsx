@@ -450,7 +450,7 @@ export default function JourneyExperience({
     const active    = phases.find((p) => p.status === 'in_progress');
     const available = phases.find((p) => p.status === 'available');
     const completed = phases.find((p) => p.status === 'completed');
-    const first = active ?? available ?? completed ?? null;
+    const first = active ?? available ?? completed ?? (isAdmin ? phases[0] : null);
     if (first) setSelectedPhaseId(first.id);
   }, []);
 
@@ -486,7 +486,7 @@ export default function JourneyExperience({
 
   function handleNodeClick(node: JourneyNode, e: React.MouseEvent) {
     e.stopPropagation();
-    if (node.status === 'locked') return;
+    if (node.status === 'locked' && !isAdmin) return;
     setSelectedNode(node);
     setOverlayOpen(true);
   }
@@ -581,7 +581,7 @@ export default function JourneyExperience({
             return (
               <div
                 key={phase.id}
-                onClick={() => !isLocked && setSelectedPhaseId(phase.id)}
+                onClick={() => (!isLocked || isAdmin) && setSelectedPhaseId(phase.id)}
                 onMouseEnter={(e) => {
                   if (!isLocked) {
                     (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.015)';
@@ -592,7 +592,7 @@ export default function JourneyExperience({
                 }}
                 style={{
                   padding:     '10px 18px',
-                  cursor:      isLocked ? 'default' : 'pointer',
+                  cursor:      isLocked && !isAdmin ? 'default' : 'pointer',
                   borderLeft:  `2px solid ${isSelected ? '#4A90FF' : 'transparent'}`,
                   background:  isSelected ? 'rgba(74,144,255,0.04)' : 'transparent',
                   transition:  'all 150ms',
@@ -814,7 +814,7 @@ export default function JourneyExperience({
             const isLocked     = node.status === 'locked';
             const isCompleted  = node.status === 'completed';
             const isActive     = node.status === 'in_progress' || node.status === 'available';
-            const isClickable  = !isLocked;
+            const isClickable  = !isLocked || isAdmin;
             const typeColor    = getContentTypeColor(node.content_type);
             const typeLabel    = getContentTypeLabel(node.content_type);
             let borderLeft = '3px solid transparent';
@@ -841,7 +841,7 @@ export default function JourneyExperience({
                 key={node.id}
                 onClick={(e) => handleNodeClick(node, e)}
                 onMouseEnter={(e) => {
-                  if (isLocked) return;
+                  if (isLocked && !isAdmin) return;
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = 'translateY(-1px)';
                   el.style.borderColor = 'rgba(255,255,255,0.09)';
@@ -865,7 +865,7 @@ export default function JourneyExperience({
                   alignItems:    'center',
                   gap:           '14px',
                   cursor:        isClickable ? 'pointer' : 'default',
-                  opacity:       isLocked ? 0.22 : 1,
+                  opacity:       isLocked && !isAdmin ? 0.22 : isLocked && isAdmin ? 0.55 : 1,
                   transition:    'transform 180ms ease, border-color 180ms ease, background 180ms ease',
                   position:      'relative',
                   overflow:      'hidden',
@@ -1153,7 +1153,7 @@ export default function JourneyExperience({
           return (
             <div
               key={phase.id}
-              onClick={() => !isLocked && setSelectedPhaseId(phase.id)}
+              onClick={() => (!isLocked || isAdmin) && setSelectedPhaseId(phase.id)}
               style={{
                 padding:     '4px 12px',
                 borderRadius: '20px',
