@@ -6,7 +6,6 @@ export const prerender = false;
 
 const supabase = createServerClient();
 
-// Fetch ALL notifications for admin (not just admin's own — all users)
 const { data: notifications } = await supabase
   .from('notifications')
   .select('*, user:profiles!notifications_user_id_fkey(id, full_name, email, role)')
@@ -43,54 +42,68 @@ function timeAgo(dateStr: string): string {
   const hours = Math.floor(mins / 60);
   if (hours < 24) return `${hours}h`;
   const days = Math.floor(hours / 24);
-  return `${days}d`;
+  if (days < 30) return `${days}d`;
+  return new Date(dateStr).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
 }
 ---
 
 <AppLayout title="Notificações" activeSection="admin-notifications">
   <div style="margin-bottom: 24px;">
     <h2 style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 0 0 6px 0;">Central de Notificações</h2>
-    <p style="font-size: 13px; color: var(--text-tertiary); margin: 0;">Todas as atualizações dos usuários, checkpoints, feedbacks e atividades.</p>
+    <p style="font-size: 13px; color: var(--text-tertiary); margin: 0;">
+      Todas as atualizações, checkpoints, feedbacks e atividades.
+      <span style="color: var(--text-quaternary);">{allNotifs.length} notificações</span>
+    </p>
   </div>
 
   <div style="display: flex; flex-direction: column; gap: 4px;">
     {allNotifs.map(n => {
       const color = typeColors[n.type] || '#4A90FF';
       const label = typeLabels[n.type] || n.type;
-      const hasBody = n.body && n.body.length > 50;
+      const isLong = n.body && n.body.length > 80;
 
       return (
-        <div style={`padding: 14px 16px; border-radius: 10px; background: var(--surface-1); border: 1px solid ${n.read ? 'var(--border-subtle)' : `${color}20`}; ${!n.read ? `border-left: 3px solid ${color};` : ''}`}>
-          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 6px;">
-            <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
-              <span style={`font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.04em; background: ${color}15; color: ${color}; flex-shrink: 0;`}>
-                {label}
+        <details style={`border-radius: 10px; background: var(--surface-1); border: 1px solid ${n.read ? 'var(--border-subtle)' : `${color}20`}; ${!n.read ? `border-left: 3px solid ${color};` : ''} overflow: hidden;`}>
+          <summary style="padding: 14px 16px; cursor: pointer; display: flex; align-items: center; gap: 10px; list-style: none;">
+            <span style={`font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.04em; background: ${color}15; color: ${color}; flex-shrink: 0;`}>
+              {label}
+            </span>
+            <span style="font-size: 14px; font-weight: 500; color: var(--text-primary); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              {n.title}
+            </span>
+            {n.user && (
+              <span style="font-size: 11px; color: var(--text-quaternary); flex-shrink: 0; display: none;" class="notif-user">
+                {n.user.full_name || n.user.email}
               </span>
-              <span style="font-size: 14px; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                {n.title}
-              </span>
+            )}
+            <span style="font-size: 11px; color: var(--text-quaternary); flex-shrink: 0;">
+              {timeAgo(n.created_at)}
+            </span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink: 0; color: var(--text-quaternary); transition: transform 200ms;">
+              <path d="M4 5.5L7 8.5L10 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </summary>
+
+          <div style="padding: 0 16px 16px; border-top: 1px solid var(--border-subtle);">
+            {/* Full body content */}
+            <div style="padding: 12px 0; font-size: 14px; color: var(--text-secondary); line-height: 1.7; white-space: pre-wrap; word-break: break-word;">
+              {n.body}
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
-              <span style="font-size: 11px; color: var(--text-quaternary);">{timeAgo(n.created_at)}</span>
+
+            {/* Meta info */}
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--text-quaternary); padding-top: 10px; border-top: 1px solid var(--border-subtle);">
+              {n.user && (
+                <span>Para: {n.user.full_name || n.user.email} ({n.user.role})</span>
+              )}
+              <span>{new Date(n.created_at).toLocaleString('pt-BR')}</span>
               {n.link && (
-                <a href={n.link} style={`font-size: 11px; color: ${color}; text-decoration: none;`}>Abrir</a>
+                <a href={n.link} style={`color: ${color}; text-decoration: none; font-weight: 500;`}>
+                  Abrir contexto →
+                </a>
               )}
             </div>
           </div>
-
-          {/* Notification body — full content */}
-          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; white-space: pre-wrap; word-break: break-word;">
-            {n.body}
-          </div>
-
-          {/* Who this notification was sent to */}
-          {n.user && (
-            <div style="margin-top: 8px; font-size: 11px; color: var(--text-quaternary);">
-              Para: {n.user.full_name || n.user.email}
-              {n.user.role && ` (${n.user.role})`}
-            </div>
-          )}
-        </div>
+        </details>
       );
     })}
 
@@ -101,3 +114,15 @@ function timeAgo(dateStr: string): string {
     )}
   </div>
 </AppLayout>
+
+<style>
+  details[open] summary svg {
+    transform: rotate(180deg);
+  }
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .notif-user { display: inline !important; }
+  }
+</style>
