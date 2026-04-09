@@ -191,7 +191,7 @@ export default function CRMBoard({ initialDeals, initialContacts, totalContacts 
   const [saving, setSaving] = useState(false);
 
   // ─── Derived ───────────────────────────────────────────────────────────────
-  const activePipelineStages = STAGES.filter(s => s.id !== 'won' && s.id !== 'lost');
+  const activePipelineStages = STAGES.filter(s => s.id !== 'lost');
   const totalPipeline = deals.filter(d => !['won', 'lost'].includes(d.stage)).reduce((sum, d) => sum + d.value, 0);
   const totalWon = deals.filter(d => d.stage === 'won').reduce((sum, d) => sum + d.value, 0);
 
@@ -269,6 +269,9 @@ export default function CRMBoard({ initialDeals, initialContacts, totalContacts 
       if (Object.keys(oppSummary).length === 0) {
         fetchOppSummary();
       }
+    }
+    if (view === 'prospects' && contacts.length === 0) {
+      fetchContacts('', '', 1);
     }
   }, [view]);
 
@@ -623,7 +626,7 @@ export default function CRMBoard({ initialDeals, initialContacts, totalContacts 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', gap: '12px', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', gap: '4px', padding: '4px', borderRadius: '10px', background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.05)', flexWrap: 'wrap' }}>
           {(['pipeline', 'list', 'prospects', 'oportunidades'] as ViewMode[]).map(v => {
-            const labels: Record<ViewMode, string> = { pipeline: 'Pipeline', list: 'Lista', prospects: 'Prospects', oportunidades: 'Oportunidades' };
+            const labels: Record<ViewMode, string> = { pipeline: 'Pipeline', list: 'Lista', prospects: 'Leads', oportunidades: 'Oportunidades' };
             return (
               <button
                 key={v}
