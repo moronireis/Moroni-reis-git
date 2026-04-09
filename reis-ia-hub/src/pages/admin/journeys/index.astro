@@ -42,5 +42,5 @@ const { data: students } = await supabase
 ---
 
 <AppLayout title="Gerenciar Jornadas" activeSection="admin-journeys">
-  <JourneyAdminBuilder client:load initialTemplates={templates || []} students={students || []} />
+    <JourneyAdminBuilder client:load initialTemplates={templates || []} students={students || []} />
 </AppLayout>

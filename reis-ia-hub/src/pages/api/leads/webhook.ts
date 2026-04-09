@@ -9,6 +9,7 @@
 
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../lib/supabase-server';
+import { leadWebhookSchema, parseBody } from '../../../lib/validations';
 
 export const POST: APIRoute = async ({ request }) => {
   const headers = {
@@ -16,12 +17,19 @@ export const POST: APIRoute = async ({ request }) => {
     'Access-Control-Allow-Origin': '*',
   };
 
-  let body: Record<string, unknown>;
+  let rawBody: unknown;
   try {
-    body = await request.json();
+    rawBody = await request.json();
   } catch {
     return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers });
   }
+
+  const parsed = parseBody(leadWebhookSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400, headers });
+  }
+
+  const body = parsed.data as Record<string, unknown>;
 
   const supabase = createServerClient();
 

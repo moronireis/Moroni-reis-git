@@ -109,15 +109,14 @@ if (activeMentorship) {
           )}
         </div>
       ) : (
-        <MentoriaView
-          client:load
-          mentorship={activeMentorship}
-          milestones={milestones}
-          tasks={tasks}
-          sessions={sessions}
-          isAdmin={isAdmin}
-          currentUserId={profile?.id || ''}
-        />
+          <MentoriaView
+            mentorship={activeMentorship}
+            milestones={milestones}
+            tasks={tasks}
+            sessions={sessions}
+            isAdmin={isAdmin}
+            currentUserId={profile?.id || ''}
+          />
       )}
     </>
   )}

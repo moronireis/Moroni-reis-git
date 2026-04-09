@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../lib/supabase-server';
+import { createBrandingFormSchema, parseBody } from '../../../lib/validations';
 
 export const prerender = false;
 
@@ -37,13 +38,16 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   const supabase = createServerClient();
-  const body = await request.json();
-  const { form_type, mentorship_id, data: formData } = body;
 
-  const validTypes = ['personal-branding', 'company-branding', 'product-branding', 'movement-branding'];
-  if (!form_type || !validTypes.includes(form_type)) {
-    return new Response(JSON.stringify({ error: 'Invalid form_type' }), { status: 400 });
+  let rawBody: unknown;
+  try { rawBody = await request.json(); } catch { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 }); }
+
+  const parsed = parseBody(createBrandingFormSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400 });
   }
+
+  const { form_type, mentorship_id, data: formData } = parsed.data;
 
   const { data, error } = await supabase
     .from('branding_forms')

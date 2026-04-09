@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../lib/supabase-server';
+import { newLeadWebhookSchema, parseBody } from '../../../lib/validations';
 
 export const prerender = false;
 
@@ -16,12 +17,19 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
 
-  const body = await request.json();
-  const { name, email, phone, instagram, source, form_type, cargo, faturamento, objetivo, notes } = body;
-
-  if (!email && !name) {
-    return new Response(JSON.stringify({ error: 'name or email required' }), { status: 400 });
+  let rawBody: unknown;
+  try {
+    rawBody = await request.json();
+  } catch {
+    return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 });
   }
+
+  const parsed = parseBody(newLeadWebhookSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400 });
+  }
+
+  const { name, email, phone, instagram, source, form_type, cargo, faturamento, objetivo, notes } = parsed.data;
 
   const supabase = createServerClient();
 

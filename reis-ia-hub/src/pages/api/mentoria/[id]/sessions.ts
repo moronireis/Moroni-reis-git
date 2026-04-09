@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../../lib/supabase-server';
+import { createSessionSchema, parseBody } from '../../../../lib/validations';
 
 export const prerender = false;
 
@@ -61,12 +62,15 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
     return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
   }
 
-  const body = await request.json();
-  const { date, duration_minutes, summary, notes, action_items, status } = body;
+  let rawBody: unknown;
+  try { rawBody = await request.json(); } catch { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 }); }
 
-  if (!date) {
-    return new Response(JSON.stringify({ error: 'date is required' }), { status: 400 });
+  const parsed = parseBody(createSessionSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400 });
   }
+
+  const { date, duration_minutes, summary, notes, action_items, status } = parsed.data;
 
   const { data, error } = await supabase
     .from('mentorship_sessions')

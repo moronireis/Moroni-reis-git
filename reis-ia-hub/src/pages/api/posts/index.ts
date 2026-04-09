@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../lib/supabase-server';
+import { createPostSchema, parseBody } from '../../../lib/validations';
 
 export const GET: APIRoute = async ({ url }) => {
   const supabase = createServerClient();
@@ -31,12 +32,15 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
 
-  const body = await request.json();
-  const { space_id, title, content } = body;
+  let rawBody: unknown;
+  try { rawBody = await request.json(); } catch { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 }); }
 
-  if (!space_id || !content) {
-    return new Response(JSON.stringify({ error: 'space_id and content required' }), { status: 400 });
+  const parsed = parseBody(createPostSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400 });
   }
+
+  const { space_id, title, content } = parsed.data;
 
   const { data, error } = await supabase
     .from('posts')

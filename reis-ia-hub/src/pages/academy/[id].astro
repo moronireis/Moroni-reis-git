@@ -59,11 +59,10 @@ if (profile?.id) {
 ---
 
 <AppLayout title={course.title} activeSection="academy">
-  <CourseDetail
-    client:load
-    course={course}
-    lessons={lessons || []}
-    progress={userProgress}
-    userId={profile?.id || ''}
-  />
+    <CourseDetail client:load client:load
+      course={course}
+      lessons={lessons || []}
+      progress={userProgress}
+      userId={profile?.id || ''}
+    />
 </AppLayout>

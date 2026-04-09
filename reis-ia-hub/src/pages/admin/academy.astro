@@ -16,5 +16,5 @@ const { data: courses } = await supabase
 ---
 
 <AppLayout title="Gerenciar Academy" activeSection="admin-academy">
-  <AcademyAdmin client:load initialCourses={courses || []} />
+    <AcademyAdmin client:load initialCourses={courses || []} />
 </AppLayout>

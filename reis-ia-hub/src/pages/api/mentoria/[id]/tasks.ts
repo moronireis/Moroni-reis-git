@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../../lib/supabase-server';
+import { createMentorshipTaskSchema, parseBody } from '../../../../lib/validations';
 
 export const prerender = false;
 
@@ -79,15 +80,15 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
     return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
   }
 
-  const body = await request.json();
-  const { title, description, priority, due_date, category, assigned_to, link } = body;
+  let rawBody: unknown;
+  try { rawBody = await request.json(); } catch { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 }); }
 
-  if (!title) {
-    return new Response(JSON.stringify({ error: 'title is required' }), { status: 400 });
+  const parsed = parseBody(createMentorshipTaskSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400 });
   }
 
-  const validCategories = ['systems', 'marketing', 'builders'];
-  const validAssignedTo = ['mentor', 'mentee'];
+  const { title, description, priority, due_date, category, assigned_to, link } = parsed.data;
 
   const { data, error } = await supabase
     .from('mentorship_tasks')
@@ -98,8 +99,8 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
       priority: priority || 'medium',
       status: 'pending',
       due_date: due_date || null,
-      category: category && validCategories.includes(category) ? category : 'builders',
-      assigned_to: assigned_to && validAssignedTo.includes(assigned_to) ? assigned_to : 'mentee',
+      category: category || 'builders',
+      assigned_to: assigned_to || 'mentee',
       link: link || null,
     })
     .select()

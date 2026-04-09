@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { createServerClient } from '../../../../lib/supabase-server';
 import { notify } from '../../../../lib/notifications';
+import { createCommentSchema, parseBody } from '../../../../lib/validations';
 
 export const GET: APIRoute = async ({ params }) => {
   const supabase = createServerClient();
@@ -26,12 +27,15 @@ export const POST: APIRoute = async ({ params, request, locals }) => {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
 
-  const body = await request.json();
-  const { content, parent_id } = body;
+  let rawBody: unknown;
+  try { rawBody = await request.json(); } catch { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 }); }
 
-  if (!content) {
-    return new Response(JSON.stringify({ error: 'content required' }), { status: 400 });
+  const parsed = parseBody(createCommentSchema, rawBody);
+  if (!parsed.success) {
+    return new Response(JSON.stringify({ error: parsed.error }), { status: 400 });
   }
+
+  const { content, parent_id } = parsed.data;
 
   const { data, error } = await supabase
     .from('comments')

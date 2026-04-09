@@ -10,7 +10,7 @@ const profile = Astro.locals.profile;
 const isAdmin = profile?.role === 'admin';
 const userRole = profile?.role || 'starter';
 
-// Fetch ALL spaces — access control handled in the component
+// Fetch ALL spaces
 const { data: spaces } = await supabase
   .from('spaces')
   .select('*')

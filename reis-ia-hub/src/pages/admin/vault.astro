@@ -20,9 +20,8 @@ const { data: categories } = await supabase
 ---
 
 <AppLayout title="Gerenciar Vault" activeSection="admin-vault">
-  <VaultAdmin
-    client:load
-    initialResources={resources || []}
-    categories={categories || []}
-  />
+    <VaultAdmin client:load client:load
+      initialResources={resources || []}
+      categories={categories || []}
+    />
 </AppLayout>

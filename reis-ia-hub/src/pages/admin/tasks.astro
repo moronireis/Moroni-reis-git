@@ -13,5 +13,5 @@ const { data: tasks } = await supabase
 ---
 
 <AppLayout title="Tasks" activeSection="tasks">
-  <TaskBoard client:load initialTasks={tasks || []} />
+    <TaskBoard client:load initialTasks={tasks || []} />
 </AppLayout>
