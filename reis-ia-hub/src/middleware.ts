@@ -2,7 +2,7 @@ import { defineMiddleware } from 'astro:middleware';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { createServerClient } from './lib/supabase-server';
 
-const publicPaths = ['/login', '/register', '/'];
+const publicPaths = ['/login', '/register', '/obrigado', '/'];
 
 let _anonClient: SupabaseClient | null = null;
 function getAnonClient() {
