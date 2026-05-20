@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <!-- Variation 2: Monograma Elegante — intertwined GJ with subtle leaf accent -->
+
+  <!-- Monogram mark -->
+  <g transform="translate(160, 72)">
+    <!-- G letterform — open geometric arc -->
+    <path d="M 8,-28 A 30,30 0 1,0 8,28 L 8,2 L -4,2" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- J letterform — overlapping with G -->
+    <path d="M 14,-28 L 14,14 A 14,14 0 0,1 0,28" fill="none" stroke="#3CBCB4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Subtle leaf accent at the intersection point -->
+    <path d="M 22,-18 Q 28,-24 34,-18 Q 28,-12 22,-18 Z" fill="#3CBCB4" opacity="0.6"/>
+    <path d="M 28,-24 L 28,-12" stroke="#3CBCB4" stroke-width="0.8" opacity="0.4"/>
+  </g>
+
+  <!-- EVENTOS subtitle -->
+  <text x="160" y="128" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+
+  <!-- Thin divider -->
+  <line x1="120" y1="140" x2="200" y2="140" stroke="#3CBCB4" stroke-width="0.75" stroke-linecap="round" opacity="0.5"/>
+</svg>

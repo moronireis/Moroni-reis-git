@@ -1,0 +1,100 @@
+[
+  {
+    "family": "FontAwesome",
+    "weight": "normal",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/fontawesome-webfont.eot?v=4.3.0"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css?ver=4.3.0",
+    "raw": "@font-face{font-family:'FontAwesome';src:url('../fonts/fontawesome-webfont.eot?v=4.3.0');src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'),url('../fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}"
+  },
+  {
+    "family": "Santral",
+    "weight": "300",
+    "style": "normal",
+    "display": null,
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/santral_lightf60c98664cbaf24ba4ccc2858172c18d66306c2829756469c3a8d556d297a272-webfont.woff2",
+      "../fonts/santral_lightf60c98664cbaf24ba4ccc2858172c18d66306c2829756469c3a8d556d297a272-webfont.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://press.tiffany.com/wp-content/themes/tiffany/assets/styles/style.css?ver=1778266576",
+    "raw": "@font-face{font-family:Santral;src:url(../fonts/santral_lightf60c98664cbaf24ba4ccc2858172c18d66306c2829756469c3a8d556d297a272-webfont.woff2) format(\"woff2\"),url(../fonts/santral_lightf60c98664cbaf24ba4ccc2858172c18d66306c2829756469c3a8d556d297a272-webfont.woff) format(\"woff\");font-weight:300;font-style:normal;font-stretch:normal}"
+  },
+  {
+    "family": "Santral",
+    "weight": "600",
+    "style": "normal",
+    "display": null,
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/santral_semibold-webfont.woff2",
+      ".../fonts/santral_semibold-webfont.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://press.tiffany.com/wp-content/themes/tiffany/assets/styles/style.css?ver=1778266576",
+    "raw": "@font-face{font-family:Santral;src:url(../fonts/santral_semibold-webfont.woff2) format(\"woff2\"),url(.../fonts/santral_semibold-webfont.woff) format(\"woff\");font-weight:600;font-style:normal;font-stretch:normal}"
+  },
+  {
+    "family": "SterlingDisplay-Roman",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/SterlingDisplay-Roman.otf"
+    ],
+    "src_formats": [
+      "opentype"
+    ],
+    "source_css_url": "https://press.tiffany.com/wp-content/themes/tiffany/assets/styles/style.css?ver=1778266576",
+    "raw": "@font-face{font-family:SterlingDisplay-Roman;src:url(../fonts/SterlingDisplay-Roman.otf) format(\"opentype\");font-weight:400;font-style:normal;font-stretch:normal}"
+  },
+  {
+    "family": "Sterling Display",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/SterlingDisplay-Roman.otf"
+    ],
+    "src_formats": [
+      "opentype"
+    ],
+    "source_css_url": "https://press.tiffany.com/wp-content/themes/tiffany/assets/styles/style.css?ver=1778266576",
+    "raw": "@font-face{font-family:Sterling Display;src:url(../fonts/SterlingDisplay-Roman.otf) format(\"opentype\");font-weight:400;font-style:normal;font-stretch:normal}"
+  },
+  {
+    "family": "Sterling Text",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/SterlingText-Roman.otf"
+    ],
+    "src_formats": [
+      "opentype"
+    ],
+    "source_css_url": "https://press.tiffany.com/wp-content/themes/tiffany/assets/styles/style.css?ver=1778266576",
+    "raw": "@font-face{font-family:\"Sterling Text\";src:url(../fonts/SterlingText-Roman.otf) format(\"opentype\");font-weight:400;font-style:normal;font-stretch:normal}"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "name": "--headerHeight",
+    "declarations": 3,
+    "references": 7
+  },
+  {
+    "name": "--menuActionHeight",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--windowHeight",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--footerHeight",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--blue",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--indigo",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--purple",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--pink",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--red",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--orange",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--yellow",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--green",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--teal",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cyan",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--white",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--gray",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--gray-dark",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--primary",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--secondary",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--success",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--info",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--warning",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--danger",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--light",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--dark",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--breakpoint-xs",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--breakpoint-sm",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--breakpoint-md",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--breakpoint-lg",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--breakpoint-xl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-family-sans-serif",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-family-monospace",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--primary--menu",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--fixed",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--large",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--medium",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--small",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--xsmall",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--mobile",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--desktop",
+    "declarations": 1,
+    "references": 0
+  }
+]

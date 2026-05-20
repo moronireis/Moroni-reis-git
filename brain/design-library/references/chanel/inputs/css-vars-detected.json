@@ -1,0 +1,3439 @@
+[
+  {
+    "selector": "@media(hover:none)",
+    "name": "--black",
+    "value": "active{color:var(--color-background,#fff)",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media(hover:hover)",
+    "name": "--black",
+    "value": "hover{color:var(--color-background,#fff)",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-checkbox",
+    "name": "--checkbox-color",
+    "value": "var(--color-primary-variant,#1d1d1d)",
+    "is_alias": true,
+    "line": 10
+  },
+  {
+    "selector": ".cc-checkbox--disabled,.cc-checkbox:has(.cc-checkbox__input[aria-disabled=true])",
+    "name": "--checkbox-color",
+    "value": "var(--color-primary-disable,#949494)",
+    "is_alias": true,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--input-coef",
+    "value": "0.875",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-modal",
+    "name": "--opacity-backdrop",
+    "value": "0.6",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-high-contrast .cc-modal:before",
+    "name": "--opacity-backdrop",
+    "value": "0.8",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-arrow-size",
+    "value": "0.5625rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-arrow-distance",
+    "value": "0.125rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-arrow-margin",
+    "value": "0.3125rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-arrow-gap",
+    "value": "calc(100% - 0.034375rem)",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-padding",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-color-background",
+    "value": "var(--color-primary,#000)",
+    "is_alias": true,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-color-text",
+    "value": "var(--color-background-variant,#f9f9f9)",
+    "is_alias": true,
+    "line": 10
+  },
+  {
+    "selector": ".cc-tooltip",
+    "name": "--tooltip-margin-from-edge",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--grid-columns",
+    "value": "6",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--grid-inline-margins",
+    "value": "5.625%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--grid-gap",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:321px)",
+    "name": "--grid-inline-margins",
+    "value": "5.3333%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:321px)",
+    "name": "--grid-gap",
+    "value": "1.1875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:376px)",
+    "name": "--grid-inline-margins",
+    "value": "5.5%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:376px)",
+    "name": "--grid-gap",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:601px)",
+    "name": "--grid-columns",
+    "value": "12",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:601px)",
+    "name": "--grid-inline-margins",
+    "value": "8.0952%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:601px)",
+    "name": "--grid-gap",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:841px)",
+    "name": "--grid-inline-margins",
+    "value": "8.021%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:841px)",
+    "name": "--grid-gap",
+    "value": "1.1875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--grid-columns",
+    "value": "12",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--grid-inline-margins",
+    "value": "7.9167%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--grid-gap",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:1201px)",
+    "name": "--grid-inline-margins",
+    "value": "8.0556%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:1201px)",
+    "name": "--grid-gap",
+    "value": "1.75rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:1441px)",
+    "name": "--grid-inline-margins",
+    "value": "8.1875%",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:1441px)",
+    "name": "--grid-gap",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:1601px)",
+    "name": "--grid-inline-margins",
+    "value": "8.1875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--is-bottom-navigation-present",
+    "value": "before{height:calc(100% - 3.5rem)",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--cc-header-logo-color",
+    "value": "var(--color-primary,#000)",
+    "is_alias": true,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--cc-header-opacity",
+    "value": "1",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--cc-header-position",
+    "value": "relative",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ":root",
+    "name": "--cc-header-inset-top",
+    "value": "0",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-header--is-immersive",
+    "name": "--cc-header-position",
+    "value": "fixed",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-header--is-immersive:not(.cc-header--is-open),.cc-header--is-shrinkable-at-top,.cc-header--is-transparent",
+    "name": "--cc-header-opacity",
+    "value": "0",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-header:focus-within,.cc-header:hover",
+    "name": "--cc-header-opacity",
+    "value": "1",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-header:not(:hover):focus-within",
+    "name": "--cc-header-opacity",
+    "value": "1",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--is-rtw-page",
+    "value": "focus-within .cc-header__content:before,.cc-header:not(.cc-header--is-open).cc-header--is-rtw-page:hover .cc-header__content:before{background-color:#fff",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-header--is-fixed",
+    "name": "--cc-header-position",
+    "value": "fixed",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-header--is-white:not(:hover):not(:focus-within) .cc-header-top-bar",
+    "name": "--cc-header-logo-color",
+    "value": "var(--color-background,#fff)",
+    "is_alias": true,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--is-mobile-white",
+    "value": "not(:hover).cc-header__content{--cc-header-logo-color:#fff",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:601px)",
+    "name": "--is-white-background",
+    "value": "not(:hover) .cc-header:before{background-color:#0000!important",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-high-contrast .cc-header",
+    "name": "--cc-header-logo-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "body:has(.cc-free-shipping-banner)",
+    "name": "--cc-header-inset-top",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(ar) .cc-variations__title,:lang(ar) .cc-fsh-heading-7,:lang(ar) .cc-variations--with-variations-number .cc-variations__title{font-size:1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(ja) .cc-variations__title,:lang(ja) .cc-fsh-heading-7,:lang(ja) .cc-variations--with-variations-number .cc-variations__title{font-size:1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(ko) .cc-variations__title,:lang(ko) .cc-fsh-heading-7,:lang(ko) .cc-variations--with-variations-number .cc-variations__title{font-size:1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(th) .cc-variations__title,:lang(th) .cc-fsh-heading-7,:lang(th) .cc-variations--with-variations-number .cc-variations__title{font-size:.875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(vi) .cc-variations__title,:lang(vi) .cc-fsh-heading-7,:lang(vi) .cc-variations--with-variations-number .cc-variations__title{font-size:.875rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(zh) .cc-variations__title,:lang(zh) .cc-fsh-heading-7,:lang(zh) .cc-variations--with-variations-number .cc-variations__title{font-size:1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(zh-HK) .cc-variations__title,:lang(zh-HK) .cc-fsh-heading-7,:lang(zh-HK) .cc-variations--with-variations-number .cc-variations__title{font-size:1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "@media only screen and (min-width:961px)",
+    "name": "--with-variations-number",
+    "value": "lang(zh-TW) .cc-variations__title,:lang(zh-TW) .cc-fsh-heading-7,:lang(zh-TW) .cc-variations--with-variations-number .cc-variations__title{font-size:1rem",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-col-background",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-primary-button",
+    "value": "#000",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-primary-button-text",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-icon-filter",
+    "value": "none",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-col-text",
+    "value": "#333",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-heading",
+    "value": "#1d1d1d",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-label-color",
+    "value": "#767676",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".webcallback-popin-general,.webcallback__background",
+    "name": "--chat-input-background",
+    "value": "none",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-col-background",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-primary-button",
+    "value": "#000",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-primary-button-text",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-icon-filter",
+    "value": "none",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-col-text",
+    "value": "#333",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-heading",
+    "value": "#1d1d1d",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-label-color",
+    "value": "#767676",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": "/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css STARTS */ /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css ENDS */#tulip-chat-wrapper,.agentoffline-pop",
+    "name": "--chat-input-background",
+    "value": "none",
+    "is_alias": false,
+    "line": 10
+  },
+  {
+    "selector": ".cc-side-panel",
+    "name": "--modal-width",
+    "value": "37.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-background",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-background-variant",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-primary",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-primary-variant",
+    "value": "#1d1d1d",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-primary-disable",
+    "value": "#949494",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-secondary",
+    "value": "#333",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-secondary-light",
+    "value": "#767676",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-tertiary-extra-light",
+    "value": "#f1f1f1",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-tertiary-light",
+    "value": "#ececec",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-tertiary-medium",
+    "value": "#d8d8d8",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-tertiary-strong",
+    "value": "#b6b6b6",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-inverted-background",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-inverted-error",
+    "value": "#cd0000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-inverted-primary-variant",
+    "value": "#1d1d1d",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-inverted-white-primary-variant",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-transparent",
+    "value": "#0000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-error",
+    "value": "#cd0000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--color-new-body-element",
+    "value": "#454545",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-background",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-background-variant",
+    "value": "#1d1d1d",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-primary",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-primary-variant",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-primary-disable",
+    "value": "#5a5a5a",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-secondary",
+    "value": "var(--color-primary-variant)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-secondary-light",
+    "value": "var(--color-primary-variant)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-tertiary-extra-light",
+    "value": "var(--color-primary)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-tertiary-light",
+    "value": "var(--color-primary)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-tertiary-medium",
+    "value": "var(--color-primary)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-tertiary-strong",
+    "value": "var(--color-primary)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-error",
+    "value": "#ff2a2a",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast",
+    "name": "--color-new-body-element",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-default",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-body-default",
+    "value": "300",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-body-default",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-body-default",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-default-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-body-default-strong",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-body-default-strong",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-spaced",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-body-spaced",
+    "value": "300",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-body-spaced",
+    "value": "1.4375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-spaced-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-body-spaced-strong",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.4375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-chapo",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-chapo",
+    "value": "300",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-chapo",
+    "value": "1.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-chapo",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-lead-paragraph",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-lead-paragraph",
+    "value": "300",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.4375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-text-small",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-text-small",
+    "value": "300",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-text-small",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-text-small",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-text-xsmall",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-text-xsmall",
+    "value": "300",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--line-height-text-xsmall",
+    "value": "0.9375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-body-default",
+    "value": "1.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-body-default",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-body-default",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-body-default-strong",
+    "value": "1.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-body-default-strong",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-body-spaced",
+    "value": "1.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-body-spaced",
+    "value": "1.6125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-body-spaced-strong",
+    "value": "1.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.6125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-chapo",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-chapo",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-chapo",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-lead-paragraph",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-text-small",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-text-small",
+    "value": "1.175rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-text-small",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--font-size-text-xsmall",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--line-height-text-xsmall",
+    "value": "1.175rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ar)",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-body-default",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-body-default",
+    "value": "1.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-body-default",
+    "value": "0.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-body-default-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-body-default-strong",
+    "value": "1.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-body-spaced",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-body-spaced",
+    "value": "1.435rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-body-spaced-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.435rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-chapo",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-chapo",
+    "value": "1.81125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-chapo",
+    "value": "0.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-lead-paragraph",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.56rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-text-small",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-text-small",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-text-small",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--font-size-text-xsmall",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--line-height-text-xsmall",
+    "value": "0.996875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ja)",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-body-default",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-body-default",
+    "value": "1.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-body-default",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-body-default-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-body-default-strong",
+    "value": "1.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-body-spaced",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-body-spaced",
+    "value": "1.53125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-body-spaced-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.53125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-chapo",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-chapo",
+    "value": "1.8125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-chapo",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-lead-paragraph",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.5625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-text-small",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-text-small",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-text-small",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--font-size-text-xsmall",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--line-height-text-xsmall",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(ko)",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-body-default",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-body-default",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-body-default",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-body-default-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-body-default-strong",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-body-spaced",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-body-spaced",
+    "value": "1.4875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-body-spaced-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.4875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-chapo",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-chapo",
+    "value": "1.625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-chapo",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-lead-paragraph",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-text-small",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-text-small",
+    "value": "1.0625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-text-small",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--font-size-text-xsmall",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--line-height-text-xsmall",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(th)",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-body-default",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-default",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-default",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-default",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-body-default-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-body-default-strong",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-body-default-strong",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-body-spaced",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-body-spaced",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-body-spaced",
+    "value": "1.4375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-body-spaced-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-body-spaced-strong",
+    "value": "700",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.4375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-chapo",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-chapo",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-chapo",
+    "value": "1.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-chapo",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-lead-paragraph",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-lead-paragraph",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.4375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0.00625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-text-small",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-text-small",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-text-small",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-text-small",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-size-text-xsmall",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--font-weight-text-xsmall",
+    "value": "400",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--line-height-text-xsmall",
+    "value": "0.9375rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(vi)",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-body-default",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-body-default",
+    "value": "1.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-body-default",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-body-default-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-body-default-strong",
+    "value": "1.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-body-default-strong",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-body-spaced",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-body-spaced",
+    "value": "1.5625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-body-spaced",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-body-spaced-strong",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-body-spaced-strong",
+    "value": "1.5625rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-body-spaced-strong",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-chapo",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-chapo",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-chapo",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-lead-paragraph",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-lead-paragraph",
+    "value": "1.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-lead-paragraph",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-text-small",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-text-small",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-text-small",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--font-size-text-xsmall",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--line-height-text-xsmall",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":lang(zh),:lang(zh-HK),:lang(zh-TW)",
+    "name": "--letter-spacing-text-xsmall",
+    "value": "0.03125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "body",
+    "name": "--scrollbar-width",
+    "value": "0",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--cc-safe-area-inset-top",
+    "value": "140px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ":root",
+    "name": "--cc-safe-area-inset-bottom",
+    "value": "0px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@media only screen and (min-width:600px)and (max-width:959px)",
+    "name": "--cc-safe-area-inset-top",
+    "value": "67px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--cc-safe-area-inset-top",
+    "value": "60px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--bottom-nav-visible",
+    "value": "1",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@media only screen and (max-width:599px)",
+    "name": "--bottom-nav-hidden",
+    "value": "translateY(calc(((1 - var(--bottom-nav-visible)) * 56px)))",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-background-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-text-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-black-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-icon-background",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-primary-button-text",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-dark-gray",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-dark-color",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-overlay-color",
+    "value": "#1d1d1dcc",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-darkest-color",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-axis-focus-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-light-gray-color",
+    "value": "#ececec",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-flag-color",
+    "value": "#1d1d1d",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-loader-overlay-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-axis-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-disabled-color",
+    "value": "#d8d8d8",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-product-image-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-placeholder-color-mobile",
+    "value": "#f9f9f980",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-placeholder-color-tablet",
+    "value": "#f9f9f980",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-ellipsis-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-caret-color",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-input-field-background-cn",
+    "value": "none",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-input-text-color-cn",
+    "value": "#f9f9f9",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cc-high-contrast #new-search-overlay,.cc-high-contrast .cc-search,.cc-high-contrast .new-search-filters,.cc-high-contrast .search__loader-wrapper,.cc-high-contrast .search__overlay",
+    "name": "--search-product-button-offset",
+    "value": "0.3125rem",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".fs-text",
+    "name": "--fs-text-spacing-bottom",
+    "value": "0",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--3XLarge",
+    "name": "--fs-text-spacing-bottom",
+    "value": "72px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "48px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "54px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--XXLarge",
+    "name": "--fs-text-spacing-bottom",
+    "value": "63px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "42px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "45px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--XLarge",
+    "name": "--fs-text-spacing-bottom",
+    "value": "54px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "36px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--large",
+    "name": "--fs-text-spacing-bottom",
+    "value": "45px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "30px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "32px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--medium",
+    "name": "--fs-text-spacing-bottom",
+    "value": "36px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "24px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "27px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--small",
+    "name": "--fs-text-spacing-bottom",
+    "value": "27px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "18px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "23px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--XSmall",
+    "name": "--fs-text-spacing-bottom",
+    "value": "18px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:1280px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "12px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--fs-text-spacing-bottom",
+    "value": "18px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-text--XXSmall",
+    "name": "--fs-text-spacing-bottom",
+    "value": "9px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-modal",
+    "name": "--content-margin-desktop",
+    "value": "45px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal",
+    "name": "--transform-animation",
+    "value": "cubic-bezier(.5, 0, .5, 1)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal",
+    "name": "--transform-clip-path-open",
+    "value": "cubic-bezier(.4, 0, .5, 1)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal",
+    "name": "--transform-clip-path-close",
+    "value": "cubic-bezier(.5, 0, .45, 1)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--transform-clip-path-open",
+    "value": "cubic-bezier(.35, .05, .5, 1.1)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--transform-clip-path-close",
+    "value": "cubic-bezier(.5, .05, .35, .95)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal",
+    "name": "--transform-duration",
+    "value": "var(--max-duration-animation-overload, var(--max-duration-animation))",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal",
+    "name": "--menu-text-transform-duration",
+    "value": ".3s",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal",
+    "name": "--menu-text-transform-animation",
+    "value": "linear",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal__animated-container",
+    "name": "--modalWidth",
+    "value": "464px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--modalWidth",
+    "value": "min(372px, 97vw)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal__animated-container",
+    "name": "--top",
+    "value": "calc(var(--modalHeight) - var(--buttonHeight))",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".fs-qca-v4-modal__animated-container",
+    "name": "--left",
+    "value": "calc((var(--modalWidth) - var(--buttonWidth))/2)",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(max-width:960px)",
+    "name": "--webkit-line-clamp-responsive",
+    "value": "0\"]{max-height:0",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(min-width:961px)",
+    "name": "--webkit-line-clamp-desktop",
+    "value": "0\"]{max-height:0",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(min-width:961px)",
+    "name": "--common",
+    "value": "hover{opacity:.4",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "@media(min-width:961px)",
+    "name": "--accessible",
+    "value": "focus{opacity:1",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--swiper-theme-color",
+    "value": "#007aff",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".swiper-lazy-preloader-white",
+    "name": "--swiper-preloader-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".swiper-lazy-preloader-black",
+    "name": "--swiper-preloader-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--swiper-navigation-size",
+    "value": "44px",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "#fs-app,[data-id=fs-modal]",
+    "name": "--aWConquerorDidot",
+    "value": "\"awconqueror-prodido\", serif",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "#fs-app[data-market=CN],#fs-app[data-market=cn],[data-id=fs-modal][data-market=CN],[data-id=fs-modal][data-market=cn]",
+    "name": "--aWConquerorDidot",
+    "value": "\"awconqueror-prodido-cn\", serif",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--widthMobile",
+    "value": "100%",
+    "is_alias": false,
+    "line": 170
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--widthDesktop",
+    "value": "100%",
+    "is_alias": false,
+    "line": 170
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--order",
+    "value": "0",
+    "is_alias": false,
+    "line": 170
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--revertWidthDesktop",
+    "value": "100%",
+    "is_alias": false,
+    "line": 170
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--revertOrder",
+    "value": "0",
+    "is_alias": false,
+    "line": 170
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline12",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 173
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline12",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 173
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline13",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 176
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline13",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 176
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline15",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 182
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline15",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 182
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline15",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 182
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline15",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 182
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--widthMobile",
+    "value": "100%",
+    "is_alias": false,
+    "line": 185
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--widthDesktop",
+    "value": "100%",
+    "is_alias": false,
+    "line": 185
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--order",
+    "value": "0",
+    "is_alias": false,
+    "line": 185
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--revertWidthDesktop",
+    "value": "100%",
+    "is_alias": false,
+    "line": 185
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--revertOrder",
+    "value": "0",
+    "is_alias": false,
+    "line": 185
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline17",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 188
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline17",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 188
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline18",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 191
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline18",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 191
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline20",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 197
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline20",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 197
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline20",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 197
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline20",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 197
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline21",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 200
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline21",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 200
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline22",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 203
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline22",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 203
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline24",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 209
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline24",
+    "name": "--valueBorderColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 209
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline24",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 209
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline24",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 209
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline25",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 212
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline25",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 212
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline26",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 215
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline26",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 215
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline28",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 221
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline28",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 221
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline28",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 221
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline28",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 221
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline29",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 224
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline29",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 224
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline31",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 230
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline31",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 230
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline31",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 230
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline31",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 230
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline32",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 233
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline32",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 233
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline33",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 236
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline33",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 236
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline35",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 242
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline35",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 242
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline35",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 242
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline35",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 242
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline36",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 245
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline36",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 245
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline37",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 248
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline37",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 248
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline39",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 254
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline39",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 254
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline39",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 254
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline39",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 254
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline40",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 257
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline40",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 257
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline41",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 260
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline41",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 260
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline43",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 266
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline43",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 266
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline43",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 266
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline43",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 266
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline44",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 269
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline44",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 269
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline45",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 272
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline45",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 272
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline47",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 278
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline47",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 278
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline47",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 278
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline47",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 278
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline48",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 281
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline48",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 281
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline49",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 284
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline49",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 284
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline51",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 290
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline51",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 290
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline51",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 290
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline51",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 290
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline52",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 293
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline52",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 293
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline53",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 296
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline53",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 296
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline55",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 302
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline55",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 302
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline55",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 302
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline55",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 302
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline56",
+    "name": "--widthMobile",
+    "value": "100%",
+    "is_alias": false,
+    "line": 305
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline56",
+    "name": "--widthDesktop",
+    "value": "100%",
+    "is_alias": false,
+    "line": 305
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline56",
+    "name": "--order",
+    "value": "0",
+    "is_alias": false,
+    "line": 305
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline56",
+    "name": "--revertWidthDesktop",
+    "value": "100%",
+    "is_alias": false,
+    "line": 305
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline56",
+    "name": "--revertOrder",
+    "value": "0",
+    "is_alias": false,
+    "line": 305
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline57",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 308
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline57",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 308
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline58",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 311
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline58",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 311
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline60",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 317
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline60",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 317
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline60",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 317
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline60",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 317
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline61",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 320
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline61",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 320
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline62",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 323
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline62",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 323
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline64",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 329
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline64",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 329
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline64",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 329
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline64",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 329
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline65",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 332
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline65",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 332
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline66",
+    "name": "--valueTextColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 335
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline66",
+    "name": "--valueTextAlignement",
+    "value": "center",
+    "is_alias": false,
+    "line": 335
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline68",
+    "name": "--valueBackgroundButtonColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 341
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline68",
+    "name": "--valueBorderColor",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 341
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline68",
+    "name": "--valueTextColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 341
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline68",
+    "name": "--hoverColor",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 341
+  }
+]

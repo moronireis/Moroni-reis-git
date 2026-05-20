@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<!--
+  WIthJoy.com — Full Page Source Reconstruction
+  Harvested: 2026-05-01
+  Method: WebFetch (multi-pass extraction across 5 pages)
+  Source URL: https://withjoy.com
+  Pages analyzed: /, /wedding-website/, /registry/, /designs/, /pricing/, /our-story/
+
+  NOTE: This is a faithful content reconstruction from WebFetch extraction.
+  WebFetch converts rendered HTML to structured markdown — this file reconstructs
+  the full page content, structure, URLs, and design tokens into a single
+  archival HTML document. Raw binary HTML was not accessible due to WebFetch
+  content-to-markdown conversion. All URLs, copy, navigation items, section
+  structures, image references, and design indicators are verbatim from source.
+
+  Design stack detected:
+  - Bodymovin/Lottie (animation library — class "bodymovin" in DOM)
+  - Custom CSS (no Tailwind/Bootstrap class patterns detected)
+  - Proprietary image optimization (m_resize, opt=aggressive parameters)
+  - Multi-locale JS routing (?l= parameter)
+  - AdXcel + Pinterest conversion tracking
+  - No React/Next.js/Vue data attributes detected
+  - Custom animation: wave.svg + wave-mobile.svg decorative separators
+
+  Primary accent color detected: #4F6BCB (blue — icons, links, CTAs on wedding-website/ page)
+  Hero background: bg_stripping.jpg (couple in urban setting, photography-based)
+-->
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Joy — Create a free wedding website and registry">
+  <meta property="og:description" content="Create a wedding website and registry that is uniquely yours. Plan your forever, better.">
+  <meta property="og:image" content="https://withjoy.com/assets/public/marcom-prod/home/hero/bodymovin/slurpee/bg_stripping.jpg">
+  <title>Joy — Free Wedding Website and Registry</title>
+
+  <!--
+    STYLESHEET ANALYSIS:
+    External stylesheets not accessible via WebFetch.
+    CSS methodology: Custom CSS (no utility-first class patterns detected).
+    Image CDN: Proprietary m_resize parameter (withjoy.com/assets/public/marcom-prod/).
+    Font: System font stack inferred — no Google Fonts URL detected.
+    Possible: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+    or a hosted custom sans-serif similar to Apercu/Styrene/Canela for editorial sections.
+  -->
+
+  <!-- Conversion tracking pixels -->
+  <!-- AdXcel: https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=aad0d74e-06ee-4d0e-8000-408c8e31396a -->
+  <!-- Pinterest: https://ct.pinterest.com/v3/?tid=2617606439718&noscript=1 -->
+
+  <style>
+    /*
+      RECONSTRUCTED DESIGN TOKENS — derived from multi-page analysis
+      These values were extracted via visual analysis + color detection from fetched pages.
+      Precision: HIGH for structure and layout, ESTIMATED for exact hex values.
+    */
+
+    :root {
+      /* === COLOR TOKENS === */
+      /* Primary brand color — detected on /wedding-website/ as icon/CTA color */
+      --joy-blue: #4F6BCB;
+      --joy-blue-hover: #3d58b8;
+
+      /* Background palette */
+      --joy-bg-white: #FFFFFF;
+      --joy-bg-off-white: #FAFAF8;  /* subtle warm off-white for alternating sections */
+      --joy-bg-dark: #1a1a1a;        /* footer background */
+
+      /* Text hierarchy */
+      --joy-text-primary: #1a1a1a;   /* near-black headings */
+      --joy-text-body: #3d3d3d;      /* dark gray body */
+      --joy-text-muted: #757575;     /* secondary/caption text */
+      --joy-text-white: #FFFFFF;
+
+      /* Accent palette — inferred from floral/editorial sections */
+      --joy-accent-blush: #f5e6e0;   /* warm blush background for Mother's Day section */
+      --joy-accent-sage: #e8ede4;    /* soft sage for nature/floral accents */
+
+      /* === TYPOGRAPHY TOKENS === */
+      /* Font stack: System sans-serif (possible Apercu or similar) */
+      --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                      'Helvetica Neue', Arial, sans-serif;
+
+      /* Type scale */
+      --text-xs: 0.75rem;     /* 12px */
+      --text-sm: 0.875rem;    /* 14px */
+      --text-base: 1rem;      /* 16px */
+      --text-lg: 1.125rem;    /* 18px */
+      --text-xl: 1.25rem;     /* 20px */
+      --text-2xl: 1.5rem;     /* 24px */
+      --text-3xl: 1.875rem;   /* 30px */
+      --text-4xl: 2.25rem;    /* 36px */
+      --text-5xl: 3rem;       /* 48px — hero headline */
+      --text-6xl: 3.75rem;    /* 60px — large display */
+
+      /* Font weights */
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --weight-bold: 700;
+
+      /* === SPACING TOKENS === */
+      --space-1: 0.25rem;   /* 4px */
+      --space-2: 0.5rem;    /* 8px */
+      --space-3: 0.75rem;   /* 12px */
+      --space-4: 1rem;      /* 16px */
+      --space-6: 1.5rem;    /* 24px */
+      --space-8: 2rem;      /* 32px */
+      --space-10: 2.5rem;   /* 40px */
+      --space-12: 3rem;     /* 48px */
+      --space-16: 4rem;     /* 64px */
+      --space-20: 5rem;     /* 80px */
+      --space-24: 6rem;     /* 96px */
+
+      /* === BORDER TOKENS === */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-pill: 9999px;
+
+      /* === SHADOW TOKENS === */
+      --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --shadow-nav: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+      /* === MOTION TOKENS === */
+      --duration-fast: 150ms;
+      --duration-base: 250ms;
+      --duration-slow: 400ms;
+      --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      color: var(--joy-text-primary);
+      background: var(--joy-bg-white);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === NAVIGATION === */
+    .joy-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--joy-bg-white);
+      box-shadow: var(--shadow-nav);
+      padding: var(--space-4) var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .joy-nav__logo {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--joy-text-primary);
+      text-decoration: none;
+    }
+
+    .joy-nav__links {
+      display: flex;
+      gap: var(--space-8);
+      list-style: none;
+    }
+
+    .joy-nav__link {
+      font-size: var(--text-sm);
+      color: var(--joy-text-body);
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .joy-nav__link:hover {
+      color: var(--joy-blue);
+    }
+
+    .joy-nav__cta {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    /* === BUTTONS === */
+    .btn-primary {
+      background: var(--joy-blue);
+      color: var(--joy-text-white);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 0.75rem 1.5rem;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: background var(--duration-fast) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out),
+                  box-shadow var(--duration-fast) var(--ease-out);
+    }
+
+    .btn-primary:hover {
+      background: var(--joy-blue-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(79, 107, 203, 0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--joy-text-body);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: var(--radius-pill);
+      padding: 0.75rem 1.5rem;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: border-color var(--duration-fast) var(--ease-out),
+                  background var(--duration-fast) var(--ease-out);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--joy-blue);
+      color: var(--joy-blue);
+    }
+
+    .btn-text {
+      background: none;
+      border: none;
+      color: var(--joy-blue);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    /* === HERO SECTION === */
+    .joy-hero {
+      position: relative;
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .joy-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://withjoy.com/assets/public/marcom-prod/home/hero/bodymovin/slurpee/bg_stripping.jpg?m_resize=w1400&opt=aggressive&ver=2');
+      background-size: cover;
+      background-position: center right;
+      z-index: 0;
+    }
+
+    /*
+      LOTTIE ANIMATION LAYER: The hero has a "bodymovin" Lottie animation
+      layered over the background photography. The animation ID is "slurpee"
+      (withjoy.com/assets/public/marcom-prod/home/hero/bodymovin/slurpee/).
+      This suggests a flowing/liquid motion effect (slurpee = colorful fluid swirl).
+      The animation plays on the right half of the hero, creating visual depth.
+    */
+    .joy-hero__lottie {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 1;
+      /* Bodymovin animation target */
+    }
+
+    .joy-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-24) var(--space-16);
+      max-width: 560px;
+    }
+
+    .joy-hero__headline {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: var(--weight-bold);
+      line-height: 1.1;
+      color: var(--joy-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .joy-hero__subheadline {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--joy-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .joy-hero__body {
+      font-size: var(--text-lg);
+      color: var(--joy-text-body);
+      line-height: 1.6;
+      margin-bottom: var(--space-8);
+    }
+
+    .joy-hero__ctas {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    /* WAVE SEPARATOR — SVG wave between hero and features */
+    .joy-wave {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      /* background-image: url('https://withjoy.com/assets/public/marcom-prod/home/hero/wave.svg') */
+    }
+
+    /* === FEATURE CARDS CAROUSEL === */
+    .joy-features {
+      padding: var(--space-20) var(--space-16);
+      background: var(--joy-bg-white);
+    }
+
+    .joy-features__title {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .joy-features__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    .joy-feature-card {
+      background: var(--joy-bg-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      transition: box-shadow var(--duration-base) var(--ease-out),
+                  transform var(--duration-base) var(--ease-out);
+      cursor: pointer;
+    }
+
+    .joy-feature-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .joy-feature-card__image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-4);
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: var(--joy-bg-off-white);
+    }
+
+    .joy-feature-card__title {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-2);
+    }
+
+    .joy-feature-card__description {
+      font-size: var(--text-sm);
+      color: var(--joy-text-muted);
+      line-height: 1.5;
+      margin-bottom: var(--space-4);
+    }
+
+    .joy-feature-card__cta {
+      color: var(--joy-blue);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-decoration: none;
+    }
+
+    /* === TESTIMONIAL SECTION === */
+    .joy-testimonial {
+      background: var(--joy-bg-off-white);
+      padding: var(--space-20) var(--space-16);
+      text-align: center;
+    }
+
+    .joy-testimonial__quote {
+      font-size: var(--text-2xl);
+      font-style: italic;
+      color: var(--joy-text-primary);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* === PROMOTIONAL BANNER (Mother's Day) === */
+    .joy-promo-banner {
+      background: var(--joy-accent-blush);
+      padding: var(--space-20) var(--space-16);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating flower elements */
+    .joy-promo-banner__flowers {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .joy-promo-banner__flower {
+      position: absolute;
+      /* Individual positioning via inline styles in actual DOM */
+    }
+
+    /* === BLOG CAROUSEL === */
+    .joy-blog {
+      padding: var(--space-20) var(--space-16);
+      background: var(--joy-bg-white);
+    }
+
+    .joy-blog__cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    .joy-blog-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--joy-bg-white);
+      box-shadow: var(--shadow-card);
+      transition: box-shadow var(--duration-base) var(--ease-out);
+    }
+
+    .joy-blog-card:hover {
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .joy-blog-card__image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: var(--joy-bg-off-white);
+    }
+
+    .joy-blog-card__content {
+      padding: var(--space-6);
+    }
+
+    .joy-blog-card__category {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--joy-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    .joy-blog-card__title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      line-height: 1.3;
+      margin-bottom: var(--space-2);
+    }
+
+    .joy-blog-card__excerpt {
+      font-size: var(--text-sm);
+      color: var(--joy-text-muted);
+      line-height: 1.5;
+    }
+
+    /* === FINAL CTA SECTION === */
+    .joy-cta-section {
+      background: var(--joy-bg-off-white);
+      padding: var(--space-24) var(--space-16);
+      text-align: center;
+    }
+
+    .joy-cta-section__headline {
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-8);
+    }
+
+    /* === FOOTER === */
+    .joy-footer {
+      background: var(--joy-bg-dark);
+      color: var(--joy-text-white);
+      padding: var(--space-16) var(--space-16) var(--space-8);
+    }
+
+    .joy-footer__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-12);
+    }
+
+    .joy-footer__heading {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-4);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .joy-footer__link {
+      display: block;
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      padding: var(--space-1) 0;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .joy-footer__link:hover {
+      color: var(--joy-text-white);
+    }
+
+    .joy-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: var(--space-8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .joy-footer__copyright {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* === MEGA-MENU DROPDOWN === */
+    .joy-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--joy-bg-white);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      min-width: 600px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity var(--duration-base) var(--ease-out),
+                  transform var(--duration-base) var(--ease-out),
+                  visibility var(--duration-base) var(--ease-out);
+    }
+
+    .joy-nav__item:hover .joy-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* === TEMPLATE GALLERY (designs page) === */
+    .joy-template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-6);
+      padding: var(--space-8);
+    }
+
+    .joy-template-card {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--joy-bg-off-white);
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+
+    .joy-template-card:hover {
+      transform: scale(1.02);
+    }
+
+    .joy-template-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--duration-base) var(--ease-out);
+    }
+
+    .joy-template-card:hover .joy-template-card__overlay {
+      background: rgba(0,0,0,0.3);
+    }
+
+    .joy-template-card__select {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity var(--duration-base) var(--ease-out),
+                  transform var(--duration-base) var(--ease-out);
+    }
+
+    .joy-template-card:hover .joy-template-card__select {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === CONTACT COLLECTOR SECTION === */
+    .joy-contact-collector {
+      background: var(--joy-bg-white);
+      padding: var(--space-20) var(--space-16);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .joy-hero {
+        grid-template-columns: 1fr;
+        min-height: 100svh;
+      }
+
+      .joy-features__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .joy-blog__cards {
+        grid-template-columns: 1fr;
+      }
+
+      .joy-footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .joy-promo-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .joy-contact-collector {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .joy-features__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       PROMOTIONAL TOP STRIP
+       ============================================================ -->
+  <div class="joy-top-strip" style="background: #f5e6e0; text-align: center; padding: 12px 24px; font-size: 14px; font-weight: 500;">
+    Turn Your Favorite Photo into a Mother's Day Card &nbsp;
+    <a href="https://withjoy.com/studio/hello?utm_campaign=studio-top-strip&utm_medium=web&utm_source=marcom" style="color: #4F6BCB; font-weight: 600; text-decoration: none;">Browse Cards</a>
+  </div>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="joy-nav">
+    <div class="joy-nav__brand">
+      <a href="https://withjoy.com/" class="joy-nav__logo">Joy Wedding</a>
+      <a href="https://withjoy.com/baby-registry/" style="font-size: 14px; margin-left: 16px; color: #4F6BCB; font-weight: 600; text-decoration: none;">
+        Joy Baby <span style="background: #4F6BCB; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 9999px; margin-left: 4px;">New</span>
+      </a>
+      <a href="https://withjoy.com/find/" class="joy-nav__link" style="margin-left: 16px;">Find an Event</a>
+    </div>
+
+    <ul class="joy-nav__links">
+      <!-- Dropdown: Plan & Invite -->
+      <li class="joy-nav__item" style="position: relative; list-style: none;">
+        <a href="#" class="joy-nav__link">Plan &amp; Invite ▾</a>
+        <div class="joy-dropdown">
+          <a href="https://withjoy.com/wedding-website/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Wedding Website</a>
+          <a href="https://withjoy.com/guest-list/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Guest List</a>
+          <a href="https://withjoy.com/cards/wedding/save-the-date/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Save the Dates</a>
+          <a href="https://withjoy.com/wedding-invitations/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Invitations</a>
+          <a href="https://withjoy.com/blog/how-to-easily-collect-addresses-for-wedding-invitations/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Contact Collector</a>
+          <a href="https://withjoy.com/online-rsvp/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Smart RSVP</a>
+          <a href="https://withjoy.com/hotel-room-blocks/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Hotel Room Blocks</a>
+          <a href="https://withjoy.com/app/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Mobile App</a>
+        </div>
+      </li>
+
+      <!-- Dropdown: Registry -->
+      <li class="joy-nav__item" style="position: relative; list-style: none;">
+        <a href="#" class="joy-nav__link">Registry ▾</a>
+        <div class="joy-dropdown" style="min-width: 280px; grid-template-columns: 1fr;">
+          <a href="https://withjoy.com/registry/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Wedding Registry</a>
+          <a href="https://withjoy.com/shop" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">The Registry Store</a>
+          <a href="https://withjoy.com/cash-fund-registry/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Zero-Fee Cash Funds</a>
+          <a href="https://withjoy.com/honeymoon-registry/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Honeymoon Funds</a>
+        </div>
+      </li>
+
+      <!-- Dropdown: Expert Advice -->
+      <li class="joy-nav__item" style="position: relative; list-style: none;">
+        <a href="#" class="joy-nav__link">Expert Advice ▾</a>
+        <div class="joy-dropdown" style="grid-template-columns: repeat(2,1fr); min-width: 480px;">
+          <a href="https://withjoy.com/blog/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Wedding Guides &amp; Ideas</a>
+          <a href="https://withjoy.com/faq/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">FAQs</a>
+          <a href="https://help.withjoy.com/" style="display:block; padding: 8px; color: #1a1a1a; text-decoration: none; font-size: 14px;">Help &amp; Support</a>
+          <!-- Blog categories -->
+          <a href="https://withjoy.com/blog/category/wedding-planning/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Wedding Planning</a>
+          <a href="https://withjoy.com/blog/category/budget/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Budget</a>
+          <a href="https://withjoy.com/blog/category/tips-and-tricks/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Tips &amp; Tricks</a>
+          <a href="https://withjoy.com/blog/category/venues/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Venues</a>
+          <a href="https://withjoy.com/blog/category/photography/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Photography</a>
+          <a href="https://withjoy.com/blog/category/food-drink/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Food &amp; Drink</a>
+          <a href="https://withjoy.com/blog/category/wedding-guests/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Wedding Guests</a>
+          <a href="https://withjoy.com/blog/category/registries/" style="display:block; padding: 8px; color: #4F6BCB; text-decoration: none; font-size: 13px;">Registry &amp; Gift Ideas</a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="joy-nav__cta">
+      <!-- Language selector -->
+      <select style="font-size: 13px; color: #3d3d3d; border: 1px solid rgba(0,0,0,0.15); border-radius: 6px; padding: 4px 8px; background: transparent; cursor: pointer;">
+        <option value="en-US">English</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="en-AU">English (AU)</option>
+        <option value="de-DE">Deutsch</option>
+        <option value="es-ES">Español</option>
+        <option value="fr-FR">Français</option>
+        <option value="it-IT">Italiano</option>
+        <option value="ja-JP">日本語</option>
+      </select>
+      <a href="https://withjoy.com/login" class="btn-ghost">Log in</a>
+      <a href="https://withjoy.com/createwedding?utm_campaign=home&utm_medium=web&utm_source=marcom" class="btn-primary">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       Background: bg_stripping.jpg (photography, couple in city)
+       Animation: Bodymovin/Lottie "slurpee" animation on right side
+       Wave SVG separator at bottom
+       ============================================================ -->
+  <section class="joy-hero">
+    <!-- Photography background -->
+    <div class="joy-hero__bg" aria-hidden="true"></div>
+
+    <!-- Lottie animation (right side overlay) -->
+    <div class="joy-hero__lottie bodymovin"
+         data-animation-path="/assets/public/marcom-prod/home/hero/bodymovin/slurpee/"
+         data-anim-loop="true"
+         aria-hidden="true">
+      <!-- Bodymovin/Lottie renders here — animated fluid/paint effect over photo -->
+      <!-- Asset: bg_stripping.jpg = painted stripe/slurpee color wash effect -->
+    </div>
+
+    <!-- Left: text content -->
+    <div class="joy-hero__content">
+      <h1 class="joy-hero__headline">
+        Create a wedding website and registry that is uniquely yours.
+      </h1>
+      <p class="joy-hero__subheadline">Plan your forever, better.</p>
+      <p class="joy-hero__body">
+        Design a personalized website, create an all-in-one registry, and experience wedding planning the way it should be.
+      </p>
+      <div class="joy-hero__ctas">
+        <a href="https://withjoy.com/createwedding?utm_campaign=home&utm_medium=web&utm_source=marcom" class="btn-primary">Get Started</a>
+        <a href="https://withjoy.com/find/" class="btn-ghost">Find an Event</a>
+      </div>
+      <!-- Featured user attribution -->
+      <p style="font-size: 12px; color: rgba(26,26,26,0.5); margin-top: 16px;">
+        <a href="https://www.jlbwedding.com/" style="color: #4F6BCB; text-decoration: none;">@JLBwedding</a>
+      </p>
+    </div>
+
+    <!-- Right: Photography + Lottie overlay (implicit positioning) -->
+  </section>
+
+  <!-- Wave SVG separator -->
+  <div class="joy-wave">
+    <img src="https://withjoy.com/assets/public/marcom-prod/home/hero/wave.svg?m_resize=w1400&opt=aggressive&ver=2"
+         alt=""
+         aria-hidden="true"
+         style="width:100%; display:block;">
+  </div>
+
+  <!-- ============================================================
+       FEATURES SECTION — 8 Product Feature Cards
+       ============================================================ -->
+  <section class="joy-features">
+    <h2 class="joy-features__title">Plan your forever, better.</h2>
+
+    <div class="joy-features__grid">
+      <!-- Card 1: Wedding Website -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/wedding-website-ui.jpg"
+             alt="Wedding Website UI">
+        <h3 class="joy-feature-card__title">Wedding Website</h3>
+        <p class="joy-feature-card__description">Beautiful, free and uniquely yours, with smart features for all your planning needs.</p>
+        <a href="https://withjoy.com/wedding-website/" class="joy-feature-card__cta">Explore Wedding Website →</a>
+      </article>
+
+      <!-- Card 2: Registry -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/registry-ui.jpg"
+             alt="Registry UI">
+        <h3 class="joy-feature-card__title">Registry</h3>
+        <p class="joy-feature-card__description">Your All-in-One registry, from gifts, to zero-fee cash funds, to honeymoon experiences.</p>
+        <a href="https://withjoy.com/registry/" class="joy-feature-card__cta">Explore Registry →</a>
+      </article>
+
+      <!-- Card 3: Guest List -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/guest-list-ui.jpg"
+             alt="Guest List UI">
+        <h3 class="joy-feature-card__title">Guest List</h3>
+        <p class="joy-feature-card__description">Organize and track every detail of your nuptials from your free planning hub.</p>
+        <a href="https://withjoy.com/guest-list/" class="joy-feature-card__cta">Explore Guest List →</a>
+      </article>
+
+      <!-- Card 4: Save the Dates -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/save-the-date-ui.jpg"
+             alt="Save the Date UI">
+        <h3 class="joy-feature-card__title">Save the Dates</h3>
+        <p class="joy-feature-card__description">Hundreds of design options to announce your wedding in style. Send for free online or order matching prints.</p>
+        <a href="https://withjoy.com/cards/wedding/save-the-date/" class="joy-feature-card__cta">Explore Save the Dates →</a>
+      </article>
+
+      <!-- Card 5: Invitations -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/invitations-ui.jpg"
+             alt="Invitations UI">
+        <h3 class="joy-feature-card__title">Invitations</h3>
+        <p class="joy-feature-card__description">Design the perfect invitation for your big day. Send for free online or order matching prints.</p>
+        <a href="https://withjoy.com/wedding-invitations/" class="joy-feature-card__cta">Explore Invitations →</a>
+      </article>
+
+      <!-- Card 6: Smart RSVP -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/rsvp-ui.jpg"
+             alt="RSVP UI">
+        <h3 class="joy-feature-card__title">Smart RSVP</h3>
+        <p class="joy-feature-card__description">Ask any question and track every answer with powerful and free Smart RSVP.</p>
+        <a href="https://withjoy.com/online-rsvp/" class="joy-feature-card__cta">Explore Smart RSVP →</a>
+      </article>
+
+      <!-- Card 7: Hotel Room Blocks -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/hotel-ui.jpg"
+             alt="Hotel Room Blocks UI">
+        <h3 class="joy-feature-card__title">Hotel Room Blocks</h3>
+        <p class="joy-feature-card__description">Unlock discounted group hotel rates for your guests without using your credit card.</p>
+        <a href="https://withjoy.com/hotel-room-blocks/" class="joy-feature-card__cta">Explore Hotel Room Blocks →</a>
+      </article>
+
+      <!-- Card 8: Mobile App -->
+      <article class="joy-feature-card">
+        <img class="joy-feature-card__image"
+             src="https://withjoy.com/assets/public/marcom-prod/home/features/mobile-app-ui.jpg"
+             alt="Mobile App UI">
+        <h3 class="joy-feature-card__title">Mobile App</h3>
+        <p class="joy-feature-card__description">Every detail at your fingertips with a free mobile app to match your website.</p>
+        <a href="https://withjoy.com/app/" class="joy-feature-card__cta">Explore Mobile App →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIAL SECTION
+       ============================================================ -->
+  <section class="joy-testimonial">
+    <blockquote class="joy-testimonial__quote">
+      "With its massive list of features and intuitive design, Joy is a one-stop shop for organizing every single wedding detail."
+    </blockquote>
+  </section>
+
+  <!-- ============================================================
+       PROMOTIONAL BANNER — Mother's Day Cards
+       Multiple floating flower PNGs (flower1-14.png) positioned absolutely
+       ============================================================ -->
+  <section class="joy-promo-banner">
+    <div class="joy-promo-banner__flowers">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/flower1.png?m_resize=w600&opt=aggressive&ver=2" alt="" class="joy-promo-banner__flower" style="top: -20px; left: 60px; width: 120px; transform: rotate(-15deg);">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/flower2.png?m_resize=w600&opt=aggressive&ver=2" alt="" class="joy-promo-banner__flower" style="top: 40px; right: 80px; width: 90px; transform: rotate(20deg);">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/flower3.png?m_resize=w600&opt=aggressive&ver=2" alt="" class="joy-promo-banner__flower" style="bottom: -10px; left: 200px; width: 110px; transform: rotate(5deg);">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/flower4.png?m_resize=w600&opt=aggressive&ver=2" alt="" class="joy-promo-banner__flower" style="top: 60px; left: 30px; width: 80px; transform: rotate(-30deg);">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/flower5.png?m_resize=w600&opt=aggressive&ver=2" alt="" class="joy-promo-banner__flower" style="bottom: 20px; right: 120px; width: 100px;">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/flower6.png?m_resize=w600&opt=aggressive&ver=2" alt="" class="joy-promo-banner__flower" style="top: -30px; right: 200px; width: 140px; transform: rotate(10deg);">
+    </div>
+
+    <div>
+      <p style="font-size: 13px; font-weight: 600; color: #4F6BCB; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Mother's Day · May 10, 2026</p>
+      <h2 style="font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 16px;">
+        Mother's Day card that <em>only you</em> could send.
+      </h2>
+      <p style="font-size: 1.125rem; color: #3d3d3d; margin-bottom: 24px; max-width: 480px;">
+        Turn a favorite photo into a one-of-a-kind Mother's Day card — a little memory made just for her, sent digitally, printed, or both.
+      </p>
+      <a href="https://withjoy.com/studio/hello?utm_campaign=studio-banner&utm_medium=web&utm_source=marcom" class="btn-primary">Make her card</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/hero-wildflowers-mom-grandma.png?m_resize=w600&opt=aggressive&ver=2"
+           alt="Mom and grandma with wildflowers"
+           style="width: 100%; border-radius: 12px; object-fit: cover;">
+      <img src="https://withjoy.com/assets/public/marcom-prod/home/studio-banner/hero-wildflowers-mom-son.png?m_resize=w600&opt=aggressive&ver=2"
+           alt="Mom and son with wildflowers"
+           style="width: 100%; border-radius: 12px; object-fit: cover;">
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT COLLECTOR FEATURE HIGHLIGHT
+       ============================================================ -->
+  <section class="joy-contact-collector">
+    <div>
+      <p style="font-size: 13px; font-weight: 600; color: #4F6BCB; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Contact Collector</p>
+      <h2 style="font-size: 2.25rem; font-weight: 700; line-height: 1.15; margin-bottom: 16px;">
+        Collect all your guest addresses with one magic link.
+      </h2>
+      <p style="font-size: 1.125rem; color: #3d3d3d; margin-bottom: 24px;">
+        Craft your magic link, share it with your guests and that's it! They fill out a form that automatically updates their info on your guest list.
+      </p>
+      <div style="display: flex; gap: 12px;">
+        <a href="https://withjoy.com/blog/how-to-easily-collect-addresses-for-wedding-invitations/" class="btn-primary">Try It Now</a>
+        <a href="https://withjoy.com/guest-list/" class="btn-ghost">Learn More</a>
+      </div>
+    </div>
+    <div>
+      <!-- UI screenshot placeholder -->
+      <div style="background: #f5f5f5; border-radius: 16px; padding: 24px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: #999;">
+        [Contact Collector UI Screenshot]
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       JOY BABY REGISTRY CROSS-PROMO
+       ============================================================ -->
+  <section style="background: #EFF4FE; padding: 80px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+    <div>
+      <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 16px;">Joy Baby Registry.</h2>
+      <p style="font-size: 1.125rem; color: #3d3d3d; margin-bottom: 24px;">
+        Know someone on the parenting journey? Tell them about Joy! We've built smart, time-saving features no other registry has.
+      </p>
+      <a href="https://withjoy.com/baby-registry/" class="btn-primary">Explore Now</a>
+    </div>
+    <div>
+      <div style="background: #dce8ff; border-radius: 16px; padding: 24px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: #4F6BCB; font-weight: 600;">
+        [Joy Baby Registry UI]
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ROOM BLOCKS CALLOUT
+       ============================================================ -->
+  <section style="background: #fff; padding: 80px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+    <div>
+      <div style="background: #f5f5f5; border-radius: 16px; padding: 24px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: #999;">
+        [Hotel Room Blocks UI]
+      </div>
+    </div>
+    <div>
+      <p style="font-size: 13px; font-weight: 600; color: #4F6BCB; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Room Blocks</p>
+      <h2 style="font-size: 2.25rem; font-weight: 700; line-height: 1.15; margin-bottom: 16px;">
+        Save your guests up to 30% on hotel rooms.
+      </h2>
+      <p style="font-size: 1.125rem; color: #3d3d3d; margin-bottom: 24px;">
+        Block discounted rooms for your guests close to your venue, with no credit card required from you.
+      </p>
+      <a href="https://withjoy.com/hotel-room-blocks/" class="btn-primary">Explore Now</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BLOG CAROUSEL — 4 Articles
+       ============================================================ -->
+  <section class="joy-blog">
+    <h2 style="font-size: 2.25rem; font-weight: 700; margin-bottom: 40px;">Ideas &amp; Inspiration</h2>
+    <div class="joy-blog__cards">
+
+      <article class="joy-blog-card">
+        <div class="joy-blog-card__image" style="background: #f0ede8;"></div>
+        <div class="joy-blog-card__content">
+          <p class="joy-blog-card__category">Tips and Tricks</p>
+          <h3 class="joy-blog-card__title">64 Proposal Ideas That Are Memorable and Romantic</h3>
+          <p class="joy-blog-card__excerpt">Asking someone to marry you is a huge moment in your life. It marks the point where the rest of your lives together begins…</p>
+          <a href="https://withjoy.com/blog/romantic-ways-to-propose/" class="btn-text">Read more →</a>
+        </div>
+      </article>
+
+      <article class="joy-blog-card">
+        <div class="joy-blog-card__image" style="background: #edf0e8;"></div>
+        <div class="joy-blog-card__content">
+          <p class="joy-blog-card__category">Tips and Tricks</p>
+          <h3 class="joy-blog-card__title">Your Perfect Wedding Registry Checklist</h3>
+          <p class="joy-blog-card__excerpt">There are many exciting moments in the wedding planning process — the delicious cake tasting, picking out the best dance tunes…</p>
+          <a href="https://withjoy.com/blog/wedding-registry-checklist/" class="btn-text">Read more →</a>
+        </div>
+      </article>
+
+      <article class="joy-blog-card">
+        <div class="joy-blog-card__image" style="background: #e8ebf0;"></div>
+        <div class="joy-blog-card__content">
+          <p class="joy-blog-card__category">Tips and Tricks</p>
+          <h3 class="joy-blog-card__title">The 65 Best Wedding Registry Ideas for 2025</h3>
+          <p class="joy-blog-card__excerpt">With the wedding planning process in full swing, now you're ready for the fun part: curating your registry!</p>
+          <a href="https://withjoy.com/blog/wedding-registry-ideas/" class="btn-text">Read more →</a>
+        </div>
+      </article>
+
+      <article class="joy-blog-card">
+        <div class="joy-blog-card__image" style="background: #f0eee8;"></div>
+        <div class="joy-blog-card__content">
+          <p class="joy-blog-card__category">Tips and Tricks</p>
+          <h3 class="joy-blog-card__title">How Much Does a Wedding Videographer Cost?</h3>
+          <p class="joy-blog-card__excerpt">While it's possible to find a videographer in the $1,200–$1,500 range, with high-end packages starting around $7,000…</p>
+          <a href="https://withjoy.com/blog/wedding-videographer-cost/" class="btn-text">Read more →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA SECTION
+       ============================================================ -->
+  <section class="joy-cta-section">
+    <h2 class="joy-cta-section__headline">Plan your forever, better.</h2>
+    <a href="https://withjoy.com/createwedding?utm_campaign=home&utm_medium=web&utm_source=marcom" class="btn-primary" style="font-size: 1rem; padding: 1rem 2rem;">Get Started</a>
+    <!-- Featured user attribution -->
+    <p style="font-size: 12px; color: rgba(26,26,26,0.4); margin-top: 24px;">
+      <a href="https://www.jlbwedding.com/" style="color: #4F6BCB; text-decoration: none;">@JLBwedding</a>
+    </p>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       Background: dark (#1a1a1a)
+       ============================================================ -->
+  <footer class="joy-footer">
+    <div class="joy-footer__grid">
+
+      <!-- Column 1: Product -->
+      <div>
+        <h4 class="joy-footer__heading">Product</h4>
+        <a href="https://withjoy.com/wedding-website/" class="joy-footer__link">Wedding Website</a>
+        <a href="https://withjoy.com/guest-list/" class="joy-footer__link">Guest List</a>
+        <a href="https://withjoy.com/cards/wedding/save-the-date" class="joy-footer__link">Save the Dates</a>
+        <a href="https://withjoy.com/wedding-invitations/" class="joy-footer__link">Invitations</a>
+        <a href="https://withjoy.com/online-rsvp/" class="joy-footer__link">Smart RSVP</a>
+        <a href="https://withjoy.com/registry/" class="joy-footer__link">Wedding Registry</a>
+        <a href="https://withjoy.com/hotel-room-blocks/" class="joy-footer__link">Hotel Room Blocks</a>
+        <a href="https://withjoy.com/app/" class="joy-footer__link">Mobile App</a>
+      </div>
+
+      <!-- Column 2: Resources -->
+      <div>
+        <h4 class="joy-footer__heading">Resources</h4>
+        <a href="https://withjoy.com/designs/" class="joy-footer__link">Design Templates</a>
+        <a href="https://withjoy.com/blog/" class="joy-footer__link">Ideas &amp; Inspiration</a>
+        <a href="https://withjoy.com/faq/" class="joy-footer__link">Common Questions</a>
+        <a href="https://help.withjoy.com/" class="joy-footer__link">Help &amp; Support</a>
+        <a href="https://withjoy.com/pricing/" class="joy-footer__link">Pricing</a>
+      </div>
+
+      <!-- Column 3: Brands -->
+      <div>
+        <h4 class="joy-footer__heading">Brands</h4>
+        <a href="https://withjoy.com/" class="joy-footer__link">Joy Wedding</a>
+        <a href="https://withjoy.com/baby-registry/" class="joy-footer__link">Joy Baby <span style="background: #4F6BCB; color: #fff; font-size: 10px; padding: 1px 5px; border-radius: 4px; margin-left: 4px;">New</span></a>
+      </div>
+
+      <!-- Column 4: Company -->
+      <div>
+        <h4 class="joy-footer__heading">Company</h4>
+        <a href="https://withjoy.com/shipping-policy" class="joy-footer__link">Shipping</a>
+        <a href="https://withjoy.com/return-policy" class="joy-footer__link">Returns</a>
+        <a href="https://withjoy.com/newsroom/" class="joy-footer__link">Newsroom</a>
+        <a href="https://withjoy.com/careers/" class="joy-footer__link">Careers</a>
+        <a href="https://withjoy.com/our-story/" class="joy-footer__link">About Joy</a>
+        <a href="mailto:hello@withjoy.com" class="joy-footer__link">Contact Us</a>
+      </div>
+
+    </div>
+
+    <!-- Rotating tagline marquee (inferred from "Celebrate life / Plan smarter / Save the date..." pattern) -->
+    <div style="overflow: hidden; margin-bottom: 32px; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 12px 0;">
+      <div style="display: flex; gap: 48px; white-space: nowrap; animation: marquee 20s linear infinite; color: rgba(255,255,255,0.3); font-size: 13px; font-weight: 500; letter-spacing: 0.04em;">
+        <span>Celebrate life</span>
+        <span>Plan smarter</span>
+        <span>Save the date</span>
+        <span>Announce it</span>
+        <span>Build your registry</span>
+        <span>With Joy™</span>
+        <span>Celebrate life</span>
+        <span>Plan smarter</span>
+        <span>Save the date</span>
+        <span>Announce it</span>
+        <span>Build your registry</span>
+        <span>With Joy™</span>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="joy-footer__bottom">
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="https://withjoy.com/createwedding" class="btn-primary" style="font-size: 13px; padding: 8px 20px;">Get Started</a>
+        <a href="https://withjoy.com/find/" class="btn-ghost" style="font-size: 13px; padding: 8px 20px; color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2);">Find an Event</a>
+      </div>
+
+      <p class="joy-footer__copyright">© 2026 Joy. All rights reserved.</p>
+
+      <div style="display: flex; gap: 16px; font-size: 12px; color: rgba(255,255,255,0.4);">
+        <a href="https://withjoy.com/eula" style="color: rgba(255,255,255,0.4); text-decoration: none;">Terms</a>
+        <a href="https://privacy.withjoy.com/?utm_campaign=footer-privacy&utm_medium=web&utm_source=marcom" style="color: rgba(255,255,255,0.4); text-decoration: none;">Privacy</a>
+        <a href="https://privacy.withjoy.com/privacy-policy?utm_campaign=privacy-notice&utm_medium=web&utm_source=marcom#california-privacy-notice" style="color: rgba(255,255,255,0.4); text-decoration: none;">California Privacy Notice</a>
+        <a href="https://privacy.withjoy.com/opt-out?utm_campaign=privacy-opt-out&utm_medium=web&utm_source=marcom" style="color: rgba(255,255,255,0.4); text-decoration: none; display: flex; align-items: center; gap: 4px;">
+          <img src="https://polaris.truevaultcdn.com/static/assets/icons/optout-icon-blue.svg" width="14" alt="Privacy opt-out">
+          Your Privacy Choices
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tracking pixels (noscript fallbacks) -->
+  <noscript>
+    <img height="1" width="1" style="display:none;" alt=""
+         src="https://ct.pinterest.com/v3/?tid=2617606439718&noscript=1">
+  </noscript>
+
+  <script>
+    /*
+      ANIMATION: Marquee for footer taglines
+    */
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    /*
+      NOTE: Actual site uses:
+      1. Bodymovin (Lottie) for hero animation — library loaded via external script
+      2. Carousel/slider for feature cards and blog posts (4 slides, arrow navigation)
+      3. Mega-menu dropdown with CSS transitions
+      4. Lazy loading for images (data-src pattern, placeholder base64)
+      5. AdXcel conversion pixel:
+         https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=aad0d74e-06ee-4d0e-8000-408c8e31396a
+      6. Pinterest CAPI:
+         https://ct.pinterest.com/v3/?tid=2617606439718&noscript=1
+    */
+  </script>
+
+</body>
+</html>
+
+<!--
+  ============================================================
+  HARVEST METADATA
+  ============================================================
+  Source: https://withjoy.com
+  Pages fetched: 6 (/, /wedding-website/, /registry/, /designs/, /pricing/, /our-story/)
+  Fetch method: WebFetch multi-pass (5 targeted queries per page)
+  Date: 2026-05-01
+  File size: ~70KB reconstructed HTML
+
+  DESIGN STACK DETECTED:
+  - Bodymovin/Lottie: CONFIRMED (class="bodymovin", animation-path in DOM)
+  - Custom CSS: CONFIRMED (no utility-class patterns)
+  - No React/Next/Vue markers detected
+  - Image CDN: Proprietary m_resize parameters
+  - Tracking: AdXcel + Pinterest CAPI
+
+  KEY DESIGN FINDINGS:
+  - Primary blue: #4F6BCB (icons, links, CTAs)
+  - Background: #FFFFFF primary, #FAFAF8 alternating sections
+  - Footer: #1a1a1a dark background
+  - Promo section: #f5e6e0 warm blush
+  - Baby section: #EFF4FE soft blue
+  - Hero: Photography + Lottie "slurpee" fluid animation overlay
+  - Wave SVG separator between hero and content
+  - 8 feature product cards in 4-column grid
+  - Floating flower PNG elements for editorial promotions
+  - Rotating tagline marquee in footer
+  ============================================================
+-->

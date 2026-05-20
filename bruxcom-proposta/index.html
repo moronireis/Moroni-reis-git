@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing &mdash; Edi&#231;&#227;o de V&#237;deo &mdash; BruxCom / DTC Master</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #4A90FF;
+      --blue-light: #6AADFF;
+      --blue-dark: #2D7AFF;
+      --bg: #0A0A0A;
+      --bg-card: #111111;
+      --bg-elevated: #1A1A1A;
+      --text: #FFFFFF;
+      --text-muted: #8A8A8A;
+      --text-secondary: #CCCCCC;
+      --border: rgba(255,255,255,0.08);
+      --border-blue: rgba(74,144,255,0.3);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; }
+
+    /* Header */
+    .header {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+    .brand span { color: var(--blue); }
+    .header-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero */
+    .hero { padding: 6rem 0 4rem; }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 strong { font-weight: 600; color: var(--blue); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(74,144,255,0.1);
+      border: 1px solid var(--border-blue);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Section titles */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .card:hover { border-color: var(--border-blue); }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .card-number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: rgba(74,144,255,0.1);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* Lists */
+    .feature-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .feature-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 6px;
+      height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .price-card:hover {
+      border-color: var(--border-blue);
+      transform: translateY(-2px);
+    }
+    .price-card.featured {
+      border-color: var(--blue);
+      background: linear-gradient(180deg, rgba(74,144,255,0.05) 0%, var(--bg-card) 100%);
+    }
+    .price-card.featured::before {
+      content: 'Recomendado';
+      position: absolute;
+      top: -0.7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .price-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .price-value {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 0.25rem;
+    }
+    .price-value span { font-size: 1rem; color: var(--text-muted); }
+    .price-unit {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .price-card .feature-list li { text-align: left; }
+
+    /* Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+    .comparison-table th {
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .comparison-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 0;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--blue);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .cta-button:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header-inner { flex-direction: column; gap: 0.5rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      section { padding: 3rem 0; }
+      .card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand">REIS <span>[IA]</span></div>
+        <div class="header-meta">Documento Interno &mdash; Maio 2026</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="badge">Briefing Interno</div>
+      <h1>Edi&#231;&#227;o de V&#237;deo<br><strong>BruxCom / DTC Master</strong></h1>
+      <p>Documento para editores de v&#237;deo. Descri&#231;&#227;o completa da demanda do cliente: tipos de conte&#250;do, formatos, idiomas, volumes e padr&#245;es de entrega.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Escopo -->
+  <section>
+    <div class="container">
+      <div class="section-label">Escopo do Servi&#231;o</div>
+      <h2>O que vamos entregar</h2>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Cortes de Conte&#250;do Educativo</h3>
+          <div class="card-number">TIPO 1</div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Cortes dos cursos presenciais, aulas ao vivo e conte&#250;do pr&#225;tico da Dra. Andrea. Entrega em formato Reels (vertical) e YouTube (horizontal), nas 3 l&#237;nguas.</p>
+        <ul class="feature-list">
+          <li>Corte e edi&#231;&#227;o do bruto (sele&#231;&#227;o dos melhores momentos)</li>
+          <li>Formato vertical (9:16) para Reels/Shorts + horizontal (16:9) para YouTube</li>
+          <li>Legendas estilizadas por idioma (PT-BR, EN, ES)</li>
+          <li>Overlays: nome do especialista, logo BruxCom, texto contextual</li>
+          <li>Integra&#231;&#227;o com Raygen (voz traduzida fornecida pelo cliente)</li>
+          <li>Adapta&#231;&#227;o de textos visuais para cada idioma</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Cortes de Mentoria e Caso Cl&#237;nico</h3>
+          <div class="card-number">TIPO 2</div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Decupagem de mentorias ao vivo, discuss&#245;es de caso cl&#237;nico e Q&amp;A. Formato pergunta + resposta = 1 corte completo.</p>
+        <ul class="feature-list">
+          <li>Identifica&#231;&#227;o e sele&#231;&#227;o dos melhores momentos (pergunta + resposta)</li>
+          <li>Corte limpo com contexto suficiente para o espectador entender</li>
+          <li>Formato vertical + horizontal</li>
+          <li>Legendas e overlays padr&#227;o BruxCom</li>
+          <li>3 vers&#245;es lingu&#237;sticas (quando aplic&#225;vel)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Criativos para An&#250;ncios</h3>
+          <div class="card-number">TIPO 3</div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Edi&#231;&#227;o de criativos de v&#237;deo para campanhas de tr&#225;fego pago. Estilo claro e direto, otimizado para o p&#250;blico 50-75 anos.</p>
+        <ul class="feature-list">
+          <li>Edi&#231;&#227;o de takes gravados (m&#250;ltiplas loca&#231;&#245;es e &#226;ngulos)</li>
+          <li>Legendas grandes e leg&#237;veis (p&#250;blico 60+)</li>
+          <li>Informa&#231;&#245;es redundantes e claras (data, local, tipo de evento)</li>
+          <li>Inser&#231;&#227;o de imagens de contexto (local, evento, bastidores)</li>
+          <li>Logo, branding e elementos visuais BruxCom</li>
+          <li>Din&#226;mica visual (cortes entre takes, zoom, transi&#231;&#245;es suaves)</li>
+          <li>M&#250;sica e ritmo adequados ao p&#250;blico</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Contexto do Cliente -->
+  <section>
+    <div class="container">
+      <div class="section-label">Contexto</div>
+      <h2>Sobre o cliente e o p&#250;blico</h2>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>O Cliente</h3>
+        </div>
+        <ul class="feature-list">
+          <li><strong>Empresa:</strong> BruxCom (bruxismo/DTM odontol&#243;gico) + DTC Master (mentoria avan&#231;ada para dentistas)</li>
+          <li><strong>Quem grava:</strong> Dra. Andrea Mella (s&#243;cia, dona da imagem &mdash; toda aprova&#231;&#227;o passa por ela)</li>
+          <li><strong>Idiomas:</strong> Portugu&#234;s BR, Ingl&#234;s (US), Espanhol (LATAM)</li>
+          <li><strong>Tradu&#231;&#227;o de voz:</strong> Feita via Raygen (lip-sync AI) &mdash; cliente fornece o &#225;udio traduzido</li>
+          <li><strong>Volume de acervo bruto:</strong> ~200 horas de conte&#250;do para decupar</li>
+          <li><strong>Frequ&#234;ncia de grava&#231;&#227;o:</strong> 3-4 mentorias/semana + 1 curso presencial/m&#234;s (30h)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>O P&#250;blico-Alvo (quem assiste)</h3>
+        </div>
+        <ul class="feature-list">
+          <li><strong>Perfil:</strong> Dentistas, 50-75 anos de idade</li>
+          <li><strong>Literacia digital:</strong> Extremamente baixa &mdash; muitos n&#227;o sabem o que &#233; Drive ou Telegram</li>
+          <li><strong>Implica&#231;&#227;o para edi&#231;&#227;o:</strong> Tudo precisa ser EXPL&#205;CITO e REDUNDANTE nos criativos</li>
+          <li><strong>Fonte grande:</strong> Legendas e textos precisam ser grandes e leg&#237;veis</li>
+          <li><strong>M&#250;sica alta:</strong> Funciona &mdash; audi&#234;ncia com poss&#237;vel dificuldade auditiva</li>
+          <li><strong>Criativo que converte:</strong> Simples, direto, informa&#231;&#227;o clara, sem sofistica&#231;&#227;o visual</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Volume -->
+  <section>
+    <div class="container">
+      <div class="section-label">Volume</div>
+      <h2>Demanda mensal</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+            <th>Formatos</th>
+            <th>Idiomas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cortes de conte&#250;do educativo</td>
+            <td>10-15/m&#234;s</td>
+            <td>Vertical (9:16) + Horizontal (16:9)</td>
+            <td>PT, EN, ES</td>
+          </tr>
+          <tr>
+            <td>Cortes de mentoria/caso cl&#237;nico</td>
+            <td>10-15/m&#234;s</td>
+            <td>Vertical (9:16) + Horizontal (16:9)</td>
+            <td>PT, EN, ES</td>
+          </tr>
+          <tr>
+            <td>Criativos de an&#250;ncio</td>
+            <td>10-30/m&#234;s (regular) ou batches de at&#233; 100</td>
+            <td>Vertical (principal)</td>
+            <td>PT (principal), EN/ES quando aplic&#225;vel</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">Total estimado: 20-30 pe&#231;as/m&#234;s no fluxo regular. Batches urgentes de criativos podem chegar a 100 de uma vez.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Teste -->
+  <section>
+    <div class="container">
+      <div class="section-label">Batch de Teste</div>
+      <h2>O que preciso que voc&#234; entregue</h2>
+
+      <div class="card" style="border-color: var(--border-blue);">
+        <h3>20 pe&#231;as para valida&#231;&#227;o</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Primeiro lote para alinhar padr&#227;o. Aprova&#231;&#227;o final da Dra. Andrea (s&#243;cia do cliente).</p>
+        <ul class="feature-list">
+          <li>10 criativos de an&#250;ncio (vertical, estilo simples/direto)</li>
+          <li>5 cortes de conte&#250;do educativo (vertical + horizontal)</li>
+          <li>5 cortes de mentoria/live (pergunta + resposta)</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+        <p><strong style="color: var(--text);">Fluxo de trabalho:</strong></p>
+        <ul class="feature-list">
+          <li>Eu libero acesso ao Drive com o material bruto + exemplos de refer&#234;ncia</li>
+          <li>Voc&#234; edita e me entrega as 20 pe&#231;as</li>
+          <li>Eu repasso para aprova&#231;&#227;o da Dra. Andrea</li>
+          <li>Feedback + ajustes (1 rodada de revis&#227;o)</li>
+          <li>Aprovado, seguimos com fluxo mensal</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Padrões -->
+  <section>
+    <div class="container">
+      <div class="section-label">Padr&#245;es de Entrega</div>
+      <h2>Requisitos t&#233;cnicos</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div class="card">
+          <h3>Formatos</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Vertical 9:16 (1080x1920) para Reels/Shorts. Horizontal 16:9 (1920x1080) para YouTube. MP4, H.264.</p>
+        </div>
+        <div class="card">
+          <h3>Legendas</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Burned-in (hardcoded no v&#237;deo). Fonte grande e leg&#237;vel. Cada idioma = arquivo separado com textos traduzidos.</p>
+        </div>
+        <div class="card">
+          <h3>Branding</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Logo BruxCom, nome do especialista, elementos visuais do cliente. Refer&#234;ncias no Drive.</p>
+        </div>
+        <div class="card">
+          <h3>Tradu&#231;&#227;o</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Voz traduzida via Raygen (fornecida). Voc&#234; precisa trocar legendas e overlays textuais para o idioma correto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="container">
+      <p>REIS [IA] &mdash; Documento interno &mdash; Briefing para editores</p>
+      <p style="margin-top: 0.5rem;">Cliente: Marcos Junior (BruxCom / DTC Master) &mdash; Maio 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

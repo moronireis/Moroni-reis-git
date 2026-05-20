@@ -156,12 +156,13 @@ const navLinks = [
     border-radius: 1px;
   }
 
-  /* Scrolled state -- glassmorphism */
+  /* Scrolled state -- glassmorphism (Stripe-depth) */
   #main-nav[data-scrolled] {
-    background: rgba(0, 0, 0, 0.85) !important;
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom-color: var(--border-subtle) !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    border-bottom-color: var(--border-default) !important;
+    box-shadow: 0 1px 0 0 var(--border-subtle), 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   /* CTA hover */

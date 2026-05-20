@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel: @caminhandoparaoaltar — Thaisa Rangel (CPA)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#111;--surface2:#1a1a1a;--border:#222;--text:#e5e5e5;--muted:#888;--accent:#4A90FF;--accent2:#2D7AFF;--green:#22c55e;--red:#ef4444;--yellow:#eab308;--orange:#f97316}
+body{font-family:Inter,-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Header */
+header{border-bottom:1px solid var(--border);padding:20px 0;position:sticky;top:0;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);z-index:100}
+header .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.logo{font-size:14px;font-weight:300;letter-spacing:1px;color:var(--muted)}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav a{font-size:12px;padding:6px 12px;border-radius:6px;background:var(--surface);color:var(--muted);transition:.2s}
+nav a:hover,nav a.active{background:var(--accent);color:#fff;text-decoration:none}
+
+/* Hero */
+.hero{padding:60px 0 40px;border-bottom:1px solid var(--border)}
+.hero h1{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:8px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--muted);font-size:16px;max-width:700px}
+.hero-meta{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.hero-meta .stat{display:flex;flex-direction:column}
+.hero-meta .stat-value{font-size:24px;font-weight:700;color:var(--accent)}
+.hero-meta .stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+
+/* Sections */
+section{padding:48px 0;border-bottom:1px solid var(--border)}
+section:last-child{border-bottom:none}
+.section-title{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:8px;font-weight:600}
+.section-heading{font-size:24px;font-weight:700;margin-bottom:24px}
+
+/* Cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:.2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted);line-height:1.5}
+.card .tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:4px;background:var(--surface2);color:var(--muted);margin-right:4px;margin-bottom:4px}
+.card .tag.green{background:#22c55e20;color:var(--green)}
+.card .tag.red{background:#ef444420;color:var(--red)}
+.card .tag.yellow{background:#eab30820;color:var(--yellow)}
+.card .tag.blue{background:#4A90FF20;color:var(--accent)}
+.card .tag.orange{background:#f9731620;color:var(--orange)}
+.card .price{font-size:20px;font-weight:700;color:var(--green);margin:8px 0}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600;background:var(--surface)}
+td{color:var(--text)}
+tr:hover td{background:var(--surface2)}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:24px;overflow-x:auto;padding-bottom:4px}
+.tab{padding:8px 16px;font-size:13px;border-radius:6px;background:var(--surface);color:var(--muted);cursor:pointer;border:1px solid var(--border);white-space:nowrap;transition:.2s}
+.tab:hover,.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Lists */
+.list-item{padding:16px 0;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+.list-item:last-child{border-bottom:none}
+.list-num{font-size:24px;font-weight:700;color:var(--accent);opacity:.4;min-width:40px}
+.list-content h4{font-size:15px;font-weight:600;margin-bottom:4px}
+.list-content p{font-size:13px;color:var(--muted)}
+
+/* Copy blocks */
+.copy-block{background:var(--surface);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;border-radius:0 8px 8px 0;font-style:italic;color:var(--muted);font-size:14px}
+
+/* Badge */
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.badge.strength{background:#22c55e15;color:var(--green);border:1px solid #22c55e30}
+.badge.weakness{background:#ef444415;color:var(--red);border:1px solid #ef444430}
+.badge.opportunity{background:#eab30815;color:var(--yellow);border:1px solid #eab30830}
+
+/* Funnel */
+.funnel{max-width:600px;margin:0 auto}
+.funnel-step{background:var(--surface);border:1px solid var(--border);padding:20px;margin-bottom:2px;text-align:center;position:relative}
+.funnel-step:first-child{border-radius:12px 12px 0 0}
+.funnel-step:last-child{border-radius:0 0 12px 12px}
+.funnel-step h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.funnel-step p{font-size:12px;color:var(--muted)}
+.funnel-arrow{text-align:center;color:var(--accent);font-size:20px;margin:4px 0}
+
+/* Testimonials */
+.testimonial{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.testimonial .name{font-weight:600;font-size:13px;color:var(--accent);margin-bottom:6px}
+.testimonial .quote{font-size:14px;color:var(--muted);font-style:italic}
+
+/* Timeline */
+.timeline-item{display:flex;gap:16px;padding:12px 0}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:4px;flex-shrink:0}
+.timeline-content h4{font-size:14px;font-weight:600}
+.timeline-content p{font-size:13px;color:var(--muted)}
+
+/* Platforms grid */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.platform-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.platform-card h4{font-size:14px;margin-bottom:4px}
+.platform-card .metric{font-size:22px;font-weight:700;color:var(--accent)}
+.platform-card .label{font-size:11px;color:var(--muted)}
+
+/* Hook patterns */
+.hook{background:var(--surface2);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;display:flex;align-items:center;gap:12px}
+.hook-num{color:var(--accent);font-weight:700;font-size:12px;min-width:24px}
+.hook-text{color:var(--text)}
+.hook-type{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.gallery-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.2s}
+.gallery-item:hover{border-color:var(--accent);transform:translateY(-2px)}
+.gallery-item img{width:100%;height:200px;object-fit:cover;display:block}
+.gallery-item .caption{padding:12px 16px}
+.gallery-item .caption h4{font-size:13px;font-weight:600;margin-bottom:4px}
+.gallery-item .caption p{font-size:12px;color:var(--muted)}
+.gallery-item .caption a{font-size:11px}
+
+/* Links section */
+.links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:12px}
+.link-row{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;transition:.2s}
+.link-row:hover{border-color:var(--accent)}
+.link-row .link-label{font-size:13px;font-weight:600;min-width:140px;color:var(--muted)}
+.link-row a{font-size:13px;word-break:break-all}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:1000;justify-content:center;align-items:center;cursor:zoom-out}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;color:var(--muted);font-size:12px}
+
+/* Responsive */
+@media(max-width:768px){
+  .card-grid{grid-template-columns:1fr}
+  .platform-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-meta{gap:16px}
+  nav{gap:4px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+  <div class="logo">COMPETITOR <span>INTEL</span></div>
+  <nav>
+    <a href="#perfil" class="active">Perfil</a>
+    <a href="#plataformas">Plataformas</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#conteudo">Conteudo</a>
+    <a href="#funil">Funil</a>
+    <a href="#copy">Copy & Messaging</a>
+    <a href="#hooks">Hooks</a>
+    <a href="#branding">Branding</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#forcas">Analise SWOT</a>
+    <a href="#urls">URLs</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#links-completos">Links</a>
+  </nav>
+</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+<div class="container">
+  <h1>@caminhandoparaoaltar <span>/ Thaisa Rangel</span></h1>
+  <p>Assessora e designer de casamentos. Rio de Janeiro. Marca "CPA — Caminhando para o Altar". 300+ casamentos acompanhados. Plataforma Wix.</p>
+  <div class="hero-meta">
+    <div class="stat"><span class="stat-value">~40K</span><span class="stat-label">Instagram</span></div>
+    <div class="stat"><span class="stat-value">3.8K</span><span class="stat-label">Pinterest</span></div>
+    <div class="stat"><span class="stat-value">200+</span><span class="stat-label">Alunas Bride Club</span></div>
+    <div class="stat"><span class="stat-value">15+</span><span class="stat-label">Produtos</span></div>
+    <div class="stat"><span class="stat-value">52</span><span class="stat-label">Paginas no Site</span></div>
+    <div class="stat"><span class="stat-value">5.0</span><span class="stat-label">Hotmart Rating</span></div>
+  </div>
+</div>
+</div>
+
+<!-- PERFIL -->
+<section id="perfil">
+<div class="container">
+  <div class="section-title">01 / Perfil</div>
+  <h2 class="section-heading">Quem e Thaisa Rangel</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>Dados Pessoais</h3>
+      <p><strong>Nome:</strong> Thaisa Rangel ("Thai")<br>
+      <strong>Cargo:</strong> Assessora e Designer de Casamentos<br>
+      <strong>Localizacao:</strong> Rio de Janeiro<br>
+      <strong>Endereco:</strong> Rua Amilcar de Castro, 150<br>
+      <strong>Email:</strong> contato@thaisarangel.com<br>
+      <strong>Telefone:</strong> (21) 4042-9544<br>
+      <strong>WhatsApp:</strong> (21) 39550644<br>
+      <strong>CNPJ:</strong> 159948457-95</p>
+    </div>
+    <div class="card">
+      <h3>Posicionamento</h3>
+      <p><strong>Slogan:</strong> "O caminho para o altar comeca aqui"<br><br>
+      <strong>Proposta:</strong> Assessoria personalizada que transforma o sonho do casamento em realidade "sem estresse, curtindo cada momento".<br><br>
+      <strong>Persona:</strong> Perfeccionista, detalhista, viveu o proprio sonho de casamento. Se posiciona como "a melhor amiga da noiva".</p>
+    </div>
+    <div class="card">
+      <h3>Infraestrutura</h3>
+      <p><strong>Website:</strong> Wix<br>
+      <strong>Design:</strong> Mazy Design (desde 2022)<br>
+      <strong>Pagamentos:</strong> Pix + Hotmart<br>
+      <strong>Copyright:</strong> Parado em 2022<br>
+      <strong>Pages:</strong> 52 no sitemap<br>
+      <strong>Blog:</strong> Apenas posts template<br>
+      <strong>Varios 404s</strong> e paginas duplicadas ("copia-...")</p>
+    </div>
+  </div>
+
+  <div class="copy-block" style="margin-top:24px">
+    "Prazer! Meu nome e Thaisa, mas pode me chamar de Thai. Depois de acompanhar mais de 300 casamentos, desenvolvi um metodo para garantir que o casal tenha o casamento dentro do orcamento que possuem!"
+  </div>
+</div>
+</section>
+
+<!-- PLATAFORMAS -->
+<section id="plataformas">
+<div class="container">
+  <div class="section-title">02 / Plataformas</div>
+  <h2 class="section-heading">Presenca Digital</h2>
+
+  <div class="platform-grid">
+    <div class="platform-card">
+      <h4>Instagram</h4>
+      <div class="metric">~40K</div>
+      <div class="label">seguidores / ~653 posts</div>
+      <div class="label" style="margin-top:4px"><a href="https://www.instagram.com/caminhandoparaoaltar/" target="_blank">@caminhandoparaoaltar</a></div>
+    </div>
+    <div class="platform-card">
+      <h4>TikTok</h4>
+      <div class="metric">Ativo</div>
+      <div class="label">multiplos videos/semana</div>
+      <div class="label" style="margin-top:4px"><a href="https://www.tiktok.com/@caminhandoparaoaltar" target="_blank">@caminhandoparaoaltar</a></div>
+    </div>
+    <div class="platform-card">
+      <h4>YouTube</h4>
+      <div class="metric">Episodico</div>
+      <div class="label">vlogs + Diario de Noiva</div>
+      <div class="label" style="margin-top:4px"><a href="https://www.youtube.com/@caminhandoparaoaltar" target="_blank">@caminhandoparaoaltar</a></div>
+    </div>
+    <div class="platform-card">
+      <h4>Pinterest</h4>
+      <div class="metric">3.8K</div>
+      <div class="label">seguidores / 10 boards / 1.173 pins</div>
+      <div class="label" style="margin-top:4px"><a href="https://www.pinterest.com/caminhandoparaoaltarinspo/" target="_blank">@caminhandoparaoaltarinspo</a></div>
+    </div>
+    <div class="platform-card">
+      <h4>Facebook</h4>
+      <div class="metric">Ativo</div>
+      <div class="label">cross-post do Instagram</div>
+      <div class="label" style="margin-top:4px"><a href="https://www.facebook.com/caminhandoparaoaltar/" target="_blank">caminhandoparaoaltar</a></div>
+    </div>
+    <div class="platform-card">
+      <h4>Hotmart</h4>
+      <div class="metric">2</div>
+      <div class="label">produtos / 200+ alunos / 5.0 stars</div>
+    </div>
+    <div class="platform-card">
+      <h4>IG Pessoal</h4>
+      <div class="metric">3.5K</div>
+      <div class="label">seguidores</div>
+      <div class="label" style="margin-top:4px"><a href="https://www.instagram.com/thaisa_rangel/" target="_blank">@thaisa_rangel</a></div>
+    </div>
+    <div class="platform-card">
+      <h4>LinkedIn</h4>
+      <div class="metric" style="color:var(--red)">Ausente</div>
+      <div class="label">nao identificado</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Boards no Pinterest</h3>
+  <table>
+    <tr><th>Board</th><th>Pins</th><th>Idade</th><th>Notas</th></tr>
+    <tr><td>Padrinhos e madrinhas</td><td>38</td><td>1 mes</td><td>Colab com @manuelaaguerra</td></tr>
+    <tr><td>Future me</td><td>165</td><td>1 mes</td><td>Colab com @thaisarangel</td></tr>
+    <tr><td>Wedding Business Academy</td><td>10</td><td>3 meses</td><td>B2B — poucas pins</td></tr>
+    <tr><td>Wedding</td><td>220</td><td>5 meses</td><td>17 secoes, colab com @erisplanet</td></tr>
+    <tr><td>Fiera / Fornecedores</td><td>33</td><td>7 meses</td><td>Comunidade de fornecedores</td></tr>
+    <tr><td>Minimalista</td><td>150</td><td>10 meses</td><td>Estetica minimalista</td></tr>
+    <tr><td>Pedro & Maria Eduarda</td><td>334</td><td>6 meses</td><td>Board de cliente! 24 secoes</td></tr>
+    <tr><td>Autentico</td><td>117</td><td>10 meses</td><td>Estetica autentica</td></tr>
+    <tr><td>Casamento da Thai</td><td>40</td><td>1 ano</td><td>Proprio casamento</td></tr>
+    <tr><td>Casamento Rosa</td><td>66</td><td>1 ano</td><td>Estetica rosa</td></tr>
+  </table>
+
+  <div class="copy-block" style="margin-top:16px">
+    <strong>Insight:</strong> Usa boards colaborativos no Pinterest como ferramenta de entrega de servico — cria boards compartilhados com cada casal cliente para curar a visao do casamento juntos. Diferencial unico.
+  </div>
+</div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+<div class="container">
+  <div class="section-title">03 / Produtos</div>
+  <h2 class="section-heading">Escada de Valor Completa</h2>
+
+  <table>
+    <tr><th>Produto</th><th>Tipo</th><th>Preco</th><th>Plataforma</th><th>Publico</th></tr>
+    <tr><td><strong>Checklist + Planilhas</strong></td><td>Digital</td><td class="price" style="font-size:14px">R$197 ou 12x R$19,68</td><td>Website</td><td>DIY brides, entrada</td></tr>
+    <tr><td><strong>Formula Casamento</strong></td><td>Curso digital</td><td class="price" style="font-size:14px">R$279 a vista ou 12x R$28</td><td>Website</td><td>Planejamento financeiro</td></tr>
+    <tr><td><strong>Close Friends</strong></td><td>Conteudo exclusivo</td><td class="price" style="font-size:14px">Nao divulgado (~R$47-97)</td><td>Hotmart</td><td>Seguidoras engajadas</td></tr>
+    <tr><td><strong>Passos para o Altar</strong></td><td>Guia / e-book</td><td class="price" style="font-size:14px">Nao divulgado</td><td>Website</td><td>Noivas iniciantes</td></tr>
+    <tr><td><strong>Planner Fichario</strong></td><td>Produto fisico</td><td class="price" style="font-size:14px">R$199</td><td>Website (loja)</td><td>Noivas organizadas / presente</td></tr>
+    <tr><td><strong>The Bride Club</strong></td><td>Comunidade + curso</td><td class="price" style="font-size:14px">R$2.497 (full) / ~R$670-997 (desc.)</td><td>Hotmart</td><td>Noivas com orcamento 30K+</td></tr>
+    <tr><td><strong>Identidade Visual Simple</strong></td><td>Servico design</td><td class="price" style="font-size:14px">R$800</td><td>Direto</td><td>Papelaria de casamento</td></tr>
+    <tr><td><strong>Identidade Visual Site</strong></td><td>Servico design</td><td class="price" style="font-size:14px">R$997</td><td>Direto</td><td>Site + dominio 1 ano</td></tr>
+    <tr><td><strong>Identidade Visual Platinum</strong></td><td>Servico design</td><td class="price" style="font-size:14px">R$1.800 ou 6x R$365</td><td>Direto</td><td>Identidade completa</td></tr>
+    <tr><td><strong>Identidade Visual Diamond</strong></td><td>Servico design</td><td class="price" style="font-size:14px">R$3.200 ou 8x R$500</td><td>Direto</td><td>Identidade + site</td></tr>
+    <tr><td><strong>Assessoria Presencial</strong></td><td>Servico completo</td><td class="price" style="font-size:14px">Sob consulta (orcamento 30K+)</td><td>WhatsApp</td><td>Noivas presenciais RJ</td></tr>
+    <tr><td><strong>Majestic Plan</strong></td><td>Premium full service</td><td class="price" style="font-size:14px">Sob consulta (orcamento 150K+)</td><td>WhatsApp</td><td>Casamentos alto orcamento</td></tr>
+    <tr><td><strong>Wedding Business Academy</strong></td><td>B2B formacao</td><td class="price" style="font-size:14px">Sob consulta (application)</td><td>Respondi.app</td><td>Outros profissionais</td></tr>
+    <tr><td><strong>Fiera</strong></td><td>Comunidade fornecedores</td><td class="price" style="font-size:14px">Nao divulgado</td><td>Pinterest/Direto</td><td>Fornecedores de casamento</td></tr>
+  </table>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Detalhes: The Bride Club (Produto Principal)</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>O que inclui</h3>
+      <p>1. <strong>BrideFlix</strong> — Curso em video completo (5 modulos)<br>
+      2. <strong>Plataforma Wedding</strong> — Planilha financeira + checklist cronologico<br>
+      3. <strong>Wedding Talk</strong> — Lives mensais de Q&A<br>
+      4. <strong>Wedding Guest</strong> — Paineis mensais com fornecedores<br>
+      5. <strong>Comunidade Exclusiva</strong> — Grupo de interacao diaria<br>
+      6. <strong>Diario da Bride</strong> — Espaco de documentacao<br>
+      7. <strong>Lista de Fornecedores</strong> — Curada com descontos exclusivos</p>
+    </div>
+    <div class="card">
+      <h3>Modulos BrideFlix</h3>
+      <p><strong>Modulo 1:</strong> Definicao de orcamento, lista de convidados, custo do casamento<br>
+      <strong>Modulo 2:</strong> Criacao de site, pre-wedding, reunioes, contratacao<br>
+      <strong>Modulo 3:</strong> Estilo do casamento, paleta de cores, personalidade<br>
+      <strong>Modulo 4:</strong> Timeline do dia, gestao de ansiedade, otimizacao<br>
+      <strong>Modulo 5:</strong> Selecao de fornecedores, pesquisa, contratos</p>
+    </div>
+    <div class="card">
+      <h3>Metodo B.R.I.D.E.</h3>
+      <p><strong>B</strong> — Base do Sonho: estilo, orcamento, lista de convidados<br>
+      <strong>R</strong> — Roteiro Perfeito: checklist cronologico mensal<br>
+      <strong>I</strong> — Inteligencia Financeira: controle de orcamento<br>
+      <strong>D</strong> — Decisoes Ideais: como contratar fornecedores<br>
+      <strong>E</strong> — Execucao Perfeita: organizacao do dia, sem arrependimentos</p>
+      <div class="tag blue" style="margin-top:12px">Metodologia proprietaria nomeada</div>
+    </div>
+    <div class="card">
+      <h3>Numeros e Garantias</h3>
+      <p><strong>Preco cheio:</strong> R$2.497<br>
+      <strong>Preco real (desconto 60-73%):</strong> ~R$670-997<br>
+      <strong>Parcelamento:</strong> 12x R$199,31<br>
+      <strong>Alunos:</strong> 200+<br>
+      <strong>Rating Hotmart:</strong> 5.0/5<br>
+      <strong>Garantia:</strong> 90 dias (site) / 7 dias (Hotmart)<br>
+      <strong>Acesso:</strong> 3 anos<br>
+      <strong>Lives:</strong> 2x por mes</p>
+      <div class="tag green" style="margin-top:12px">Garantia 90 dias acima do mercado</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Detalhes: Identidade Visual (Pacotes)</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Simple — R$800</h3>
+      <p>Conceito visual, paleta de cor, tipografia, save the date, convite digital interativo.<br>
+      <span class="tag">Pagamento: a vista ou 3x R$320 no pix</span></p>
+    </div>
+    <div class="card">
+      <h3>Site — R$997</h3>
+      <p>Layout do site, dominio 1 ano, hospedagem 1 ano.<br>
+      <span class="tag">Pagamento: a vista ou 3x R$434 no pix</span></p>
+    </div>
+    <div class="card">
+      <h3>Platinum — R$1.800</h3>
+      <p>Tudo do Simple + manual de identidade visual, layout convite + envelope, ate 6 materiais adicionais, 2 reunioes online, suporte WhatsApp, indicacao de fornecedor para impressao.<br>
+      <span class="tag">Pagamento: a vista ou 6x R$365 no pix</span></p>
+    </div>
+    <div class="card">
+      <h3>Diamond — R$3.200</h3>
+      <p>Tudo do Platinum + site com dominio e hospedagem 1 ano, ate 8 materiais, 3 reunioes online. Lista de presentes via iCasei integrada.<br>
+      <span class="tag">Pagamento: a vista ou 8x R$500 no pix</span></p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Detalhes: Planner Fichario — R$199</h3>
+  <div class="card" style="max-width:600px">
+    <h3>Wedding Planner Fichario</h3>
+    <p>200 paginas, bolso de plastico, 12 divisorias, folha de adesivos. Metalizado prata em alto relevo. Duas versoes: Flores e Folhas.<br><br>
+    <strong>12 categorias:</strong> Nosso Casamento, Cronograma Checklist, Calendario, Lista de Convidados, Budget, Nosso Time, Fornecedores, Cha de Panela, Cerimonia, Lua de Mel, Nossa Casa, Anotacoes.<br><br>
+    <strong>Frete:</strong> Producao 5 dias uteis + prazo do frete.</p>
+    <div class="price">R$199,00</div>
+  </div>
+</div>
+</section>
+
+<!-- CONTEUDO -->
+<section id="conteudo">
+<div class="container">
+  <div class="section-title">04 / Conteudo</div>
+  <h2 class="section-heading">Estrategia de Conteudo</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Pilares de Conteudo</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Dicas Praticas de Planejamento <span class="tag blue">~35%</span></h3>
+      <p>"Esse e o melhor momento para enviar os convites", checklists, cronogramas, prazos, como confirmar presenca de convidados.</p>
+    </div>
+    <div class="card">
+      <h3>Tendencias de Casamento <span class="tag blue">~20%</span></h3>
+      <p>"Tendencias em festa de casamento 2025 e 2026", decoracao, cores, estilos emergentes. Conteudo sazonal.</p>
+    </div>
+    <div class="card">
+      <h3>Diario de Noiva / Bastidores <span class="tag blue">~20%</span></h3>
+      <p>Vlogs no YouTube mostrando processo real. "Casamento RJ: Villa Cassano", "Onde vamos casar!".</p>
+    </div>
+    <div class="card">
+      <h3>Educacao sobre Assessoria <span class="tag blue">~15%</span></h3>
+      <p>O que faz uma assessora, por que contratar, diferenca entre cerimonial/assessoria/planner.</p>
+    </div>
+    <div class="card">
+      <h3>Prova Social / Depoimentos <span class="tag blue">~10%</span></h3>
+      <p>Transformacoes de noivas, resultados de casamentos assessorados, testemunhos em video e texto.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Formatos por Plataforma</h3>
+  <table>
+    <tr><th>Plataforma</th><th>Formato Principal</th><th>Secundario</th><th>Terciario</th></tr>
+    <tr><td>TikTok</td><td>Talking head + B-roll</td><td>Respondendo comentario</td><td>Series episodicas</td></tr>
+    <tr><td>Instagram</td><td>Reels</td><td>Carrosseis</td><td>Posts estaticos + Stories</td></tr>
+    <tr><td>YouTube</td><td>Vlogs longos</td><td>Mini-series</td><td>Reviews de locais</td></tr>
+    <tr><td>Pinterest</td><td>Pins curados</td><td>Boards colaborativos com clientes</td><td>Mood boards esteticos</td></tr>
+    <tr><td>Facebook</td><td>Cross-post do IG</td><td>Posts de comunidade</td><td>—</td></tr>
+  </table>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Estrategia de Hashtags (TikTok)</h3>
+  <div class="card" style="max-width:700px">
+    <p><strong>Temporal (chave):</strong> <span class="tag blue">#noiva2025</span> <span class="tag blue">#noiva2026</span> <span class="tag blue">#noiva2027</span><br>
+    Captura noivas em cada fase de planejamento (1-2 anos antes).<br><br>
+    <strong>Primarias:</strong> <span class="tag">#noivastiktok</span> <span class="tag">#noiva</span> <span class="tag">#casamento</span><br>
+    <strong>Secundarias:</strong> <span class="tag">#casamentodicas</span> <span class="tag">#dicadenoiva</span> <span class="tag">#ideiascasamento</span><br>
+    <strong>Nicho:</strong> <span class="tag">#assessoriadecasamento</span> <span class="tag">#cerimonialista</span><br>
+    <strong>Estilo:</strong> <span class="tag">#casamentominimalista</span> <span class="tag">#casamentoaoarlivre</span> <span class="tag">#casamentoelegante</span><br><br>
+    <strong>Media por video:</strong> 8-12 hashtags</p>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Videos TikTok Identificados (17)</h3>
+  <table>
+    <tr><th>Conteudo</th><th>Tipo</th><th>Hashtags Destaque</th></tr>
+    <tr><td>Como fazer seu convidado confirmar presenca?</td><td>Dica pratica</td><td>#casamentodicas #noivastiktok</td></tr>
+    <tr><td>Ep 5: Tendencias em festa de casamento 2025 e 2026</td><td>Tendencias</td><td>#casamentominimalista #casamentoelegante</td></tr>
+    <tr><td>Ep 4: Hora de conversar — alinhamento do casal</td><td>Educacional</td><td>#assessoriadecasamento #noiva2026</td></tr>
+    <tr><td>Nada melhor do que comecar a planejar com tranquilidade!</td><td>Motivacional</td><td>#assessoriadecasamento #cerimonialista</td></tr>
+    <tr><td>Noiva, esta pronta? As vagas para o Passos...</td><td>Lancamento / CTA</td><td>#noiva2025 #noiva2026</td></tr>
+    <tr><td>Noiva, quer garantir que tudo saia perfeito?</td><td>Aspiracional</td><td>#assessoriadecasamento</td></tr>
+    <tr><td>Esse e o melhor momento para enviar os convites!</td><td>Dica pratica</td><td>#assessoriadecasamento</td></tr>
+    <tr><td>E ai, qual seria a sua escolha? Comenta aqui!</td><td>Engagement</td><td>#noiva2026</td></tr>
+    <tr><td>Depende muito do que voce quer priorizar!</td><td>Conselho nuancado</td><td>#noiva2025</td></tr>
+    <tr><td>Essas coisas sao lindas, mas nada praticas!</td><td>Reality check</td><td>#casamentoinspiracao</td></tr>
+    <tr><td>Assim, voce consegue garantir que todos confirmem!</td><td>Dica pratica</td><td>#assessoriadecasamento</td></tr>
+    <tr><td>Essa e uma dica simples, mas que facilita tanto!</td><td>Dica rapida</td><td>#assessoriadecasamento</td></tr>
+    <tr><td>Essa e para os noivos que gostam de arte! (pre-wedding)</td><td>Inspiracao</td><td>#prewedding</td></tr>
+    <tr><td>Eu tenho um passo a passo para noivas!</td><td>Produto (soft-sell)</td><td>#assessoriadecasamento</td></tr>
+    <tr><td>Onde fazer a lista e os valores! (cha de panela)</td><td>Dica pratica</td><td>#chadepanela</td></tr>
+    <tr><td>Respondendo a @Mocinha — casamento feliz!!!!</td><td>Reply-to-comment</td><td>#planejandocasamento</td></tr>
+    <tr><td>Faltam 30 dias para casar (diario pessoal)</td><td>Storytelling</td><td>#casamento2023</td></tr>
+  </table>
+</div>
+</section>
+
+<!-- FUNIL -->
+<section id="funil">
+<div class="container">
+  <div class="section-title">05 / Funil</div>
+  <h2 class="section-heading">Arquitetura de Funil</h2>
+
+  <div class="funnel">
+    <div class="funnel-step" style="background:var(--surface)">
+      <h4>TOPO — Conteudo Organico</h4>
+      <p>Instagram (40K) + TikTok (ativo) + YouTube (episodico) + Pinterest (3.8K)</p>
+      <p style="margin-top:4px">Dicas, tendencias, diario de noiva, reply-to-comment</p>
+    </div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step">
+      <h4>CAPTURA — Link in Bio / Site</h4>
+      <p>caminhandoparaoaltar.com.br &rarr; paginas de servico</p>
+      <p style="margin-top:4px">WhatsApp como canal direto / Hotmart para digitais</p>
+    </div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <div style="flex:1;min-width:200px">
+        <h4 style="color:var(--green)">TICKET BAIXO</h4>
+        <p>Planilhas R$197<br>Formula R$279<br>Close Friends<br>Planner R$199</p>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <h4 style="color:var(--yellow)">TICKET MEDIO</h4>
+        <p>The Bride Club<br>~R$670-997 (desc.)<br>Hotmart checkout<br>200+ alunas</p>
+      </div>
+    </div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <div style="flex:1;min-width:200px">
+        <h4 style="color:var(--orange)">TICKET ALTO</h4>
+        <p>Identidade Visual<br>R$800 — R$3.200<br>Assessoria Presencial<br>(orcamento 30K+)</p>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <h4 style="color:var(--red)">PREMIUM</h4>
+        <p>Majestic Plan<br>(orcamento 150K+)<br>WhatsApp &rarr; reuniao &rarr; proposta</p>
+      </div>
+    </div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step" style="background:var(--surface2)">
+      <h4>B2B — Expansao</h4>
+      <p>Wedding Business Academy (formacao de outras assessoras)</p>
+      <p style="margin-top:4px">Fiera (comunidade de fornecedores)</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Eventos e Lancamentos Identificados</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Bride Week</h3>
+      <p>Evento online gratuito (3 dias: 19-21 agosto). Lead generation para The Bride Club. Multi-day free content event.</p>
+      <span class="tag blue">Lead magnet de evento</span>
+    </div>
+    <div class="card">
+      <h3>Passos para o Altar</h3>
+      <p>Programa com inscricoes limitadas. Lancamento com escassez ("as vagas estao abertas"). Soft-sell via TikTok.</p>
+      <span class="tag yellow">Scarcity launch</span>
+    </div>
+    <div class="card">
+      <h3>Wedding Guest Talks</h3>
+      <p>Sessoes mensais com profissionais fornecedores dentro do The Bride Club. Engagement recorrente.</p>
+      <span class="tag green">Retencao</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Mecanismos de Conversao</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>WhatsApp Direto</h3>
+      <p>Canal principal de conversao para servicos de alto ticket. CTA: "Converse aqui comigo".</p>
+      <span class="tag red">Sem automacao / bot</span>
+    </div>
+    <div class="card">
+      <h3>Hotmart Checkout</h3>
+      <p>Produtos digitais com checkout automatizado. Afiliados promovem com 60-73% de desconto.</p>
+      <span class="tag green">Automatizado</span>
+    </div>
+    <div class="card">
+      <h3>Loja no Site (Wix)</h3>
+      <p>Planner fisico vendido direto. Pagamento via Pix.</p>
+      <span class="tag">Basico</span>
+    </div>
+    <div class="card">
+      <h3>Formulario Respondi.app</h3>
+      <p>Application-based para WBA (B2B). "SEU PROXIMO NIVEL" como CTA.</p>
+      <span class="tag yellow">Qualificacao</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COPY & MESSAGING -->
+<section id="copy">
+<div class="container">
+  <div class="section-title">06 / Copy & Messaging</div>
+  <h2 class="section-heading">Copy Extraida das Paginas de Venda</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Headlines Principais</h3>
+  <div class="copy-block">"O CAMINHO PARA O ALTAR COMECA AQUI"</div>
+  <div class="copy-block">"ONDE NOIVAS TRANSFORMAM sonhos em realidade"</div>
+  <div class="copy-block">"A base para tomar decisoes com seguranca e assumir o controle do seu sonho — com tranquilidade do inicio ao SIM"</div>
+  <div class="copy-block">"TENHA O SEU CASAMENTO PERFEITO E REALIZE SEU SONHO COMO SEMPRE SONHOU"</div>
+  <div class="copy-block">"Faca parte da unica comunidade de noivas — a chave para transformar o seu sonho em realidade aproveitando cada segundo"</div>
+  <div class="copy-block">"Formando fornecedores em alto nivel e referencia para que sejam reconhecidos, desejados — e bem pagos"</div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Pain Points Explorados</h3>
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag red">Dor 1</span>
+      <p style="margin-top:8px">"Voce hoje se sente perdida, sem saber por onde comecar"</p>
+    </div>
+    <div class="card">
+      <span class="tag red">Dor 2</span>
+      <p style="margin-top:8px">"Nao sabe a ordem dos fornecedores ou o que precisa perguntar antes de fechar"</p>
+    </div>
+    <div class="card">
+      <span class="tag red">Dor 3</span>
+      <p style="margin-top:8px">"Nao sabe quanto vai custar o casamento que sonha"</p>
+    </div>
+    <div class="card">
+      <span class="tag red">Dor 4</span>
+      <p style="margin-top:8px">"Tem medo de escolher errado e se arrepender depois"</p>
+    </div>
+    <div class="card">
+      <span class="tag red">Dor 5</span>
+      <p style="margin-top:8px">"Se sinta ansiosa e preocupada, com medo de nao dar conta de tudo"</p>
+    </div>
+    <div class="card">
+      <span class="tag red">Dor 6</span>
+      <p style="margin-top:8px">"Corre grande risco de investir um grande valor nesse dia, nao ser tudo que sonhou e ainda se estressar durante todo o planejamento"</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Angulos de Copy Principais</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Angulo: Medo de Errar</h3>
+      <p>"O que te deixa ansiosa nao e o dia do casamento. E o medo de escolher errado, gastar mal e nao ter o dia como sempre sonhou."</p>
+      <span class="tag red">Fear-based</span>
+    </div>
+    <div class="card">
+      <h3>Angulo: Controle</h3>
+      <p>"O The Bride Club te coloca no controle das decisoes antes de qualquer fornecedor, contrato ou cerimonial"</p>
+      <span class="tag green">Empowerment</span>
+    </div>
+    <div class="card">
+      <h3>Angulo: Economia</h3>
+      <p>"O The Bride Club nao e um custo a mais — pelo contrario. E justamente o que sustenta o casamento inteiro e ainda te faz economizar."</p>
+      <span class="tag yellow">ROI / Investimento</span>
+    </div>
+    <div class="card">
+      <h3>Angulo: Comunidade</h3>
+      <p>"Centenas de noivas ja estao planejando o casamento" / "Unica comunidade de noivas"</p>
+      <span class="tag blue">FOMO + Belonging</span>
+    </div>
+    <div class="card">
+      <h3>Angulo: Seguranca</h3>
+      <p>"A maioria das noivas nao fica ansiosa pelo dia do casamento. Mas por se sentir perdida em como comecar e nao saber se esta fazendo as escolhas certas."</p>
+      <span class="tag orange">Trust / Safety</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">CTAs Utilizados</h3>
+  <table>
+    <tr><th>CTA</th><th>Onde</th><th>Tipo</th></tr>
+    <tr><td>"QUERO ENTRAR"</td><td>The Bride Club</td><td>Primario</td></tr>
+    <tr><td>"QUERO ME TORNAR BRIDE"</td><td>The Bride Club</td><td>Secundario</td></tr>
+    <tr><td>"Converse aqui comigo"</td><td>WhatsApp (todo site)</td><td>Warm lead</td></tr>
+    <tr><td>"JA SOU BRIDE" / "AINDA NAO SOU BRIDE"</td><td>Gateway page</td><td>Segmentacao</td></tr>
+    <tr><td>"SEU PROXIMO NIVEL"</td><td>WBA</td><td>Application</td></tr>
+    <tr><td>"QUERO ORGANIZAR MEU CASAMENTO"</td><td>Planilhas</td><td>Compra direta</td></tr>
+    <tr><td>"Realize o seu sonho"</td><td>Majestic</td><td>Aspiracional</td></tr>
+    <tr><td>"Vamos conversar?"</td><td>Assessoria</td><td>Consulta</td></tr>
+  </table>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Noiva SEM vs COM Assessora (Copy Comparativa)</h3>
+  <table>
+    <tr><th>Sem Assessora</th><th>Com Assessora</th></tr>
+    <tr><td>Se sente perdida, nao sabe por onde comecar</td><td>Sabe exatamente o que fazer, passo a passo</td></tr>
+    <tr><td>Extrapola o orcamento do casamento</td><td>Tem controle do orcamento</td></tr>
+    <tr><td>Insegura nas decisoes, se arrepende e quebra contratos</td><td>Toma decisoes segura e sem medo</td></tr>
+    <tr><td>Se sente sozinha, so ela sabe como e</td><td>Faz parte do grupo de noivas, troca ideias</td></tr>
+  </table>
+</div>
+</section>
+
+<!-- HOOKS -->
+<section id="hooks">
+<div class="container">
+  <div class="section-title">07 / Hooks</div>
+  <h2 class="section-heading">Formulas de Hook Identificadas</h2>
+
+  <div class="hook"><span class="hook-num">01</span><span class="hook-text">"Como fazer X?" — How-to direto</span><span class="hook-type">Educacional</span></div>
+  <div class="hook"><span class="hook-num">02</span><span class="hook-text">"Essas coisas sao lindas, mas..." — Contraste / reality check</span><span class="hook-type">Controverso</span></div>
+  <div class="hook"><span class="hook-num">03</span><span class="hook-text">"Depende muito de..." — Conselho nuancado</span><span class="hook-type">Autoridade</span></div>
+  <div class="hook"><span class="hook-num">04</span><span class="hook-text">"Onde fazer a lista e os valores!" — Resposta direta</span><span class="hook-type">Utilidade</span></div>
+  <div class="hook"><span class="hook-num">05</span><span class="hook-text">"Essa e uma dica simples, mas..." — Simplicidade + valor</span><span class="hook-type">Curiosidade</span></div>
+  <div class="hook"><span class="hook-num">06</span><span class="hook-text">"Eu tenho um passo a passo..." — Autoridade + ponte para produto</span><span class="hook-type">Soft-sell</span></div>
+  <div class="hook"><span class="hook-num">07</span><span class="hook-text">"E ai, qual seria a sua escolha?" — Poll de engajamento</span><span class="hook-type">Interativo</span></div>
+  <div class="hook"><span class="hook-num">08</span><span class="hook-text">"Noiva, esta pronta?" — Enderecamento direto + urgencia</span><span class="hook-type">Urgencia</span></div>
+  <div class="hook"><span class="hook-num">09</span><span class="hook-text">"Nada melhor do que..." — Framing positivo</span><span class="hook-type">Aspiracional</span></div>
+  <div class="hook"><span class="hook-num">10</span><span class="hook-text">"Faltam X dias para casar" — Countdown / milestone</span><span class="hook-type">Storytelling</span></div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Padroes de CTA no Conteudo</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Soft CTA</h3>
+      <p>"Comenta aqui!", "Qual seria a sua escolha?"</p>
+      <span class="tag">Engajamento</span>
+    </div>
+    <div class="card">
+      <h3>Product Bridge</h3>
+      <p>"Eu tenho um passo a passo para noivas!" (leva ao produto)</p>
+      <span class="tag yellow">Soft-sell</span>
+    </div>
+    <div class="card">
+      <h3>Scarcity CTA</h3>
+      <p>"As vagas para o Passos para o Altar..." (vagas limitadas)</p>
+      <span class="tag red">Urgencia</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BRANDING -->
+<section id="branding">
+<div class="container">
+  <div class="section-title">08 / Branding</div>
+  <h2 class="section-heading">Identidade de Marca e Naming</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Sistema de Naming</h3>
+  <table>
+    <tr><th>Nome</th><th>Uso</th><th>Estrategia Psicologica</th></tr>
+    <tr><td><strong>Caminhando para o Altar</strong></td><td>Marca principal</td><td>Metafora de jornada — processo, nao destino</td></tr>
+    <tr><td><strong>CPA</strong></td><td>Sigla</td><td>Profissionalismo, shorthand</td></tr>
+    <tr><td><strong>The Bride Club</strong></td><td>Comunidade / produto</td><td>Exclusividade + pertencimento</td></tr>
+    <tr><td><strong>BrideFlix</strong></td><td>Plataforma de videos</td><td>Referencia a Netflix — volume + qualidade</td></tr>
+    <tr><td><strong>Majestic Plan</strong></td><td>Servico premium</td><td>Naming aspiracional</td></tr>
+    <tr><td><strong>B.R.I.D.E. Method</strong></td><td>Framework</td><td>Acronimo com "bride" — memoravel</td></tr>
+    <tr><td><strong>Wedding Business Academy</strong></td><td>Educacao B2B</td><td>Posicionamento de autoridade</td></tr>
+    <tr><td><strong>Fiera</strong></td><td>Comunidade fornecedores</td><td>Italiano para "feira" — sofisticacao</td></tr>
+    <tr><td><strong>Passos para o Altar</strong></td><td>Curso / guia</td><td>Metafora de etapas — progresso estruturado</td></tr>
+    <tr><td><strong>Bride Week</strong></td><td>Evento de lancamento</td><td>Evento gratuito multi-dia</td></tr>
+  </table>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Identidade Visual</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Estetica</h3>
+      <p><strong>Estilo:</strong> Romantico-sofisticado, feminino<br>
+      <strong>Paleta:</strong> Tons pasteis, branco, dourado suave, rosa blush<br>
+      <strong>Tipografia:</strong> Serifadas elegantes (titulos) + sans-serif clean (corpo)<br>
+      <strong>Fotografia:</strong> Casamentos reais, detalhes decorativos, flores, emocao</p>
+      <span class="tag">Premium acessivel</span>
+    </div>
+    <div class="card">
+      <h3>Tom de Voz</h3>
+      <p><strong>Quente e empatico:</strong> "Calma, noiva!"<br>
+      <strong>Didatico sem ser professoral</strong><br>
+      <strong>Coloquial-feminino:</strong> fala direto com a noiva usando "voce"<br>
+      <strong>Dual register:</strong> emocional nas historias, pratico nas dicas<br>
+      <strong>Autoridade + proximidade:</strong> "Ja estive no seu lugar" + "Sei o que estou fazendo"<br>
+      <strong>Apelido "Thai"</strong> para criar conexao pessoal</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+<div class="container">
+  <div class="section-title">09 / Depoimentos</div>
+  <h2 class="section-heading">Social Proof Extraida</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">The Bride Club / Assessoria (3 depoimentos — reciclados em todas as paginas)</h3>
+  <div class="testimonial">
+    <div class="name">Fernanda + Thiago</div>
+    <div class="quote">"Foi perfeito! Voce foi fundamental! Foi muito importante para eu ter clareza em varias coisas... Ficou perfeito! Superou minhas expectativas!"</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Mylena + Matheus</div>
+    <div class="quote">"Queria te agradecer por toda ajuda!!! Voce foi essencial num momento que eu estava confusa... Muito obrigada!!! Sou muito grata!"</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Vivian + Lucas</div>
+    <div class="quote">"Vale a pena! De verdade!! Por mais que a gente ache que da conta de tudo... Voce consegue visualizar melhor o que precisa fazer... Thaisa literalmente e a melhor amiga da noiva!"</div>
+  </div>
+
+  <div class="copy-block" style="border-color:var(--red)">
+    <strong>Nota:</strong> Apenas 3 depoimentos encontrados para servicos/comunidade, reciclados em TODAS as paginas (The Bride Club, Majestic, Assessoria). Sinal de volume baixo de prova social para produtos de alto ticket.
+  </div>
+
+  <h3 style="margin-top:24px;margin-bottom:16px;font-size:18px">Planner Fisico (7 depoimentos)</h3>
+  <div class="testimonial">
+    <div class="name">Gabriela</div>
+    <div class="quote">"Meu planner chegou hoje e quero parabenizar o trabalho impecavel. O planner e perfeito, cheio de detalhes, bem completo..."</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Lorrane</div>
+    <div class="quote">"Esse cheirinho de papel!!! Foliei ele todo e achei muuuuito completo!"</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Isabelle</div>
+    <div class="quote">"Meu planner chegou hoje, valeu muito a pena! Superou minhas expectativas!"</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Julia</div>
+    <div class="quote">"Simplesmente perfeito! Com certeza ira me ajudar a visualizar melhor os preparativos do casamento!"</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Karla</div>
+    <div class="quote">"Thai, o planner e lindo! Simplesmente perfeito, da pra ver o carinho em cada pagina."</div>
+  </div>
+  <div class="testimonial">
+    <div class="name">Ariane</div>
+    <div class="quote">"Achei lindooo! Adorei as folhas mais grossinhas!"</div>
+  </div>
+</div>
+</section>
+
+<!-- FORCAS/FRAQUEZAS -->
+<section id="forcas">
+<div class="container">
+  <div class="section-title">10 / Analise</div>
+  <h2 class="section-heading">Forcas e Fraquezas</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Forcas</h3>
+  <div class="list-item"><span class="list-num">01</span><div class="list-content"><h4>Escada de valor completa e coerente</h4><p>De R$197 (planilhas) ate Majestic Plan (premium). Cada produto alimenta o proximo. The Bride Club funciona como ponte entre conteudo gratuito e assessoria presencial.</p></div></div>
+  <div class="list-item"><span class="list-num">02</span><div class="list-content"><h4>Comunidade como moat</h4><p>200+ noivas em comunidade ativa cria prova social organica. 2 lives mensais + grupo exclusivo + fornecedores convidados = recorrencia e pertencimento.</p></div></div>
+  <div class="list-item"><span class="list-num">03</span><div class="list-content"><h4>Produto fisico (Planner) como ancora</h4><p>Tangivel, pode ser presente de noivado. Diferenciador vs concorrentes 100% digitais. R$199 com boa margem.</p></div></div>
+  <div class="list-item"><span class="list-num">04</span><div class="list-content"><h4>B2B com WBA (Wedding Business Academy)</h4><p>Monetiza conhecimento em dois eixos: B2C (noivas) e B2B (outras assessoras). Posiciona como autoridade do mercado.</p></div></div>
+  <div class="list-item"><span class="list-num">05</span><div class="list-content"><h4>Consistencia multiplataforma</h4><p>Instagram (40K), TikTok (ativo), YouTube (vlogs), Pinterest — mesmo tom e estetica em todos os canais.</p></div></div>
+  <div class="list-item"><span class="list-num">06</span><div class="list-content"><h4>Garantia de 90 dias</h4><p>Muito acima do padrao Hotmart (7 dias). Reduz objecao de compra significativamente.</p></div></div>
+  <div class="list-item"><span class="list-num">07</span><div class="list-content"><h4>Naming inteligente</h4><p>"The Bride Club" (exclusividade), "BrideFlix" (Netflix), "B.R.I.D.E. Method" (memoravel), "Majestic Plan" (aspiracional).</p></div></div>
+  <div class="list-item"><span class="list-num">08</span><div class="list-content"><h4>Pinterest como ferramenta de servico</h4><p>Cria boards colaborativos com clientes para curar a visao do casamento. Diferencial unico no mercado.</p></div></div>
+  <div class="list-item"><span class="list-num">09</span><div class="list-content"><h4>Hashtags temporais</h4><p>#noiva2025/2026/2027 captura noivas em cada fase de planejamento. SEO temporal forte no TikTok.</p></div></div>
+  <div class="list-item"><span class="list-num">10</span><div class="list-content"><h4>Origin story autentica</h4><p>"Viveu o proprio sonho de casamento e agora ajuda outras noivas" — personal branding que cria identificacao.</p></div></div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Fraquezas</h3>
+  <div class="list-item"><span class="list-num">01</span><div class="list-content"><h4>Instagram growth plateau</h4><p>40K seguidores com 653 posts sugere que o crescimento desacelerou. Following alto (2.462) indica follow/unfollow passado.</p></div></div>
+  <div class="list-item"><span class="list-num">02</span><div class="list-content"><h4>YouTube subutilizado</h4><p>Canal existe mas e episodico, nao estrategico. "Diario de Noiva" sem consistencia.</p></div></div>
+  <div class="list-item"><span class="list-num">03</span><div class="list-content"><h4>Sem quiz funnel</h4><p>Nenhuma ferramenta de qualificacao de leads. Todo contato passa por WhatsApp manual.</p></div></div>
+  <div class="list-item"><span class="list-num">04</span><div class="list-content"><h4>Sem automacao de WhatsApp</h4><p>Conversas manuais para todos os leads. Nao escala.</p></div></div>
+  <div class="list-item"><span class="list-num">05</span><div class="list-content"><h4>Pinterest pequeno</h4><p>3.8K seguidores numa plataforma onde casamento e TOP categoria. Muito espaco pra crescer.</p></div></div>
+  <div class="list-item"><span class="list-num">06</span><div class="list-content"><h4>Website nao premium</h4><p>Wix basico, copyright parado em 2022, multiplos 404s, paginas duplicadas ("copia-..."). Design funcional mas nao sofisticado.</p></div></div>
+  <div class="list-item"><span class="list-num">07</span><div class="list-content"><h4>Precos escondidos</h4><p>"Fale conosco" para todos os servicos acima de planilhas. Afiliados expoe preco real (R$2.497). Dependencia de descontos 60-73%.</p></div></div>
+  <div class="list-item"><span class="list-num">08</span><div class="list-content"><h4>WBA subdesenvolvida</h4><p>Apenas 10 pins no Pinterest em 3 meses. B2B parece early-stage.</p></div></div>
+  <div class="list-item"><span class="list-num">09</span><div class="list-content"><h4>Operacao solo</h4><p>Tudo gira em torno da Thaisa pessoalmente. Nenhuma equipe ou rosto secundario visivel.</p></div></div>
+  <div class="list-item"><span class="list-num">10</span><div class="list-content"><h4>Limitacao regional</h4><p>Servicos presenciais limitados ao Rio de Janeiro.</p></div></div>
+  <div class="list-item"><span class="list-num">11</span><div class="list-content"><h4>Apenas 3 depoimentos para servicos</h4><p>Os mesmos 3 depoimentos (Fernanda, Mylena, Vivian) reciclados em todas as paginas. Volume baixo de prova social.</p></div></div>
+  <div class="list-item"><span class="list-num">12</span><div class="list-content"><h4>Sem presenca em press/podcasts/eventos</h4><p>Nenhuma cobertura de midia, nenhuma participacao em podcasts, nao listada em portais top (Constance Zahn, Lapis de Noiva).</p></div></div>
+  <div class="list-item"><span class="list-num">13</span><div class="list-content"><h4>Sem LinkedIn</h4><p>Ausencia total no LinkedIn. Perde oportunidade B2B (WBA) e credibilidade profissional.</p></div></div>
+  <div class="list-item"><span class="list-num">14</span><div class="list-content"><h4>Sem email newsletter</h4><p>Nenhuma newsletter identificada alem de transacional do Hotmart. Perde canal de nurturing.</p></div></div>
+  <div class="list-item"><span class="list-num">15</span><div class="list-content"><h4>Sem programa de indicacao</h4><p>Nenhum referral program formal. Nenhum programa de embaixadoras/UGC.</p></div></div>
+</div>
+</section>
+
+<!-- URLS -->
+<section id="urls">
+<div class="container">
+  <div class="section-title">11 / URLs</div>
+  <h2 class="section-heading">Todas as URLs Descobertas</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Perfis Sociais</h3>
+  <table>
+    <tr><td>Instagram</td><td><a href="https://www.instagram.com/caminhandoparaoaltar/" target="_blank">instagram.com/caminhandoparaoaltar</a></td></tr>
+    <tr><td>Instagram (pessoal)</td><td><a href="https://www.instagram.com/thaisa_rangel/" target="_blank">instagram.com/thaisa_rangel</a></td></tr>
+    <tr><td>TikTok</td><td><a href="https://www.tiktok.com/@caminhandoparaoaltar" target="_blank">tiktok.com/@caminhandoparaoaltar</a></td></tr>
+    <tr><td>YouTube</td><td><a href="https://www.youtube.com/@caminhandoparaoaltar" target="_blank">youtube.com/@caminhandoparaoaltar</a></td></tr>
+    <tr><td>Pinterest</td><td><a href="https://www.pinterest.com/caminhandoparaoaltarinspo/" target="_blank">pinterest.com/caminhandoparaoaltarinspo</a></td></tr>
+    <tr><td>Facebook</td><td><a href="https://www.facebook.com/caminhandoparaoaltar/" target="_blank">facebook.com/caminhandoparaoaltar</a></td></tr>
+  </table>
+
+  <h3 style="margin-top:24px;margin-bottom:16px;font-size:18px">Paginas do Site (principais)</h3>
+  <table>
+    <tr><td>Home</td><td><a href="https://www.caminhandoparaoaltar.com.br" target="_blank">caminhandoparaoaltar.com.br</a></td></tr>
+    <tr><td>Assessoria</td><td><a href="https://www.caminhandoparaoaltar.com.br/assessoria-nov" target="_blank">/assessoria-nov</a></td></tr>
+    <tr><td>The Bride Club (sales)</td><td><a href="https://www.caminhandoparaoaltar.com.br/the-bride-club-p" target="_blank">/the-bride-club-p</a></td></tr>
+    <tr><td>The Bride Club (about)</td><td><a href="https://www.caminhandoparaoaltar.com.br/the-bride-club-sobre" target="_blank">/the-bride-club-sobre</a></td></tr>
+    <tr><td>Majestic</td><td><a href="https://www.caminhandoparaoaltar.com.br/majestic" target="_blank">/majestic</a></td></tr>
+    <tr><td>Planner</td><td><a href="https://www.caminhandoparaoaltar.com.br/planner" target="_blank">/planner</a></td></tr>
+    <tr><td>Design</td><td><a href="https://www.caminhandoparaoaltar.com.br/design" target="_blank">/design</a></td></tr>
+    <tr><td>Identidade Visual</td><td><a href="https://www.caminhandoparaoaltar.com.br/identidade" target="_blank">/identidade</a></td></tr>
+    <tr><td>WBA</td><td><a href="https://www.caminhandoparaoaltar.com.br/wba" target="_blank">/wba</a></td></tr>
+    <tr><td>Formula Casamento</td><td><a href="https://www.caminhandoparaoaltar.com.br/formula-casamento" target="_blank">/formula-casamento</a></td></tr>
+    <tr><td>Planilhas</td><td><a href="https://www.caminhandoparaoaltar.com.br/planilhas" target="_blank">/planilhas</a></td></tr>
+    <tr><td>Bloom</td><td><a href="https://www.caminhandoparaoaltar.com.br/bloom" target="_blank">/bloom</a></td></tr>
+    <tr><td>BrideFlix</td><td><a href="https://www.caminhandoparaoaltar.com.br/brideflix" target="_blank">/brideflix</a></td></tr>
+    <tr><td>Bride Week</td><td><a href="https://www.caminhandoparaoaltar.com.br/brideweek" target="_blank">/brideweek</a></td></tr>
+    <tr><td>Noivas CPA</td><td><a href="https://www.caminhandoparaoaltar.com.br/noivas-cpa" target="_blank">/noivas-cpa</a></td></tr>
+    <tr><td>Links</td><td><a href="https://www.caminhandoparaoaltar.com.br/links" target="_blank">/links</a></td></tr>
+    <tr><td>Loja</td><td><a href="https://www.caminhandoparaoaltar.com.br/shop" target="_blank">/shop</a></td></tr>
+  </table>
+
+  <h3 style="margin-top:24px;margin-bottom:16px;font-size:18px">Hotmart</h3>
+  <table>
+    <tr><td>Close Friends</td><td><a href="https://hotmart.com/pt-br/marketplace/produtos/close-friends-caminhando-para-o-altar/S84727292P" target="_blank">Hotmart S84727292P</a></td></tr>
+    <tr><td>The Bride Club</td><td><a href="https://hotmart.com/pt-br/marketplace/produtos/the-bride-club/B72584717A" target="_blank">Hotmart B72584717A</a></td></tr>
+  </table>
+
+  <h3 style="margin-top:24px;margin-bottom:16px;font-size:18px">YouTube Videos</h3>
+  <table>
+    <tr><td>Diario de Noiva Ep.5 (Villa Cassano)</td><td><a href="https://www.youtube.com/watch?v=6JPGLl1WypQ" target="_blank">youtu.be/6JPGLl1WypQ</a></td></tr>
+    <tr><td>Onde Vamos Casar (Vale dos Sonhos)</td><td><a href="https://www.youtube.com/watch?v=2pAHF6yqcyM" target="_blank">youtu.be/2pAHF6yqcyM</a></td></tr>
+  </table>
+
+  <h3 style="margin-top:24px;margin-bottom:16px;font-size:18px">Verificar Ads Manualmente</h3>
+  <table>
+    <tr><td>Meta Ad Library</td><td><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=caminhando%20para%20o%20altar" target="_blank">Buscar "caminhando para o altar"</a></td></tr>
+    <tr><td>Meta Ad Library</td><td><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=the%20bride%20club" target="_blank">Buscar "the bride club"</a></td></tr>
+    <tr><td>Meta Ad Library</td><td><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=thaisa%20rangel" target="_blank">Buscar "thaisa rangel"</a></td></tr>
+  </table>
+
+  <h3 style="margin-top:24px;margin-bottom:16px;font-size:18px">Sitemap Completo (52 paginas)</h3>
+  <details style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px">
+    <summary style="cursor:pointer;color:var(--accent);font-size:14px">Expandir lista completa do sitemap</summary>
+    <div style="margin-top:12px;font-size:13px;color:var(--muted);columns:2;column-gap:24px">
+      <p>/the-bride-club-p</p><p>/shop</p><p>/planilhas</p><p>/contact-8</p><p>/moodboard</p><p>/my-account</p><p>/planner-1</p><p>/pv</p><p>/planner-fichario-video</p><p>/the-bride-club-sobre</p><p>/passos-inscricao-dez-24</p><p>/desbl-mini-guia</p><p>/a-chave-fev-2025-obg/2</p><p>/brideflix</p><p>/items</p><p>/payment-request-page</p><p>/copia-design</p><p>/copia-conteudo-exclusivo</p><p>/copia-passos</p><p>/majestic</p><p>/formula-casamento</p><p>/wba</p><p>/planner</p><p>/blog</p><p>/bloom</p><p>/brideweek</p><p>/pcp-inscricao</p><p>/pagina-de-agradecimento-final</p><p>/brideflix-minisserie</p><p>/politicas</p><p>/planilhas-an</p><p>/listadefornecedores</p><p>/assessoria-nov</p><p>/the-bride-club</p><p>/formula-casamento-desbloqueado</p><p>/noivas-cpa</p><p>/conteudo-exclusivo</p><p>/mandala</p><p>/a-chave-fev-2025/1</p><p>/primeiros-passos</p><p>/mini-guia</p><p>/identidade</p><p>/copia-brideflix</p><p>/copia-mentoria-onira</p><p>/design</p><p>/blog-posts-noivas</p><p>/double-checkout</p><p>/plano-casamento-perfeito</p><p>/central-das-noivas-blog/data-do-casamento-form</p><p>/ (home)</p><p>/forms-bride</p><p>/links</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- GALERIA DE IMAGENS -->
+<section id="galeria">
+<div class="container">
+  <div class="section-title">12 / Galeria</div>
+  <h2 class="section-heading">Imagens Extraidas do Site da Concorrente</h2>
+  <p style="color:var(--muted);margin-bottom:24px;font-size:14px">38 imagens capturadas das paginas de venda, produtos e servicos. Clique para ampliar.</p>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Homepage</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/01-homepage-hero.jpg" alt="Homepage hero" onclick="openLightbox(this)"><div class="caption"><h4>Hero Principal</h4><p>"O caminho para o altar comeca aqui"</p><a href="https://www.caminhandoparaoaltar.com.br" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/01-homepage-logo.png" alt="Logo CPA" onclick="openLightbox(this)"><div class="caption"><h4>Logo CPA</h4><p>Marca principal</p></div></div>
+    <div class="gallery-item"><img src="screenshots/01-homepage-portrait.jpg" alt="Thaisa portrait" onclick="openLightbox(this)"><div class="caption"><h4>Retrato Thaisa</h4><p>Foto pessoal da fundadora</p></div></div>
+    <div class="gallery-item"><img src="screenshots/01-homepage-card1.png" alt="Card servico 1" onclick="openLightbox(this)"><div class="caption"><h4>Card Servico: Assessoria</h4><p>Card do hero da homepage</p></div></div>
+    <div class="gallery-item"><img src="screenshots/01-homepage-card2.png" alt="Card servico 2" onclick="openLightbox(this)"><div class="caption"><h4>Card Servico: Design</h4><p>Card do hero da homepage</p></div></div>
+    <div class="gallery-item"><img src="screenshots/01-homepage-card3.png" alt="Card servico 3" onclick="openLightbox(this)"><div class="caption"><h4>Card Servico: Planner</h4><p>Card do hero da homepage</p></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">The Bride Club (Produto Principal)</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/02-bride-club-key.png" alt="Bride Club key visual" onclick="openLightbox(this)"><div class="caption"><h4>Key Visual — Bride Club</h4><p>Pagina de vendas principal</p><a href="https://www.caminhandoparaoaltar.com.br/the-bride-club-p" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/03-bride-club-sobre.png" alt="Bride Club sobre" onclick="openLightbox(this)"><div class="caption"><h4>Sobre — Metodo B.R.I.D.E.</h4><p>Pagina do metodo e comunidade</p><a href="https://www.caminhandoparaoaltar.com.br/the-bride-club-sobre" target="_blank">Ver pagina</a></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Assessoria e Servicos</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/04-majestic-hero.jpg" alt="Majestic hero" onclick="openLightbox(this)"><div class="caption"><h4>Majestic Plan (Premium)</h4><p>Servico premium — orcamento 150K+</p><a href="https://www.caminhandoparaoaltar.com.br/majestic" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/05-assessoria-hero.png" alt="Assessoria hero" onclick="openLightbox(this)"><div class="caption"><h4>Assessoria — Hero</h4><p>Pagina hub de servicos</p><a href="https://www.caminhandoparaoaltar.com.br/assessoria-nov" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/05-assessoria-thaisa.jpg" alt="Thaisa assessoria" onclick="openLightbox(this)"><div class="caption"><h4>Thaisa — Foto Profissional</h4><p>Imagem usada na pagina de assessoria</p></div></div>
+    <div class="gallery-item"><img src="screenshots/05-assessoria-service1.png" alt="Servico 1" onclick="openLightbox(this)"><div class="caption"><h4>Servico: Bride Club</h4><p>Card na pagina de assessoria</p></div></div>
+    <div class="gallery-item"><img src="screenshots/05-assessoria-brideclub.png" alt="Bride club card" onclick="openLightbox(this)"><div class="caption"><h4>Card: The Bride Club</h4><p>Referencia visual do servico</p></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Design e Identidade Visual</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/06-identidade-designer.png" alt="Identidade visual" onclick="openLightbox(this)"><div class="caption"><h4>Identidade Visual — Pacotes</h4><p>Simple R$800 / Platinum R$1.800 / Diamond R$3.200</p><a href="https://www.caminhandoparaoaltar.com.br/identidade" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/06-identidade-envelope.png" alt="Convite envelope" onclick="openLightbox(this)"><div class="caption"><h4>Exemplo: Convite + Envelope</h4><p>Portfolio de papelaria</p></div></div>
+    <div class="gallery-item"><img src="screenshots/11-design-hero.png" alt="Design hero" onclick="openLightbox(this)"><div class="caption"><h4>Design de Casamento — Hero</h4><p>Wedding Styling + Identidade</p><a href="https://www.caminhandoparaoaltar.com.br/design" target="_blank">Ver pagina</a></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Produtos Digitais</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/07-formula-hero.png" alt="Formula hero" onclick="openLightbox(this)"><div class="caption"><h4>Formula Casamento — Hero</h4><p>Curso de planejamento financeiro R$279</p><a href="https://www.caminhandoparaoaltar.com.br/formula-casamento" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/07-formula-modules.png" alt="Formula modulos" onclick="openLightbox(this)"><div class="caption"><h4>Formula — Modulos</h4><p>Conteudo do curso</p></div></div>
+    <div class="gallery-item"><img src="screenshots/07-formula-bonuses.png" alt="Formula bonus" onclick="openLightbox(this)"><div class="caption"><h4>Formula — Bonus</h4><p>Stack de valor</p></div></div>
+    <div class="gallery-item"><img src="screenshots/07-formula-testimonials.png" alt="Formula depoimentos" onclick="openLightbox(this)"><div class="caption"><h4>Formula — Depoimentos</h4><p>Prova social do curso</p></div></div>
+    <div class="gallery-item"><img src="screenshots/08-planilhas-hero.png" alt="Planilhas hero" onclick="openLightbox(this)"><div class="caption"><h4>Planilhas — Hero</h4><p>Checklist + Planilhas R$197</p><a href="https://www.caminhandoparaoaltar.com.br/planilhas" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/08-planilhas-product.png" alt="Planilhas produto" onclick="openLightbox(this)"><div class="caption"><h4>Planilhas — Produto</h4><p>Visual do produto digital</p></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Planner Fisico</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/10-planner-covers.png" alt="Planner capas" onclick="openLightbox(this)"><div class="caption"><h4>Planner Fichario — Capas</h4><p>Versoes Flores e Folhas — R$199</p><a href="https://www.caminhandoparaoaltar.com.br/planner" target="_blank">Ver pagina</a></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">B2B e Eventos</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/09-wba-hero.png" alt="WBA hero" onclick="openLightbox(this)"><div class="caption"><h4>Wedding Business Academy</h4><p>Formacao B2B para assessoras</p><a href="https://www.caminhandoparaoaltar.com.br/wba" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/13-brideweek-banner.jpg" alt="Bride Week" onclick="openLightbox(this)"><div class="caption"><h4>Bride Week — Banner</h4><p>Evento online gratuito (3 dias)</p><a href="https://www.caminhandoparaoaltar.com.br/brideweek" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/13-brideweek-logo.png" alt="Bride Week logo" onclick="openLightbox(this)"><div class="caption"><h4>Bride Week — Logo</h4><p>Marca do evento</p></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Bloom e Outros</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/12-bloom-hero1.jpg" alt="Bloom hero 1" onclick="openLightbox(this)"><div class="caption"><h4>Bloom — Hero 1</h4><p>Servico/produto Bloom</p><a href="https://www.caminhandoparaoaltar.com.br/bloom" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/12-bloom-hero2.jpg" alt="Bloom hero 2" onclick="openLightbox(this)"><div class="caption"><h4>Bloom — Hero 2</h4><p>Visual secundario</p></div></div>
+    <div class="gallery-item"><img src="screenshots/12-bloom-content1.png" alt="Bloom conteudo 1" onclick="openLightbox(this)"><div class="caption"><h4>Bloom — Conteudo 1</h4><p>Material visual</p></div></div>
+    <div class="gallery-item"><img src="screenshots/12-bloom-content2.png" alt="Bloom conteudo 2" onclick="openLightbox(this)"><div class="caption"><h4>Bloom — Conteudo 2</h4><p>Material visual</p></div></div>
+    <div class="gallery-item"><img src="screenshots/12-bloom-content3.jpg" alt="Bloom conteudo 3" onclick="openLightbox(this)"><div class="caption"><h4>Bloom — Conteudo 3</h4><p>Material visual</p></div></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Link in Bio / Links Page</h3>
+  <div class="gallery">
+    <div class="gallery-item"><img src="screenshots/14-links-brideclub.png" alt="Links bride club" onclick="openLightbox(this)"><div class="caption"><h4>Links — Bride Club</h4><p>CTA principal no link tree</p><a href="https://www.caminhandoparaoaltar.com.br/links" target="_blank">Ver pagina</a></div></div>
+    <div class="gallery-item"><img src="screenshots/14-links-content.png" alt="Links conteudo" onclick="openLightbox(this)"><div class="caption"><h4>Links — Conteudo</h4><p>Opcoes do link tree</p></div></div>
+    <div class="gallery-item"><img src="screenshots/14-links-mentorship.png" alt="Links mentoria" onclick="openLightbox(this)"><div class="caption"><h4>Links — Mentoria</h4><p>Referencia a mentoria</p></div></div>
+    <div class="gallery-item"><img src="screenshots/14-links-planner.png" alt="Links planner" onclick="openLightbox(this)"><div class="caption"><h4>Links — Planner</h4><p>Referencia ao planner</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- LINKS COMPLETOS -->
+<section id="links-completos">
+<div class="container">
+  <div class="section-title">13 / Links Completos</div>
+  <h2 class="section-heading">Todos os Links Organizados</h2>
+
+  <h3 style="margin-bottom:16px;font-size:18px">Paginas de Venda (mais importantes)</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label">Bride Club (vendas)</span><a href="https://www.caminhandoparaoaltar.com.br/the-bride-club-p" target="_blank">caminhandoparaoaltar.com.br/the-bride-club-p</a></div>
+    <div class="link-row"><span class="link-label">Bride Club (sobre)</span><a href="https://www.caminhandoparaoaltar.com.br/the-bride-club-sobre" target="_blank">caminhandoparaoaltar.com.br/the-bride-club-sobre</a></div>
+    <div class="link-row"><span class="link-label">Majestic Plan</span><a href="https://www.caminhandoparaoaltar.com.br/majestic" target="_blank">caminhandoparaoaltar.com.br/majestic</a></div>
+    <div class="link-row"><span class="link-label">Assessoria</span><a href="https://www.caminhandoparaoaltar.com.br/assessoria-nov" target="_blank">caminhandoparaoaltar.com.br/assessoria-nov</a></div>
+    <div class="link-row"><span class="link-label">Identidade Visual</span><a href="https://www.caminhandoparaoaltar.com.br/identidade" target="_blank">caminhandoparaoaltar.com.br/identidade</a></div>
+    <div class="link-row"><span class="link-label">Formula Casamento</span><a href="https://www.caminhandoparaoaltar.com.br/formula-casamento" target="_blank">caminhandoparaoaltar.com.br/formula-casamento</a></div>
+    <div class="link-row"><span class="link-label">Planilhas R$197</span><a href="https://www.caminhandoparaoaltar.com.br/planilhas" target="_blank">caminhandoparaoaltar.com.br/planilhas</a></div>
+    <div class="link-row"><span class="link-label">WBA (B2B)</span><a href="https://www.caminhandoparaoaltar.com.br/wba" target="_blank">caminhandoparaoaltar.com.br/wba</a></div>
+    <div class="link-row"><span class="link-label">Planner R$199</span><a href="https://www.caminhandoparaoaltar.com.br/planner" target="_blank">caminhandoparaoaltar.com.br/planner</a></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Paginas de Estrutura</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label">Homepage</span><a href="https://www.caminhandoparaoaltar.com.br" target="_blank">caminhandoparaoaltar.com.br</a></div>
+    <div class="link-row"><span class="link-label">Design</span><a href="https://www.caminhandoparaoaltar.com.br/design" target="_blank">caminhandoparaoaltar.com.br/design</a></div>
+    <div class="link-row"><span class="link-label">BrideFlix</span><a href="https://www.caminhandoparaoaltar.com.br/brideflix" target="_blank">caminhandoparaoaltar.com.br/brideflix</a></div>
+    <div class="link-row"><span class="link-label">Bride Week</span><a href="https://www.caminhandoparaoaltar.com.br/brideweek" target="_blank">caminhandoparaoaltar.com.br/brideweek</a></div>
+    <div class="link-row"><span class="link-label">Bloom</span><a href="https://www.caminhandoparaoaltar.com.br/bloom" target="_blank">caminhandoparaoaltar.com.br/bloom</a></div>
+    <div class="link-row"><span class="link-label">Links (link in bio)</span><a href="https://www.caminhandoparaoaltar.com.br/links" target="_blank">caminhandoparaoaltar.com.br/links</a></div>
+    <div class="link-row"><span class="link-label">Loja</span><a href="https://www.caminhandoparaoaltar.com.br/shop" target="_blank">caminhandoparaoaltar.com.br/shop</a></div>
+    <div class="link-row"><span class="link-label">Noivas CPA (restrito)</span><a href="https://www.caminhandoparaoaltar.com.br/noivas-cpa" target="_blank">caminhandoparaoaltar.com.br/noivas-cpa</a></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Hotmart</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label">The Bride Club</span><a href="https://hotmart.com/pt-br/marketplace/produtos/the-bride-club/B72584717A" target="_blank">hotmart.com — B72584717A (200+ alunos, 5.0 stars)</a></div>
+    <div class="link-row"><span class="link-label">Close Friends</span><a href="https://hotmart.com/pt-br/marketplace/produtos/close-friends-caminhando-para-o-altar/S84727292P" target="_blank">hotmart.com — S84727292P</a></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Perfis Sociais</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label">Instagram (~40K)</span><a href="https://www.instagram.com/caminhandoparaoaltar/" target="_blank">instagram.com/caminhandoparaoaltar</a></div>
+    <div class="link-row"><span class="link-label">IG Pessoal (~3.5K)</span><a href="https://www.instagram.com/thaisa_rangel/" target="_blank">instagram.com/thaisa_rangel</a></div>
+    <div class="link-row"><span class="link-label">TikTok</span><a href="https://www.tiktok.com/@caminhandoparaoaltar" target="_blank">tiktok.com/@caminhandoparaoaltar</a></div>
+    <div class="link-row"><span class="link-label">YouTube</span><a href="https://www.youtube.com/@caminhandoparaoaltar" target="_blank">youtube.com/@caminhandoparaoaltar</a></div>
+    <div class="link-row"><span class="link-label">Pinterest (3.8K)</span><a href="https://www.pinterest.com/caminhandoparaoaltarinspo/" target="_blank">pinterest.com/caminhandoparaoaltarinspo</a></div>
+    <div class="link-row"><span class="link-label">Facebook</span><a href="https://www.facebook.com/caminhandoparaoaltar/" target="_blank">facebook.com/caminhandoparaoaltar</a></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Videos YouTube</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label">Diario Noiva Ep.5</span><a href="https://www.youtube.com/watch?v=6JPGLl1WypQ" target="_blank">Villa Cassano — RJ</a></div>
+    <div class="link-row"><span class="link-label">Onde Vamos Casar</span><a href="https://www.youtube.com/watch?v=2pAHF6yqcyM" target="_blank">Vale dos Sonhos — decisao de local</a></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Videos TikTok (17)</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label">Confirmar presenca</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7547731674180767032" target="_blank">tiktok /7547731674180767032</a></div>
+    <div class="link-row"><span class="link-label">Tendencias 2025/26</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7464351936091868421" target="_blank">tiktok /7464351936091868421</a></div>
+    <div class="link-row"><span class="link-label">Alinhamento do casal</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7463981561113873670" target="_blank">tiktok /7463981561113873670</a></div>
+    <div class="link-row"><span class="link-label">Planejar com tranquilidade</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7447625456280538373" target="_blank">tiktok /7447625456280538373</a></div>
+    <div class="link-row"><span class="link-label">Vagas Passos (lancamento)</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7446398750848781574" target="_blank">tiktok /7446398750848781574</a></div>
+    <div class="link-row"><span class="link-label">Tudo saia perfeito</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7440992302715178296" target="_blank">tiktok /7440992302715178296</a></div>
+    <div class="link-row"><span class="link-label">Enviar convites</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7435750696705723703" target="_blank">tiktok /7435750696705723703</a></div>
+    <div class="link-row"><span class="link-label">Qual sua escolha?</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7432410964399525125" target="_blank">tiktok /7432410964399525125</a></div>
+    <div class="link-row"><span class="link-label">O que priorizar</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7432039913119304966" target="_blank">tiktok /7432039913119304966</a></div>
+    <div class="link-row"><span class="link-label">Lindas mas nada praticas</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7431692013562547461" target="_blank">tiktok /7431692013562547461</a></div>
+    <div class="link-row"><span class="link-label">Confirmar a tempo</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7431299140962864390" target="_blank">tiktok /7431299140962864390</a></div>
+    <div class="link-row"><span class="link-label">Dica simples</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7419794065417342213" target="_blank">tiktok /7419794065417342213</a></div>
+    <div class="link-row"><span class="link-label">Noivos + arte (pre-wedding)</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7411282084116876550" target="_blank">tiktok /7411282084116876550</a></div>
+    <div class="link-row"><span class="link-label">Passo a passo (soft-sell)</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7409404683200007429" target="_blank">tiktok /7409404683200007429</a></div>
+    <div class="link-row"><span class="link-label">Cha de panela</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7392696645705731333" target="_blank">tiktok /7392696645705731333</a></div>
+    <div class="link-row"><span class="link-label">Respondendo comentario</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7388585152340839685" target="_blank">tiktok /7388585152340839685</a></div>
+    <div class="link-row"><span class="link-label">30 dias pra casar (diario)</span><a href="https://www.tiktok.com/@caminhandoparaoaltar/video/7255429131880418566" target="_blank">tiktok /7255429131880418566</a></div>
+  </div>
+
+  <h3 style="margin-top:32px;margin-bottom:16px;font-size:18px">Meta Ad Library (verificar no navegador)</h3>
+  <div class="links-grid">
+    <div class="link-row"><span class="link-label" style="color:var(--yellow)">Buscar ads</span><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=caminhando%20para%20o%20altar" target="_blank">"caminhando para o altar"</a></div>
+    <div class="link-row"><span class="link-label" style="color:var(--yellow)">Buscar ads</span><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=the%20bride%20club" target="_blank">"the bride club"</a></div>
+    <div class="link-row"><span class="link-label" style="color:var(--yellow)">Buscar ads</span><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=thaisa%20rangel" target="_blank">"thaisa rangel"</a></div>
+  </div>
+  <div class="copy-block" style="border-color:var(--yellow);margin-top:16px">
+    <strong>Nota:</strong> A Meta Ad Library nao pode ser acessada por scraping automatico (SPA pesado em JS). Os links acima abrem diretamente no navegador para verificacao manual dos anuncios ativos/inativos da concorrente.
+  </div>
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<footer>
+<div class="container">
+  <p>Competitor Intelligence Report — @caminhandoparaoaltar (Thaisa Rangel / CPA) — Gerado em 29/04/2026</p>
+  <p style="margin-top:4px">Dados coletados via web scraping publico. Uso interno apenas.</p>
+</div>
+</footer>
+
+<script>
+// Lightbox
+function openLightbox(img){
+  const lb=document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src=img.src;
+  lb.classList.add('active');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+// Active nav on scroll
+const sections=document.querySelectorAll('section[id],.hero');
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let c='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id||'perfil';});
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+c)a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

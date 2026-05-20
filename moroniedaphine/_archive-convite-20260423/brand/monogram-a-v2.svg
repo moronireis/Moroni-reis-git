@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" fill="currentColor">
-  <!-- Variation A v2 — Classical serif M&D, hairline refinement -->
-  <!-- Thinner: font-weight 200 (Cormorant variable), wider letter-spacing, italic ampersand scaled smaller -->
-  <text x="140" y="110" text-anchor="middle"
-        font-family="'Cormorant Garamond', 'Cormorant', 'EB Garamond', Garamond, serif"
-        font-weight="200" font-size="118" letter-spacing="8"
-        font-style="normal"
-        font-variation-settings="'wght' 200">M<tspan font-style="italic" font-weight="200" font-size="98" dx="4" dy="-6">&amp;</tspan><tspan font-style="normal" font-weight="200" dx="4" dy="6">D</tspan></text>
-</svg>

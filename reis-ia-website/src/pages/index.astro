@@ -11,6 +11,9 @@ import Button from '../components/Button.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import SapphireScanner from '../components/SapphireScanner.astro';
 import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
+import HeroRotatingText from '../components/HeroRotatingText.tsx';
+
+
 ---
 
 <MainLayout
@@ -20,43 +23,319 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
 >
 
   <!-- ============================================================
-       HERO — Centered message + premium background
+       HERO — AwSales-inspired: depth glow + conic arcs + rotating text
        ============================================================ -->
   <section
-    class="relative overflow-hidden flex items-center justify-center"
-    style="background: var(--surface-0); min-height: 100vh; padding: var(--space-2xl) 0;"
+    class="relative overflow-hidden flex flex-col items-center justify-center"
+    style="background: radial-gradient(50% 50% at 50% 100%, #0a1a3a 0%, #000000 100%); min-height: 100vh; padding: var(--space-2xl) 0;"
     aria-labelledby="hero-heading"
   >
     <!-- Background: Interactive repel grid -->
     <HeroGrid client:load />
+
+    <!-- Animated background glow -->
+    <div class="hero-bg-glow" aria-hidden="true"></div>
+
+    <!-- Noise grain overlay -->
+    <div class="hero-noise" aria-hidden="true"></div>
     <!-- Top accent line -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" style="width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(74,144,255,0.15) 50%,transparent);"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" style="width:600px;height:1px;background:linear-gradient(90deg,transparent,var(--blue-30) 50%,transparent);"></div>
+    <!-- Bottom fade -->
+    <div class="absolute bottom-0 left-0 right-0 h-40 pointer-events-none" aria-hidden="true" style="background:linear-gradient(to bottom, transparent, var(--surface-1));"></div>
 
     <!-- Content: centered -->
     <div class="container-standard relative z-10">
-      <div class="max-w-[800px] mx-auto text-center">
+      <div class="max-w-[880px] mx-auto text-center">
 
-        <h1
+        <p class="hero-badge hero-animate hero-animate-1">ECOSSISTEMA DE IA PARA NEGÓCIOS</p>
+
+        <div
           id="hero-heading"
-          class="hero-animate hero-animate-2 text-balance"
-          style="font-size: clamp(2.8rem, 1.6rem + 5vw, 5rem); font-weight: 600; line-height: 1.10; letter-spacing: -0.02em; color: var(--text-primary);"
+          class="hero-animate hero-animate-2"
+          role="heading"
+          aria-level="1"
+          style="font-size: clamp(2.2rem, 1.2rem + 5vw, 5.2rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.04em; color: var(--text-primary);"
         >
-          Tempo é o ativo mais <span style="color: var(--accent-blue);">importante.</span>
-        </h1>
+          <HeroRotatingText client:load />
+        </div>
 
         <p
-          class="hero-animate hero-animate-3 mt-6 text-balance mx-auto"
-          style="font-size: clamp(1.05rem, 0.7rem + 1.1vw, 1.35rem); font-weight: 400; line-height: 1.55; color: var(--text-secondary); max-width: 600px;"
+          class="hero-animate hero-animate-3 mt-7 text-balance mx-auto"
+          style="font-size: clamp(1.1rem, 0.7rem + 1.2vw, 1.4rem); font-weight: 400; line-height: 1.55; color: var(--text-secondary); max-width: 600px;"
         >
-          Implementação de IA, mentorias, formações e comunidade para empresários que querem resultados em receita e eficiência.
+          Marketing, vendas, educação e IA para empresários que querem resultados reais no caixa.
         </p>
 
-        <!-- CTA -->
+        <!-- CTA pill (conic gradient, AwSales-inspired) -->
         <div class="hero-animate hero-animate-4 flex items-center justify-center mt-10">
-          <Button variant="hero" href="#cta-final">
-            Quero resultados com IA &rarr;
-          </Button>
+          <a href="/agendar" class="hero-cta-pill">
+            <span>Agendar diagnóstico</span>
+            <span class="hero-cta-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMPANIES — Empresas que evoluem com IA
+       ============================================================ -->
+  <section style="background: var(--surface-1); padding: var(--space-lg) 0;">
+    <div class="container-standard text-center">
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <span class="logo-count-badge">+30</span>
+        <p class="text-[12px] uppercase tracking-[0.08em] font-medium" style="color: var(--text-tertiary);">Empresas que evoluem com IA</p>
+      </div>
+    </div>
+    <div class="logo-scroll-wrap">
+      <div class="logo-scroll-fade logo-scroll-fade--l" aria-hidden="true"></div>
+      <div class="logo-scroll-fade logo-scroll-fade--r" aria-hidden="true"></div>
+      <div class="logo-scroll-track" aria-label="Logos de clientes">
+        <img src="/images/logos/noivasa.svg" alt="Noiva S.A." class="logo-img" />
+        <img src="/images/logos/castelo-dos-lagos.svg" alt="Castelo dos Lagos" class="logo-img" />
+        <img src="/images/logos/batalion.svg" alt="Batalion Defense AI" class="logo-img" />
+        <img src="/images/logos/mdv.svg" alt="MDV Imersão IA" class="logo-img" />
+        <img src="/images/logos/concrem.png" alt="Concrem Portas Premium" class="logo-img" style="filter:brightness(0) invert(1)" />
+        <img src="/images/logos/znith.svg" alt="Zinith" class="logo-img" />
+        <img src="/images/logos/natori.svg" alt="Natori Foods" class="logo-img" />
+        <!-- duplicate for seamless loop -->
+        <img src="/images/logos/noivasa.svg" alt="Noiva S.A." class="logo-img" />
+        <img src="/images/logos/castelo-dos-lagos.svg" alt="Castelo dos Lagos" class="logo-img" />
+        <img src="/images/logos/batalion.svg" alt="Batalion Defense AI" class="logo-img" />
+        <img src="/images/logos/mdv.svg" alt="MDV Imersão IA" class="logo-img" />
+        <img src="/images/logos/concrem.png" alt="Concrem Portas Premium" class="logo-img" style="filter:brightness(0) invert(1)" />
+        <img src="/images/logos/znith.svg" alt="Zinith" class="logo-img" />
+        <img src="/images/logos/natori.svg" alt="Natori Foods" class="logo-img" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       MARKETING — Clientes e receita com IA
+       ============================================================ -->
+  <section
+    class="relative overflow-hidden"
+    style="background: var(--surface-1); padding: var(--space-3xl) 0;"
+    aria-labelledby="marketing-heading"
+  >
+    <div class="container-standard relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Left: Dashboard mockup -->
+        <div class="animate-on-scroll">
+          <div style="position:relative">
+            <!-- Glow behind mockup -->
+            <div aria-hidden="true" style="position:absolute;inset:-30px;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(74,144,255,0.06) 0%,transparent 60%);pointer-events:none"></div>
+            <div class="rounded-xl overflow-hidden" style="position:relative;background:var(--surface-0);border:1px solid var(--border-default);box-shadow:var(--shadow-dramatic)">
+              <!-- Window chrome -->
+              <div class="flex items-center gap-2 px-4 py-3" style="background:var(--surface-0);border-bottom:1px solid var(--border-default)">
+                <div class="w-2.5 h-2.5 rounded-full" style="background:#FF5F57"></div>
+                <div class="w-2.5 h-2.5 rounded-full" style="background:#FEBC2E"></div>
+                <div class="w-2.5 h-2.5 rounded-full" style="background:#28C840"></div>
+                <span class="ml-3 text-[10px] font-medium" style="color:var(--text-tertiary)">REIS [IA] — Performance de Marketing</span>
+              </div>
+              <!-- Dashboard content -->
+              <div style="padding:20px">
+                <!-- Top KPIs row -->
+                <div class="grid grid-cols-4 gap-3 mb-5">
+                  <div class="p-3 rounded-lg" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                    <p class="text-[9px] uppercase tracking-wider font-semibold" style="color:var(--text-tertiary)">Leads</p>
+                    <p class="text-[20px] font-bold mt-1 tabular-nums" style="color:var(--accent-blue)">2.847</p>
+                    <div class="flex items-center gap-1 mt-1">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                      <span class="text-[9px] font-semibold" style="color:var(--color-success)">+34%</span>
+                    </div>
+                  </div>
+                  <div class="p-3 rounded-lg" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                    <p class="text-[9px] uppercase tracking-wider font-semibold" style="color:var(--text-tertiary)">Conversão</p>
+                    <p class="text-[20px] font-bold mt-1 tabular-nums" style="color:var(--text-primary)">8.2%</p>
+                    <div class="flex items-center gap-1 mt-1">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                      <span class="text-[9px] font-semibold" style="color:var(--color-success)">+12%</span>
+                    </div>
+                  </div>
+                  <div class="p-3 rounded-lg" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                    <p class="text-[9px] uppercase tracking-wider font-semibold" style="color:var(--text-tertiary)">Receita</p>
+                    <p class="text-[20px] font-bold mt-1 tabular-nums" style="color:var(--color-success)">R$184k</p>
+                    <div class="flex items-center gap-1 mt-1">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                      <span class="text-[9px] font-semibold" style="color:var(--color-success)">+47%</span>
+                    </div>
+                  </div>
+                  <div class="p-3 rounded-lg" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                    <p class="text-[9px] uppercase tracking-wider font-semibold" style="color:var(--text-tertiary)">ROAS</p>
+                    <p class="text-[20px] font-bold mt-1 tabular-nums" style="color:var(--accent-blue)">4.7x</p>
+                    <div class="flex items-center gap-1 mt-1">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                      <span class="text-[9px] font-semibold" style="color:var(--color-success)">+28%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chart area -->
+                <div class="p-4 rounded-lg mb-4" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                  <div class="flex items-center justify-between mb-3">
+                    <p class="text-[10px] font-semibold" style="color:var(--text-primary)">Receita mensal</p>
+                    <div class="flex gap-3">
+                      <span class="flex items-center gap-1.5 text-[9px]" style="color:var(--text-tertiary)"><span class="w-2 h-0.5 rounded-full inline-block" style="background:var(--accent-blue)"></span>2026</span>
+                      <span class="flex items-center gap-1.5 text-[9px]" style="color:var(--text-tertiary)"><span class="w-2 h-0.5 rounded-full inline-block" style="background:var(--border-visible)"></span>2025</span>
+                    </div>
+                  </div>
+                  <!-- Mini bar chart -->
+                  <div class="flex items-end gap-1.5" style="height:80px">
+                    <div class="flex-1 flex flex-col items-center gap-0.5">
+                      <div class="w-full rounded-sm" style="height:25px;background:var(--border-visible);opacity:0.5"></div>
+                      <div class="w-full rounded-sm" style="height:35px;background:var(--accent-blue)"></div>
+                      <span class="text-[7px]" style="color:var(--text-quaternary)">Jan</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-0.5">
+                      <div class="w-full rounded-sm" style="height:28px;background:var(--border-visible);opacity:0.5"></div>
+                      <div class="w-full rounded-sm" style="height:42px;background:var(--accent-blue)"></div>
+                      <span class="text-[7px]" style="color:var(--text-quaternary)">Fev</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-0.5">
+                      <div class="w-full rounded-sm" style="height:30px;background:var(--border-visible);opacity:0.5"></div>
+                      <div class="w-full rounded-sm" style="height:48px;background:var(--accent-blue)"></div>
+                      <span class="text-[7px]" style="color:var(--text-quaternary)">Mar</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-0.5">
+                      <div class="w-full rounded-sm" style="height:32px;background:var(--border-visible);opacity:0.5"></div>
+                      <div class="w-full rounded-sm" style="height:55px;background:var(--accent-blue)"></div>
+                      <span class="text-[7px]" style="color:var(--text-quaternary)">Abr</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-0.5">
+                      <div class="w-full rounded-sm" style="height:29px;background:var(--border-visible);opacity:0.5"></div>
+                      <div class="w-full rounded-sm" style="height:60px;background:var(--accent-blue)"></div>
+                      <span class="text-[7px]" style="color:var(--text-quaternary)">Mai</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-0.5">
+                      <div class="w-full rounded-sm" style="height:33px;background:var(--border-visible);opacity:0.5"></div>
+                      <div class="w-full rounded-sm mockup-bar-animate" style="height:72px;background:linear-gradient(180deg, var(--accent-blue) 0%, var(--accent-blue-muted) 100%)"></div>
+                      <span class="text-[7px] font-semibold" style="color:var(--accent-blue)">Jun</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Funnel + Active campaigns -->
+                <div class="grid grid-cols-2 gap-3">
+                  <!-- Funnel -->
+                  <div class="p-3 rounded-lg" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                    <p class="text-[10px] font-semibold mb-3" style="color:var(--text-primary)">Funil de conversão</p>
+                    <div class="space-y-2">
+                      <div>
+                        <div class="flex items-center justify-between mb-1"><span class="text-[8px]" style="color:var(--text-tertiary)">Visitantes</span><span class="text-[8px] font-semibold" style="color:var(--text-secondary)">12.4k</span></div>
+                        <div class="h-1.5 rounded-full" style="background:var(--surface-0)"><div class="h-full rounded-full" style="width:100%;background:var(--accent-blue);opacity:0.3"></div></div>
+                      </div>
+                      <div>
+                        <div class="flex items-center justify-between mb-1"><span class="text-[8px]" style="color:var(--text-tertiary)">Leads</span><span class="text-[8px] font-semibold" style="color:var(--text-secondary)">2.847</span></div>
+                        <div class="h-1.5 rounded-full" style="background:var(--surface-0)"><div class="h-full rounded-full" style="width:58%;background:var(--accent-blue);opacity:0.5"></div></div>
+                      </div>
+                      <div>
+                        <div class="flex items-center justify-between mb-1"><span class="text-[8px]" style="color:var(--text-tertiary)">Qualificados</span><span class="text-[8px] font-semibold" style="color:var(--text-secondary)">847</span></div>
+                        <div class="h-1.5 rounded-full" style="background:var(--surface-0)"><div class="h-full rounded-full" style="width:28%;background:var(--accent-blue);opacity:0.7"></div></div>
+                      </div>
+                      <div>
+                        <div class="flex items-center justify-between mb-1"><span class="text-[8px]" style="color:var(--text-tertiary)">Clientes</span><span class="text-[8px] font-semibold" style="color:var(--color-success)">234</span></div>
+                        <div class="h-1.5 rounded-full" style="background:var(--surface-0)"><div class="h-full rounded-full" style="width:12%;background:var(--color-success)"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Active campaigns -->
+                  <div class="p-3 rounded-lg" style="background:var(--surface-2);border:1px solid var(--border-default)">
+                    <p class="text-[10px] font-semibold mb-3" style="color:var(--text-primary)">Campanhas ativas</p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2 p-2 rounded-md" style="background:var(--surface-0)">
+                        <div class="w-1.5 h-1.5 rounded-full" style="background:var(--color-success)"></div>
+                        <span class="text-[9px] flex-1" style="color:var(--text-secondary)">Meta Ads — Leads</span>
+                        <span class="text-[8px] font-semibold" style="color:var(--color-success)">R$42/lead</span>
+                      </div>
+                      <div class="flex items-center gap-2 p-2 rounded-md" style="background:var(--surface-0)">
+                        <div class="w-1.5 h-1.5 rounded-full" style="background:var(--color-success)"></div>
+                        <span class="text-[9px] flex-1" style="color:var(--text-secondary)">Google — Search</span>
+                        <span class="text-[8px] font-semibold" style="color:var(--color-success)">R$38/lead</span>
+                      </div>
+                      <div class="flex items-center gap-2 p-2 rounded-md" style="background:var(--surface-0)">
+                        <div class="w-1.5 h-1.5 rounded-full" style="background:var(--accent-blue)"></div>
+                        <span class="text-[9px] flex-1" style="color:var(--text-secondary)">Email — Nutrição</span>
+                        <span class="text-[8px] font-semibold" style="color:var(--accent-blue)">32% open</span>
+                      </div>
+                      <div class="flex items-center gap-2 p-2 rounded-md" style="background:var(--surface-0)">
+                        <div class="w-1.5 h-1.5 rounded-full" style="background:var(--accent-blue)"></div>
+                        <span class="text-[9px] flex-1" style="color:var(--text-secondary)">WhatsApp — Follow-up</span>
+                        <span class="text-[8px] font-semibold" style="color:var(--accent-blue)">67% resp</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Text -->
+        <div>
+          <div class="animate-on-scroll">
+            <SectionLabel>Marketing</SectionLabel>
+          </div>
+
+          <h2
+            id="marketing-heading"
+            class="animate-on-scroll mt-5"
+            style="font-size: var(--text-h2); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em; color: var(--text-primary);"
+          >
+            Clientes e receita. <span class="hero-accent-gradient">Sem achismo.</span>
+          </h2>
+
+          <p
+            class="mt-5 animate-on-scroll"
+            style="font-size: var(--text-body-lg); line-height: 1.60; color: var(--text-secondary);"
+          >
+            Marketing com IA que gera demanda previsível. Tráfego pago otimizado por algoritmos, funis que convertem e follow-up automatizado — cada real investido rastreado até o fechamento.
+          </p>
+
+          <!-- What we deliver -->
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 animate-on-scroll">
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
+              <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
+              <div>
+                <p class="font-semibold text-[var(--text-primary)] text-sm">Tráfego pago com IA</p>
+                <p class="text-xs" style="color: var(--text-tertiary);">Meta, Google, otimização contínua</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
+              <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
+              <div>
+                <p class="font-semibold text-[var(--text-primary)] text-sm">Funis de conversão</p>
+                <p class="text-xs" style="color: var(--text-tertiary);">Landing pages, copy, automações</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
+              <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
+              <div>
+                <p class="font-semibold text-[var(--text-primary)] text-sm">Nutrição automatizada</p>
+                <p class="text-xs" style="color: var(--text-tertiary);">Email, WhatsApp, follow-up com IA</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
+              <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
+              <div>
+                <p class="font-semibold text-[var(--text-primary)] text-sm">Dashboard de resultados</p>
+                <p class="text-xs" style="color: var(--text-tertiary);">Leads, conversão, receita em tempo real</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 animate-on-scroll">
+            <Button variant="primary" href="/marketing">
+              Conhecer marketing &rarr;
+            </Button>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -96,28 +375,28 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
 
           <!-- What we build -->
           <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 animate-on-scroll">
-            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(74,144,255,0.04); border: 1px solid rgba(74,144,255,0.08);">
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
               <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
               <div>
                 <p class="font-semibold text-[var(--text-primary)] text-sm">Agentes de suporte</p>
                 <p class="text-xs" style="color: var(--text-tertiary);">Atendimento 24/7 que resolve, não enrola</p>
               </div>
             </div>
-            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(74,144,255,0.04); border: 1px solid rgba(74,144,255,0.08);">
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
               <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
               <div>
                 <p class="font-semibold text-[var(--text-primary)] text-sm">Agentes de vendas</p>
                 <p class="text-xs" style="color: var(--text-tertiary);">Qualificação e follow-up automáticos</p>
               </div>
             </div>
-            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(74,144,255,0.04); border: 1px solid rgba(74,144,255,0.08);">
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
               <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
               <div>
                 <p class="font-semibold text-[var(--text-primary)] text-sm">Automações operacionais</p>
                 <p class="text-xs" style="color: var(--text-tertiary);">Processos manuais eliminados</p>
               </div>
             </div>
-            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(74,144,255,0.04); border: 1px solid rgba(74,144,255,0.08);">
+            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: var(--accent-05); border: 1px solid var(--accent-08);">
               <span style="color: var(--accent-blue); font-size: 18px; line-height: 1;">&#9679;</span>
               <div>
                 <p class="font-semibold text-[var(--text-primary)] text-sm">Integrações com IA</p>
@@ -139,36 +418,36 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
             <div style="position: relative; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(-10deg); width: 320px; height: 380px;">
 
               <!-- Back card: Automações -->
-              <div style="position: absolute; top: 0; left: 15px; width: 290px; transform: translateZ(-30px); opacity: 0.5; background: var(--surface-0); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
-                <p style="font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Automações</p>
+              <div style="position: absolute; top: 0; left: 15px; width: 290px; transform: translateZ(-30px); opacity: 0.5; background: var(--surface-0); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 20px; box-shadow: var(--shadow-elevated);">
+                <p style="font-size: 10px; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Automações</p>
                 <p style="font-size: 15px; font-weight: 600; margin-top: 6px; color: var(--text-primary);">Processos inteligentes</p>
-                <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px;">Operação no automático</p>
+                <p style="font-size: 11px; color: var(--text-quaternary); margin-top: 4px;">Operação no automático</p>
               </div>
 
               <!-- Middle card: Integrações -->
-              <div style="position: absolute; top: 30px; left: 8px; width: 290px; transform: translateZ(-15px); opacity: 0.7; background: var(--surface-0); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
-                <p style="font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Integrações</p>
+              <div style="position: absolute; top: 30px; left: 8px; width: 290px; transform: translateZ(-15px); opacity: 0.7; background: var(--surface-0); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 20px; box-shadow: var(--shadow-elevated);">
+                <p style="font-size: 10px; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Integrações</p>
                 <p style="font-size: 15px; font-weight: 600; margin-top: 6px; color: var(--text-primary);">Tudo conectado</p>
-                <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px;">WhatsApp, CRMs, APIs</p>
+                <p style="font-size: 11px; color: var(--text-quaternary); margin-top: 4px;">WhatsApp, CRMs, APIs</p>
               </div>
 
               <!-- Front card: Agentes de IA (featured) -->
-              <div style="position: absolute; top: 60px; left: 0; width: 290px; transform: translateZ(0); background: var(--surface-1); border: 1px solid rgba(74,144,255,0.15); border-radius: 12px; padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,144,255,0.08);">
+              <div style="position: absolute; top: 60px; left: 0; width: 290px; transform: translateZ(0); background: var(--surface-1); border: 1px solid var(--accent-15); border-radius: var(--radius-xl); padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent-08);">
                 <p style="font-size: 10px; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Agentes de IA</p>
                 <p style="font-size: 17px; font-weight: 600; margin-top: 8px; color: var(--text-primary);">Vendas + Suporte + Operações</p>
-                <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 6px; line-height: 1.5;">Agentes que qualificam leads, respondem clientes e automatizam tarefas — 24/7.</p>
-                <div style="display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);">
+                <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 6px; line-height: 1.5;">Agentes que qualificam leads, respondem clientes e automatizam tarefas — 24/7.</p>
+                <div style="display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
                   <div>
                     <span style="font-size: 22px; font-weight: 700; color: var(--accent-blue);">+15h</span>
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px;">por semana</span>
+                    <span style="font-size: 10px; color: var(--text-quaternary); display: block; margin-top: 2px;">por semana</span>
                   </div>
                   <div>
                     <span style="font-size: 22px; font-weight: 700; color: var(--text-primary);">70x</span>
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px;">mais rápido</span>
+                    <span style="font-size: 10px; color: var(--text-quaternary); display: block; margin-top: 2px;">mais rápido</span>
                   </div>
                   <div>
                     <span style="font-size: 22px; font-weight: 700; color: #22C55E;">+R$80k</span>
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px;">receita/mês</span>
+                    <span style="font-size: 10px; color: var(--text-quaternary); display: block; margin-top: 2px;">receita/mês</span>
                   </div>
                 </div>
               </div>
@@ -197,7 +476,7 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
         <div class="animate-on-scroll order-2 lg:order-1">
           <div style="position:relative">
             <div aria-hidden="true" style="position:absolute;inset:-20px;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(74,144,255,0.04) 0%,transparent 60%);pointer-events:none"></div>
-            <div class="rounded-xl overflow-hidden" style="position:relative;background:var(--surface-1);border:1px solid var(--border-default);box-shadow:0 24px 64px rgba(0,0,0,0.4)">
+            <div class="rounded-xl overflow-hidden" style="position:relative;background:var(--surface-1);border:1px solid var(--border-default);box-shadow:var(--shadow-dramatic)">
               <!-- Window chrome -->
               <div class="flex items-center gap-2 px-4 py-3" style="background:var(--surface-0);border-bottom:1px solid var(--border-default)">
                 <div class="w-2.5 h-2.5 rounded-full" style="background:#FF5F57"></div>
@@ -209,20 +488,20 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
               <div class="flex" style="min-height:320px">
                 <!-- Sidebar -->
                 <div class="hidden sm:block" style="width:160px;background:var(--surface-0);border-right:1px solid var(--border-default);padding:16px 12px">
-                  <div class="flex items-center gap-2 p-2 rounded-md mb-1" style="background:rgba(74,144,255,0.08)">
+                  <div class="flex items-center gap-2 p-2 rounded-md mb-1" style="background:var(--accent-08)">
                     <div class="w-1.5 h-1.5 rounded-full" style="background:var(--accent-blue)"></div>
                     <span class="text-[10px] font-medium" style="color:var(--accent-blue)">Mentorias</span>
                   </div>
                   <div class="flex items-center gap-2 p-2 rounded-md mb-1">
-                    <div class="w-1.5 h-1.5 rounded-full" style="background:rgba(255,255,255,0.15)"></div>
+                    <div class="w-1.5 h-1.5 rounded-full" style="background:var(--border-visible)"></div>
                     <span class="text-[10px]" style="color:var(--text-tertiary)">Formações</span>
                   </div>
                   <div class="flex items-center gap-2 p-2 rounded-md mb-1">
-                    <div class="w-1.5 h-1.5 rounded-full" style="background:rgba(255,255,255,0.15)"></div>
+                    <div class="w-1.5 h-1.5 rounded-full" style="background:var(--border-visible)"></div>
                     <span class="text-[10px]" style="color:var(--text-tertiary)">Comunidade</span>
                   </div>
                   <div class="flex items-center gap-2 p-2 rounded-md">
-                    <div class="w-1.5 h-1.5 rounded-full" style="background:rgba(255,255,255,0.15)"></div>
+                    <div class="w-1.5 h-1.5 rounded-full" style="background:var(--border-visible)"></div>
                     <span class="text-[10px]" style="color:var(--text-tertiary)">Progresso</span>
                   </div>
                 </div>
@@ -235,13 +514,13 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
                         <p class="text-[12px] font-semibold" style="color:var(--text-primary)">Sessão individual</p>
                         <p class="text-[10px] mt-1" style="color:var(--text-tertiary)">Seg, 28 Mar — 14:00</p>
                       </div>
-                      <span class="text-[9px] px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.1);color:#22C55E">Confirmada</span>
+                      <span class="text-[9px] px-2 py-0.5 rounded" style="background:var(--color-success-bg);color:var(--color-success)">Confirmada</span>
                     </div>
                   </div>
                   <p class="text-[11px] font-semibold mb-3 mt-4" style="color:var(--text-primary)">Seu progresso</p>
                   <div class="space-y-2">
                     <div class="flex items-center gap-2">
-                      <div class="w-full h-1.5 rounded-full" style="background:var(--surface-0)"><div class="h-full rounded-full" style="width:100%;background:#22C55E"></div></div>
+                      <div class="w-full h-1.5 rounded-full" style="background:var(--surface-0)"><div class="h-full rounded-full" style="width:100%;background:var(--color-success)"></div></div>
                       <span class="text-[9px] whitespace-nowrap" style="color:var(--text-tertiary)">Oferta</span>
                     </div>
                     <div class="flex items-center gap-2">
@@ -348,7 +627,7 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
 
         <!-- Right: REIS [IA] Hub — Área de Membros mockup -->
         <div class="animate-on-scroll">
-          <div class="rounded-xl overflow-hidden" style="background:var(--surface-0);border:1px solid var(--border-default);box-shadow:0 24px 64px rgba(0,0,0,0.4)">
+          <div class="rounded-xl overflow-hidden" style="background:var(--surface-0);border:1px solid var(--border-default);box-shadow:var(--shadow-dramatic)">
             <div class="flex items-center gap-2 px-4 py-3" style="background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border-default)">
               <div class="w-2.5 h-2.5 rounded-full" style="background:#FF5F57"></div>
               <div class="w-2.5 h-2.5 rounded-full" style="background:#FEBC2E"></div>
@@ -357,30 +636,30 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
             </div>
             <div style="padding:16px">
               <div class="flex items-center gap-3 mb-4">
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold" style="background:rgba(74,144,255,0.1);color:var(--accent-blue)">MR</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold" style="background:var(--accent-10);color:var(--accent-blue)">MR</div>
                 <div><p class="text-[11px] font-semibold" style="color:var(--text-primary)">Bem-vindo, Moroni</p><p class="text-[9px]" style="color:var(--text-tertiary)">Nível: Especialista</p></div>
               </div>
               <p class="text-[10px] font-semibold mb-2" style="color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Suas formações</p>
               <div class="space-y-2">
                 <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--surface-1);border:1px solid var(--border-default)">
-                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:rgba(74,144,255,0.08);color:var(--accent-blue)">01</div>
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:var(--accent-08);color:var(--accent-blue)">01</div>
                   <div class="flex-1"><p class="text-[11px] font-semibold" style="color:var(--text-primary)">Fundamentos de IA</p><p class="text-[9px]" style="color:var(--text-tertiary)">12 aulas · 4h</p></div>
-                  <span class="text-[9px] px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.1);color:#22C55E">Concluído</span>
+                  <span class="text-[9px] px-2 py-0.5 rounded" style="background:var(--color-success-bg);color:var(--color-success)">Concluído</span>
                 </div>
-                <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--surface-1);border:1px solid rgba(74,144,255,0.1)">
-                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:rgba(74,144,255,0.08);color:var(--accent-blue)">02</div>
+                <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--surface-1);border:1px solid var(--accent-10)">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:var(--accent-08);color:var(--accent-blue)">02</div>
                   <div class="flex-1"><p class="text-[11px] font-semibold" style="color:var(--text-primary)">Vendas e Prospecção</p><p class="text-[9px]" style="color:var(--text-tertiary)">15 aulas · 5h</p></div>
-                  <span class="text-[9px] px-2 py-0.5 rounded" style="background:rgba(74,144,255,0.1);color:var(--accent-blue)">Em progresso</span>
+                  <span class="text-[9px] px-2 py-0.5 rounded" style="background:var(--accent-10);color:var(--accent-blue)">Em progresso</span>
                 </div>
                 <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--surface-1);border:1px solid var(--border-default)">
-                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:rgba(74,144,255,0.08);color:var(--accent-blue)">03</div>
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:var(--accent-08);color:var(--accent-blue)">03</div>
                   <div class="flex-1"><p class="text-[11px] font-semibold" style="color:var(--text-primary)">Agentes e Automações</p><p class="text-[9px]" style="color:var(--text-tertiary)">18 aulas · 6h</p></div>
-                  <span class="text-[9px] px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.05);color:var(--text-tertiary)">Em breve</span>
+                  <span class="text-[9px] px-2 py-0.5 rounded" style="background:var(--border-subtle);color:var(--text-tertiary)">Em breve</span>
                 </div>
                 <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--surface-1);border:1px solid var(--border-default)">
-                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:rgba(255,255,255,0.03);color:var(--text-tertiary)">04</div>
-                  <div class="flex-1"><p class="text-[11px] font-semibold" style="color:var(--text-tertiary)">Especialista em IA</p><p class="text-[9px]" style="color:rgba(255,255,255,0.25)">24 aulas · 8h</p></div>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-[14px] font-bold" style="background:var(--accent-02);color:var(--text-tertiary)">04</div>
+                  <div class="flex-1"><p class="text-[11px] font-semibold" style="color:var(--text-tertiary)">Especialista em IA</p><p class="text-[9px]" style="color:var(--text-muted)">24 aulas · 8h</p></div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--text-muted)" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
               </div>
             </div>
@@ -428,7 +707,7 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
 
         <!-- Community feed mockup -->
         <div class="mt-10 animate-on-scroll max-w-[700px] mx-auto">
-          <div class="rounded-xl overflow-hidden" style="background:var(--surface-1);border:1px solid var(--border-default);box-shadow:0 24px 64px rgba(0,0,0,0.4)">
+          <div class="rounded-xl overflow-hidden" style="background:var(--surface-1);border:1px solid var(--border-default);box-shadow:var(--shadow-dramatic)">
             <div class="flex items-center gap-2 px-4 py-3" style="background:var(--surface-0);border-bottom:1px solid var(--border-default)">
               <div class="w-2.5 h-2.5 rounded-full" style="background:#FF5F57"></div>
               <div class="w-2.5 h-2.5 rounded-full" style="background:#FEBC2E"></div>
@@ -446,7 +725,7 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
             <div style="padding:12px 16px">
               <div class="p-3 rounded-lg mb-3" style="background:var(--surface-0);border:1px solid var(--border-default)">
                 <div class="flex items-center gap-2 mb-2">
-                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold" style="background:rgba(74,144,255,0.1);color:var(--accent-blue)">RL</div>
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold" style="background:var(--accent-10);color:var(--accent-blue)">RL</div>
                   <span class="text-[10px] font-semibold" style="color:var(--text-primary)">Rafael Lima</span>
                   <span class="text-[9px]" style="color:var(--text-tertiary)">· 2h atrás</span>
                 </div>
@@ -458,9 +737,9 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
               </div>
               <div class="p-3 rounded-lg mb-3" style="background:var(--surface-0);border:1px solid var(--border-default)">
                 <div class="flex items-center gap-2 mb-2">
-                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold" style="background:rgba(34,197,94,0.1);color:#22C55E">MR</div>
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold" style="background:var(--color-success-bg);color:var(--color-success)">MR</div>
                   <span class="text-[10px] font-semibold" style="color:var(--text-primary)">Moroni Reis</span>
-                  <span class="text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(74,144,255,0.1);color:var(--accent-blue);font-size:8px">Admin</span>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded" style="background:var(--accent-10);color:var(--accent-blue);font-size:8px">Admin</span>
                   <span class="text-[9px]" style="color:var(--text-tertiary)">· 5h atrás</span>
                 </div>
                 <p class="text-[11px] leading-relaxed" style="color:var(--text-secondary)">Novo framework de precificação disponível na área de materiais. Testado com 12 projetos reais — margem média de 65%.</p>
@@ -471,7 +750,7 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
               </div>
               <div class="p-3 rounded-lg" style="background:var(--surface-0);border:1px solid var(--border-default)">
                 <div class="flex items-center gap-2 mb-2">
-                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold" style="background:rgba(234,179,8,0.1);color:#EAB308">AS</div>
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold" style="background:var(--color-warning-bg);color:var(--color-warning)">AS</div>
                   <span class="text-[10px] font-semibold" style="color:var(--text-primary)">Ana Souza</span>
                   <span class="text-[9px]" style="color:var(--text-tertiary)">· 1d atrás</span>
                 </div>
@@ -515,28 +794,28 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
         </h2>
       </div>
 
-      <!-- Inline horizontal stats — no boxes -->
+      <!-- Inline horizontal stats -->
       <div class="flex flex-wrap justify-center gap-12 sm:gap-16 lg:gap-24 animate-on-scroll">
         <div class="text-center">
-          <p class="font-bold tabular-nums" style="font-size:clamp(2.5rem,1.5rem+3vw,4rem);color:var(--accent-blue);letter-spacing:-0.02em;line-height:1">50+</p>
-          <p class="text-sm mt-2" style="color:var(--text-tertiary)">implementações entregues</p>
+          <p class="font-bold tabular-nums stat-gradient" style="font-size:clamp(2.8rem,1.5rem+4vw,4.5rem);letter-spacing:-0.04em;line-height:1">50+</p>
+          <p class="text-sm mt-3" style="color:var(--text-tertiary)">implementações entregues</p>
         </div>
         <div class="text-center">
-          <p class="font-bold tabular-nums" style="font-size:clamp(2.5rem,1.5rem+3vw,4rem);color:var(--text-primary);letter-spacing:-0.02em;line-height:1">70x</p>
-          <p class="text-sm mt-2" style="color:var(--text-tertiary)">mais rápido com IA</p>
+          <p class="font-bold tabular-nums" style="font-size:clamp(2.8rem,1.5rem+4vw,4.5rem);color:var(--text-primary);letter-spacing:-0.04em;line-height:1">70x</p>
+          <p class="text-sm mt-3" style="color:var(--text-tertiary)">mais rápido com IA</p>
         </div>
         <div class="text-center">
-          <p class="font-bold tabular-nums" style="font-size:clamp(2.5rem,1.5rem+3vw,4rem);color:var(--accent-blue);letter-spacing:-0.02em;line-height:1">+15h</p>
-          <p class="text-sm mt-2" style="color:var(--text-tertiary)">recuperadas por semana</p>
+          <p class="font-bold tabular-nums stat-gradient" style="font-size:clamp(2.8rem,1.5rem+4vw,4.5rem);letter-spacing:-0.04em;line-height:1">+15h</p>
+          <p class="text-sm mt-3" style="color:var(--text-tertiary)">recuperadas por semana</p>
         </div>
         <div class="text-center">
-          <p class="font-bold tabular-nums" style="font-size:clamp(2.5rem,1.5rem+3vw,4rem);color:var(--text-primary);letter-spacing:-0.02em;line-height:1">24/7</p>
-          <p class="text-sm mt-2" style="color:var(--text-tertiary)">agentes sempre ativos</p>
+          <p class="font-bold tabular-nums" style="font-size:clamp(2.8rem,1.5rem+4vw,4.5rem);color:var(--text-primary);letter-spacing:-0.04em;line-height:1">24/7</p>
+          <p class="text-sm mt-3" style="color:var(--text-tertiary)">agentes sempre ativos</p>
         </div>
       </div>
 
       <!-- Subtle divider -->
-      <div class="mt-12 mx-auto" style="max-width:200px;height:1px;background:linear-gradient(90deg,transparent,rgba(74,144,255,0.15),transparent)"></div>
+      <div class="mt-12 mx-auto" style="max-width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--blue-15),transparent)"></div>
     </div>
   </section>
 
@@ -592,11 +871,11 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
             class="mt-6 space-y-5 animate-on-scroll"
             style="font-size: var(--text-body); line-height: 1.65; color: var(--text-secondary); max-width: var(--container-text);"
           >
-            <p>Mais de uma década em marketing digital. Funis, lançamentos e sistemas de aquisição para empresas no Brasil e fora.</p>
+            <p>10+ anos construindo funis de aquisição, lançamentos e sistemas de marketing digital para empresas no Brasil e fora. R$400K+ em contratos de implementação de IA. 100+ alunos formados em IA aplicada a negócios.</p>
 
-            <p>Quando IA se tornou acessível, a pergunta foi simples: <strong style="color: var(--text-primary);">onde isso gera dinheiro?</strong></p>
+            <p>Enquanto o mercado vendia promessa, eu estava implementando. 40+ agentes de IA construídos e testados em produção diária — copy, branding, pesquisa de mercado, direção de arte, tráfego pago, atendimento e vendas. Ferramentas que nasceram pra resolver problemas reais do meu negócio antes de virar produto.</p>
 
-            <p>O mercado inteiro começava pela tecnologia. A gente começou pelo resultado. A <span style="font-weight: 300; color: var(--text-primary);">REIS [IA]</span> nasceu pra implementar IA que aparece no faturamento — não no PowerPoint.</p>
+            <p>A <span style="font-weight: 300; color: var(--text-primary);">REIS [IA]</span> nasceu dessa obsessão: <strong style="color: var(--text-primary);">IA que gera resultado real</strong> — no caixa, na operação, na escala.</p>
           </div>
 
           <div class="flex flex-col sm:flex-row gap-4 mt-10 animate-on-scroll">
@@ -629,9 +908,9 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
       <div class="text-center animate-on-scroll">
         <h2
           class="text-balance mx-auto"
-          style="font-size: var(--text-h2); font-weight: 600; line-height: 1.10; letter-spacing: -0.02em; color: var(--text-primary);"
+          style="font-size: var(--text-h2); font-weight: 500; line-height: 1.05; letter-spacing: -0.035em; color: var(--text-primary);"
         >
-          IA na prática. Resultados no caixa.
+          IA na prática. <span class="hero-accent-gradient">Resultados no caixa.</span>
         </h2>
         <p
           class="mt-5 mx-auto"
@@ -649,4 +928,347 @@ import HeroGrid from '../components/backgrounds/HeroGrid.tsx';
   </section>
 
 </MainLayout>
+
+<style>
+  /* ---- HERO ACCENT GRADIENT TEXT ---- */
+  .hero-accent-gradient {
+    background: linear-gradient(135deg, #4A90FF 0%, #6AADFF 40%, #00B4FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ---- ROTATING HERO COMPONENT ---- */
+  :global(.hero-rotating-container) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  :global(.hero-rotating-in) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  :global(.hero-rotating-out) {
+    opacity: 0;
+    transform: translateY(24px) scale(0.92);
+  }
+
+  /* Icon wrapper */
+  :global(.hero-icon-wrap) {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 36px;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :global(.hero-icon-svg) {
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+  }
+  :global(.hero-icon-svg svg) {
+    width: 100%;
+    height: 100%;
+  }
+  :global(.hero-glow-inner) {
+    inset: -50px;
+    background: radial-gradient(circle, rgba(74,144,255,0.18) 0%, rgba(74,144,255,0.04) 40%, transparent 65%);
+  }
+  :global(.hero-glow-outer) {
+    inset: -90px;
+    background: radial-gradient(circle, rgba(74,144,255,0.06) 0%, transparent 55%);
+  }
+
+  /* Phrase text */
+  :global(.hero-phrase) {
+    display: inline-block;
+    color: #FFFFFF;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Brand line */
+  :global(.hero-brand-line) {
+    margin-top: 8px;
+    font-size: 0.55em;
+    letter-spacing: -0.01em;
+  }
+
+  /* Float animation */
+  :global(.hero-float) {
+    animation: heroFloat 5s ease-in-out infinite;
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.04); }
+  }
+
+  /* Pulsing glow — inner */
+  :global(.hero-glow-pulse) {
+    animation: heroGlowPulse 3s ease-in-out infinite;
+  }
+  @keyframes heroGlowPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.25); }
+  }
+
+  /* Pulsing glow — outer */
+  :global(.hero-glow-pulse-slow) {
+    animation: heroGlowSlow 5s ease-in-out infinite;
+  }
+  @keyframes heroGlowSlow {
+    0%, 100% { opacity: 0.3; transform: scale(0.95); }
+    50% { opacity: 0.8; transform: scale(1.15); }
+  }
+
+  /* ---- MOBILE RESPONSIVE ---- */
+  @media (max-width: 640px) {
+    :global(.hero-icon-wrap) {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 24px;
+    }
+    :global(.hero-icon-svg) {
+      width: 32px;
+      height: 32px;
+    }
+    :global(.hero-glow-inner) { inset: -30px; }
+    :global(.hero-glow-outer) { inset: -50px; }
+    :global(.hero-phrase) {
+      white-space: normal;
+      line-height: 1.15;
+    }
+    :global(.hero-brand-line) {
+      margin-top: 4px;
+      font-size: 0.5em;
+    }
+    .hero-bg-glow {
+      width: 350px;
+      height: 250px;
+    }
+    .hero-badge {
+      font-size: 9px;
+      margin-bottom: 24px;
+    }
+  }
+
+  /* REIS text glow animation */
+  :global(.hero-brand-reis) {
+    animation: reisGlow 3s ease-in-out infinite;
+  }
+  @keyframes reisGlow {
+    0%, 100% { text-shadow: 0 0 4px rgba(74,144,255,0.05); }
+    50% { text-shadow: 0 0 20px rgba(74,144,255,0.25), 0 0 40px rgba(74,144,255,0.1); }
+  }
+
+  /* [IA] gradient text with glow animation */
+  :global(.hero-brand-gradient) {
+    background: linear-gradient(135deg, #4A90FF 0%, #00B4FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brandGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(74,144,255,0));
+  }
+  @keyframes brandGlow {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(74,144,255,0.1)); }
+    50% { filter: drop-shadow(0 0 16px rgba(74,144,255,0.4)); }
+  }
+
+
+  /* ---- HERO BACKGROUND GLOW (stronger) ---- */
+  .hero-bg-glow {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(74,144,255,0.12) 0%, rgba(74,144,255,0.04) 40%, transparent 65%);
+    filter: blur(50px);
+    animation: heroBgGlow 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes heroBgGlow {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  }
+
+  /* ---- HERO BADGE ---- */
+  .hero-badge {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(74, 144, 255, 0.55);
+    margin-bottom: 40px;
+  }
+
+  /* ---- LOGO COUNT BADGE ---- */
+  .logo-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    background: rgba(74, 144, 255, 0.08);
+    border: 1px solid rgba(74, 144, 255, 0.15);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- CTA PILL BUTTON (shimmer effect) ---- */
+  .hero-cta-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(74,144,255,0.15) 0%, rgba(74,144,255,0.06) 100%);
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 26px 14px 30px;
+    border-radius: 200px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    border: 1px solid rgba(74, 144, 255, 0.3);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 24px rgba(74, 144, 255, 0.1), inset 0 1px 0 rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  /* Shimmer sweep across button */
+  .hero-cta-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    animation: ctaShimmer 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes ctaShimmer {
+    0% { left: -100%; }
+    50%, 100% { left: 200%; }
+  }
+  .hero-cta-pill:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(74,144,255,0.22) 0%, rgba(74,144,255,0.1) 100%);
+    border-color: rgba(74, 144, 255, 0.5);
+    box-shadow: 0 0 50px rgba(74, 144, 255, 0.2), 0 8px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12);
+    color: white;
+  }
+  .hero-cta-pill:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: none;
+  }
+  .hero-cta-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-blue);
+    transition: transform 0.3s ease;
+  }
+  .hero-cta-pill:hover .hero-cta-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ---- LOGO SCROLL ---- */
+  .logo-scroll-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  .logo-scroll-fade {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .logo-scroll-fade--l {
+    left: 0;
+    background: linear-gradient(90deg, var(--surface-1), transparent);
+  }
+  .logo-scroll-fade--r {
+    right: 0;
+    background: linear-gradient(270deg, var(--surface-1), transparent);
+  }
+  .logo-scroll-track {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+    width: max-content;
+    animation: logoSlide 30s linear infinite;
+  }
+  @keyframes logoSlide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .logo-img {
+    height: 24px;
+    width: auto;
+    opacity: 0.3;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .logo-img--square {
+    height: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .logo-scroll-track { gap: 36px; }
+    .logo-img { height: 18px; }
+    .logo-img--square { height: 22px; }
+    .logo-scroll-fade { width: 50px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-scroll-track { animation: none; }
+  }
+
+  /* ---- STATS GRADIENT ---- */
+  .stat-gradient {
+    background: linear-gradient(180deg, #4A90FF 0%, #6AADFF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ---- SHIMMER SECTION DIVIDERS ---- */
+  .shimmer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.02) 100%);
+  }
+
+  /* ---- REDUCED MOTION ---- */
+  @media (prefers-reduced-motion: reduce) {
+    :global(.hero-float) { animation: none; }
+    :global(.hero-glow-pulse),
+    :global(.hero-glow-pulse-slow) { animation: none; }
+    .hero-bg-glow { animation: none; }
+    .hero-cta-pill::before { animation: none; }
+    :global(.hero-brand-gradient),
+    :global(.hero-brand-reis) { animation: none; filter: none; text-shadow: none; }
+    :global(.hero-rotating-word),
+    :global(.hero-rotating-in),
+    :global(.hero-rotating-out) { transition: none; }
+    .hero-animate { opacity: 1; transform: none; transition: none; }
+  }
+</style>
 

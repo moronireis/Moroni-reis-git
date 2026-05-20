@@ -15,15 +15,36 @@ const emailParam = Astro.url.searchParams.get('email') || '';
     <h1 class="text-2xl font-medium mb-2" style="color: var(--text-primary);">
       Obrigado pela compra!
     </h1>
-    <p class="text-sm" style="color: var(--text-tertiary); max-width: 360px; margin: 0 auto;">
-      Crie sua conta abaixo para acessar o conteúdo. Use o mesmo email da compra.
+    <p class="text-sm mb-4" style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto;">
+      Seu acesso Starter ao AGENTES [IA] est&aacute; sendo preparado. Voc&ecirc; receber&aacute; as informa&ccedil;&otilde;es de acesso por WhatsApp em instantes.
     </p>
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs" style="background: rgba(74, 144, 255, 0.08); border: 1px solid rgba(74, 144, 255, 0.15); color: var(--accent-blue);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      Confira seu WhatsApp
+    </div>
   </div>
 
-  <CreateAccountForm
-    client:load
-    defaultEmail={emailParam}
-  />
+  <div class="rounded-xl p-6 mb-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+    <h3 class="text-sm font-medium mb-3" style="color: var(--text-primary);">
+      Crie sua conta na plataforma
+    </h3>
+    <p class="text-xs mb-4" style="color: var(--text-tertiary);">
+      Use o mesmo email da compra para ativar seu acesso imediato ao painel.
+    </p>
+    <CreateAccountForm
+      client:load
+      defaultEmail={emailParam}
+    />
+  </div>
+
+  <div class="rounded-xl p-4 text-center" style="background: rgba(74, 144, 255, 0.04); border: 1px solid rgba(74, 144, 255, 0.08);">
+    <p class="text-xs" style="color: var(--text-tertiary);">
+      N&atilde;o recebeu o acesso? Entre em contato:
+      <a href="https://wa.me/5511970578082" style="color: var(--accent-blue); text-decoration: underline;">WhatsApp</a>
+    </p>
+  </div>
 </AuthLayout>
 
 <style>

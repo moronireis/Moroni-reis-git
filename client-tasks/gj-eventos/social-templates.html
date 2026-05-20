@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GJ Eventos — Instagram Templates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1A1A1A;
+      color: #FDFCFB;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================
+       TOKENS
+       ============================================ */
+    :root {
+      --teal: #2EB8A6;
+      --teal-dark: #1A2420;
+      --teal-700: #249688;
+      --teal-500: #3BD4BE;
+      --teal-200: #C2F5EC;
+      --coral: #E8725A;
+      --warm-white: #FDFCFB;
+      --warm-cream: #F5F0EB;
+      --warm-neutral: #E8E0D8;
+      --dark-neutral: #3D352D;
+      --page-bg: #1A1A1A;
+      --card-bg: #242424;
+      --card-border: #333;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ============================================
+       PAGE LAYOUT
+       ============================================ */
+    .page-header {
+      text-align: center;
+      padding: 48px 24px 16px;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--warm-white);
+      letter-spacing: -0.01em;
+    }
+
+    .page-header p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #999;
+      margin-top: 8px;
+    }
+
+    .page-header .logo-bars {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .page-header .logo-bars span {
+      display: block;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .page-header .logo-bars span:nth-child(1) { width: 40px; }
+    .page-header .logo-bars span:nth-child(2) { width: 28px; }
+    .page-header .logo-bars span:nth-child(3) { width: 16px; }
+
+    .gallery {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .template-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .template-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .template-label {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .template-label h3 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--warm-white);
+    }
+
+    .template-label .dimensions {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: #777;
+      font-weight: 400;
+    }
+
+    .template-frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px;
+      background: #1E1E1E;
+    }
+
+    /* ============================================
+       1. PORTFOLIO POST (360x450)
+       ============================================ */
+    .tpl-portfolio {
+      width: 360px;
+      height: 450px;
+      position: relative;
+      overflow: hidden;
+      background: #2A2520;
+    }
+
+    .tpl-portfolio .photo-area {
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(135deg, #3D352D 0%, #2A2520 50%, #3D352D 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .tpl-portfolio .photo-area::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(26,36,32,0.7) 100%);
+    }
+
+    .tpl-portfolio .photo-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 20px;
+    }
+
+    .tpl-portfolio .bottom-strip {
+      width: 100%;
+      height: 30%;
+      background: var(--teal-dark);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 24px;
+    }
+
+    .tpl-portfolio .bottom-strip::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-500));
+    }
+
+    .tpl-portfolio .event-badge {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--teal-dark);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 3px;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .tpl-portfolio .event-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--warm-white);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .tpl-portfolio .brand-text {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: rgba(253,252,251,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       2. QUOTE/TESTIMONIAL (360x360)
+       ============================================ */
+    .tpl-quote {
+      width: 360px;
+      height: 360px;
+      background: var(--warm-cream);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 36px;
+      overflow: hidden;
+    }
+
+    .tpl-quote .corner-bars {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .tpl-quote .corner-bars span {
+      display: block;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+      opacity: 0.3;
+    }
+
+    .tpl-quote .corner-bars span:nth-child(1) { width: 32px; }
+    .tpl-quote .corner-bars span:nth-child(2) { width: 22px; }
+    .tpl-quote .corner-bars span:nth-child(3) { width: 12px; }
+
+    .tpl-quote .quote-mark {
+      font-family: var(--font-display);
+      font-size: 72px;
+      color: var(--teal);
+      line-height: 0.8;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+
+    .tpl-quote .quote-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--dark-neutral);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .tpl-quote .client-name {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark-neutral);
+      letter-spacing: 0.02em;
+    }
+
+    .tpl-quote .client-event {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #998E83;
+      margin-top: 2px;
+    }
+
+    .tpl-quote .bottom-line {
+      position: absolute;
+      bottom: 24px;
+      left: 36px;
+      width: 40px;
+      height: 2px;
+      background: var(--teal);
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       3. TIPS/VALUE POST (360x360)
+       ============================================ */
+    .tpl-tips {
+      width: 360px;
+      height: 360px;
+      background: var(--teal);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 36px 32px 32px;
+      overflow: hidden;
+    }
+
+    .tpl-tips .tip-number {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.15);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .tpl-tips .tip-headline {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: white;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .tpl-tips .tip-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .tpl-tips .bottom-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 20px;
+    }
+
+    .tpl-tips .bottom-bars span {
+      display: block;
+      height: 3px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+    }
+
+    .tpl-tips .bottom-bars span:nth-child(1) { width: 40px; }
+    .tpl-tips .bottom-bars span:nth-child(2) { width: 28px; }
+    .tpl-tips .bottom-bars span:nth-child(3) { width: 16px; }
+
+    /* ============================================
+       4. BEFORE/AFTER STORY (270x480)
+       ============================================ */
+    .tpl-before-after {
+      width: 270px;
+      height: 480px;
+      background: var(--teal-dark);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .tpl-before-after .half {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .tpl-before-after .half-before {
+      background: linear-gradient(135deg, #2A2520 0%, #3D352D 100%);
+    }
+
+    .tpl-before-after .half-after {
+      background: linear-gradient(135deg, #1D3530 0%, #1A2420 100%);
+    }
+
+    .tpl-before-after .half-label {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .tpl-before-after .photo-placeholder-sm {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.15);
+      font-size: 14px;
+    }
+
+    .tpl-before-after .divider-bar {
+      height: 40px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .tpl-before-after .divider-bar .arrow-icon {
+      color: var(--teal-dark);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .tpl-before-after .divider-bar .divider-text {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--teal-dark);
+    }
+
+    .tpl-before-after .watermark {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       5. EVENT ANNOUNCEMENT STORY (270x480)
+       ============================================ */
+    .tpl-event {
+      width: 270px;
+      height: 480px;
+      background: var(--teal-dark);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 24px;
+      overflow: hidden;
+    }
+
+    .tpl-event .top-accent {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 32px;
+    }
+
+    .tpl-event .top-accent span {
+      display: block;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .tpl-event .top-accent span:nth-child(1) { width: 36px; }
+    .tpl-event .top-accent span:nth-child(2) { width: 24px; }
+    .tpl-event .top-accent span:nth-child(3) { width: 14px; }
+
+    .tpl-event .event-type {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .tpl-event .event-headline {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--warm-white);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .tpl-event .event-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tpl-event .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .tpl-event .detail-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 12px;
+    }
+
+    .tpl-event .detail-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(253,252,251,0.4);
+      margin-bottom: 2px;
+    }
+
+    .tpl-event .detail-value {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--warm-white);
+    }
+
+    .tpl-event .cta-button {
+      margin-top: auto;
+      background: var(--teal);
+      color: var(--teal-dark);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      padding: 14px 24px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================
+       6. CAROUSEL COVER (360x450)
+       ============================================ */
+    .tpl-carousel {
+      width: 360px;
+      height: 450px;
+      background: var(--teal-dark);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      overflow: hidden;
+    }
+
+    .tpl-carousel .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+        rgba(46,184,166,0.2) 0%,
+        rgba(26,36,32,0.9) 40%,
+        var(--teal-dark) 100%
+      );
+    }
+
+    .tpl-carousel .bg-pattern {
+      position: absolute;
+      top: 40px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      opacity: 0.08;
+    }
+
+    .tpl-carousel .bg-pattern span {
+      display: block;
+      height: 4px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .tpl-carousel .bg-pattern span:nth-child(1) { width: 80px; }
+    .tpl-carousel .bg-pattern span:nth-child(2) { width: 56px; }
+    .tpl-carousel .bg-pattern span:nth-child(3) { width: 32px; }
+
+    .tpl-carousel .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tpl-carousel .slide-indicator {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(253,252,251,0.4);
+      border: 1px solid rgba(253,252,251,0.15);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .tpl-carousel .carousel-headline {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--warm-white);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .tpl-carousel .carousel-headline em {
+      color: var(--teal-500);
+      font-style: normal;
+    }
+
+    .tpl-carousel .swipe-cta {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: rgba(253,252,251,0.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .tpl-carousel .swipe-arrow {
+      display: inline-block;
+      font-size: 14px;
+      color: var(--teal);
+    }
+
+    /* ============================================
+       7. SERVICE CARD (360x360)
+       ============================================ */
+    .tpl-service {
+      width: 360px;
+      height: 360px;
+      background: var(--warm-cream);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 36px 32px;
+      overflow: hidden;
+    }
+
+    .tpl-service .service-category {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 5px 14px;
+      border-radius: 3px;
+      width: fit-content;
+      margin-bottom: 24px;
+    }
+
+    .tpl-service .service-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--dark-neutral);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .tpl-service .service-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: #7A7068;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .tpl-service .bar-pattern {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .tpl-service .bar-pattern span {
+      display: block;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+      opacity: 0.25;
+    }
+
+    .tpl-service .bar-pattern span:nth-child(1) { width: 36px; }
+    .tpl-service .bar-pattern span:nth-child(2) { width: 24px; }
+    .tpl-service .bar-pattern span:nth-child(3) { width: 14px; }
+
+    .tpl-service .bottom-brand {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #B5ADA5;
+      letter-spacing: 0.05em;
+      margin-top: 16px;
+    }
+
+    /* ============================================
+       8. GRID PREVIEW
+       ============================================ */
+    .grid-preview-container {
+      display: flex;
+      justify-content: center;
+      padding: 32px;
+      background: #1E1E1E;
+    }
+
+    .grid-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      width: 360px;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .grid-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-cell.photo {
+      background: linear-gradient(135deg, #2A2520, #3D352D);
+    }
+
+    .grid-cell.branded-teal {
+      background: var(--teal);
+    }
+
+    .grid-cell.branded-cream {
+      background: var(--warm-cream);
+    }
+
+    .grid-cell.branded-dark {
+      background: var(--teal-dark);
+    }
+
+    .grid-cell .cell-icon {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .grid-cell.branded-cream .cell-icon {
+      color: rgba(61,53,45,0.15);
+    }
+
+    .grid-cell .cell-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .grid-cell .cell-bars span {
+      display: block;
+      height: 2px;
+      border-radius: 1px;
+    }
+
+    .grid-cell.branded-teal .cell-bars span {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .grid-cell.branded-cream .cell-bars span {
+      background: rgba(46,184,166,0.25);
+    }
+
+    .grid-cell.branded-dark .cell-bars span {
+      background: rgba(46,184,166,0.3);
+    }
+
+    .grid-cell .cell-bars span:nth-child(1) { width: 20px; }
+    .grid-cell .cell-bars span:nth-child(2) { width: 14px; }
+    .grid-cell .cell-bars span:nth-child(3) { width: 8px; }
+
+    .grid-cell .cell-text-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .grid-cell .cell-line {
+      height: 2px;
+      border-radius: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .grid-cell.branded-cream .cell-line {
+      background: rgba(61,53,45,0.1);
+    }
+
+    .grid-cell .cell-line:nth-child(1) { width: 50px; }
+    .grid-cell .cell-line:nth-child(2) { width: 36px; }
+    .grid-cell .cell-line:nth-child(3) { width: 42px; }
+
+    /* ============================================
+       STORY TEMPLATES — side by side on desktop
+       ============================================ */
+    .stories-pair {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================
+       SECTION HEADER
+       ============================================ */
+    .section-header {
+      grid-column: 1 / -1;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--card-border);
+      margin-top: 8px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--warm-white);
+    }
+
+    .section-header p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 767px) {
+      .gallery {
+        padding: 16px;
+        gap: 28px;
+      }
+
+      .template-frame {
+        padding: 20px 16px;
+        overflow-x: auto;
+      }
+
+      .page-header h1 {
+        font-size: 22px;
+      }
+    }
+
+    /* ============================================
+       SVG ICON HELPERS
+       ============================================ */
+    .icon-camera, .icon-calendar, .icon-pin, .icon-clock, .icon-sparkle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="logo-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <h1>GJ Eventos  --  Instagram Templates</h1>
+    <p>Kit de templates para feed e stories. 8 formatos prontos para uso.</p>
+  </header>
+
+  <main class="gallery">
+
+    <!-- SECTION: Feed Posts -->
+    <div class="section-header">
+      <h2>Feed Posts</h2>
+      <p>Formatos para o grid principal do Instagram</p>
+    </div>
+
+    <!-- 1. Portfolio Post -->
+    <div class="template-card">
+      <div class="template-label">
+        <h3>01 -- Portfolio Post</h3>
+        <span class="dimensions">1080 x 1350px</span>
+      </div>
+      <div class="template-frame">
+        <div class="tpl-portfolio">
+          <div class="photo-area">
+            <div class="photo-placeholder-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+            </div>
+          </div>
+          <div class="bottom-strip">
+            <div class="event-badge">Casamento</div>
+            <div class="event-title">Mariana &amp; Rafael</div>
+            <div class="brand-text">GJ Eventos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Quote/Testimonial -->
+    <div class="template-card">
+      <div class="template-label">
+        <h3>02 -- Depoimento</h3>
+        <span class="dimensions">1080 x 1080px</span>
+      </div>
+      <div class="template-frame">
+        <div class="tpl-quote">
+          <div class="corner-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="quote-mark">"</div>
+          <div class="quote-text">A equipe da GJ transformou nosso sonho em realidade. Cada detalhe foi cuidado com carinho e profissionalismo.</div>
+          <div class="client-name">Ana Carolina Silva</div>
+          <div class="client-event">Casamento -- Dezembro 2025</div>
+          <div class="bottom-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tips/Value Post -->
+    <div class="template-card">
+      <div class="template-label">
+        <h3>03 -- Dicas / Valor</h3>
+        <span class="dimensions">1080 x 1080px</span>
+      </div>
+      <div class="template-frame">
+        <div class="tpl-tips">
+          <div class="tip-number">03</div>
+          <div class="tip-headline">Flores que duram mais no calor</div>
+          <div class="tip-body">Eventos ao ar livre pedem flores resistentes. Anthurios, orquideas e suculentas mantêm a beleza mesmo sob sol forte. Evite rosas em horarios de pico de calor.</div>
+          <div class="bottom-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Service Card -->
+    <div class="template-card">
+      <div class="template-label">
+        <h3>07 -- Card de Servico</h3>
+        <span class="dimensions">1080 x 1080px</span>
+      </div>
+      <div class="template-frame">
+        <div class="tpl-service">
+          <div class="service-category">Decoracao</div>
+          <div class="service-name">Decoracao Completa para Casamentos</div>
+          <div class="service-desc">Do projeto a montagem. Criamos ambientes que contam a historia de cada casal, com flores, iluminacao e mobiliario selecionados sob medida.</div>
+          <div class="bottom-brand">GJ Eventos</div>
+          <div class="bar-pattern">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Carousel Cover -->
+    <div class="template-card">
+      <div class="template-label">
+        <h3>06 -- Capa de Carrossel</h3>
+        <span class="dimensions">1080 x 1350px</span>
+      </div>
+      <div class="template-frame">
+        <div class="tpl-carousel">
+          <div class="bg-gradient"></div>
+          <div class="bg-pattern">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="content">
+            <span class="slide-indicator">1 / 10</span>
+            <div class="carousel-headline">5 <em>tendencias</em> de decoracao para 2026</div>
+            <div class="swipe-cta">
+              Arraste para ver todas
+              <span class="swipe-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: Stories -->
+    <div class="section-header">
+      <h2>Stories</h2>
+      <p>Formatos verticais 9:16 para Instagram Stories</p>
+    </div>
+
+    <!-- Stories side by side -->
+    <div class="template-card full-width">
+      <div class="template-label">
+        <h3>04 -- Antes/Depois  |  05 -- Anuncio de Evento</h3>
+        <span class="dimensions">1080 x 1920px</span>
+      </div>
+      <div class="template-frame">
+        <div class="stories-pair">
+          <!-- 4. Before/After Story -->
+          <div class="tpl-before-after">
+            <div class="half half-before">
+              <span class="half-label">Antes</span>
+              <div class="photo-placeholder-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+            </div>
+            <div class="divider-bar">
+              <span class="arrow-icon">&darr;</span>
+              <span class="divider-text">Transformacao</span>
+              <span class="arrow-icon">&darr;</span>
+            </div>
+            <div class="half half-after">
+              <span class="half-label">Depois</span>
+              <div class="photo-placeholder-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+            </div>
+            <span class="watermark">GJ Eventos</span>
+          </div>
+
+          <!-- 5. Event Announcement Story -->
+          <div class="tpl-event">
+            <div class="top-accent">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="event-type">Casamento</div>
+            <div class="event-headline">Save the Date</div>
+            <div class="event-details">
+              <div class="detail-row">
+                <div class="detail-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="detail-label">Data</div>
+                  <div class="detail-value">15 de Marco, 2026</div>
+                </div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="detail-label">Local</div>
+                  <div class="detail-value">Espaco Villa Garden</div>
+                </div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="detail-label">Horario</div>
+                  <div class="detail-value">16h00</div>
+                </div>
+              </div>
+            </div>
+            <div class="cta-button">Confirmar Presenca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: Grid Strategy -->
+    <div class="section-header">
+      <h2>Estrategia de Grid</h2>
+      <p>Visualizacao do feed com posts alternados para ritmo visual consistente</p>
+    </div>
+
+    <!-- 8. Grid Preview -->
+    <div class="template-card full-width">
+      <div class="template-label">
+        <h3>08 -- Preview do Grid (3x3)</h3>
+        <span class="dimensions">Simulacao do feed Instagram</span>
+      </div>
+      <div class="grid-preview-container">
+        <div class="grid-preview">
+          <!-- Row 1 -->
+          <div class="grid-cell photo">
+            <div class="cell-text-block">
+              <span class="cell-line"></span>
+              <span class="cell-line"></span>
+            </div>
+          </div>
+          <div class="grid-cell branded-teal">
+            <div class="cell-bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="grid-cell photo">
+            <div class="cell-text-block">
+              <span class="cell-line"></span>
+              <span class="cell-line"></span>
+            </div>
+          </div>
+          <!-- Row 2 -->
+          <div class="grid-cell branded-cream">
+            <div class="cell-bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="grid-cell photo">
+            <div class="cell-text-block">
+              <span class="cell-line"></span>
+              <span class="cell-line"></span>
+            </div>
+          </div>
+          <div class="grid-cell branded-dark">
+            <div class="cell-bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <!-- Row 3 -->
+          <div class="grid-cell photo">
+            <div class="cell-text-block">
+              <span class="cell-line"></span>
+              <span class="cell-line"></span>
+            </div>
+          </div>
+          <div class="grid-cell branded-teal">
+            <div class="cell-bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="grid-cell photo">
+            <div class="cell-text-block">
+              <span class="cell-line"></span>
+              <span class="cell-line"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="text-align: center; padding: 40px 24px 32px; font-family: var(--font-body); font-size: 12px; color: #555;">
+    GJ Eventos -- Kit de Templates Instagram -- Abril 2026
+  </footer>
+
+</body>
+</html>

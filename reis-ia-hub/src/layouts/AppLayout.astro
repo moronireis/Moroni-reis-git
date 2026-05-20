@@ -8,7 +8,7 @@ export const prerender = false;
 
 interface Props {
   title: string;
-  activeSection?: 'dashboard' | 'projects' | 'academy' | 'journey' | 'community' | 'vault' | 'settings' | 'tasks' | 'crm' | 'admin-projects' | 'admin-academy' | 'admin-vault' | 'mentoria' | 'admin-analytics' | 'admin-mentoria' | 'admin-journeys' | 'admin-users' | 'admin-notifications' | 'admin-knowledge';
+  activeSection?: 'dashboard' | 'projects' | 'academy' | 'journey' | 'community' | 'vault' | 'settings' | 'tasks' | 'tarefas' | 'crm' | 'admin-projects' | 'admin-academy' | 'admin-vault' | 'mentoria' | 'admin-analytics' | 'admin-mentoria' | 'admin-journeys' | 'admin-users' | 'admin-notifications' | 'admin-knowledge';
 }
 
 const { title, activeSection = 'dashboard' } = Astro.props;
@@ -22,15 +22,33 @@ const userRole = (profile?.role || 'starter') as 'starter' | 'journey' | 'builde
 // Nav lock rules per role
 function isNavLocked(itemId: string): boolean {
   if (userRole === 'admin') return false;
-  // Dashboard + Journey + Community + Settings + Academy always unlocked in nav
-  if (['dashboard', 'journey', 'community', 'settings', 'academy'].includes(itemId)) return false;
+  // Starter: only dashboard, academy, settings, tarefas
+  if (userRole === 'starter') {
+    return !['dashboard', 'academy', 'settings', 'tarefas'].includes(itemId);
+  }
+  // Dashboard + Journey + Community + Settings + Academy + Tarefas always unlocked in nav
+  if (['dashboard', 'journey', 'community', 'settings', 'academy', 'tarefas'].includes(itemId)) return false;
   // Everything else locked for non-admin
-  if (userRole === 'journey' || userRole === 'starter') return true;
+  if (userRole === 'journey') return true;
   if (userRole === 'builder') {
     if (['projects', 'mentoria'].includes(itemId)) return true;
   }
   if (itemId === 'vault' && userRole !== 'mentoria' && userRole !== 'admin') return true;
   return false;
+}
+
+// WhatsApp CTA for locked items (starter role)
+const WA_NUMBER = '5511970578082';
+function getWhatsAppUrl(itemId: string): string {
+  const messages: Record<string, string> = {
+    projects: 'Olá! Tenho interesse em projetos de implementação de IA. Pode me contar mais?',
+    journey: 'Olá! Quero saber mais sobre a Jornada de aprendizado. Como funciona?',
+    community: 'Olá! Quero fazer parte da Comunidade. Como faço para ter acesso?',
+    vault: 'Olá! Quero acessar o Vault com recursos e templates. Como funciona?',
+    mentoria: 'Olá! Tenho interesse na Mentoria. Pode me contar mais?',
+  };
+  const text = encodeURIComponent(messages[itemId] || 'Olá! Quero saber mais sobre os planos disponíveis.');
+  return `https://wa.me/${WA_NUMBER}?text=${text}`;
 }
 
 // No coming soon tags in nav anymore
@@ -80,6 +98,7 @@ const navItems = [
   { id: 'community', label: 'Comunidade', href: '/community', icon: 'users' },
   { id: 'vault', label: 'Vault', href: '/vault', icon: 'archive' },
   { id: 'mentoria', label: 'Mentoria', href: '/mentoria', icon: 'compass' },
+  { id: 'tarefas', label: 'Tarefas', href: '/tarefas', icon: 'check-square' },
 ];
 
 const adminNavItems = [
@@ -139,9 +158,13 @@ const adminNavItems = [
       {navItems.map(item => {
         const locked = isNavLocked(item.id);
         const comingSoon = isComingSoon(item.id);
+        const lockedHref = locked && userRole === 'starter' ? getWhatsAppUrl(item.id) : (locked ? '#' : item.href);
+        const isExternal = locked && userRole === 'starter';
         return (
           <a
-            href={locked ? '#' : item.href}
+            href={lockedHref}
+            target={isExternal ? '_blank' : undefined}
+            rel={isExternal ? 'noopener' : undefined}
             class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 nav-item"
             style={activeSection === item.id
               ? `background: var(--blue-10); color: var(--accent-blue); font-weight: 500;`
@@ -195,6 +218,12 @@ const adminNavItems = [
                   <polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2" />
                   <line x1="8" y1="2" x2="8" y2="18" />
                   <line x1="16" y1="6" x2="16" y2="22" />
+                </svg>
+              )}
+              {item.icon === 'check-square' && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 11 12 14 22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
                 </svg>
               )}
             </span>

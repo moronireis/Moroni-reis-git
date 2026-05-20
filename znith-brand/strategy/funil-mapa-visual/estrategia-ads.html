@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH — Estratégia Meta Ads Completa</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{
+  --bg:#070b16;--bg2:#0d1225;--bg3:#131a30;--bg4:#1a2240;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
+  --text:#e8ecf2;--text2:#7e8a9e;--text3:#556;
+  --gold:#f0b442;--gold-d:rgba(240,180,66,0.10);--gold-b:rgba(240,180,66,0.18);
+  --blue:#4a9eff;--green:#34d399;--red:#f87171;--orange:#fb923c;
+  --purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;}
+a{color:var(--gold);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ── HEADER ── */
+.hero{text-align:center;padding:64px 24px 48px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(240,180,66,0.04) 0%,transparent 70%);pointer-events:none;}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,4vw,2.6rem);color:var(--gold);letter-spacing:0.06em;margin-bottom:10px;position:relative;}
+.hero p{font-size:0.9rem;color:var(--text2);max-width:680px;margin:0 auto 16px;}
+.hero-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+.hero-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;border:1px solid var(--border2);}
+.hero-tag.t1{color:var(--blue);border-color:rgba(74,158,255,0.25);}
+.hero-tag.t2{color:var(--orange);border-color:rgba(251,146,60,0.25);}
+.hero-tag.t3{color:var(--green);border-color:rgba(52,211,153,0.25);}
+.hero-tag.t4{color:var(--gold);border-color:rgba(240,180,66,0.25);}
+.hero-tag.t5{color:var(--purple);border-color:rgba(167,139,250,0.25);}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:0.78rem;color:var(--text2);border:1px solid var(--border);padding:6px 16px;border-radius:6px;transition:all 0.2s;}
+.back-link:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(7,11,22,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav::-webkit-scrollbar{display:none;}
+.nav a{flex-shrink:0;font-size:0.7rem;font-weight:500;color:var(--text2);padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all 0.2s;white-space:nowrap;}
+.nav a:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+
+/* ── CONTAINER ── */
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+section{padding:56px 0;}
+section+section{border-top:1px solid var(--border);}
+
+/* ── SECTION TITLES ── */
+.stitle{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--gold);margin-bottom:6px;letter-spacing:0.04em;}
+.ssub{font-size:0.82rem;color:var(--text2);margin-bottom:36px;max-width:600px;}
+
+/* ── CARDS ── */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:16px;transition:border-color 0.2s;}
+.card:hover{border-color:var(--border2);}
+.card h3{font-size:0.95rem;font-weight:700;margin-bottom:6px;}
+.card p,.card li{font-size:0.8rem;color:var(--text2);line-height:1.6;}
+.card ul{padding-left:18px;}
+.card ul li{margin-bottom:4px;}
+
+/* ── GRID ── */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:0.78rem;}
+th{text-align:left;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:10px 14px;border-bottom:1px solid rgba(240,180,66,0.15);}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);}
+td:first-child{color:var(--text);font-weight:500;}
+tr:hover td{background:rgba(255,255,255,0.015);}
+tr.highlight td{background:rgba(240,180,66,0.05);color:var(--gold);font-weight:600;}
+
+/* ── STAT CARDS ── */
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;}
+.stat-val{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold);font-weight:700;margin-bottom:2px;}
+.stat-label{font-size:0.72rem;color:var(--text2);}
+.stat-big{background:var(--gold-d);border-color:rgba(240,180,66,0.2);}
+.stat-big .stat-val{font-size:2rem;}
+
+/* ── TAG PILLS ── */
+.pill{display:inline-block;font-size:0.6rem;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:4px;}
+.pill-blue{background:rgba(74,158,255,0.1);color:var(--blue);border:1px solid rgba(74,158,255,0.2);}
+.pill-green{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.pill-gold{background:var(--gold-d);color:var(--gold);border:1px solid rgba(240,180,66,0.2);}
+.pill-orange{background:rgba(251,146,60,0.1);color:var(--orange);border:1px solid rgba(251,146,60,0.2);}
+.pill-purple{background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.2);}
+.pill-red{background:rgba(248,113,113,0.1);color:var(--red);border:1px solid rgba(248,113,113,0.2);}
+
+/* ── CAMPAIGN TREE ── */
+.tree{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:16px;font-size:0.75rem;font-family:'JetBrains Mono','Fira Code',monospace;line-height:1.8;overflow-x:auto;white-space:pre;color:var(--text2);}
+.tree b{color:var(--gold);font-weight:600;}
+.tree i{color:var(--blue);font-style:normal;}
+.tree em{color:var(--green);font-style:normal;}
+
+/* ── CREATIVE CARDS ── */
+.creative{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px;border-left:3px solid var(--blue);}
+.creative.f2{border-left-color:var(--orange);}
+.creative.rt{border-left-color:var(--purple);}
+.creative h4{font-size:0.88rem;font-weight:700;margin-bottom:2px;}
+.creative .angle{font-size:0.62rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.creative .angle.mg{color:var(--green);}
+.creative .angle.lb{color:var(--red);}
+.creative .angle.st{color:var(--purple);}
+.creative .angle.rs{color:var(--orange);}
+.creative .hooks{margin:8px 0;padding:0;list-style:none;}
+.creative .hooks li{font-size:0.78rem;color:var(--text);padding:4px 0 4px 16px;position:relative;}
+.creative .hooks li::before{content:'"';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:1rem;}
+.creative .hooks li::after{content:'"';}
+.creative .body-desc{font-size:0.75rem;color:var(--text2);line-height:1.6;margin:8px 0;}
+.creative .format{font-size:0.68rem;color:var(--text3);}
+
+/* ── LP SECTION ── */
+.lp-section{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:10px;}
+.lp-section h4{font-size:0.8rem;font-weight:700;margin-bottom:4px;color:var(--cyan);}
+.lp-section p{font-size:0.76rem;color:var(--text2);}
+.lp-headline{font-family:'Cinzel',serif;font-size:1rem;color:var(--text);line-height:1.3;margin:4px 0;}
+
+/* ── QUIZ QUESTION ── */
+.quiz-q{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:10px;}
+.quiz-q .qnum{font-size:0.6rem;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:4px;}
+.quiz-q .qtxt{font-size:0.82rem;font-weight:600;margin-bottom:8px;}
+.quiz-q .opts{list-style:none;padding:0;}
+.quiz-q .opts li{font-size:0.74rem;color:var(--text2);padding:3px 0 3px 20px;position:relative;}
+.quiz-q .opts li::before{content:'';position:absolute;left:0;top:8px;width:12px;height:12px;border:1.5px solid var(--border2);border-radius:50%;}
+.quiz-q .opts li .score{float:right;font-size:0.6rem;color:var(--gold);font-weight:600;}
+
+/* ── PROFILE RESULTS ── */
+.profile-res{border-radius:12px;padding:20px 24px;margin-bottom:14px;border-left:4px solid;}
+.profile-res h4{font-size:0.9rem;font-weight:700;margin-bottom:2px;}
+.profile-res .headline{font-family:'Cinzel',serif;font-size:0.92rem;margin-bottom:8px;line-height:1.3;}
+.profile-res p{font-size:0.76rem;color:var(--text2);line-height:1.5;}
+.pr-caos{border-color:var(--red);background:rgba(248,113,113,0.04);}
+.pr-caos h4{color:var(--red);}
+.pr-mov{border-color:var(--orange);background:rgba(251,146,60,0.04);}
+.pr-mov h4{color:var(--orange);}
+.pr-mat{border-color:var(--green);background:rgba(52,211,153,0.04);}
+.pr-mat h4{color:var(--green);}
+.pr-gov{border-color:var(--blue);background:rgba(74,158,255,0.04);}
+.pr-gov h4{color:var(--blue);}
+
+/* ── LOW TICKET ── */
+.lt{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:14px;position:relative;overflow:hidden;}
+.lt::after{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle at top right,var(--gold-d),transparent 70%);pointer-events:none;}
+.lt .lt-price{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold);font-weight:700;margin-bottom:2px;}
+.lt h4{font-size:0.95rem;font-weight:700;margin-bottom:6px;}
+.lt p{font-size:0.76rem;color:var(--text2);line-height:1.5;}
+.lt .lt-items{list-style:none;padding:0;margin:10px 0;}
+.lt .lt-items li{font-size:0.74rem;color:var(--text2);padding:3px 0 3px 18px;position:relative;}
+.lt .lt-items li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:0.4;}
+.lt .lt-bridge{font-size:0.72rem;color:var(--gold);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+
+/* ── INSIGHT BOX ── */
+.insight{background:var(--gold-d);border:1px solid rgba(240,180,66,0.15);border-radius:10px;padding:16px 20px;margin:20px 0;font-size:0.8rem;color:var(--gold);line-height:1.5;}
+.insight strong{color:#fff;}
+
+/* ── ALERT BOX ── */
+.alert{background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.15);border-radius:10px;padding:16px 20px;margin:20px 0;font-size:0.78rem;color:var(--red);line-height:1.5;}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--gold),var(--gold-d),transparent);}
+.tl-item{position:relative;margin-bottom:20px;}
+.tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:3px solid var(--bg);}
+.tl-item h4{font-size:0.85rem;font-weight:700;margin-bottom:2px;}
+.tl-item p{font-size:0.74rem;color:var(--text2);}
+.tl-item ul{list-style:none;padding:0;}
+.tl-item li{font-size:0.74rem;color:var(--text2);padding:2px 0;}
+
+.footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);font-size:0.68rem;color:var(--text3);}
+
+@media(max-width:768px){
+  section{padding:40px 0;}
+  .grid2{grid-template-columns:1fr;}
+  .tree{font-size:0.65rem;padding:14px 16px;}
+  .stat-val{font-size:1.2rem;}
+  .stat-big .stat-val{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Estratégia Meta Ads</h1>
+  <p>Plano operacional completo: ADS → PÁGINA → CADASTRO → DIAGNÓSTICO + Low-Tickets. Baseado em pesquisa de mercado + estratégia CMO.</p>
+  <div class="hero-tags">
+    <span class="hero-tag t1">4 Campanhas</span>
+    <span class="hero-tag t2">12 Criativos</span>
+    <span class="hero-tag t3">15 Perguntas Quiz</span>
+    <span class="hero-tag t4">5 Low-Tickets</span>
+    <span class="hero-tag t5">3 Cenários Budget</span>
+  </div>
+  <a href="index.html" class="back-link">&larr; Voltar ao Mapa de Funis</a>
+</div>
+
+<nav class="nav">
+  <a href="#mercado">Mercado</a>
+  <a href="#campanhas">Campanhas</a>
+  <a href="#criativos">Criativos</a>
+  <a href="#paginas">Páginas</a>
+  <a href="#cadastro">Cadastro</a>
+  <a href="#quiz">Diagnóstico</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#lowticket">Low-Tickets</a>
+  <a href="#numeros">Números</a>
+  <a href="#timeline">Timeline</a>
+</nav>
+
+<div class="container">
+
+<!-- ════════ MERCADO ════════ -->
+<section id="mercado">
+  <h2 class="stitle">Pesquisa de Mercado</h2>
+  <p class="ssub">O campo está vazio. Nenhum concorrente direto roda Meta Ads para consultoria comercial B2B em construção civil.</p>
+
+  <div class="insight"><strong>Achado principal:</strong> Mkt4Sales, Avendaz, Iasbeck, Adove, SmartCRM — todos operam 100% inbound/orgânico ou Google Ads. Zero presença detectável no Meta Ads. ZNITH entra sem bid war no leilão.</div>
+
+  <table>
+    <thead><tr><th>Concorrente</th><th>Meta Ads</th><th>Modelo de Funil</th><th>Lead Magnet</th></tr></thead>
+    <tbody>
+      <tr><td>Mkt4Sales</td><td><span class="pill pill-red">Não detectada</span></td><td>Blog → Cases → "Fale com Especialista"</td><td>Blog + consulta grátis</td></tr>
+      <tr><td>Avendaz</td><td><span class="pill pill-red">Não detectada</span></td><td>Diagnóstico → Qualificação → Proposta</td><td>Formulário diagnóstico</td></tr>
+      <tr><td>Adove (RevOps)</td><td><span class="pill pill-orange">Google Ads + Meta mencionado</span></td><td>Google Ads (13.2% CTR)</td><td>Planilha Controle Lucro (58.5% conv)</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:24px 0 12px;color:var(--text);">Benchmarks de Mercado</h3>
+  <div class="grid4">
+    <div class="stat"><div class="stat-val">3.4%</div><div class="stat-label">Conv. rate Meta Ads<br>(melhor canal — Leadster 2025)</div></div>
+    <div class="stat"><div class="stat-val">1.55%</div><div class="stat-label">Conv. rate Consultoria<br>(2o pior setor)</div></div>
+    <div class="stat"><div class="stat-val">+52.6%</div><div class="stat-label">Engajamento quiz<br>vs conteúdo estático</div></div>
+    <div class="stat"><div class="stat-val">58.5%</div><div class="stat-label">Conv. lead magnet Adove<br>(planilha prática)</div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:24px 0 12px;color:var(--text);">6 Dores de Alta Intensidade do ICP (gatilho de compra)</h3>
+  <div class="grid2">
+    <div class="card"><h3>1. "Meu vendedor improvisa"</h3><p>Sem roteiro, sem processo. Dependência do improviso do fundador em cada atendimento.</p></div>
+    <div class="card"><h3>2. "Perco orçamentos sem saber por que"</h3><p>Não há follow-up estruturado. Não sabe onde o processo quebra.</p></div>
+    <div class="card"><h3>3. "Preço sempre em questão"</h3><p>Cliente sempre pede desconto. Empresa não sabe defender valor — compete por preço.</p></div>
+    <div class="card"><h3>4. "Dependo de indicação pra crescer"</h3><p>Não tem canal ativo de prospecção. Negócio não escala além do boca a boca.</p></div>
+    <div class="card"><h3>5. "Não sei quem tá performando"</h3><p>Sem métricas por vendedor. Gestão comercial por feeling.</p></div>
+    <div class="card"><h3>6. "O processo comercial sou eu"</h3><p>Dono = gargalo. Se tira férias, vendas param. Risco existencial.</p></div>
+  </div>
+
+  <div class="insight"><strong>Dado setorial:</strong> 74% dos gestores de construção civil não percebem gestão de pessoas como estratégica (SindusCon-SP). Confirma baixa maturidade de gestão comercial no setor inteiro.</div>
+</section>
+
+<!-- ════════ CAMPANHAS ════════ -->
+<section id="campanhas">
+  <h2 class="stitle">Estrutura de Campanhas</h2>
+  <p class="ssub">4 campanhas. Funil 1 primeiro (validação). Funil 2 entra na semana 5.</p>
+
+  <table>
+    <thead><tr><th>Campanha</th><th>Tipo</th><th>Objetivo</th><th>R$/dia</th><th>Quando</th></tr></thead>
+    <tbody>
+      <tr><td>1. Raio-X — Fria</td><td><span class="pill pill-blue">Funil 1</span></td><td>Conversões (Lead)</td><td>R$100</td><td>Semana 1</td></tr>
+      <tr><td>2. Raio-X — Retargeting</td><td><span class="pill pill-purple">Retargeting</span></td><td>Conversões</td><td>R$30</td><td>Dia 5+</td></tr>
+      <tr><td>3. IA — Fria</td><td><span class="pill pill-orange">Funil 2</span></td><td>Conversões (Lead)</td><td>R$80</td><td>Semana 5+</td></tr>
+      <tr><td>4. IA — Retargeting</td><td><span class="pill pill-purple">Retargeting</span></td><td>Conversões</td><td>R$20</td><td>Semana 6+</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:20px 0 12px;color:var(--text);">Campanha 1 — Raio-X Comercial (Prospecção Fria)</h3>
+  <div class="tree"><b>CAMPANHA 1:</b> [ZNITH] Raio-X Comercial — Prospecção Fria
+├── <i>Adset 1:</i> Interesses — Construção Civil + Gestão
+│   ├── <em>Criativo A</em> (Video — Dor do Follow-up)
+│   ├── <em>Criativo B</em> (Carrossel — 5 Gargalos)
+│   └── <em>Criativo C</em> (Imagem — Receita Invisível)
+├── <i>Adset 2:</i> Interesses — Vidraçaria + Serralheria + CRM
+│   ├── <em>Criativo A</em>
+│   ├── <em>Criativo B</em>
+│   └── <em>Criativo C</em>
+└── <i>Adset 3:</i> Broad (25-60, Brasil, Dono de Negócio)
+    ├── <em>Criativo A</em>
+    ├── <em>Criativo B</em>
+    └── <em>Criativo C</em></div>
+
+  <h3 style="font-size:0.9rem;margin:20px 0 12px;color:var(--text);">Campanha 3 — Implementar IA (Prospecção Fria)</h3>
+  <div class="tree"><b>CAMPANHA 3:</b> [ZNITH] Implementar IA — Prospecção Fria
+├── <i>Adset 1:</i> Interesses — IA + Automação + Empresários
+│   ├── <em>Criativo H</em> (Video — "IA sem processo = caos")
+│   ├── <em>Criativo I</em> (Imagem — Quiz "Pronta pra IA?")
+│   └── <em>Criativo J</em> (Carrossel — 3 Erros com IA)
+├── <i>Adset 2:</i> Interesses — WhatsApp Business + CRM + Vendas B2B
+└── <i>Adset 3:</i> Lookalike 1% de quem completou Raio-X (mes 2+)</div>
+
+  <h3 style="font-size:0.9rem;margin:20px 0 12px;color:var(--text);">Públicos de Retargeting</h3>
+  <table>
+    <thead><tr><th>Publico</th><th>Janela</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td>Visitou LP mas não cadastrou</td><td>7 dias</td><td>Retargeting com case + prova social</td></tr>
+      <tr><td>Cadastrou mas não completou quiz</td><td>14 dias</td><td>"Seu resultado esta esperando"</td></tr>
+      <tr><td>Engajou IG/FB Leilaine</td><td>30 dias</td><td>Conteúdo educacional → CTA quiz</td></tr>
+      <tr><td>Video viewers 50%+</td><td>14 dias</td><td>Prova social + retargeting</td></tr>
+      <tr><td>Completou Raio-X (Mov/Mat)</td><td>60 dias</td><td>Seed para Lookalike + exclusão</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:20px 0 12px;color:var(--text);">Orçamento por Fase</h3>
+  <table>
+    <thead><tr><th>Fase</th><th>Periodo</th><th>R$/mes</th><th>Foco</th></tr></thead>
+    <tbody>
+      <tr><td>Fase 1 — Validacao</td><td>Semanas 1-4</td><td>R$3.900</td><td>Apenas Funil 1. Validar caminho completo.</td></tr>
+      <tr><td>Fase 2 — Expansão</td><td>Semanas 5-8</td><td>R$9.000</td><td>Ambos funis + retargeting.</td></tr>
+      <tr><td>Fase 3 — Escala</td><td>Mes 3+</td><td>R$10-15K</td><td>Escalar o que provou CPL < target.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════ CRIATIVOS ════════ -->
+<section id="criativos">
+  <h2 class="stitle">Conceitos Criativos</h2>
+  <p class="ssub">12 conceitos. 4 ângulos Hormozi. Hooks específicos para construção civil.</p>
+
+  <h3 style="font-size:0.88rem;margin:0 0 14px;"><span class="pill pill-blue">Funil 1</span> Raio-X Comercial — 5 Conceitos</h3>
+
+  <div class="creative">
+    <div class="angle lb">LESS BAD — O QUE EVITAM</div>
+    <h4>A — "O Orçamento que Morreu" (Video 30-60s)</h4>
+    <ul class="hooks">
+      <li>Você mandou 40 orçamentos esse mês. Sabe quantos morreram sem resposta?</li>
+      <li>35% dos orçamentos da sua vidraçaria morreram essa semana. Sem follow-up.</li>
+      <li>Aquele orçamento de R$15 mil que você mandou quinta? Seu concorrente ja fechou.</li>
+    </ul>
+    <p class="body-desc">Visual de WhatsApp com mensagens "visto" sem resposta. Contador subindo mostrando dinheiro perdido. Leilaine aparece: "Isso é o que eu chamo de Receita Invisível."</p>
+    <div class="format">Video vertical 9:16 (Reels/Stories) + 1:1 (Feed) &bull; CTA: "Descubra em 6 min com o Raio-X Comercial gratuito"</div>
+  </div>
+
+  <div class="creative">
+    <div class="angle mg">MORE GOOD — O QUE GANHAM</div>
+    <h4>B — "5 Gargalos" (Carrossel 5-7 slides)</h4>
+    <ul class="hooks">
+      <li>5 gargalos que toda vidraçaria/serralheria enfrenta (e não sabe)</li>
+    </ul>
+    <p class="body-desc">Slide 1: Dono que vende e instala. Slide 2: Follow-up inexistente. Slide 3: "CRM? A gente usa WhatsApp e caderno." Slide 4: Receita oscila sem explicação. Slide 5: Vendedor sai e leva carteira.</p>
+    <div class="format">Carrossel 1080x1080 &bull; CTA: "Fazer meu Raio-X"</div>
+  </div>
+
+  <div class="creative">
+    <div class="angle lb">LESS BAD — CUSTO DA INACAO</div>
+    <h4>C — "Receita Invisível" (Imagem estatica)</h4>
+    <ul class="hooks"><li>Sua vidraçaria esta perdendo dinheiro que você não vê</li></ul>
+    <p class="body-desc">Numero grande "R$756.000/ano — quanto uma vidraçaria perde em receita invisivel." Copy: orçamento sem follow-up + lead que sumiu + cliente antigo sem contato.</p>
+    <div class="format">1080x1080 (Feed) + 1080x1920 (Stories) &bull; CTA: "Saiba Mais"</div>
+  </div>
+
+  <div class="creative rt">
+    <div class="angle st">STATUS — COMO SAO VISTOS</div>
+    <h4>D — "Case Vidraçaria" (Video Retargeting 30-45s)</h4>
+    <ul class="hooks"><li>Uma vidraçaria em BH estava perdendo 35% dos orçamentos. Em 60 dias mudou completamente.</li></ul>
+    <p class="body-desc">Leilaine conta caso anonimizado. Antes: caos no WhatsApp, sem CRM, dono 14h. Depois: processo estruturado, 12 propostas recuperadas.</p>
+    <div class="format">Retargeting &bull; Para quem viu ad mas não converteu</div>
+  </div>
+
+  <div class="creative rt">
+    <div class="angle rs">RISCO SOCIAL — LESS BAD OUTROS</div>
+    <h4>E — "O Concorrente Que Cresce" (Imagem Retargeting)</h4>
+    <ul class="hooks"><li>Enquanto você 'vai pensar', seu concorrente está respondendo lead em 5 minutos com processo.</li></ul>
+    <p class="body-desc">Split screen: esquerda "Sua empresa" (WhatsApp bagunca, caderno), direita "Seu concorrente" (pipeline organizado, follow-up rodando).</p>
+    <div class="format">Retargeting &bull; CTA: "Fazer o Raio-X Comercial"</div>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 14px;"><span class="pill pill-orange">Funil 2</span> Implementar IA — 5 Conceitos</h3>
+
+  <div class="creative f2">
+    <div class="angle lb">LESS BAD</div>
+    <h4>H — "IA sem Processo = Caos" (Video 30-45s)</h4>
+    <ul class="hooks"><li>Todo mundo quer IA na empresa. 80% vai se frustrar. E o motivo é simples.</li></ul>
+    <p class="body-desc">Leilaine: IA sem processo comercial so automatiza o caos. "É como colocar turbo num carro sem direção."</p>
+    <div class="format">Video vertical &bull; CTA: "Descubra em 3 min se sua empresa está pronta para IA"</div>
+  </div>
+
+  <div class="creative f2">
+    <div class="angle mg">MORE GOOD</div>
+    <h4>I — "Quiz: Pronta pra IA?" (Imagem)</h4>
+    <ul class="hooks"><li>Sua empresa esta pronta para IA no comercial? 7 perguntas. 3 minutos.</li></ul>
+    <p class="body-desc">"Voce descobre se faz sentido implementar IA agora ou se tem um passo anterior que vai te economizar R$50 mil."</p>
+    <div class="format">1080x1080 &bull; CTA: "Fazer o Quiz"</div>
+  </div>
+
+  <div class="creative f2">
+    <div class="angle lb">LESS BAD</div>
+    <h4>J — "3 Erros com IA" (Carrossel)</h4>
+    <ul class="hooks"><li>3 erros que empresários cometem ao implementar IA no comercial</li></ul>
+    <p class="body-desc">Erro 1: Chatbot sem processo. Erro 2: Automatizar follow-up sem cadencia manual. Erro 3: Esperar IA substituir vendedor quando problema é estrutural.</p>
+    <div class="format">Carrossel &bull; CTA: "Fazer o Quiz de IA"</div>
+  </div>
+</section>
+
+<!-- ════════ PAGINAS ════════ -->
+<section id="paginas">
+  <h2 class="stitle">Landing Pages</h2>
+  <p class="ssub">2 LPs mobile-first. Zero navegação, zero distrações. Único caminho: CTA.</p>
+
+  <h3 style="font-size:0.88rem;margin:0 0 14px;">LP 1 — /raio-x (Funil Mestre)</h3>
+
+  <div class="lp-section">
+    <h4>ABOVE THE FOLD</h4>
+    <p style="font-size:0.68rem;color:var(--gold);margin-bottom:4px;">Pre-headline: "Diagnóstico comercial gratuito para vidraçarias, serralherias e construtoras"</p>
+    <div class="lp-headline">Headline A: "Quanto da sua receita está escapando sem você ver?"</div>
+    <div class="lp-headline" style="color:var(--text2);">Headline B: "Sua operação comercial tem um custo invisível. Descubra qual."</div>
+    <div class="lp-headline" style="color:var(--text2);">Headline C: "O Raio-X que mostra onde sua empresa está perdendo dinheiro"</div>
+    <p style="margin-top:8px;">Sub: "15 perguntas. 6 minutos. Um relatório com os 3 maiores gargalos — grátis." + Botão gold 100% width + Foto Leilaine com credentials.</p>
+  </div>
+  <div class="lp-section">
+    <h4>SCROLL 1 — SINTOMAS</h4>
+    <p>"Reconhece algum desses sinais?" — 3 cards: Follow-up ausente / Dono-gargalo / Receita imprevisível. "Se marcou 1, sua operação tem receita invisível."</p>
+  </div>
+  <div class="lp-section">
+    <h4>SCROLL 2 — COMO FUNCIONA</h4>
+    <p>3 passos visuais: Responda 15 perguntas (6 min) → Receba perfil + score → Baixe PDF com 3 gargalos e plano de ação.</p>
+  </div>
+  <div class="lp-section">
+    <h4>SCROLL 3 — AUTORIDADE + CTA FINAL</h4>
+    <p>Bloco Leilaine: "20+ anos. R$500M+ em vendas. O Raio-X e o mesmo diagnóstico que faço em consultoria de R$35K — adaptado pra 6 minutos." + CTA repetido.</p>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 14px;">LP 2 — /implementar-ia (Funil IA)</h3>
+  <div class="lp-section">
+    <h4>ABOVE THE FOLD</h4>
+    <div class="lp-headline">Headline A: "Sua empresa esta pronta para IA no comercial? Descubra em 3 minutos."</div>
+    <p>Página mais curta que Raio-X. Quiz acima do fold. Mobile-first (Meta traffic = 80%+ mobile).</p>
+  </div>
+  <div class="lp-section">
+    <h4>SCROLL 1 — 2 CAMINHOS + CTA</h4>
+    <p>Bifurcação visual: "Tem processo → IA acelera" vs "Improvisa → IA amplifica problema." + 3 bullets (80% falham por falta de processo) + CTA final.</p>
+  </div>
+</section>
+
+<!-- ════════ CADASTRO ════════ -->
+<section id="cadastro">
+  <h2 class="stitle">Estratégia de Cadastro</h2>
+  <p class="ssub">5 campos pre-quiz. Transição DIRETA para o quiz no submit. Zero página de obrigado.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Formulário Raio-X (Funil 1)</h3>
+      <table>
+        <thead><tr><th>Campo</th><th>Obrigatório</th><th>Por que</th></tr></thead>
+        <tbody>
+          <tr><td>Nome</td><td>Sim</td><td>Personalização resultado</td></tr>
+          <tr><td>Email</td><td>Sim</td><td>PDF + nurture</td></tr>
+          <tr><td>WhatsApp</td><td>Sim</td><td>Canal primário ICP</td></tr>
+          <tr><td>Empresa</td><td>Sim</td><td>Personalização relatório</td></tr>
+          <tr><td>Faturamento</td><td>Sim (range)</td><td>Qualificação + benchmarks</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Micro-Compromisso Strategy</h3>
+      <ul>
+        <li>Barra de progresso: "Passo 1 de 2"</li>
+        <li>Submit → transição DIRETA pra pergunta 1</li>
+        <li>Quiz: progresso "Pergunta 3 de 15"</li>
+        <li>Final: loading "Calculando perfil..." (3-5s)</li>
+        <li>Email + WhatsApp disparam em background</li>
+        <li>Abandon 24h: "Vi que começou mas não terminou"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ QUIZ ════════ -->
+<section id="quiz">
+  <h2 class="stitle">Raio-X Comercial — 15 Perguntas</h2>
+  <p class="ssub">5 blocos temáticos. Score 0-45. Radar chart com 5 dimensões.</p>
+
+  <h3 style="font-size:0.85rem;margin:0 0 12px;"><span class="pill pill-blue">Bloco 1</span> Pipeline e Prospecção</h3>
+  <div class="quiz-q">
+    <div class="qnum">P1</div>
+    <div class="qtxt">Como novos clientes chegam até você hoje?</div>
+    <ul class="opts">
+      <li>Quase 100% indicação/boca a boca <span class="score">0</span></li>
+      <li>Maioria indicação + alguma busca ativa <span class="score">1</span></li>
+      <li>Mix equilibrado entre indicacao e prospecção ativa <span class="score">2</span></li>
+      <li>Tenho canais ativos gerando leads constantemente <span class="score">3</span></li>
+    </ul>
+  </div>
+  <div class="quiz-q">
+    <div class="qnum">P2</div>
+    <div class="qtxt">Você sabe quantos orçamentos/propostas sua empresa enviou no ultimo mes?</div>
+    <ul class="opts">
+      <li>Não tenho esse número <span class="score">0</span></li>
+      <li>Tenho uma ideia mas não é preciso <span class="score">1</span></li>
+      <li>Sei o número exato <span class="score">2</span></li>
+      <li>Sei o número, a taxa de conversão e o ticket médio <span class="score">3</span></li>
+    </ul>
+  </div>
+  <div class="quiz-q">
+    <div class="qnum">P3</div>
+    <div class="qtxt">Quanto tempo em média leva para responder um novo lead?</div>
+    <ul class="opts">
+      <li>Mais de 24 horas (ou não tenho controle) <span class="score">0</span></li>
+      <li>Entre 4 e 24 horas <span class="score">1</span></li>
+      <li>Entre 1 e 4 horas <span class="score">2</span></li>
+      <li>Menos de 1 hora, com processo definido <span class="score">3</span></li>
+    </ul>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:20px 0 12px;"><span class="pill pill-orange">Bloco 2</span> Follow-up e Cadência</h3>
+  <div class="card"><p>P4: O que acontece depois do orçamento? &bull; P5: % orçamentos que "sumiram" sem resposta &bull; P6: Quantos clientes antigos contactou nos últimos 6 meses</p></div>
+
+  <h3 style="font-size:0.85rem;margin:20px 0 12px;"><span class="pill pill-green">Bloco 3</span> Processo e Playbook</h3>
+  <div class="card"><p>P7: Processo de vendas documentado? &bull; P8: Novo vendedor — quanto tempo pra vender sozinho? &bull; P9: Quem faz orçamentos?</p></div>
+
+  <h3 style="font-size:0.85rem;margin:20px 0 12px;"><span class="pill pill-purple">Bloco 4</span> Ferramentas e Dados</h3>
+  <div class="card"><p>P10: Que ferramenta usa? (Caderno → CRM integrado) &bull; P11: Previsibilidade de faturamento? &bull; P12: Sabe o CAC?</p></div>
+
+  <h3 style="font-size:0.85rem;margin:20px 0 12px;"><span class="pill pill-gold">Bloco 5</span> Equipe e Governança</h3>
+  <div class="card"><p>P13: Se tirar 2 semanas de férias? &bull; P14: Info na cabeça ou em sistema? &bull; P15: Frequência de análise de números?</p></div>
+
+  <h3 style="font-size:0.85rem;margin:20px 0 12px;">Scoring</h3>
+  <table>
+    <thead><tr><th>Perfil</th><th>Score</th><th>%</th><th>Acao</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--red);">Operação em Caos</td><td>0-15</td><td>0-33%</td><td>Nurture longo + Formação</td></tr>
+      <tr><td style="color:var(--orange);">Operação em Movimento</td><td>16-27</td><td>34-60%</td><td>Seq A + Leitura Estratégica</td></tr>
+      <tr><td style="color:var(--green);">Operação em Maturação</td><td>28-38</td><td>61-84%</td><td>Leitura Prioritária + ZNITH.AI OS</td></tr>
+      <tr><td style="color:var(--blue);">Operação em Governo</td><td>39-45</td><td>85-100%</td><td>Parceria + Referral</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════ RESULTADOS ════════ -->
+<section id="resultados">
+  <h2 class="stitle">Página de Resultado por Perfil</h2>
+  <p class="ssub">4 experiências diferentes. CTA específico por perfil. PDF de 7 páginas que parece consultoria de R$5K.</p>
+
+  <div class="profile-res pr-caos">
+    <h4>Caos (0-15)</h4>
+    <div class="headline">"Sua operação está no modo sobrevivência. A boa notícia: tem solução."</div>
+    <p>Tom educacional. Score + radar chart + 3 gargalos críticos + benchmarks. CTA: Formação gratuita + PDF. NAO mostra preço de consultoria.</p>
+  </div>
+  <div class="profile-res pr-mov">
+    <h4>Movimento (16-27) — SWEET SPOT</h4>
+    <div class="headline">"Sua operação tem energia. Falta direção."</div>
+    <p>Tom direto com urgência. Score + radar + Receita Invisível estimada (R$X-Y/ano calculado) + case anonimizado. CTA primário: Leitura Estratégica. Secundário: PDF.</p>
+  </div>
+  <div class="profile-res pr-mat">
+    <h4>Maturação (28-38) — MAIS VALIOSO</h4>
+    <div class="headline">"Sua operação tem base. Falta a arquitetura que transforma base em escala."</div>
+    <p>Tom premium. "Você está à frente de 80% das empresas." Posicionamento: Leitura normalmente reservada para empresas em movimento. CTA: Leitura Prioritária.</p>
+  </div>
+  <div class="profile-res pr-gov">
+    <h4>Governo (39-45)</h4>
+    <div class="headline">"Parabéns. Sua operação é referência."</div>
+    <p>Celebratório. "Entre os 5%." Convite Líderes Leões + rede de referência. ZNITH.AI OS como aceleração, não correção.</p>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 12px;">PDF — 7 Páginas (Engenharia de Valor)</h3>
+  <div class="grid3">
+    <div class="card"><h3>Capa</h3><p>Logo ZNITH + nome empresa + data + "Diagnóstico confidencial"</p></div>
+    <div class="card"><h3>1. Resumo Executivo</h3><p>Score geral /45 + perfil + radar chart 5 dimensões + interpretacao</p></div>
+    <div class="card"><h3>2. Receita Invisível</h3><p>Cálculo com números do lead: follow-up leakage + dormant clients + total anual</p></div>
+    <div class="card"><h3>3. Top 3 Gargalos</h3><p>Perguntas com menor score + custo + benchmark do setor</p></div>
+    <div class="card"><h3>4. Benchmarks</h3><p>Score vs media setor (SEBRAE, ABRAVIDRO). Comparação por dimensão.</p></div>
+    <div class="card"><h3>5. Plano de Acao</h3><p>3 ações prioritárias + timeline 30/60/90 dias + próximo passo por perfil</p></div>
+  </div>
+</section>
+
+<!-- ════════ LOW TICKETS ════════ -->
+<section id="lowticket">
+  <h2 class="stitle">Low-Tickets (R$47-R$197)</h2>
+  <p class="ssub">5 produtos entre BAIT e MIDDLE. Geram receita para financiar tráfego + qualificam pelo comportamento de compra.</p>
+
+  <div class="lt">
+    <div class="lt-price">R$47</div>
+    <h4>ZNITH Mapa Comercial</h4>
+    <p>Template interativo para mapear toda a operação comercial em 1 hora.</p>
+    <ul class="lt-items">
+      <li>Template pré-formatado (Notion/Sheets) com 6 seções</li>
+      <li>Vídeo guia Leilaine (20 min)</li>
+      <li>Checklist "15 sinais de operação desgovernada"</li>
+      <li>Planilha "Calculadora de Receita Invisível"</li>
+    </ul>
+    <div class="lt-bridge">Bridge: O mapa que ele preenche mostra os gaps que a Expansão resolve. Video termina com CTA Leitura.</div>
+  </div>
+
+  <div class="lt">
+    <div class="lt-price">R$67</div>
+    <h4>ZNITH Kit Orçamento que Fecha</h4>
+    <p>Kit completo para transformar orçamentos em fechamentos. Específico para construção civil.</p>
+    <ul class="lt-items">
+      <li>3 templates proposta premium (vidraçaria, serralheria, construtora)</li>
+      <li>Script de apresentação do orçamento</li>
+      <li>Cadência follow-up pós-orçamento (5 WhatsApp templates)</li>
+      <li>Video "Por que 35% dos orçamentos morrem" (15 min)</li>
+      <li>Calculadora: quanto perde por orçamento sem follow-up</li>
+    </ul>
+    <div class="lt-bridge">Bridge: "O Kit resolve o sintoma mais urgente. A Expansão resolve a causa — toda a arquitetura."</div>
+  </div>
+
+  <div class="lt">
+    <div class="lt-price">R$97</div>
+    <h4>ZNITH Playbook Express</h4>
+    <p>Playbook comercial template para construção civil — pronto para personalizar.</p>
+    <ul class="lt-items">
+      <li>Playbook editavel 25+ paginas</li>
+      <li>5 scripts de abordagem (vidraçaria/serralheria)</li>
+      <li>Cadência 7 toques (WhatsApp + email)</li>
+      <li>Dashboard métricas comerciais (Sheets)</li>
+      <li>Vídeo guia Leilaine (30 min)</li>
+      <li>Template proposta comercial premium</li>
+    </ul>
+    <div class="lt-bridge">Bridge: "O Playbook é 20% do que a Expansão entrega. Se quer a arquitetura implantada — Leitura é o próximo passo."</div>
+  </div>
+
+  <div class="lt">
+    <div class="lt-price">R$147</div>
+    <h4>ZNITH Masterclass "Receita Invisível"</h4>
+    <p>Aula gravada de Leilaine (90 min) — workshop prático, não teoria.</p>
+    <ul class="lt-items">
+      <li>Vídeo aula 90 min</li>
+      <li>Planilha cálculo Receita Invisível (auto-preenchível)</li>
+      <li>Checklist "30 dias para parar de perder orçamento"</li>
+      <li>Template cadência follow-up 7 toques</li>
+      <li>Comunidade WhatsApp fechada (90 dias)</li>
+    </ul>
+    <div class="lt-bridge">Bridge: Ao final, Leilaine: "Agora você sabe o número. Quer que eu construa a arquitetura que resolve?"</div>
+  </div>
+
+  <div class="lt">
+    <div class="lt-price">R$197</div>
+    <h4>ZNITH Auditoria Flash</h4>
+    <p>Vídeo personalizado (15-20 min) com diagnóstico da operação do lead.</p>
+    <ul class="lt-items">
+      <li>Formulário detalhado 25 perguntas</li>
+      <li>Vídeo personalizado (Leilaine ou Arquiteto ZNITH)</li>
+      <li>Análise 3 maiores gaps com números reais</li>
+      <li>Receita Invisível calculada com dados da empresa</li>
+      <li>PDF resumo da auditoria</li>
+    </ul>
+    <div class="lt-bridge">Bridge: Video termina: "Esse diagnostico e o raio-x. A Expansão e a cirurgia. Agende a Leitura." — 80%+ convertem.</div>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 12px;">Sequência de Oferta por Perfil</h3>
+  <div class="tree"><b>RAIO-X GRATUITO</b> (resultado + PDF)
+│
+├── Perfil <i>CAOS</i> → Nurture → Formação (eventual)
+│
+├── Perfil <i>MOVIMENTO</i> →
+│   ├── Order Bump imediato: <em>Kit Orçamento (R$67)</em>
+│   ├── Thank You Page: <em>Playbook Express (R$97)</em>
+│   ├── Email D+3: <em>Masterclass Receita Invisível (R$147)</em>
+│   └── Email D+7: CTA Leitura Estratégica (gratis)
+│
+└── Perfil <b>MATURAÇÃO</b> →
+    ├── Resultado: <em>Auditoria Flash (R$197)</em>
+    ├── Email D+1: CTA Leitura Prioritária
+    └── Fallback: <em>Masterclass (R$147)</em></div>
+</section>
+
+<!-- ════════ NUMEROS ════════ -->
+<section id="numeros">
+  <h2 class="stitle">Números e Projeções</h2>
+  <p class="ssub">CAC por Expansão: R$600-R$800 contra ticket de R$35K. Break-even no primeiro contrato.</p>
+
+  <h3 style="font-size:0.88rem;margin:0 0 14px;">CPL Esperado</h3>
+  <table>
+    <thead><tr><th>Metrica</th><th>Funil 1 (Raio-X)</th><th>Funil 2 (IA)</th></tr></thead>
+    <tbody>
+      <tr><td>CPC estimado</td><td>R$3-6</td><td>R$2-4</td></tr>
+      <tr><td>CTR ad</td><td>1.5-3%</td><td>2-4%</td></tr>
+      <tr><td>Taxa cadastro LP</td><td>25-35%</td><td>30-40%</td></tr>
+      <tr class="highlight"><td>CPL (cadastro)</td><td>R$10-20</td><td>R$6-12</td></tr>
+      <tr><td>Taxa completação quiz</td><td>65-75%</td><td>75-85%</td></tr>
+      <tr class="highlight"><td>CPL (quiz completo)</td><td>R$15-28</td><td>R$8-15</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 14px;">3 Cenários de Budget</h3>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Conservador — R$3K/mes</h3>
+      <table>
+        <tbody>
+          <tr><td>Cadastros</td><td>200</td></tr>
+          <tr><td>Quiz completos</td><td>140</td></tr>
+          <tr><td>Leads qualificados</td><td>49</td></tr>
+          <tr><td>Leituras</td><td>12</td></tr>
+          <tr><td>Show-ups</td><td>10</td></tr>
+          <tr class="highlight"><td>Contratos Expansão</td><td>3-4</td></tr>
+          <tr class="highlight"><td>Receita</td><td>R$105-140K</td></tr>
+          <tr class="highlight"><td>ROI</td><td>35-47x</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Moderado — R$5K/mes</h3>
+      <table>
+        <tbody>
+          <tr><td>Cadastros (F1+F2)</td><td>450</td></tr>
+          <tr><td>Leads qualificados</td><td>99</td></tr>
+          <tr class="highlight"><td>Contratos Expansão</td><td>4-5</td></tr>
+          <tr class="highlight"><td>Contratos ZNITH.AI</td><td>3-4</td></tr>
+          <tr class="highlight"><td>Receita total</td><td>R$164-207K</td></tr>
+          <tr class="highlight"><td>ROI</td><td>33-41x</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Agressivo — R$10K/mes</h3>
+      <table>
+        <tbody>
+          <tr><td>Cadastros (F1+F2)</td><td>900</td></tr>
+          <tr><td>Leads qualificados</td><td>198</td></tr>
+          <tr class="highlight"><td>Contratos Expansão</td><td>8-10</td></tr>
+          <tr class="highlight"><td>Contratos ZNITH.AI</td><td>6-8</td></tr>
+          <tr class="highlight"><td>Receita total</td><td>R$331-417K</td></tr>
+          <tr class="highlight"><td>ROI</td><td>33-42x</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert"><strong>Bottleneck:</strong> Acima de R$5K/mes, o funil gera ~30 Leituras/mes (7-8/semana × 45min). Leilaine precisa de segundo Arquiteto Comercial antes de escalar para esse nível.</div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 14px;">Break-Even</h3>
+  <div class="grid3">
+    <div class="stat stat-big"><div class="stat-val">R$600-800</div><div class="stat-label">CAC por contrato Expansão</div></div>
+    <div class="stat stat-big"><div class="stat-val">R$35.000</div><div class="stat-label">Ticket medio Expansão</div></div>
+    <div class="stat stat-big"><div class="stat-val">44-58x</div><div class="stat-label">ROI por contrato</div></div>
+  </div>
+
+  <div class="insight"><strong>Self-Liquidating Offer:</strong> Se 20% dos cadastros compram low-ticket medio de R$67: 200 cadastros × 20% × R$67 = R$2.680/mes. Budget R$3K. Self-liquidation: 89%. Com 25% de conversao ou ticket medio R$80: <strong>trafego se paga antes de qualquer Expansão</strong>.</div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 14px;">Métricas de Monitoramento Semanal</h3>
+  <table>
+    <thead><tr><th>Metrica</th><th>Target</th><th>Alarme</th></tr></thead>
+    <tbody>
+      <tr><td>CPL (cadastro)</td><td style="color:var(--green);">< R$20</td><td style="color:var(--red);"> > R$30</td></tr>
+      <tr><td>CTR do ad</td><td style="color:var(--green);"> > 1.5%</td><td style="color:var(--red);"> < 1%</td></tr>
+      <tr><td>Taxa cadastro LP</td><td style="color:var(--green);"> > 25%</td><td style="color:var(--red);"> < 18%</td></tr>
+      <tr><td>Completação quiz</td><td style="color:var(--green);"> > 65%</td><td style="color:var(--red);"> < 50%</td></tr>
+      <tr><td>% qualificados</td><td style="color:var(--green);"> > 30%</td><td style="color:var(--red);"> < 20%</td></tr>
+      <tr><td>Custo por Leitura</td><td style="color:var(--green);"> < R$150</td><td style="color:var(--red);"> > R$250</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════ TIMELINE ════════ -->
+<section id="timeline">
+  <h2 class="stitle">Timeline de Implementação</h2>
+  <p class="ssub">8 semanas para ter os dois funis rodando com tráfego pago.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <h4>Semana 1-2: Infraestrutura</h4>
+      <p>Pixel Meta + eventos. LP Raio-X. Quiz 15 perguntas + scoring. 4 paginas de resultado. PDF automatizado. Email + WhatsApp integrados. Custom Audiences criadas.</p>
+    </div>
+    <div class="tl-item">
+      <h4>Semana 3-4: Lançamento Fase 1</h4>
+      <p>Criativos A, B, C produzidos. Campanha 1 criada (PAUSED) → aprovação → ativar. Campanha 2 retargeting dia 5+. Monitoramento diário. Primeiro ciclo kill/scale.</p>
+    </div>
+    <div class="tl-item">
+      <h4>Semana 5-6: Fase 2 + Low-Ticket</h4>
+      <p>LP Implementar IA. Quiz IA (7 perguntas). Primeiro low-ticket: Kit Orçamento R$67. Checkout integrado. Order bump no resultado Raio-X.</p>
+    </div>
+    <div class="tl-item">
+      <h4>Semana 7-8: Expansão</h4>
+      <p>Campanhas 3 e 4 (Funil 2) ativadas. Segundo low-ticket: Playbook Express R$97. Review completo 4 semanas. Decisão de escala baseada em dados.</p>
+    </div>
+    <div class="tl-item">
+      <h4>Mes 3+: Escala</h4>
+      <p>Masterclass gravada R$147. Auditoria Flash R$197. Lookalike audiences. Budget scaling conforme ROI comprovado.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="footer">ZNITH — Estratégia produzida por Reis IA Agency &bull; Maio 2026 &bull; Documento de trabalho</div>
+
+</body>
+</html>

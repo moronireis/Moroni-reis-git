@@ -1,0 +1,19 @@
+{
+  "primary": "linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)",
+  "secondary": "linear-gradient(180deg,rgba(0,0,0,.6) 0,rgba(38,38,38,0) 100%)",
+  "total_unique": 3,
+  "top": [
+    {
+      "value": "linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,rgba(0,0,0,.6) 0,rgba(38,38,38,0) 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,transparent 0,rgba(0,0,0,.6) 100%)",
+      "count": 1
+    }
+  ]
+}

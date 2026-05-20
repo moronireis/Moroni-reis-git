@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diptyque Paris — Design System Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ===== TOKENS ===== */
+  :root {
+    /* Core Palette */
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-cream: #F5F0E8;
+    --color-ivory: #FAF7F2;
+    --color-warm-gray: #D4CFC7;
+    --color-charcoal: #2C2C2C;
+    --color-dark-gray: #4A4A4A;
+    --color-mid-gray: #8C8C8C;
+    --color-light-gray: #E8E4DE;
+
+    /* Accent / Seasonal */
+    --color-diptyque-green: #2D4A3E;
+    --color-moss: #5B7355;
+    --color-amber-warm: #C4956A;
+    --color-rose-blush: #D4A5A5;
+    --color-navy-deep: #1A2744;
+    --color-terracotta: #B5694D;
+    --color-gold-foil: #C5A55A;
+
+    /* Typography */
+    --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
+    --font-body: "EB Garamond", Georgia, serif;
+    --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 96px;
+    --space-5xl: 128px;
+
+    /* Motion */
+    --duration-fast: 200ms;
+    --duration-base: 350ms;
+    --duration-slow: 600ms;
+    --duration-dramatic: 900ms;
+    --easing-default: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    --easing-out: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+    --easing-dramatic: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-dark-gray);
+    background: var(--color-ivory);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-2xl); }
+  section { padding: var(--space-4xl) 0; }
+  section + section { border-top: 1px solid var(--color-light-gray); }
+
+  /* ===== HEADER ===== */
+  .preview-header {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+  }
+  .preview-header h1 {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-md);
+  }
+  .preview-header .subtitle {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-mid-gray);
+    margin-bottom: var(--space-lg);
+  }
+  .preview-header .meta-badge {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border: 1px solid var(--color-mid-gray);
+    color: var(--color-warm-gray);
+    margin: 0 var(--space-xs);
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-mid-gray);
+    margin-bottom: var(--space-xl);
+  }
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--color-black);
+    margin-bottom: var(--space-2xl);
+  }
+
+  /* ===== COLOR SWATCHES ===== */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-lg);
+  }
+  .swatch {
+    text-align: center;
+  }
+  .swatch-block {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-light-gray);
+    margin-bottom: var(--space-sm);
+    transition: transform var(--duration-base) var(--easing-default);
+  }
+  .swatch-block:hover { transform: scale(1.04); }
+  .swatch-name {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-charcoal);
+  }
+  .swatch-hex {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--color-mid-gray);
+    margin-top: 2px;
+  }
+
+  /* ===== TYPOGRAPHY SPECIMENS ===== */
+  .type-specimen { margin-bottom: var(--space-2xl); }
+  .type-specimen .label {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-mid-gray);
+    margin-bottom: var(--space-sm);
+  }
+  .type-hero {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--color-black);
+  }
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    color: var(--color-black);
+  }
+  .type-product {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    color: var(--color-black);
+  }
+  .type-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    color: var(--color-dark-gray);
+    max-width: 600px;
+  }
+  .type-nav {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  .type-caption {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    color: var(--color-mid-gray);
+  }
+
+  /* ===== SPACING SCALE ===== */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  .spacing-bar {
+    height: 24px;
+    background: var(--color-charcoal);
+    transition: width var(--duration-base) var(--easing-default);
+  }
+  .spacing-label {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--color-mid-gray);
+    min-width: 100px;
+    text-align: right;
+  }
+  .spacing-value {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--color-mid-gray);
+    min-width: 50px;
+  }
+
+  /* ===== COMPONENTS ===== */
+  .component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity var(--duration-fast) var(--easing-default);
+    margin-right: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+  .btn:hover { opacity: 0.8; }
+  .btn-primary {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+  .btn-secondary {
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+  }
+  .btn-text {
+    background: none;
+    color: var(--color-black);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-black);
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  /* Product Card */
+  .product-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+    transition: border-color var(--duration-base) var(--easing-default);
+  }
+  .product-card:hover { border-color: var(--color-warm-gray); }
+  .product-card-image {
+    aspect-ratio: 3/4;
+    background: var(--color-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card-image .oval {
+    width: 80px;
+    height: 100px;
+    border: 1.5px solid var(--color-charcoal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  .product-card-body {
+    padding: var(--space-lg);
+    text-align: center;
+  }
+  .product-card-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
+  }
+  .product-card-subtitle {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--color-mid-gray);
+    margin-bottom: var(--space-sm);
+  }
+  .product-card-price {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--color-dark-gray);
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== DARK SECTION (Product Glow) ===== */
+  .dark-section {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: var(--space-4xl) 0;
+  }
+  .dark-section .section-title { color: var(--color-mid-gray); }
+  .dark-section .section-heading { color: var(--color-white); }
+
+  .glow-demo {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3xl);
+    flex-wrap: wrap;
+    margin-top: var(--space-2xl);
+  }
+  .glow-item {
+    width: 180px;
+    text-align: center;
+  }
+  .glow-candle {
+    width: 120px;
+    height: 140px;
+    margin: 0 auto var(--space-lg);
+    background: var(--color-cream);
+    border-radius: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .glow-candle::before {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(196, 149, 106, 0.18) 0%,
+      rgba(196, 149, 106, 0.06) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+  }
+  @keyframes glowPulse {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+  .glow-candle .oval-small {
+    width: 50px;
+    height: 62px;
+    border: 1px solid var(--color-charcoal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+    position: relative;
+    z-index: 1;
+  }
+  .glow-flame {
+    width: 8px;
+    height: 16px;
+    background: linear-gradient(to top, var(--color-amber-warm), #F5D78E);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: flicker 2s ease-in-out infinite alternate;
+  }
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scaleY(1) rotate(-1deg); opacity: 0.9; }
+    50% { transform: translateX(-50%) scaleY(1.1) rotate(1deg); opacity: 1; }
+    100% { transform: translateX(-50%) scaleY(0.95) rotate(-0.5deg); opacity: 0.85; }
+  }
+  .glow-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: var(--color-cream);
+  }
+
+  /* ===== NAV DEMO ===== */
+  .nav-demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2xl);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-light-gray);
+    margin-bottom: var(--space-2xl);
+  }
+  .nav-demo a {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-fast) var(--easing-default);
+  }
+  .nav-demo a:hover { border-bottom-color: var(--color-black); }
+  .nav-demo .logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--color-black);
+    font-weight: 400;
+  }
+
+  /* ===== MOTION DEMO ===== */
+  .motion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-xl);
+  }
+  .motion-box {
+    height: 120px;
+    background: var(--color-cream);
+    border: 1px solid var(--color-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-mid-gray);
+    cursor: pointer;
+  }
+  .motion-fade { transition: opacity var(--duration-slow) var(--easing-default); }
+  .motion-fade:hover { opacity: 0.4; }
+  .motion-lift { transition: transform var(--duration-base) var(--easing-out); }
+  .motion-lift:hover { transform: translateY(-4px); }
+  .motion-scale { transition: transform var(--duration-base) var(--easing-dramatic); }
+  .motion-scale:hover { transform: scale(1.03); }
+  .motion-border { transition: border-color var(--duration-fast) var(--easing-default); }
+  .motion-border:hover { border-color: var(--color-black); }
+
+  /* ===== OVAL HERITAGE ===== */
+  .oval-heritage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3xl);
+    flex-wrap: wrap;
+  }
+  .heritage-oval {
+    width: 160px;
+    height: 200px;
+    border: 2px solid var(--color-black);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-lg);
+  }
+  .heritage-oval .brand-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
+  }
+  .heritage-oval .scent-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--color-black);
+    letter-spacing: 0.04em;
+  }
+  .heritage-oval .weight {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--color-mid-gray);
+    margin-top: var(--space-sm);
+    text-transform: uppercase;
+  }
+
+  /* ===== GREEN ACCENT SECTION ===== */
+  .green-section {
+    background: var(--color-diptyque-green);
+    color: var(--color-cream);
+    padding: var(--space-4xl) 0;
+  }
+  .green-section .section-title { color: rgba(245, 240, 232, 0.5); }
+  .green-section .section-heading { color: var(--color-cream); }
+  .green-section .type-body { color: rgba(245, 240, 232, 0.8); }
+
+  /* ===== FOOTER DEMO ===== */
+  .footer-demo {
+    background: var(--color-black);
+    color: var(--color-warm-gray);
+    padding: var(--space-3xl) 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+  .footer-col-title {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-mid-gray);
+    margin-bottom: var(--space-md);
+  }
+  .footer-link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-warm-gray);
+    text-decoration: none;
+    margin-bottom: var(--space-sm);
+    transition: color var(--duration-fast) var(--easing-default);
+  }
+  .footer-link:hover { color: var(--color-white); }
+
+  /* ===== CONFIDENCE BANNER ===== */
+  .confidence-banner {
+    background: var(--color-cream);
+    padding: var(--space-lg) 0;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--color-mid-gray);
+    border-top: 1px solid var(--color-light-gray);
+  }
+  .confidence-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid;
+    margin: 0 var(--space-xs);
+  }
+  .badge-medium { border-color: var(--color-amber-warm); color: var(--color-amber-warm); }
+  .badge-research { border-color: var(--color-mid-gray); color: var(--color-mid-gray); }
+
+  @media (max-width: 768px) {
+    .preview-header h1 { font-size: 32px; }
+    .type-hero { font-size: 36px; }
+    .type-h2 { font-size: 28px; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 0 var(--space-lg); }
+    .nav-demo { flex-wrap: wrap; gap: var(--space-lg); }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="preview-header">
+    <p class="subtitle">Design System Reference</p>
+    <h1>Diptyque Paris</h1>
+    <div style="margin-top: 24px;">
+      <span class="meta-badge badge-medium">Confidence: Medium</span>
+      <span class="meta-badge badge-research">Method: Research-Based</span>
+      <span class="meta-badge">2026-05-18</span>
+    </div>
+  </header>
+
+  <!-- CONFIDENCE BANNER -->
+  <div class="confidence-banner">
+    Site blocked automated extraction (DNS/CDN protection). Tokens derived from brand analyses, Atelje Altmann portfolio, academic visual identity paper, retail case studies. EB Garamond used as closest open-source proxy for the proprietary Diptyque Saint-Germain typeface.
+  </div>
+
+  <!-- 1. NAVIGATION DEMO -->
+  <section>
+    <div class="container">
+      <p class="section-title">01 / Navigation</p>
+      <nav class="nav-demo">
+        <a href="#">Home Fragrance</a>
+        <a href="#">Personal Fragrance</a>
+        <span class="logo">DIPTYQUE</span>
+        <a href="#">Body Care</a>
+        <a href="#">The Maison</a>
+      </nav>
+      <p class="type-caption" style="text-align:center;">Centered logo, uppercase sans-serif links with wide letter-spacing (0.12em). Underline on hover. Minimal, no background color.</p>
+    </div>
+  </section>
+
+  <!-- 2. COLOR PALETTE -->
+  <section>
+    <div class="container">
+      <p class="section-title">02 / Color Palette</p>
+      <h2 class="section-heading">Core Palette</h2>
+      <div class="color-grid">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#000000;"></div>
+          <p class="swatch-name">Black</p>
+          <p class="swatch-hex">#000000</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#FFFFFF;"></div>
+          <p class="swatch-name">White</p>
+          <p class="swatch-hex">#FFFFFF</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F5F0E8;"></div>
+          <p class="swatch-name">Cream</p>
+          <p class="swatch-hex">#F5F0E8</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#FAF7F2;"></div>
+          <p class="swatch-name">Ivory</p>
+          <p class="swatch-hex">#FAF7F2</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#D4CFC7;"></div>
+          <p class="swatch-name">Warm Gray</p>
+          <p class="swatch-hex">#D4CFC7</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#2C2C2C;"></div>
+          <p class="swatch-name">Charcoal</p>
+          <p class="swatch-hex">#2C2C2C</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#4A4A4A;"></div>
+          <p class="swatch-name">Dark Gray</p>
+          <p class="swatch-hex">#4A4A4A</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#8C8C8C;"></div>
+          <p class="swatch-name">Mid Gray</p>
+          <p class="swatch-hex">#8C8C8C</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#E8E4DE;"></div>
+          <p class="swatch-name">Light Gray</p>
+          <p class="swatch-hex">#E8E4DE</p>
+        </div>
+      </div>
+
+      <h2 class="section-heading" style="margin-top:64px;">Accent / Seasonal</h2>
+      <div class="color-grid">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#2D4A3E;"></div>
+          <p class="swatch-name">Diptyque Green</p>
+          <p class="swatch-hex">#2D4A3E</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#5B7355;"></div>
+          <p class="swatch-name">Moss</p>
+          <p class="swatch-hex">#5B7355</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#C4956A;"></div>
+          <p class="swatch-name">Amber Warm</p>
+          <p class="swatch-hex">#C4956A</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#D4A5A5;"></div>
+          <p class="swatch-name">Rose Blush</p>
+          <p class="swatch-hex">#D4A5A5</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#1A2744;"></div>
+          <p class="swatch-name">Navy Deep</p>
+          <p class="swatch-hex">#1A2744</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#B5694D;"></div>
+          <p class="swatch-name">Terracotta</p>
+          <p class="swatch-hex">#B5694D</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#C5A55A;"></div>
+          <p class="swatch-name">Gold Foil</p>
+          <p class="swatch-hex">#C5A55A</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. TYPOGRAPHY -->
+  <section>
+    <div class="container">
+      <p class="section-title">03 / Typography</p>
+      <h2 class="section-heading">Type Scale</h2>
+
+      <div class="type-specimen">
+        <p class="label">Hero Headline / 56px / EB Garamond 400 / 0.02em</p>
+        <p class="type-hero">L'Art du Parfum</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="label">Section Heading / 36px / EB Garamond 400 / 0.03em</p>
+        <p class="type-h2">Scented Candles Collection</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="label">Product Name / 20px / EB Garamond 400 / 0.05em</p>
+        <p class="type-product">Baies Scented Candle</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="label">Body Text / 16px / EB Garamond 400 / 0.01em / 1.6 line-height</p>
+        <p class="type-body">Deep, powerful black is integral to the Diptyque universe, and black and white rise in a play of solids and voids to better reflect on the space, like a diptych. Each scent is a blend of three colours; a sheath of whimsy and gaiety; a shimmering veil that conceals a world of black and white.</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="label">Navigation / 13px / Inter 400 / 0.12em / Uppercase</p>
+        <p class="type-nav">Home Fragrance &nbsp;&nbsp;&nbsp; Personal Fragrance &nbsp;&nbsp;&nbsp; Body Care &nbsp;&nbsp;&nbsp; The Maison</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="label">Caption / 12px / EB Garamond 400 / 0.04em</p>
+        <p class="type-caption">Handcrafted in Paris since 1961. The candle labels feature calligrams where letters form visual compositions inspired by each fragrance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. THE OVAL -->
+  <section>
+    <div class="container">
+      <p class="section-title">04 / The Oval &mdash; Signature Brand Element</p>
+      <h2 class="section-heading">Heritage Medallion</h2>
+      <div class="oval-heritage">
+        <div class="heritage-oval">
+          <span class="brand-name">Diptyque</span>
+          <span class="scent-name">Baies</span>
+          <span class="weight">190g / 6.5 oz</span>
+        </div>
+        <div class="heritage-oval">
+          <span class="brand-name">Diptyque</span>
+          <span class="scent-name">Figuier</span>
+          <span class="weight">190g / 6.5 oz</span>
+        </div>
+        <div class="heritage-oval">
+          <span class="brand-name">Diptyque</span>
+          <span class="scent-name">Roses</span>
+          <span class="weight">190g / 6.5 oz</span>
+        </div>
+      </div>
+      <p class="type-caption" style="text-align:center; margin-top:32px;">The oval, inspired by ancient Roman battle shields, has been Diptyque's signature since 1963. Ratio approximately 1.25:1 width-to-height. Always sharp-edged in digital, never filled with color.</p>
+    </div>
+  </section>
+
+  <!-- 5. SPACING -->
+  <section>
+    <div class="container">
+      <p class="section-title">05 / Spacing Scale</p>
+      <h2 class="section-heading">Spacing Tokens</h2>
+      <div>
+        <div class="spacing-row">
+          <span class="spacing-label">xs</span>
+          <div class="spacing-bar" style="width:4px;"></div>
+          <span class="spacing-value">4px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">sm</span>
+          <div class="spacing-bar" style="width:8px;"></div>
+          <span class="spacing-value">8px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">md</span>
+          <div class="spacing-bar" style="width:16px;"></div>
+          <span class="spacing-value">16px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">lg</span>
+          <div class="spacing-bar" style="width:24px;"></div>
+          <span class="spacing-value">24px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">xl</span>
+          <div class="spacing-bar" style="width:32px;"></div>
+          <span class="spacing-value">32px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">2xl</span>
+          <div class="spacing-bar" style="width:48px;"></div>
+          <span class="spacing-value">48px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">3xl</span>
+          <div class="spacing-bar" style="width:64px;"></div>
+          <span class="spacing-value">64px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">4xl</span>
+          <div class="spacing-bar" style="width:96px;"></div>
+          <span class="spacing-value">96px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">5xl</span>
+          <div class="spacing-bar" style="width:128px;"></div>
+          <span class="spacing-value">128px</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COMPONENTS: BUTTONS -->
+  <section>
+    <div class="container">
+      <p class="section-title">06 / Components</p>
+      <h2 class="section-heading">Buttons</h2>
+      <div style="margin-bottom:48px;">
+        <button class="btn btn-primary">Add to Cart</button>
+        <button class="btn btn-secondary">Discover</button>
+        <button class="btn btn-text">View Collection</button>
+      </div>
+      <p class="type-caption">Sharp corners (border-radius: 0). Uppercase, wide tracking (0.12em). Primary: black fill. Secondary: white fill + black border. Text: underline only. All transitions 200ms ease.</p>
+    </div>
+  </section>
+
+  <!-- 7. PRODUCT CARDS -->
+  <section>
+    <div class="container">
+      <p class="section-title">07 / Product Cards</p>
+      <h2 class="section-heading">Product Vitrine</h2>
+      <div class="component-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="product-card">
+          <div class="product-card-image">
+            <div class="oval"><span>Diptyque</span></div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-name">Baies</p>
+            <p class="product-card-subtitle">Blackcurrant Leaves and Bulgarian Rose</p>
+            <p class="product-card-price">$72.00</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-image">
+            <div class="oval"><span>Diptyque</span></div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-name">Figuier</p>
+            <p class="product-card-subtitle">Fig Tree</p>
+            <p class="product-card-price">$72.00</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-image">
+            <div class="oval"><span>Diptyque</span></div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-name">Roses</p>
+            <p class="product-card-subtitle">Damascena and Centifolia Roses</p>
+            <p class="product-card-price">$72.00</p>
+          </div>
+        </div>
+      </div>
+      <p class="type-caption" style="margin-top:24px;">No border-radius. No shadow. 1px light border. 3:4 image ratio. Serif product name, italic subtitle, sans-serif price. Hover: border darkens subtly.</p>
+    </div>
+  </section>
+
+  <!-- 8. DARK SECTION: PRODUCT GLOW -->
+  <div class="dark-section">
+    <div class="container">
+      <p class="section-title">08 / Dark Section &mdash; Product Glow</p>
+      <h2 class="section-heading">The Candle Glow Effect</h2>
+      <p class="type-body" style="color:rgba(245,240,232,0.7); max-width:600px; margin-bottom:48px;">On dark backgrounds, products are presented with a warm amber radial gradient glow. The flame flickers subtly. This is Diptyque's signature digital expression of candlelight.</p>
+      <div class="glow-demo">
+        <div class="glow-item">
+          <div class="glow-candle">
+            <div class="glow-flame"></div>
+            <div class="oval-small">Baies</div>
+          </div>
+          <p class="glow-label">Baies</p>
+        </div>
+        <div class="glow-item">
+          <div class="glow-candle">
+            <div class="glow-flame"></div>
+            <div class="oval-small">Figuier</div>
+          </div>
+          <p class="glow-label">Figuier</p>
+        </div>
+        <div class="glow-item">
+          <div class="glow-candle">
+            <div class="glow-flame"></div>
+            <div class="oval-small">Roses</div>
+          </div>
+          <p class="glow-label">Roses</p>
+        </div>
+      </div>
+      <p class="type-caption" style="color:rgba(212,207,199,0.5); text-align:center; margin-top:48px;">Glow: radial-gradient(ellipse, rgba(196,149,106,0.18) 0%, transparent 70%). Flame: CSS animation, 2s ease-in-out infinite. Slow luxury pacing.</p>
+    </div>
+  </div>
+
+  <!-- 9. GREEN ACCENT -->
+  <div class="green-section">
+    <div class="container">
+      <p class="section-title">09 / Accent Section &mdash; Diptyque Green</p>
+      <h2 class="section-heading">The Intimate Room</h2>
+      <p class="type-body">In Diptyque's physical stores, the scheme gets progressively darker and more intimate, culminating in green-lacquered rooms for personalized services. This dark green (#2D4A3E) translates to accent sections for premium, personalized, or editorial content.</p>
+    </div>
+  </div>
+
+  <!-- 10. MOTION -->
+  <section>
+    <div class="container">
+      <p class="section-title">10 / Motion</p>
+      <h2 class="section-heading">Animation Patterns</h2>
+      <div class="motion-grid">
+        <div class="motion-box motion-fade">Fade (600ms)</div>
+        <div class="motion-box motion-lift">Lift (350ms)</div>
+        <div class="motion-box motion-scale">Scale (350ms)</div>
+        <div class="motion-box motion-border">Border (200ms)</div>
+      </div>
+      <p class="type-caption" style="margin-top:24px;">Hover each box. Motion is always subtle: opacity shifts, micro-lifts, gentle scale. No bouncing, no sliding, no scroll-jacking. Slow durations signal premium pacing (350-600ms vs typical 150-250ms).</p>
+    </div>
+  </section>
+
+  <!-- 11. FOOTER DEMO -->
+  <div class="footer-demo">
+    <div class="container">
+      <p class="section-title" style="color:var(--color-mid-gray);">11 / Footer</p>
+      <div class="footer-grid">
+        <div>
+          <p class="footer-col-title">The Maison</p>
+          <a href="#" class="footer-link">Our Story</a>
+          <a href="#" class="footer-link">The Founders</a>
+          <a href="#" class="footer-link">Savoir-Faire</a>
+          <a href="#" class="footer-link">Commitments</a>
+        </div>
+        <div>
+          <p class="footer-col-title">Collections</p>
+          <a href="#" class="footer-link">Scented Candles</a>
+          <a href="#" class="footer-link">Eau de Parfum</a>
+          <a href="#" class="footer-link">Body Care</a>
+          <a href="#" class="footer-link">Home Fragrance</a>
+        </div>
+        <div>
+          <p class="footer-col-title">Services</p>
+          <a href="#" class="footer-link">Personalization</a>
+          <a href="#" class="footer-link">Gift Wrapping</a>
+          <a href="#" class="footer-link">Engraving</a>
+          <a href="#" class="footer-link">Store Locator</a>
+        </div>
+        <div>
+          <p class="footer-col-title">Help</p>
+          <a href="#" class="footer-link">Contact Us</a>
+          <a href="#" class="footer-link">FAQ</a>
+          <a href="#" class="footer-link">Shipping</a>
+          <a href="#" class="footer-link">Returns</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

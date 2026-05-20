@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>u4digital — Raio-X Digital Gratuito</title>
+  <meta name="description" content="A u4digital identifica em 35 minutos onde a IA elimina os custos que estão comendo sua margem — e implementa agentes treinados com a sua voz.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="components.css">
+
+  <style>
+    /* ============================================================
+       LP-SPECIFIC LAYOUT
+       All values reference design system tokens
+       ============================================================ */
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* ---- NAV ---- */
+    .lp-nav {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(30, 30, 30, 0.90);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .lp-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height-lg);
+      max-width: var(--container-xl);
+      margin-inline: auto;
+      padding-inline: var(--container-padding-x);
+    }
+
+    @media (min-width: 768px) {
+      .lp-nav__inner { padding-inline: var(--container-padding-x-md); }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-nav__inner { padding-inline: var(--container-padding-x-lg); }
+    }
+
+    .lp-nav__wordmark {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+      text-decoration: none;
+    }
+
+    /* ---- HERO ---- */
+    .lp-hero {
+      position: relative;
+      padding-block: var(--space-32) var(--space-24);
+      overflow: hidden;
+    }
+
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 80% 60% at 50% -10%,
+        rgba(116, 198, 158, 0.06) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .lp-hero__content {
+      position: relative;
+      max-width: var(--container-md);
+    }
+
+    .lp-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+
+    .lp-hero__headline {
+      font-size: clamp(var(--font-3xl), 5vw, var(--font-5xl));
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .lp-hero__sub {
+      font-size: var(--font-md);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      max-width: 560px;
+      margin-bottom: var(--space-10);
+    }
+
+    .lp-hero__cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+
+    .lp-hero__microcopy {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    /* ---- SECTION SHARED ---- */
+    .lp-section {
+      padding-block: var(--section-lg);
+      border-top: 1px solid var(--color-border-muted);
+    }
+
+    .lp-section--dark {
+      background: var(--color-bg-sunken);
+    }
+
+    .lp-section__header {
+      margin-bottom: var(--space-12);
+    }
+
+    .lp-section__headline {
+      font-size: clamp(var(--font-2xl), 3.5vw, var(--font-3xl));
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .lp-section__intro {
+      font-size: var(--font-md);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      max-width: 640px;
+    }
+
+    /* ---- PROBLEMA ---- */
+    .lp-problem__body {
+      max-width: 680px;
+    }
+
+    .lp-problem__body p {
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-5);
+    }
+
+    .lp-problem__body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lp-stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-block: var(--space-8);
+    }
+
+    .lp-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-full);
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+    }
+
+    .lp-stat-pill__value {
+      color: var(--color-accent);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .lp-problem__closing {
+      font-size: var(--font-md);
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--leading-snug);
+      margin-top: var(--space-8);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ---- AGENTS GRID ---- */
+    .lp-agents-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (min-width: 768px) {
+      .lp-agents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .lp-agent-card {
+      background: var(--color-bg-card);
+      border: var(--card-border);
+      border-left: 2px solid var(--color-accent);
+      border-radius: var(--card-radius);
+      padding: var(--card-padding-md);
+    }
+
+    .lp-agent-card__number {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-agent-card__name {
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      line-height: var(--leading-snug);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-agent-card__description {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    .lp-agent-card__replaces {
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-agent-card__replaces strong {
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .lp-agent-card__scenario {
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      font-style: italic;
+    }
+
+    /* ---- STEPS ---- */
+    .lp-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+      }
+
+      .lp-steps::before {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        left: calc(33.333% + var(--space-6));
+        right: calc(33.333% + var(--space-6));
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          var(--color-border) 0%,
+          var(--color-accent) 50%,
+          var(--color-border) 100%
+        );
+      }
+    }
+
+    .lp-step {
+      position: relative;
+    }
+
+    .lp-step__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-full);
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-accent);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-6);
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-step__tag {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-step__title {
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      line-height: var(--leading-snug);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-step__subtitle {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+      font-style: italic;
+    }
+
+    .lp-step__description {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ---- CREDIBILIDADE ---- */
+    .lp-credibility__body {
+      max-width: 680px;
+    }
+
+    .lp-credibility__body p {
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-5);
+    }
+
+    .lp-credibility__body p:last-child { margin-bottom: 0; }
+
+    .lp-credibility__highlight {
+      display: inline;
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .lp-credibility__guarantee {
+      margin-top: var(--space-8);
+      max-width: 680px;
+    }
+
+    .lp-placeholder {
+      margin-top: var(--space-10);
+      padding: var(--space-6);
+      border: 1px dashed var(--color-border-strong);
+      border-radius: var(--card-radius);
+      background: transparent;
+    }
+
+    .lp-placeholder__label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-placeholder__content {
+      font-size: var(--font-sm);
+      color: var(--color-text-disabled);
+      line-height: var(--leading-relaxed);
+      font-style: italic;
+    }
+
+    /* ---- RAIO-X TIMELINE ---- */
+    .lp-timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 768px) {
+      .lp-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .lp-timeline-block {
+      background: var(--color-bg-card);
+      border: var(--card-border);
+      border-radius: var(--card-radius);
+      padding: var(--card-padding-md);
+      position: relative;
+    }
+
+    .lp-timeline-block--featured {
+      border-color: var(--color-accent-border);
+      background: var(--color-accent-muted);
+    }
+
+    .lp-timeline-block__time {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-timeline-block--featured .lp-timeline-block__time {
+      color: var(--color-accent);
+    }
+
+    .lp-timeline-block__title {
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      line-height: var(--leading-snug);
+      margin-bottom: var(--space-3);
+    }
+
+    .lp-timeline-block__description {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .lp-timeline-block__result {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border-muted);
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .lp-timeline-block--featured .lp-timeline-block__result {
+      border-top-color: var(--color-accent-border);
+      color: var(--color-accent);
+    }
+
+    .lp-timeline__closing {
+      margin-top: var(--space-6);
+      padding: var(--space-4) var(--space-5);
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--card-radius);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ---- FAQ / ACCORDION ---- */
+    .lp-faq {
+      max-width: 720px;
+    }
+
+    .lp-faq details {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .lp-faq details:first-of-type {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .lp-faq summary {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding-block: var(--space-5);
+      cursor: pointer;
+      list-style: none;
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+      line-height: var(--leading-snug);
+      transition: color var(--transition-fast);
+    }
+
+    .lp-faq summary::-webkit-details-marker { display: none; }
+
+    .lp-faq summary:hover {
+      color: var(--color-accent-light);
+    }
+
+    .lp-faq summary::after {
+      content: '+';
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+      line-height: 1;
+      transition: transform var(--transition-base), color var(--transition-fast);
+    }
+
+    .lp-faq details[open] summary::after {
+      transform: rotate(45deg);
+      color: var(--color-accent);
+    }
+
+    .lp-faq details[open] summary {
+      color: var(--color-accent-light);
+    }
+
+    .lp-faq__answer {
+      padding-bottom: var(--space-6);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ---- CTA FINAL / FORM ---- */
+    .lp-cta-section {
+      padding-block: var(--section-xl);
+      border-top: 1px solid var(--color-border-muted);
+    }
+
+    .lp-cta-section__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+
+    @media (min-width: 1024px) {
+      .lp-cta-section__layout {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: var(--space-16);
+      }
+    }
+
+    .lp-cta-section__headline {
+      font-size: clamp(var(--font-2xl), 3.5vw, var(--font-3xl));
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .lp-cta-section__copy {
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-5);
+    }
+
+    .lp-cta-section__copy:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .lp-form {
+      background: var(--color-bg-card);
+      border: var(--card-border);
+      border-radius: var(--card-radius);
+      padding: var(--card-padding-lg);
+    }
+
+    .lp-form__title {
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .lp-form__stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    /* ---- FOOTER ---- */
+    .lp-footer {
+      padding-block: var(--space-10);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .lp-footer__inner {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .lp-footer__inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .lp-footer__wordmark {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+    }
+
+    .lp-footer__tagline {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+    }
+
+    .lp-footer__copy {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+    }
+
+    /* ---- STICKY MOBILE CTA ---- */
+    .lp-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: var(--z-sticky);
+      padding: var(--space-4) var(--container-padding-x);
+      background: var(--color-bg-sunken);
+      border-top: 1px solid var(--color-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 767px) {
+      .lp-sticky-cta { display: block; }
+      body { padding-bottom: 5rem; }
+    }
+
+    /* ---- MISC ---- */
+    .accent { color: var(--color-accent); }
+
+    .lp-text-large {
+      font-size: var(--font-md);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+      line-height: var(--leading-snug);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="lp-nav" role="banner">
+    <div class="lp-nav__inner">
+      <a href="#" class="lp-nav__wordmark" aria-label="u4digital">
+        u<span class="accent">4</span>digital
+      </a>
+      <a href="#form" class="btn btn--primary btn--sm">Agendar Raio-X</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SECTION 1: HERO -->
+    <section class="lp-hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <div class="lp-hero__content">
+          <div class="lp-hero__eyebrow">
+            <span class="tag tag--accent">Assessoria de IA para Negócios Digitais</span>
+          </div>
+          <h1 class="lp-hero__headline" id="hero-headline">
+            70% das implementações de IA falham porque a empresa contrata agente sem saber o que quer. <span class="accent">A outra parte lucra calada.</span>
+          </h1>
+          <p class="lp-hero__sub">
+            A u4digital define qual agente você precisa, o que ele deve entregar, e implementa com a sua voz — antes de você gastar um real em tecnologia.
+          </p>
+          <div class="lp-hero__cta-group">
+            <a href="#form" class="btn btn--primary btn--lg">Diagnóstico gratuito de 35 minutos</a>
+            <p class="lp-hero__microcopy">
+              35 a 45 minutos. Sem pitch. Sem contrato. Você sai com um diagnóstico em PDF mesmo que não contrate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 2: PROBLEMA -->
+    <section class="lp-section" aria-labelledby="problema-headline">
+      <div class="container">
+        <div class="lp-section__header">
+          <h2 class="lp-section__headline" id="problema-headline">
+            Você fatura bem. Mas sua margem está morrendo devagar — <span class="accent">e você sabe disso.</span>
+          </h2>
+        </div>
+
+        <div class="lp-problem__body">
+          <p>
+            Tem um padrão que a gente vê toda semana.
+          </p>
+          <p>
+            O expert fatura R$40K, R$60K, R$80K. O número impressiona. Mas quando vai calcular o que sobrou de verdade — depois do time, das ferramentas, dos freelancers, do gestor de tráfego, da plataforma de email, do checkout, do suporte — o que resta é bem diferente do que o faturamento sugere.
+          </p>
+          <p>
+            E o mais cruel: isso está piorando.
+          </p>
+
+          <div class="lp-stat-row">
+            <span class="lp-stat-pill">CPL subiu <span class="lp-stat-pill__value">21%</span> em 2025</span>
+            <span class="lp-stat-pill">Em 2026, mais <span class="lp-stat-pill__value">12%</span></span>
+            <span class="lp-stat-pill">35% mais investimento pelo mesmo resultado</span>
+          </div>
+
+          <p>
+            Na prática, você está trabalhando mais para proteger a margem que tinha antes.
+          </p>
+          <p>
+            Não é falta de habilidade. Não é falta de produto. É estrutura. A estrutura de um negócio que cresceu empilhando pessoa em cima de pessoa, ferramenta em cima de ferramenta, sem nunca redesenhar o que a IA pode assumir.
+          </p>
+          <p>
+            E olha que o problema não é só o custo fixo. É o que esse custo faz com você.
+          </p>
+          <p>
+            Quando o SDR pede demissão, você fica 2 semanas respondendo WhatsApp. Quando o freelancer de copy some, o lançamento atrasa. Quando o CS está sobrecarregado, o aluno reclama no grupo e você vai apagar incêndio pessoalmente. Você construiu um negócio que depende inteiramente de pessoas — e essas pessoas têm dias ruins, têm família, têm outros clientes.
+          </p>
+          <p>
+            Os top 10% do digital entenderam algo que o mercado ainda está digerindo: concentração.
+          </p>
+
+          <div class="lp-stat-row">
+            <span class="lp-stat-pill">Top <span class="lp-stat-pill__value">10%</span> concentram <span class="lp-stat-pill__value">62%</span> dos pagamentos</span>
+            <span class="lp-stat-pill"><span class="lp-stat-pill__value">70%</span> das implementações de IA falham</span>
+          </div>
+
+          <p>
+            Os maiores criadores concentram 62% dos pagamentos não porque trabalham mais — mas porque operam diferente. Com menos gente. Com mais sistema. Com agentes que fazem o trabalho operacional enquanto o expert faz o que só o expert faz.
+          </p>
+
+          <p class="lp-problem__closing">
+            No final, você até lucra. Mas se matou pra conseguir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3: SOLUÇÃO — 5 AGENTES -->
+    <section class="lp-section lp-section--dark" aria-labelledby="agentes-headline">
+      <div class="container">
+        <div class="lp-section__header">
+          <h2 class="lp-section__headline" id="agentes-headline">
+            Cinco agentes. Treinados na sua voz. <span class="accent">Trabalhando enquanto você dorme.</span>
+          </h2>
+          <p class="lp-section__intro">
+            Não é sobre automação genérica. Não é sobre conectar ChatGPT em algum formulário e torcer pra funcionar.
+          </p>
+          <p class="lp-section__intro" style="margin-top: var(--space-4);">
+            Cada agente é construído a partir do seu negócio específico — com sua linguagem, seu método, suas objeções mais comuns, seu processo de venda. Na prática, é como contratar cinco especialistas que conhecem sua empresa de dentro — mas custam a fração de um salário CLT.
+          </p>
+        </div>
+
+        <div class="lp-agents-grid">
+
+          <!-- Agente 1 -->
+          <article class="lp-agent-card">
+            <p class="lp-agent-card__number">Agente 01</p>
+            <h3 class="lp-agent-card__name">Agente de Qualificação Comercial</h3>
+            <p class="lp-agent-card__description">
+              Responde leads via WhatsApp em até 90 segundos, qualifica com as perguntas certas, separa curiosos de compradores prontos, e agenda direto no seu calendário — 24 horas por dia, 7 dias por semana.
+            </p>
+            <div class="lp-agent-card__replaces">
+              <strong>Substitui:</strong> SDR júnior ou comercial de meia-jornada — R$2.800 a R$4.200/mês incluindo encargos.
+            </div>
+            <p class="lp-agent-card__scenario">
+              Lead entra às 23h após assistir seu Reels. O agente já fez as 4 perguntas de qualificação, identificou que o lead tem orçamento, e agendou para segunda às 10h. Você acorda com a reunião no calendário.
+            </p>
+          </article>
+
+          <!-- Agente 2 -->
+          <article class="lp-agent-card">
+            <p class="lp-agent-card__number">Agente 02</p>
+            <h3 class="lp-agent-card__name">Agente de Copy na Voz do Expert</h3>
+            <p class="lp-agent-card__description">
+              Produz copy de email, caption, script de Reels, página de vendas, e sequência de WhatsApp — treinado com seu vocabulário, seus cases, suas expressões. O leitor não percebe que não foi você quem escreveu. Porque na prática, foi.
+            </p>
+            <div class="lp-agent-card__replaces">
+              <strong>Substitui:</strong> Copywriter freelancer — R$1.500 a R$4.000/mês por demanda contínua.
+            </div>
+            <p class="lp-agent-card__scenario">
+              Você grava um áudio de 3 minutos explicando um tema. O agente transforma em 5 captions de Instagram, 1 script de Reels e 3 emails para a sequência de nutrição — com o seu jeito de falar.
+            </p>
+          </article>
+
+          <!-- Agente 3 -->
+          <article class="lp-agent-card">
+            <p class="lp-agent-card__number">Agente 03</p>
+            <h3 class="lp-agent-card__name">Agente de Atendimento ao Aluno</h3>
+            <p class="lp-agent-card__description">
+              Responde dúvidas frequentes de alunos e clientes no WhatsApp ou plataforma, resolve problemas de acesso, envia materiais, e escalona para você apenas o que realmente precisa de atenção humana. Funciona dentro dos seus grupos e chats.
+            </p>
+            <div class="lp-agent-card__replaces">
+              <strong>Substitui:</strong> Assistente de CS ou community manager — R$1.800 a R$3.000/mês.
+            </div>
+            <p class="lp-agent-card__scenario">
+              São 14 alunos perguntando ao mesmo tempo sobre o mesmo módulo. O agente responde todos em menos de 2 minutos com a explicação correta, no seu tom, com o link certo. Você não vê a notificação.
+            </p>
+          </article>
+
+          <!-- Agente 4 -->
+          <article class="lp-agent-card">
+            <p class="lp-agent-card__number">Agente 04</p>
+            <h3 class="lp-agent-card__name">Agente de Monitoramento de Campanhas</h3>
+            <p class="lp-agent-card__description">
+              Monitora métricas de campanha, identifica anomalias (CPL fora do padrão, frequência alta, criativo esgotado), e envia alertas com diagnóstico e sugestão de ajuste — antes que o orçamento vaze em anúncio que parou de funcionar.
+            </p>
+            <div class="lp-agent-card__replaces">
+              <strong>Substitui:</strong> Gestor de tráfego para monitoramento contínuo — R$2.500 a R$5.000/mês.
+            </div>
+            <p class="lp-agent-card__scenario">
+              CPL 40% acima da meta desde as 7h da manhã. Em vez de descobrir às 17h, o agente enviou alerta às 7h23 com diagnóstico e 3 hipóteses de causa. Você faz o ajuste às 9h.
+            </p>
+          </article>
+
+          <!-- Agente 5 -->
+          <article class="lp-agent-card">
+            <p class="lp-agent-card__number">Agente 05</p>
+            <h3 class="lp-agent-card__name">Agente de Briefing Criativo</h3>
+            <p class="lp-agent-card__description">
+              Gera briefings de criativo para anúncio, thumbnail, carrossel e identidade visual — com referências, paleta, texto de copy, e orientação de formato. Reduz o ciclo de aprovação com o designer de 4 reuniões para 1.
+            </p>
+            <div class="lp-agent-card__replaces">
+              <strong>Substitui:</strong> Parte do trabalho de design ops ou diretor de arte — R$1.500 a R$3.500/mês em horas de briefing e revisão.
+            </div>
+            <p class="lp-agent-card__scenario">
+              Você precisa de 10 variações de criativo para o lançamento da próxima semana. O agente entrega 10 briefings completos em 40 minutos — com referência visual, copy testada, orientação de formato e paleta. O designer executa sem perguntar.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 4: COMO FUNCIONA -->
+    <section class="lp-section" aria-labelledby="como-funciona-headline">
+      <div class="container">
+        <div class="lp-section__header">
+          <h2 class="lp-section__headline" id="como-funciona-headline">
+            Três passos. <span class="accent">Sem enrolação.</span>
+          </h2>
+        </div>
+
+        <div class="lp-steps">
+
+          <div class="lp-step">
+            <div class="lp-step__number">1</div>
+            <div class="lp-step__tag">
+              <span class="tag">Raio-X Digital — 35 min — Gratuito</span>
+            </div>
+            <h3 class="lp-step__title">O diagnóstico que ninguém faz antes de vender.</h3>
+            <p class="lp-step__description">
+              Mapeamos a estrutura do seu negócio: onde o tempo do seu time vai, quanto cada função custa por mês, quais processos se repetem toda semana, onde a qualidade depende de uma única pessoa. Você vai sair entendendo exatamente onde a IA elimina custo sem eliminar resultado.
+            </p>
+            <p class="lp-step__description" style="margin-top: var(--space-4);">
+              E tem mais: você vai ver um agente funcionando ao vivo — no contexto do seu negócio, não em demonstração genérica. Vamos simular como seu agente de SDR responderia um lead real seu. Isso não é pitch. É prova.
+            </p>
+          </div>
+
+          <div class="lp-step">
+            <div class="lp-step__number">2</div>
+            <div class="lp-step__tag">
+              <span class="tag">Plano de Agentes Sob Medida</span>
+            </div>
+            <h3 class="lp-step__title">Estratégia antes de tecnologia.</h3>
+            <p class="lp-step__description">
+              Com base no diagnóstico, entregamos um plano de 2 a 3 páginas mapeando quais agentes fazem sentido para o seu negócio específico, em qual ordem implementar, e o retorno esperado em custo mensal. Sem promessa vaga. Com número.
+            </p>
+            <p class="lp-step__description" style="margin-top: var(--space-4);">
+              A diferença entre a u4digital e uma agência de automação: nós definimos a estratégia antes de escrever uma linha de código. Você sabe o que vai receber — e o que vai economizar — antes de contratar.
+            </p>
+          </div>
+
+          <div class="lp-step">
+            <div class="lp-step__number">3</div>
+            <div class="lp-step__tag">
+              <span class="tag">Implementação com a Sua Voz</span>
+            </div>
+            <h3 class="lp-step__title">Agentes que parecem você. Porque foram treinados com você.</h3>
+            <p class="lp-step__description">
+              A implementação começa com uma sessão de captura de voz: seu vocabulário, seus casos, suas objeções mais comuns, seu processo de venda. O agente aprende como você pensa antes de aprender o que fazer. Daí em diante, opera. Você supervisiona. O custo fica onde deve ficar.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 5: CREDIBILIDADE -->
+    <section class="lp-section lp-section--dark" aria-labelledby="credibilidade-headline">
+      <div class="container">
+        <div class="lp-section__header">
+          <h2 class="lp-section__headline" id="credibilidade-headline">
+            Não temos 50 cases publicados. Temos algo mais raro: <span class="accent">honestidade sobre o que funciona.</span>
+          </h2>
+        </div>
+
+        <div class="lp-credibility__body">
+          <p>
+            A maioria das agências de IA vai te mostrar prints de automação funcionando. O que não mostram é quantas implementações falharam antes — ou o que a empresa precisou mudar para que o agente finalmente entregasse resultado.
+          </p>
+          <p>
+            <span class="lp-credibility__highlight">70% das implementações de IA falham.</span> Esse número não é alarmista — é do MIT. E a razão principal não é tecnologia ruim. É estratégia errada: implementar o agente antes de definir o que ele deve entregar.
+          </p>
+          <p>
+            A u4digital existe para resolver esse problema antes da implementação.
+          </p>
+          <p>
+            A equipe acumula <span class="lp-credibility__highlight">mais de R$300 mil em contratos ativos</span> de assessoria e implementação de IA para negócios digitais — não como agência genérica, mas como especialistas no mercado de infoprodutos, cursos, mentorias e serviços digitais. Sabemos como funciona a estrutura de um lançamento, como um time de 4 pessoas opera com faturamento de 8 dígitos, e onde a IA entra sem quebrar o que já funciona.
+          </p>
+          <p>
+            (Na prática, isso significa que quando você chegar no diagnóstico, não vai precisar explicar o que é CPL, o que é lead qualificado, ou como funciona funil de lançamento. A gente já sabe. A conversa vai direto ao ponto.)
+          </p>
+        </div>
+
+        <div class="lp-credibility__guarantee">
+          <div class="card card--accent">
+            <h3 class="card__title">Nosso compromisso</h3>
+            <p class="card__body" style="margin-top: var(--space-3);">
+              Se você fizer o Raio-X Digital e o diagnóstico não trouxer pelo menos 3 oportunidades concretas de redução de custo ou aumento de capacidade operacional — você nos diz, e a gente refaz. Sem custo. Sem burocracia.
+            </p>
+          </div>
+        </div>
+
+        <div class="lp-placeholder placeholder-content" aria-label="Seção reservada para depoimentos">
+          <p class="lp-placeholder__label">Depoimentos — em breve</p>
+          <p class="lp-placeholder__content">
+            Esta seção será preenchida após os primeiros 3 clientes.<br>
+            Estrutura reservada: nome, cargo, segmento / resultado específico em 60-90 dias / comparação antes e depois.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION 6: O QUE ACONTECE NO RAIO-X -->
+    <section class="lp-section" aria-labelledby="raiox-headline">
+      <div class="container">
+        <div class="lp-section__header">
+          <h2 class="lp-section__headline" id="raiox-headline">
+            35 minutos. <span class="accent">O que acontece em cada bloco.</span>
+          </h2>
+        </div>
+
+        <div class="lp-timeline">
+
+          <div class="lp-timeline-block">
+            <p class="lp-timeline-block__time">Bloco 1 — 10 minutos</p>
+            <h3 class="lp-timeline-block__title">Diagnóstico de Estrutura</h3>
+            <p class="lp-timeline-block__description">
+              Mapeamos o custo operacional real do seu negócio: time fixo, freelancers, ferramentas, tempo do próprio expert. A maioria dos experts nunca somou tudo isso numa planilha. Quando somam, o número surpreende — e não positivamente.
+            </p>
+            <p class="lp-timeline-block__result">
+              Você vai sair sabendo exatamente quanto sua operação custa por mês, por função.
+            </p>
+          </div>
+
+          <div class="lp-timeline-block">
+            <p class="lp-timeline-block__time">Bloco 2 — 10 minutos</p>
+            <h3 class="lp-timeline-block__title">Mapeamento de Processos Repetitivos</h3>
+            <p class="lp-timeline-block__description">
+              Identificamos onde seu time faz a mesma coisa toda semana: responder as mesmas perguntas, produzir o mesmo tipo de conteúdo, monitorar as mesmas métricas. Cada processo repetitivo é um candidato direto a agente.
+            </p>
+            <p class="lp-timeline-block__result">
+              Saímos com uma lista de 5 a 8 processos mapeados e ranqueados por impacto.
+            </p>
+          </div>
+
+          <div class="lp-timeline-block lp-timeline-block--featured">
+            <p class="lp-timeline-block__time">Bloco 3 — 10 minutos</p>
+            <h3 class="lp-timeline-block__title">Demonstração ao Vivo</h3>
+            <p class="lp-timeline-block__description">
+              Aqui é onde a maioria das pessoas fica surpresa. Não é uma demo gravada. Não é um exemplo genérico. Com os dados que você compartilhou nos primeiros 20 minutos, mostramos ao vivo como um agente de SDR responderia um lead do seu negócio — com o seu tom, as suas perguntas de qualificação, a sua oferta.
+            </p>
+            <p class="lp-timeline-block__result">
+              Você vê funcionando. Antes de assinar qualquer coisa.
+            </p>
+          </div>
+
+          <div class="lp-timeline-block">
+            <p class="lp-timeline-block__time">Bloco 4 — 5 minutos</p>
+            <h3 class="lp-timeline-block__title">Plano Inicial e Próximos Passos</h3>
+            <p class="lp-timeline-block__description">
+              Com tudo mapeado, apresentamos uma visão inicial de quais agentes fazem mais sentido para o seu momento, a ordem de implementação recomendada, e o que você pode esperar de redução de custo nos primeiros 90 dias.
+            </p>
+            <p class="lp-timeline-block__result">
+              Você sai da reunião com um PDF de 2 a 3 páginas — estruturado, com números — mesmo que decida não contratar.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="lp-timeline__closing">
+          PDF gratuito enviado após a sessão — estruturado, com números — mesmo que você decida não contratar.
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION 7: FAQ -->
+    <section class="lp-section lp-section--dark" aria-labelledby="faq-headline">
+      <div class="container">
+        <div class="lp-section__header">
+          <h2 class="lp-section__headline" id="faq-headline">
+            Perguntas que você provavelmente <span class="accent">já está fazendo.</span>
+          </h2>
+        </div>
+
+        <div class="lp-faq" role="list">
+
+          <details>
+            <summary>"IA não entende meu nicho específico."</summary>
+            <div class="lp-faq__answer">
+              <p>Entendo de onde vem isso. A IA genérica — aquela que você usou digitando no ChatGPT — realmente não entende. Ela responde com base em padrões gerais da internet, não com base no seu público específico, nas suas objeções específicas, no seu jeito de falar.</p>
+              <p style="margin-top: var(--space-3);">Agente treinado é diferente. Ele é alimentado com seus materiais, suas transcrições de vendas, suas aulas, seus emails. Na prática, ele aprende o seu negócio antes de começar a trabalhar para ele. A especificidade não é limitação da tecnologia — é resultado do que você coloca dentro.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>"Já tentei usar IA e não funcionou."</summary>
+            <div class="lp-faq__answer">
+              <p>Esse é o relato mais comum que ouvimos. E quase sempre a história é a mesma: alguém instalou uma ferramenta, usou por 2 semanas, não obteve o resultado esperado, desistiu.</p>
+              <p style="margin-top: var(--space-3);">O que não funcionou não foi a IA. Foi a falta de estratégia antes da implementação. É como contratar um vendedor sem script, sem processo, sem treinamento — e culpar o vendedor quando as vendas não aparecem.</p>
+              <p style="margin-top: var(--space-3);">A u4digital começa pelo diagnóstico, não pela ferramenta. A pergunta não é "qual agente vou usar?" — é "o que esse agente precisa entregar para fazer diferença no seu negócio?" Essa distinção é o que separa implementação que funciona de implementação que vira custo.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>"Não tenho tempo pra aprender mais uma coisa."</summary>
+            <div class="lp-faq__answer">
+              <p>Bom. Porque não é um curso. Não é mais uma coisa pra você aprender.</p>
+              <p style="margin-top: var(--space-3);">É uma assessoria. O trabalho de configurar, treinar, testar, e ajustar o agente é nosso. O que você precisa dedicar é tempo de diagnóstico (35 minutos) e uma sessão de captura de voz (cerca de 1 hora). Depois disso, o agente opera. Você supervisiona.</p>
+              <p style="margin-top: var(--space-3);">A proposta é que você tenha mais tempo, não menos.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>"É caro implementar agentes de IA?"</summary>
+            <div class="lp-faq__answer">
+              <p>Depende do que você chama de caro.</p>
+              <p style="margin-top: var(--space-3);">Um SDR júnior custa R$2.800/mês mais encargos — R$3.700/mês no total, sem contar treinamento e turnover. Um agente de SDR treinado custa uma fração disso e não pede aumento, não some no lançamento, e não tem dias ruins.</p>
+              <p style="margin-top: var(--space-3);">A pergunta correta não é "quanto custa o agente?" — é "quanto está custando operar sem ele?" Isso é exatamente o que o Raio-X Digital responde, com números reais do seu negócio.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>"Meu público vai perceber que é IA?"</summary>
+            <div class="lp-faq__answer">
+              <p>Depende de como o agente é treinado.</p>
+              <p style="margin-top: var(--space-3);">Agente treinado com suas transcrições de vendas, seus áudios, seus emails, seu vocabulário — escreve como você. Usa seus exemplos. Faz suas perguntas. Responde com seu nível de detalhe. Clientes que interagem com esse agente e depois falam com você pessoalmente costumam dizer que "você respondeu igual de sempre."</p>
+              <p style="margin-top: var(--space-3);">O que denuncia IA não é a tecnologia — é o treinamento genérico. Com treinamento específico, a percepção muda.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 8: CTA FINAL + FORM -->
+    <section class="lp-cta-section" id="form" aria-labelledby="cta-headline">
+      <div class="container">
+        <div class="lp-cta-section__layout">
+
+          <!-- Left: copy -->
+          <div>
+            <h2 class="lp-cta-section__headline" id="cta-headline">
+              Você tem 35 minutos para descobrir <span class="accent">quanto está deixando na mesa.</span>
+            </h2>
+            <p class="lp-cta-section__copy">
+              O diagnóstico é gratuito. O PDF que você leva é seu, independente do que decidir depois. E a demonstração ao vivo — onde você vê o agente funcionando no contexto do seu negócio — não tem preço de entrada.
+            </p>
+            <p class="lp-cta-section__copy">
+              O que tem preço é esperar mais 3 meses enquanto o CPL sobe, o time pede aumento, e o lançamento que deveria ser lucro acaba zerando a margem.
+            </p>
+            <p class="lp-cta-section__copy">
+              Preencha abaixo e agende o Raio-X Digital.
+            </p>
+          </div>
+
+          <!-- Right: form -->
+          <div class="lp-form">
+            <h3 class="lp-form__title">Agendar Raio-X Digital</h3>
+            <form action="#" method="post" class="lp-form__stack" novalidate>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="faturamento">
+                  Qual é o faturamento médio mensal do seu negócio?
+                </label>
+                <input
+                  class="input"
+                  type="text"
+                  id="faturamento"
+                  name="faturamento"
+                  placeholder="Ex: R$40.000/mês"
+                  required
+                  autocomplete="off"
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="time">
+                  Quantas pessoas (fixas ou freelancers) trabalham com você hoje?
+                </label>
+                <input
+                  class="input"
+                  type="text"
+                  id="time"
+                  name="time"
+                  placeholder="Ex: 4 pessoas — 2 fixas, 2 freelancers"
+                  required
+                  autocomplete="off"
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="gargalo">
+                  Qual processo consome mais tempo do seu time todo mês?
+                </label>
+                <input
+                  class="input"
+                  type="text"
+                  id="gargalo"
+                  name="gargalo"
+                  placeholder="Ex: Atendimento de alunos, produção de conteúdo, resposta de leads..."
+                  required
+                  autocomplete="off"
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="experiencia">
+                  Você já tentou implementar alguma ferramenta de IA no seu negócio?
+                </label>
+                <select class="select" id="experiencia" name="experiencia" required>
+                  <option value="" disabled selected>Selecione uma opção</option>
+                  <option value="nunca">Nunca tentei</option>
+                  <option value="nao-funcionou">Tentei mas não funcionou</option>
+                  <option value="basico">Uso algumas ferramentas básicas</option>
+                  <option value="avancado">Já tenho automações rodando</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="decisao">
+                  Se o diagnóstico mostrar oportunidade clara, você tem autonomia para decidir contratar?
+                </label>
+                <select class="select" id="decisao" name="decisao" required>
+                  <option value="" disabled selected>Selecione uma opção</option>
+                  <option value="sim">Sim, eu decido</option>
+                  <option value="socio">Preciso consultar um sócio</option>
+                  <option value="avaliando">Ainda avaliando o momento</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg btn--block">
+                Agendar meu Raio-X — gratuito
+              </button>
+
+              <p class="form-hint" style="text-align: center;">
+                35 a 45 minutos. Sem pitch. Sem contrato. PDF de diagnóstico garantido.
+              </p>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="lp-footer" role="contentinfo">
+    <div class="container">
+      <div class="lp-footer__inner">
+        <div>
+          <p class="lp-footer__wordmark">u<span class="accent">4</span>digital</p>
+          <p class="lp-footer__tagline">Assessoria de IA para Negócios Digitais</p>
+        </div>
+        <p class="lp-footer__copy">
+          &copy; 2026 u4digital. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="lp-sticky-cta" role="complementary" aria-label="Agendar consulta">
+    <a href="#form" class="btn btn--primary btn--lg btn--block">
+      Agendar Raio-X Digital — gratuito
+    </a>
+  </div>
+
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          var offset = 72; // nav height
+          var top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Hide sticky CTA when form is visible
+    (function() {
+      var form = document.getElementById('form');
+      var stickyCta = document.querySelector('.lp-sticky-cta');
+      if (!form || !stickyCta) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          stickyCta.style.display = entry.isIntersecting ? 'none' : '';
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(form);
+    })();
+  </script>
+
+</body>
+</html>

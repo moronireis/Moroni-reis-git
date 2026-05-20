@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial | Marpe Corretora de Seguros - u4digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #060608;
+    --bg-secondary: #0a0a10;
+    --bg-card: #0f0f18;
+    --bg-card-hover: #141420;
+    --border: #1a1a2a;
+    --border-accent: #242440;
+    --text-primary: #e8e8f0;
+    --text-secondary: #7a7a96;
+    --text-muted: #4a4a64;
+    --accent: #3B82F6;
+    --accent-light: #60A5FA;
+    --accent-dim: rgba(59, 130, 246, 0.12);
+    --accent-glow: rgba(59, 130, 246, 0.06);
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.12);
+    --red: #ef4444;
+    --red-dim: rgba(239, 68, 68, 0.10);
+    --amber: #f59e0b;
+    --amber-dim: rgba(245, 158, 11, 0.10);
+    --purple: #8b5cf6;
+    --purple-dim: rgba(139, 92, 246, 0.10);
+    --cyan: #06b6d4;
+    --cyan-dim: rgba(6, 182, 212, 0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(6, 6, 8, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+  nav .logo-area { display: flex; align-items: center; gap: 12px; }
+  nav .logo-text { font-weight: 600; font-size: 16px; color: var(--text-primary); letter-spacing: -0.02em; }
+  nav .nav-tag { font-size: 11px; color: var(--accent); background: var(--accent-dim); padding: 4px 10px; border-radius: 100px; font-weight: 500; letter-spacing: 0.03em; }
+
+  section {
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 60px; opacity: 0; pointer-events: none;
+    transform: translateX(60px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto;
+  }
+  section.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+  section.prev { opacity: 0; transform: translateX(-60px); }
+  section::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none; opacity: 0.5;
+  }
+
+  .slide-controls { position: fixed; bottom: 32px; right: 40px; z-index: 200; display: flex; align-items: center; gap: 12px; }
+  .slide-counter { font-size: 12px; color: var(--text-muted); font-weight: 500; font-variant-numeric: tabular-nums; min-width: 48px; text-align: center; }
+  .slide-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 16px; }
+  .slide-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+  .slide-btn:disabled { opacity: 0.3; cursor: default; }
+  .slide-btn:disabled:hover { border-color: var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .slide-dots { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 8px; }
+  .slide-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-accent); cursor: pointer; transition: all 0.3s; }
+  .slide-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+  .slide-hint { position: fixed; bottom: 32px; left: 40px; z-index: 200; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .key-hint { display: inline-block; padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: monospace; color: var(--text-muted); background: var(--bg-card); }
+
+  .section-number { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; max-width: 900px; }
+  h2 { font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 20px; }
+  h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 12px; }
+  .subtitle { font-size: 18px; color: var(--text-secondary); max-width: 650px; line-height: 1.7; }
+  .accent { color: var(--accent); }
+  .green { color: var(--green); }
+
+  #hero { text-align: left; }
+  #hero .meta { display: flex; gap: 24px; margin-top: 40px; font-size: 13px; color: var(--text-muted); }
+  #hero .meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-badges { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+  .badge { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .badge.accent-badge { color: var(--accent); border-color: rgba(59, 130, 246, 0.25); background: var(--accent-dim); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1100px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all 0.3s ease; }
+  .card:hover { border-color: var(--border-accent); background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 18px; }
+  .card-icon.blue { background: var(--accent-dim); color: var(--accent); }
+  .card-icon.green { background: var(--green-dim); color: var(--green); }
+  .card-icon.amber { background: var(--amber-dim); color: var(--amber); }
+  .card-icon.red { background: var(--red-dim); color: var(--red); }
+  .card-icon.purple { background: var(--purple-dim); color: var(--purple); }
+  .card-icon.cyan { background: var(--cyan-dim); color: var(--cyan); }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1000px; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+  .stat-number { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+  .stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+
+  .timeline { margin-top: 40px; max-width: 800px; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent-light)); border-radius: 2px; }
+  .timeline-item { display: flex; gap: 24px; padding-bottom: 36px; position: relative; }
+  .timeline-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; z-index: 1; }
+  .timeline-dot.blue { background: #0b0e1e; color: var(--accent); border: 2px solid var(--accent); }
+  .timeline-dot.green { background: #0b1e12; color: var(--green); border: 2px solid var(--green); }
+  .timeline-content h3 { font-size: 16px; margin-bottom: 6px; }
+  .timeline-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .timeline-content .timeline-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
+
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; max-width: 900px; }
+  .comparison-col { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .comparison-col .col-header { padding: 20px 24px; font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  .comparison-col.negative .col-header { background: var(--red-dim); color: var(--red); }
+  .comparison-col.positive .col-header { background: var(--green-dim); color: var(--green); }
+  .comparison-col ul { list-style: none; padding: 20px 24px; }
+  .comparison-col li { font-size: 14px; color: var(--text-secondary); padding: 8px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .comparison-col li .icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+  .comparison-col.negative li .icon { color: var(--red); }
+  .comparison-col.positive li .icon { color: var(--green); }
+
+  .pain-list { margin-top: 32px; max-width: 700px; }
+  .pain-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--red-dim); color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .pain-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .pain-text p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 32px; max-width: 1000px; }
+  .include-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s; }
+  .include-item:hover { border-color: var(--border-accent); }
+  .include-check { width: 22px; height: 22px; border-radius: 6px; background: var(--green-dim); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .include-text { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .include-text strong { color: var(--text-primary); font-weight: 600; }
+
+  .roi-highlight { background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 16px; padding: 32px; margin-top: 32px; max-width: 700px; }
+  .roi-highlight .roi-number { font-size: 42px; font-weight: 800; color: var(--green); letter-spacing: -0.03em; line-height: 1; }
+  .roi-highlight .roi-desc { font-size: 14px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+  .flow-diagram { margin-top: 40px; max-width: 900px; }
+  .flow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .flow-node { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+  .flow-node.source { border-color: var(--border-accent); }
+  .flow-node.ai { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-light); }
+  .flow-node.output { border-color: var(--green); border-style: dashed; color: var(--green); }
+  .flow-arrow { color: var(--text-muted); font-size: 18px; }
+  .flow-label { font-size: 11px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; margin-top: 20px; }
+
+  .price-card { background: var(--bg-card); border: 2px solid var(--accent); border-radius: 20px; padding: 48px; max-width: 600px; margin-top: 32px; }
+  .price-card .price-old { font-size: 18px; color: var(--text-muted); text-decoration: line-through; margin-bottom: 8px; }
+  .price-card .price-main { font-size: 48px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; }
+  .price-card .price-label { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+  .price-card .price-monthly { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-top: 20px; }
+  .price-card .price-monthly-label { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+  .price-divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+  .cta-section { text-align: center; padding: 80px; }
+  .cta-section h2 { margin-bottom: 16px; }
+  .cta-section .subtitle { margin: 0 auto 40px; text-align: center; }
+
+  @media (max-width: 768px) {
+    section { padding: 80px 24px; }
+    nav { padding: 12px 20px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .flow-row { flex-direction: column; align-items: flex-start; }
+    .card-grid { grid-template-columns: 1fr; }
+    .includes-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { overflow: visible; height: auto; }
+    section { position: static; opacity: 1; transform: none; pointer-events: all; page-break-inside: avoid; padding: 40px; height: auto; min-height: auto; }
+    nav, .slide-controls, .slide-dots, .slide-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-area">
+    <span class="logo-text">u4digital</span>
+  </div>
+  <span class="nav-tag">Proposta Comercial</span>
+</nav>
+
+<div class="slide-dots" id="slideDots"></div>
+<div class="slide-hint">
+  <span class="key-hint">&larr;</span>
+  <span class="key-hint">&rarr;</span>
+  ou clique para navegar
+</div>
+<div class="slide-controls">
+  <button class="slide-btn" id="prevBtn" onclick="changeSlide(-1)">&larr;</button>
+  <span class="slide-counter" id="slideCounter">1 / 12</span>
+  <button class="slide-btn" id="nextBtn" onclick="changeSlide(1)">&rarr;</button>
+</div>
+
+<!-- SLIDE 1: HERO -->
+<section id="hero" class="active">
+  <div class="section-number">Proposta comercial</div>
+  <h1>CRM Inteligente para <span class="accent">Marpe Corretora de Seguros</span></h1>
+  <p class="subtitle">
+    Plataforma unificada de atendimento e gest&atilde;o &mdash; integrada ao Corp, com WhatsApp 24h via API oficial, automa&ccedil;&otilde;es por mudan&ccedil;a de etapa e campos espec&iacute;ficos para o mercado segurador.
+  </p>
+  <div class="hero-badges">
+    <span class="badge accent-badge">WhatsApp API Oficial</span>
+    <span class="badge">Integra&ccedil;&atilde;o Corp (Agia)</span>
+    <span class="badge">Automa&ccedil;&otilde;es por Etapa</span>
+    <span class="badge">Campos Seguros</span>
+    <span class="badge">Disparo em Massa</span>
+  </div>
+  <div class="meta">
+    <span>Preparado para Marcel Foletto</span>
+    <span>Maio 2026</span>
+    <span>Confidencial</span>
+  </div>
+</section>
+
+<!-- SLIDE 2: CONTEXTO -->
+<section id="contexto">
+  <div class="section-number">01 &mdash; Contexto</div>
+  <h2>Entendemos o neg&oacute;cio</h2>
+  <p class="subtitle">Corretora de seguros &eacute; presta&ccedil;&atilde;o de servi&ccedil;o. O atendimento &eacute; o produto. Cada minuto de agilidade &eacute; reten&ccedil;&atilde;o e indica&ccedil;&atilde;o.</p>
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-number accent">3</div><div class="stat-label">N&uacute;meros WhatsApp ativos</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--green)">5+</div><div class="stat-label">Ramos de seguro</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--amber)">N</div><div class="stat-label">Neg&oacute;cios simult&acirc;neos por cliente</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--purple)">3</div><div class="stat-label">Ferramentas fragmentadas hoje</div></div>
+  </div>
+  <div class="roi-highlight" style="margin-top: 40px;">
+    <div style="font-size: 16px; color: var(--text-primary); line-height: 1.8;">
+      <strong>Modelo de neg&oacute;cio baseado em rela&ccedil;&atilde;o.</strong> O cliente renova se o atendimento foi bom. Indica se sentiu cuidado. A agilidade na resposta, o aviso da parcela, a confirma&ccedil;&atilde;o do sinistro &mdash; cada toque &eacute; reten&ccedil;&atilde;o.<br><br>
+      Hoje, esses toques s&atilde;o manuais. Ou n&atilde;o acontecem.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: DIAGNOSTICO -->
+<section id="diagnostico">
+  <div class="section-number">02 &mdash; Diagn&oacute;stico</div>
+  <h2>O problema real</h2>
+  <p class="subtitle">Voc&ecirc; n&atilde;o precisa de mais um CRM gen&eacute;rico. Voc&ecirc; precisa de uma ferramenta constru&iacute;da para seguros.</p>
+  <div class="pain-list">
+    <div class="pain-item">
+      <div class="pain-icon">1</div>
+      <div class="pain-text">
+        <h4>Ferramentas gen&eacute;ricas n&atilde;o servem</h4>
+        <p>RD Station, Monday, Clint &mdash; nenhum tem campos de pr&ecirc;mio, comiss&atilde;o, vig&ecirc;ncia, ramo de seguro. Voc&ecirc; adapta, mas nunca encaixa.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">2</div>
+      <div class="pain-text">
+        <h4>Hist&oacute;rico de conversa n&atilde;o fica salvo</h4>
+        <p>Depois de 3-4 meses, a conversa no WhatsApp sumiu. Quando precisa comprovar algo com o cliente, n&atilde;o tem registro.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">3</div>
+      <div class="pain-text">
+        <h4>Avisos manuais (ou n&atilde;o acontecem)</h4>
+        <p>Boas-vindas, parcela pendente, sinistro autorizado &mdash; tudo &eacute; copy-paste manual. Um dia de correria e o cliente n&atilde;o recebe.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">4</div>
+      <div class="pain-text">
+        <h4>Extens&otilde;es inst&aacute;veis (iSpeed, etc.)</h4>
+        <p>Depende do computador ligado. N&atilde;o funciona 24h. Pode sumir amanh&atilde;. Campos engessados. N&atilde;o &eacute; SaaS confi&aacute;vel.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">5</div>
+      <div class="pain-text">
+        <h4>V&aacute;rios seguros por cliente = confus&atilde;o no Kanban</h4>
+        <p>Um contato tem auto, vida, residencial, empresarial. No CRM gen&eacute;rico vira um neg&oacute;cio s&oacute;. N&atilde;o d&aacute; pra gerenciar separado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: ANTES VS DEPOIS -->
+<section id="antes-depois">
+  <div class="section-number">03 &mdash; Antes vs. Depois</div>
+  <h2>O que muda na pr&aacute;tica</h2>
+  <div class="comparison-grid">
+    <div class="comparison-col negative">
+      <div class="col-header">Hoje &mdash; Fragmentado</div>
+      <ul>
+        <li><span class="icon">&times;</span> Corp + Clint + iSpeed + WhatsApp = 4 janelas</li>
+        <li><span class="icon">&times;</span> Avisos manuais (copy-paste ou esquece)</li>
+        <li><span class="icon">&times;</span> Hist&oacute;rico de conversa se perde ap&oacute;s meses</li>
+        <li><span class="icon">&times;</span> Campos gen&eacute;ricos (valor &uacute;nico, sem comiss&atilde;o)</li>
+        <li><span class="icon">&times;</span> Extens&atilde;o depende do PC ligado</li>
+        <li><span class="icon">&times;</span> 1 neg&oacute;cio por contato no CRM</li>
+        <li><span class="icon">&times;</span> E-mails de vencimento que ningu&eacute;m l&ecirc;</li>
+      </ul>
+    </div>
+    <div class="comparison-col positive">
+      <div class="col-header">Depois &mdash; Unificado</div>
+      <ul>
+        <li><span class="icon">&check;</span> 1 painel com tudo: conversas, neg&oacute;cios, Corp</li>
+        <li><span class="icon">&check;</span> Mudou etapa &rarr; WhatsApp autom&aacute;tico</li>
+        <li><span class="icon">&check;</span> Hist&oacute;rico permanente, vinculado ao contrato</li>
+        <li><span class="icon">&check;</span> Campos de seguro: pr&ecirc;mio, comiss&atilde;o, vig&ecirc;ncia</li>
+        <li><span class="icon">&check;</span> API oficial Meta &mdash; funciona 24h, servidor</li>
+        <li><span class="icon">&check;</span> N neg&oacute;cios por contato (auto + vida + etc)</li>
+        <li><span class="icon">&check;</span> Avisos de parcela via WhatsApp (funciona)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: SOLUCAO -->
+<section id="solucao">
+  <div class="section-number">04 &mdash; Solu&ccedil;&atilde;o</div>
+  <h2>O que vamos construir</h2>
+  <p class="subtitle">Uma plataforma web pr&oacute;pria, constru&iacute;da para corretora de seguros, integrada ao Corp e ao WhatsApp via API oficial.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon blue">&#9993;</div>
+      <h3>Inbox WhatsApp Unificado</h3>
+      <p>Todos os 3 n&uacute;meros centralizados. Converse com clientes direto no painel. Hist&oacute;rico salvo permanentemente.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green">&#9881;</div>
+      <h3>Automa&ccedil;&otilde;es por Etapa</h3>
+      <p>Moveu o card &rarr; mensagem autom&aacute;tica. P&oacute;lice emitida, sinistro autorizado, guincho acionado. Sem copy-paste.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">&#9878;</div>
+      <h3>CRM de Seguros</h3>
+      <p>Campos espec&iacute;ficos: pr&ecirc;mio, comiss&atilde;o%, produtor, ramo, vig&ecirc;ncia, n&uacute;mero de ap&oacute;lice. N neg&oacute;cios por contato.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon purple">&#8644;</div>
+      <h3>Integra&ccedil;&atilde;o Corp (API)</h3>
+      <p>Dados do Corp sincronizados. Quando a p&oacute;lice emitir l&aacute;, reflete aqui. Sem digitar duas vezes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon cyan">&#9888;</div>
+      <h3>Avisos de Parcela via WhatsApp</h3>
+      <p>5 dias antes do vencimento &rarr; lembrete autom&aacute;tico no WhatsApp. Funciona 24h, sem PC ligado.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon red">&#9776;</div>
+      <h3>Campanhas e Disparos</h3>
+      <p>Envio em massa segmentado: clientes de vida, auto, residencial. Novidades, promo&ccedil;&otilde;es, avisos gerais.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon blue">&#128202;</div>
+      <h3>Dashboard + Relat&oacute;rios</h3>
+      <p>Vis&atilde;o macro do neg&oacute;cio em tempo real. M&eacute;tricas por usu&aacute;rio, por funil, por ramo. Exporta&ccedil;&atilde;o CSV e PDF.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green">&#128279;</div>
+      <h3>Tracking de Links</h3>
+      <p>Links rastreados por campanha (Instagram, site de parceiro, etc.). Sabe de onde veio cada lead e direciona ao funil correto.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon purple">&#128101;</div>
+      <h3>Multi-usu&aacute;rio com Perfis</h3>
+      <p>Cada funcion&aacute;rio com login pr&oacute;prio. Administrador v&ecirc; tudo. Permiss&otilde;es configur&aacute;veis por usu&aacute;rio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: FUNIS -->
+<section id="funis">
+  <div class="section-number">05 &mdash; Funis de Atendimento</div>
+  <h2>Funis personalizados</h2>
+  <p class="subtitle">Ambiente aberto: crie, edite e nomeie quantos funis precisar. Cada processo tem suas automa&ccedil;&otilde;es espec&iacute;ficas por mudan&ccedil;a de etapa.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon blue">&#128736;</div>
+      <h3>Funil de Vendas</h3>
+      <p>Prospec&ccedil;&atilde;o &rarr; Cota&ccedil;&atilde;o enviada &rarr; Aguardando retorno &rarr; Proposta transmitida &rarr; Aguardando emiss&atilde;o &rarr; Emitido<br><br><strong>Automa&ccedil;&atilde;o:</strong> Emitido &rarr; msg boas-vindas + assist&ecirc;ncia 24h</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">&#128295;</div>
+      <h3>Funil Assist&ecirc;ncia 24h</h3>
+      <p>Assist&ecirc;ncia aberta &rarr; Prestador acionado &rarr; Prestador chegou &rarr; Assist&ecirc;ncia finalizada<br><br><strong>Automa&ccedil;&otilde;es:</strong> Cada mudan&ccedil;a &rarr; msg ao cliente + pesquisa de satisfa&ccedil;&atilde;o ao final</p>
+    </div>
+    <div class="card">
+      <div class="card-icon red">&#128196;</div>
+      <h3>Funil de Sinistros</h3>
+      <p>Sinistro aberto &rarr; Documentos pendentes &rarr; Em an&aacute;lise &rarr; Autorizado &rarr; Finalizado<br><br><strong>Automa&ccedil;&atilde;o:</strong> Cada etapa &rarr; cliente informado automaticamente</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green">&#128260;</div>
+      <h3>Funil de Renova&ccedil;&otilde;es</h3>
+      <p>60 dias antes &rarr; 30 dias &rarr; Cota&ccedil;&atilde;o enviada &rarr; Renovado / Cancelado<br><br><strong>Automa&ccedil;&atilde;o:</strong> Aviso proativo de renova&ccedil;&atilde;o ao cliente</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: ARQUITETURA -->
+<section id="arquitetura">
+  <div class="section-number">06 &mdash; Arquitetura</div>
+  <h2>Como tudo se conecta</h2>
+  <div class="flow-diagram">
+    <div class="flow-label">Camada de Comunica&ccedil;&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node source">WhatsApp (3 n&uacute;meros)</div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-node ai">API Oficial Meta (Cloud)</div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-node">Webhook Server 24/7</div>
+    </div>
+    <div class="flow-label">Camada de Dados</div>
+    <div class="flow-row">
+      <div class="flow-node source">Corp (Agia) via API</div>
+      <div class="flow-arrow">&harr;</div>
+      <div class="flow-node ai">Backend Central</div>
+      <div class="flow-arrow">&harr;</div>
+      <div class="flow-node">Banco de Dados (Supabase)</div>
+    </div>
+    <div class="flow-label">Camada de Automa&ccedil;&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node source">Mudan&ccedil;a de etapa</div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-node ai">Motor de Regras</div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-node output">Disparo WhatsApp autom&aacute;tico</div>
+    </div>
+    <div class="flow-label">Interface do Corretor</div>
+    <div class="flow-row">
+      <div class="flow-node source">Painel Web (desktop + mobile)</div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-node">Inbox + CRM + Kanban + Grade</div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-node output">Campanhas + Relat&oacute;rios</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: TIMELINE -->
+<section id="timeline">
+  <div class="section-number">07 &mdash; Cronograma</div>
+  <h2>Entrega em fases</h2>
+  <p class="subtitle">MVP funcional em 6 semanas. Cada fase entrega valor desde o dia 1.</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot blue">1</div>
+      <div class="timeline-content">
+        <h3>Semana 1-2: Infraestrutura + WhatsApp API</h3>
+        <p>Configura&ccedil;&atilde;o da API oficial Meta, conex&atilde;o dos 3 n&uacute;meros, webhook 24h, inbox funcional com hist&oacute;rico.</p>
+        <span class="timeline-tag">J&aacute; funciona: conversar e salvar hist&oacute;rico</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">2</div>
+      <div class="timeline-content">
+        <h3>Semana 3-4: CRM + Funis + Campos de Seguros</h3>
+        <p>Funis personalizados, campos espec&iacute;ficos (pr&ecirc;mio, comiss&atilde;o, vig&ecirc;ncia, ramo), m&uacute;ltiplos neg&oacute;cios por contato, Kanban + Grade.</p>
+        <span class="timeline-tag">J&aacute; funciona: gestão completa de neg&oacute;cios</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">3</div>
+      <div class="timeline-content">
+        <h3>Semana 5-6: Automa&ccedil;&otilde;es + Integra&ccedil;&atilde;o Corp</h3>
+        <p>Automa&ccedil;&otilde;es por mudan&ccedil;a de etapa, avisos de parcela, integra&ccedil;&atilde;o via API com Corp, disparos em massa.</p>
+        <span class="timeline-tag">J&aacute; funciona: tudo autom&aacute;tico</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot green">4</div>
+      <div class="timeline-content">
+        <h3>Semana 7-8: Refinamento + Treinamento</h3>
+        <p>Ajustes com base no uso real, treinamento da equipe, documenta&ccedil;&atilde;o, chatbot de primeiro atendimento (b&ocirc;nus).</p>
+        <span class="timeline-tag">Finaliza&ccedil;&atilde;o e go-live completo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: ESCOPO -->
+<section id="escopo">
+  <div class="section-number">08 &mdash; Escopo completo</div>
+  <h2>O que est&aacute; inclu&iacute;do</h2>
+  <div class="includes-grid">
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Inbox WhatsApp unificado</strong> &mdash; 3 n&uacute;meros, hist&oacute;rico permanente, busca</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>CRM com campos de seguro</strong> &mdash; pr&ecirc;mio, comiss&atilde;o%, produtor, ramo, vig&ecirc;ncia</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>M&uacute;ltiplos neg&oacute;cios por contato</strong> &mdash; auto + vida + residencial, tudo separado</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Funis personalizados (aberto)</strong> &mdash; crie quantos precisar, com etapas e automa&ccedil;&otilde;es livres</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Automa&ccedil;&otilde;es por etapa</strong> &mdash; mudou card = msg autom&aacute;tica ao cliente</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Avisos de parcela</strong> &mdash; lembrete 5 dias antes via WhatsApp</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Integra&ccedil;&atilde;o Corp (Agia)</strong> &mdash; sincroniza&ccedil;&atilde;o via API</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Visualiza&ccedil;&atilde;o Grade + Kanban</strong> &mdash; troca entre modos com 1 clique</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Campanhas em massa</strong> &mdash; disparo segmentado por tipo de seguro</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Mensagens r&aacute;pidas</strong> &mdash; templates configuráveis por tipo</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>API oficial Meta</strong> &mdash; 24/7, sem depender de PC ligado</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Treinamento completo</strong> &mdash; equipe capacitada para usar</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Dashboard + relat&oacute;rios</strong> &mdash; m&eacute;tricas em tempo real, exporta&ccedil;&atilde;o CSV/PDF</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Tracking de links</strong> &mdash; rastreamento por campanha e origem (Instagram, parceiros)</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Multi-usu&aacute;rio</strong> &mdash; login por funcion&aacute;rio, vis&atilde;o admin, permiss&otilde;es</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&check;</div>
+      <div class="include-text"><strong>Chatbot primeiro atendimento</strong> &mdash; b&ocirc;nus: bot de triagem autom&aacute;tica</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: INVESTIMENTO -->
+<section id="investimento">
+  <div class="section-number">09 &mdash; Investimento</div>
+  <h2>Quanto custa</h2>
+  <p class="subtitle">Menos que os concorrentes. Mais personalizado. Constru&iacute;do para seguros, n&atilde;o adaptado.</p>
+  <div class="price-card">
+    <div class="price-old">Concorrentes: R$ 9.000+ implanta&ccedil;&atilde;o + R$ 800+/m&ecirc;s</div>
+    <div class="price-main">R$ 4.900</div>
+    <div class="price-label">Implanta&ccedil;&atilde;o &uacute;nica (inclui treinamento)</div>
+    <div class="price-divider"></div>
+    <div class="price-monthly">R$ 597/m&ecirc;s</div>
+    <div class="price-monthly-label">Manuten&ccedil;&atilde;o, hospedagem, API WhatsApp, suporte, atualiza&ccedil;&otilde;es</div>
+    <div class="price-divider"></div>
+    <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 8px;">
+      <strong style="color: var(--text-primary);">Condi&ccedil;&otilde;es:</strong><br>
+      &bull; Implanta&ccedil;&atilde;o: at&eacute; 3x de R$ 1.633 ou PIX &agrave; vista R$ 4.500<br>
+      &bull; Mensalidade inicia ap&oacute;s go-live (semana 7)<br>
+      &bull; Sem fidelidade &mdash; cancela quando quiser<br>
+      &bull; Inclui at&eacute; 1.000 conversas/m&ecirc;s na API Meta
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: ROI -->
+<section id="roi">
+  <div class="section-number">10 &mdash; Retorno</div>
+  <h2>O que voc&ecirc; ganha</h2>
+  <div class="card-grid" style="max-width: 800px;">
+    <div class="card">
+      <div class="card-icon green">&uarr;</div>
+      <h3>Reten&ccedil;&atilde;o de clientes</h3>
+      <p>Atendimento &aacute;gil e proativo. Cliente avisado antes de vencer. Pesquisa de satisfa&ccedil;&atilde;o ap&oacute;s assist&ecirc;ncia. Quem &eacute; bem atendido, renova.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon blue">&#9201;</div>
+      <h3>Horas devolvidas por semana</h3>
+      <p>Sem copy-paste de mensagens. Sem alternar entre 4 ferramentas. Sem digitar avisos manualmente. Mais tempo para vender.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">&#128200;</div>
+      <h3>Cross-sell com campanhas</h3>
+      <p>Todos os clientes de auto segmentados. Campanha de vida. Campanha de residencial. Receita nova com base existente.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon purple">&#128274;</div>
+      <h3>Seguran&ccedil;a jur&iacute;dica</h3>
+      <p>Hist&oacute;rico de conversa salvo permanentemente. Prova de que avisou, informou, comunicou. Protege a corretora.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: CTA -->
+<section id="cta">
+  <div class="section-number">Pr&oacute;ximos passos</div>
+  <h2>Vamos come&ccedil;ar?</h2>
+  <p class="subtitle" style="max-width: 600px;">
+    O pr&oacute;ximo passo &eacute; validarmos a API do Corp juntos e iniciar a Fase 1. Em 2 semanas voc&ecirc; j&aacute; conversa pelo painel.
+  </p>
+  <div class="timeline" style="margin-top: 48px;">
+    <div class="timeline-item">
+      <div class="timeline-dot blue">1</div>
+      <div class="timeline-content">
+        <h3>Aprova&ccedil;&atilde;o da proposta</h3>
+        <p>Aceite + pagamento da implanta&ccedil;&atilde;o (ou 1&ordf; parcela)</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">2</div>
+      <div class="timeline-content">
+        <h3>Kickoff t&eacute;cnico</h3>
+        <p>Acesso ao Corp, credenciais WhatsApp Business, levantamento de campos e funis</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">3</div>
+      <div class="timeline-content">
+        <h3>Desenvolvimento (6 semanas)</h3>
+        <p>Entregas incrementais &mdash; voc&ecirc; acompanha e testa cada fase</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot green">4</div>
+      <div class="timeline-content">
+        <h3>Go-live + Treinamento</h3>
+        <p>Equipe treinada, sistema em produ&ccedil;&atilde;o, mensalidade inicia</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 48px; padding: 24px 32px; background: var(--accent-dim); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; max-width: 500px;">
+    <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+      <strong style="color: var(--text-primary);">Contato direto:</strong><br>
+      Tiago Donicht &mdash; uhunter.io<br>
+      Moroni Reis &mdash; u4digital
+    </div>
+  </div>
+</section>
+
+<script>
+let current = 0;
+const sections = document.querySelectorAll('section');
+const total = sections.length;
+const counter = document.getElementById('slideCounter');
+const dotsContainer = document.getElementById('slideDots');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Create dots
+for (let i = 0; i < total; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
+}
+
+function updateSlide() {
+  sections.forEach((s, i) => {
+    s.classList.remove('active', 'prev');
+    if (i === current) s.classList.add('active');
+    else if (i < current) s.classList.add('prev');
+  });
+  counter.textContent = (current + 1) + ' / ' + total;
+  document.querySelectorAll('.slide-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === total - 1;
+}
+
+function changeSlide(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < total) { current = next; updateSlide(); }
+}
+
+function goToSlide(i) { current = i; updateSlide(); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+</script>
+</body>
+</html>

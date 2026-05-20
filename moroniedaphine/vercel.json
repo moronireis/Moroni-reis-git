@@ -1,0 +1,18 @@
+{
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [
+    { "source": "/", "destination": "/site.html" },
+    { "source": "/convite", "destination": "/convite-geral.html" },
+    { "source": "/convite-geral", "destination": "/convite-geral.html" },
+    { "source": "/save-the-date", "destination": "/save-the-date.html" },
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/presentes", "destination": "/presentes.html" },
+    { "source": "/design-system", "destination": "/design-system.html" },
+    { "source": "/obrigado", "destination": "/obrigado.html" },
+    { "source": "/padrinho", "destination": "/padrinho.html" },
+    { "source": "/madrinha", "destination": "/madrinha.html" },
+    { "source": "/stories", "destination": "/stories-countdown.html" },
+    { "source": "/stories-historia", "destination": "/stories-historia.html" }
+  ]
+}

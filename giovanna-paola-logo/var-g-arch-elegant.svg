@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240">
+  <!-- Variation G — Arch Elegant: Name framed by a subtle arch, wedding/ceremony feel -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Subtle arch -->
+  <path d="M 150 180 Q 150 40, 300 40 Q 450 40, 450 180" fill="none" stroke="#DBA99F" stroke-width="0.8" opacity="0.5"/>
+  <!-- Name centered inside arch -->
+  <text x="300" y="110" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="300" font-size="50" fill="#2C2C2C" text-anchor="middle" letter-spacing="5">GIOVANNA</text>
+  <text x="300" y="160" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="400" font-size="30" fill="#DBA99F" text-anchor="middle" letter-spacing="10">PAOLA</text>
+  <!-- Small decorative element -->
+  <line x1="260" y1="120" x2="340" y2="120" stroke="#9C958F" stroke-width="0.5" opacity="0.4"/>
+</svg>

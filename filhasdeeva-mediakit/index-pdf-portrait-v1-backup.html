@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priscilla Andrade — Filhas de Eva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#FDFCFA;--cr:#F5F2EF;--dk:#1A1714;
+      --tx:#1A1714;--mt:#5a524c;--ac:#A57080;
+      --rs:#88636E;--ds:#D4AAAA;
+      --dm:rgba(165,112,128,.1);
+      --f:'Cormorant Garamond',Georgia,serif;
+      --s:'DM Sans','Helvetica Neue',sans-serif;
+    }
+    @page{size:810px 1440px;margin:0}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{font-size:16px;-webkit-font-smoothing:antialiased;width:810px}
+    body{font-family:var(--s);color:var(--tx);background:var(--bg);width:810px;overflow:hidden}
+    img{display:block;max-width:100%;height:auto}
+    .page{width:810px;height:1440px;overflow:hidden;page-break-after:always;break-after:page;position:relative}
+    .ey{font-family:var(--s);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rs)}
+
+    /* ═══ 1. COVER — full-bleed + overlay ═══ */
+    .cover{display:flex;align-items:flex-end}
+    .cover-bg{position:absolute;inset:0}
+    .cover-bg img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
+    .cover-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,23,20,.8) 0%,rgba(26,23,20,.35) 40%,transparent 70%)}
+    .cover-content{position:relative;z-index:1;padding:72px;width:100%}
+    .cover-name{font-family:var(--f);font-weight:300;font-size:72px;line-height:.88;color:#fff}
+    .cover-name em{font-style:italic;font-weight:400;display:block;color:var(--ds)}
+    .cover-desc{font-family:var(--s);font-weight:400;font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;margin-top:28px;max-width:480px}
+    .cover-stats{display:flex;gap:48px;margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
+    .cover-stat b{display:block;font-family:var(--f);font-weight:300;font-size:36px;color:#fff}
+    .cover-stat b span{color:var(--ds)}
+    .cover-stat small{font-family:var(--s);font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+    /* ═══ 2. SOBRE — texto first, foto big ═══ */
+    .sobre{background:var(--bg);display:flex;flex-direction:column}
+    .sobre-txt{padding:64px 72px 48px}
+    .sobre-bio{font-family:var(--f);font-weight:400;font-size:21px;line-height:1.7;color:#2a2420;margin-top:20px}
+    .sobre-bio strong{font-weight:600;color:var(--tx)}
+    .sobre-programs{margin-top:20px;display:flex;gap:10px}
+    .sobre-prog{font-family:var(--s);font-weight:600;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);padding:5px 14px;border:1px solid var(--dm)}
+    .sobre-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:28px;border-top:1px solid var(--dm)}
+    .sobre-st{padding:20px 16px;text-align:center;border-right:1px solid var(--dm)}
+    .sobre-st:last-child{border-right:none}
+    .sobre-st b{display:block;font-family:var(--f);font-weight:300;font-size:30px;color:var(--tx)}
+    .sobre-st b span{color:var(--ac)}
+    .sobre-st small{font-family:var(--s);font-weight:500;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mt)}
+    .sobre-photo{flex:1;overflow:hidden}
+    .sobre-photo img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
+
+    /* ═══ 3. AUDIÊNCIA — centrada, dramática ═══ */
+    .audiencia{background:var(--cr);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 72px}
+    .aud-num{font-family:var(--f);font-weight:300;font-size:200px;line-height:.72;color:var(--tx);letter-spacing:-.06em}
+    .aud-num span{color:var(--ac)}
+    .aud-label{font-family:var(--s);font-weight:400;font-size:18px;color:var(--mt);margin-top:20px}
+    .aud-desc{font-family:var(--f);font-weight:400;font-style:italic;font-size:22px;line-height:1.55;color:#2a2420;max-width:540px;margin:40px auto 0}
+    .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(26,23,20,.06);margin-top:72px;width:100%;max-width:680px}
+    .aud-cell{padding:36px 20px;text-align:center;border-bottom:1px solid rgba(26,23,20,.06);border-right:1px solid rgba(26,23,20,.06)}
+    .aud-cell:nth-child(3n){border-right:none}
+    .aud-cell b{display:block;font-family:var(--f);font-weight:300;font-size:48px;color:var(--tx);line-height:1}
+    .aud-cell b span{color:var(--ac)}
+    .aud-cell small{display:block;font-family:var(--s);font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px}
+
+    /* ═══ 4. PALESTRAS — hero foto única ═══ */
+    .palestras{background:var(--bg);display:flex;flex-direction:column}
+    .pal-photo{height:700px;overflow:hidden}
+    .pal-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+    .pal-txt{flex:1;padding:48px 72px;display:flex;flex-direction:column;justify-content:center}
+    .pal-txt h2{font-family:var(--f);font-weight:400;font-size:36px;line-height:1.15;margin-top:20px}
+    .pal-desc{font-family:var(--s);font-weight:400;font-size:15px;color:var(--mt);line-height:1.65;margin-top:16px;max-width:520px}
+    .pal-list{list-style:none;margin-top:20px;columns:2;column-gap:32px}
+    .pal-list li{font-family:var(--s);font-weight:400;font-size:14px;color:var(--mt);padding-left:16px;position:relative;margin-bottom:10px;break-inside:avoid}
+    .pal-list li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:1px;background:var(--ac)}
+    .pal-tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px}
+    .pal-tag{font-family:var(--s);font-weight:500;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--rs);padding:4px 10px;border:1px solid var(--dm)}
+
+    /* ═══ 5. INTERNACIONAL — dark, foto grande ═══ */
+    .intl{background:var(--dk);color:#fff;display:flex;flex-direction:column}
+    .intl-photo{height:700px;overflow:hidden}
+    .intl-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+    .intl-txt{flex:1;padding:48px 72px}
+    .intl-txt h2{font-family:var(--f);font-weight:400;font-size:32px;line-height:1.15;color:#fff;margin-top:20px}
+    .intl-desc{font-family:var(--s);font-weight:300;font-size:15px;color:rgba(255,255,255,.7);line-height:1.65;margin-top:14px}
+    .intl-places{margin-top:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+    .intl-place h4{font-family:var(--f);font-weight:400;font-style:italic;font-size:19px;color:#fff;margin-bottom:6px}
+    .intl-place p{font-family:var(--s);font-weight:300;font-size:12px;color:rgba(255,255,255,.6);line-height:1.55}
+
+    /* ═══ 6. NOIVA — full-bleed emocional ═══ */
+    .noiva{display:flex;align-items:flex-end}
+    .noiva-bg{position:absolute;inset:0}
+    .noiva-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+    .noiva-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,23,20,.75) 0%,rgba(26,23,20,.3) 35%,transparent 65%)}
+    .noiva-content{position:relative;z-index:1;padding:72px;width:100%}
+    .noiva-h{font-family:var(--f);font-weight:300;font-style:italic;font-size:52px;line-height:.9;color:#fff}
+    .noiva-p{font-family:var(--s);font-weight:400;font-size:16px;line-height:1.7;color:rgba(255,255,255,.75);margin-top:24px;max-width:480px}
+    .noiva-badge{display:inline-block;margin-top:28px;font-family:var(--s);font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ds);padding:6px 14px;border:1px solid rgba(212,170,170,.3)}
+
+    /* ═══ 7. PARCERIAS — dark ═══ */
+    .parcerias{background:var(--dk);color:#fff;padding:72px;display:flex;flex-direction:column;justify-content:center}
+    .parcerias h2{font-family:var(--f);font-weight:400;font-size:36px;line-height:1.15;color:#fff;margin-top:20px}
+    .par-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.04);margin-top:40px}
+    .par-card{background:var(--dk);padding:40px 32px}
+    .par-card .ey{color:rgba(212,170,170,.45);margin-bottom:10px}
+    .par-card h3{font-family:var(--f);font-weight:400;font-style:italic;font-size:22px;color:#fff;margin-bottom:10px;line-height:1.2}
+    .par-card p{font-family:var(--s);font-weight:300;font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
+    .par-scarcity{font-family:var(--f);font-weight:400;font-style:italic;font-size:18px;color:rgba(255,255,255,.7);text-align:center;margin-top:40px}
+
+    /* ═══ 8. EDITORIAL — full-bleed quote ═══ */
+    .editorial{display:flex;align-items:center;justify-content:center}
+    .ed-bg{position:absolute;inset:0}
+    .ed-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+    .ed-bg::after{content:'';position:absolute;inset:0;background:rgba(26,23,20,.4)}
+    .ed-q{position:relative;z-index:1;text-align:center;max-width:580px;padding:0 48px}
+    .ed-q blockquote{font-family:var(--f);font-weight:400;font-style:italic;font-size:34px;line-height:1.4;color:#fff}
+    .ed-q cite{display:block;font-family:var(--s);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:32px;font-style:normal}
+
+    /* ═══ 9. CONTATO — com selo ═══ */
+    .contato{background:var(--bg);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 72px}
+    .contato-seal{width:40px;height:40px;border:1px solid var(--dm);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:40px}
+    .contato-seal::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--ac)}
+    .contato h2{font-family:var(--f);font-weight:300;font-size:42px;color:var(--tx);margin-bottom:28px}
+    .contato-quote{max-width:500px;font-family:var(--f);font-weight:400;font-style:italic;font-size:20px;color:var(--mt);line-height:1.55;margin-bottom:48px}
+    .contato-info{font-family:var(--s);font-weight:400;font-size:18px;color:var(--mt);line-height:2.4}
+    .contato-info strong{font-weight:600;color:var(--tx)}
+    .contato-scarcity{margin-top:48px;font-family:var(--s);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ac)}
+    .contato-brand{margin-top:auto;font-family:var(--f);font-weight:300;font-style:italic;font-size:14px;color:rgba(100,92,86,.3);letter-spacing:.05em}
+    .contato-ft{margin-top:24px;padding-top:20px;border-top:1px solid var(--dm);width:100%;display:flex;justify-content:space-between}
+    .contato-ft span{font-family:var(--s);font-weight:400;font-size:10px;color:rgba(100,92,86,.35)}
+  </style>
+</head>
+<body>
+
+  <!-- 1. COVER — full-bleed -->
+  <div class="page cover">
+    <div class="cover-bg"><img src="assets-pdf/pri-orquidea-cidade.jpg" alt="Priscilla Andrade" style="object-position:center 8%"></div>
+    <div class="cover-content">
+      <p class="ey" style="color:rgba(212,170,170,.6);margin-bottom:20px">Mídia Kit 2026</p>
+      <h1 class="cover-name">Priscilla<em>Andrade</em></h1>
+      <p class="cover-desc">A mulher por trás de Filhas de Eva. Quase um milhão de mulheres, em 25 países, aprenderam a ser percebidas antes de dizer uma palavra.</p>
+      <div class="cover-stats">
+        <div class="cover-stat"><b>980<span>K</span></b><small>Seguidoras</small></div>
+        <div class="cover-stat"><b>25<span>+</span></b><small>Países</small></div>
+        <div class="cover-stat"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SOBRE -->
+  <div class="page sobre">
+    <div class="sobre-txt">
+      <p class="ey">Sobre Priscilla</p>
+      <p class="sobre-bio">Priscilla Andrade ensina mulheres a serem percebidas pelo que realmente são. <strong>Moda, psicologia comportamental e marca pessoal</strong> — reunidos numa metodologia que alcança 25 países.</p>
+      <div class="sobre-programs">
+        <span class="sobre-prog">Rainha Magnética</span>
+        <span class="sobre-prog">Eden's Club</span>
+        <span class="sobre-prog">Filhas de Eva</span>
+      </div>
+      <div class="sobre-stats">
+        <div class="sobre-st"><b>980<span>K</span></b><small>Seguidoras</small></div>
+        <div class="sobre-st"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+        <div class="sobre-st"><b>120<span>K</span></b><small>Média Reels</small></div>
+        <div class="sobre-st"><b>4.2<span>%</span></b><small>Saves</small></div>
+      </div>
+    </div>
+    <div class="sobre-photo">
+      <img src="assets-pdf/editorial-vermelho-close.jpg" alt="Priscilla Andrade">
+    </div>
+  </div>
+
+  <!-- 3. AUDIÊNCIA -->
+  <div class="page audiencia">
+    <p class="ey" style="margin-bottom:28px">Audiência</p>
+    <div class="aud-num">980<span>K</span></div>
+    <div class="aud-label">seguidoras no Instagram</div>
+    <p class="aud-desc">Mulheres que lideram. Classe A-B, ensino superior, empreendedoras. Elas não seguem tendências — definem.</p>
+    <div class="aud-grid">
+      <div class="aud-cell"><b>94<span>%</span></b><small>Feminino</small></div>
+      <div class="aud-cell"><b>72<span>%</span></b><small>Classes A e B</small></div>
+      <div class="aud-cell"><b>48<span>%</span></b><small>Empreendedoras</small></div>
+      <div class="aud-cell"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+      <div class="aud-cell"><b>120<span>K</span></b><small>Média Reels</small></div>
+      <div class="aud-cell"><b>81<span>%</span></b><small>Ensino superior</small></div>
+    </div>
+  </div>
+
+  <!-- 4. PALESTRAS — foto hero única -->
+  <div class="page palestras">
+    <div class="pal-photo">
+      <img src="assets-pdf/ceara-palestrando-close.jpg" alt="Palestra">
+    </div>
+    <div class="pal-txt">
+      <p class="ey">Palestras & Eventos</p>
+      <h2>Palcos por onde já passou</h2>
+      <p class="pal-desc">Do Brasil a Portugal, Priscilla já esteve nos palcos mais relevantes de posicionamento feminino e liderança.</p>
+      <ul class="pal-list">
+        <li>Como a imagem constrói — ou destrói — autoridade</li>
+        <li>O que você comunica antes de abrir a boca</li>
+        <li>Marca pessoal como ativo financeiro</li>
+        <li>Presença executiva feminina</li>
+        <li>Moda como linguagem de poder</li>
+      </ul>
+      <div class="pal-tags">
+        <span class="pal-tag">Ceará</span><span class="pal-tag">Portugal</span><span class="pal-tag">Academia de Oratória</span><span class="pal-tag">BH</span><span class="pal-tag">SP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. INTERNACIONAL -->
+  <div class="page intl">
+    <div class="intl-photo">
+      <img src="assets-pdf/portugal-editorial-escada.jpg" alt="Portugal">
+    </div>
+    <div class="intl-txt">
+      <p class="ey" style="color:rgba(212,170,170,.7)">Presença Internacional</p>
+      <h2>Parcerias de nível ao redor do mundo</h2>
+      <p class="intl-desc">De Dubai a Lisboa, cada parceria reflete um padrão que não se negocia.</p>
+      <div class="intl-places">
+        <div class="intl-place"><h4>Dubai</h4><p>Iate privado, hotéis de referência, e um noivado que quase um milhão de mulheres viveram junto.</p></div>
+        <div class="intl-place"><h4>Portugal</h4><p>Dois eventos exclusivos — workshops presenciais para mulheres em hotel premium.</p></div>
+        <div class="intl-place"><h4>Brasil</h4><p>Ceará, BH, SP. Palestras corporativas, conferências de empreendedorismo feminino.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. NOIVA — full-bleed emocional -->
+  <div class="page noiva">
+    <div class="noiva-bg"><img src="assets-pdf/dubai-noivado-beijo-arco.jpg?v=5" alt="Noivado Dubai"></div>
+    <div class="noiva-content">
+      <p class="ey" style="color:var(--ds);margin-bottom:20px">Noiva</p>
+      <h2 class="noiva-h">Uma jornada que quase 1 milhão acompanha</h2>
+      <p class="noiva-p">Cada detalhe do casamento será acompanhado por quase um milhão de mulheres que confiam na curadoria de Priscilla.</p>
+      <span class="noiva-badge">Sob consulta — Categoria exclusiva e temporária</span>
+    </div>
+  </div>
+
+  <!-- 7. PARCERIAS -->
+  <div class="page parcerias">
+    <p class="ey" style="color:rgba(212,170,170,.45)">Colaborações</p>
+    <h2>Como trabalhamos juntos</h2>
+    <div class="par-grid">
+      <div class="par-card"><p class="ey">01</p><h3>Presença Imersiva</h3><p>Experiências de marca em destinos exclusivos — viagens, iates, hotéis premium. A marca se integra ao universo real de Priscilla.</p></div>
+      <div class="par-card"><p class="ey">02</p><h3>Narrativa de Marca</h3><p>Série editorial de 30 a 90 dias. A marca se integra à vida de Priscilla com a naturalidade de quem pertence àquele universo.</p></div>
+      <div class="par-card"><p class="ey">03</p><h3>Noiva & Lifestyle</h3><p>Categoria exclusiva e temporária. Parcerias com marcas de casamento, joias, vestidos e experiências nupciais.</p></div>
+      <div class="par-card"><p class="ey">04</p><h3>Consultoria & Método</h3><p>Co-criação com o método Rainha Magnética ou patrocínio do ecossistema Filhas de Eva.</p></div>
+    </div>
+    <p class="par-scarcity">Priscilla aceita no máximo 4 parcerias estratégicas por trimestre.</p>
+  </div>
+
+  <!-- 8. EDITORIAL -->
+  <div class="page editorial">
+    <div class="ed-bg"><img src="assets-pdf/editorial-vermelho-close.jpg" alt="Priscilla Andrade" style="object-position:center 25%"></div>
+    <div class="ed-q">
+      <blockquote>"Posicionamento não é sobre parecer. É sobre ser percebida pelo que você realmente é — e fazer com que cada ambiente reconheça isso antes de você dizer uma palavra."</blockquote>
+      <cite>Priscilla Andrade</cite>
+    </div>
+  </div>
+
+  <!-- 9. CONTATO -->
+  <div class="page contato">
+    <div class="contato-seal"></div>
+    <h2>Parcerias estratégicas e booking</h2>
+    <p class="contato-quote">"Cada parceria é uma extensão da minha essência. Seleciono com curadoria e a certeza de que a marca está à altura da comunidade que construí."</p>
+    <p class="contato-info">
+      <strong>Amanda</strong> — Assessoria<br>
+      contato@filhasdeeva.com.br<br>
+      <span style="font-size:15px">@filhasdeeva · filhasdeeva.com.br</span>
+    </p>
+    <p class="contato-scarcity">Máximo 4 parcerias estratégicas por trimestre</p>
+    <p class="contato-brand">Filhas de Eva</p>
+    <div class="contato-ft">
+      <span>Filhas de Eva</span>
+      <span>Mídia Kit 2026</span>
+    </div>
+  </div>
+
+</body>
+</html>

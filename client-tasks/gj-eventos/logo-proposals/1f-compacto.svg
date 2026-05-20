@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GJ Eventos — Variation 1F: Layout Compacto (Stacked) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180">
+  <!-- Decorative bars on top — crown-like element -->
+  <rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/>
+  <rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/>
+  <rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/>
+  <rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/>
+  <rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/>
+
+  <!-- GJ Letterforms — centered below bars -->
+  <text x="80" y="90" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text>
+
+  <!-- EVENTOS subtitle -->
+  <text x="80" y="118" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="300" letter-spacing="8" fill="currentColor" opacity="0.5">EVENTOS</text>
+
+  <!-- Thin accent line -->
+  <line x1="40" y1="130" x2="120" y2="130" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+</svg>

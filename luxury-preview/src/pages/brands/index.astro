@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { brands, verticals } from '../../data/brands';
+---
+
+<BaseLayout title="Brand DNA Gallery">
+
+  <!-- Hero -->
+  <section style="padding-top: 160px; padding-bottom: 80px;">
+    <div class="container-luxury">
+      <div class="section-label animate-fade-up" style="margin-bottom: 40px; padding-left: 24px; border-left: 1px solid var(--accent);">
+        01 — Brand DNA
+      </div>
+      <h1 class="hero-headline animate-fade-up animate-delay-1" style="margin: 0 0 32px; font-size: clamp(56px, 8vw, 112px);">
+        Brand DNA<br>Gallery
+      </h1>
+      <p class="animate-fade-up animate-delay-2" style="font-family: var(--font-sans); font-size: 16px; font-weight: 300; color: var(--text-secondary); max-width: 640px; line-height: 1.7;">
+        Twelve luxury houses decoded — color palettes, typography systems, motion timing, and component rules extracted from their digital presences.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider-luxury"></div>
+
+  <!-- Filter Bar -->
+  <section style="padding: 40px 0;">
+    <div class="container-luxury">
+      <div id="filter-bar" style="display: flex; gap: 1px; flex-wrap: wrap;">
+        <button class="filter-pill active" data-vertical="all">All</button>
+        {verticals.map((v) => (
+          <button class="filter-pill" data-vertical={v}>
+            {v.charAt(0).toUpperCase() + v.slice(1)}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Cards Grid -->
+  <section style="padding-bottom: var(--section-pad);">
+    <div class="container-luxury">
+      <div id="brands-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-default);">
+        {brands.map((brand) => (
+          <a
+            href={`/brands/${brand.slug}`}
+            class="brand-card"
+            data-vertical={brand.vertical}
+            style="
+              background: var(--surface-1);
+              padding: 48px;
+              text-decoration: none;
+              display: flex; flex-direction: column;
+              min-height: 400px;
+              transition: background var(--transition-base);
+              position: relative;
+            "
+          >
+            <!-- Header: name + grade -->
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px;">
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 32px; font-weight: 400; color: var(--text-primary); margin: 0 0 8px; line-height: 1.1;">
+                  {brand.name}
+                </h3>
+                <span class="section-label">{brand.vertical}</span>
+              </div>
+              <span class={`grade-badge grade-${brand.grade.toLowerCase()}`}>
+                {brand.grade}
+              </span>
+            </div>
+
+            <!-- Color palette -->
+            <div style="margin-bottom: 24px;">
+              <div class="section-label" style="margin-bottom: 8px;">Palette</div>
+              <div style="display: flex; gap: 0; height: 32px; border: 1px solid var(--border-default);">
+                {brand.palette.map((hex) => (
+                  <div class="color-swatch" style={`background: ${hex};`} title={hex}></div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Accent color -->
+            <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
+              <div style={`width: 12px; height: 12px; background: ${brand.accentColor}; border: 1px solid var(--border-default);`}></div>
+              <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; color: var(--text-secondary);">
+                {brand.accentColor}
+              </span>
+            </div>
+
+            <!-- Typography -->
+            <div style="margin-bottom: 24px;">
+              <div class="section-label" style="margin-bottom: 4px;">Typography</div>
+              <div style="font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                {brand.displayFont} / {brand.bodyFont}
+              </div>
+            </div>
+
+            <!-- Signature style -->
+            <div style="flex: 1;">
+              <p style="font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--text-tertiary); line-height: 1.6; margin: 0;">
+                {brand.signatureStyle.slice(0, 140)}...
+              </p>
+            </div>
+
+            <!-- Metrics row -->
+            <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-default); display: flex; gap: 24px;">
+              <div>
+                <div class="section-label" style="font-size: 10px; margin-bottom: 2px;">Radius</div>
+                <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-primary);">{brand.metrics.buttonRadius}</span>
+              </div>
+              <div>
+                <div class="section-label" style="font-size: 10px; margin-bottom: 2px;">Motion</div>
+                <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-primary);">{brand.metrics.defaultTransitionDuration}</span>
+              </div>
+              <div>
+                <div class="section-label" style="font-size: 10px; margin-bottom: 2px;">Hero</div>
+                <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-primary);">{brand.metrics.heroFontSize}</span>
+              </div>
+              {brand.hasFullExtraction && (
+                <div style="margin-left: auto;">
+                  <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;">Full Extract</span>
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .brand-card:hover {
+    background: var(--surface-2) !important;
+  }
+
+  @media (max-width: 1024px) {
+    #brands-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    #brands-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<script>
+  const pills = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.brand-card');
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      pills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      const vertical = pill.getAttribute('data-vertical');
+
+      cards.forEach((card) => {
+        if (vertical === 'all' || card.getAttribute('data-vertical') === vertical) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,10 @@
+{
+  "external": [
+    "https://www.bottegaveneta.com/on/demandware.static/Sites-BV-R-SOAM-Site/-/pt_BR/v1779123141355/css/style.css"
+  ],
+  "preload": [],
+  "inline_style_blocks": 1,
+  "inline_style_attrs": 3,
+  "imports_resolved": 0,
+  "failed": []
+}

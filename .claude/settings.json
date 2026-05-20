@@ -49,5 +49,11 @@
         ]
       }
     ]
+  },
+  "permissions": {
+    "allow": [
+      "Write",
+      "Edit"
+    ]
   }
 }

@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Presentes — Moroni &amp; Daphine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --wine:#2D0A0F;
+      --wine-deep:#1A0508;
+      --wine-mid:#3d1015;
+      --parchment:#FAF8F6;
+      --parchment-d:#f0ece8;
+      --white:#fff;
+      --white-m:rgba(255,255,255,.82);
+      --white-d:rgba(255,255,255,.40);
+      --gold:#D4AF37;
+      --gold-b:rgba(212,175,55,.30);
+      --gold-bb:rgba(212,175,55,.12);
+      --fd:'Fraunces',Georgia,serif;
+      --fu:'Inter',system-ui,sans-serif;
+      --e:cubic-bezier(.25,.46,.45,.94)
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{background:var(--wine);color:var(--white);font-family:var(--fu);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+
+    /* grain */
+    .grain{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.06'/%3E%3C/svg%3E");mix-blend-mode:soft-light;opacity:.5}
+
+    /* scroll reveal */
+    .rv{opacity:0;transform:translateY(14px);transition:opacity .7s var(--e),transform .7s var(--e)}.rv.v{opacity:1;transform:none}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+    /* ─── HEADER ─── */
+    .header{position:relative;padding:clamp(72px,12vh,120px) 0 clamp(48px,7vh,80px);background:var(--wine);text-align:center;overflow:hidden}
+    .header .grain{opacity:.45}
+    .header__inner{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 24px}
+    .header__mark{font-family:var(--fd);font-weight:300;font-size:14px;letter-spacing:.12em;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;color:var(--white);opacity:.38;margin-bottom:28px;display:block}
+    .header__mark i{font-style:italic;opacity:.5;padding:0 .06em}
+    .header__title{font-family:var(--fd);font-weight:300;font-size:clamp(30px,5.5vw,52px);font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;letter-spacing:.02em;line-height:1.15;margin-bottom:22px}
+    .header__div{width:40px;height:1px;background:var(--gold);opacity:.38;margin:0 auto 24px}
+    .header__copy{font-family:var(--fd);font-weight:300;font-size:clamp(14px,1.6vw,18px);font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;font-style:italic;color:var(--white-m);margin-bottom:10px;line-height:1.6}
+    .header__note{font-family:var(--fu);font-size:12px;color:var(--white-d);line-height:1.7;max-width:460px;margin:0 auto}
+
+    /* ─── PIX ─── */
+    .pix{position:relative;background:var(--wine);padding:clamp(32px,5vh,56px) 0 clamp(48px,7vh,80px);overflow:hidden}
+    .pix .grain{opacity:.3}
+    .pix__inner{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 24px;text-align:center}
+    .pix__qr-wrap{margin:0 auto 18px;display:inline-block}
+    .pix__qr-wrap a{display:block}
+    .pix__qr-img{width:150px;height:150px;display:block;border:1px solid var(--gold-b)}
+    .pix__key{font-family:var(--fu);font-size:15px;font-weight:400;color:var(--white);letter-spacing:.06em;margin-bottom:6px;display:block}
+    .pix__any{font-family:var(--fu);font-size:11px;color:var(--white-d);margin-bottom:22px;display:block}
+    .pix__btn{display:inline-block;padding:14px 36px;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:opacity .3s var(--e)}
+    .pix__btn:hover{opacity:.85}
+
+    /* ─── GRID SECTION ─── */
+    .grid-section{background:var(--parchment);color:var(--wine)}
+    .grid-section__header{padding:clamp(48px,7vh,80px) 24px clamp(20px,3vh,36px);text-align:center;max-width:720px;margin:0 auto}
+    .grid-section__title{font-family:var(--fd);font-weight:300;font-size:clamp(22px,3.5vw,34px);font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;letter-spacing:.02em;margin-bottom:16px;color:var(--wine)}
+    .grid-section__div{width:40px;height:1px;background:var(--gold);opacity:.4;margin:0 auto}
+
+    /* filter tabs */
+    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:28px 24px 28px;max-width:900px;margin:0 auto}
+    .tab{padding:9px 20px;border:1px solid rgba(45,10,15,.2);font-family:var(--fu);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);opacity:.55;cursor:pointer;transition:all .3s var(--e);background:transparent;user-select:none}
+    .tab:hover{opacity:.9;border-color:rgba(45,10,15,.5)}
+    .tab.active{background:var(--wine);color:var(--parchment);opacity:1;border-color:var(--wine)}
+
+    /* gift grid */
+    .gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto;padding:0 24px 64px}
+    @media(max-width:768px){.gift-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.gift-grid{grid-template-columns:1fr}}
+
+    /* gift card */
+    .gift-card{cursor:pointer;transition:transform .35s var(--e),box-shadow .35s var(--e);background:var(--white)}
+    .gift-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(45,10,15,.10)}
+    .gift-card__img{aspect-ratio:4/3;background-size:cover;background-position:center;background-color:var(--parchment-d)}
+    .gift-card__img--contrib{background:linear-gradient(135deg,var(--wine) 0%,var(--wine-mid) 100%)}
+    .gift-card__info{padding:16px 16px 20px}
+    .gift-card__name{font-family:var(--fd);font-weight:300;font-size:15px;font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;color:var(--wine);margin-bottom:6px;line-height:1.35}
+    .gift-card__price{font-family:var(--fu);font-size:13px;color:var(--gold);margin-bottom:12px}
+    .gift-card__btn{display:inline-block;padding:8px 20px;background:var(--wine);color:var(--white);font-family:var(--fu);font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:background .3s var(--e)}
+    .gift-card:hover .gift-card__btn{background:var(--wine-mid)}
+
+    /* ─── FOOTER ─── */
+    .footer{background:var(--wine);padding:clamp(32px,5vh,56px) 24px;text-align:center;position:relative;overflow:hidden}
+    .footer .grain{opacity:.35}
+    .footer__inner{position:relative;z-index:1}
+    .footer__div{width:40px;height:1px;background:var(--gold);opacity:.2;margin:0 auto 24px}
+    .footer__mark{font-family:var(--fd);font-weight:300;font-size:20px;font-variation-settings:"opsz" 72,"SOFT" 40,"WONK" 0;color:var(--white);opacity:.35;margin-bottom:4px}
+    .footer__mark i{font-style:italic;opacity:.5;padding:0 .06em}
+    .footer__date{font-family:var(--fu);font-size:11px;letter-spacing:.12em;color:var(--white-d);opacity:.35;margin-bottom:20px}
+    .footer__back{font-family:var(--fu);font-size:11px;letter-spacing:.1em;color:var(--white-d);opacity:.45;transition:opacity .3s}
+    .footer__back:hover{opacity:.9}
+
+    @media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}.gift-card{transition:none}}
+
+    /* Cart badge */
+    .cart-btn{position:fixed;bottom:24px;right:24px;z-index:100;width:56px;height:56px;background:var(--wine);border:1px solid var(--gold-b);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .cart-btn:hover{transform:scale(1.05);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+    .cart-btn svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.5}
+    .cart-badge{position:absolute;top:-6px;right:-6px;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:11px;font-weight:500;width:22px;height:22px;display:flex;align-items:center;justify-content:center;display:none}
+    .cart-badge.show{display:flex}
+
+    /* Cart drawer */
+    .cart-drawer{position:fixed;top:0;right:-400px;width:min(380px,90vw);height:100vh;background:var(--wine);z-index:200;transition:right .4s var(--e);overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.3)}
+    .cart-drawer.open{right:0}
+    .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s}
+    .cart-overlay.open{opacity:1;pointer-events:all}
+    .cart-header{padding:24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gold-b)}
+    .cart-header h3{font-family:var(--fd);font-weight:300;font-size:20px;font-variation-settings:"opsz" 48,"SOFT" 30,"WONK" 0;color:var(--white)}
+    .cart-close{background:none;border:none;color:var(--white-d);font-size:24px;cursor:pointer;padding:4px}
+    .cart-items{padding:16px 24px}
+    .cart-item{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid rgba(212,175,55,.1);align-items:center}
+    .cart-item-img{width:56px;height:56px;background-size:cover;background-position:center;flex-shrink:0;background-color:var(--wine-mid)}
+    .cart-item-info{flex:1}
+    .cart-item-name{font-family:var(--fu);font-size:13px;color:var(--white);margin-bottom:4px}
+    .cart-item-price{font-family:var(--fu);font-size:12px;color:var(--gold)}
+    .cart-item-remove{font-family:var(--fu);font-size:10px;color:rgba(200,80,80,.7);cursor:pointer;margin-top:4px;background:none;border:none}
+    .cart-item-remove:hover{color:rgba(200,80,80,1)}
+    .cart-footer{padding:24px;border-top:1px solid var(--gold-b)}
+    .cart-total{display:flex;justify-content:space-between;margin-bottom:20px}
+    .cart-total-label{font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--white-d)}
+    .cart-total-value{font-family:var(--fd);font-weight:300;font-size:22px;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;color:var(--gold)}
+    .cart-checkout-btn{display:block;width:100%;padding:16px;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-align:center;cursor:pointer;border:none;margin-bottom:10px;transition:opacity .3s}
+    .cart-checkout-btn:hover{opacity:.85}
+    .cart-add-more{display:block;width:100%;padding:14px;background:transparent;border:1px solid var(--gold-b);color:var(--white-d);font-family:var(--fu);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;cursor:pointer;transition:border-color .3s}
+    .cart-add-more:hover{border-color:var(--gold)}
+    .cart-empty{padding:48px 24px;text-align:center;font-family:var(--fu);font-size:13px;color:var(--white-d)}
+
+    /* Checkout overlay */
+    .checkout{position:fixed;inset:0;background:var(--wine);z-index:300;display:none;overflow-y:auto}
+    .checkout.open{display:block}
+    .checkout-inner{max-width:480px;margin:0 auto;padding:clamp(40px,8vh,80px) 24px;text-align:center}
+  </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="Lista de Presentes — Moroni & Daphine">
+  <meta property="og:description" content="Nos ajude a construir nosso primeiro lar. Lista de presentes do casamento de Moroni e Daphine.">
+  <meta property="og:image" content="https://moroniedaphine.vercel.app/assets/og-image.jpg">
+  <meta property="og:url" content="https://moroniedaphine.vercel.app/presentes">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lista de Presentes — Moroni & Daphine">
+  <meta name="twitter:description" content="Nos ajude a construir nosso primeiro lar.">
+  <meta name="twitter:image" content="https://moroniedaphine.vercel.app/assets/og-image.jpg">
+</head>
+<body>
+
+<!-- ─── HEADER + PIX (seção única) ─── -->
+<header class="header">
+  <div class="grain"></div>
+  <div class="header__inner">
+    <span class="header__mark rv">M<i>&amp;</i>D</span>
+    <h1 class="header__title rv d1">Lista de Presentes</h1>
+    <div class="header__div rv d2"></div>
+    <p class="header__copy rv d2">Nos ajude a construir nosso primeiro lar</p>
+    <p class="header__note rv d3">Toda contribuição será usada para mobiliar nossa casa e cobrir os custos da celebração</p>
+
+    <!-- PIX inline -->
+    <div class="rv d3" style="margin-top:32px;">
+      <div class="pix__qr-wrap">
+        <a href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" rel="noopener">
+          <img class="pix__qr-img" src="assets/qrcode-pix.png" alt="QR Code PIX" loading="lazy">
+        </a>
+      </div>
+      <span class="pix__key" style="margin-top:12px;">Chave PIX: (11) 96334-1710</span>
+      <a href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" rel="noopener" style="display:block;font-family:var(--fu);font-size:11px;color:var(--gold);opacity:.6;margin-top:8px;transition:opacity .3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.6'">Clique aqui se não conseguir escanear →</a>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;">
+        <a class="pix__btn" href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" rel="noopener" onclick="fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:'pagamento',nome:'PIX direto (topo)',valor:'livre',detalhes:'Link Nubank'})}).catch(function(){})">PIX</a>
+        <a class="pix__btn" href="https://link.mercadopago.com.br/daphineemoroni" target="_blank" rel="noopener" style="background:transparent;border:1px solid var(--gold);color:var(--gold);" onmouseenter="this.style.background='var(--gold)';this.style.color='var(--wine-deep)'" onmouseleave="this.style.background='transparent';this.style.color='var(--gold)'" onclick="fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event:'pagamento',nome:'Cartão direto (topo)',valor:'livre',detalhes:'Link MP'})}).catch(function(){})">Cartão</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── GIFT GRID ─── -->
+<section class="grid-section">
+  <div class="grid-section__header rv">
+    <h2 class="grid-section__title">Ou escolha um presente</h2>
+    <div class="grid-section__div"></div>
+  </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="filter('all',this)">Todos</button>
+      <button class="tab" onclick="filter('cozinha',this)">Cozinha</button>
+      <button class="tab" onclick="filter('quarto',this)">Quarto</button>
+      <button class="tab" onclick="filter('sala',this)">Sala</button>
+      <button class="tab" onclick="filter('banheiro',this)">Banheiro</button>
+      <button class="tab" onclick="filter('lavanderia',this)">Lavanderia</button>
+      <button class="tab" onclick="filter('contrib',this)">Contribuição</button>
+    </div>
+
+  <div class="gift-grid" id="giftGrid" aria-live="polite"></div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="grain"></div>
+  <div class="footer__inner rv">
+    <div class="footer__div"></div>
+    <p class="footer__mark">M<i>&amp;</i>D</p>
+    <p class="footer__date">12.06.2026</p>
+    <a href="/" class="footer__back">← Voltar ao site</a>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(212,175,55,.08);">
+      <p style="font-family:var(--fu);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--white-d);opacity:.4;margin-bottom:8px;">Fale Conosco · Qualquer Suporte</p>
+      <a href="https://wa.me/5511963341710" target="_blank" rel="noopener" style="font-family:var(--fu);font-size:12px;color:var(--gold);opacity:.6;transition:opacity .3s;letter-spacing:.04em;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.6'">(11) 96334-1710</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart button -->
+<div class="cart-btn" onclick="toggleCart()">
+  <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+  <span class="cart-badge" id="cartBadge">0</span>
+</div>
+
+<!-- Cart overlay -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- Cart drawer -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Meu Carrinho</h3>
+    <button class="cart-close" onclick="toggleCart()">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-value" id="cartTotal">R$ 0,00</span>
+    </div>
+    <button class="cart-checkout-btn" onclick="openCheckout()">Finalizar Presente</button>
+    <button class="cart-add-more" onclick="toggleCart()">Adicionar Mais Itens</button>
+  </div>
+</div>
+
+<!-- Checkout -->
+<div class="checkout" id="checkout">
+  <div class="checkout-inner">
+    <p style="font-family:var(--fu);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:20px;">Resumo do Presente</p>
+    <p id="checkoutCount" style="font-family:var(--fd);font-weight:300;font-size:clamp(14px,2vw,16px);font-variation-settings:'opsz' 48,'SOFT' 20,'WONK' 0;color:var(--white-m);margin-bottom:8px;"></p>
+    <p id="checkoutTotal" style="font-family:var(--fd);font-weight:300;font-size:clamp(36px,6vw,52px);font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 0;color:var(--gold);margin-bottom:28px;"></p>
+
+    <!-- STEP 1: Identificação (visível primeiro) -->
+    <div id="checkoutStep1" style="max-width:360px;margin:0 auto;">
+      <p style="font-family:var(--fu);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);opacity:.5;margin-bottom:20px;text-align:center;">Antes de pagar, seus dados</p>
+      <div style="margin-bottom:20px;">
+        <label style="font-family:var(--fu);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--white-d);opacity:.5;display:block;margin-bottom:6px;">Nome completo</label>
+        <input type="text" id="checkoutNome" placeholder="Seu nome" required style="width:100%;border:none;border-bottom:1px solid var(--gold-b);padding:10px 0;font-family:var(--fd);font-weight:300;font-size:16px;font-variation-settings:'opsz' 48,'SOFT' 20,'WONK' 0;color:var(--white);background:transparent;outline:none;transition:border-color .3s;">
+      </div>
+      <div style="margin-bottom:28px;">
+        <label style="font-family:var(--fu);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--white-d);opacity:.5;display:block;margin-bottom:6px;">WhatsApp</label>
+        <input type="tel" id="checkoutPhone" placeholder="(11) 9 0000-0000" required style="width:100%;border:none;border-bottom:1px solid var(--gold-b);padding:10px 0;font-family:var(--fd);font-weight:300;font-size:16px;font-variation-settings:'opsz' 48,'SOFT' 20,'WONK' 0;color:var(--white);background:transparent;outline:none;-moz-appearance:textfield;transition:border-color .3s;">
+      </div>
+      <button onclick="unlockPayment()" style="display:block;width:100%;padding:16px;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .3s;" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">Continuar para Pagamento</button>
+      <p id="checkoutError" style="font-family:var(--fu);font-size:11px;color:#c0392b;text-align:center;margin-top:12px;display:none;">Preencha nome e WhatsApp</p>
+    </div>
+
+    <!-- STEP 2: Pagamento (escondido até preencher dados) -->
+    <div id="checkoutStep2" style="display:none;">
+      <p style="font-family:var(--fu);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--white-d);margin-bottom:16px;">Como deseja pagar?</p>
+      <div style="display:flex;justify-content:center;gap:0;margin-bottom:32px;">
+        <button id="tabPix" onclick="showPayTab('pix')" style="flex:1;max-width:160px;padding:12px 0;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gold);cursor:pointer;transition:all .3s;">PIX</button>
+        <button id="tabCard" onclick="showPayTab('card')" style="flex:1;max-width:160px;padding:12px 0;background:transparent;color:var(--white-d);font-family:var(--fu);font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gold-b);cursor:pointer;transition:all .3s;">Cartão</button>
+      </div>
+
+      <!-- PIX tab -->
+      <div id="payPix">
+        <p style="font-family:var(--fu);font-size:13px;color:var(--white-m);margin-bottom:20px;">Pague via PIX com o valor já preenchido</p>
+        <a id="pixPayBtn" href="#" target="_blank" style="display:inline-block;padding:16px 40px;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;transition:opacity .3s;" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">Pagar via PIX</a>
+        <p style="font-family:var(--fu);font-size:11px;color:var(--white-d);margin-bottom:12px;">Ou use a chave manualmente:</p>
+        <p style="font-family:var(--fu);font-size:14px;color:var(--white);margin-bottom:8px;">Chave PIX: <strong>(11) 96334-1710</strong></p>
+        <a href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" style="display:block;margin:12px auto;width:120px;">
+          <img src="assets/qrcode-pix.png" alt="QR Code PIX" style="width:100%;height:auto;opacity:.7;">
+        </a>
+      </div>
+
+      <!-- Cartão tab -->
+      <div id="payCard" style="display:none;">
+        <p style="font-family:var(--fu);font-size:13px;color:var(--white-m);margin-bottom:8px;">Pague com cartão de crédito ou débito</p>
+        <p style="font-family:var(--fu);font-size:11px;color:var(--white-d);margin-bottom:24px;">via Mercado Pago · Parcele em até 12x</p>
+        <a id="cardPayBtn" href="#" target="_blank" style="display:inline-block;padding:16px 40px;background:var(--gold);color:var(--wine-deep);font-family:var(--fu);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;transition:opacity .3s;" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">Pagar com Cartão</a>
+      </div>
+    </div>
+
+    <!-- Common footer -->
+    <div style="width:40px;height:1px;background:var(--gold);opacity:.2;margin:24px auto;"></div>
+    <p style="font-family:var(--fu);font-size:12px;color:var(--white-d);line-height:1.6;margin-bottom:24px;">Após pagar, envie o comprovante por WhatsApp</p>
+    <a id="checkoutWhatsapp" href="#" target="_blank" style="display:inline-block;padding:14px 32px;border:1px solid var(--gold-b);color:var(--white-d);font-family:var(--fu);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;transition:all .3s;" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--white)'" onmouseleave="this.style.borderColor='var(--gold-b)';this.style.color='var(--white-d)'">Enviar Comprovante</a>
+    <br>
+    <button onclick="closeCheckout()" style="background:none;border:none;color:var(--white-d);font-family:var(--fu);font-size:12px;cursor:pointer;margin-top:16px;letter-spacing:.1em;">← Voltar para a lista</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var gifts = [
+    // Cozinha
+    {name:"Fogão",price:899,cat:"cozinha",img:"assets/presentes/fogao.jpg"},
+    {name:"Geladeira",price:2416,cat:"cozinha",img:"assets/presentes/geladeira.jpg"},
+    {name:"Micro-ondas",price:734,cat:"cozinha",img:"assets/presentes/microondas.jpg"},
+    {name:"Panelas Tramontina",price:314,cat:"cozinha",img:"assets/presentes/panelas.jpg"},
+    {name:"Panela de Pressão",price:209,cat:"cozinha",img:"assets/presentes/panela-pressao.jpg"},
+    {name:"Panela de Arroz",price:189,cat:"cozinha",img:"assets/presentes/panela-arroz.png"},
+    {name:"Liquidificador",price:179,cat:"cozinha",img:"assets/presentes/liquidificador.jpg"},
+    {name:"Frigideira",price:133,cat:"cozinha",img:"assets/presentes/frigideira.jpg"},
+    {name:"Jogo de Facas",price:73,cat:"cozinha",img:"https://images.pexels.com/photos/16443132/pexels-photo-16443132.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Assadeiras",price:115,cat:"cozinha",img:"assets/presentes/assadeira.jpg"},
+    {name:"Utensílios de Cozinha",price:144,cat:"cozinha",img:"assets/presentes/utensilios.jpg"},
+    {name:"Pratos e Copos",price:199,cat:"cozinha",img:"assets/presentes/pratos-copos.jpg"},
+    {name:"Jogo de Talheres",price:189,cat:"cozinha",img:"https://images.pexels.com/photos/15660335/pexels-photo-15660335.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Escorredor de Louça",price:371,cat:"cozinha",img:"assets/presentes/escorredor.jpg"},
+    {name:"Chaleira Elétrica",price:147,cat:"cozinha",img:"assets/presentes/chaleira.jpg"},
+    {name:"Filtro de Água",price:387,cat:"cozinha",img:"https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    // Quarto
+    {name:"Cama Box + Colchão",price:2541,cat:"quarto",img:"https://images.pexels.com/photos/1034584/pexels-photo-1034584.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Colcha Casal",price:160,cat:"quarto",img:"assets/presentes/colcha.jpg"},
+    {name:"Guarda-Roupa",price:1098,cat:"quarto",img:"https://images.pexels.com/photos/32331030/pexels-photo-32331030.png?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Ferro de Passar",price:135,cat:"lavanderia",img:"assets/presentes/ferro.jpg"},
+    // Sala
+    {name:"Sofá",price:2500,cat:"sala",img:"https://images.pexels.com/photos/17264274/pexels-photo-17264274.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Smart TV 32\"",price:1852,cat:"sala",img:"https://images.pexels.com/photos/9646752/pexels-photo-9646752.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Mesa e Cadeiras",price:1972,cat:"sala",img:"https://images.pexels.com/photos/32178058/pexels-photo-32178058.png?auto=compress&cs=tinysrgb&h=400"},
+    // Banheiro e Lavanderia
+    {name:"Lava e Seca",price:3453,cat:"lavanderia",img:"https://images.pexels.com/photos/12104070/pexels-photo-12104070.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Chuveiro Elétrico",price:285,cat:"banheiro",img:"assets/presentes/chuveiro.webp"},
+    {name:"Jogo de Banho",price:95,cat:"banheiro",img:"https://images.pexels.com/photos/12679/pexels-photo-12679.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Cestos e Lixeiras",price:103,cat:"lavanderia",img:"assets/presentes/cesto.jpg"},
+    // Contribuições
+    {name:"Ajuda para Mobiliar",price:0,cat:"contrib",img:"https://images.pexels.com/photos/4569340/pexels-photo-4569340.jpeg?auto=compress&cs=tinysrgb&h=400"},
+    {name:"Primeiros Meses Juntos",price:0,cat:"contrib",img:"https://images.pexels.com/photos/4554240/pexels-photo-4554240.jpeg?auto=compress&cs=tinysrgb&h=400"},
+  ];
+
+  function fmtPrice(p){
+    return 'R$ ' + p.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+
+  var grid = document.getElementById('giftGrid');
+  var currentCat = 'all';
+
+  var ro = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('v'); ro.unobserve(e.target); }
+    });
+  },{threshold:.1});
+
+  function renderCards(activeCat){
+    currentCat = activeCat;
+    grid.innerHTML = '';
+    var visible = activeCat === 'all'
+      ? gifts.slice()
+      : gifts.filter(function(g){ return g.cat === activeCat; });
+    visible.sort(function(a, b){ return a.price - b.price; });
+
+    visible.forEach(function(g, i){
+      var isContrib = g.price === 0;
+      var card = document.createElement('article');
+      card.className = 'gift-card rv';
+      card.style.transitionDelay = (i % 6 * 0.06) + 's';
+
+      var imgDiv = '<div class="gift-card__img' + (isContrib && !g.img ? ' gift-card__img--contrib' : '') + '"' +
+        (g.img ? ' style="background-image:url(\'' + g.img + '\')"' : '') +
+        '></div>';
+
+      var priceHtml = isContrib
+        ? '<p class="gift-card__price" style="color:var(--gold)">Qualquer valor</p>'
+        : '<p class="gift-card__price">' + fmtPrice(g.price) + '</p>';
+
+      card.innerHTML = imgDiv +
+        '<div class="gift-card__info">' +
+        '<p class="gift-card__name">' + g.name + '</p>' +
+        priceHtml +
+        '<span class="gift-card__btn">Adicionar</span>' +
+        '</div>';
+
+      card.addEventListener('click', function(){
+        addToCart({name: g.name, price: g.price, img: g.img});
+        var btn = this.querySelector('.gift-card__btn');
+        btn.textContent = 'Adicionado ✓';
+        btn.style.background = 'var(--gold)';
+        btn.style.color = 'var(--wine-deep)';
+        var self = this;
+        setTimeout(function(){ toggleCart(); }, 600);
+      });
+
+      grid.appendChild(card);
+    });
+
+    grid.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
+  }
+
+  // Filter function called by tab buttons
+  window.filter = function(cat, btn) {
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    btn.classList.add('active');
+    renderCards(cat);
+  };
+
+  document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
+
+  renderCards('all');
+
+  // Cart system
+  var cart = JSON.parse(localStorage.getItem('md-cart') || '[]');
+
+  function updateCartBadge() {
+    var badge = document.getElementById('cartBadge');
+    badge.textContent = cart.length;
+    badge.className = 'cart-badge' + (cart.length > 0 ? ' show' : '');
+  }
+
+  function addToCart(gift) {
+    cart.push(gift);
+    localStorage.setItem('md-cart', JSON.stringify(cart));
+    updateCartBadge();
+    renderCartItems();
+  }
+
+  window.removeFromCart = function(idx) {
+    cart.splice(idx, 1);
+    localStorage.setItem('md-cart', JSON.stringify(cart));
+    updateCartBadge();
+    renderCartItems();
+  };
+
+  function getTotal() {
+    return cart.reduce(function(s, g) { return s + (g.price || 0); }, 0);
+  }
+
+  function renderCartItems() {
+    var container = document.getElementById('cartItems');
+    var footer = document.getElementById('cartFooter');
+    if (!cart.length) {
+      container.innerHTML = '<div class="cart-empty">Seu carrinho está vazio.<br>Adicione itens da lista!</div>';
+      footer.style.display = 'none';
+      return;
+    }
+    footer.style.display = 'block';
+    container.innerHTML = cart.map(function(g, i) {
+      return '<div class="cart-item">' +
+        '<div class="cart-item-img" style="background-image:url(\'' + (g.img||'') + '\')"></div>' +
+        '<div class="cart-item-info">' +
+        '<div class="cart-item-name">' + g.name + '</div>' +
+        '<div class="cart-item-price">' + (g.price ? fmtPrice(g.price) : 'Qualquer valor') + '</div>' +
+        '<button class="cart-item-remove" onclick="removeFromCart(' + i + ')">Remover</button>' +
+        '</div></div>';
+    }).join('');
+    document.getElementById('cartTotal').textContent = fmtPrice(getTotal());
+  }
+
+  window.toggleCart = function() {
+    var drawer = document.getElementById('cartDrawer');
+    var overlay = document.getElementById('cartOverlay');
+    var isOpen = drawer.classList.contains('open');
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+    if (!isOpen) renderCartItems();
+  };
+
+  var MP_TOKEN = 'APP_USR-7183408974757322-050400-7bbab65db347ec3ac2a325b4e6b7731b-636233773';
+  var SUPABASE_URL = 'https://weirdpigeon-supabase.cloudfy.live';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3Njg1MTYsImV4cCI6MTgwNTMwNDUxNn0.Hziwx8ocWnFVLHvt5DhT8nTkL2XVMa58ofjL-0hCMxw';
+
+  async function createMPPreference() {
+    var items = cart.map(function(g) {
+      return { title: 'Presente M&D - ' + g.name, quantity: 1, unit_price: g.price || 1, currency_id: 'BRL' };
+    }).filter(function(i) { return i.unit_price > 0; });
+    if (!items.length) return null;
+    try {
+      var res = await fetch('https://api.mercadopago.com/checkout/preferences', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + MP_TOKEN },
+        body: JSON.stringify({
+          items: items,
+          back_urls: {
+            success: 'https://moroniedaphine.vercel.app/obrigado?nome=Presente',
+            failure: 'https://moroniedaphine.vercel.app/presentes',
+            pending: 'https://moroniedaphine.vercel.app/obrigado?nome=Presente'
+          },
+          auto_return: 'approved'
+        })
+      });
+      var data = await res.json();
+      return data.init_point || null;
+    } catch(e) { console.log('MP error:', e); return null; }
+  }
+
+  window.openCheckout = function() {
+    toggleCart();
+    var checkout = document.getElementById('checkout');
+    checkout.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var total = getTotal();
+    document.getElementById('checkoutCount').textContent = cart.length + ' ' + (cart.length === 1 ? 'item selecionado' : 'itens selecionados');
+    document.getElementById('checkoutTotal').textContent = fmtPrice(total);
+    var msg = encodeURIComponent('Olá! Acabei de fazer um pagamento de ' + fmtPrice(total) + ' referente aos presentes do casamento M&D.');
+    document.getElementById('checkoutWhatsapp').href = 'https://wa.me/5511963341710?text=' + msg;
+
+    // Show step 1 (form), hide step 2 (payment)
+    document.getElementById('checkoutStep1').style.display = 'block';
+    document.getElementById('checkoutStep2').style.display = 'none';
+    document.getElementById('checkoutError').style.display = 'none';
+  };
+
+  window.unlockPayment = function() {
+    var nome = (document.getElementById('checkoutNome').value || '').trim();
+    var phone = (document.getElementById('checkoutPhone').value || '').trim();
+    var errEl = document.getElementById('checkoutError');
+
+    if (!nome || nome.length < 2) {
+      document.getElementById('checkoutNome').style.borderColor = '#c0392b';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!phone || phone.length < 8) {
+      document.getElementById('checkoutPhone').style.borderColor = '#c0392b';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    // Hide form, show payment
+    document.getElementById('checkoutStep1').style.display = 'none';
+    document.getElementById('checkoutStep2').style.display = 'block';
+    showPayTab('pix');
+
+    var total = getTotal();
+    var trackTotal = fmtPrice(total);
+    var cartItems = cart.map(function(g){ return g.name; }).join(', ');
+    var cardBtn = document.getElementById('cardPayBtn');
+    var pixBtn = document.getElementById('pixPayBtn');
+
+    // Generate MP preference with payer info
+    cardBtn.textContent = 'Gerando...';
+    cardBtn.style.opacity = '.5';
+    pixBtn.textContent = 'Gerando...';
+    pixBtn.style.opacity = '.5';
+
+    // Create preference with payer data
+    var items = cart.map(function(g) {
+      return { title: 'Presente M&D - ' + g.name, quantity: 1, unit_price: g.price || 1, currency_id: 'BRL' };
+    }).filter(function(i) { return i.unit_price > 0; });
+
+    fetch('https://api.mercadopago.com/checkout/preferences', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + MP_TOKEN },
+      body: JSON.stringify({
+        items: items,
+        payer: {
+          name: nome.split(' ')[0],
+          surname: nome.split(' ').slice(1).join(' ') || '',
+          phone: { number: phone }
+        },
+        back_urls: {
+          success: 'https://moroniedaphine.vercel.app/obrigado?nome=' + encodeURIComponent(nome),
+          failure: 'https://moroniedaphine.vercel.app/presentes',
+          pending: 'https://moroniedaphine.vercel.app/obrigado?nome=' + encodeURIComponent(nome)
+        },
+        auto_return: 'approved'
+      })
+    }).then(function(r){ return r.json(); }).then(function(data) {
+      var url = data.init_point;
+      if (url) {
+        cardBtn.href = url;
+        cardBtn.textContent = 'PAGAR ' + trackTotal;
+        cardBtn.style.opacity = '1';
+        pixBtn.href = url;
+        pixBtn.textContent = 'PAGAR ' + trackTotal + ' VIA PIX';
+        pixBtn.style.opacity = '1';
+      } else {
+        cardBtn.href = 'https://link.mercadopago.com.br/daphineemoroni';
+        cardBtn.textContent = 'PAGAR COM CARTÃO';
+        cardBtn.style.opacity = '1';
+        pixBtn.href = 'https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34';
+        pixBtn.textContent = 'PAGAR VIA PIX';
+        pixBtn.style.opacity = '1';
+      }
+    }).catch(function() {
+      cardBtn.href = 'https://link.mercadopago.com.br/daphineemoroni';
+      cardBtn.textContent = 'PAGAR COM CARTÃO';
+      cardBtn.style.opacity = '1';
+      pixBtn.href = 'https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34';
+      pixBtn.textContent = 'PAGAR VIA PIX';
+      pixBtn.style.opacity = '1';
+    });
+
+    // Track clicks
+    cardBtn.addEventListener('click', function() {
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'inicio_pagamento', nome: nome, whatsapp: phone, valor: trackTotal, detalhes: 'CARTÃO — ' + cartItems })
+      }).catch(function(){});
+      fetch(SUPABASE_URL + '/rest/v1/wedding_gifts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+        body: JSON.stringify({ tipo: 'outro', valor: total, descricao: nome + ' (' + phone + ') — CARTÃO — ' + cartItems })
+      }).catch(function(){});
+    });
+    pixBtn.addEventListener('click', function() {
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'inicio_pagamento', nome: nome, whatsapp: phone, valor: trackTotal, detalhes: 'PIX — ' + cartItems })
+      }).catch(function(){});
+      fetch(SUPABASE_URL + '/rest/v1/wedding_gifts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+        body: JSON.stringify({ tipo: 'pix', valor: total, descricao: nome + ' (' + phone + ') — PIX — ' + cartItems })
+      }).catch(function(){});
+    });
+  };
+
+  window.closeCheckout = function() {
+    document.getElementById('checkout').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.showPayTab = function(tab) {
+    var pix = document.getElementById('payPix');
+    var card = document.getElementById('payCard');
+    var tabPix = document.getElementById('tabPix');
+    var tabCard = document.getElementById('tabCard');
+    if (tab === 'pix') {
+      pix.style.display = 'block';
+      card.style.display = 'none';
+      tabPix.style.background = 'var(--gold)';
+      tabPix.style.color = 'var(--wine-deep)';
+      tabPix.style.fontWeight = '500';
+      tabCard.style.background = 'transparent';
+      tabCard.style.color = 'var(--white-d)';
+      tabCard.style.fontWeight = '400';
+    } else {
+      pix.style.display = 'none';
+      card.style.display = 'block';
+      tabCard.style.background = 'var(--gold)';
+      tabCard.style.color = 'var(--wine-deep)';
+      tabCard.style.fontWeight = '500';
+      tabPix.style.background = 'transparent';
+      tabPix.style.color = 'var(--white-d)';
+      tabPix.style.fontWeight = '400';
+    }
+  };
+
+  updateCartBadge();
+})();
+</script>
+</body>
+</html>

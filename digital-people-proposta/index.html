@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planejamento Estrat&eacute;gico &mdash; Digital People</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #D4B97A;
+      --gold-dark: #A68B5B;
+      --cream: #F5F0E8;
+      --cream-dark: #E8E0D0;
+      --charcoal: #1A1A1A;
+      --charcoal-light: #2A2A2A;
+      --text-dark: #0D0D0D;
+      --text-muted: #6B6B6B;
+      --text-light: #999;
+      --white: #FFFFFF;
+      --surface: #FAFAF7;
+      --border: rgba(201, 169, 110, 0.2);
+      --border-strong: rgba(201, 169, 110, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 6rem 0; }
+
+    /* ── Confidential Bar ── */
+    .confidential-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--gold);
+      color: var(--charcoal);
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed;
+      top: 1.6rem;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: all 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .nav.scrolled .nav-brand { color: var(--charcoal); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav.scrolled .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      padding-top: 2rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201, 169, 110, 0.05) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      border-radius: 100px;
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: var(--white);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item { text-align: center; }
+
+    .hero-meta-item .number {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .hero-meta-item .label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .scroll-indicator span {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(201,169,110,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* ── Section Headers ── */
+    .section-header { margin-bottom: 4rem; }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    /* ── Diagnosis ── */
+    .diagnosis { background: var(--surface); }
+
+    .diagnosis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .diagnosis-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .diagnosis-card:hover { border-color: var(--border-strong); }
+
+    .diagnosis-card .icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+    }
+
+    .diagnosis-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: -0.01em;
+    }
+
+    .diagnosis-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.8; }
+
+    /* ── Market Analysis (dark section) ── */
+    .market { background: var(--charcoal); color: var(--white); }
+    .market .section-title { color: var(--white); }
+    .market .section-subtitle { color: rgba(255,255,255,0.45); }
+
+    .quote-box {
+      padding: 2rem 2.5rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(201,169,110,0.05);
+      margin-bottom: 2rem;
+    }
+
+    .quote-box blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .quote-box cite {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-style: normal;
+    }
+
+    .gap-box {
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(201,169,110,0.15);
+      margin-top: 2rem;
+    }
+
+    .gap-box h3 {
+      font-size: 1.125rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .gap-box p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+    }
+
+    /* ── SWOT ── */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .swot-card { background: var(--white); padding: 2.5rem; }
+
+    .swot-card .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .swot-card ul { list-style: none; }
+
+    .swot-card li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding: 0.5rem 0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .swot-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.95rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ── Phases ── */
+    .phases { background: var(--surface); }
+    .phase-timeline { position: relative; }
+
+    .phase-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 3rem;
+      padding-bottom: 4rem;
+      position: relative;
+    }
+
+    .phase-item:last-child { padding-bottom: 0; }
+
+    .phase-item::before {
+      content: '';
+      position: absolute;
+      left: 100px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .phase-item:last-child::before { display: none; }
+
+    .phase-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.6;
+      text-align: right;
+      padding-right: 3rem;
+      line-height: 1;
+    }
+
+    .phase-content h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; }
+
+    .phase-timing {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .phase-content p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
+
+    .phase-deliverables { list-style: none; }
+
+    .phase-deliverables li {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      padding: 0.6rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .phase-deliverables li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 8px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ── Funnel (dark section) ── */
+    .funnel-section { background: var(--charcoal); color: var(--white); }
+    .funnel-section .section-title { color: var(--white); }
+    .funnel-section .section-subtitle { color: rgba(255,255,255,0.45); }
+
+    .funnel-stages { display: flex; flex-direction: column; gap: 0; }
+
+    .funnel-stage {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: start;
+    }
+
+    .funnel-stage:last-child { border-bottom: none; }
+
+    .funnel-stage-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      padding-top: 0.25rem;
+    }
+
+    .funnel-stage-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .funnel-stage-content p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+    .funnel-note {
+      margin-top: 2.5rem;
+      padding: 1.5rem 2rem;
+      border: 1px solid rgba(201,169,110,0.15);
+      background: rgba(201,169,110,0.04);
+    }
+
+    .funnel-note p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+
+    .funnel-note strong { color: var(--gold); }
+
+    /* ── Deliverables ── */
+    .deliverables { background: var(--surface); }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .deliverable-item {
+      background: var(--white);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .deliverable-check {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 0.1rem;
+    }
+
+    .deliverable-item span {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    /* ── KPIs ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .kpi-card { background: var(--white); padding: 2.5rem; text-align: center; }
+
+    .kpi-current {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-current-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      text-decoration: line-through;
+      margin-bottom: 1rem;
+    }
+
+    .kpi-arrow { display: block; color: var(--gold); margin-bottom: 0.5rem; font-size: 1.25rem; }
+
+    .kpi-target {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .kpi-note {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* ── Budget ── */
+    .budget-comparison {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .budget-card { border: 1px solid var(--border); padding: 2.5rem; }
+    .budget-card.proposed { border-color: var(--gold); }
+
+    .budget-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .budget-card.proposed h4 { color: var(--gold); }
+
+    .budget-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      font-size: 0.85rem;
+    }
+
+    .budget-line .item { color: var(--text-muted); }
+    .budget-line .value { font-weight: 500; color: var(--text-dark); }
+
+    .budget-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-strong);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+    }
+
+    .budget-total .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .budget-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.5rem;
+    }
+
+    .roi-note {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .roi-note p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .roi-note strong { color: var(--gold); }
+
+    /* ── Next Steps ── */
+    .next-steps { background: var(--charcoal); color: var(--white); }
+    .next-steps .section-title { color: var(--white); }
+
+    .steps-list { list-style: none; counter-reset: steps; }
+
+    .steps-list li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: start;
+    }
+
+    .steps-list li::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    .step-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    .step-owner {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 100px;
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── Closing ── */
+    .closing {
+      background: var(--surface);
+      text-align: center;
+      padding: 8rem 0;
+    }
+
+    .closing h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .closing p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.05em; }
+
+    footer .brand-footer {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    footer .brand-footer span { color: var(--gold); }
+
+    /* ── Animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section { padding: 3rem 0; }
+      .container { padding: 0 1.25rem; }
+      .container-narrow { padding: 0 1.25rem; }
+
+      .hero { min-height: auto; padding: 6rem 0 4rem; }
+      .hero h1 { font-size: 2.25rem; }
+      .hero-sub { font-size: 1rem; margin-bottom: 2rem; }
+      .hero-meta { gap: 1.25rem; }
+      .hero-meta-item .number { font-size: 1.5rem; }
+      .hero-meta-item .label { font-size: 0.6rem; }
+      .hero-badge { font-size: 0.65rem; padding: 0.4rem 1rem; margin-bottom: 2rem; }
+      .scroll-indicator { display: none; }
+
+      .nav-links { display: none; }
+      .confidential-bar { font-size: 0.5rem; padding: 0.3rem; letter-spacing: 0.12em; }
+      .nav { top: 1.3rem; }
+
+      .section-header { margin-bottom: 2.5rem; }
+      .section-title { font-size: 1.75rem; }
+      .section-subtitle { font-size: 0.9rem; }
+
+      .diagnosis-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .diagnosis-card { padding: 1.5rem; }
+
+      .swot-grid { grid-template-columns: 1fr; }
+      .swot-card { padding: 1.5rem; }
+
+      .phase-item { grid-template-columns: 1fr; gap: 0.75rem; padding-bottom: 2.5rem; }
+      .phase-item::before { display: none; }
+      .phase-number { text-align: left; padding-right: 0; font-size: 2rem; }
+
+      .funnel-stage { grid-template-columns: 1fr; gap: 0.25rem; padding: 1.5rem 0; }
+
+      .deliverables-grid { grid-template-columns: 1fr; }
+
+      .kpi-grid { grid-template-columns: 1fr; }
+      .kpi-card { padding: 1.5rem; }
+      .kpi-target { font-size: 2rem; }
+
+      .budget-comparison { grid-template-columns: 1fr; gap: 1rem; }
+      .budget-arrow { transform: rotate(90deg); }
+      .budget-card { padding: 1.5rem; }
+
+      .closing { padding: 5rem 0; }
+      .closing h2 { font-size: 1.75rem; }
+
+      .steps-list li { grid-template-columns: 40px 1fr; gap: 1rem; padding: 1.5rem 0; }
+      .steps-list li::before { font-size: 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.75rem; }
+      .hero-meta { flex-direction: column; gap: 1rem; }
+      .section-title { font-size: 1.5rem; }
+      .phase-deliverables li { font-size: 0.8rem; }
+      .budget-line { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confidential-bar">
+    Documento Confidencial &mdash; Digital People
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">REIS <span style="color: var(--gold)">[IA]</span></a>
+      <ul class="nav-links">
+        <li><a href="#diagnostico">Diagn&oacute;stico</a></li>
+        <li><a href="#oportunidade">Oportunidade</a></li>
+        <li><a href="#estrategia">Estrat&eacute;gia</a></li>
+        <li><a href="#entregas">Entregas</a></li>
+        <li><a href="#investimento">Investimento</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Planejamento Estrat&eacute;gico 2026</div>
+      <h1><em>Digital People</em></h1>
+      <p class="hero-sub">
+        Da experi&ecirc;ncia presencial ao dom&iacute;nio digital.<br>
+        Estrat&eacute;gia de posicionamento, conte&uacute;do e vendas.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="number">36</span>
+          <span class="label">Anos de Mercado</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="number">4.9</span>
+          <span class="label">Avalia&ccedil;&atilde;o Google</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="number">5+</span>
+          <span class="label">Servi&ccedil;os Oferecidos</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="number">500+</span>
+          <span class="label">Leads Pendentes</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 01 &mdash; Diagn&oacute;stico -->
+  <section id="diagnostico" class="diagnosis">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Diagn&oacute;stico</h2>
+        <p class="section-subtitle">
+          A Digital People tem 36 anos de excel&ecirc;ncia e nota 4.9 no Google. O problema n&atilde;o &eacute; o servi&ccedil;o. &Eacute; a visibilidade.
+        </p>
+      </div>
+
+      <div class="diagnosis-grid">
+
+        <div class="diagnosis-card fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a10 10 0 0 1 0 20M2 12h20"/>
+          </svg>
+          <h3>Aus&ecirc;ncia de site e landing pages</h3>
+          <p>Sem presen&ccedil;a digital profissional. O cliente que pesquisa &ldquo;fotografia casamento&rdquo; n&atilde;o encontra voc&ecirc;s. Encontra o concorrente.</p>
+        </div>
+
+        <div class="diagnosis-card fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+          <h3>An&uacute;ncios est&aacute;ticos num mercado de v&iacute;deo</h3>
+          <p>O custo por mensagem subiu porque todo concorrente faz o mesmo an&uacute;ncio com arte est&aacute;tica. De 30 or&ccedil;amentos/dia para 5 &mdash; com o mesmo investimento de R$50/dia.</p>
+        </div>
+
+        <div class="diagnosis-card fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h3>Sobrecarga operacional</h3>
+          <p>Uma pessoa fazendo: or&ccedil;amentos, edi&ccedil;&atilde;o de Instagram, propostas em PDF, reuni&otilde;es com ag&ecirc;ncia, divulga&ccedil;&atilde;o, follow-up. 500+ leads esperando contato.</p>
+        </div>
+
+        <div class="diagnosis-card fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <h3>Fotografia depende do presencial</h3>
+          <p>O servi&ccedil;o de maior ticket (R$9.500) s&oacute; vende quando Jos&eacute; ou Juliane conversam pessoalmente. O digital n&atilde;o reproduz essa confian&ccedil;a &mdash; ainda.</p>
+        </div>
+
+        <div class="diagnosis-card fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          <h3>Servi&ccedil;os de alta margem parados</h3>
+          <p>Encadenadora de &aacute;lbuns e laborat&oacute;rio fotogr&aacute;fico completamente parados. Maquin&aacute;rio pronto, zero divulga&ccedil;&atilde;o. Receita perdida todo m&ecirc;s.</p>
+        </div>
+
+        <div class="diagnosis-card fade-in">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+          <h3>Sem estrat&eacute;gia de conte&uacute;do</h3>
+          <p>O conte&uacute;do que gera confian&ccedil;a &eacute; v&iacute;deo: bastidores, depoimentos, o trabalho sendo feito. Hoje, esse material n&atilde;o existe de forma estruturada.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 02 &mdash; An&aacute;lise de Mercado (dark) -->
+  <section id="oportunidade" class="market">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">02</span>
+        <h2 class="section-title">An&aacute;lise de Mercado</h2>
+        <p class="section-subtitle">
+          Concorrentes com menos hist&oacute;ria e at&eacute; reclama&ccedil;&otilde;es est&atilde;o vendendo mais. A diferen&ccedil;a? Marketing.
+        </p>
+      </div>
+
+      <div class="quote-box fade-in">
+        <blockquote>
+          &ldquo;O Est&uacute;dio K nem pre&ccedil;o coloca na propaganda e fecha foto e filmagem a rodo. A nossa empresa tem avalia&ccedil;&atilde;o 4.9 no Google. &Eacute; o marketing.&rdquo;
+        </blockquote>
+        <cite>Juliane &mdash; Digital People</cite>
+      </div>
+
+      <div class="gap-box fade-in">
+        <h3>Brecha Estrat&eacute;gica</h3>
+        <p>
+          A Digital People tem 36 anos de experi&ecirc;ncia, nota 4.9 e qualidade real. Nenhum concorrente tem essa combina&ccedil;&atilde;o. Mas qualidade invis&iacute;vel &eacute; qualidade que n&atilde;o vende.
+        </p>
+        <p style="margin-top: 1rem;">
+          A lacuna &eacute; 100% de comunica&ccedil;&atilde;o: conte&uacute;do em v&iacute;deo, p&aacute;ginas profissionais e campanhas estrat&eacute;gicas. Preencher essa lacuna e os 36 anos de excel&ecirc;ncia come&ccedil;am a trabalhar <strong style="color: rgba(255,255,255,0.85)">POR voc&ecirc;s 24 horas por dia.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 03 &mdash; SWOT -->
+  <section id="swot">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">03</span>
+        <h2 class="section-title">An&aacute;lise SWOT</h2>
+        <p class="section-subtitle">
+          O diagn&oacute;stico completo: o que proteger, o que resolver, o que explorar.
+        </p>
+      </div>
+
+      <div class="swot-grid fade-in">
+        <div class="swot-card">
+          <span class="label">For&ccedil;as</span>
+          <ul>
+            <li>36 anos de experi&ecirc;ncia e reputa&ccedil;&atilde;o no mercado</li>
+            <li>Nota 4.9 no Google &mdash; acima de todos os concorrentes</li>
+            <li>Portf&oacute;lio diversificado: foto, v&iacute;deo, cabine, &aacute;lbuns, laborat&oacute;rio</li>
+            <li>Jos&eacute; e Juliane com alta capacidade de fechamento presencial</li>
+            <li>Base de clientes fidelizados e geradoras de indica&ccedil;&atilde;o</li>
+          </ul>
+        </div>
+        <div class="swot-card">
+          <span class="label">Fraquezas</span>
+          <ul>
+            <li>Sem site institucional ou landing pages por servi&ccedil;o</li>
+            <li>An&uacute;ncios est&aacute;ticos com CPM crescente e retorno declinante</li>
+            <li>Uma pessoa centralizando opera&ccedil;&atilde;o inteira &mdash; risco de esgotamento</li>
+            <li>Sem estrat&eacute;gia de conte&uacute;do em v&iacute;deo estruturada</li>
+            <li>Encadenadora e laborat&oacute;rio sem nenhuma divulga&ccedil;&atilde;o</li>
+          </ul>
+        </div>
+        <div class="swot-card">
+          <span class="label">Oportunidades</span>
+          <ul>
+            <li>Conte&uacute;do em v&iacute;deo tem o maior engajamento org&acirc;nico do Instagram</li>
+            <li>Landing pages por servi&ccedil;o capturam demanda espec&iacute;fica qualificada</li>
+            <li>Cada p&uacute;blico (debutante, casamento, corporativo) &eacute; uma m&aacute;quina nova de receita</li>
+            <li>Concorrentes n&atilde;o est&atilde;o usando v&iacute;deo de forma estrat&eacute;gica</li>
+            <li>500+ leads sem contato = receita j&aacute; gerada esperando retorno</li>
+          </ul>
+        </div>
+        <div class="swot-card">
+          <span class="label">Amea&ccedil;as</span>
+          <ul>
+            <li>Concorrentes com marketing mais agressivo fechando contratos maiores</li>
+            <li>Custo dos an&uacute;ncios est&aacute;ticos subindo sem resultado equivalente</li>
+            <li>Risco de sobrecarga para quem opera tudo sozinho</li>
+            <li>Sazonalidade da demanda para eventos de grande porte</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 04 &mdash; Fases da Estrat&eacute;gia -->
+  <section id="estrategia" class="phases">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Fases da Estrat&eacute;gia</h2>
+        <p class="section-subtitle">
+          Quatro fases. Da funda&ccedil;&atilde;o &agrave; escala. Cada etapa com entregas claras e m&eacute;tricas definidas.
+        </p>
+      </div>
+
+      <div class="phase-timeline">
+
+        <div class="phase-item fade-in">
+          <div class="phase-number">01</div>
+          <div class="phase-content">
+            <h3>Funda&ccedil;&atilde;o</h3>
+            <div class="phase-timing">Fase 1</div>
+            <ul class="phase-deliverables">
+              <li>An&aacute;lise completa de concorrentes e mercado</li>
+              <li>Design profissional da marca &mdash; identidade visual consistente</li>
+              <li>Site institucional com portf&oacute;lio, servi&ccedil;os e depoimentos</li>
+              <li>Templates de propostas comerciais premium</li>
+              <li>Reestrutura&ccedil;&atilde;o do perfil do Instagram</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-item fade-in">
+          <div class="phase-number">02</div>
+          <div class="phase-content">
+            <h3>Landing Pages &amp; Conte&uacute;do</h3>
+            <div class="phase-timing">Fase 2</div>
+            <ul class="phase-deliverables">
+              <li>Landing pages espec&iacute;ficas por servi&ccedil;o e p&uacute;blico</li>
+              <li>Estrat&eacute;gia de conte&uacute;do em v&iacute;deo com roteiros e pautas</li>
+              <li>Dire&ccedil;&atilde;o dos primeiros v&iacute;deos de bastidores e depoimentos</li>
+              <li>Banco de conte&uacute;do organizado por servi&ccedil;o</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-item fade-in">
+          <div class="phase-number">03</div>
+          <div class="phase-content">
+            <h3>Campanhas &amp; Escala</h3>
+            <div class="phase-timing">Fase 3</div>
+            <ul class="phase-deliverables">
+              <li>Configura&ccedil;&atilde;o e lan&ccedil;amento de campanhas pagas em v&iacute;deo</li>
+              <li>Segmenta&ccedil;&atilde;o por p&uacute;blico (debutante, casamento, corporativo)</li>
+              <li>Monitoramento e otimiza&ccedil;&atilde;o dos primeiros resultados</li>
+              <li>Processos documentados para autonomia</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-item fade-in">
+          <div class="phase-number">04</div>
+          <div class="phase-content">
+            <h3>Consolida&ccedil;&atilde;o</h3>
+            <div class="phase-timing">Fase 4</div>
+            <ul class="phase-deliverables">
+              <li>An&aacute;lise de m&eacute;tricas e ajuste de estrat&eacute;gia</li>
+              <li>Replica&ccedil;&atilde;o da &ldquo;m&aacute;quina&rdquo; para segundo p&uacute;blico</li>
+              <li>Expans&atilde;o para encadenadora e laborat&oacute;rio</li>
+              <li>Otimiza&ccedil;&atilde;o cont&iacute;nua baseada em dados</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 05 &mdash; Como Funciona / Funil (dark) -->
+  <section class="funnel-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Uma M&aacute;quina por P&uacute;blico</h2>
+        <p class="section-subtitle">
+          Cada p&uacute;blico &eacute; uma m&aacute;quina independente. Constru&iacute;mos uma de cada vez.
+        </p>
+      </div>
+
+      <div class="funnel-stages fade-in">
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-label">Landing Page</div>
+          <div class="funnel-stage-content">
+            <h4>P&aacute;gina espec&iacute;fica para o p&uacute;blico (ex: debutantes)</h4>
+            <p>Linguagem, portf&oacute;lio e depoimentos direcionados para quem decide contratar festa de 15 anos. Sem distra&ccedil;&atilde;o, sem informa&ccedil;&atilde;o gen&eacute;rica. A pessoa certa chega na p&aacute;gina certa.</p>
+          </div>
+        </div>
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-label">Conte&uacute;do</div>
+          <div class="funnel-stage-content">
+            <h4>V&iacute;deos de bastidores, rea&ccedil;&otilde;es, making of</h4>
+            <p>Publica&ccedil;&atilde;o no Instagram org&acirc;nico e patrocinado. O cliente v&ecirc; o trabalho real sendo feito &mdash; e passa a confiar antes mesmo de entrar em contato.</p>
+          </div>
+        </div>
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-label">Campanha</div>
+          <div class="funnel-stage-content">
+            <h4>V&iacute;deo segmentado por p&uacute;blico na regi&atilde;o</h4>
+            <p>A debutante v&ecirc; no feed. A m&atilde;e v&ecirc; o patrocinado. Cada an&uacute;ncio fala com a pessoa certa, no momento certo, com a linguagem certa.</p>
+          </div>
+        </div>
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-label">Convers&atilde;o</div>
+          <div class="funnel-stage-content">
+            <h4>Lead chega &rarr; proposta profissional &rarr; follow-up estruturado &rarr; fechamento</h4>
+            <p>O processo de atendimento n&atilde;o depende mais de mem&oacute;ria ou disponibilidade imediata. Cada lead recebe resposta, proposta premium e acompanhamento organizado.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="funnel-note fade-in">
+        <p>
+          <strong>Depois de validar o primeiro p&uacute;blico, replicamos a mesma l&oacute;gica para casamentos, corporativo, e qualquer outro.</strong> Cada m&aacute;quina roda em paralelo. O trabalho de construir a primeira facilita todas as pr&oacute;ximas.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 06 &mdash; Entregas -->
+  <section id="entregas" class="deliverables">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">06</span>
+        <h2 class="section-title">O que est&aacute; inclu&iacute;do</h2>
+        <p class="section-subtitle">
+          Tudo que a Digital People precisa para ir do presencial ao digital de forma estruturada e sustent&aacute;vel.
+        </p>
+      </div>
+
+      <div class="deliverables-grid fade-in">
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Site institucional profissional</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Landing pages por servi&ccedil;o (casamento, debutante, corporativo, cabine)</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Design profissional da marca</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Templates de propostas comerciais premium</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Estrat&eacute;gia de conte&uacute;do em v&iacute;deo (roteiros, pautas, dire&ccedil;&atilde;o)</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>An&aacute;lise de concorrentes e mercado</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Campanhas pagas em v&iacute;deo (Meta Ads)</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Processos documentados para autonomia</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Consultoria estrat&eacute;gica durante todo o per&iacute;odo</span>
+        </div>
+
+        <div class="deliverable-item">
+          <svg class="deliverable-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Suporte p&oacute;s-entrega</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 07 &mdash; Investimento -->
+  <section id="investimento" class="phases">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">07</span>
+        <h2 class="section-title">Investimento</h2>
+        <p class="section-subtitle">
+          Cada entrega justificada. O valor &eacute; definido em conversa ap&oacute;s alinhamento de escopo.
+        </p>
+      </div>
+
+      <div class="budget-comparison fade-in">
+
+        <div class="budget-card proposed">
+          <h4>Escopo da Proposta</h4>
+          <div class="budget-line">
+            <span class="item">An&aacute;lise e Estrat&eacute;gia</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Site Institucional</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Landing Pages (4 p&uacute;blicos)</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Design da Marca</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Propostas Comerciais</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Estrat&eacute;gia de Conte&uacute;do</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Campanhas Pagas</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Processos e Documenta&ccedil;&atilde;o</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-line">
+            <span class="item">Consultoria e Suporte</span>
+            <span class="value">&mdash;</span>
+          </div>
+          <div class="budget-total">
+            <span class="item">Total</span>
+            <span class="value">A definir</span>
+          </div>
+        </div>
+
+        <div class="budget-arrow">&rarr;</div>
+
+        <div class="budget-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-color: var(--gold); gap: 1rem; padding: 3rem 2rem;">
+          <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);">Investimento Total</span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--charcoal); line-height: 1;">A definir</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted); max-width: 220px; line-height: 1.7;">Valor alinhado ap&oacute;s conversa sobre prioridades e escopo</span>
+        </div>
+
+      </div>
+
+      <div class="roi-note fade-in">
+        <p>
+          <strong>ROI imediato:</strong> um pacote de foto e filmagem vale R$9.500. O investimento se paga nos primeiros contratos adicionais gerados pelas landing pages e campanhas em v&iacute;deo. A m&aacute;quina fica rodando depois.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Se&ccedil;&atilde;o 09 &mdash; Pr&oacute;ximos Passos (dark) -->
+  <section class="next-steps">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">08</span>
+        <h2 class="section-title">Pr&oacute;ximos Passos</h2>
+      </div>
+
+      <ul class="steps-list fade-in">
+
+        <li>
+          <div class="step-content">
+            <h4>Aprova&ccedil;&atilde;o da proposta e alinhamento de prioridades</h4>
+            <p>Reuni&atilde;o de kickoff para definir escopo, ordem de entregas e modelo de trabalho.</p>
+            <span class="step-owner">Digital People</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-content">
+            <h4>An&aacute;lise de concorrentes e defini&ccedil;&atilde;o de estrat&eacute;gia</h4>
+            <p>Mapeamento completo do mercado, posicionamento dos concorrentes e oportunidades de diferencia&ccedil;&atilde;o.</p>
+            <span class="step-owner">Moroni Reis</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-content">
+            <h4>Cria&ccedil;&atilde;o do site e identidade visual</h4>
+            <p>Design da marca e desenvolvimento do site institucional com portf&oacute;lio e depoimentos.</p>
+            <span class="step-owner">Moroni Reis</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-content">
+            <h4>Primeiras landing pages no ar</h4>
+            <p>P&aacute;ginas espec&iacute;ficas por p&uacute;blico prontas para receber tr&aacute;fego pago e org&acirc;nico.</p>
+            <span class="step-owner">Moroni Reis</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-content">
+            <h4>Grava&ccedil;&atilde;o dos primeiros v&iacute;deos</h4>
+            <p>Bastidores, depoimentos e making of. Dire&ccedil;&atilde;o e orienta&ccedil;&atilde;o de cena presencial ou remota.</p>
+            <span class="step-owner">Digital People + Dire&ccedil;&atilde;o Moroni Reis</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="step-content">
+            <h4>Lan&ccedil;amento das campanhas pagas</h4>
+            <p>Configura&ccedil;&atilde;o de campanhas em v&iacute;deo no Meta Ads, segmentadas por p&uacute;blico e regi&atilde;o.</p>
+            <span class="step-owner">Moroni Reis</span>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="closing">
+    <div class="container-narrow fade-in">
+      <h2>Transformar 36 anos de excel&ecirc;ncia<br>em presen&ccedil;a digital que vende.</h2>
+      <p>
+        O pr&oacute;ximo passo &eacute; uma conversa.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="brand-footer">Moroni <span>Reis</span></p>
+      <p>Documento preparado em abril de 2026. Confidencial.</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>

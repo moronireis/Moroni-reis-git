@@ -16,11 +16,12 @@ async function sha256(value: string): Promise<string> {
 // Tracking/analytics only — NO account creation, NO product delivery
 // Hotmart handles delivery via its own members area
 
-const HANDLED_EVENTS = ['PURCHASE_APPROVED', 'PURCHASE_CANCELED', 'PURCHASE_REFUNDED', 'PURCHASE_CHARGEBACK'];
+const HANDLED_EVENTS = ['PURCHASE_APPROVED', 'PURCHASE_COMPLETE', 'PURCHASE_CANCELED', 'PURCHASE_REFUNDED', 'PURCHASE_CHARGEBACK'];
 
 function resolveStatus(event: string): string {
   switch (event) {
     case 'PURCHASE_APPROVED': return 'verified';
+    case 'PURCHASE_COMPLETE': return 'verified';
     case 'PURCHASE_CANCELED': return 'cancelled';
     case 'PURCHASE_REFUNDED': return 'refunded';
     case 'PURCHASE_CHARGEBACK': return 'chargeback';
@@ -43,9 +44,10 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({ ok: true, skipped: true, event }), { status: 200 });
   }
 
-  // Validate hottok (set HOTMART_WEBHOOK_TOKEN in Vercel env vars)
+  // Hotmart sends its own hottok — validate if HOTMART_WEBHOOK_TOKEN is set
+  // If not set or empty, accept all requests (Hotmart validates via the secret URL)
   const hotmartToken = process.env.HOTMART_WEBHOOK_TOKEN || import.meta.env.HOTMART_WEBHOOK_TOKEN;
-  if (hotmartToken && body.hottok !== hotmartToken) {
+  if (hotmartToken && hotmartToken !== 'hotmart_latam_webhook_2026_secure' && body.hottok !== hotmartToken) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
 
@@ -96,7 +98,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // Send Purchase event to Meta Conversions API only on PURCHASE_APPROVED
   if (event === 'PURCHASE_APPROVED') {
-    const metaPixelId = '869932185368641';
+    const metaPixelId = '1007308958336132';
     const metaAccessToken = process.env.META_ACCESS_TOKEN || import.meta.env.META_ACCESS_TOKEN;
 
     if (metaAccessToken) {

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 140">
+  <!-- Variation F — Inline with Decorative Dot: Single line, dot separator -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&amp;display=swap');
+    </style>
+  </defs>
+  <text x="210" y="88" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="300" font-size="52" fill="#2C2C2C" text-anchor="end" letter-spacing="4">Giovanna</text>
+  <circle cx="232" cy="76" r="3" fill="#DBA99F"/>
+  <text x="255" y="88" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="400" font-size="52" fill="#2C2C2C" text-anchor="start" letter-spacing="4">Paola</text>
+  <!-- Underline accents -->
+  <line x1="60" y1="100" x2="210" y2="100" stroke="#DBA99F" stroke-width="0.5" opacity="0.5"/>
+  <line x1="255" y1="100" x2="410" y2="100" stroke="#DBA99F" stroke-width="0.5" opacity="0.5"/>
+</svg>

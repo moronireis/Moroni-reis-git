@@ -1,0 +1,66 @@
+[
+  {
+    "value": "none!important",
+    "count": 4
+  },
+  {
+    "value": "0 0 10px 0 #00000040",
+    "count": 3
+  },
+  {
+    "value": "-2px 5px 15px 0 #00000014",
+    "count": 2
+  },
+  {
+    "value": "0 0 18px #0000001a",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 2px #fff",
+    "count": 2
+  },
+  {
+    "value": "0 0 .25rem 0 #0000001a",
+    "count": 1
+  },
+  {
+    "value": "0 .0625rem .4375rem 0 #00000014",
+    "count": 1
+  },
+  {
+    "value": "0 -3px 4px #0000000f!important",
+    "count": 1
+  },
+  {
+    "value": "inset 0 0 0 1px #fff",
+    "count": 1
+  },
+  {
+    "value": "0 .25rem .125rem .0625rem #00000005,0 0 1.125rem 0 #0000001a",
+    "count": 1
+  },
+  {
+    "value": "-.125rem .3125rem .9375rem 0 #00000014",
+    "count": 1
+  },
+  {
+    "value": "0 4px 2px 1px #00000005",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 2px #fff,0 0 0 4px #000",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 2px #000,0 0 0 4px #fff",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 1px var(--color-background, #fff),inset 0 0 0 2px var(--color-primary, #000)",
+    "count": 1
+  },
+  {
+    "value": "0 1px 2px #00000026",
+    "count": 1
+  }
+]

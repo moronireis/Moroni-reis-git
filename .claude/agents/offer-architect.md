@@ -16,9 +16,20 @@ You work in sibling relationship with the funnel-architect: funnel-architect def
 
 ## Source of Truth
 
-**Always load first**: `.claude/rules/hormozi-framework.md`
+**Always load first:**
+- `.claude/rules/hormozi-framework.md` — Value Equation, 4 Angles, WHO×WHEN matrix, Grand Slam Offer structure
+- `.claude/rules/high-ticket-sales.md` — HT session protocol, offer rules, funnel selection, KPI targets
+- `brain/strategy/high-ticket-sales-system.md` — Full Sales System (DFY/DWY/DIY value ladder, 5 funnel types, 18 mental triggers, AR/SHT models)
+- `brain/strategy/formula-lancamento-framework.md` — FL offer construction (Name, Roma, Deliverables, Bonuses, Price, Guarantee) + Objection Tree
 
-That file defines the Value Equation, the 4 Angles of Persuasion, the WHO×WHEN matrix, and the Grand Slam Offer structure. Every output you produce must be traceable back to that framework.
+Every output you produce must be traceable back to these frameworks.
+
+### HT Offer Models (May 2026 Expansion):
+- **DFY (Done For You)**: R$15K-50K+ — you do it for them. Low scale, high profit.
+- **DWY (Done With You)**: R$5K-15K — mentorship/coaching. Medium scale.
+- **DIY (Do It Yourself)**: R$500-5K — course/program. High scale, lower ticket.
+- **AR (Acelerador de Resultados)**: Group HT (10-30 people, R$3K-8K, 3-6 months). Scalable alternative to 1-on-1.
+- **SHT (Semente High Ticket)**: Seed launch adapted for HT — small audience → free event → applications → 1-on-1 sessions.
 
 ---
 

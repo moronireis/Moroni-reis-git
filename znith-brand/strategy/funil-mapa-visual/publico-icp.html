@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH — Público ICP: Construção Civil</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#070b16;--bg2:#0d1225;--bg3:#131a30;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#e8ecf2;--text2:#7e8a9e;--text3:#556;--gold:#f0b442;--gold-d:rgba(240,180,66,0.10);--blue:#4a9eff;--green:#34d399;--red:#f87171;--orange:#fb923c;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;}
+a{color:var(--gold);text-decoration:none;}a:hover{text-decoration:underline;}
+.hero{text-align:center;padding:64px 24px 48px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(240,180,66,0.04) 0%,transparent 70%);pointer-events:none;}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,4vw,2.6rem);color:var(--gold);letter-spacing:0.06em;margin-bottom:10px;position:relative;}
+.hero p{font-size:0.9rem;color:var(--text2);max-width:700px;margin:0 auto 16px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:0.78rem;color:var(--text2);border:1px solid var(--border);padding:6px 16px;border-radius:6px;transition:all 0.2s;}
+.back-link:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+.nav{position:sticky;top:0;z-index:100;background:rgba(7,11,22,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav::-webkit-scrollbar{display:none;}
+.nav a{flex-shrink:0;font-size:0.7rem;font-weight:500;color:var(--text2);padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all 0.2s;white-space:nowrap;}
+.nav a:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+section{padding:56px 0;}section+section{border-top:1px solid var(--border);}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--gold);margin-bottom:6px;letter-spacing:0.04em;}
+.ssub{font-size:0.82rem;color:var(--text2);margin-bottom:36px;max-width:640px;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:16px;transition:border-color 0.2s;}
+.card:hover{border-color:var(--border2);}
+.card h3{font-size:0.95rem;font-weight:700;margin-bottom:6px;}
+.card p,.card li{font-size:0.8rem;color:var(--text2);line-height:1.6;}
+.card ul{padding-left:18px;}.card ul li{margin-bottom:4px;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:0.78rem;}
+th{text-align:left;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:10px 14px;border-bottom:1px solid rgba(240,180,66,0.15);}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);}
+td:first-child{color:var(--text);font-weight:500;}
+tr:hover td{background:rgba(255,255,255,0.015);}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;}
+.stat-val{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold);font-weight:700;margin-bottom:2px;}
+.stat-label{font-size:0.72rem;color:var(--text2);}
+.pill{display:inline-block;font-size:0.6rem;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:4px;}
+.pill-blue{background:rgba(74,158,255,0.1);color:var(--blue);border:1px solid rgba(74,158,255,0.2);}
+.pill-green{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.pill-gold{background:var(--gold-d);color:var(--gold);border:1px solid rgba(240,180,66,0.2);}
+.pill-orange{background:rgba(251,146,60,0.1);color:var(--orange);border:1px solid rgba(251,146,60,0.2);}
+.pill-purple{background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.2);}
+.pill-red{background:rgba(248,113,113,0.1);color:var(--red);border:1px solid rgba(248,113,113,0.2);}
+.insight{background:var(--gold-d);border:1px solid rgba(240,180,66,0.15);border-radius:10px;padding:16px 20px;margin:20px 0;font-size:0.8rem;color:var(--gold);line-height:1.5;}
+.insight strong{color:#fff;}
+.quote{background:var(--bg3);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:16px 20px;margin:12px 0;font-size:0.82rem;font-style:italic;color:var(--text);line-height:1.5;}
+.persona{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;border-top:3px solid;}
+.persona h3{font-size:1rem;font-weight:700;margin-bottom:2px;}
+.persona .pct{font-size:0.72rem;font-weight:600;margin-bottom:8px;}
+.persona p{font-size:0.78rem;color:var(--text2);line-height:1.6;}
+.p1{border-color:var(--blue);}.p1 .pct{color:var(--blue);}
+.p2{border-color:var(--orange);}.p2 .pct{color:var(--orange);}
+.p3{border-color:var(--green);}.p3 .pct{color:var(--green);}
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;}
+.vocab-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:0.78rem;}
+.vocab-item .word{font-weight:700;color:var(--gold);margin-bottom:2px;}
+.vocab-item .meaning{font-size:0.72rem;color:var(--text2);}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.do-col{background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.1);border-radius:12px;padding:20px 22px;}
+.do-col h4{color:var(--green);font-size:0.82rem;margin-bottom:10px;}
+.dont-col{background:rgba(248,113,113,0.04);border:1px solid rgba(248,113,113,0.1);border-radius:12px;padding:20px 22px;}
+.dont-col h4{color:var(--red);font-size:0.82rem;margin-bottom:10px;}
+.do-col li,.dont-col li{font-size:0.76rem;color:var(--text2);margin-bottom:6px;}
+.trigger{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:10px;}
+.trigger h4{font-size:0.85rem;font-weight:700;margin-bottom:4px;}
+.trigger p{font-size:0.76rem;color:var(--text2);}
+.trigger .emoji-label{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+.footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);font-size:0.68rem;color:var(--text3);}
+@media(max-width:768px){section{padding:40px 0;}.grid2,.do-dont{grid-template-columns:1fr;}.vocab{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.vocab{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Público ICP: Construção Civil</h1>
+  <p>Quem são, onde estão, que tipo de empresas têm, como se comunicam e como compram. Pesquisa completa para informar criativos, landing pages e toda a comunicação da ZNITH.</p>
+  <a href="index.html" class="back-link">&larr; Voltar ao Mapa de Funis</a>
+</div>
+
+<nav class="nav">
+  <a href="#quem">Quem São</a>
+  <a href="#onde">Onde Estão</a>
+  <a href="#empresas">Tipo de Empresas</a>
+  <a href="#linguagem">Linguagem</a>
+  <a href="#compra">Comportamento de Compra</a>
+  <a href="#comunicacao">Como Comunicar</a>
+</nav>
+
+<div class="container">
+
+<!-- ══════ QUEM SÃO ══════ -->
+<section id="quem">
+  <h2 class="stitle">Quem São</h2>
+  <p class="ssub">Donos de vidraçarias, serralherias e empresas de esquadrias de alumínio. Faturamento R$1M–R$15M/ano. Majoritariamente homens, 35–55 anos, que construíram o negócio com as próprias mãos.</p>
+
+  <div class="grid4">
+    <div class="stat"><div class="stat-val">35–55</div><div class="stat-label">Idade predominante</div></div>
+    <div class="stat"><div class="stat-val">80–85%</div><div class="stat-label">Homens</div></div>
+    <div class="stat"><div class="stat-val">~60.000</div><div class="stat-label">Vidraçarias no Brasil<br>(ANAVIDRO 2022)</div></div>
+    <div class="stat"><div class="stat-val">36.934</div><div class="stat-label">Serralherias ativas<br>(Econodata)</div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">3 Origens — Como Chegaram a Ser Donos</h3>
+  <div class="grid3">
+    <div class="persona p1">
+      <h3>O Ex-Funcionário</h3>
+      <div class="pct">~55% do ICP</div>
+      <p>Trabalhou como vidraceiro ou serralheiro por anos. Aprendeu o ofício na prática. Um dia "saiu pra montar o próprio". Orgulho da história, mas trata a empresa como extensão da própria mão de obra. Maior bloqueio: transição de "técnico que faz" para "gestor que comanda".</p>
+    </div>
+    <div class="persona p2">
+      <h3>A Empresa Familiar</h3>
+      <div class="pct">~30% do ICP</div>
+      <p>Recebeu o negócio do pai, do tio ou do sogro. Carrega peso da tradição ("meu pai fez assim por 30 anos"). Sente que o negócio precisa de renovação mas não sabe por onde. A esposa/sócia frequentemente cuida do financeiro — e tem veto real nas decisões.</p>
+    </div>
+    <div class="persona p3">
+      <h3>O Empreendedor</h3>
+      <div class="pct">~15% do ICP</div>
+      <p>Veio de outra área, investiu e contratou quem soubesse fazer. Mais aberto a consultoria, mais orientado a número, mais rápido na tomada de decisão. É o perfil que responde primeiro ao anúncio.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Rotina Diária</h3>
+  <div class="card">
+    <p>Começa cedo (6h–7h). Manhã operacional: resolver problema de instalação, conferir pedido de material, responder WhatsApp de cliente. Tarde mais comercial: visitar obras, fazer medição, fechar orçamento. Raramente existe separação entre "tempo de gestão" e "tempo de operação". O dono é o gargalo de tudo. O <strong>WhatsApp é o sistema nervoso central</strong> — pedidos, orçamentos, equipe, fornecedores, tudo passa por ali.</p>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Onde Consomem Conteúdo</h3>
+  <table>
+    <thead><tr><th>Plataforma</th><th>Uso</th><th>Relevância</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp</td><td>Principal ferramenta de tudo. Grupos profissionais ativos.</td><td><span class="pill pill-green">Crítica</span></td></tr>
+      <tr><td>YouTube</td><td>Canal do Serralheiro, Meu Vidraceiro, Alô Serralheiro, Central do Vidraceiro. Conteúdo técnico e de gestão.</td><td><span class="pill pill-green">Alta</span></td></tr>
+      <tr><td>Instagram</td><td>Portfólio de projetos. Seguem fornecedores e concorrentes.</td><td><span class="pill pill-blue">Alta</span></td></tr>
+      <tr><td>Facebook</td><td>Grupos ativos ("Vidraceiros do Brasil"). Faixa 40+ ainda usa muito.</td><td><span class="pill pill-blue">Média-alta</span></td></tr>
+      <tr><td>LinkedIn</td><td>Baixo uso. Exceção: quem atende construtoras/corporativo.</td><td><span class="pill pill-orange">Baixa</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">O Que Mais Temem no Negócio</h3>
+  <div class="grid2">
+    <div class="card"><h3>Perder pra quem cobra menos</h3><p>Concorrente informal (MEI, sem estrutura) que oferece preço impossível de acompanhar.</p></div>
+    <div class="card"><h3>Fluxo de caixa apertado</h3><p>Material comprado, serviço entregue, cliente não pagou. "Trabalho muito e não sobra dinheiro."</p></div>
+    <div class="card"><h3>Funcionário que sai e leva cliente</h3><p>E às vezes abre concorrência na mesma região.</p></div>
+    <div class="card"><h3>Não saber se tem lucro de verdade</h3><p>"Faturei R$200K esse mês mas não sei quanto sobrou." Medo profundo: 20 anos de empresa e nada acumulado.</p></div>
+  </div>
+
+  <div class="quote">"Trabalho muito e não sobra dinheiro" — a queixa mais comum nos fóruns do setor.</div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Como Tomam Decisão de Compra</h3>
+  <div class="grid3">
+    <div class="card"><h3>Sozinho após pesquisa</h3><p>Perfil mais digital, mais jovem. Assiste vídeo, compara, decide.</p></div>
+    <div class="card"><h3>Consulta esposa/sócio(a)</h3><p>Padrão mais comum em empresas familiares. A esposa cuida do financeiro e tem veto real.</p></div>
+    <div class="card"><h3>Convencido por quem confia</h3><p>Colega do setor que já usou, fornecedor que indicou, palestrante de evento.</p></div>
+  </div>
+</section>
+
+<!-- ══════ ONDE ESTÃO ══════ -->
+<section id="onde">
+  <h2 class="stitle">Onde Estão</h2>
+  <p class="ssub">Concentração em SP, Sul e MG. Mercado pulverizado e local. Associações setoriais fortes.</p>
+
+  <h3 style="font-size:0.9rem;margin:0 0 14px;color:var(--text);">Concentração Geográfica</h3>
+  <table>
+    <thead><tr><th>Região</th><th>Estados/Cidades</th><th>Perfil</th><th>Prioridade Ads</th></tr></thead>
+    <tbody>
+      <tr><td>São Paulo</td><td>Capital, ABC, Guarulhos, Campinas, SJC</td><td>Maior polo absoluto. 800+ vidraçarias só na capital.</td><td><span class="pill pill-green">P1</span></td></tr>
+      <tr><td>Sul</td><td>Curitiba (PR), Florianópolis/Joinville/Blumenau (SC), Caxias do Sul/Porto Alegre (RS)</td><td>Forte indústria de alumínio. Caxias do Sul é referência nacional em esquadrias.</td><td><span class="pill pill-green">P1</span></td></tr>
+      <tr><td>Minas Gerais</td><td>BH e região metropolitana</td><td>Terceiro maior polo.</td><td><span class="pill pill-green">P1</span></td></tr>
+      <tr><td>Rio de Janeiro</td><td>Capital e baixada</td><td>Alta demanda por envidraçamento de sacadas (apartamentos com varanda).</td><td><span class="pill pill-blue">P2</span></td></tr>
+      <tr><td>Centro-Oeste</td><td>Goiânia (GO), Brasília (DF)</td><td>Mercado em crescimento. Menor penetração digital.</td><td><span class="pill pill-blue">P2</span></td></tr>
+      <tr><td>Nordeste</td><td>Salvador (BA), Recife (PE), Fortaleza (CE)</td><td>Ecossistemas próprios. ASVEB ativa na Bahia. Maior resistência inicial a consultoria.</td><td><span class="pill pill-orange">P3</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight"><strong>Diferença regional importante:</strong> Sul/Sudeste = empresas mais formalizadas, maior adoção de software, mais abertas a consultoria. Nordeste/Centro-Oeste = mercado em maturação, maior resistência inicial, mas fidelidade alta quando confiança é construída.</div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Associações e Eventos</h3>
+  <div class="grid2">
+    <div class="card">
+      <h3>Associações</h3>
+      <ul>
+        <li><strong>ABRAVIDRO</strong> — A maior. ~200 associados + 13 entidades regionais</li>
+        <li><strong>ANAVIDRO</strong> — Foco no vidraceiro de ponta de linha</li>
+        <li><strong>ASVEB</strong> — Serralherias e Vidraçarias da Bahia</li>
+        <li><strong>ABAL</strong> — Associação Brasileira do Alumínio</li>
+        <li><strong>AFEAL</strong> — Fabricantes de esquadrias de alumínio</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Eventos</h3>
+      <ul>
+        <li><strong>Glass South America</strong> — Maior evento. SP. ~13.000 visitantes. Próxima: set 2027.</li>
+        <li><strong>FEICON</strong> — Maior feira de construção civil. Abril, SP Expo.</li>
+        <li><strong>Eventos regionais ABRAVIDRO</strong> — capacitações com forte engajamento</li>
+        <li><strong>Cursos ABRAVIDRO</strong> — plataforma de treinamento online</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Comunidades Online</h3>
+  <div class="grid3">
+    <div class="card"><h3>Facebook</h3><p>Grupos ativos: "Vidraceiros do Brasil", "Serralheiros Empreendedores" e variações regionais.</p></div>
+    <div class="card"><h3>WhatsApp</h3><p>Grupos regionais são o principal canal de troca de informação no dia a dia. Alta atividade.</p></div>
+    <div class="card"><h3>YouTube</h3><p>Canal do Serralheiro, Meu Vidraceiro, Alô Serralheiro, Central do Vidraceiro — pontos de encontro da audiência.</p></div>
+  </div>
+</section>
+
+<!-- ══════ TIPO DE EMPRESAS ══════ -->
+<section id="empresas">
+  <h2 class="stitle">Que Tipo de Empresas São</h2>
+  <p class="ssub">Empresas familiares ou microempresas formalizadas. WhatsApp como "CRM". O dono faz tudo.</p>
+
+  <h3 style="font-size:0.9rem;margin:0 0 14px;color:var(--text);">Perfil por Faixa de Faturamento</h3>
+  <table>
+    <thead><tr><th>Faturamento</th><th>Funcionários</th><th>Estrutura</th><th>Ferramentas</th></tr></thead>
+    <tbody>
+      <tr><td>R$1M–R$3M/ano</td><td>3 a 15</td><td>Dono faz orçamento, vai à obra, cuida do financeiro. Sem comercial, sem RH, sem marketing.</td><td>WhatsApp + caderno/Excel. CRM inexistente.</td></tr>
+      <tr><td>R$3M–R$10M/ano</td><td>15 a 40</td><td>Começa a ter gerente de produção. Vendedor próprio ou dono ainda vende. Presença digital ativa.</td><td>Excel avançado ou ERP básico (eVidraceiro, WVetro).</td></tr>
+      <tr><td>R$10M–R$15M/ano</td><td>40 a 80</td><td>Estrutura mais organizada. Financeiro separado. Atende construtoras (B2B). Showroom.</td><td>ERP mais robusto. Já tem ou já teve gerente comercial.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Como Captam Clientes Hoje</h3>
+  <table>
+    <thead><tr><th>#</th><th>Canal</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Indicação / boca a boca</td><td>Dominante abaixo de R$5M. Pedreiro, arquiteto, síndico são os principais influenciadores.</td></tr>
+      <tr><td>2</td><td>Google Meu Negócio</td><td>"Vidraçaria perto de mim." Posição no Maps é levada a sério.</td></tr>
+      <tr><td>3</td><td>Instagram</td><td>Portfólio visual. Converte especialmente no segmento residencial premium.</td></tr>
+      <tr><td>4</td><td>GetNinjas / Habitissimo</td><td>Usadas mas malvistas: "os clientes de lá só querem o mais barato."</td></tr>
+      <tr><td>5</td><td>Relacionamento com construtoras</td><td>Canal mais valioso mas mais difícil. Para empresas acima de R$5M.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Sazonalidade</h3>
+  <div class="grid2">
+    <div class="card" style="border-left:3px solid var(--green);">
+      <h3 style="color:var(--green);">Pico: Outubro a Março</h3>
+      <p>Primavera/verão. Reformas, projetos novos, retrofit. Dono sobrecarregado: "não consigo dar conta de tudo."</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--blue);">
+      <h3 style="color:var(--blue);">Baixa: Junho a Agosto</h3>
+      <p>Inverno. Chuvas e frio reduzem obras. Dono ansioso: "cadê o cliente?" <strong>Melhor janela para vender consultoria</strong> — tem tempo para pensar e está preocupado com o segundo semestre.</p>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Dado de margem:</strong> Margem bruta estimada 30%–50% sobre custo de materiais. Margem líquida real frequentemente desconhecida pelo próprio dono. Guerra de preço com concorrentes informais (MEI sem estrutura) é a pressão competitiva mais citada.</div>
+</section>
+
+<!-- ══════ LINGUAGEM ══════ -->
+<section id="linguagem">
+  <h2 class="stitle">Como Se Comunicam</h2>
+  <p class="ssub">Vocabulário específico do setor. Tom direto e prático. Alergia a conceito abstrato.</p>
+
+  <h3 style="font-size:0.9rem;margin:0 0 14px;color:var(--text);">Vocabulário do Setor (use estas palavras na copy)</h3>
+  <div class="vocab">
+    <div class="vocab-item"><div class="word">"Obra"</div><div class="meaning">Não "projeto". O que está em execução.</div></div>
+    <div class="vocab-item"><div class="word">"Orçamento"</div><div class="meaning">Não "proposta". É a palavra nativa.</div></div>
+    <div class="vocab-item"><div class="word">"Fechar negócio"</div><div class="meaning">Não "converter". "Fechar obra" também.</div></div>
+    <div class="vocab-item"><div class="word">"Cliente"</div><div class="meaning">Não "lead". Essa palavra não existe pra eles.</div></div>
+    <div class="vocab-item"><div class="word">"Minha vidraçaria"</div><div class="meaning">Possessivo como identidade. O negócio é extensão deles.</div></div>
+    <div class="vocab-item"><div class="word">"Retrabalho"</div><div class="meaning">Palavra carregada de emoção negativa.</div></div>
+    <div class="vocab-item"><div class="word">"Prazo de entrega"</div><div class="meaning">Tensão central do dia a dia.</div></div>
+    <div class="vocab-item"><div class="word">"Inadimplência"</div><div class="meaning">Medo real e frequente.</div></div>
+    <div class="vocab-item"><div class="word">"Fluxo de caixa"</div><div class="meaning">Dor conhecida e sentida no corpo.</div></div>
+    <div class="vocab-item"><div class="word">"Dar conta do movimento"</div><div class="meaning">Expressão real quando volume cresce.</div></div>
+    <div class="vocab-item"><div class="word">"Montar equipe"</div><div class="meaning">Aspiração e desafio ao mesmo tempo.</div></div>
+    <div class="vocab-item"><div class="word">"Gabaritar"</div><div class="meaning">Medir o vão com precisão. Termo técnico.</div></div>
+    <div class="vocab-item"><div class="word">"Box" / "Sacada"</div><div class="meaning">Produtos específicos do setor.</div></div>
+    <div class="vocab-item"><div class="word">"Guarda-corpo"</div><div class="meaning">Produto de alta demanda e valor.</div></div>
+    <div class="vocab-item"><div class="word">"Mão de obra"</div><div class="meaning">Custo de instalação. Tema sensível.</div></div>
+    <div class="vocab-item"><div class="word">"Passear na obra"</div><div class="meaning">Visitar canteiros em andamento.</div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Como Falam dos Próprios Problemas</h3>
+  <div class="quote">"A gente atende bem, o problema é conseguir cliente."</div>
+  <div class="quote">"Trabalho com qualidade mas fica difícil competir com quem cobra qualquer coisa."</div>
+  <div class="quote">"Meu maior problema é a mão de obra — não tem profissional bom."</div>
+  <div class="quote">"Faturei bem esse ano mas não sei onde foi o dinheiro."</div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">O Que Gera Confiança vs. Desconfiança</h3>
+  <div class="do-dont">
+    <div class="do-col">
+      <h4>Gera Confiança</h4>
+      <ul>
+        <li>Conhecer o setor de dentro (insider)</li>
+        <li>Resultado concreto com número real</li>
+        <li>Falar a linguagem deles (orçamento, obra, follow-up)</li>
+        <li>Depoimento de alguém do mesmo setor</li>
+        <li>Tom direto, prático, sem firula</li>
+        <li>Tratar de igual para igual</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Gera Desconfiança</h4>
+      <ul>
+        <li>Promessas grandiosas sem evidência</li>
+        <li>Jargão de marketing (funil, lead, ICP, conversão)</li>
+        <li>Consultor que nunca colocou a mão na massa</li>
+        <li>Preço alto sem clareza do que entrega</li>
+        <li>Muito texto — preferem ver resultado</li>
+        <li>Tom de quem fala de cima para baixo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ COMPORTAMENTO DE COMPRA ══════ -->
+<section id="compra">
+  <h2 class="stitle">Comportamento de Compra</h2>
+  <p class="ssub">Da dor acumulada ao gatilho de decisão. O caminho até contratar consultoria.</p>
+
+  <h3 style="font-size:0.9rem;margin:0 0 14px;color:var(--text);">Jornada Típica até a Compra</h3>
+  <div class="card">
+    <ul>
+      <li><strong>1. Dor acumulada</strong> — perdeu pra concorrência de preço, não sabe se tem lucro, equipe caótica</li>
+      <li><strong>2. Pesquisa no YouTube</strong> — assiste Canal do Serralheiro ou similar, começa a entender que existe solução</li>
+      <li><strong>3. Segue no Instagram</strong> — vê conteúdo de quem parece entender do setor</li>
+      <li><strong>4. Gatilho de decisão</strong> — evento específico: perdeu cliente grande, brigou com sócio por dinheiro, férias e empresa parou</li>
+      <li><strong>5. Verifica prova social</strong> — quer depoimento de alguém do mesmo setor, preferencialmente da mesma região</li>
+      <li><strong>6. Decide</strong> — geralmente sozinho ou com esposa/sócia</li>
+    </ul>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Sensibilidade a Preço</h3>
+  <div class="grid2">
+    <div class="card"><h3>Alta para consultoria genérica</h3><p>"Consultoria" é palavra que remete a coisa cara e sem resultado. Se posicionar como "consultoria de gestão" perde.</p></div>
+    <div class="card"><h3>Baixa para quem entende do setor</h3><p>Quando percebem que a pessoa conhece vidraçaria/serralheria de dentro, a barreira de preço cai drasticamente.</p></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Aspecto</th><th>Comportamento</th></tr></thead>
+    <tbody>
+      <tr><td>Pagamento preferido</td><td>PIX, cartão parcelado (6-12x), boleto. Parcelamento é muito bem aceito.</td></tr>
+      <tr><td>Aversão a assinatura</td><td>"Pago todo mês pra quê?" — só aceita recorrência se o valor é claro e tangível.</td></tr>
+      <tr><td>Âncora de preço</td><td>"Se fechar 1 obra a mais por mês, paga 3x o investimento" — ROI em linguagem de obra.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">O Que Já Tentaram Que Não Funcionou</h3>
+  <div class="grid2">
+    <div class="card"><h3>Agência de marketing genérica</h3><p>"Paguei mas não veio resultado." Agência que não entendia do setor.</p></div>
+    <div class="card"><h3>Google Ads mal gerido</h3><p>"Trouxe ligação mas era cliente errado."</p></div>
+    <div class="card"><h3>CRM comprado e abandonado</h3><p>Nunca foi implementado de verdade. Virou custo sem uso.</p></div>
+    <div class="card"><h3>Curso genérico de gestão</h3><p>Não falava a língua do setor. Desistiu na segunda aula.</p></div>
+  </div>
+</section>
+
+<!-- ══════ COMO COMUNICAR ══════ -->
+<section id="comunicacao">
+  <h2 class="stitle">Como Comunicar</h2>
+  <p class="ssub">Recomendações diretas para criativos, landing pages e toda a comunicação da ZNITH com esse público.</p>
+
+  <h3 style="font-size:0.9rem;margin:0 0 14px;color:var(--text);">Melhor Horário para Anunciar</h3>
+  <table>
+    <thead><tr><th>Horário</th><th>Contexto</th><th>Engajamento</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--green);font-weight:700;">6h–8h30</td><td>Caminho pra obra ou ainda no escritório</td><td><span class="pill pill-green">Alto</span></td></tr>
+      <tr><td style="color:var(--green);font-weight:700;">12h–13h30</td><td>Pausa do almoço — consulta redes</td><td><span class="pill pill-green">Alto</span></td></tr>
+      <tr><td style="color:var(--blue);font-weight:700;">20h–22h</td><td>Depois que a obra fecha — consome conteúdo calmo</td><td><span class="pill pill-blue">Médio-alto</span></td></tr>
+      <tr><td style="color:var(--red);">9h–11h / 14h–17h</td><td>Operação máxima — atenção fragmentada</td><td><span class="pill pill-red">Evitar</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">5 Regras de Comunicação</h3>
+
+  <div class="trigger" style="border-left:3px solid var(--gold);">
+    <div class="emoji-label" style="color:var(--gold);">REGRA 1</div>
+    <h4>Credencial de insider primeiro, solução depois</h4>
+    <p>Leilaine tem histórico real no setor vidreiro (Smart Glass). Todo anúncio deve sinalizar nos primeiros 3 segundos que ela fala de dentro, não de fora. A headline não é sobre o produto — é sobre a autoridade setorial.</p>
+  </div>
+
+  <div class="trigger" style="border-left:3px solid var(--cyan);">
+    <div class="emoji-label" style="color:var(--cyan);">REGRA 2</div>
+    <h4>Nomear a dor específica, não a categoria do problema</h4>
+    <p>"Perder obra pra concorrência de preço" funciona. "Dificuldade em gestão comercial" não funciona. Quanto mais a copy soar como a voz interna do empresário, maior a conversão.</p>
+  </div>
+
+  <div class="trigger" style="border-left:3px solid var(--green);">
+    <div class="emoji-label" style="color:var(--green);">REGRA 3</div>
+    <h4>Prova social do setor, não prova social genérica</h4>
+    <p>Um depoimento de um dono de serralheria em SP com número real ("fechei 40% mais obras nos primeiros 3 meses") vale mais que qualquer argumento racional. É a peça de conteúdo de maior valor.</p>
+  </div>
+
+  <div class="trigger" style="border-left:3px solid var(--orange);">
+    <div class="emoji-label" style="color:var(--orange);">REGRA 4</div>
+    <h4>Nichar os criativos por subsetor</h4>
+    <p>"Sua vidraçaria perde orçamento porque..." performa 2-3x melhor que "construção civil" genérico. Testar criativos separados: vidraçaria / serralheria / envidraçamento de sacadas.</p>
+  </div>
+
+  <div class="trigger" style="border-left:3px solid var(--purple);">
+    <div class="emoji-label" style="color:var(--purple);">REGRA 5</div>
+    <h4>A decisão não é solitária — comunicar para o casal</h4>
+    <p>Em empresas familiares (maioria do ICP), a esposa/sócia tem veto real. Copy que endereça clareza financeira, previsibilidade e "empresa que funciona quando você não está" resolve a objeção que muitas vezes vem de dentro de casa.</p>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Palavras e Frases para USAR vs. EVITAR</h3>
+  <div class="do-dont">
+    <div class="do-col">
+      <h4>USAR na Copy</h4>
+      <ul>
+        <li>"vidraçaria" / "serralheria" / "esquadrias"</li>
+        <li>"perder obra pra concorrência"</li>
+        <li>"saber de onde vem o lucro"</li>
+        <li>"equipe que funciona sem você na obra"</li>
+        <li>"fechar mais orçamentos"</li>
+        <li>"cliente que volta e indica"</li>
+        <li>"previsibilidade no caixa"</li>
+        <li>"crescer sem virar escravo do negócio"</li>
+        <li>"quem entende do seu negócio"</li>
+        <li>"resultado real em obra real"</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>EVITAR na Copy</h4>
+      <ul>
+        <li>"funil" / "lead" / "conversão" / "CRM" / "ICP"</li>
+        <li>"revolucionário" / "disruptivo"</li>
+        <li>"metodologia exclusiva" sem explicar</li>
+        <li>"escalar" (soa a startup)</li>
+        <li>"gestão estratégica" sem concretude</li>
+        <li>"proposta" (usar "orçamento")</li>
+        <li>"cliente ideal" (usar "tipo de obra que quer fechar")</li>
+        <li>"transformar sua empresa"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Estilo Visual que Ressoa</h3>
+  <div class="do-dont">
+    <div class="do-col">
+      <h4>MOSTRAR</h4>
+      <ul>
+        <li>Ambiente real: obra, instalação, showroom, produto acabado</li>
+        <li>Antes/depois de resultado financeiro/operacional</li>
+        <li>Rostos reais de empresários do setor</li>
+        <li>Cores do setor: azul, prata/alumínio, branco</li>
+        <li>Depoimento em vídeo gravado no celular (parece real)</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>NÃO MOSTRAR</h4>
+      <ul>
+        <li>Escritório bonito ou executivo de terno</li>
+        <li>Stock photos genéricas</li>
+        <li>Produção muito polida (gera desconfiança)</li>
+        <li>Gráficos complexos ou dashboards</li>
+        <li>Ambientes corporativos que não parecem o dia a dia deles</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">5 Gatilhos Emocionais que Funcionam</h3>
+  <div class="grid2">
+    <div class="trigger" style="border-left:3px solid var(--gold);">
+      <h4>Identidade profissional</h4>
+      <p>"Você faz um trabalho bom. Já passou da hora de ganhar o que merece por isso." Combate a crença de que qualidade não tem valor no mercado.</p>
+    </div>
+    <div class="trigger" style="border-left:3px solid var(--red);">
+      <h4>Medo de ficar pra trás</h4>
+      <p>"Seus concorrentes que já estruturaram o comercial estão comendo sua parte do mercado." Urgência real, não artificial.</p>
+    </div>
+    <div class="trigger" style="border-left:3px solid var(--green);">
+      <h4>Liberdade</h4>
+      <p>"Ter uma empresa que funciona quando você não está lá." Aspiração universal nesse perfil.</p>
+    </div>
+    <div class="trigger" style="border-left:3px solid var(--cyan);">
+      <h4>Clareza financeira</h4>
+      <p>"Saber, no fim do mês, quanto sobrou de verdade." Dor latente extremamente real.</p>
+    </div>
+    <div class="trigger" style="border-left:3px solid var(--purple);">
+      <h4>Pertencimento de setor</h4>
+      <p>"Feito pra quem vive de vidro e alumínio." Inclusão no nicho gera confiança imediata.</p>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Janela estratégica de anúncio:</strong> Junho a agosto (baixa sazonalidade) é a melhor janela para vender consultoria. O empresário tem mais tempo para pensar, está preocupado com o segundo semestre, e está mais receptivo. O verão é quando está soterrado de obra e sem cabeça. Plante no inverno, colha no verão.</div>
+
+  <h3 style="font-size:0.9rem;margin:28px 0 14px;color:var(--text);">Objeções a Antecipar</h3>
+  <table>
+    <thead><tr><th>Objeção</th><th>Como Endereçar</th></tr></thead>
+    <tbody>
+      <tr><td>"Consultoria não é pra minha empresa"</td><td>Mostrar casos reais de empresas do mesmo tamanho e setor que tiveram resultado concreto.</td></tr>
+      <tr><td>"Já tentei marketing e não funcionou"</td><td>Diferenciar de agência genérica. Posicionar como consultoria de negócio, não agência de tráfego.</td></tr>
+      <tr><td>"Não tenho tempo pra isso"</td><td>Processo feito pro ritmo do empresário (2h/semana), não pro ritmo do consultor.</td></tr>
+      <tr><td>"É caro"</td><td>Ancorar no custo de 1 obra perdida por mês. "1 obra a mais paga o investimento."</td></tr>
+      <tr><td>"Você não conhece o meu mercado"</td><td>Leilaine conhece o setor por dentro (Smart Glass). Isso precisa estar explícito desde o primeiro segundo.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<div class="footer">ZNITH — Pesquisa de ICP produzida por Reis IA Agency &bull; Maio 2026 &bull; Fontes: ABRAVIDRO, ANAVIDRO, ASVEB, ABAL, AFEAL, SEBRAE, Econodata, Meu Vidraceiro, Canal do Serralheiro, Vidro Impresso, Jornal do Vidro</div>
+
+</body>
+</html>

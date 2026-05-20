@@ -14,6 +14,7 @@
 
 ## Project
 - [project_castelo_dimatoso.md](project_castelo_dimatoso.md) — Castelo dos Lagos + Di Matoso Astro sites: structure, token system, build status, key decisions.
+- [project_moroniedaphine_ds.md](project_moroniedaphine_ds.md) — M&D wedding design system preview: single index.html, deployed at moroniedaphine.vercel.app.
 
 ## Patterns
 - For net-new projects (e.g. client demos), all files are IDS: CREATE. Log once at project start; no need to re-justify every file in the same empty directory.

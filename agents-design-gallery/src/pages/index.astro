@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import brands from '../data/brands.json';
+---
+
+<Layout title="AGENTS -- Design System Gallery">
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <div class="mb-16">
+      <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-white/20 mb-4">Design System Gallery</p>
+      <h1 class="text-[clamp(2rem,5vw,4rem)] font-bold tracking-tighter text-white leading-none mb-4">
+        AGENTS
+      </h1>
+      <p class="text-white/40 text-lg max-w-xl leading-relaxed">
+        Extracted design tokens, component specs, and style fingerprints from five of the best-designed products on the web.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {brands.map((brand) => {
+        const colorEntries = Object.entries(brand.tokens.colors);
+        const topColors = colorEntries.slice(0, 8);
+        const colorCount = colorEntries.length;
+        const fontFamilies = new Set(
+          Object.values(brand.tokens.typography).map((t: any) => {
+            const family = t.fontFamily.split(',')[0].trim().replace(/"/g, '');
+            return family;
+          })
+        );
+        const spacingCount = Object.keys(brand.tokens.spacing).length;
+
+        return (
+          <a
+            href={`/design/${brand.slug}`}
+            class="group block bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-200"
+          >
+            <div class="h-8 mb-5 flex items-center">
+              <div class="text-white w-[100px] [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-h-8" set:html={brand.logoSvg} />
+            </div>
+
+            <div class="mb-5 rounded-lg border border-white/[0.06] overflow-hidden">
+              <img
+                src={brand.screenshot}
+                alt={`${brand.name} screenshot`}
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="flex gap-1.5 mb-4">
+              {topColors.map(([, color]) => (
+                <div
+                  class="w-5 h-5 rounded-full border border-white/10 shrink-0"
+                  style={`background-color: ${color}`}
+                  title={color as string}
+                />
+              ))}
+            </div>
+
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-mono text-[11px] text-white/30">{brand.url}</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/[0.06] text-white/40 border border-white/[0.06]">
+                {brand.fingerprint.primary_archetype}
+              </span>
+              <span class={`font-mono text-[10px] px-2 py-0.5 rounded border ${
+                brand.quality.grade === 'A' ? 'bg-emerald-500/10 text-emerald-400/80 border-emerald-500/20' :
+                brand.quality.grade === 'B' ? 'bg-blue-500/10 text-blue-400/80 border-blue-500/20' :
+                'bg-amber-500/10 text-amber-400/80 border-amber-500/20'
+              }`}>
+                {brand.quality.grade} {brand.quality.overall}
+              </span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Layout>

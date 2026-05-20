@@ -152,6 +152,9 @@ const STEPS: Step[] = [
 // WhatsApp group link for early-stage leads
 const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/HiqWoC9fHN1GaT5yBIqUJz';
 
+// Moroni's direct WhatsApp
+const MORONI_WHATSAPP = '5511970578082';
+
 // Only send to WhatsApp group if they DON'T revenue yet
 // Everyone else (has company or not, but revenues) → calendar
 function isQualifiedForBooking(answers: Record<string, string>): boolean {
@@ -343,6 +346,93 @@ function WhatsAppRedirect({ url }: { url: string }) {
         </p>
       )}
     </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Answer summary + WhatsApp CTA
+// ---------------------------------------------------------------------------
+
+function buildWhatsAppMessage(answers: Record<string, string>, booking?: { date: string; time: string } | null): string {
+  const firstName = answers.name?.split(' ')[0] || '';
+  let msg = `Oi! Sou ${answers.name}, acabei de preencher o formulário no site da REIS [IA].\n\n`;
+  msg += `*Resumo:*\n`;
+  if (answers.company) msg += `Empresa: ${answers.company === 'Já tenho empresa' ? answers.companyName : answers.company}\n`;
+  if (answers.companyName && answers.company === 'Já tenho empresa') msg += `Nome: ${answers.companyName}\n`;
+  if (answers.segment) msg += `Segmento: ${answers.segment}\n`;
+  if (answers.role) msg += `Cargo: ${answers.role}\n`;
+  if (answers.revenue) msg += `Faturamento: ${answers.revenue}\n`;
+  if (answers.employees) msg += `Time: ${answers.employees}\n`;
+  if (answers.description) msg += `Objetivo: ${answers.description}\n`;
+  if (booking) {
+    const [y, m, d] = booking.date.split('-').map(Number);
+    const dateObj = new Date(y, m - 1, d);
+    const formatted = dateObj.toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' });
+    msg += `\nSessão agendada: ${formatted} às ${booking.time}`;
+  }
+  return msg;
+}
+
+function AnswerSummary({ answers, booking }: { answers: Record<string, string>; booking?: { date: string; time: string } | null }) {
+  const summaryItems: { label: string; value: string }[] = [];
+  if (answers.name) summaryItems.push({ label: 'Nome', value: answers.name });
+  if (answers.company === 'Já tenho empresa' && answers.companyName) {
+    summaryItems.push({ label: 'Empresa', value: answers.companyName });
+  } else if (answers.company) {
+    summaryItems.push({ label: 'Situação', value: answers.company });
+  }
+  if (answers.segment) summaryItems.push({ label: 'Segmento', value: answers.segment });
+  if (answers.role) summaryItems.push({ label: 'Cargo', value: answers.role });
+  if (answers.revenue) summaryItems.push({ label: 'Faturamento', value: answers.revenue });
+  if (answers.employees) summaryItems.push({ label: 'Time', value: answers.employees });
+  if (answers.description) summaryItems.push({ label: 'Objetivo', value: answers.description });
+
+  const whatsappUrl = `https://wa.me/${MORONI_WHATSAPP}?text=${encodeURIComponent(buildWhatsAppMessage(answers, booking))}`;
+
+  return (
+    <div style={{ textAlign: 'left', animation: 'typebotFadeUp 400ms ease 300ms both' }}>
+      {/* Summary card */}
+      <div style={{
+        background: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        borderRadius: '12px',
+        padding: '20px',
+        marginBottom: '20px',
+      }}>
+        <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(74,144,255,0.80)', marginBottom: '16px' }}>
+          Resumo das suas respostas
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {summaryItems.map((item) => (
+            <div key={item.label} style={{ display: 'flex', gap: '8px', fontSize: '14px', lineHeight: 1.5 }}>
+              <span style={{ color: 'rgba(255,255,255,0.40)', flexShrink: 0, minWidth: '90px' }}>{item.label}:</span>
+              <span style={{ color: 'rgba(255,255,255,0.85)' }}>{item.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* WhatsApp CTA */}
+      <div style={{ textAlign: 'center' }}>
+        <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.60)', marginBottom: '14px', lineHeight: 1.5 }}>
+          Fale direto comigo no WhatsApp pra agilizar:
+        </p>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '10px',
+            padding: '14px 28px', borderRadius: '10px', border: 'none',
+            background: '#25D366', color: '#fff', fontSize: '15px', fontWeight: 600,
+            textDecoration: 'none', fontFamily: 'inherit', transition: 'background 150ms, transform 150ms',
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </div>
+    </div>
   );
 }
 
@@ -877,38 +967,57 @@ export default function LeadTypebot({ source = 'typebot-agendar', defaultIntro }
             </div>
           )}
 
-          {/* Done state — extra context */}
+          {/* Done state — summary + WhatsApp CTA */}
           {isDone && (
             <div
               style={{
-                textAlign: 'center',
                 padding: '24px 0 8px',
                 animation: 'typebotFadeUp 400ms ease 200ms both',
               }}
             >
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'rgba(34,197,94,0.12)',
-                  border: '1px solid rgba(34,197,94,0.30)',
-                  marginBottom: '12px',
-                }}
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8l3.5 3.5 6.5-7" stroke="#22C55E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'rgba(34,197,94,0.12)',
+                    border: '1px solid rgba(34,197,94,0.30)',
+                    marginBottom: '12px',
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8l3.5 3.5 6.5-7" stroke="#22C55E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                {showWhatsAppButton && (
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.40)', margin: '0 0 16px' }}>
+                    Informações recebidas
+                  </p>
+                )}
+                {!showWhatsAppButton && bookingInfo && (
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.40)', margin: '0 0 4px' }}>
+                    Sessão confirmada
+                  </p>
+                )}
               </div>
-              {showWhatsAppButton ? (
-                <WhatsAppRedirect url={WHATSAPP_GROUP_URL} />
-              ) : (
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.40)', margin: 0 }}>
-                  Sessão confirmada
-                </p>
+              <AnswerSummary answers={answers} booking={bookingInfo} />
+              {showWhatsAppButton && (
+                <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                  <a
+                    href={WHATSAPP_GROUP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: '13px', color: 'rgba(255,255,255,0.35)', textDecoration: 'underline',
+                    }}
+                  >
+                    Ou entre no grupo de conteúdos
+                  </a>
+                </div>
               )}
             </div>
           )}

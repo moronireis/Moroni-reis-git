@@ -1,0 +1,66 @@
+{
+  "durations": [
+    {
+      "value": "3s",
+      "count": 13
+    },
+    {
+      "value": "2s",
+      "count": 4
+    },
+    {
+      "value": "1ms",
+      "count": 3
+    },
+    {
+      "value": "4s",
+      "count": 2
+    },
+    {
+      "value": "35s",
+      "count": 2
+    },
+    {
+      "value": "15s",
+      "count": 2
+    },
+    {
+      "value": "0ms",
+      "count": 1
+    },
+    {
+      "value": "1s",
+      "count": 1
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.165,.84,.44,1)",
+      "count": 3
+    },
+    {
+      "value": "cubic-bezier(.215,.61,.355,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.25,.8,.25,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(0,0,.2,1)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "rotative-animation",
+    "fade-in",
+    "_ngcontent-hermes-c3105878410_show-desktop",
+    "_ngcontent-hermes-c3105878410_hide-desktop",
+    "_ngcontent-hermes-c3105878410_show-mobile",
+    "_ngcontent-hermes-c3105878410_hide-mobile",
+    "_ngcontent-hermes-c3105878410_hide-overlay",
+    "_ngcontent-hermes-c415448651_loading-bar-spinner",
+    "_ngcontent-hermes-c1845551674_slide-in-up",
+    "_ngcontent-hermes-c2799982381_active-hover-animation"
+  ]
+}

@@ -1,0 +1,1762 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>u4digital — Estáticos (20 Criativos)</title>
+  <meta name="description" content="Copys completas para anúncios estáticos Meta Ads — assessoria de IA para negócios digitais." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="components.css" />
+
+  <style>
+    /* ─── Page layout ──────────────────────────────────────── */
+
+    .doc-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ─── Sidebar ──────────────────────────────────────────── */
+
+    .doc-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-bg-sunken);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-8) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .doc-sidebar__brand {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    .doc-sidebar__brand .accent { color: var(--color-accent); }
+
+    .doc-sidebar__meta {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      line-height: var(--leading-relaxed);
+    }
+
+    .doc-sidebar__section-label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-sidebar__links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .doc-sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+      line-height: var(--leading-snug);
+    }
+
+    .doc-sidebar__link:hover {
+      color: var(--color-text-primary);
+      background: var(--color-hover);
+    }
+
+    .doc-sidebar__link.is-active {
+      color: var(--color-accent);
+      background: var(--color-accent-muted);
+    }
+
+    .doc-sidebar__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-border-strong);
+      flex-shrink: 0;
+      margin-right: var(--space-1);
+    }
+
+    /* ─── Main content ─────────────────────────────────────── */
+
+    .doc-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ─── Hero header ──────────────────────────────────────── */
+
+    .doc-hero {
+      padding: var(--space-16) var(--space-16) var(--space-14);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-sunken);
+    }
+
+    .doc-hero__wordmark {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-8);
+      display: block;
+    }
+
+    .doc-hero__wordmark .accent { color: var(--color-accent); }
+
+    .doc-hero__eyebrow {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__title {
+      font-size: var(--font-4xl);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__desc {
+      font-size: var(--font-lg);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-light);
+      margin-bottom: var(--space-6);
+    }
+
+    .doc-hero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* ─── Section blocks ───────────────────────────────────── */
+
+    .doc-section {
+      padding: var(--space-16) var(--space-16);
+      border-bottom: 1px solid var(--color-border-muted);
+      scroll-margin-top: var(--space-6);
+    }
+
+    .doc-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .doc-section-header {
+      margin-bottom: var(--space-10);
+    }
+
+    .doc-section-number {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-section-title {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+    }
+
+    .doc-section-desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      line-height: var(--leading-relaxed);
+      max-width: 600px;
+    }
+
+    /* ─── Ad-specific styles ───────────────────────────────── */
+
+    .ad-preview {
+      background: #080808;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-10) var(--space-8);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .ad-preview__hook {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+      max-width: 500px;
+    }
+
+    .ad-preview__support {
+      font-size: var(--font-sm);
+      color: rgba(253,253,253,0.55);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .ad-meta {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+
+    .ad-copy-block {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .ad-copy-block__label {
+      font-size: var(--font-xs);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .ad-copy-block__text {
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    .ad-copy-block__text p {
+      margin-bottom: var(--space-3);
+    }
+
+    .ad-copy-block__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .ad-fields {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .ad-field {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+
+    .ad-field__label {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-1);
+    }
+
+    .ad-field__value {
+      font-size: var(--font-sm);
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    details {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    details summary {
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--font-xs);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+    }
+
+    .details-body {
+      padding: var(--space-5);
+      font-size: var(--font-sm);
+      color: var(--color-text-disabled);
+      line-height: 1.7;
+    }
+
+    .details-body p {
+      margin-bottom: var(--space-2);
+    }
+
+    .details-body p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="doc-layout">
+
+    <!-- Sidebar -->
+    <nav class="doc-sidebar">
+      <div>
+        <a href="#" class="doc-sidebar__brand">u<span class="accent">4</span>digital</a>
+        <div class="doc-sidebar__meta">Estáticos Batch 3<br/>20 criativos — Maio 2026</div>
+      </div>
+
+      <div>
+        <div class="doc-sidebar__section-label">Feed + Stories</div>
+        <div class="doc-sidebar__links">
+          <a href="#static-5" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            5 — Problema de estrutura
+          </a>
+          <a href="#static-6" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            6 — 41% já automatizaram
+          </a>
+          <a href="#static-7" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            7 — Margem real
+          </a>
+          <a href="#static-8" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            8 — 3 perguntas
+          </a>
+          <a href="#static-9" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            9 — Não é curso
+          </a>
+          <a href="#static-10" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            10 — CPL R$18 vs R$24
+          </a>
+          <a href="#static-11" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            11 — Gargalo de talento
+          </a>
+          <a href="#static-13" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            13 — R$2.800 vs R$14.000
+          </a>
+          <a href="#static-14" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            14 — 12h / 18%
+          </a>
+          <a href="#static-16" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            16 — Sócio na operação
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="doc-sidebar__section-label">Feed + Stories</div>
+        <div class="doc-sidebar__links">
+          <a href="#static-17" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            17 — Especialista vs operação
+          </a>
+          <a href="#static-18" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            18 — 5 sinais
+          </a>
+          <a href="#static-19" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            19 — 2h perdidas
+          </a>
+          <a href="#static-20" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            20 — CAC real
+          </a>
+          <a href="#static-21" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            21 — Paradoxo ou design
+          </a>
+          <a href="#static-22" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            22 — 18 meses
+          </a>
+          <a href="#static-23" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            23 — 30 dias vs segundos
+          </a>
+          <a href="#static-24" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            24 — Sem mais horas
+          </a>
+          <a href="#static-25" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            25 — R$10K a R$80K/mês
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="doc-main">
+
+      <!-- Hero -->
+      <section class="doc-hero">
+        <span class="doc-hero__wordmark">u<span class="accent">4</span>digital</span>
+        <p class="doc-hero__eyebrow">Creative Reference</p>
+        <h1 class="doc-hero__title">Estáticos — 20 Criativos</h1>
+        <p class="doc-hero__desc">Copys completas para anúncios estáticos Meta Ads. Feed (1080x1080) + Stories (1080x1920).</p>
+        <div class="doc-hero__badges">
+          <span class="badge">20 estáticos</span>
+          <span class="badge badge--accent">1080x1080</span>
+          <span class="badge badge--info">1080x1920</span>
+          <span class="badge">Maio 2026</span>
+        </div>
+      </section>
+
+      <!-- Static 5 -->
+      <section class="doc-section" id="static-5">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 05</div>
+          <div class="doc-section-title">Você não tem um problema de resultado. Tem um problema de estrutura.</div>
+          <div class="doc-section-desc">Bold statement — centered text dominant</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">operação frágil</span>
+          <span class="badge">armadilha do crescimento</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Você não tem um problema de resultado.<br/>
+            Tem um problema de estrutura."
+          </div>
+          <div class="ad-preview__support">
+            Quando o negócio cresce, o fundador quebra. Não é fraqueza — é ausência de sistema.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Você bateu os R$30K/mês. Depois os R$50K. Cada mês novo, você contratou mais alguém. Cada contratação, criou uma nova dependência.</p>
+            <p>Agora você não consegue tirar uma semana de férias sem o WhatsApp explodir.</p>
+            <p>Isso não é sucesso frágil por acaso. É o sinal mais claro de que o crescimento foi construído na sua disponibilidade, não num sistema.</p>
+            <p>Resultado sem estrutura é uma armadilha bonita.</p>
+            <p>A gente faz um Raio-X de 35 minutos no seu digital — sem custo — e identifica exatamente onde a operação depende de você quando não deveria.</p>
+            <p>Se quiser entrar em 2026 escalonando sem ser o gargalo, link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Estrutura ou dependência?</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Diagnóstico gratuito em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero meu Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: Texto centrado, 2/3 superiores da imagem para o hook, linha divisória em #74C69E separando o hook do supporting text</p>
+            <p>Background: #0A0A0A puro</p>
+            <p>Hook: Inter ExtraBold, 52px, branco, linha 1 maior que linha 2 (hierarquia visual decrescente)</p>
+            <p>Supporting text: Inter Regular, 16px, branco 60% opacidade</p>
+            <p>Elemento gráfico: linha horizontal fina em #74C69E entre as duas camadas de texto</p>
+            <p>Feel: fria, diagnóstica, como uma tela de terminal recebendo um alerta</p>
+            <p>Stories (1920): mesmo layout mas texto ocupa 60% central da tela, margens generosas</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 6 -->
+      <section class="doc-section" id="static-6">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 06</div>
+          <div class="doc-section-title">41% das empresas digitais brasileiras já automatizaram. E as outras 59%?</div>
+          <div class="doc-section-desc">Data-driven — número como herói</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--error">Social Risk</span>
+          <span class="badge">ficar para trás</span>
+          <span class="badge">última a adotar</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "41% já automatizaram.<br/>
+            E os outros 59%?"
+          </div>
+          <div class="ad-preview__support">
+            Dado: IBGE, 2026. O gap entre quem implementou e quem ainda está planejando aumenta a cada trimestre.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Esse número saiu do IBGE neste ano.</p>
+            <p>Quase metade das empresas digitais brasileiras já tem algum nível de automação com IA operando. Não estão estudando. Já implementaram.</p>
+            <p>A diferença não é tecnologia — é que elas deixaram de depender da disponibilidade humana para tarefas que um agente faz melhor, mais rápido e sem hora extra.</p>
+            <p>O resultado prático? CAC menor, margem maior, equipe menor por faturamento.</p>
+            <p>Se você está no grupo dos 59%, não é tarde. Mas cada trimestre que passa, esse gap fica mais caro de fechar.</p>
+            <p>Raio-X Digital: 35 minutos, sem custo, pra mapear onde sua operação pode começar hoje. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Seu concorrente já saiu do papel.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Raio-X gratuito em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Agendar Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: Split vertical assimétrico. Esquerda (60%): número gigante "41%" em #74C69E, abaixo "já automatizaram" em branco menor. Direita (40%): fundo levemente mais claro (#1A1A1A), pergunta "E os outros 59%?" em branco, fonte menor</p>
+            <p>Linha divisória vertical em #74C69E muito fina (1px)</p>
+            <p>Background: #0A0A0A</p>
+            <p>"41%" Inter Black, 96px, #74C69E</p>
+            <p>"já automatizaram" Inter Light, 18px, branco</p>
+            <p>"E os outros 59%?" Inter SemiBold, 28px, branco</p>
+            <p>Supporting text: Inter Regular, 12px, branco 50%</p>
+            <p>Feel: relatório de dados, fria, como uma Bloomberg terminal card</p>
+            <p>Stories (1920): número "41%" ocupa 50% da tela, pergunta embaixo com grande respiro</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 7 -->
+      <section class="doc-section" id="static-7">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 07</div>
+          <div class="doc-section-title">Seu time faz R$80K/mês. Quanto fica no seu bolso?</div>
+          <div class="doc-section-desc">Data-driven — cálculo de margem</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--success">More Good</span>
+          <span class="badge">margem real</span>
+          <span class="badge">custo invisível da equipe</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Seu time faz R$80K/mês.<br/>
+            Quanto fica no seu bolso?"
+          </div>
+          <div class="ad-preview__support">
+            CLT + benefícios + impostos + turnover = sua margem real pode ser metade do que você acha.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Vamos fazer a conta que ninguém gosta de fazer.</p>
+            <p>R$80K de faturamento com time de 3 pessoas:<br/>
+            — 3 CLTs: R$12K em salários<br/>
+            — Encargos (73% FGTS+INSS+férias+13º): mais R$8.7K<br/>
+            — Benefícios, ferramentas, espaço: mais R$4K<br/>
+            — Total só de time: R$24.7K</p>
+            <p>Sobram R$55.3K. Tire os custos operacionais. Tire seu próprio pro-labore.</p>
+            <p>Essa é sua margem real.</p>
+            <p>A maioria dos especialistas digitais que a gente atende descobre no Raio-X que 35-40% do seu custo operacional está em funções que já poderiam ser agentes. Não no time inteiro — nas tarefas certas.</p>
+            <p>O diagnóstico é gratuito. 35 minutos. Calculamos isso junto com você. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Margem real vs. margem aparente.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Calcule ao vivo em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero calcular minha margem</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: simulação de planilha/dashboard — 2 colunas no centro da imagem</p>
+            <p>Coluna esquerda: itens de custo em fonte pequena Inter Regular 14px branco 70%</p>
+            <p>Coluna direita: valores em Inter SemiBold 14px branco</p>
+            <p>Linha "Total só de time: R$24.7K" em destaque com fundo #74C69E 15% e texto branco bold</p>
+            <p>Hook acima do "dashboard" em Inter Bold 38px branco</p>
+            <p>Supporting text abaixo do dashboard em 12px branco 50%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: planilha de CFO, racionalidade fria, como um extrato bancário</p>
+            <p>Stories (1920): dashboard centralizado, hook acima e suporte abaixo com respiro generoso</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 8 -->
+      <section class="doc-section" id="static-8">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 08</div>
+          <div class="doc-section-title">3 perguntas. 3 minutos. Sua operação passa no teste?</div>
+          <div class="doc-section-desc">Diagnostic/checklist — questões provocativas</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">diagnóstico</span>
+          <span class="badge">dependência operacional</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "3 perguntas.<br/>
+            Sua operação passa no teste?"
+          </div>
+          <div class="ad-preview__support">
+            Se você hesitou em qualquer uma, a gente precisa conversar.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Teste rápido para quem fatura entre R$10K e R$80K/mês no digital:</p>
+            <p>1. Se você parar de trabalhar por 2 semanas, seu negócio continua entregando?<br/>
+            2. Seu custo por lead está igual ou menor do que há 12 meses?<br/>
+            3. Você sabe exatamente qual processo consome mais horas do seu time sem gerar receita direta?</p>
+            <p>Se respondeu "não" para qualquer uma dessas: sua operação está carregando peso invisível que você ainda não quantificou.</p>
+            <p>Raio-X Digital: 35 minutos, sem custo, para identificar os três pontos exatos onde IA eliminaria esse peso nos próximos 60 dias.</p>
+            <p>Não é consultoria. Não tem pitch. É um diagnóstico com mapa de ação. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Teste sua operação agora.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Diagnóstico objetivo em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Fazer o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: 3 blocos empilhados verticalmente, cada bloco contém uma pergunta numerada</p>
+            <p>Cada bloco: fundo #1A1A1A, padding interno, número "01" "02" "03" em #74C69E Inter Black 36px, pergunta ao lado em Inter Regular 15px branco</p>
+            <p>Linha sutil em #74C69E 20% entre os blocos</p>
+            <p>Hook acima dos blocos: Inter Bold 40px branco</p>
+            <p>Supporting text abaixo: Inter Regular 13px branco 50%</p>
+            <p>Background geral: #0A0A0A</p>
+            <p>Feel: assessment, clínica, como uma tela de triagem médica</p>
+            <p>Stories (1920): blocos ocupam 70% central, grande respiro acima e abaixo</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 9 -->
+      <section class="doc-section" id="static-9">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 09</div>
+          <div class="doc-section-title">Você não precisa de mais um curso. Precisa de alguém que implante.</div>
+          <div class="doc-section-desc">Bold statement — contraste direto</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">fadiga de curso</span>
+          <span class="badge">ausência de execução</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Você não precisa de mais um curso.<br/>
+            Precisa de alguém que implante."
+          </div>
+          <div class="ad-preview__support">
+            Conhecimento sem execução é o motivo pelo qual 78% dos projetos de IA corporativos não chegam ao ar.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Você já sabe o que é um agente de IA. Provavelmente já tentou montar um.</p>
+            <p>Talvez tenha feito um curso. Talvez dois.</p>
+            <p>E a operação continua igual.</p>
+            <p>Não é falta de inteligência. É que o gap entre aprender e implementar é onde os projetos morrem. Sem alguém que pegue o seu contexto específico — seu time, seu produto, seu cliente, sua margem — e transforme isso num sistema que funciona sem você, o conhecimento fica no OneNote.</p>
+            <p>A u4digital não é mais um treinamento. É assessoria de implementação.</p>
+            <p>Raio-X Digital: 35 minutos sem custo para entender se faz sentido você implementar IA agora e por onde começar. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Implementação, não informação.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Assessoria real em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: duas linhas de texto em contraste claro — linha 1 (o que não precisa) em fonte menor, riscada ou com cor reduzida; linha 2 (o que precisa) em destaque #74C69E</p>
+            <p>Linha 1: "Você não precisa de mais um curso." Inter Regular 28px branco 40% — com linha horizontal sobreposta (strikethrough visual usando elemento SVG)</p>
+            <p>Linha 2: "Precisa de alguém que implante." Inter ExtraBold 38px #74C69E</p>
+            <p>Supporting text abaixo: Inter Regular 13px branco 50%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Linha divisória em #74C69E 1px entre as duas afirmações</p>
+            <p>Feel: declaração de posicionamento, confiante, sem ornamentos</p>
+            <p>Stories (1920): textos centralizados com proporção aumentada, mais respiro lateral</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 10 -->
+      <section class="doc-section" id="static-10">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 10</div>
+          <div class="doc-section-title">Outubro de 2024: CPL R$18. Hoje: R$24.</div>
+          <div class="doc-section-desc">Data-driven — progressão temporal de número</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">custo crescente de aquisição</span>
+          <span class="badge">urgência de margem</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Out/24: CPL R$18.<br/>
+            Mai/26: R$24."
+          </div>
+          <div class="ad-preview__support">
+            +33% em 18 meses. Sua receita acompanhou esse ritmo?
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Esse número é o mercado brasileiro de anúncios digitais para o nicho de especialistas e estrategistas.</p>
+            <p>O custo por lead subiu 33% em 18 meses. Não porque os anúncios pioraram. Porque o mercado ficou mais competitivo e as operações menos eficientes absorvem esse custo sem notar.</p>
+            <p>Quem implementou IA na operação nesse período abriu margem em outro lugar: atendimento automatizado, follow-up sem time, produção de conteúdo sem agência.</p>
+            <p>O CPL continuou subindo para todo mundo. A diferença é quem tem margem para pagar.</p>
+            <p>Se sua margem está comprimida e o CAC só sobe, o Raio-X Digital identifica onde você recupera essa folga nos próximos 60 dias. 35 minutos, sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">CPL subindo. Margem sumindo.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Recupere sua folga em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Agendar diagnóstico</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: linha do tempo horizontal no centro da imagem — dois pontos marcados</p>
+            <p>Ponto 1 (esquerda): "Out/24" label pequeno acima, "R$18" em Inter Bold 52px branco abaixo</p>
+            <p>Ponto 2 (direita): "Mai/26" label pequeno acima, "R$24" em Inter Bold 52px #74C69E (acento negativo aqui = acento de alerta)</p>
+            <p>Seta fina em #74C69E conectando os dois pontos, levemente arqueada para cima (ascendente)</p>
+            <p>"+33%" badge centralizado sobre a seta, fundo #74C69E 20%, texto #74C69E SemiBold</p>
+            <p>Background: #0A0A0A</p>
+            <p>Supporting text abaixo da linha: Inter Regular 13px branco 50%</p>
+            <p>Feel: gráfico de Bloomberg, fria, alarmante sem ser alarmista</p>
+            <p>Stories (1920): linha do tempo vira coluna vertical (de cima para baixo), seta descendente no layout vertical</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 11 -->
+      <section class="doc-section" id="static-11">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 11</div>
+          <div class="doc-section-title">Seu melhor funcionário é um gargalo disfarçado de talento.</div>
+          <div class="doc-section-desc">Bold statement — provocação de identidade</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">dependência de pessoa-chave</span>
+          <span class="badge">risco operacional</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Seu melhor funcionário é um gargalo<br/>
+            disfarçado de talento."
+          </div>
+          <div class="ad-preview__support">
+            Quando ele sai — e vai sair — o que fica?
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Nada na sua operação incomoda mais do que a ideia de perder aquela pessoa.</p>
+            <p>O copywriter que entende o produto melhor do que qualquer outro. O gestor de tráfego que "tem o toque". O SDR que converte porque "tem jogo".</p>
+            <p>Você construiu algo bom. E ao mesmo tempo construiu uma dependência crítica.</p>
+            <p>Isso não é falta de sorte — é ausência de sistema. O conhecimento que está na cabeça dessa pessoa não está documentado. Não está replicável. E com certeza não está num agente que opera às 2h da manhã sem CLT.</p>
+            <p>Não estamos falando em demitir ninguém. Estamos falando em parar de colocar o negócio em risco porque o crescimento depende de alguém que pode receber uma proposta amanhã.</p>
+            <p>Raio-X Digital: 35 minutos para mapear onde sua operação tem dependência de pessoa e o que pode ser sistematizado. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Dependência de pessoa = risco real.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Mapeie o risco em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero meu Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: texto bold centralizado, sem elementos gráficos adicionais — o impacto é só via tipografia</p>
+            <p>Hook linha 1: Inter ExtraBold 44px branco</p>
+            <p>Hook linha 2: Inter ExtraBold 44px #74C69E ("disfarçado de talento" ganha acento diferente do restante)</p>
+            <p>Linha divisória fina em #74C69E</p>
+            <p>Supporting text: Inter Light Italic 16px branco 60%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: manifesto, voz direta, sem ornamento — como uma frase de quadro branco de consultoria</p>
+            <p>Stories (1920): fonte aumentada, texto ocupa 55% da tela centrado verticalmente</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 13 -->
+      <section class="doc-section" id="static-13">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 13</div>
+          <div class="doc-section-title">Com agente: R$2.800/mês. Sem agente: R$14.000/mês. Mesma função.</div>
+          <div class="doc-section-desc">Comparison/split — custo direto lado a lado</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--success">More Good</span>
+          <span class="badge">recuperação de margem</span>
+          <span class="badge">custo comparado</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Com agente: R$2.800/mês.<br/>
+            Sem agente: R$14.000/mês.<br/>
+            Mesma função."
+          </div>
+          <div class="ad-preview__support">
+            Agente de IA trabalhando 24h, sem FGTS, sem aviso prévio, sem semana de onboarding.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Esse não é um número inventado.</p>
+            <p>É o que a gente vê repetir nos Raio-X Digitais que a u4digital realiza.</p>
+            <p>Uma função de atendimento + qualificação de leads que custa R$14.000/mês com time CLT (salário + encargos + benefícios + management da gestão) sendo executada por um agente configurado para o contexto específico da operação por R$2.800/mês.</p>
+            <p>Com performance equivalente nas métricas que importam: taxa de qualificação, tempo de resposta, volume de atendimento simultâneo.</p>
+            <p>A diferença de R$11.200/mês — R$134.400/ano — não vai para tecnologia. Vai para margem.</p>
+            <p>Se você tem entre R$10K e R$80K/mês de faturamento e ainda não fez essa conta, o Raio-X Digital faz isso com você em 35 minutos. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">A mesma função. Menos R$11.200/mês.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Calcule ao vivo. Gratuito.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero calcular meu saving</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: split horizontal em 2 linhas — linha superior "Sem agente", linha inferior "Com agente", separadas por linha #74C69E</p>
+            <p>Linha superior ("Sem agente"): background #1A1A1A, label Inter SemiBold 14px branco 60%, valor "R$14.000/mês" Inter Black 56px branco</p>
+            <p>Linha inferior ("Com agente"): background #0F1A15 (levíssimo verde escuro), label Inter SemiBold 14px #74C69E, valor "R$2.800/mês" Inter Black 56px #74C69E</p>
+            <p>"Mesma função." Inter Light 16px branco 70% centrado abaixo dos dois blocos</p>
+            <p>Background geral: #0A0A0A</p>
+            <p>Feel: comparativo de CFO, tabela de tomada de decisão, sem emoção — deixa o número falar</p>
+            <p>Stories (1920): blocos empilhados com mais espaçamento, valores maiores (64px)</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 14 -->
+      <section class="doc-section" id="static-14">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 14</div>
+          <div class="doc-section-title">Você trabalha 12h por dia pra ter margem de 18%.</div>
+          <div class="doc-section-desc">Data statement — número de margem como choque</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">burnout disfarçado de sucesso</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "12h por dia.<br/>
+            Margem de 18%."
+          </div>
+          <div class="ad-preview__support">
+            Isso não é sucesso. É trabalho CLT sem carteira assinada.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>O especialista digital médio no Brasil fatura entre R$30K e R$60K/mês.</p>
+            <p>Trabalha entre 10 e 14 horas por dia.</p>
+            <p>E tem margem líquida entre 15% e 22%.</p>
+            <p>Fazendo a conta: R$40K de faturamento, 18% de margem = R$7.200 no bolso. Dividido por 260 horas de trabalho no mês = R$27,69 por hora.</p>
+            <p>O profissional CLT que você tem medo de se tornar ganha mais por hora com menos risco e sem ter que pensar em CAC.</p>
+            <p>Isso não é culpa do empreendedor. É que o modelo nunca foi estruturado para escalar — foi estruturado para sobreviver.</p>
+            <p>A IA não resolve tudo. Mas é o que permite reconfigurar essa conta sem contratar mais, trabalhar mais ou cobrar mais. Raio-X Digital: 35 minutos, sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Margem real de quem escala sozinho.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Reconfigure a conta em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o diagnóstico</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: dois números grandes centralizados com impacto contrastante</p>
+            <p>"12h" Inter Black 80px branco — linha 1</p>
+            <p>"18%" Inter Black 80px #74C69E — linha 2 (mesma linha ou logo abaixo com espaço mínimo)</p>
+            <p>Linha divisória horizontal fina em #74C69E entre os dois números</p>
+            <p>Supporting text abaixo: Inter Regular Italic 15px branco 55%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: extrato de produtividade, dado de relatório interno, brutal e limpo</p>
+            <p>Stories (1920): números ainda maiores (96px), centrados, grande respiro</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 16 -->
+      <section class="doc-section" id="static-16">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 16</div>
+          <div class="doc-section-title">Se o seu sócio pedisse pra ver a operação amanhã, você mostraria?</div>
+          <div class="doc-section-desc">Question — desconforto de autoimagem</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--info">Status</span>
+          <span class="badge badge--error">Social Risk</span>
+          <span class="badge">exposição de fragilidade operacional</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Se um sócio pedisse pra ver<br/>
+            sua operação amanhã,<br/>
+            você mostraria?"
+          </div>
+          <div class="ad-preview__support">
+            A resposta honesta é o diagnóstico.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Essa pergunta incomoda porque a resposta não é simples.</p>
+            <p>Tem gente que fatura bem e tem vergonha da bagunça operacional. Processo no WhatsApp da gestora. Planilha que só uma pessoa entende. Atendimento que depende da disponibilidade de alguém específico.</p>
+            <p>Por fora: um negócio próspero.<br/>Por dentro: uma operação que o fundador segura na força.</p>
+            <p>Isso não é julgamento — é o padrão de quem cresce rápido sem parar pra estruturar.</p>
+            <p>A u4digital faz Raio-X Digital em negócios que faturam entre R$10K e R$80K/mês no digital. Em 35 minutos mapeamos o que precisa de estrutura e o que já pode ser automatizado.</p>
+            <p>Sem pitch. Sem proposta na hora. Só o diagnóstico. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Seu negócio resiste ao escrutínio?</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Raio-X honesto em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero a clareza</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: texto da pergunta como herói único — fonte grande, centralizado, sem outros elementos concorrendo</p>
+            <p>Pergunta: Inter ExtraBold 36px branco, 3 linhas, alinhamento centrado</p>
+            <p>"você mostraria?" última linha em #74C69E (virada emocional)</p>
+            <p>Linha fina em #74C69E abaixo da pergunta</p>
+            <p>Supporting text: Inter Light Italic 15px branco 55%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: provocação silenciosa, como uma pergunta de mentor numa sala escura</p>
+            <p>Stories (1920): fonte 44px, texto ocupa 50% da tela, grande respiro vertical</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 17 -->
+      <section class="doc-section" id="static-17">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 17</div>
+          <div class="doc-section-title">Você é um especialista de R$50K/mês com operação de R$15K/mês.</div>
+          <div class="doc-section-desc">Bold identity statement</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--info">Status</span>
+          <span class="badge">gap entre resultado e estrutura</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Você é especialista de R$50K/mês<br/>
+            com operação de R$15K/mês."
+          </div>
+          <div class="ad-preview__support">
+            O teto não é o mercado. É a estrutura que você ainda não montou.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Essa é a tensão que a gente encontra com mais frequência.</p>
+            <p>Um profissional com autoridade real no mercado. Produto bom. Cliente fiel. Reputação construída.</p>
+            <p>E uma operação que ainda não acompanhou o tamanho do que essa pessoa conseguiu criar.</p>
+            <p>O resultado: teto de crescimento não no mercado, mas na própria capacidade operacional de entregar. Não tem como escalar o que depende inteiramente da presença e da energia de uma pessoa.</p>
+            <p>A IA não substitui o talento. Ela estrutura o que está em volta para que o talento pare de fazer trabalho operacional e comece a fazer só o que ninguém mais pode fazer.</p>
+            <p>Raio-X Digital: 35 minutos para mapear esse gap na sua operação. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Talento sem estrutura tem teto.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Mapeie o gap em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: duas linhas em tamanho contrastante, como se a segunda corrigisse a primeira</p>
+            <p>Linha 1: "Você é especialista de R$50K/mês" Inter Bold 30px branco</p>
+            <p>Linha 2: "com operação de R$15K/mês." Inter ExtraBold 44px #74C69E — intencionalmente maior (o problema tem mais peso visual que o achievement)</p>
+            <p>Separador horizontal em #74C69E</p>
+            <p>Supporting text: Inter Regular 14px branco 55%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: espelho, desconfortável, preciso — como um dado de uma consultoria que você não pediu mas precisava</p>
+            <p>Stories (1920): proporções mantidas, fontes 10% maiores</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 18 -->
+      <section class="doc-section" id="static-18">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 18</div>
+          <div class="doc-section-title">5 sinais de que sua operação precisa de IA agora.</div>
+          <div class="doc-section-desc">Checklist — itemização de gatilhos</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">checklist de diagnóstico</span>
+          <span class="badge">reconhecimento de situação</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "5 sinais de que sua operação<br/>
+            precisa de IA agora."
+          </div>
+          <div class="ad-preview__support">
+            Se você tem 3 ou mais, a janela está fechando.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Checklist rápido para especialistas digitais que faturam entre R$10K e R$80K/mês:</p>
+            <p>1. Você responde mensagem de lead fora do horário comercial<br/>
+            2. Sua equipe gasta mais de 30% do tempo em tarefas repetitivas<br/>
+            3. Cada novo cliente aumenta sua carga de trabalho (não a da operação)<br/>
+            4. Você não saberia dizer com precisão qual processo custa mais do que deveria<br/>
+            5. Se você parar por 2 semanas, a receita cai</p>
+            <p>Quantos você marcou?</p>
+            <p>Se 3 ou mais: sua operação tem dependências invisíveis que ficam mais caras a cada mês que passam sem serem resolvidas.</p>
+            <p>O Raio-X Digital identifica, em 35 minutos, quais dessas dependências você pode eliminar nos próximos 60 dias com IA. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Quantos você marcou?</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Raio-X em 35 min, sem custo.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o diagnóstico</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: 5 blocos numerados com checkbox visual à esquerda</p>
+            <p>Checkbox: quadrado vazio de 16px em branco com borda fina — sem check (o leitor "marca mentalmente")</p>
+            <p>Número (01-05): Inter ExtraBold 11px #74C69E</p>
+            <p>Texto do item: Inter Regular 14px branco, alinhado à direita do checkbox</p>
+            <p>Cada bloco separado por linha 1px branco 10%</p>
+            <p>Hook acima: Inter Bold 32px branco</p>
+            <p>Supporting text abaixo: Inter SemiBold 13px #74C69E</p>
+            <p>Background: #0A0A0A com leve textura grain (noise filter CSS 5%)</p>
+            <p>Feel: triagem médica, checklist de auditoria, profissional e direta</p>
+            <p>Stories (1920): checklist centralizado verticalmente, fontes levemente maiores, mais espaço entre itens</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 19 -->
+      <section class="doc-section" id="static-19">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 19</div>
+          <div class="doc-section-title">A maioria perde dinheiro nas primeiras 2 horas de trabalho. Todos os dias.</div>
+          <div class="doc-section-desc">Bold statement — número temporal como choque</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">desperdício invisível de tempo</span>
+          <span class="badge">custo operacional</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "A maioria perde dinheiro<br/>
+            nas primeiras 2 horas de trabalho.<br/>
+            Todo dia."
+          </div>
+          <div class="ad-preview__support">
+            E-mail, WhatsApp, relatórios, briefings — tudo antes de gerar R$1 de receita.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Não estamos falando de procrastinação.</p>
+            <p>Estamos falando de estrutura operacional.</p>
+            <p>As primeiras horas da manhã de boa parte dos especialistas digitais são consumidas por: leitura de mensagens de cliente, repasse de informações pro time, ajustes em documentos que deveriam estar automatizados, aprovações que deveriam ser autonomia da equipe.</p>
+            <p>Tarefas reais. Necessárias. Que consomem o tempo mais caro do negócio — o seu.</p>
+            <p>Um agente de IA configurado para o seu contexto específico assume grande parte disso. Não tudo. Mas o suficiente para que as primeiras horas gerem receita em vez de administrar o que já foi gerado.</p>
+            <p>Raio-X Digital: 35 minutos para identificar onde o seu tempo está sendo consumido sem gerar retorno proporcional. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Tempo caro. Uso barato.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Identifique o desperdício. Grátis.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: texto centralizado, hierarquia descendente de impacto</p>
+            <p>Linha 1: "A maioria perde dinheiro" Inter Bold 32px branco</p>
+            <p>Linha 2: "nas primeiras 2 horas" Inter ExtraBold 48px #74C69E (pico de atenção)</p>
+            <p>Linha 3: "Todo dia." Inter Black 32px branco</p>
+            <p>Linha separadora em #74C69E</p>
+            <p>Supporting text: Inter Regular Italic 14px branco 55%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: relógio parado, urgência silenciosa, dado de auditoria interna</p>
+            <p>Stories (1920): fonte linha 2 em 60px, grande respiro acima e abaixo</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 20 -->
+      <section class="doc-section" id="static-20">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 20</div>
+          <div class="doc-section-title">Você gasta quanto por lead? E quanto deveria gastar?</div>
+          <div class="doc-section-desc">Question/Data — calculadora de custo de aquisição</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--success">More Good</span>
+          <span class="badge">otimização de CAC</span>
+          <span class="badge">clareza financeira</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Você gasta quanto por lead?<br/>
+            E quanto deveria gastar?"
+          </div>
+          <div class="ad-preview__support">
+            A maioria dos especialistas não calcula o CAC real. Só o que vai para o gestor de tráfego.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>CAC não é só o que você paga pro gestor de tráfego.</p>
+            <p>CAC real inclui: valor investido em anúncios + hora da gestora de tráfego + hora de atendimento do lead + ferramentas de CRM + follow-up manual + reuniões de qualificação que não fecharam.</p>
+            <p>Quando a conta é feita completa, o CAC real de especialistas que faturam entre R$20K e R$60K/mês costuma ser 2 a 3 vezes maior do que o número que eles reportam.</p>
+            <p>A boa notícia: grande parte desse custo oculto está em processos que agentes de IA fazem melhor e por fração do custo. Follow-up automático contextualizado. Qualificação por perguntas antes da reunião. Relatórios sem hora de gestora.</p>
+            <p>Raio-X Digital: 35 minutos para calcular seu CAC real e onde você pode cortar sem cortar conversão. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Seu CAC real é o dobro do aparente.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Calcule ao vivo. 35 min. Grátis.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Calcular meu CAC real</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: dois campos lado a lado simulando uma calculadora ou formulário simples</p>
+            <p>Campo esquerdo: label "CAC aparente" em Inter Light 12px branco 50%, valor "R$___" em Inter Black 52px branco com cursor piscante simulado (elemento decorativo de underscore)</p>
+            <p>Campo direito: label "CAC real" em Inter Light 12px #74C69E, valor "R$___" em Inter Black 52px #74C69E (vazio — o leitor preenche mentalmente)</p>
+            <p>Linha fina entre os campos</p>
+            <p>Hook acima: Inter Bold 28px branco</p>
+            <p>Supporting text abaixo: Inter Regular 12px branco 50%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: formulário de CFO, interativo mesmo sendo estático, cria tensão cognitiva</p>
+            <p>Stories (1920): campos empilhados verticalmente em vez de lado a lado</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 21 -->
+      <section class="doc-section" id="static-21">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 21</div>
+          <div class="doc-section-title">Seu negócio cresce. Sua liberdade diminui. Isso é paradoxo ou design?</div>
+          <div class="doc-section-desc">Question — identidade e provocação filosófica</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--warning">Less Bad</span>
+          <span class="badge">liberdade frágil</span>
+          <span class="badge">armadilha do crescimento orgânico</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Seu negócio cresce.<br/>
+            Sua liberdade diminui.<br/>
+            Paradoxo ou design?"
+          </div>
+          <div class="ad-preview__support">
+            Quem construiu para crescer sem depender de você? Esse é o ponto.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Essa é a conversa que ninguém tem porque ninguém quer admitir.</p>
+            <p>Você foi buscar liberdade. Saiu do emprego, construiu autoridade, conquistou clientes. E agora trabalha mais do que quando era contratado.</p>
+            <p>Isso não é falha de caráter ou falta de disciplina. É que o modelo que gerou o resultado nunca foi desenhado para escalar sem você no centro.</p>
+            <p>O crescimento aumentou a responsabilidade na mesma proporção que aumentou a receita.</p>
+            <p>Não é paradoxo. É design. Um design que pode ser reconfigurado.</p>
+            <p>A implementação de IA na operação — feita no contexto certo — é o que permite separar o crescimento da sua disponibilidade. Não de uma vez. Mas progressivamente, começando onde o impacto é mais imediato.</p>
+            <p>Raio-X Digital: 35 minutos para mapear por onde recomeçar esse design. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Liberdade frágil tem design errado.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Reconfigure. Raio-X gratuito.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero rever o design</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: 3 linhas do hook em tamanhos decrescentes, criando peso visual de problema comprimindo</p>
+            <p>Linha 1: "Seu negócio cresce." Inter ExtraBold 40px branco</p>
+            <p>Linha 2: "Sua liberdade diminui." Inter ExtraBold 40px branco 70% (levemente menor em opacidade, como apagando)</p>
+            <p>Linha 3: "Paradoxo ou design?" Inter ExtraBold 40px #74C69E (virada — a pergunta ganha acento)</p>
+            <p>Espaçamento decrescente entre linhas (linha 1 e 2 mais próximas, linha 2 e 3 com mais respiro)</p>
+            <p>Linha fina #74C69E</p>
+            <p>Supporting text: Inter Light Italic 14px branco 50%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: insight de consultoria, pausado, como uma pergunta de board meeting</p>
+            <p>Stories (1920): fontes 48px, proporção mantida, grande respiro</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 22 -->
+      <section class="doc-section" id="static-22">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 22</div>
+          <div class="doc-section-title">Quanto do que você faz hoje ainda vai existir na sua operação em 18 meses?</div>
+          <div class="doc-section-desc">Question — provocação de futuro próximo</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--error">Social Risk</span>
+          <span class="badge">urgência de adaptação</span>
+          <span class="badge">ficar para trás</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Quanto do que você faz hoje<br/>
+            ainda vai existir na sua operação<br/>
+            em 18 meses?"
+          </div>
+          <div class="ad-preview__support">
+            As operações que não se reconfiguraram em 2024 estão pagando CPL 33% maior hoje.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Não é uma pergunta retórica.</p>
+            <p>Em 18 meses, a maioria das tarefas repetitivas que hoje ocupam 30-40% do tempo do seu time vai poder ser executada por agentes de IA por fração do custo atual. Não é especulação — é o que já está acontecendo nas operações que implementaram.</p>
+            <p>A pergunta real é: quando você vai começar?</p>
+            <p>Porque o custo de esperar não é zero. Cada mês que passa com a operação dependente de processos manuais é um mês em que o CPL sobe, a margem comprime e o gap com quem já implementou aumenta.</p>
+            <p>A janela está aberta. Mas janelas fecham.</p>
+            <p>Raio-X Digital: 35 minutos para entender onde você está hoje e por onde começa a reconfiguração. Sem custo, sem pitch na hora. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">A janela está aberta. Por quanto tempo?</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Mapeie agora. 35 min. Grátis.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Agendar Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: pergunta como única protagonista — tipografia como visual</p>
+            <p>Linha 1 e 2: Inter Regular 26px branco</p>
+            <p>Linha 3: "em 18 meses?" Inter ExtraBold 42px #74C69E — peso aumenta na parte que ativa urgência temporal</p>
+            <p>Linha divisória fina em #74C69E abaixo da pergunta</p>
+            <p>Supporting text: Inter Regular 13px branco 45%</p>
+            <p>Background: #0A0A0A com grain noise 3%</p>
+            <p>Feel: relógio, janela, urgência calma — não alarmismo, mas lucidez</p>
+            <p>Stories (1920): fontes 8% maiores, respiro aumentado lateralmente</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 23 -->
+      <section class="doc-section" id="static-23">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 23</div>
+          <div class="doc-section-title">Você demite um colaborador com 30 dias de aviso. Um agente, você desliga em segundos.</div>
+          <div class="doc-section-desc">Comparison/contrast — lógica de decisão</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--success">More Good</span>
+          <span class="badge">flexibilidade operacional</span>
+          <span class="badge">ausência de risco trabalhista</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Colaborador: 30 dias de aviso.<br/>
+            Agente: desliga em segundos."
+          </div>
+          <div class="ad-preview__support">
+            Sem rescisão, sem FGTS, sem processo trabalhista. Apenas resultado.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Não é sobre demitir ninguém.</p>
+            <p>É sobre entender que a equidade de risco entre pessoa e tecnologia mudou.</p>
+            <p>Quando você contrata uma pessoa CLT para uma função operacional, você está assumindo: salário fixo independente de resultado, encargos de 73% sobre a folha, impossibilidade de reduzir custo rapidamente se a receita cair, risco trabalhista se a relação não funcionar.</p>
+            <p>Quando você configura um agente para a mesma função: custo variável conforme uso, zero encargos, escala ou reduz em horas, zero risco trabalhista.</p>
+            <p>Isso não é desumanização da empresa. É alocação inteligente: pessoas fazem o que pessoas fazem de melhor, agentes fazem o que agentes fazem de melhor.</p>
+            <p>Raio-X Digital: 35 minutos para entender quais funções na sua operação se encaixam nessa reconfiguração. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Custo fixo vs. custo que você controla.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Analise sua operação. Grátis.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: split horizontal em 2 blocos — comparação direta</p>
+            <p>Bloco superior: background #1A1A1A, label "Colaborador CLT" Inter SemiBold 12px branco 50%, detalhe "30 dias de aviso" Inter Bold 38px branco</p>
+            <p>Bloco inferior: background #0F1A15, label "Agente de IA" Inter SemiBold 12px #74C69E, detalhe "segundos." Inter Bold 38px #74C69E</p>
+            <p>Linha divisória em #74C69E entre os blocos</p>
+            <p>Supporting text abaixo: Inter Regular 13px branco 50%</p>
+            <p>Background geral: #0A0A0A</p>
+            <p>Feel: planilha de análise de decisão, sem emoção, fria como um CFO apresentando opções</p>
+            <p>Stories (1920): blocos empilhados maiores, fonte 44px nos valores</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 24 -->
+      <section class="doc-section" id="static-24">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 24</div>
+          <div class="doc-section-title">Você não escala mais porque não tem mais horas. Certo?</div>
+          <div class="doc-section-desc">Question/Statement — identidade de teto de crescimento</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--success">More Good</span>
+          <span class="badge">escalar sem aumentar horas pessoais</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "Você não escala mais<br/>
+            porque não tem mais horas.<br/>
+            Certo?"
+          </div>
+          <div class="ad-preview__support">
+            O teto não é o mercado. É o modelo de operação que você ainda não mudou.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Essa é a conclusão que a maioria dos especialistas digitais chega depois de tentar crescer.</p>
+            <p>"Não tenho mais capacidade de atender mais clientes."</p>
+            <p>Mas a pergunta certa não é "como atendo mais?" É "o que na minha operação ainda depende da minha hora para existir?"</p>
+            <p>Atendimento que você faz pessoalmente porque "o cliente espera". Follow-up que você escreve porque "precisa do seu toque". Briefings que passam por você porque "só você sabe o que precisa". Relatórios que você revisa porque "a equipe ainda não pega o padrão".</p>
+            <p>Cada um desses pontos é uma hora que não vai embora com mais esforço — vai embora com sistema.</p>
+            <p>Raio-X Digital: 35 minutos para identificar onde o seu teto está e o que muda com IA. Sem custo. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Seu teto é operacional, não de mercado.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Quebre o teto em 35 min.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: pergunta em destaque, como se a resposta óbvia fosse "sim" mas o "Certo?" questione isso</p>
+            <p>Linha 1: "Você não escala mais" Inter Regular 30px branco</p>
+            <p>Linha 2: "porque não tem mais horas." Inter ExtraBold 44px branco (pico de identificação)</p>
+            <p>Linha 3: "Certo?" Inter ExtraBold 44px #74C69E com ponto de interrogação em destaque (quebra a certeza)</p>
+            <p>Linha #74C69E entre a pergunta e o supporting text</p>
+            <p>Supporting text: Inter Regular Italic 14px branco 55%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: diagnóstico de crescimento, como o consultor que aponta o problema que você não via</p>
+            <p>Stories (1920): fontes linha 2 e 3 em 52px, grande respiro lateral</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Static 25 -->
+      <section class="doc-section" id="static-25">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Estático 25</div>
+          <div class="doc-section-title">Não é IA para grandes empresas. É IA para quem fatura R$10K a R$80K/mês.</div>
+          <div class="doc-section-desc">Identity statement — posicionamento de relevância</div>
+        </div>
+
+        <div class="ad-meta">
+          <span class="badge badge--success">More Good</span>
+          <span class="badge">acessibilidade e relevância para o ICP exato</span>
+        </div>
+
+        <div class="ad-preview">
+          <div class="ad-preview__hook">
+            "IA para quem fatura<br/>
+            R$10K a R$80K/mês.<br/>
+            Nada mais. Nada menos."
+          </div>
+          <div class="ad-preview__support">
+            Implementação no seu contexto. Sem complexidade de enterprise. Sem abstração de curso.
+          </div>
+        </div>
+
+        <div class="ad-copy-block">
+          <div class="ad-copy-block__label">Primary Text (Feed Copy)</div>
+          <div class="ad-copy-block__text">
+            <p>Quando se fala em IA para negócios, o padrão do mercado é ou enterprise (complexo, caro, inacessível) ou "qualquer um pode usar" (raso, genérico, sem resultado).</p>
+            <p>Nenhum dos dois serve para quem está construindo um negócio digital sólido no faixa de R$10K a R$80K/mês.</p>
+            <p>Você não tem o orçamento de uma corporação. E não vai usar IA igual a quem está começando do zero.</p>
+            <p>Você precisa de implementação no seu contexto específico: sua operação, seu produto, seu cliente, seu time. Com foco em onde o retorno aparece nos primeiros 60 dias, não num roadmap de 18 meses.</p>
+            <p>É isso que a u4digital faz.</p>
+            <p>Raio-X Digital: 35 minutos para entender se IA faz sentido para o seu negócio agora e por onde começa. Sem custo, sem compromisso. Link na bio.</p>
+          </div>
+        </div>
+
+        <div class="ad-fields">
+          <div class="ad-field">
+            <div class="ad-field__label">Headline</div>
+            <div class="ad-field__value">Feito para o seu tamanho de negócio.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">Description</div>
+            <div class="ad-field__value">Diagnóstico no seu contexto. Grátis.</div>
+          </div>
+          <div class="ad-field">
+            <div class="ad-field__label">CTA Button</div>
+            <div class="ad-field__value">Quero o Raio-X</div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Direção Visual</summary>
+          <div class="details-body">
+            <p>Layout: faixa de receita como elemento central — dado que qualifica o leitor imediatamente</p>
+            <p>"R$10K" em Inter Light 22px branco à esquerda de uma barra horizontal em #74C69E</p>
+            <p>Barra horizontal em #74C69E (40% da largura da imagem), 3px de espessura</p>
+            <p>"R$80K/mês" em Inter Light 22px #74C69E à direita da barra</p>
+            <p>Abaixo da barra: "IA implementada no seu contexto." Inter ExtraBold 32px branco</p>
+            <p>Hook acima da barra: "Não é para grandes empresas." Inter SemiBold 18px branco 60%</p>
+            <p>Supporting text abaixo de tudo: Inter Regular 13px branco 45%</p>
+            <p>Background: #0A0A0A</p>
+            <p>Feel: targeting card, qualificação, como um filtro de elegibilidade de produto financeiro</p>
+            <p>Stories (1920): barra horizontal vira linha pontilhada vertical separando faixas, layout adapta para orientação vertical</p>
+          </div>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Active sidebar link on scroll
+    const sections = document.querySelectorAll('.doc-section[id]');
+    const links = document.querySelectorAll('.doc-sidebar__link');
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function(link) {
+            link.classList.remove('is-active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('is-active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(function(section) { observer.observe(section); });
+  </script>
+</body>
+</html>

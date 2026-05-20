@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "url": "https://www.brunellocucinelli.com",
+  "provider": "claude-cli",
+  "phases": {
+    "phase_1_fetch": 169,
+    "phase_2_collect": 82,
+    "phase_3_detect": 103,
+    "phase_4_markdown": 65,
+    "phase_5_prompt": 2,
+    "phase_6_llm": 332778,
+    "phase_7_log": 9,
+    "phase_8_preview": 4
+  },
+  "wall_clock_ms": 337764,
+  "reuse": {
+    "enabled": true,
+    "previous_run": null,
+    "hits": 0,
+    "trace": {
+      "fetch": "MISS",
+      "collect": "MISS",
+      "detect": "MISS",
+      "markdown": "MISS",
+      "llm": "MISS"
+    }
+  },
+  "llm": {
+    "model": "claude-opus-4-7",
+    "provider": "claude-cli",
+    "reused": false,
+    "input_tokens": 21,
+    "output_tokens": 15683,
+    "cache_read_tokens": 1872976,
+    "cache_creation_tokens": 127498,
+    "turns_used": 25,
+    "retries": 0,
+    "max_turns_hit": false,
+    "cost_estimate": {
+      "usd": 6.3766,
+      "source": "sdk-usage",
+      "model": "claude-opus-4-7",
+      "breakdown": {
+        "input_usd": 0.0003,
+        "output_usd": 1.1762,
+        "cache_read_usd": 2.8095,
+        "cache_write_usd": 2.3906
+      }
+    }
+  }
+}

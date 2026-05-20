@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Demo Video — 7 Squads Especializados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── HOST PAGE ──────────────────────────────────────────────────────────── */
+html, body {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* Recording mode: body gets class .record — strip all chrome */
+body.record { background: #000; }
+body.record #controls { display: none; }
+body.record #restart-btn { display: none; }
+
+/* ─── VIEWPORT CONTAINER ─────────────────────────────────────────────────── */
+#stage-wrap {
+  position: relative;
+  /* Scale 1080×1920 to fit viewport while preserving ratio */
+  width: min(100vw, calc(100vh * (1080/1920)));
+  aspect-ratio: 1080 / 1920;
+}
+
+/* ─── THE STAGE ──────────────────────────────────────────────────────────── */
+#stage {
+  position: absolute;
+  inset: 0;
+  width: 1080px;
+  height: 1920px;
+  /* Scale down to wrapper size */
+  transform-origin: top left;
+  background: #000;
+  overflow: hidden;
+  /* font-size base scales proportionally */
+  font-size: calc(1rem * (min(100vw, (100vh * 1080/1920)) / 1080));
+}
+
+/* ─── BACKGROUND GLOWS ───────────────────────────────────────────────────── */
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.glow-center {
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(74,144,255,0.13) 0%, transparent 70%);
+  bottom: -200px; left: 50%;
+  transform: translateX(-50%);
+  animation: glowPulse 6s ease-in-out infinite;
+}
+.glow-top {
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(74,144,255,0.08) 0%, transparent 70%);
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  animation: glowPulse 8s ease-in-out infinite reverse;
+}
+.glow-accent {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(74,144,255,0.07) 0%, transparent 70%);
+  top: 800px; right: -150px;
+  animation: glowPulse 10s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.6; transform: translateX(-50%) scale(1.08); }
+}
+.glow-center.standalone { animation: glowPulse 6s ease-in-out infinite; }
+.glow-top.standalone { animation: glowPulse 8s ease-in-out infinite reverse; }
+.glow-accent.standalone { animation: none; }
+
+/* Film grain overlay */
+#stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ─── SHARED TOKENS ──────────────────────────────────────────────────────── */
+:root {
+  --blue: #4A90FF;
+  --blue-dim: rgba(74,144,255,0.15);
+  --blue-border: rgba(74,144,255,0.35);
+  --red: #EF4444;
+  --white: #FFFFFF;
+  --white-dim: rgba(255,255,255,0.62);
+  --white-mute: rgba(255,255,255,0.38);
+  --card-bg: #0F0F12;
+  --card-border: rgba(255,255,255,0.08);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ─── SCENES ─────────────────────────────────────────────────────────────── */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.scene.active { pointer-events: auto; }
+
+/* ─── SCENE 1: TITLE REVEAL ───────────────────────────────────────────────── */
+#scene1 { padding: 120px 80px; justify-content: flex-start; padding-top: 280px; }
+
+.eyebrow {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.s1-headline {
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-align: center;
+  margin-top: 32px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.s1-headline em {
+  font-style: normal;
+  color: var(--blue);
+}
+
+.s1-sub {
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--white-dim);
+  text-align: center;
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Squad grid */
+.squad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  margin-top: 72px;
+}
+
+.squad-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 40px 36px;
+  opacity: 0;
+  transform: translateY(24px);
+  position: relative;
+  overflow: hidden;
+}
+.squad-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  opacity: 0.4;
+}
+.squad-card.highlight {
+  border-color: var(--blue-border);
+  background: rgba(74,144,255,0.06);
+}
+.squad-card.highlight::before { opacity: 0.8; }
+
+.card-label {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-mute);
+}
+.card-count {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-top: 12px;
+  line-height: 1;
+}
+.card-unit {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--white-dim);
+  margin-top: 6px;
+}
+
+/* Counter at bottom */
+.s1-counter {
+  position: absolute;
+  bottom: 140px;
+  left: 0; right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.counter-number {
+  font-size: 160px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1;
+  /* blue glow text */
+  text-shadow: 0 0 80px rgba(74,144,255,0.5), 0 0 160px rgba(74,144,255,0.2);
+}
+.counter-label {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-top: 8px;
+}
+
+/* ─── SCENE 2: MORE SQUADS ────────────────────────────────────────────────── */
+#scene2 { padding: 120px 80px; justify-content: flex-start; padding-top: 160px; }
+
+.s2-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--white-dim);
+  text-align: center;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.s2-title strong { color: #fff; }
+
+.squad-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  margin-top: 56px;
+}
+.squad-grid-3 .squad-card:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Animated counter row */
+.total-row {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(74,144,255,0.08), rgba(74,144,255,0.03));
+  border: 1px solid var(--blue-border);
+  border-radius: 24px;
+  padding: 48px 56px;
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.total-label { font-size: 32px; font-weight: 500; color: var(--white-dim); }
+.total-number {
+  font-size: 100px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--blue);
+  text-shadow: 0 0 40px rgba(74,144,255,0.4);
+  line-height: 1;
+}
+.total-unit { font-size: 28px; font-weight: 500; color: var(--white-mute); margin-top: 8px; }
+
+/* ─── SCENE 3: CLAUDE CODE TERMINAL ──────────────────────────────────────── */
+#scene3 { padding: 100px 80px; justify-content: center; gap: 0; }
+
+.terminal-wrap {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+}
+
+.terminal {
+  background: #0D0D12;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(74,144,255,0.08);
+}
+
+.terminal-bar {
+  background: #1A1A22;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.dot { width: 18px; height: 18px; border-radius: 50%; }
+.dot.red { background: #FF5F57; }
+.dot.yellow { background: #FEBC2E; }
+.dot.green { background: #28C840; }
+.terminal-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.01em;
+  font-family: 'Inter', sans-serif;
+}
+
+.terminal-body {
+  padding: 48px 48px 56px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 28px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+}
+.terminal-prompt { color: var(--blue); }
+.terminal-cmd { color: #fff; }
+.terminal-cursor {
+  display: inline-block;
+  width: 3px; height: 1.1em;
+  background: var(--blue);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.terminal-output {
+  margin-top: 20px;
+  opacity: 0;
+}
+.terminal-output .line { color: rgba(255,255,255,0.45); font-size: 24px; }
+.terminal-output .line.blue { color: var(--blue); }
+.terminal-output .line.green { color: #28C840; }
+.terminal-output .line.yellow { color: #FEBC2E; }
+
+/* Big text below terminal */
+.s3-big {
+  font-size: 120px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-align: center;
+  line-height: 1;
+  margin-top: 64px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.s3-big em { font-style: normal; color: var(--blue); }
+
+.s3-sub {
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--white-dim);
+  text-align: center;
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* ─── SCENE 4: CAPABILITIES GRID ─────────────────────────────────────────── */
+#scene4 { padding: 120px 80px; justify-content: flex-start; padding-top: 180px; }
+
+.s4-eyebrow {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-top: 56px;
+}
+
+.cap-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 40px 36px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.cap-card.featured {
+  border-color: var(--blue-border);
+  background: rgba(74,144,255,0.08);
+}
+.cap-card.featured::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(74,144,255,0.12), transparent 60%);
+}
+.cap-icon {
+  width: 52px; height: 52px;
+  margin-bottom: 20px;
+  color: var(--blue);
+  opacity: 0.8;
+}
+.cap-name {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.cap-card.featured .cap-name { color: var(--blue); }
+.cap-detail {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--white-mute);
+  margin-top: 8px;
+}
+
+/* Big scrolling text below grid */
+.s4-big {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.12);
+  text-align: center;
+  margin-top: 56px;
+  opacity: 0;
+  line-height: 1.1;
+}
+.s4-big em { font-style: normal; color: rgba(74,144,255,0.5); }
+
+/* ─── SCENE 5: PRICING ────────────────────────────────────────────────────── */
+#scene5 { padding: 100px 80px; justify-content: center; }
+
+.pricing-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.pricing-label {
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--white-dim);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  letter-spacing: -0.01em;
+}
+
+.pricing-old {
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--red);
+  text-align: center;
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  display: inline-block;
+}
+.pricing-old::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: -4%; right: -4%;
+  height: 4px;
+  background: var(--red);
+  transform: rotate(-4deg);
+}
+
+.pricing-vs {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--white-mute);
+  margin-top: 20px;
+  opacity: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pricing-new {
+  font-size: 220px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #fff;
+  line-height: 0.9;
+  margin-top: 8px;
+  opacity: 0;
+  transform: scale(0.85);
+  text-shadow: 0 0 80px rgba(74,144,255,0.3);
+}
+
+.pricing-period {
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--blue);
+  margin-top: 16px;
+  opacity: 0;
+  transform: translateY(12px);
+  letter-spacing: 0.01em;
+}
+
+/* Tags */
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 56px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.tag {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 18px 36px;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--white-dim);
+  white-space: nowrap;
+}
+.tag.blue-tag {
+  background: rgba(74,144,255,0.08);
+  border-color: var(--blue-border);
+  color: var(--blue);
+}
+
+/* Guarantee badge */
+.guarantee {
+  margin-top: 48px;
+  background: linear-gradient(135deg, rgba(40,200,64,0.08), rgba(40,200,64,0.03));
+  border: 1px solid rgba(40,200,64,0.25);
+  border-radius: 20px;
+  padding: 36px 48px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  width: 100%;
+}
+.guarantee-icon { font-size: 48px; margin-bottom: 12px; }
+.guarantee-text { font-size: 28px; font-weight: 600; color: #28C840; }
+.guarantee-sub { font-size: 22px; font-weight: 400; color: rgba(40,200,64,0.65); margin-top: 6px; }
+
+/* ─── SCENE 6: CTA ────────────────────────────────────────────────────────── */
+#scene6 { padding: 100px 80px; justify-content: center; }
+
+.cta-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.cta-eyebrow {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cta-headline {
+  font-size: 86px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-align: center;
+  line-height: 1.0;
+  margin-top: 32px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.cta-headline em { font-style: normal; color: var(--blue); }
+
+.cta-sub {
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--white-dim);
+  text-align: center;
+  margin-top: 28px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* CTA Button */
+.cta-btn {
+  margin-top: 72px;
+  background: var(--blue);
+  border-radius: 20px;
+  padding: 48px 80px;
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(74,144,255,0.3), 0 20px 60px rgba(0,0,0,0.4);
+}
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+}
+.cta-btn-sub {
+  font-size: 24px;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* URL display */
+.cta-url {
+  margin-top: 48px;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.01em;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* Subtitle karaoke at bottom */
+.karaoke-bar {
+  position: absolute;
+  bottom: 80px;
+  left: 80px; right: 80px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 28px 36px;
+  text-align: center;
+  opacity: 0;
+}
+.karaoke-text {
+  font-size: 34px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.4;
+}
+.karaoke-text .hl { color: var(--blue); font-weight: 700; }
+
+/* ─── PROGRESS BAR ────────────────────────────────────────────────────────── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--blue);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(74,144,255,0.8);
+}
+
+/* ─── CONTROLS ────────────────────────────────────────────────────────────── */
+#controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 9999;
+}
+.ctrl-btn {
+  background: rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ctrl-btn:hover { background: rgba(74,144,255,0.15); border-color: rgba(74,144,255,0.4); color: #fff; }
+
+#restart-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.2s;
+}
+#restart-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+/* ─── UTILITY ANIMATIONS ─────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── SCENE TRANSITION ────────────────────────────────────────────────────── */
+@keyframes sceneFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes sceneFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- Controls -->
+<div id="controls">
+  <button class="ctrl-btn" id="pauseBtn">⏸ Pausar</button>
+  <button class="ctrl-btn" id="recordBtn">⏺ Modo Grabación</button>
+</div>
+<button id="restart-btn" onclick="restartAll()">↩ Reiniciar</button>
+
+<div id="stage-wrap">
+  <div id="stage">
+    <!-- Background elements -->
+    <div class="bg-glow glow-center"></div>
+    <div class="bg-glow glow-top"></div>
+    <div class="bg-glow glow-accent"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCENE 1: Title Reveal (0–8s) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="scene" id="scene1">
+      <p class="eyebrow" id="s1-eyebrow">Sistema Multi-Agente</p>
+
+      <h1 class="s1-headline" id="s1-headline">
+        <em>7</em> Squads<br>Especializados
+      </h1>
+
+      <p class="s1-sub" id="s1-sub">IA que trabaja mientras duermes</p>
+
+      <div class="squad-grid" id="squad-grid-1">
+        <div class="squad-card" id="card-strategy">
+          <p class="card-label">Strategy</p>
+          <p class="card-count">8</p>
+          <p class="card-unit">agentes</p>
+        </div>
+        <div class="squad-card highlight" id="card-copy">
+          <p class="card-label">Copy</p>
+          <p class="card-count">5</p>
+          <p class="card-unit">agentes</p>
+        </div>
+        <div class="squad-card" id="card-brand">
+          <p class="card-label">Brand</p>
+          <p class="card-count">5</p>
+          <p class="card-unit">agentes</p>
+        </div>
+        <div class="squad-card" id="card-design">
+          <p class="card-label">Design</p>
+          <p class="card-count">6</p>
+          <p class="card-unit">agentes</p>
+        </div>
+      </div>
+
+      <!-- Counter -->
+      <div class="s1-counter" id="s1-counter">
+        <div class="counter-number" id="counter-num">41</div>
+        <div class="counter-label">agentes activos</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCENE 2: More Squads (8–15s) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="scene" id="scene2">
+      <p class="s2-title" id="s2-title"><strong>El sistema completo</strong> — todos los squads</p>
+
+      <div class="squad-grid-3" id="squad-grid-2">
+        <div class="squad-card" id="s2-card-content">
+          <p class="card-label">Content</p>
+          <p class="card-count">6</p>
+          <p class="card-unit">agentes</p>
+        </div>
+        <div class="squad-card highlight" id="s2-card-growth">
+          <p class="card-label">Growth</p>
+          <p class="card-count">7</p>
+          <p class="card-unit">agentes</p>
+        </div>
+        <div class="squad-card" id="s2-card-ops">
+          <p class="card-label">Operations</p>
+          <p class="card-count">4</p>
+          <p class="card-unit">agentes</p>
+        </div>
+      </div>
+
+      <div class="total-row" id="s2-total">
+        <div>
+          <p class="total-label">Total del sistema</p>
+          <p class="total-unit">7 squads • 1 plataforma</p>
+        </div>
+        <div style="text-align:right">
+          <p class="total-number" id="total-counter">41</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCENE 3: Claude Code Terminal (15–25s) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="scene" id="scene3">
+      <div class="terminal-wrap" id="terminal-wrap">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <span class="terminal-title">Claude Code</span>
+          </div>
+          <div class="terminal-body">
+            <div>
+              <span class="terminal-prompt">❯ </span><span class="terminal-cmd" id="term-cmd"></span><span class="terminal-cursor" id="term-cursor"></span>
+            </div>
+            <div class="terminal-output" id="term-output">
+              <div class="line blue">✓ @traffic-manager inicializado</div>
+              <div class="line" style="margin-top:8px">→ Analizando campaña activa...</div>
+              <div class="line green">✓ 4 conjuntos de anuncios encontrados</div>
+              <div class="line yellow">⚡ CPM optimizado: -34% en 2h</div>
+              <div class="line blue" style="margin-top:8px">→ Reporte listo para revisión</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s3-big" id="s3-big">
+        <em>Campaña</em><br>en<br>piloto automático
+      </div>
+      <p class="s3-sub" id="s3-sub">Tus anuncios optimizándose solos</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCENE 4: Capabilities Grid (25–35s) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="scene" id="scene4">
+      <p class="s4-eyebrow" id="s4-eyebrow">¿Qué puede hacer tu equipo?</p>
+
+      <div class="capabilities-grid" id="cap-grid">
+        <div class="cap-card" id="cap1">
+          <!-- Social Media Icon -->
+          <svg class="cap-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10" cy="24" r="4"/><circle cx="38" cy="12" r="4"/><circle cx="38" cy="36" r="4"/>
+            <line x1="13.83" y1="21.47" x2="34.17" y2="14.53"/><line x1="13.83" y1="26.53" x2="34.17" y2="33.47"/>
+          </svg>
+          <p class="cap-name">Redes Sociales</p>
+          <p class="cap-detail">Contenido diario automatizado</p>
+        </div>
+        <div class="cap-card" id="cap2">
+          <!-- Design System Icon -->
+          <svg class="cap-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="3"/>
+            <rect x="28" y="4" width="16" height="16" rx="3"/>
+            <rect x="4" y="28" width="16" height="16" rx="3"/>
+            <rect x="28" y="28" width="16" height="16" rx="3"/>
+          </svg>
+          <p class="cap-name">Sistema de Diseño</p>
+          <p class="cap-detail">Identidad visual completa</p>
+        </div>
+        <div class="cap-card" id="cap3">
+          <!-- Video Icon -->
+          <svg class="cap-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="10" width="32" height="28" rx="4"/>
+            <polygon points="46,24 34,14 34,34"/>
+          </svg>
+          <p class="cap-name">Edición de Video</p>
+          <p class="cap-detail">Cortes, captions, B-roll</p>
+        </div>
+        <div class="cap-card featured" id="cap4">
+          <!-- Branding Icon -->
+          <svg class="cap-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 4L44 14V34L24 44L4 34V14L24 4Z"/>
+            <path d="M24 4V44M4 14L44 14M4 34L44 34"/>
+          </svg>
+          <p class="cap-name">Branding</p>
+          <p class="cap-detail">Protocolo completo de marca</p>
+        </div>
+        <div class="cap-card" id="cap5">
+          <!-- Email Icon -->
+          <svg class="cap-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="10" width="40" height="28" rx="4"/>
+            <polyline points="4,10 24,27 44,10"/>
+          </svg>
+          <p class="cap-name">Secuencias de Email</p>
+          <p class="cap-detail">Nurturing en piloto automático</p>
+        </div>
+        <div class="cap-card" id="cap6">
+          <!-- Funnels Icon -->
+          <svg class="cap-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="6,6 42,6 30,22 30,42 18,36 18,22"/>
+          </svg>
+          <p class="cap-name">Embudos</p>
+          <p class="cap-detail">De clic a cliente</p>
+        </div>
+      </div>
+
+      <div class="s4-big" id="s4-big">
+        Social, diseño,<br><em>video,</em> embudos...
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCENE 5: Pricing (35–45s) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="scene" id="scene5">
+      <div class="pricing-wrap">
+        <p class="pricing-label" id="p-label">Equipo completo costaría</p>
+
+        <div class="pricing-old" id="p-old">US$4,000/mes</div>
+
+        <p class="pricing-vs" id="p-vs">tú pagas solo</p>
+
+        <div class="pricing-new" id="p-new">$9</div>
+
+        <p class="pricing-period" id="p-period">pago único · sin mensualidad</p>
+
+        <div class="tags-row" id="p-tags">
+          <span class="tag">41 agentes</span>
+          <span class="tag">7 squads</span>
+          <span class="tag blue-tag">4 videotutoriales</span>
+          <span class="tag">Garantía 7 días</span>
+        </div>
+
+        <div class="guarantee" id="p-guarantee">
+          <div class="guarantee-icon">🛡</div>
+          <p class="guarantee-text">Garantía total de 7 días</p>
+          <p class="guarantee-sub">Si no es lo que esperabas, te devolvemos tu dinero</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCENE 6: CTA (45–52s) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="scene" id="scene6">
+      <div class="cta-wrap">
+        <p class="cta-eyebrow" id="cta-eyebrow">Empieza hoy mismo</p>
+
+        <h2 class="cta-headline" id="cta-headline">
+          Tu equipo de <em>41 agentes</em> te espera
+        </h2>
+
+        <p class="cta-sub" id="cta-sub">
+          Un solo pago de $9.<br>Sin contratos. Sin mensualidades.
+        </p>
+
+        <div class="cta-btn" id="cta-btn">
+          Acceder ahora por $9
+          <div class="cta-btn-sub">Acceso inmediato • Garantía 7 días</div>
+        </div>
+
+        <p class="cta-url" id="cta-url">agentes.reisia.com</p>
+      </div>
+
+      <!-- Karaoke subtitle bar -->
+      <div class="karaoke-bar" id="karaoke">
+        <p class="karaoke-text">
+          41 agentes. 7 squads. <span class="hl">Un solo pago de $9.</span>
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+</div><!-- /stage-wrap -->
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCALING: fit 1080×1920 canvas into window
+══════════════════════════════════════════════════════════════════════════ */
+function scaleStage() {
+  const wrap = document.getElementById('stage-wrap');
+  const stage = document.getElementById('stage');
+  const wrapW = wrap.offsetWidth;
+  const scale = wrapW / 1080;
+  stage.style.transform = `scale(${scale})`;
+  // font-size trick for relative em sizing:
+  stage.style.fontSize = (16 * scale) + 'px';
+}
+scaleStage();
+window.addEventListener('resize', scaleStage);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════════════════════════════════ */
+const TOTAL_DURATION = 52000; // ms
+let startTime = null;
+let raf = null;
+let paused = false;
+let pauseAt = null;
+let elapsed = 0;
+
+// Transition constants (ms)
+const SCENE_TIMES = [
+  { scene: 1, start: 0,     end: 8000  },
+  { scene: 2, start: 8000,  end: 15000 },
+  { scene: 3, start: 15000, end: 25000 },
+  { scene: 4, start: 25000, end: 35000 },
+  { scene: 5, start: 35000, end: 45000 },
+  { scene: 6, start: 45000, end: 52000 },
+];
+
+// which scenes have been entered already
+const entered = {};
+
+function ease(t) {
+  // cubic ease-out
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+// Animate a CSS property from 0→1 over [startMs, endMs] relative to scene start
+function animProp(el, prop, fromVal, toVal, startMs, endMs, sceneStart, now, unit='') {
+  const t = clamp((now - sceneStart - startMs) / (endMs - startMs), 0, 1);
+  const v = lerp(fromVal, toVal, ease(t));
+  el.style[prop] = v + unit;
+}
+
+/* apply show: fade+translateY from hidden to visible */
+function show(el, delay, now, sceneStart, duration=600) {
+  const t = clamp((now - sceneStart - delay) / duration, 0, 1);
+  const e = ease(t);
+  el.style.opacity = e;
+  el.style.transform = `translateY(${lerp(24, 0, e)}px)`;
+}
+
+function showScale(el, delay, now, sceneStart, duration=600) {
+  const t = clamp((now - sceneStart - delay) / duration, 0, 1);
+  const e = ease(t);
+  el.style.opacity = e;
+  el.style.transform = `scale(${lerp(0.85, 1, e)})`;
+}
+
+function hide(el) {
+  el.style.opacity = 0;
+  el.style.transform = '';
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCENE ORCHESTRATION
+══════════════════════════════════════════════════════════════════════════ */
+
+/* ---------- Scene 1 ---------- */
+let s1Initialized = false;
+function runScene1(now, sceneStart) {
+  show(document.getElementById('s1-eyebrow'), 0, now, sceneStart);
+  show(document.getElementById('s1-headline'), 200, now, sceneStart, 700);
+  show(document.getElementById('s1-sub'), 500, now, sceneStart);
+
+  const cards = ['card-strategy','card-copy','card-brand','card-design'];
+  cards.forEach((id, i) => {
+    show(document.getElementById(id), 800 + i * 180, now, sceneStart, 500);
+  });
+
+  // Counter
+  show(document.getElementById('s1-counter'), 1800, now, sceneStart, 700);
+
+  // Animate counter number (count up 0→41)
+  const counterEl = document.getElementById('counter-num');
+  const counterT = clamp((now - sceneStart - 1800) / 1200, 0, 1);
+  const count = Math.round(ease(counterT) * 41);
+  counterEl.textContent = count;
+}
+
+/* ---------- Scene 2 ---------- */
+function runScene2(now, sceneStart) {
+  show(document.getElementById('s2-title'), 0, now, sceneStart);
+
+  const cards = ['s2-card-content','s2-card-growth','s2-card-ops'];
+  cards.forEach((id, i) => {
+    show(document.getElementById(id), 300 + i * 200, now, sceneStart, 500);
+  });
+
+  show(document.getElementById('s2-total'), 1200, now, sceneStart, 600);
+
+  // Animate total counter 0→41
+  const totalEl = document.getElementById('total-counter');
+  const tT = clamp((now - sceneStart - 1200) / 1500, 0, 1);
+  totalEl.textContent = Math.round(ease(tT) * 41);
+}
+
+/* ---------- Scene 3: Terminal typing ---------- */
+let typingStarted = false;
+let typingProgress = 0;
+const TYPED_TEXT = '> @traffic-manager --optimize-now';
+
+function runScene3(now, sceneStart) {
+  // Terminal slides in
+  const termWrap = document.getElementById('terminal-wrap');
+  const tT = clamp((now - sceneStart) / 800, 0, 1);
+  const e = ease(tT);
+  termWrap.style.opacity = e;
+  termWrap.style.transform = `translateY(${lerp(32, 0, e)}px) scale(${lerp(0.97, 1, e)})`;
+
+  // Typing effect
+  const cmdEl = document.getElementById('term-cmd');
+  const cursorEl = document.getElementById('term-cursor');
+  const typeDelay = 600;
+  const typeDuration = 2400;
+  const typeT = clamp((now - sceneStart - typeDelay) / typeDuration, 0, 1);
+  const charCount = Math.round(typeT * TYPED_TEXT.length);
+  cmdEl.textContent = TYPED_TEXT.slice(0, charCount);
+
+  // Show cursor while typing
+  cursorEl.style.display = typeT >= 1 ? 'none' : 'inline-block';
+
+  // Output appears after typing done
+  const outputEl = document.getElementById('term-output');
+  const outT = clamp((now - sceneStart - 3200) / 500, 0, 1);
+  outputEl.style.opacity = ease(outT);
+
+  // Big text below
+  show(document.getElementById('s3-big'), 4000, now, sceneStart, 700);
+  show(document.getElementById('s3-sub'), 4500, now, sceneStart);
+}
+
+/* ---------- Scene 4: Capabilities ---------- */
+function runScene4(now, sceneStart) {
+  show(document.getElementById('s4-eyebrow'), 0, now, sceneStart);
+
+  const caps = ['cap1','cap2','cap3','cap4','cap5','cap6'];
+  caps.forEach((id, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const delay = 300 + row * 220 + col * 100;
+    show(document.getElementById(id), delay, now, sceneStart, 500);
+  });
+
+  // Big watermark text
+  const bigEl = document.getElementById('s4-big');
+  const bigT = clamp((now - sceneStart - 1800) / 600, 0, 1);
+  bigEl.style.opacity = ease(bigT) * 1; // full opacity
+  bigEl.style.transform = '';
+}
+
+/* ---------- Scene 5: Pricing ---------- */
+function runScene5(now, sceneStart) {
+  show(document.getElementById('p-label'), 0, now, sceneStart);
+  show(document.getElementById('p-old'), 400, now, sceneStart, 600);
+  show(document.getElementById('p-vs'), 900, now, sceneStart, 400);
+
+  // Price scales in
+  const priceEl = document.getElementById('p-new');
+  const pT = clamp((now - sceneStart - 1100) / 700, 0, 1);
+  const pe = ease(pT);
+  priceEl.style.opacity = pe;
+  priceEl.style.transform = `scale(${lerp(0.7, 1, pe)})`;
+
+  show(document.getElementById('p-period'), 1900, now, sceneStart, 500);
+  show(document.getElementById('p-tags'), 2300, now, sceneStart, 600);
+  show(document.getElementById('p-guarantee'), 3000, now, sceneStart, 600);
+}
+
+/* ---------- Scene 6: CTA ---------- */
+function runScene6(now, sceneStart) {
+  show(document.getElementById('cta-eyebrow'), 0, now, sceneStart);
+  show(document.getElementById('cta-headline'), 300, now, sceneStart, 700);
+  show(document.getElementById('cta-sub'), 700, now, sceneStart);
+
+  const btnEl = document.getElementById('cta-btn');
+  const bT = clamp((now - sceneStart - 1100) / 700, 0, 1);
+  const be = ease(bT);
+  btnEl.style.opacity = be;
+  btnEl.style.transform = `translateY(${lerp(20, 0, be)}px) scale(${lerp(0.97, 1, be)})`;
+
+  show(document.getElementById('cta-url'), 1800, now, sceneStart);
+
+  // Karaoke
+  show(document.getElementById('karaoke'), 2200, now, sceneStart, 400);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCENE VISIBILITY
+══════════════════════════════════════════════════════════════════════════ */
+let currentScene = -1;
+
+function setScene(sceneNum) {
+  if (sceneNum === currentScene) return;
+  currentScene = sceneNum;
+
+  SCENE_TIMES.forEach((s) => {
+    const el = document.getElementById('scene' + s.scene);
+    if (s.scene === sceneNum) {
+      el.style.opacity = 0;
+      el.style.display = 'flex';
+      el.classList.add('active');
+    } else {
+      // fade out
+      el.style.transition = 'opacity 0.4s ease';
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+        el.style.transition = '';
+      }, 400);
+    }
+  });
+}
+
+function getActiveScene(now) {
+  for (let s of SCENE_TIMES) {
+    if (now >= s.start && now < s.end) return s;
+  }
+  return null;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MAIN LOOP
+══════════════════════════════════════════════════════════════════════════ */
+function tick(timestamp) {
+  if (paused) return;
+
+  if (!startTime) startTime = timestamp;
+  elapsed = timestamp - startTime;
+
+  // Progress bar
+  const progress = Math.min(elapsed / TOTAL_DURATION * 100, 100);
+  document.getElementById('progress-bar').style.width = progress + '%';
+
+  if (elapsed >= TOTAL_DURATION) {
+    // End of animation — hold last frame
+    return;
+  }
+
+  const active = getActiveScene(elapsed);
+  if (!active) { raf = requestAnimationFrame(tick); return; }
+
+  setScene(active.scene);
+
+  const sceneStart = active.start;
+  const sceneNow = elapsed; // absolute time, scene fns subtract start themselves
+
+  switch (active.scene) {
+    case 1: runScene1(sceneNow, sceneStart); break;
+    case 2: runScene2(sceneNow, sceneStart); break;
+    case 3: runScene3(sceneNow, sceneStart); break;
+    case 4: runScene4(sceneNow, sceneStart); break;
+    case 5: runScene5(sceneNow, sceneStart); break;
+    case 6: runScene6(sceneNow, sceneStart); break;
+  }
+
+  raf = requestAnimationFrame(tick);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INIT & CONTROLS
+══════════════════════════════════════════════════════════════════════════ */
+function initScenes() {
+  // Hide all scenes initially
+  SCENE_TIMES.forEach((s) => {
+    const el = document.getElementById('scene' + s.scene);
+    el.style.display = 'none';
+    el.style.opacity = '0';
+  });
+  currentScene = -1;
+}
+
+function startAnimation() {
+  initScenes();
+  startTime = null;
+  paused = false;
+  if (raf) cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(tick);
+}
+
+function restartAll() {
+  startAnimation();
+}
+
+// Pause/resume
+document.getElementById('pauseBtn').addEventListener('click', function() {
+  if (!paused) {
+    paused = true;
+    pauseAt = performance.now() - startTime;
+    this.textContent = '▶ Reanudar';
+  } else {
+    paused = false;
+    startTime = performance.now() - pauseAt;
+    this.textContent = '⏸ Pausar';
+    raf = requestAnimationFrame(tick);
+  }
+});
+
+// Recording mode
+document.getElementById('recordBtn').addEventListener('click', function() {
+  document.body.classList.toggle('record');
+  this.textContent = document.body.classList.contains('record')
+    ? '⏹ Salir grabación'
+    : '⏺ Modo Grabación';
+});
+
+// Auto-start on load
+window.addEventListener('load', () => {
+  // Small delay to ensure fonts are loaded
+  setTimeout(startAnimation, 300);
+});
+</script>
+</body>
+</html>

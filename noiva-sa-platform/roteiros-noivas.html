@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roteiros para Noivas — Noiva S.A.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blush: #FFCBC1;
+      --rose: #DBA99F;
+      --rose-dark: #C49189;
+      --rose-light: #ECC8BE;
+      --cream: #F4F3EE;
+      --cream-light: #FAFAF7;
+      --taupe: #9C958F;
+      --taupe-dark: #6b635d;
+      --black: #1a1a1a;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream-light);
+      color: var(--black);
+      line-height: 1.7;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--white) 50%, var(--blush) 100%);
+      border-bottom: 1px solid var(--rose-light);
+    }
+
+    .header-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      margin-bottom: 1rem;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--black);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .header h1 em {
+      font-style: italic;
+      color: var(--rose-dark);
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      color: var(--taupe-dark);
+      font-weight: 300;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .instructions {
+      background: var(--white);
+      border: 1px solid var(--rose-light);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .instructions h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      color: var(--black);
+    }
+
+    .instructions p {
+      font-size: 0.85rem;
+      color: var(--taupe-dark);
+      line-height: 1.7;
+    }
+
+    .instructions ul {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .instructions ul li {
+      font-size: 0.85rem;
+      color: var(--taupe-dark);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .instructions ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose);
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--rose-light);
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--rose);
+      line-height: 1;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .section-subtitle {
+      font-size: 0.75rem;
+      color: var(--taupe);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .roteiro-card {
+      background: var(--white);
+      border: 1px solid rgba(219, 169, 159, 0.25);
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .roteiro-card:hover {
+      border-color: var(--rose);
+      box-shadow: 0 4px 20px rgba(219, 169, 159, 0.15);
+    }
+
+    .roteiro-header {
+      padding: 1.5rem 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .roteiro-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--rose);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+
+    .roteiro-meta {
+      flex: 1;
+    }
+
+    .roteiro-pergunta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.4;
+      margin-bottom: 0.3rem;
+    }
+
+    .roteiro-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-right: 0.4rem;
+    }
+
+    .tag-atracao { background: #fde8e4; color: var(--rose-dark); }
+    .tag-nutricao { background: #e8f0e6; color: #4A6741; }
+
+    .roteiro-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--rose-light);
+      background: var(--cream-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .roteiro-toggle svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--rose-dark);
+      transition: transform 0.3s ease;
+    }
+
+    .roteiro-card.open .roteiro-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .roteiro-body {
+      display: none;
+      padding: 0 1.8rem 1.8rem;
+      padding-left: 5.3rem;
+    }
+
+    .roteiro-card.open .roteiro-body {
+      display: block;
+    }
+
+    .roteiro-section {
+      margin-bottom: 1.2rem;
+    }
+
+    .roteiro-section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--rose-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .roteiro-section-text {
+      font-size: 0.9rem;
+      color: var(--taupe-dark);
+      line-height: 1.7;
+    }
+
+    .roteiro-section-text em {
+      font-style: italic;
+      color: var(--black);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--rose-light);
+      color: var(--taupe);
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .footer strong {
+      color: var(--rose-dark);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 3.5rem 1.5rem 2.5rem; }
+      .container { padding: 2rem 1.2rem 4rem; }
+      .roteiro-header { padding: 1.2rem 1.3rem; }
+      .roteiro-body { padding: 0 1.3rem 1.5rem; padding-left: 4rem; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-label">Noiva S.A. — Roteiros de Gravação</div>
+    <h1>Roteiros para <em>Noivas</em></h1>
+    <p>20 roteiros completos para Stories e Reels. Cada um com gancho, desenvolvimento e CTA — prontos para gravar.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="instructions">
+      <h3>Como usar estes roteiros</h3>
+      <p>Cada roteiro segue a estrutura: pergunta da caixinha, gancho (3 primeiros segundos), desenvolvimento (30-45s de conteúdo) e CTA suave. Grave olhando para a câmera, como se estivesse respondendo uma amiga.</p>
+      <ul>
+        <li>Leia a pergunta e coloque na caixinha dos Stories antes de gravar</li>
+        <li>O gancho é a primeira frase que você fala — precisa prender a atenção</li>
+        <li>No desenvolvimento, fale com naturalidade — não decore, use como guia</li>
+        <li>O CTA é suave, nunca agressivo — convida, não empurra</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 1: ATRAÇÃO -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <div>
+          <div class="section-title">Atração</div>
+          <div class="section-subtitle">Topo de funil — alcance, curiosidade, descoberta</div>
+        </div>
+      </div>
+
+      <!-- Roteiro 1 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">01</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Qual o primeiro passo para começar a organizar o casamento?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Todo mundo fala pra começar pelo vestido. Está errado."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">O primeiro passo de verdade é definir o orçamento e o estilo de casamento que vocês querem. Sem isso, você vai visitar 30 espaços, se apaixonar pelo mais caro e frustrar. Senta com seu noivo, defina o número real que vocês podem investir, e depois escolham entre 2-3 estilos de celebração. A partir daí, cada decisão fica mais fácil porque você tem um filtro claro.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você quer um passo a passo completo de como organizar sem surtar, me manda um oi que eu te explico como funciona a assessoria.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 2 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">02</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Quanto custa em média um casamento pra 150 convidados?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Vou te dar o número real. Sem enrolação."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Um casamento pra 150 pessoas em Goiânia, com um padrão bonito mas sem exagero, gira entre 80 e 120 mil. Isso inclui espaço, buffet, foto, vídeo, decoração, DJ e cerimonialista. Só que o que varia muito é o nível de personalização. Tem noiva que gasta 90 mil e parece que gastou 150 porque soube priorizar. E tem noiva que gasta 150 e fica frustrada porque distribuiu mal. O segredo não é gastar mais — é saber onde colocar cada real.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer entender como distribuir seu orçamento de forma inteligente? Reage aqui que eu te mando um material.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 3 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">03</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Vale a pena contratar assessoria se meu casamento é simples?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Casamento simples não existe. Existe casamento mal planejado."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Mesmo um casamento de 50 pessoas tem no mínimo 15 fornecedores envolvidos, cronograma de montagem, contratos, prazos. Você vai resolver tudo isso enquanto trabalha, cuida da vida e ainda tenta curtir o noivado? A assessoria não é luxo. É a garantia de que você vai chegar no altar tranquila, sem ter brigado com fornecedor, sem imprevisto no dia e sem ter perdido noites de sono. Simples ou grande — planejamento é planejamento.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você quer saber como funciona na prática, me chama no direct que eu te explico os formatos que ofereço.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 4 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">04</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">O que não pode faltar na lista de fornecedores?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Tem um fornecedor que 80% das noivas esquece. E depois se arrepende."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Os óbvios todo mundo lembra: espaço, buffet, foto, vídeo, DJ. Mas tem três que fazem diferença absurda e as noivas subestimam. Primeiro: iluminação cênica — muda completamente o clima da festa. Segundo: mestre de cerimônias profissional — não é o tio que fala bonito, é alguém que sabe conduzir. Terceiro: assessoria de dia — a pessoa que resolve qualquer problema no dia sem que você saiba. Esses três são o que separam um casamento bonito de um casamento inesquecível.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Salva esse vídeo e me segue pra mais dicas reais sobre como planejar sem estresse.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 5 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">05</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Com quantos meses de antecedência devo começar a organizar?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Se você noivou hoje, tem uma coisa que precisa fazer essa semana."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">O ideal é começar entre 12 e 18 meses antes. Mas olha: não é porque você tem 12 meses que pode relaxar nos primeiros 6. Os melhores fornecedores lotam rápido. Espaço e fotógrafo, por exemplo — se você esperar 8 meses, vai escolher entre o que sobrou. Nos primeiros 3 meses: defina orçamento, feche espaço e fotógrafo. Do mês 4 ao 8: buffet, decoração, convites. Últimos 4 meses: detalhes, provas, ensaio, cronograma final.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer um cronograma completo mês a mês? Comenta "cronograma" que eu te mando.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 6 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">06</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como escolher o espaço perfeito pro meu casamento?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Não escolha o espaço pelo Instagram. Escolha pelo que ele resolve."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Muita noiva se apaixona por fotos bonitas e fecha um espaço que depois dá dor de cabeça. O espaço perfeito é aquele que cabe no seu orçamento, comporta seu número de convidados com conforto, tem boa logística de acesso e oferece estrutura básica — banheiros, estacionamento, cobertura pra chuva. Visita sempre no horário do seu evento. Um lugar lindo de dia pode ser escuro e sem graça à noite. E pergunta sobre o que está incluído: mobiliário, geradores, equipe de apoio. Isso muda seu orçamento inteiro.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você está na fase de escolher espaço e quer uma opinião honesta, me manda mensagem.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 7 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">07</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Quais são os erros mais comuns que noivas cometem?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu já vi noiva perder 10 mil reais por causa de um desses erros."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Três erros que eu vejo toda semana. Primeiro: não ler o contrato inteiro. Tem cláusula de multa, de exclusividade, de horário extra que pega muita gente. Segundo: fechar fornecedor por indicação sem pesquisar. Só porque funcionou pro casamento da sua amiga não significa que funciona pro seu — estilos são diferentes. Terceiro: deixar tudo pra última hora achando que "dá tempo". Não dá. Estresse de última hora é o principal motivo de briga entre casais durante o planejamento.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Já cometeu algum desses? Me conta aqui nos comentários. E segue pra não errar nos próximos.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 8 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">08</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como lidar com palpites da família sem brigar?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Sua sogra quer lista de 300. Sua mãe quer a igreja tal. E você? O que você quer?"</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Primeiro: respira. Palpite de família vem de amor na maioria das vezes. Mas o casamento é de vocês. A estratégia que funciona: defina com seu noivo os 3 pontos inegociáveis — aquilo que vocês não abrem mão de jeito nenhum. Todo o resto, sejam flexíveis. Quando alguém sugerir algo, agradeça genuinamente e diga que vocês vão considerar. Não precisa dizer sim nem não na hora. E se a pessoa insistir, use a frase mágica: "A gente já decidiu isso com o nosso assessor." Pronto. Ninguém briga com profissional.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Marca aquela amiga noiva que precisa ouvir isso. Sério.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 9 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">09</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Dia da noiva: o que não pode dar errado?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"No dia do casamento, 90% dos problemas acontecem antes de você colocar o vestido."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">O dia da noiva precisa de cronograma rígido. Cabelo e maquiagem atrasam com frequência. Então: comece cedo, tenha horário de tolerância e não coloque muita gente no mesmo espaço. Segundo ponto crítico: alimentação. Você precisa comer bem antes da cerimônia — não é hora de dieta. Terceiro: tenha um kit de emergência — agulha, fita dupla face, absorvente, remédio pra cabeça, grampos extras. E o mais importante: delegue tudo. No dia, você não resolve nada. Quem resolve é sua assessora.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Salva esse roteiro e compartilha com sua madrinha mais organizada.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 10 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">10</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como saber se o fornecedor é confiável?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Instagram bonito não é garantia de nada. Eu vou te ensinar o que olhar de verdade."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Primeira coisa: peça pelo menos 3 casamentos completos recentes — não só o melhor álbum. Segunda: fale com noivas anteriores diretamente. Pergunte sobre prazos, comunicação e como foi no dia. Terceira: veja se tem CNPJ e contrato formal. Fornecedor que não dá contrato é um risco que você não precisa correr. Quarta: observe a comunicação. Se demora 5 dias pra responder antes de fechar, imagina depois. Confiança se constrói com transparência — não com portfólio bonito.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Você está fechando fornecedor agora? Me manda que eu posso te ajudar a avaliar.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 2: NUTRIÇÃO -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <div>
+          <div class="section-title">Nutrição</div>
+          <div class="section-subtitle">Meio e fundo de funil — autoridade, confiança, decisão</div>
+        </div>
+      </div>
+
+      <!-- Roteiro 11 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">11</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Qual a diferença entre assessoria completa e parcial?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Se você acha que assessoria parcial é só 'um pedaço do serviço', tá na hora de entender como realmente funciona."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Na assessoria completa, eu estou com você do dia zero até o último convidado ir embora. Ajudo a escolher cada fornecedor, negocio valores, monto cronograma, resolvo problemas e coordeno o dia inteiro. Na parcial, você já fez boa parte sozinha e me chama num momento específico — geralmente 3 a 4 meses antes — pra organizar o que falta, revisar contratos e coordenar o dia. As duas funcionam. A diferença é o nível de envolvimento e tranquilidade. Se você quer fazer parte do processo mas com suporte profissional, a parcial resolve. Se você quer delegar e curtir, a completa é pra você.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer saber qual formato faz mais sentido pro seu caso? Me chama que a gente conversa sem compromisso.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 12 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">12</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">A assessora substitui a noiva nas decisões?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Não. Eu não decido por você. Eu faço você decidir com clareza."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Meu trabalho é apresentar as melhores opções dentro do seu orçamento e estilo, explicar os prós e contras de cada uma, e garantir que você tenha informação pra tomar uma decisão segura. Quem decide é sempre você. Eu sou a pessoa que evita que você decida no impulso, por pressão ou sem informação. Pensa assim: eu sou o GPS. Você escolhe o destino — eu mostro o melhor caminho pra chegar lá sem se perder.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Faz sentido? Se você quer esse tipo de suporte, me chama que eu te explico como começamos.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 13 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">13</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como funciona o cronograma do dia do casamento?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Seu casamento começa às 16h? Então meu trabalho começa às 7 da manhã."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">O cronograma do dia é minuto a minuto. Eu monto um documento com horário de cada fornecedor — quando chega, onde monta, em que ordem. Coordeno montagem de decoração, teste de som, conferência de mesa, recebimento de bolo, tudo. Enquanto isso, você está no making of, tranquila. Se alguma coisa atrasa ou muda, eu resolvo sem você ficar sabendo. Você só aparece pronta, no horário certo, no lugar certo. Esse é o ponto: você não gerencia nada no seu dia. Você vive ele.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer ver um exemplo real de cronograma de casamento? Me manda um direct que eu compartilho.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 14 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">14</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">E se eu já comecei a organizar sozinha, ainda dá pra contratar?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Dá. E olha — a maioria das minhas noivas me chama justamente nessa hora."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Normalmente a noiva começa empolgada, fecha 2-3 fornecedores e depois percebe que o volume de decisão é demais. É nessa hora que eu entro. Eu pego tudo que você já fez, reviso contratos, avalio o que tá bom e o que precisa de ajuste, e assumo dali pra frente. Não precisa começar do zero. Na verdade, quando você já fez parte, o processo fica até mais rápido porque eu já sei seu estilo e suas prioridades. Então não espera "o momento perfeito" — o momento certo é quando você sentir que precisa de ajuda.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você já está nesse ponto, vem falar comigo. Me conta onde você está e a gente vê o próximo passo juntas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 15 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">15</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Você só atende casamento grande ou também os menores?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Casamento de 30 pessoas pode ser o mais emocionante que eu já coordenei."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Eu atendo desde mini weddings até casamentos de 400 convidados. O que muda é a complexidade logística, não a importância do evento. Um casamento íntimo precisa de tanta atenção quanto um grande porque cada detalhe fica mais visível. Na verdade, casamentos menores são lindos de fazer porque a personalização é total — cada convidado percebe o cuidado. Então não importa o tamanho. Se é importante pra você, é importante pra mim.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Me conta: quantos convidados você está pensando? Vamos desenhar juntas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 16 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">16</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">O que acontece se um fornecedor cancelar em cima da hora?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Já aconteceu comigo. E a noiva nem soube. É assim que tem que ser."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Faz parte do meu trabalho ter um plano B pra cada fornecedor crítico. Fotógrafo, DJ, buffet — eu tenho contatos de backup que já conheço e confio. Se acontecer o pior, eu resolvo antes de chegar em você. Já tive caso de decoradora que passou mal no dia e em 2 horas eu tinha outra equipe montando. A noiva só soube depois da lua de mel. Esse é o valor real de ter uma assessora: você nunca está sozinha, mesmo no caos.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Essa segurança não tem preço. Se você quer se sentir protegida no seu dia, vamos conversar.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 17 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">17</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como a assessoria me ajuda a economizar dinheiro?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Na maioria dos casos, o que você investe em assessoria você recupera em economia com fornecedores."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Eu negocio com fornecedores toda semana. Sei os preços reais do mercado, sei quem tá cobrando acima e sei onde dá pra ajustar sem perder qualidade. Além disso, eu evito que você gaste com coisas desnecessárias — aquele extra que o espaço empurra, aquela opção premium que não faz diferença visual nenhuma. Em média, minhas noivas economizam entre 8 e 15% do orçamento total só pela curadoria e negociação. Ou seja: a assessoria não é um custo a mais. É um investimento que se paga.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer entender na prática como isso funciona pro seu orçamento? Me chama no direct.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 18 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">18</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Você já teve algum imprevisto grave num casamento?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Já. E a noiva dançou a noite inteira sem saber o que aconteceu nos bastidores."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Vou contar um caso real, sem nome óbvio. Chuva torrencial, teto do espaço vazou em cima da mesa do bolo. Faltavam 40 minutos pra cerimônia. Eu movi o bolo, reorganizei a mesa, coloquei um arranjo cobrindo a área molhada e liguei pro espaço resolver a goteira. Tudo em 15 minutos. A noiva estava se arrumando e quando chegou, estava tudo perfeito. Ela até hoje não sabe dessa história. E esse é o ponto: imprevisto acontece. A diferença é ter alguém que resolve antes de virar problema pra você.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer ter essa tranquilidade no seu dia? Vamos marcar um bate-papo sem compromisso.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 19 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">19</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como é a comunicação durante o processo?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu não sou aquela assessora que some e aparece só no dia. Eu estou com você o tempo todo."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">A gente tem reuniões mensais marcadas pra alinhar tudo — pendências, decisões, prazos. Mas no dia a dia, o canal é WhatsApp. Você me manda dúvida, eu respondo. Surgiu um orçamento, me encaminha que eu analiso. Eu não deixo nenhuma noiva sem resposta por mais de 24 horas úteis. E mais: eu te atualizo proativamente. Não espero você cobrar. Se um prazo está chegando ou um fornecedor mandou algo, eu já te aviso. Comunicação clara e frequente — é assim que funciona.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você valoriza ter alguém presente e atenta no processo, vamos conversar. Me manda um oi.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 20 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">20</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Qual o depoimento mais marcante que você já recebeu?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Uma noiva me mandou um áudio chorando no dia seguinte. E foi a coisa mais bonita que eu já ouvi."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Ela disse assim: "Gi, eu curti cada segundo do meu casamento porque em nenhum momento eu pensei em logística. Eu só pensei em ser feliz. E isso foi você." Olha, eu escolhi essa profissão por isso. Não é sobre decoração bonita ou cronograma perfeito. É sobre a noiva chegar no altar leve, presente, inteira. E depois olhar pra trás e sentir que viveu cada momento de verdade — sem ansiedade, sem medo de dar errado. Quando eu recebo esse tipo de mensagem, eu sei que fiz meu trabalho.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você quer viver o seu casamento assim — inteira, presente, tranquila — eu adoraria fazer parte. Me chama.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <strong>Noiva S.A.</strong> — Roteiros de Gravação para Noivas<br>
+    20 roteiros prontos para Stories e Reels
+  </footer>
+
+  <script>
+    document.querySelector('.roteiro-card').classList.add('open');
+  </script>
+
+</body>
+</html>

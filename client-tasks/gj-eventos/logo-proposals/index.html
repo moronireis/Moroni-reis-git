@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GJ Eventos -- Refinamento da Variacao 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #0A0A0A;
+    color: #E5E5E5;
+    line-height: 1.6;
+  }
+
+  .header {
+    text-align: center;
+    padding: 64px 24px 48px;
+    border-bottom: 1px solid rgba(46, 184, 166, 0.12);
+  }
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .header h1 span { color: #2EB8A6; }
+  .header p {
+    font-size: 14px;
+    font-weight: 300;
+    color: #777;
+    letter-spacing: 0.5px;
+  }
+  .header .subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: #555;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .proposals {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .proposal {
+    margin: 48px 0;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .proposal-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .proposal-number {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2EB8A6;
+    font-variant-numeric: tabular-nums;
+    font-family: 'DM Sans', monospace;
+  }
+  .proposal-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .proposal-desc {
+    font-size: 12px;
+    color: #666;
+    font-weight: 300;
+    margin-left: auto;
+  }
+
+  /* --- Preview grid: dark + light side by side --- */
+  .preview-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 640px) {
+    .preview-row { grid-template-columns: 1fr; }
+  }
+
+  .preview-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    position: relative;
+    min-height: 200px;
+  }
+  .preview-cell svg {
+    width: 280px;
+    height: auto;
+  }
+
+  .preview-dark { background: #111; color: #EDEDED; }
+  .preview-light { background: #F9FAFB; color: #1A1A1A; border-left: 1px solid #eee; }
+
+  .preview-label {
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.35;
+  }
+
+  /* --- Size strip --- */
+  .size-strip {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 32px;
+    padding: 24px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.3);
+    flex-wrap: wrap;
+    color: #EDEDED;
+  }
+  .size-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .size-item span {
+    font-size: 9px;
+    color: #555;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: 'DM Sans', monospace;
+  }
+
+  /* --- Rationale --- */
+  .rationale {
+    padding: 18px 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 12px;
+    color: #888;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .rationale strong { color: #bbb; font-weight: 500; }
+
+  .footer {
+    text-align: center;
+    padding: 48px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: #444;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  .footer .teal { color: #2EB8A6; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>GJ <span>Eventos</span></h1>
+  <p>Refinamento da Variacao 1 -- Classico</p>
+  <p class="subtitle">6 sub-variacoes com teal #2EB8A6 -- Abril 2026</p>
+</div>
+
+<div class="proposals">
+
+<!-- ===== 1A — Refinado Base ===== -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">1A</span>
+    <span class="proposal-name">Refinado Base</span>
+    <span class="proposal-desc">Polished proportions, both letters in dark</span>
+  </div>
+  <div class="preview-row">
+    <div class="preview-cell preview-dark">
+      <span class="preview-label">Dark</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="preview-cell preview-light">
+      <span class="preview-label">Light</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="size-strip">
+    <div class="size-item"><span>24px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="24" height="11"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>48px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="48" height="21"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>96px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="96" height="42"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+    <div class="size-item"><span>192px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="192" height="84"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+  </div>
+  <div class="rationale">
+    <strong>Concept:</strong> The base refinement of Variation 1. Both G and J remain in currentColor (dark on light, light on dark). Teal bars flanking the initials use a graduated width rhythm (26/32/26px) with 3px height for a delicate, precise feel. The bars are vertically centered against the cap-height of the letterforms. EVENTOS sits below with generous tracking (10px letter-spacing), and a thin 1px teal accent line anchors the composition. <strong>Color:</strong> Updated to #2EB8A6 per the approved design system -- warmer, more organic. <strong>Best for:</strong> The safest, most refined version. Works everywhere.
+  </div>
+</div>
+
+<!-- ===== 1B — J em Teal ===== -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">1B</span>
+    <span class="proposal-name">J em Teal</span>
+    <span class="proposal-desc">G = Gilberto (dark), J = Juciene (teal)</span>
+  </div>
+  <div class="preview-row">
+    <div class="preview-cell preview-dark">
+      <span class="preview-label">Dark</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="143" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="4" fill="currentColor">G</text>
+        <text x="181" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="4" fill="#2EB8A6">J</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="preview-cell preview-light">
+      <span class="preview-label">Light</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="143" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="4" fill="currentColor">G</text>
+        <text x="181" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="4" fill="#2EB8A6">J</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="size-strip">
+    <div class="size-item"><span>24px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="24" height="11"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="143" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><text x="181" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="#2EB8A6">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>48px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="48" height="21"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="143" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><text x="181" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="#2EB8A6">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>96px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="96" height="42"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="143" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><text x="181" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="#2EB8A6">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+    <div class="size-item"><span>192px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="192" height="84"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="143" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><text x="181" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="#2EB8A6">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+  </div>
+  <div class="rationale">
+    <strong>Concept:</strong> The J letter is rendered in teal (#2EB8A6) while G stays in the adaptive currentColor. This creates a meaningful color split: G = Gilberto (grounded, anchoring), J = Juciene (vibrant, the creative energy). The teal J visually connects with the flanking bars, creating a cohesive teal "ecosystem" within the mark. On dark backgrounds, the contrast between the white G and teal J is striking. On light backgrounds, the dark G and teal J read as warm and accessible. <strong>Best for:</strong> Adding personality and founder symbolism. My recommendation for the strongest emotional connection.
+  </div>
+</div>
+
+<!-- ===== 1C — Barras Mais Grossas ===== -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">1C</span>
+    <span class="proposal-name">Barras Mais Grossas</span>
+    <span class="proposal-desc">2 bold bars (5px) instead of 3 thin bars</span>
+  </div>
+  <div class="preview-row">
+    <div class="preview-cell preview-dark">
+      <span class="preview-label">Dark</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+        <rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+        <rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="preview-cell preview-light">
+      <span class="preview-label">Light</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+        <rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+        <rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="size-strip">
+    <div class="size-item"><span>24px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="24" height="11"><rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>48px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="48" height="21"><rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>96px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="96" height="42"><rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+    <div class="size-item"><span>192px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="192" height="84"><rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/><rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+  </div>
+  <div class="rationale">
+    <strong>Concept:</strong> Reduces the bar count from 3 to 2 and increases height from 3px to 5px, creating a bolder, more confident flanking element. Fewer elements means each carries more visual weight. The thicker bars register more clearly at small sizes -- visible even at 24px where the thin 3px bars from 1A become nearly invisible. The overall composition feels more decisive. <strong>Trade-off:</strong> Slightly less delicate than 1A; more robust at small sizes. <strong>Best for:</strong> Profile pictures, social media avatars, favicon-adjacent uses where every pixel counts.
+  </div>
+</div>
+
+<!-- ===== 1D — Sem Linha Inferior ===== -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">1D</span>
+    <span class="proposal-name">Sem Linha Inferior</span>
+    <span class="proposal-desc">Removed accent line for maximum minimalism</span>
+  </div>
+  <div class="preview-row">
+    <div class="preview-cell preview-dark">
+      <span class="preview-label">Dark</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+      </svg>
+    </div>
+    <div class="preview-cell preview-light">
+      <span class="preview-label">Light</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+      </svg>
+    </div>
+  </div>
+  <div class="size-strip">
+    <div class="size-item"><span>24px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="24" height="10"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>48px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="48" height="20"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>96px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="96" height="39"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text></svg></div>
+    <div class="size-item"><span>192px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="192" height="78"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text></svg></div>
+  </div>
+  <div class="rationale">
+    <strong>Concept:</strong> Identical to 1A but with the thin accent line removed. The composition ends with EVENTOS text, and the teal bars above are the only colored elements. This creates a cleaner vertical rhythm: bars - letters - text. The viewBox is slightly tighter (130 vs 140) since there is no accent line to accommodate. <strong>Trade-off:</strong> The accent line in 1A provides a visual "baseline" that grounds the composition; removing it makes the mark feel more open and airy, but less "finished." <strong>Best for:</strong> Contexts where the logo appears alongside other elements (cards, letterheads) and the accent line would compete with existing dividers.
+  </div>
+</div>
+
+<!-- ===== 1E — Com Ponto Separador ===== -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">1E</span>
+    <span class="proposal-name">Com Ponto Separador</span>
+    <span class="proposal-desc">Teal dot between G and J as brand element</span>
+  </div>
+  <div class="preview-row">
+    <div class="preview-cell preview-dark">
+      <span class="preview-label">Dark</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="138" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text>
+        <circle cx="162" cy="55" r="3.5" fill="#2EB8A6"/>
+        <text x="186" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" fill="currentColor">J</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+      </svg>
+    </div>
+    <div class="preview-cell preview-light">
+      <span class="preview-label">Light</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="138" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text>
+        <circle cx="162" cy="55" r="3.5" fill="#2EB8A6"/>
+        <text x="186" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" fill="currentColor">J</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+      </svg>
+    </div>
+  </div>
+  <div class="size-strip">
+    <div class="size-item"><span>24px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="24" height="10"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="138" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><circle cx="162" cy="55" r="3.5" fill="#2EB8A6"/><text x="186" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>48px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="48" height="20"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="138" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><circle cx="162" cy="55" r="3.5" fill="#2EB8A6"/><text x="186" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/></svg></div>
+    <div class="size-item"><span>96px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="96" height="39"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="138" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><circle cx="162" cy="55" r="3.5" fill="#2EB8A6"/><text x="186" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text></svg></div>
+    <div class="size-item"><span>192px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="192" height="78"><rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="138" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">G</text><circle cx="162" cy="55" r="3.5" fill="#2EB8A6"/><text x="186" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" fill="currentColor">J</text><rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/><rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/><text x="160" y="98" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text></svg></div>
+  </div>
+  <div class="rationale">
+    <strong>Concept:</strong> A teal dot (3.5px radius) is placed between the G and J, reading as "G . J" -- a visual interpunct that becomes a brand element. The dot sits at the vertical center of the cap-height (y=55), creating a bridge between the two initials. No accent line below, so the dot is the only "extra" element beyond bars and letters. The dot echoes the round-capped bars, maintaining the geometric language. At small sizes, the dot reads as a period-like separator; at large sizes, it becomes a distinctive brand detail. <strong>Best for:</strong> Creating a unique punctuation mark that can be reused across the brand (e.g., "G.J" in text, the dot as a standalone favicon mark).
+  </div>
+</div>
+
+<!-- ===== 1F — Layout Compacto ===== -->
+<div class="proposal">
+  <div class="proposal-header">
+    <span class="proposal-number">1F</span>
+    <span class="proposal-name">Layout Compacto (Stacked)</span>
+    <span class="proposal-desc">Vertical layout -- bars on top like a crown</span>
+  </div>
+  <div class="preview-row">
+    <div class="preview-cell preview-dark">
+      <span class="preview-label">Dark</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180">
+        <rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="80" y="90" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text>
+        <text x="80" y="118" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="300" letter-spacing="8" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="40" y1="130" x2="120" y2="130" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="preview-cell preview-light">
+      <span class="preview-label">Light</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180">
+        <rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="80" y="90" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text>
+        <text x="80" y="118" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="12" font-weight="300" letter-spacing="8" fill="currentColor" opacity="0.5">EVENTOS</text>
+        <line x1="40" y1="130" x2="120" y2="130" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="size-strip">
+    <div class="size-item"><span>24px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="21" height="24"><rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/><rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><text x="80" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text></svg></div>
+    <div class="size-item"><span>48px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="43" height="48"><rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/><rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><text x="80" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text></svg></div>
+    <div class="size-item"><span>96px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="85" height="96"><rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/><rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><text x="80" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text><text x="80" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="300" letter-spacing="8" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="40" y1="130" x2="120" y2="130" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+    <div class="size-item"><span>192px</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="171" height="192"><rect x="52" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="46" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><rect x="38" y="40" width="50" height="3" rx="1.5" fill="#2EB8A6"/><rect x="72" y="20" width="22" height="3" rx="1.5" fill="#2EB8A6"/><rect x="78" y="30" width="34" height="3" rx="1.5" fill="#2EB8A6"/><text x="80" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="52" font-weight="600" letter-spacing="6" fill="currentColor">GJ</text><text x="80" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="300" letter-spacing="8" fill="currentColor" opacity="0.5">EVENTOS</text><line x1="40" y1="130" x2="120" y2="130" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/></svg></div>
+  </div>
+  <div class="rationale">
+    <strong>Concept:</strong> A vertical/stacked layout where the teal bars sit above the GJ letterforms like an architectural canopy or crown element. The bars fan outward in a V-formation: two shorter bars at top (22px), two medium bars in the middle (34px), and one wide bar at the base (50px). This creates a distinctive top-heavy silhouette that works well in square or vertical containers. The viewBox is 160x180 (nearly square) rather than the wide 320x140 of variations 1A-1E. <strong>Trade-off:</strong> Does not work as a horizontal logo (e.g., in a navigation bar). Requires a separate horizontal lockup for those contexts. <strong>Best for:</strong> Profile pictures, Instagram avatar, favicon, watermarks, app icons -- any square or vertical format.
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  GJ Eventos -- Refinamento da Variacao 1 -- <span class="teal">#2EB8A6</span> -- Abril 2026
+</div>
+
+</body>
+</html>

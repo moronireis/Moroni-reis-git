@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH + Leilaine — Painel de Execução</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#070b16;--bg2:#0d1225;--bg3:#131a30;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#e8ecf2;--text2:#7e8a9e;--text3:#556;--gold:#f0b442;--gold-d:rgba(240,180,66,0.10);--blue:#4a9eff;--green:#34d399;--red:#f87171;--orange:#fb923c;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;}
+a{color:var(--gold);text-decoration:none;}a:hover{text-decoration:underline;}
+.hero{text-align:center;padding:56px 24px 40px;border-bottom:1px solid var(--border);}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);color:var(--gold);letter-spacing:0.06em;margin-bottom:8px;}
+.hero p{font-size:0.88rem;color:var(--text2);max-width:700px;margin:0 auto 12px;}
+.hero .date{font-size:0.7rem;color:var(--text3);margin-bottom:14px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.76rem;color:var(--text2);border:1px solid var(--border);padding:5px 14px;border-radius:6px;transition:all 0.2s;}
+.back-link:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+.nav{position:sticky;top:0;z-index:100;background:rgba(7,11,22,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav::-webkit-scrollbar{display:none;}
+.nav a{flex-shrink:0;font-size:0.68rem;font-weight:500;color:var(--text2);padding:5px 12px;border:1px solid var(--border);border-radius:6px;transition:all 0.2s;white-space:nowrap;}
+.nav a:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+section{padding:48px 0;}section+section{border-top:1px solid var(--border);}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--gold);margin-bottom:6px;}
+.ssub{font-size:0.8rem;color:var(--text2);margin-bottom:28px;max-width:640px;}
+.pill{display:inline-block;font-size:0.56rem;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:4px;letter-spacing:0.04em;}
+.p-znith{background:rgba(74,158,255,0.1);color:var(--blue);border:1px solid rgba(74,158,255,0.2);}
+.p-lei{background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.2);}
+.p-moroni{background:var(--gold-d);color:var(--gold);border:1px solid rgba(240,180,66,0.2);}
+.p-both{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.p-urgent{background:rgba(248,113,113,0.1);color:var(--red);border:1px solid rgba(248,113,113,0.2);}
+.p-week{background:rgba(251,146,60,0.1);color:var(--orange);border:1px solid rgba(251,146,60,0.2);}
+.insight{background:var(--gold-d);border:1px solid rgba(240,180,66,0.15);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:0.78rem;color:var(--gold);line-height:1.5;}
+.insight strong{color:#fff;}
+.alert{background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.12);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:0.78rem;color:var(--red);line-height:1.5;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;}
+table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:0.76rem;}
+th{text-align:left;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:8px 12px;border-bottom:1px solid rgba(240,180,66,0.15);}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;}
+td:first-child{color:var(--text);font-weight:500;}
+tr:hover td{background:rgba(255,255,255,0.015);}
+
+/* ── ENTITY CARDS ── */
+.entity{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;border-top:3px solid;}
+.entity h3{font-size:1rem;font-weight:700;margin-bottom:4px;}
+.entity .role{font-size:0.72rem;font-weight:600;margin-bottom:10px;}
+.entity p{font-size:0.78rem;color:var(--text2);line-height:1.5;}
+.entity ul{padding-left:16px;margin-top:8px;}
+.entity li{font-size:0.76rem;color:var(--text2);margin-bottom:4px;}
+.e-znith{border-color:var(--blue);}
+.e-znith .role{color:var(--blue);}
+.e-lei{border-color:var(--purple);}
+.e-lei .role{color:var(--purple);}
+
+/* ── FUNNEL FLOW ── */
+.flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:8px 0 16px;-webkit-overflow-scrolling:touch;}
+.flow::-webkit-scrollbar{height:4px;}
+.flow::-webkit-scrollbar-thumb{background:rgba(240,180,66,0.2);border-radius:2px;}
+.fstep{flex-shrink:0;width:200px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;position:relative;display:flex;flex-direction:column;}
+.fstep::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:1.2rem;font-weight:700;z-index:1;}
+.fstep:last-child::after{display:none;}
+.fstep .fnum{font-size:0.55rem;font-weight:700;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;}
+.fstep h4{font-size:0.82rem;font-weight:700;margin-bottom:4px;line-height:1.2;}
+.fstep p{font-size:0.7rem;color:var(--text2);line-height:1.4;flex:1;}
+.fstep.active{border-color:var(--gold);background:rgba(240,180,66,0.03);}
+
+/* ── TASK CARDS ── */
+.task{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;border-left:3px solid var(--border);transition:border-color 0.2s;}
+.task:hover{border-color:var(--border2);}
+.task h4{font-size:0.84rem;font-weight:700;margin-bottom:4px;}
+.task p{font-size:0.74rem;color:var(--text2);line-height:1.5;}
+.task .task-meta{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;}
+.t-moroni{border-left-color:var(--gold);}
+.t-lei{border-left-color:var(--purple);}
+.t-both{border-left-color:var(--green);}
+.t-urgent{border-left-color:var(--red);}
+
+/* ── PRODUCT LADDER ── */
+.ladder{display:flex;flex-direction:column;gap:0;max-width:600px;}
+.rung{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.rung .rname{font-size:0.84rem;font-weight:600;}
+.rung .rdesc{font-size:0.7rem;color:var(--text2);}
+.rung .rprice{font-size:0.84rem;color:var(--gold);font-weight:700;white-space:nowrap;}
+.rarrow{text-align:center;color:var(--gold);font-size:0.8rem;padding:4px 0;}
+
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:24px;}
+.tl::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(240,180,66,0.1));}
+.tl-item{position:relative;margin-bottom:16px;}
+.tl-item::before{content:'';position:absolute;left:-20px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);}
+.tl-item h4{font-size:0.82rem;font-weight:700;margin-bottom:2px;}
+.tl-item p{font-size:0.72rem;color:var(--text2);}
+.tl-item .tl-tasks{list-style:none;padding:0;margin-top:6px;}
+.tl-item .tl-tasks li{font-size:0.72rem;color:var(--text2);padding:3px 0 3px 16px;position:relative;}
+.tl-item .tl-tasks li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:0.4;}
+
+.quote{background:var(--bg3);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;margin:12px 0;font-size:0.8rem;font-style:italic;color:var(--text);line-height:1.5;}
+
+.footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border);font-size:0.66rem;color:var(--text3);}
+@media(max-width:768px){section{padding:36px 0;}.grid2{grid-template-columns:1fr;}.fstep{width:170px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Painel de Execução</h1>
+  <p>Estrutura de empresa, funis e tarefas baseados no alinhamento da call de 18/mai. Duas entidades, dois funis, foco em aquisição.</p>
+  <div class="date">Call: ZNITH - MORONI [MKT] — 18 Mai 2026 — 76 min</div>
+  <a href="index.html" class="back-link">&larr; Voltar ao Mapa de Funis</a>
+</div>
+
+<nav class="nav">
+  <a href="#decisoes">Decisões da Call</a>
+  <a href="#estrutura">Estrutura Leilaine vs ZNITH</a>
+  <a href="#funil-znith">Funil ZNITH</a>
+  <a href="#funil-lei">Funil Leilaine</a>
+  <a href="#produtos">Esteira de Produtos</a>
+  <a href="#tarefas">Tarefas Moroni</a>
+  <a href="#tarefas-lei">Tarefas Leilaine</a>
+  <a href="#timeline">Timeline</a>
+</nav>
+
+<div class="container">
+
+<!-- ══════ DECISÕES ══════ -->
+<section id="decisoes">
+  <h2 class="stitle">Decisões Alinhadas na Call</h2>
+  <p class="ssub">Resumo das decisões estratégicas tomadas. Servem como referência para toda a execução.</p>
+
+  <div class="insight"><strong>Foco 80-90% em aquisição.</strong> Produto se refina conforme os clientes chegam. Não ter apego pelo produto nem pela página — ter apego pelo público. Primeiro a gente pensa no cliente. Quando vê que um funilzinho está dando bom, aí melhora o produto.</div>
+
+  <table>
+    <thead><tr><th>#</th><th>Decisão</th><th>Detalhe</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Duas entidades separadas</strong></td><td>ZNITH = empresa (consultoria, implementação, diagnóstico). Leilaine = marca pessoal (educação, autoridade, palestras). Leilaine alimenta ZNITH.</td></tr>
+      <tr><td>2</td><td><strong>Nicho: construção civil</strong></td><td>Vidraçarias, serralherias, construtoras, esquadrias de alumínio. ~100K empresas no Brasil. Ninguém fala direto com esse setor sobre estruturação comercial.</td></tr>
+      <tr><td>3</td><td><strong>Foco em aquisição, não em produto</strong></td><td>80-90% da energia vai para trazer clientes. Produto se refina com feedback real. Low-tickets são descartáveis — só servem para ter lista e custear tráfego.</td></tr>
+      <tr><td>4</td><td><strong>Volume de criativos > qualidade</strong></td><td>10-15 vídeos na fase inicial. Meta distribui e escolhe o vencedor. Formato descontraído, não superprodução.</td></tr>
+      <tr><td>5</td><td><strong>Qualificação no formulário</strong></td><td>Lead só vira MQL se faturamento > R$10K/mês. Formulário Meta com N8N → Telegram. Já existe e funciona.</td></tr>
+      <tr><td>6</td><td><strong>Diagnóstico gratuito 1:1</strong></td><td>Leilaine faz a sessão estratégica gratuita (45min). Venda acontece ali: consultoria ou implementação.</td></tr>
+      <tr><td>7</td><td><strong>Palestras como canal rápido</strong></td><td>R$5-7K por palestra. Gera autoridade + receita imediata + leads. Leilaine já tem 2 confirmadas. Prioridade alta.</td></tr>
+      <tr><td>8</td><td><strong>Líderes Leões = nurture</strong></td><td>Grupo existente para quem não está pronto para comprar. Maturação com educação. Moroni pode dar treinamento lá dentro.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="alert"><strong>Contexto financeiro:</strong> Leilaine está em dificuldade. Aluguel atrasado. Consultorias atuais antecipadas no cartão. Precisa de resultado rápido. As palestras (R$5-7K) e o fechamento do orçamento de R$30K pendente são prioridade imediata de caixa.</div>
+</section>
+
+<!-- ══════ ESTRUTURA ══════ -->
+<section id="estrutura">
+  <h2 class="stitle">Estrutura: Leilaine vs. ZNITH</h2>
+  <p class="ssub">Duas entidades com funções distintas. Leilaine gera autoridade e lista. ZNITH converte em consultoria e implementação.</p>
+
+  <div class="grid2">
+    <div class="entity e-znith">
+      <h3>ZNITH</h3>
+      <div class="role">EMPRESA — AQUISIÇÃO + CONVERSÃO</div>
+      <p>A empresa que vende consultoria e implementação. Foco em resultado de negócio para o cliente. Comunicação profissional, direcionada a tomadores de decisão.</p>
+      <ul>
+        <li><strong>Função:</strong> Diagnóstico → Consultoria → Implementação</li>
+        <li><strong>Funil:</strong> Ads → LP → Formulário qualificação → Diagnóstico 1:1 → Venda</li>
+        <li><strong>Público:</strong> CEO/dono de vidraçaria, serralheria, construtora (R$10K+/mês)</li>
+        <li><strong>Produtos:</strong> Consultoria (R$35K avg), Implementação IA/OS (R$50-150K)</li>
+        <li><strong>Tom:</strong> Consultivo, premium, direto, linguagem do setor</li>
+        <li><strong>Canal primário:</strong> Meta Ads → Landing Page → Formulário</li>
+      </ul>
+    </div>
+    <div class="entity e-lei">
+      <h3>Leilaine</h3>
+      <div class="role">MARCA PESSOAL — EDUCAÇÃO + AUTORIDADE</div>
+      <p>A mentora que ensina empresários de construção civil. Gera autoridade, lista e consciência. Alimenta a ZNITH com leads aquecidos.</p>
+      <ul>
+        <li><strong>Função:</strong> Educar → Aquecer → Direcionar para ZNITH</li>
+        <li><strong>Funil:</strong> Conteúdo/Palestras → Educacional → Grupo → Diagnóstico ZNITH</li>
+        <li><strong>Público:</strong> Mesmo ICP, mas no estágio anterior (ainda não sabe que precisa)</li>
+        <li><strong>Produtos:</strong> ZNITH AI Day, Workshops, Mentorias em grupo, Palestras (R$5-7K)</li>
+        <li><strong>Tom:</strong> Pessoal, acessível, experiência de quem já viveu</li>
+        <li><strong>Canal primário:</strong> Orgânico (YouTube, Instagram) + Palestras + Eventos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote">"A Leilaine tem que ser aquisição para ZNITH. Você está mentorando, conversando com vários empresários. Quando eles querem que faça a implementação — é a ZNITH que atende."</div>
+
+  <div class="insight"><strong>Retroalimentação:</strong> Leilaine gera autoridade → atrai leads → ZNITH converte. ZNITH gera resultados → vira case → Leilaine usa como prova social. Um retroalimenta o outro. Nenhum é separado.</div>
+</section>
+
+<!-- ══════ FUNIL ZNITH ══════ -->
+<section id="funil-znith">
+  <h2 class="stitle">Funil ZNITH — Aquisição de Clientes</h2>
+  <p class="ssub">O funil que traz dinheiro. Ads → Página → Formulário qualificação → Diagnóstico 1:1 → Venda.</p>
+
+  <div class="flow">
+    <div class="fstep active">
+      <div class="fnum">ETAPA 1</div>
+      <h4>Meta Ads (Criativos)</h4>
+      <p>10-15 vídeos. Formato descontraído. Leilaine falando direto para câmera. Dor específica do ICP: orçamento perdido, dono-gargalo, falta de processo.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 2</div>
+      <h4>Landing Page</h4>
+      <p>Página focada em uma ação: preencher o formulário. Mobile-first. Sem menu, sem distração. Linguagem do setor (orçamento, obra, follow-up).</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 3</div>
+      <h4>Formulário de Aplicação</h4>
+      <p>Qualificação: Nome, WhatsApp, faturamento (>R$10K = MQL), cargo, maior dor, experiência com IA, urgência. N8N → Telegram da Leilaine.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 4</div>
+      <h4>Diagnóstico 1:1</h4>
+      <p>Leilaine conduz 45min de diagnóstico gratuito. Identifica gargalos. Apresenta consultoria ou implementação como solução. É aqui que a venda acontece.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 5</div>
+      <h4>Consultoria / Implementação</h4>
+      <p>Consultoria (R$25-65K, 3 meses). Ou implementação IA/OS (R$50-150K). Upsell natural na semana 8-12.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:20px 0 12px;color:var(--text);">Detalhamento por Etapa</h3>
+
+  <div class="grid2">
+    <div class="task t-moroni">
+      <h4>Criativos (Moroni faz roteiro, Leilaine grava)</h4>
+      <p>Volume > qualidade. 10-15 vídeos iniciais. Leilaine fala na frente da câmera, formato descontraído. Meta escolhe o vencedor. Renovar criativos constantemente (5 novos a cada ciclo).</p>
+      <div class="task-meta"><span class="pill p-moroni">Moroni: roteiro</span><span class="pill p-lei">Leilaine: gravação</span></div>
+    </div>
+    <div class="task t-moroni">
+      <h4>Landing Page (Moroni constrói)</h4>
+      <p>Comunicação nichada para construção civil. Sem jargão de marketing. Linguagem: "orçamento", "obra", "follow-up", "vidraçaria". CTA único: preencher formulário.</p>
+      <div class="task-meta"><span class="pill p-moroni">Moroni</span><span class="pill p-urgent">Prioridade alta</span></div>
+    </div>
+    <div class="task t-both">
+      <h4>Formulário de Qualificação (já existe)</h4>
+      <p>Meta Lead Form com N8N → Telegram. Campos: nome, telefone, email, faturamento (>R$10K = MQL), cargo, maior dor, experiência IA, urgência. Pixel envia dados de volta para Meta.</p>
+      <div class="task-meta"><span class="pill p-both">Já implementado</span><span class="pill p-moroni">Moroni: refinar</span></div>
+    </div>
+    <div class="task t-lei">
+      <h4>Diagnóstico 1:1 (Leilaine conduz)</h4>
+      <p>45 minutos. Gratuito. Leilaine identifica gargalos ao vivo. Apresenta consultoria como próximo passo. Não é call de venda — é sessão de valor que converte.</p>
+      <div class="task-meta"><span class="pill p-lei">Leilaine</span></div>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Regra de ouro do funil:</strong> A gente não tem apego pelo produto nem pela página. A gente tem apego pelo público. Testa vários criativos, vários low-tickets, várias abordagens. O que performar, escala. O que não performar, descarta.</div>
+</section>
+
+<!-- ══════ FUNIL LEILAINE ══════ -->
+<section id="funil-lei">
+  <h2 class="stitle">Funil Leilaine — Educação + Palestras</h2>
+  <p class="ssub">Dois sub-funis: educacional (aquecimento de leads) e palestras (autoridade + receita rápida).</p>
+
+  <h3 style="font-size:0.88rem;margin:0 0 14px;color:var(--text);">Sub-Funil A: Educacional (Aquecimento)</h3>
+  <div class="flow">
+    <div class="fstep">
+      <div class="fnum">ETAPA 1</div>
+      <h4>Conteúdo Orgânico</h4>
+      <p>YouTube, Instagram, Reels. Temas: vendas com IA, gestão comercial para construção civil. Formato descontraído. Gravar durante palestras e eventos.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 2</div>
+      <h4>ZNITH AI Day / Workshops</h4>
+      <p>Eventos educacionais gratuitos ou low-ticket. Ensinar empresários sobre IA e processo comercial. Gerar lista e relacionamento.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 3</div>
+      <h4>Líderes Leões (Grupo)</h4>
+      <p>Programa de mentoria em grupo. Para quem não está pronto para diagnóstico individual. Maturação com educação até estarem prontos.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 4</div>
+      <h4>→ Funil ZNITH</h4>
+      <p>Quando maduro, o lead vai para diagnóstico 1:1 da ZNITH. A Leilaine mentora direciona para a ZNITH empresa.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:24px 0 14px;color:var(--text);">Sub-Funil B: Palestras (Autoridade + Receita Rápida)</h3>
+  <div class="flow">
+    <div class="fstep active">
+      <div class="fnum">ETAPA 1</div>
+      <h4>Mídia Kit + Outreach</h4>
+      <p>Mídia Kit profissional de palestrante. Email template para empresas de palestra. Lista de agências (Ó Quem Fala, etc). Leilaine + prima fazem contato.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 2</div>
+      <h4>Criativos Ads (Palestras)</h4>
+      <p>15 criativos no Meta sobre treinamento in-company: "Vendas com IA", "IA para Empresários". Puxa leads de RH e T&D de empresas.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 3</div>
+      <h4>Palestra (R$5-7K)</h4>
+      <p>Leilaine palestra sobre vendas com IA. Grava conteúdo durante. Pega depoimentos. Constrói autoridade.</p>
+    </div>
+    <div class="fstep">
+      <div class="fnum">ETAPA 4</div>
+      <h4>Conteúdo + Leads</h4>
+      <p>Palestra vira criativo, vira Reels, vira prova social. Participantes viram leads para ZNITH. Retroalimentação completa.</p>
+    </div>
+  </div>
+
+  <div class="alert"><strong>Receita rápida:</strong> Palestras são a maneira mais rápida de gerar caixa agora. R$5-7K por palestra. 2 já confirmadas. Prioridade: Mídia Kit + outreach para fechar mais 3-4 este mês.</div>
+</section>
+
+<!-- ══════ ESTEIRA DE PRODUTOS ══════ -->
+<section id="produtos">
+  <h2 class="stitle">Esteira de Produtos</h2>
+  <p class="ssub">Do mais barato ao mais caro. Low-tickets são descartáveis — só servem para ter lista e custear tráfego.</p>
+
+  <div class="ladder">
+    <div class="rung" style="border-left:3px solid var(--gold);background:rgba(240,180,66,0.04);">
+      <div><div class="rname">Implementação ZNITH.AI OS</div><div class="rdesc">ZNITH implanta arquitetura completa. Produto backend.</div></div>
+      <div class="rprice">R$50-150K</div>
+    </div>
+    <div class="rarrow">↑</div>
+    <div class="rung" style="border-left:3px solid var(--blue);">
+      <div><div class="rname">Consultoria Expansão</div><div class="rdesc">3 meses. Diagnóstico + arquitetura + roadmap. Produto principal.</div></div>
+      <div class="rprice">R$25-65K</div>
+    </div>
+    <div class="rarrow">↑</div>
+    <div class="rung" style="border-left:3px solid var(--green);">
+      <div><div class="rname">Diagnóstico 1:1 (Leitura Estratégica)</div><div class="rdesc">45min gratuito com Leilaine. É aqui que a venda acontece.</div></div>
+      <div class="rprice">Gratuito</div>
+    </div>
+    <div class="rarrow">↑</div>
+    <div class="rung" style="border-left:3px solid var(--purple);">
+      <div><div class="rname">Mentoria Grupo / Líderes Leões</div><div class="rdesc">Leilaine marca pessoal. Educação e aquecimento para quem não está pronto.</div></div>
+      <div class="rprice">A definir</div>
+    </div>
+    <div class="rarrow">↑</div>
+    <div class="rung" style="border-left:3px solid var(--orange);">
+      <div><div class="rname">Low-Tickets (Baits)</div><div class="rdesc">Descartáveis. Só para ter lista e custear tráfego. Testar 3, escalar 1.</div></div>
+      <div class="rprice">R$47-197</div>
+    </div>
+    <div class="rarrow">↑</div>
+    <div class="rung" style="border-left:3px solid var(--text2);">
+      <div><div class="rname">Raio-X Comercial (Diagnóstico Gratuito)</div><div class="rdesc">Quiz online. 15 perguntas. PDF com gargalos. Isca principal.</div></div>
+      <div class="rprice">Gratuito</div>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Futuro (quando escalar):</strong> Leilaine ensina outros consultores a entregarem o produto ZNITH. Eles pagam para aprender e são usados para entregar. Leilaine treina → eles entregam → ZNITH escala sem depender da Leilaine em cada cliente.</div>
+</section>
+
+<!-- ══════ TAREFAS MORONI ══════ -->
+<section id="tarefas">
+  <h2 class="stitle">Tarefas — Moroni</h2>
+  <p class="ssub">Entregas que Moroni precisa fazer. Organizadas por prioridade.</p>
+
+  <h3 style="font-size:0.85rem;margin:0 0 12px;color:var(--red);">Urgente (esta semana)</h3>
+
+  <div class="task t-urgent">
+    <h4>1. Roteiros de criativos para Leilaine gravar</h4>
+    <p>10-15 roteiros de vídeo curto (15-60s). Formato descontraído. Hooks específicos para construção civil. Leilaine grava durante a semana. Entregar até terça.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <div class="task t-urgent">
+    <h4>2. Formulários de pesquisa (2 formulários)</h4>
+    <p>Form 1: Feedback de produto — para os 4 clientes atuais de consultoria avaliarem a entrega. Form 2: Dores e necessidades — refinar ICP com dados reais. Leilaine distribui para os clientes.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-moroni">Moroni cria</span><span class="pill p-lei">Leilaine distribui</span></div>
+  </div>
+
+  <div class="task t-urgent">
+    <h4>3. Mídia Kit para palestras</h4>
+    <p>Documento profissional: quem é Leilaine, expertise, temas que palestra, fotos, depoimentos, resultados. Leilaine envia fotos, vídeos de palestras e material de autoridade do Drive compartilhado.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-moroni">Moroni</span><span class="pill p-lei">Leilaine: assets</span></div>
+  </div>
+
+  <div class="task t-urgent">
+    <h4>4. Template de email outreach para empresas de palestra</h4>
+    <p>Email modelo para Leilaine (ou prima) enviar para agências de palestra e empresas de T&D. Leilaine envia → prima liga. Modelo: apresentação + Mídia Kit + CTA para reunião.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:24px 0 12px;color:var(--orange);">Semana 1-2</h3>
+
+  <div class="task t-moroni">
+    <h4>5. Landing Page ZNITH (funil de aquisição)</h4>
+    <p>Página de captura com formulário de qualificação. Comunicação nichada: construção civil (vidraçarias, serralherias, construtoras). Mobile-first. Integrada com Meta Pixel.</p>
+    <div class="task-meta"><span class="pill p-week">Semana 1-2</span><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <div class="task t-moroni">
+    <h4>6. Configurar Meta Ads (Campanha ZNITH)</h4>
+    <p>Campanha de conversão otimizada para Lead. 3 adsets (interesses construção civil, vidraçaria+CRM, broad). Criativos que Leilaine gravou. Tudo PAUSED até aprovação.</p>
+    <div class="task-meta"><span class="pill p-week">Semana 2</span><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <div class="task t-moroni">
+    <h4>7. Campanha palestras (perfil pessoal Leilaine)</h4>
+    <p>15 criativos sobre treinamento in-company / vendas com IA. Rodar no perfil pessoal da Leilaine, não na ZNITH. Objetivo: puxar empresas que contratam palestrante.</p>
+    <div class="task-meta"><span class="pill p-week">Semana 2</span><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:24px 0 12px;color:var(--text2);">Semana 3-4</h3>
+
+  <div class="task t-moroni">
+    <h4>8. Refinar formulário + integração Pixel</h4>
+    <p>Garantir que o formulário de qualificação envia eventos de volta pro Meta (Lead, CompleteRegistration). Pixel aprende quem é MQL qualificado.</p>
+    <div class="task-meta"><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <div class="task t-moroni">
+    <h4>9. Primeiro low-ticket (teste)</h4>
+    <p>Criar 1 produto low-ticket rápido (Kit Orçamento R$67 ou Masterclass R$147). Checkout simples. É descartável — só para testar se o público compra. Se performar, escala. Se não, descarta.</p>
+    <div class="task-meta"><span class="pill p-moroni">Moroni</span></div>
+  </div>
+
+  <div class="task t-both">
+    <h4>10. Treinamento no grupo Líderes Leões</h4>
+    <p>Moroni dá um treinamento de marketing para os empresários do grupo. Gera valor, constrói relacionamento e abre possibilidade de clientes de marketing via Leilaine.</p>
+    <div class="task-meta"><span class="pill p-both">Moroni + Leilaine</span></div>
+  </div>
+</section>
+
+<!-- ══════ TAREFAS LEILAINE ══════ -->
+<section id="tarefas-lei">
+  <h2 class="stitle">Tarefas — Leilaine</h2>
+  <p class="ssub">O que Leilaine precisa fazer para o funil rodar.</p>
+
+  <h3 style="font-size:0.85rem;margin:0 0 12px;color:var(--red);">Urgente (esta semana)</h3>
+
+  <div class="task t-lei">
+    <h4>1. Gravar 10-15 vídeos (criativos)</h4>
+    <p>Formato descontraído. Na frente da câmera. Seguir os roteiros que Moroni vai enviar. Não precisa de superprodução — celular está ótimo. Volume > qualidade. Pode gravar durante eventos, no dia a dia, etc.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>2. Enviar assets para Moroni</h4>
+    <p>Liberar acesso ao Drive compartilhado. Enviar: fotos profissionais, vídeos de palestras, vídeos de treinamento, material de autoridade. Moroni precisa disso para o Mídia Kit.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>3. Enviar nomes de consultores do setor</h4>
+    <p>Leilaine mencionou que conhece pessoas que fazem consultoria para vidraceiros. Enviar nomes para Moroni analisar o que fazem no digital.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>4. Fechar orçamento de R$30K pendente</h4>
+    <p>Cliente está postergando. Prioridade de caixa. Fazer follow-up ativo.</p>
+    <div class="task-meta"><span class="pill p-urgent">Urgente — Caixa</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:24px 0 12px;color:var(--orange);">Semana 1-2</h3>
+
+  <div class="task t-lei">
+    <h4>5. Distribuir formulários de pesquisa para clientes</h4>
+    <p>Moroni envia 2 forms. Leilaine distribui para os 4 clientes atuais. Coleta feedback + dores + depoimentos.</p>
+    <div class="task-meta"><span class="pill p-week">Semana 1</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>6. Coletar depoimentos dos 4 clientes</h4>
+    <p>Vídeo curto (celular) dos clientes falando sobre o resultado. Serve para criativo, página e Mídia Kit. Pergunta simples: "O que mudou na sua empresa desde que começamos?"</p>
+    <div class="task-meta"><span class="pill p-week">Semana 1-2</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>7. Reunião com Ó Quem Fala (terça)</h4>
+    <p>Reunião com Paulo e sócios sobre parceria de palestras. Levar apresentação já feita + Mídia Kit quando pronto.</p>
+    <div class="task-meta"><span class="pill p-week">Terça</span><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>8. Outreach para empresas de palestra</h4>
+    <p>Com o Mídia Kit pronto + template de email, Leilaine (ou prima) envia para lista de agências de palestra. Prima liga no dia seguinte. Meta: 3-4 palestras fechadas este mês.</p>
+    <div class="task-meta"><span class="pill p-week">Semana 2</span><span class="pill p-lei">Leilaine + prima</span></div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:24px 0 12px;color:var(--text2);">Ongoing</h3>
+
+  <div class="task t-lei">
+    <h4>9. Gravar conteúdo orgânico</h4>
+    <p>YouTube, Instagram, Reels. Retomar postagens (parou há 2 semanas). Pode ser durante eventos, palestras, dia a dia. Tudo vira conteúdo. Formato descontraído.</p>
+    <div class="task-meta"><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>10. ZNITH AI Day (4 de junho)</h4>
+    <p>Próximo evento educacional. Preparar conteúdo e divulgação. Gravar durante o evento para criativos.</p>
+    <div class="task-meta"><span class="pill p-lei">Leilaine</span></div>
+  </div>
+
+  <div class="task t-lei">
+    <h4>11. Treinamento gratuito na igreja (quinzenal)</h4>
+    <p>Sábados, 1-1.5h. Ensinar IA para a comunidade. Gerar conteúdo + autoridade + goodwill.</p>
+    <div class="task-meta"><span class="pill p-lei">Leilaine</span></div>
+  </div>
+</section>
+
+<!-- ══════ TIMELINE ══════ -->
+<section id="timeline">
+  <h2 class="stitle">Timeline de Execução</h2>
+  <p class="ssub">Cadência semanal. Segundas e terças = alinhamento Moroni + Leilaine. Semana = execução.</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <h4 style="color:var(--red);">Semana 1 (19-25 mai) — Fundação</h4>
+      <p>Prioridade: assets, pesquisa e receita rápida.</p>
+      <ul class="tl-tasks">
+        <li><span class="pill p-moroni">M</span> Entregar roteiros de 10-15 criativos</li>
+        <li><span class="pill p-moroni">M</span> Criar 2 formulários de pesquisa</li>
+        <li><span class="pill p-moroni">M</span> Construir Mídia Kit</li>
+        <li><span class="pill p-moroni">M</span> Template email outreach palestras</li>
+        <li><span class="pill p-lei">L</span> Gravar primeiros 10-15 vídeos</li>
+        <li><span class="pill p-lei">L</span> Enviar assets (Drive) para Moroni</li>
+        <li><span class="pill p-lei">L</span> Enviar nomes de consultores do setor</li>
+        <li><span class="pill p-lei">L</span> Distribuir pesquisa para 4 clientes</li>
+        <li><span class="pill p-lei">L</span> Reunião Ó Quem Fala (terça)</li>
+        <li><span class="pill p-lei">L</span> Follow-up orçamento R$30K</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <h4 style="color:var(--orange);">Semana 2 (26 mai - 1 jun) — Páginas + Ads</h4>
+      <p>Construir e lançar.</p>
+      <ul class="tl-tasks">
+        <li><span class="pill p-moroni">M</span> Landing page ZNITH no ar</li>
+        <li><span class="pill p-moroni">M</span> Campanhas Meta Ads configuradas (PAUSED)</li>
+        <li><span class="pill p-moroni">M</span> Campanha palestras (perfil Leilaine)</li>
+        <li><span class="pill p-lei">L</span> Outreach email para agências de palestra</li>
+        <li><span class="pill p-lei">L</span> Coletar depoimentos dos 4 clientes</li>
+        <li><span class="pill p-both">M+L</span> Revisão e aprovação das campanhas</li>
+        <li><span class="pill p-both">M+L</span> Ativar campanhas</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <h4>Semana 3 (2-8 jun) — Primeiros Dados</h4>
+      <p>Monitorar, ajustar, iterar.</p>
+      <ul class="tl-tasks">
+        <li><span class="pill p-moroni">M</span> Monitoramento diário de ads (kill/scale)</li>
+        <li><span class="pill p-moroni">M</span> Primeiro low-ticket criado e publicado</li>
+        <li><span class="pill p-lei">L</span> ZNITH AI Day (4 jun) — gravar tudo</li>
+        <li><span class="pill p-lei">L</span> Primeiros diagnósticos 1:1 de leads do ads</li>
+        <li><span class="pill p-both">M+L</span> Analisar resultados semana 1 de ads</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <h4>Semana 4 (9-15 jun) — Otimização</h4>
+      <p>Refinar com dados reais.</p>
+      <ul class="tl-tasks">
+        <li><span class="pill p-moroni">M</span> Novos criativos baseados no que performou</li>
+        <li><span class="pill p-moroni">M</span> Ajustar LP se taxa de cadastro < 25%</li>
+        <li><span class="pill p-both">M+L</span> Treinamento Moroni no Líderes Leões</li>
+        <li><span class="pill p-both">M+L</span> Review completo: o que funcionou, o que ajustar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Cadência semanal fixa:</strong> Segunda e terça = alinhamento Moroni + Leilaine (campanhas, revisão, decisões). Quarta a sexta = Leilaine executa (gravações, diagnósticos, prospecção). Moroni executa durante a semana (páginas, criativos, ads). Sábados = Leilaine faz treinamento na igreja (quinzenal).</div>
+</section>
+
+</div>
+
+<div class="footer">ZNITH + Leilaine — Painel de execução baseado na call de 18/mai/2026 &bull; Reis IA Agency</div>
+
+</body>
+</html>

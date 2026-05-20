@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--
+  PAPERLESS POST — Harvested Source Reconstruction
+  Source: https://www.paperlesspost.com/
+  Harvest date: 2026-05-01
+  Method: WebFetch (rendered HTML → markdown conversion, no raw DOM access)
+  Limitation: WebFetch converts HTML to markdown before returning content.
+  Raw class names, CSS custom properties, stylesheet URLs, and JS bundle URLs
+  were not accessible. This file reconstructs the DOM structure, content hierarchy,
+  and component patterns from exhaustive multi-page analysis across:
+    - / (homepage)
+    - /wedding
+    - /birthday
+    - /subscription
+    - /pricing
+    - /features
+    - /online-invitations
+    - /invitations
+    - /about
+    - /blog
+    - /design/wedding-invitations
+  See design-tokens.md, motion-config.md, observations.md for extracted analysis.
+  See stack-detected.md for technology fingerprinting findings.
+-->
+
+<!--
+  ============================================================
+  PAGE: https://www.paperlesspost.com/ (HOMEPAGE)
+  ============================================================
+-->
+
+<!-- HEAD RECONSTRUCTION (inferred from page behavior) -->
+<!--
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Online invitations for all the moments that matter">
+  <title>Online Invitations, Greeting Cards & Flyers | Paperless Post</title>
+  Tech stack signals: React/Next.js (client-side rendering, hydration patterns)
+  CDN: ppassets.com (primary asset CDN)
+  Image format: PNG with ?noindex=true optimization parameter
+  Sitemap: 16 sub-sitemaps (plp, card-pdp, flyer-pdp, landing, filter-plp, search-term-plp, blog, builder-lp + ES versions)
+-->
+
+<!-- NAVIGATION STRUCTURE -->
+<!--
+  <header>
+    <nav>
+      <a href="/" class="logo">Paperless Post</a>
+      [Search icon]
+      [User/account icon]
+      [Favorites/heart icon]
+      [Notification icon]
+
+      Primary nav items:
+      - Mother's Day cards
+      - Card invitations (mega menu)
+        - Summer parties
+        - Graduation
+        - Kids' birthday
+        - Adult birthday
+        - Wedding
+        - Baby
+        - Parties
+        - Business
+        - Make your own
+      - Flyer event pages (mega menu, same structure)
+      - Greeting cards
+        - Mother's Day
+        - Graduation
+        - Thank you cards
+        - Birthday cards
+        - Greeting cards
+        - Holiday cards
+        - Announcements
+      - Make your own
+      - For Professionals
+        - Browse by category
+        - Resources
+        - Features
+        - Pricing
+    </nav>
+  </header>
+-->
+
+<!-- HOMEPAGE HERO SECTION -->
+<!--
+  <section class="hero">
+    <h1>Online invitations for all the moments that matter</h1>
+    <div class="cta-group">
+      <a href="/cards/section/invitations" class="btn btn-primary">Get Started</a>
+      <a href="/invitations" class="btn btn-secondary">Browse Invitations</a>
+    </div>
+  </section>
+
+  Visual treatment: Full-width, white/off-white background.
+  Headline: Large bold sans-serif. Dark charcoal text.
+  No hero background image — content-first minimal approach.
+-->
+
+<!-- CATEGORY GRID (11 cards) -->
+<!--
+  <section class="category-grid">
+    <div class="category-card">
+      <a href="/graduation/invitations">
+        <div class="card-image">[Graduation invitation preview]</div>
+        <span class="card-label">Graduation</span>
+        <span class="card-cta">Browse</span>
+      </a>
+    </div>
+    ... (11 total: Graduation, Kids' birthday, Adult birthday, Mother's Day cards,
+         Summer parties, Baby shower, Business events, Wedding, Bridal shower,
+         Pool party, Get-togethers, Save the dates)
+  </section>
+-->
+
+<!-- FEATURE SECTION ("Where beautiful design meets effortless event management") -->
+<!--
+  <section class="features-3col">
+    <div class="feature-item">
+      [Icon] Expansive design collection
+    </div>
+    <div class="feature-item">
+      [Icon] Stress-free planning
+    </div>
+    <div class="feature-item">
+      [Icon] No ads, ever
+    </div>
+  </section>
+-->
+
+<!-- DESIGNER COLLECTIONS (horizontal scroll carousel) -->
+<!--
+  <section class="designer-carousel">
+    <h2>Shop by designer</h2>
+    [Scroll left/right affordances]
+    <div class="designer-item"><a href="/collections/oscar-de-la-renta">Oscar de la Renta</a></div>
+    <div class="designer-item"><a href="/collections/john-derian">John Derian</a></div>
+    <div class="designer-item"><a href="/collections/rifle-paper-co">Rifle Paper Co.</a></div>
+    <div class="designer-item"><a href="/collections/kelly-wearstler">Kelly Wearstler</a></div>
+    <div class="designer-item"><a href="/collections/monique-lhuillier">Monique Lhuillier</a></div>
+    <div class="designer-item"><a href="/collections/martha-stewart">Martha Stewart</a></div>
+    <div class="designer-item"><a href="/collections/liberty">Liberty</a></div>
+    <div class="designer-item"><a href="/collections/marimekko">Marimekko</a></div>
+  </section>
+-->
+
+<!-- FOOTER -->
+<!--
+  <footer>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/sitemap">Sitemap</a></li>
+        <li><a href="/return-policy">Return policy</a></li>
+        <li><a href="/unsubscribe">Unsubscribe</a></li>
+        <li><a href="/report-abuse">Report abuse</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li>About</li><li>Pricing</li><li>Promo codes</li>
+        <li>Personal design services</li><li>Party Shop</li><li>Careers</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Learn</h4>
+      <ul>
+        <li>Blog</li><li>Online invitations</li>
+        <li>Designer collections</li><li>Product features</li><li>Apps</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      [Instagram] [TikTok] [Pinterest] [Facebook] [YouTube] [X]
+      [Apple App Store] [Google Play Store]
+    </div>
+    <p>© 2026 Paperless Post ®</p>
+    <nav>Terms & Privacy | Privacy Snapshot | Cookie Policy | Your Privacy Choices | Accessibility Statement</nav>
+  </footer>
+-->
+
+<!--
+  ============================================================
+  PAGE: /invitations — INVITATION GALLERY (7,336 results)
+  ============================================================
+-->
+
+<!-- GALLERY FILTER SYSTEM -->
+<!--
+  <div class="filter-bar">
+    <button class="filter-trigger">[Filters icon]</button>
+
+    Filter panels:
+    - Color (20 color swatches)
+    - Photo count (No photos / 1 photo / 2 photos / 3+ photos)
+    - Theme (60+ options: Photo, Floral, Dinner party, Roaring 20s, Greenery,
+              Brunch, Drinks, Food, Confetti, Animals, BBQ, Sports and activities,
+              Neon and glow, Butterfly, Bows and ribbons, Tea party, Champagne,
+              Cake and sweets, Friendsmas, etc.)
+    - Style (9 options: Watercolor, Preppy, Boho, Elegant and formal,
+              Bold and typographic, Vintage and retro, Modern, Rustic, Romantic,
+              Hand-drawn, Simple and minimal)
+    - Season (Spring, Summer, Fall, Winter, Christmas)
+    - Designer (80+ designers: Oscar de la Renta, Rifle Paper Co., kate spade, ...)
+    - Venue (11: Garden, Backyard, Barn, City, Restaurant, Ballroom,
+              Vineyard, Historic home, Museum, Beach, Mountain)
+    - Price (Premium / Free)
+
+    Sort: Most Popular | Recently Added | Price (Low/High)
+  </div>
+
+  <div class="occasion-tabs" [horizontal scroll]>
+    All categories | Make your own | Kids' birthday | Adult birthday | Baby shower
+    | Graduation | Summer parties | Wedding invitations | Bridal shower | Pool party
+    | Save the dates | General entertaining | Business events | Get-togethers
+    | Engagement party | Cocktail party | Dinner party
+  </div>
+-->
+
+<!-- INVITATION CARD COMPONENT -->
+<!--
+  <div class="card-tile">
+    <div class="card-preview">
+      <img src="https://ppassets.com/[id]/envelope.png" alt="envelope" />
+      <img src="https://ppassets.com/[id]/card-front.png_small?noindex=true" alt="card front" />
+      [On hover: "Preview with my photo" overlay link appears]
+    </div>
+    <div class="card-info">
+      <span class="card-badge badge--trending">Trending</span>
+      <h3 class="card-title">Hydrangea Frame</h3>
+      <span class="card-designer">Rifle Paper Co.</span>
+      <div class="color-swatches">
+        <button class="swatch" style="background: [color1]"></button>
+        <button class="swatch" style="background: [color2]"></button>
+        <button class="swatch" style="background: [color3]"></button>
+        <span class="swatch-overflow">+3</span>
+      </div>
+      <button class="favorite-icon">[Heart SVG]</button>
+    </div>
+  </div>
+
+  Card component breakdown:
+  - ENVELOPE + CARD dual-image presentation (signature pattern)
+  - Envelope shown slightly behind/above card (layered z-depth effect)
+  - Card preview: portrait orientation (roughly 2:3 ratio estimated)
+  - Color swatches: circular dots, typically 3-5 visible + overflow "+N" indicator
+  - Hover state: "Preview with my photo" link overlay on card image area
+  - "Trending" badge: positioned top-left or top-right of card image
+  - Favorite (heart) icon: top-right corner, appears on hover or always visible
+-->
+
+<!-- FIRST PAGE CARDS (exact titles as harvested) -->
+<!--
+  1. Custom (Fit to your design) — Paperless Post
+  2. Hydrangea Frame — Rifle Paper Co. [pink, white-blue, blue]
+  3. Written in Ink — Stephanie Fishwick [cream-black, purple-red-lavender, purple, blue]
+  4. Full Page Photo — Paperless Post
+  5. Watercolor Dahlias — Paperless Post [blue, pink, purple-lavender, orange]
+  6. Scribble Script — Paperless Post [cream-gold, green-light-green, purple-lavender, white-red, red-blue]
+  7. Under the Lights — [yellow-blue, white-red, red-pink]
+  8. Film Strip — [black, cream, red, brown]
+  9. Graduation Caps and Confetti — [black-gold, rosegold-black, silver-black]
+  10. Tresco — Liberty [yellow-green, yellow-green-pink]
+  11. KSNY Tassel (Photo) — kate spade new york [gold, gold-blue, blue, red, green, +3]
+  12. Watercolor Floral Garland — [green-white, white-blue, green-white-orange]
+-->
+
+<!--
+  ============================================================
+  PAGE: /wedding — WEDDING LANDING
+  ============================================================
+-->
+<!--
+  HERO: "Online wedding invitations"
+  Subhead: "The beauty of classic stationery with the conveniences of today.
+            So you can stress less, and celebrate more."
+  CTA: "Browse invitations"
+
+  HORIZONTAL NAV TABS:
+  Invitations | Styles | Designers | Seasons | Magic Art | Features | How-to | Pricing | Planning Tips
+
+  CATEGORIES:
+  - Wedding invitations (9 style options)
+  - Save the dates (9 style options)
+  - Showers and parties (7 options)
+  - Wedding weekend (3 options)
+  - Indian wedding (4 options)
+
+  SHOP BY STYLE carousel: Floral | Elegant | Modern | Greenery | Minimal | Boho | Rustic | Destination
+  SHOP BY DESIGNER: Oscar de la Renta | Rifle Paper Co. | Monique Lhuillier | Stephanie Fishwick
+  SHOP BY SEASON grid: Spring | Summer | Fall | Winter
+
+  MAGIC ART SECTION:
+  "Create custom wedding invitations"
+  "Bring any vision to life with Magic Art, our new AI-powered tool that lets you
+  create one-of-a-kind illustrations instantly in your chosen style."
+
+  PRICING: Two plans
+  - Pay per event (1-2 events/year)
+  - Subscription / Paperless Pro (3+ events/year)
+  Sample pricing: 3 Coins / $1.44 USD per guest
+  Annual plan: 250 guests = $250/year (Save 25% vs. per-event)
+-->
+
+<!--
+  ============================================================
+  PAGE: /subscription — PRO SUBSCRIPTION
+  ============================================================
+-->
+<!--
+  HERO: Dark professional background (cocktail party imagery)
+  Headline: "Learn more about the Paperless Pro subscription"
+  Color scheme shift: dark backgrounds, white typography (vs site-wide light)
+
+  BENEFIT SECTIONS:
+  - "Save as you scale"
+  - "Design like a Pro"
+  - "Increase efficiency"
+  - "Grow your brand with every RSVP"
+
+  VIDEO ELEMENTS: HeroPoster + GrowYourBrand video embeds referenced
+  CTA: "Subscribe now" (recurring throughout)
+-->
+
+<!--
+  ============================================================
+  404 PAGE
+  ============================================================
+-->
+<!--
+  "We got a little lost..."
+  CTA: "Go to homepage"
+  Clean centered layout, no sidebar
+-->
+
+<body>
+  <!-- Reconstruction note: Full rendered DOM not accessible via WebFetch.
+       This document captures the structural/content reconstruction from
+       multi-page analysis. CSS classes are inferred from design patterns,
+       not extracted from source. -->
+  <p style="font-family: sans-serif; color: #333; padding: 2rem; max-width: 800px; margin: 0 auto;">
+    <strong>Paperless Post — Harvested Source Reconstruction</strong><br>
+    Source: <a href="https://www.paperlesspost.com/">paperlesspost.com</a><br>
+    Harvest date: 2026-05-01<br>
+    Method: WebFetch (multi-page content analysis — 10 pages)<br>
+    <br>
+    WebFetch converts rendered HTML to markdown before returning, preventing
+    access to raw DOM, CSS class names, stylesheet URLs, and JS bundles.
+    This reconstruction captures the structural and content hierarchy
+    with inferred component patterns.<br>
+    <br>
+    See companion files for extracted design system data:
+    <ul>
+      <li>design-tokens.md — color, typography, spacing tokens</li>
+      <li>motion-config.md — detected animation libraries and configs</li>
+      <li>stack-detected.md — technology fingerprinting</li>
+      <li>observations.md — critical design analysis</li>
+      <li>suggested-patterns.md — patterns to distill</li>
+    </ul>
+  </p>
+</body>
+</html>

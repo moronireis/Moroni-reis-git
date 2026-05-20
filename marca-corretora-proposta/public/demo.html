@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo | Marpe CRM Seguros</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a12; color: #e0e0ec; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* DEMO BANNER */
+  .demo-banner { background: linear-gradient(90deg, #3B82F6, #2563EB); padding: 7px 24px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-shrink: 0; z-index: 1000; }
+  .demo-banner span { font-size: 12px; font-weight: 600; color: #fff; }
+  .demo-banner .demo-tag { font-size: 10px; background: rgba(255,255,255,0.2); color: #fff; padding: 2px 10px; border-radius: 100px; font-weight: 700; letter-spacing: 0.05em; }
+
+  .app-container { flex: 1; display: flex; overflow: hidden; }
+
+  /* SIDEBAR */
+  .sidebar { width: 56px; background: #08080f; border-right: 1px solid #1a1a2a; display: flex; flex-direction: column; align-items: center; padding: 12px 0; flex-shrink: 0; }
+  .sidebar-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #4a4a64; cursor: pointer; transition: all 0.15s; margin-bottom: 4px; position: relative; }
+  .sidebar-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .sidebar-icon:hover { background: #14141e; color: #7a7a96; }
+  .sidebar-icon.active { background: rgba(59,130,246,0.12); color: #60A5FA; }
+  .sidebar-icon .notif { position: absolute; top: 2px; right: 2px; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; }
+  .sidebar-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #3B82F6, #2563EB); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 16px; }
+  .sidebar-spacer { flex: 1; }
+  .sidebar-avatar { width: 32px; height: 32px; border-radius: 50%; background: #1e1e30; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #60A5FA; cursor: pointer; }
+
+  /* VIEWS */
+  .view { display: none; flex: 1; overflow: hidden; }
+  .view.active { display: flex; }
+
+  /* ===== INBOX VIEW ===== */
+  .contact-list { width: 320px; border-right: 1px solid #1a1a2a; display: flex; flex-direction: column; background: #0c0c16; flex-shrink: 0; }
+  .contact-list-header { padding: 14px 16px; border-bottom: 1px solid #1a1a2a; display: flex; align-items: center; gap: 10px; }
+  .contact-list-header h3 { font-size: 15px; font-weight: 600; flex: 1; }
+  .contact-search { width: 100%; padding: 9px 14px; background: #12121c; border: 1px solid #1a1a2a; border-radius: 8px; color: #e0e0ec; font-size: 13px; outline: none; font-family: inherit; margin: 0 0 0 0; }
+  .contact-search:focus { border-color: #3B82F6; }
+  .contact-search-wrap { padding: 8px 16px; border-bottom: 1px solid #1a1a2a; }
+  .contact-tabs { display: flex; border-bottom: 1px solid #1a1a2a; }
+  .contact-tab { flex: 1; padding: 9px; text-align: center; font-size: 11px; font-weight: 600; color: #4a4a64; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.05em; }
+  .contact-tab.active { color: #60A5FA; border-bottom-color: #3B82F6; }
+  .contact-tab:hover { color: #7a7a96; }
+  .contacts-scroll { flex: 1; overflow-y: auto; }
+  .contact-item { display: flex; gap: 12px; padding: 14px 16px; cursor: pointer; transition: all 0.1s; border-left: 3px solid transparent; }
+  .contact-item:hover { background: #10101a; }
+  .contact-item.active { background: rgba(59,130,246,0.06); border-left-color: #3B82F6; }
+  .contact-item.unread { background: rgba(59,130,246,0.03); }
+  .contact-item .c-avatar { width: 42px; height: 42px; border-radius: 50%; background: #1e1e30; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+  .contact-item .c-info { flex: 1; min-width: 0; }
+  .contact-item .c-top { display: flex; align-items: center; justify-content: space-between; }
+  .contact-item .c-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .contact-item .c-time { font-size: 11px; color: #4a4a64; flex-shrink: 0; }
+  .contact-item .c-preview { font-size: 12px; color: #4a4a64; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .contact-item.unread .c-name { color: #fff; }
+  .contact-item.unread .c-preview { color: #7a7a96; }
+  .contact-item .c-tags { display: flex; gap: 4px; margin-top: 4px; }
+  .c-tag { font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .c-tag.auto { background: rgba(59,130,246,0.12); color: #60A5FA; }
+  .c-tag.vida { background: rgba(139,92,246,0.12); color: #a78bfa; }
+  .c-tag.res { background: rgba(34,197,94,0.12); color: #4ade80; }
+  .c-tag.emp { background: rgba(245,158,11,0.12); color: #fbbf24; }
+  .c-tag.equip { background: rgba(6,182,212,0.12); color: #22d3ee; }
+  .unread-dot { width: 10px; height: 10px; border-radius: 50%; background: #3B82F6; flex-shrink: 0; align-self: center; }
+
+  /* CHAT AREA */
+  .chat-area { flex: 1; display: flex; flex-direction: column; background: #0a0a14; }
+  .chat-header { height: 60px; border-bottom: 1px solid #1a1a2a; display: flex; align-items: center; padding: 0 20px; gap: 12px; flex-shrink: 0; }
+  .chat-header .ch-avatar { width: 38px; height: 38px; border-radius: 50%; background: #1e1e30; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+  .chat-header .ch-info { flex: 1; }
+  .chat-header .ch-name { font-size: 15px; font-weight: 600; }
+  .chat-header .ch-status { font-size: 11px; color: #4a4a64; }
+  .chat-header .ch-actions { display: flex; gap: 8px; }
+  .ch-action-btn { padding: 6px 12px; border-radius: 6px; border: 1px solid #1a1a2a; background: transparent; color: #7a7a96; font-size: 11px; cursor: pointer; font-family: inherit; font-weight: 500; transition: all 0.15s; }
+  .ch-action-btn:hover { border-color: #3B82F6; color: #60A5FA; }
+  .ch-action-btn.green { border-color: rgba(34,197,94,0.3); color: #22c55e; }
+
+  .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .msg { max-width: 65%; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.5; position: relative; }
+  .msg.received { background: #14141e; border: 1px solid #1a1a2a; align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.sent { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2); align-self: flex-end; border-bottom-right-radius: 4px; }
+  .msg .msg-time { font-size: 10px; color: #4a4a64; margin-top: 4px; text-align: right; }
+  .msg.auto-msg { background: rgba(34,197,94,0.06); border: 1px dashed rgba(34,197,94,0.25); align-self: flex-end; }
+  .msg.auto-msg::before { content: 'Automa\00e7\00e3o'; font-size: 9px; font-weight: 700; color: #22c55e; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 4px; }
+  .msg-date { text-align: center; font-size: 11px; color: #4a4a64; padding: 8px 0; }
+
+  .chat-input { border-top: 1px solid #1a1a2a; padding: 14px 20px; display: flex; gap: 10px; align-items: center; flex-shrink: 0; position: relative; }
+  .chat-input input { flex: 1; padding: 10px 16px; background: #12121c; border: 1px solid #1a1a2a; border-radius: 24px; color: #e0e0ec; font-size: 13px; outline: none; font-family: inherit; }
+  .chat-input input:focus { border-color: #3B82F6; }
+  .input-btn { width: 36px; height: 36px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; transition: all 0.15s; }
+  .input-btn.send { background: #3B82F6; color: #fff; }
+  .input-btn.send:hover { background: #2563EB; }
+  .input-btn.attach { background: transparent; color: #4a4a64; border: 1px solid #1a1a2a; font-size: 14px; }
+  .input-btn.quick { background: transparent; color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); font-size: 13px; }
+
+  /* CRM SIDE PANEL */
+  .crm-panel { width: 340px; border-left: 1px solid #1a1a2a; background: #0c0c16; display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
+  .crm-panel-header { padding: 14px 18px; border-bottom: 1px solid #1a1a2a; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .crm-panel-header h3 { font-size: 13px; font-weight: 600; flex: 1; }
+  .crm-panel-tabs { display: flex; border-bottom: 1px solid #1a1a2a; flex-shrink: 0; }
+  .crm-tab { flex: 1; padding: 8px; text-align: center; font-size: 10px; font-weight: 600; color: #4a4a64; cursor: pointer; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: 0.06em; }
+  .crm-tab:hover { color: #7a7a96; }
+  .crm-tab.active { color: #60A5FA; border-bottom-color: #3B82F6; }
+  .crm-section { padding: 14px 18px; border-bottom: 1px solid #0f0f1a; }
+  .crm-label { font-size: 10px; font-weight: 600; color: #4a4a64; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .crm-field { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+  .crm-field .field-label { font-size: 12px; color: #7a7a96; }
+  .crm-field .field-value { font-size: 12px; color: #e0e0ec; font-weight: 500; }
+  .crm-field .field-value.accent { color: #60A5FA; }
+  .crm-field .field-value.green { color: #22c55e; }
+  .crm-field .field-value.amber { color: #fbbf24; }
+  .crm-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .crm-tag-item { font-size: 11px; padding: 4px 10px; border-radius: 100px; font-weight: 500; border: 1px solid; cursor: pointer; }
+  .crm-note { background: #12121c; border: 1px solid #1a1a2a; border-radius: 8px; padding: 10px 12px; font-size: 12px; color: #7a7a96; line-height: 1.5; margin-bottom: 8px; }
+  .crm-note .note-date { font-size: 10px; color: #4a4a64; margin-top: 4px; }
+  .crm-note .note-user { font-size: 10px; color: #60A5FA; font-weight: 600; }
+  .crm-add-btn { width: 100%; padding: 8px; border-radius: 8px; border: 1px dashed #1a1a2a; background: transparent; color: #4a4a64; font-size: 12px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+  .crm-add-btn:hover { border-color: #3B82F6; color: #60A5FA; }
+  .crm-stage { display: flex; gap: 4px; }
+  .crm-stage-step { flex: 1; height: 6px; border-radius: 3px; background: #1a1a2a; }
+  .crm-stage-step.done { background: #3B82F6; }
+  .crm-stage-step.current { background: #60A5FA; box-shadow: 0 0 8px rgba(59,130,246,0.4); }
+  .crm-stage-labels { display: flex; justify-content: space-between; margin-top: 6px; }
+  .crm-stage-labels span { font-size: 9px; color: #4a4a64; }
+  .crm-stage-labels span.current-label { color: #60A5FA; font-weight: 600; }
+  .crm-auto-item { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; }
+  .crm-auto-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .crm-auto-dot.active { background: #22c55e; }
+  .crm-auto-dot.pending { background: #f59e0b; }
+  .crm-auto-text { font-size: 11px; color: #7a7a96; line-height: 1.4; }
+  .crm-auto-text strong { color: #e0e0ec; font-weight: 600; }
+
+  /* ===== KANBAN VIEW ===== */
+  .kanban-view { flex-direction: column; }
+  .kanban-topbar { height: 56px; border-bottom: 1px solid #1a1a2a; display: flex; align-items: center; padding: 0 24px; gap: 16px; flex-shrink: 0; }
+  .kanban-topbar .page-title { font-size: 16px; font-weight: 600; }
+  .kanban-topbar select { background: #12121c; border: 1px solid #1a1a2a; border-radius: 8px; padding: 8px 12px; color: #e0e0ec; font-size: 13px; font-family: inherit; outline: none; cursor: pointer; }
+  .kanban-topbar select:focus { border-color: #3B82F6; }
+  .topbar-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .view-btn { padding: 7px 14px; border-radius: 6px; border: 1px solid #1a1a2a; background: transparent; color: #4a4a64; font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 500; transition: all 0.15s; }
+  .view-btn.active { background: rgba(59,130,246,0.1); color: #60A5FA; border-color: rgba(59,130,246,0.3); }
+  .add-btn { padding: 8px 16px; border-radius: 8px; border: none; background: #3B82F6; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .add-btn:hover { background: #2563EB; }
+
+  .kanban-wrapper { flex: 1; overflow-x: auto; padding: 20px; display: flex; gap: 14px; }
+  .kanban-col { min-width: 270px; max-width: 270px; display: flex; flex-direction: column; flex-shrink: 0; }
+  .kcol-header { display: flex; align-items: center; gap: 8px; padding: 10px 0; margin-bottom: 6px; }
+  .kcol-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .kcol-title { font-size: 13px; font-weight: 600; }
+  .kcol-count { font-size: 11px; color: #4a4a64; background: #14141e; padding: 2px 8px; border-radius: 100px; margin-left: auto; }
+  .kcol-sum { font-size: 10px; color: #22c55e; font-weight: 600; margin-left: 4px; }
+  .kcol-cards { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+  .kcard { background: #12121c; border: 1px solid #1a1a2a; border-radius: 10px; padding: 14px; cursor: pointer; transition: all 0.15s; }
+  .kcard:hover { border-color: #242440; transform: translateY(-1px); }
+  .kcard .kc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .kcard .kc-name { font-size: 13px; font-weight: 600; }
+  .kcard .kc-ramo { font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .kcard .kc-contact { font-size: 11px; color: #4a4a64; margin-bottom: 8px; }
+  .kcard .kc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 8px; }
+  .kcard .kc-field { font-size: 10px; }
+  .kcard .kc-field .kf-label { color: #4a4a64; }
+  .kcard .kc-field .kf-value { color: #7a7a96; font-weight: 500; }
+  .kcard .kc-bottom { display: flex; align-items: center; justify-content: space-between; }
+  .kcard .kc-date { font-size: 10px; color: #4a4a64; }
+  .kcard .kc-date.urgent { color: #f87171; }
+  .kcard .kc-user { width: 22px; height: 22px; border-radius: 50%; background: #1e1e30; font-size: 9px; font-weight: 600; color: #60A5FA; display: flex; align-items: center; justify-content: center; }
+  .kcard .kc-auto { font-size: 9px; color: #22c55e; background: rgba(34,197,94,0.08); padding: 3px 8px; border-radius: 100px; margin-top: 6px; display: inline-block; }
+
+  /* ===== DASHBOARD VIEW ===== */
+  .dash-view { flex-direction: column; overflow-y: auto; }
+  .dash-header { padding: 24px 32px 0; flex-shrink: 0; }
+  .dash-header h2 { font-size: 22px; font-weight: 700; }
+  .dash-header p { font-size: 13px; color: #4a4a64; margin-top: 4px; }
+  .dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 20px 32px; }
+  .dash-card { background: #12121c; border: 1px solid #1a1a2a; border-radius: 12px; padding: 20px; }
+  .dash-card .dc-label { font-size: 11px; color: #4a4a64; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .dash-card .dc-value { font-size: 28px; font-weight: 700; margin-top: 8px; letter-spacing: -0.02em; }
+  .dash-card .dc-change { font-size: 11px; margin-top: 4px; font-weight: 500; }
+  .dash-card .dc-change.up { color: #22c55e; }
+  .dash-card .dc-change.down { color: #ef4444; }
+  .dash-charts { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; padding: 0 32px 24px; }
+  .dash-chart-card { background: #12121c; border: 1px solid #1a1a2a; border-radius: 12px; padding: 20px; }
+  .dash-chart-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+  .funnel-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .funnel-bar .fb-label { font-size: 11px; color: #7a7a96; width: 120px; flex-shrink: 0; }
+  .funnel-bar .fb-bar { flex: 1; height: 20px; background: #1a1a2a; border-radius: 4px; overflow: hidden; }
+  .funnel-bar .fb-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+  .funnel-bar .fb-count { font-size: 11px; color: #4a4a64; width: 30px; text-align: right; }
+  .activity-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid #0f0f1a; }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .activity-text { font-size: 12px; color: #7a7a96; line-height: 1.4; }
+  .activity-text strong { color: #e0e0ec; }
+  .activity-time { font-size: 10px; color: #4a4a64; margin-top: 2px; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #1a1a2a; border-radius: 4px; }
+
+  /* View transitions */
+  .view { opacity: 0; transition: opacity 0.2s ease; }
+  .view.active { opacity: 1; }
+
+  /* Tooltip */
+  .sidebar-icon[title]:hover::after { content: attr(title); position: absolute; left: 52px; top: 50%; transform: translateY(-50%); background: #1e1e30; border: 1px solid #242440; color: #e0e0ec; padding: 4px 10px; border-radius: 6px; font-size: 11px; white-space: nowrap; z-index: 100; pointer-events: none; }
+
+  /* ===== GENERIC VIEW ===== */
+  .generic-view { flex-direction: column; overflow-y: auto; background: #0a0a12; }
+  .gv-header { padding: 24px 32px 0; flex-shrink: 0; display: flex; align-items: center; gap: 16px; }
+  .gv-header h2 { font-size: 22px; font-weight: 700; }
+  .gv-header .gv-badge { font-size: 11px; background: rgba(59,130,246,0.12); color: #60A5FA; padding: 4px 12px; border-radius: 100px; font-weight: 600; }
+  .gv-body { padding: 20px 32px 32px; }
+  .gv-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .gv-stat { background: #12121c; border: 1px solid #1a1a2a; border-radius: 12px; padding: 18px; }
+  .gv-stat .gs-val { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+  .gv-stat .gs-label { font-size: 11px; color: #4a4a64; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+  .gv-card { background: #12121c; border: 1px solid #1a1a2a; border-radius: 12px; padding: 18px; margin-bottom: 12px; transition: all 0.15s; }
+  .gv-card:hover { border-color: #242440; }
+  .gv-card .gc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .gv-card .gc-title { font-size: 14px; font-weight: 600; }
+  .gv-card .gc-desc { font-size: 12px; color: #7a7a96; line-height: 1.5; }
+  .gv-card .gc-meta { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: #4a4a64; }
+  .gv-card .gc-meta .gm-val { color: #7a7a96; font-weight: 500; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .status-dot.on { background: #22c55e; }
+  .status-dot.off { background: #ef4444; }
+  .toggle-switch { width: 36px; height: 20px; border-radius: 10px; background: #1a1a2a; position: relative; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+  .toggle-switch.on { background: rgba(34,197,94,0.3); }
+  .toggle-switch::after { content: ''; position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #4a4a64; top: 2px; left: 2px; transition: all 0.2s; }
+  .toggle-switch.on::after { left: 18px; background: #22c55e; }
+  .gv-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .gv-table th { text-align: left; padding: 10px 14px; background: #0f0f18; border-bottom: 1px solid #1a1a2a; color: #4a4a64; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .gv-table td { padding: 10px 14px; border-bottom: 1px solid #0f0f1a; color: #7a7a96; }
+  .gv-table tr:hover td { background: rgba(59,130,246,0.03); }
+  .gv-section-title { font-size: 13px; font-weight: 600; color: #e0e0ec; margin: 20px 0 12px; padding-bottom: 8px; border-bottom: 1px solid #1a1a2a; }
+  .settings-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #0f0f1a; }
+  .settings-row .sr-label { font-size: 13px; color: #7a7a96; }
+  .settings-row .sr-value { font-size: 13px; color: #e0e0ec; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .user-badge { font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+  .user-badge.admin { background: rgba(59,130,246,0.12); color: #60A5FA; }
+  .user-badge.op { background: rgba(245,158,11,0.12); color: #fbbf24; }
+
+  /* Quick Reply Popover */
+  .qr-popover { position: absolute; bottom: 70px; left: 60px; background: #14141e; border: 1px solid #242440; border-radius: 12px; padding: 8px; width: 280px; z-index: 50; display: none; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+  .qr-popover.show { display: block; }
+  .qr-popover .qr-title { font-size: 10px; color: #4a4a64; text-transform: uppercase; font-weight: 600; letter-spacing: 0.06em; padding: 6px 10px 4px; }
+  .qr-item { padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: all 0.1s; }
+  .qr-item:hover { background: rgba(59,130,246,0.08); }
+  .qr-item .qr-name { font-size: 12px; font-weight: 600; color: #e0e0ec; }
+  .qr-item .qr-preview { font-size: 11px; color: #4a4a64; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .modal-overlay.show { display: flex; }
+  .modal { background: #12121c; border: 1px solid #1a1a2a; border-radius: 16px; padding: 28px; width: 420px; max-width: 90vw; }
+  .modal h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  .modal textarea, .modal input[type="text"], .modal input[type="date"], .modal input[type="time"] { width: 100%; padding: 10px 14px; background: #0a0a12; border: 1px solid #1a1a2a; border-radius: 8px; color: #e0e0ec; font-size: 13px; font-family: inherit; outline: none; resize: vertical; }
+  .modal textarea:focus, .modal input:focus { border-color: #3B82F6; }
+  .modal textarea { min-height: 100px; }
+  .modal .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+  .modal .modal-btn { padding: 8px 20px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .modal .modal-btn.primary { background: #3B82F6; color: #fff; }
+  .modal .modal-btn.secondary { background: transparent; border: 1px solid #1a1a2a; color: #7a7a96; }
+  .modal .modal-row { display: flex; gap: 12px; margin-bottom: 12px; }
+  .modal .modal-row > * { flex: 1; }
+  .modal label { font-size: 11px; color: #4a4a64; display: block; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <span class="demo-tag">DEMO INTERATIVA</span>
+  <span>Marpe CRM Seguros &mdash; Navegue entre Inbox, Kanban e Dashboard</span>
+</div>
+
+<div class="app-container">
+  <!-- SIDEBAR NAV -->
+  <div class="sidebar">
+    <div class="sidebar-logo">M</div>
+    <div class="sidebar-icon active" onclick="switchView('inbox')" title="Inbox WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="notif"></div>
+    </div>
+    <div class="sidebar-icon" onclick="switchView('kanban')" title="Funis / Kanban"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="12" rx="1"/></svg></div>
+    <div class="sidebar-icon" onclick="switchView('dashboard')" title="Dashboard"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+    <div class="sidebar-icon" onclick="switchView('campanhas')" title="Campanhas"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+    <div class="sidebar-icon" onclick="switchView('automacoes')" title="Automa&ccedil;&otilde;es"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <div class="sidebar-icon" onclick="switchView('links')" title="Links rastreados"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-icon" onclick="switchView('config')" title="Configura&ccedil;&otilde;es"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+    <div class="sidebar-avatar" title="Marcel Foletto (Admin)">MF</div>
+  </div>
+
+  <!-- ===== INBOX VIEW ===== -->
+  <div class="view active" id="view-inbox">
+    <!-- Contact List -->
+    <div class="contact-list">
+      <div class="contact-list-header">
+        <h3>Conversas</h3>
+        <span style="font-size: 11px; color: #22c55e; font-weight: 600;">Online 24h</span>
+      </div>
+      <div class="contact-search-wrap">
+        <input class="contact-search" type="text" placeholder="Buscar contato, ap&oacute;lice ou telefone...">
+      </div>
+      <div class="contact-tabs">
+        <div class="contact-tab active">Todos</div>
+        <div class="contact-tab">N&atilde;o lidos (3)</div>
+        <div class="contact-tab">Meus</div>
+      </div>
+      <div class="contacts-scroll">
+        <div class="contact-item active" onclick="switchChat(0)">
+          <div class="c-avatar" style="color: #4ade80;">MP</div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name">Marcos Pilon</span><span class="c-time">10:42</span></div>
+            <div class="c-preview">Bom dia Marcel, conseguiu a cota&ccedil;&atilde;o?</div>
+            <div class="c-tags"><span class="c-tag emp">Empresarial</span><span class="c-tag auto">Auto</span></div>
+          </div>
+          <div class="unread-dot"></div>
+        </div>
+        <div class="contact-item unread" onclick="switchChat(1)">
+          <div class="c-avatar" style="color: #60A5FA;">TD</div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name">Tiago Donicht</span><span class="c-time">10:15</span></div>
+            <div class="c-preview">Recebi as duas cota&ccedil;&otilde;es. Vou analisar...</div>
+            <div class="c-tags"><span class="c-tag auto">Auto</span><span class="c-tag vida">Vida</span></div>
+          </div>
+          <div class="unread-dot"></div>
+        </div>
+        <div class="contact-item unread" onclick="switchChat(2)">
+          <div class="c-avatar" style="color: #fbbf24;">AC</div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name">Dra. Ana Costa</span><span class="c-time">09:50</span></div>
+            <div class="c-preview">Quando sai a p&oacute;lice da empresa?</div>
+            <div class="c-tags"><span class="c-tag emp">Empresarial</span></div>
+          </div>
+          <div class="unread-dot"></div>
+        </div>
+        <div class="contact-item" onclick="switchChat(3)">
+          <div class="c-avatar" style="color: #a78bfa;">CM</div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name">Carlos Melo</span><span class="c-time">ontem</span></div>
+            <div class="c-preview">Muito obrigado! Recebi a p&oacute;lice do...</div>
+            <div class="c-tags"><span class="c-tag res">Residencial</span></div>
+          </div>
+        </div>
+        <div class="contact-item" onclick="switchChat(4)">
+          <div class="c-avatar" style="color: #22d3ee;">RF</div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name">Roberto Foletto</span><span class="c-time">06/05</span></div>
+            <div class="c-preview">Preciso de seguro pra 2 caminh&otilde;es novos</div>
+            <div class="c-tags"><span class="c-tag equip">Equipamento</span></div>
+          </div>
+        </div>
+        <div class="contact-item" onclick="switchChat(5)">
+          <div class="c-avatar" style="color: #60A5FA;">JS</div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name">Jo&atilde;o Silva (Padaria)</span><span class="c-time">05/05</span></div>
+            <div class="c-preview">Pode transmitir a proposta ent&atilde;o</div>
+            <div class="c-tags"><span class="c-tag emp">Empresarial</span></div>
+          </div>
+        </div>
+        <!-- Auto msg log -->
+        <div class="contact-item" style="border-left-color: #22c55e; opacity: 0.7;">
+          <div class="c-avatar" style="color: #22c55e;"><svg style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name" style="color: #22c55e;">Automa&ccedil;&atilde;o</span><span class="c-time">05/05</span></div>
+            <div class="c-preview">Boas-vindas enviada &rarr; Carlos Melo</div>
+          </div>
+        </div>
+        <div class="contact-item" style="border-left-color: #22c55e; opacity: 0.7;">
+          <div class="c-avatar" style="color: #22c55e;"><svg style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="c-info">
+            <div class="c-top"><span class="c-name" style="color: #22c55e;">Automa&ccedil;&atilde;o</span><span class="c-time">04/05</span></div>
+            <div class="c-preview">Aviso parcela &rarr; Maria Eduarda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area" id="chatArea">
+      <div class="chat-header">
+        <div class="ch-avatar" style="color: #4ade80;">MP</div>
+        <div class="ch-info">
+          <div class="ch-name" id="chatName">Marcos Pilon</div>
+          <div class="ch-status" id="chatStatus">Abastecedora Pilon &bull; (55) 99912-3456</div>
+        </div>
+        <div class="ch-actions">
+          <button class="ch-action-btn" onclick="openModal('scheduleModal')"><svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:-1px;margin-right:4px;" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar</button>
+          <button class="ch-action-btn" onclick="toggleQuickReply()"><svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:-1px;margin-right:4px;" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Msg r&aacute;pida</button>
+          <button class="ch-action-btn green" onclick="openModal('noteModal')"><svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:-1px;margin-right:4px;" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Nota</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg-date">Hoje</div>
+        <div class="msg received">
+          Bom dia Marcel! Conseguiu fazer a cota&ccedil;&atilde;o do seguro empresarial? Estou precisando dar uma resposta pro meu s&oacute;cio at&eacute; sexta.
+          <div class="msg-time">10:42</div>
+        </div>
+        <div class="msg sent">
+          Bom dia Marcos! Sim, j&aacute; recebi tr&ecirc;s cota&ccedil;&otilde;es. A Bradesco ficou com o melhor custo-benef&iacute;cio. Vou te enviar o comparativo agora.
+          <div class="msg-time">10:45</div>
+        </div>
+        <div class="msg sent">
+          Seguinte: Bradesco R$ 8.200/ano (cobertura completa + RC), Porto R$ 9.100 e Allianz R$ 8.800. Recomendo a Bradesco.
+          <div class="msg-time">10:46</div>
+        </div>
+        <div class="msg received">
+          Boa! Valor do Bradesco t&aacute; bom. Qual a forma de pagamento?
+          <div class="msg-time">10:48</div>
+        </div>
+        <div class="msg sent">
+          Pode ser em at&eacute; 10x no boleto sem juros, ou &agrave; vista com 5% de desconto. Quer que eu transmita a proposta da Bradesco?
+          <div class="msg-time">10:50</div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <button class="input-btn attach" title="Anexar arquivo"><svg style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></button>
+        <button class="input-btn quick" title="Mensagens r&aacute;pidas" onclick="toggleQuickReply()"><svg style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></button>
+        <input type="text" placeholder="Digite uma mensagem...">
+        <button class="input-btn send" title="Enviar"><svg style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+
+    <!-- CRM Panel (right side, like WaSpeed) -->
+    <div class="crm-panel">
+      <div class="crm-panel-header">
+        <h3>Dados do Contato</h3>
+        <button style="background: transparent; border: 1px solid #1a1a2a; border-radius: 6px; padding: 4px 10px; color: #4a4a64; font-size: 10px; cursor: pointer; font-family: inherit;">Editar</button>
+      </div>
+      <div class="crm-panel-tabs">
+        <div class="crm-tab active" onclick="switchCrmTab('geral')">Geral</div>
+        <div class="crm-tab" onclick="switchCrmTab('dados')">Dados</div>
+        <div class="crm-tab" onclick="switchCrmTab('negocios')">Neg&oacute;cios</div>
+        <div class="crm-tab" onclick="switchCrmTab('notas')">Notas</div>
+        <div class="crm-tab" onclick="switchCrmTab('autom')">Autom.</div>
+      </div>
+
+      <!-- TAB: Geral (tudo junto) -->
+      <div class="crm-tab-content" id="crmtab-geral">
+      <div class="crm-section">
+        <div class="crm-label">Contato</div>
+        <div class="crm-field"><span class="field-label">Nome</span><span class="field-value">Marcos Pilon</span></div>
+        <div class="crm-field"><span class="field-label">Empresa</span><span class="field-value">Abastecedora Pilon</span></div>
+        <div class="crm-field"><span class="field-label">Telefone</span><span class="field-value accent">(55) 99912-3456</span></div>
+      </div>
+      <div class="crm-section">
+        <div class="crm-label">Etiquetas</div>
+        <div class="crm-tags">
+          <span class="crm-tag-item" style="color: #fbbf24; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.06);">Empresarial</span>
+          <span class="crm-tag-item" style="color: #60A5FA; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.06);">Auto</span>
+        </div>
+      </div>
+      <div class="crm-section">
+        <div class="crm-label">Neg&oacute;cio 1 &mdash; Empresarial</div>
+        <div class="crm-stage"><div class="crm-stage-step done"></div><div class="crm-stage-step current"></div><div class="crm-stage-step"></div><div class="crm-stage-step"></div><div class="crm-stage-step"></div></div>
+        <div class="crm-stage-labels"><span>Prosp.</span><span class="current-label">Cota&ccedil;&atilde;o</span><span>Proposta</span><span>Emiss&atilde;o</span><span>Emitido</span></div>
+        <div style="margin-top:10px;"><div class="crm-field"><span class="field-label">Pr&ecirc;mio</span><span class="field-value">R$ 8.200</span></div><div class="crm-field"><span class="field-label">Comiss&atilde;o</span><span class="field-value green">20% (R$ 1.640)</span></div></div>
+      </div>
+      <div class="crm-section">
+        <div class="crm-label">Neg&oacute;cio 2 &mdash; Auto (frota)</div>
+        <div class="crm-stage"><div class="crm-stage-step done"></div><div class="crm-stage-step done"></div><div class="crm-stage-step done"></div><div class="crm-stage-step current"></div><div class="crm-stage-step"></div></div>
+        <div class="crm-stage-labels"><span>Prosp.</span><span>Cota&ccedil;&atilde;o</span><span>Proposta</span><span class="current-label">Emiss&atilde;o</span><span>Emitido</span></div>
+        <div style="margin-top:10px;"><div class="crm-field"><span class="field-label">Pr&ecirc;mio</span><span class="field-value">R$ 14.600</span></div><div class="crm-field"><span class="field-label">Comiss&atilde;o</span><span class="field-value green">18% (R$ 2.628)</span></div></div>
+      </div>
+      <div class="crm-section">
+        <div class="crm-label">&Uacute;ltima nota</div>
+        <div class="crm-note"><span class="note-user">Marcel</span> &mdash; Marcos pediu pra incluir cobertura de RC no empresarial.<div class="note-date">07/05 &agrave;s 10:30</div></div>
+      </div>
+      <div class="crm-section">
+        <div class="crm-label">Automa&ccedil;&otilde;es</div>
+        <div class="crm-auto-item"><div class="crm-auto-dot active"></div><div class="crm-auto-text"><strong>Follow-up</strong> &mdash; 3 dias sem resposta</div></div>
+        <div class="crm-auto-item"><div class="crm-auto-dot pending"></div><div class="crm-auto-text"><strong>Boas-vindas</strong> &mdash; ao emitir p&oacute;lice (Neg. 2)</div></div>
+      </div>
+      </div>
+
+      <!-- TAB: Dados -->
+      <div class="crm-tab-content" id="crmtab-dados" style="display:none;">
+      <div class="crm-section">
+        <div class="crm-label">Contato</div>
+        <div class="crm-field"><span class="field-label">Nome</span><span class="field-value">Marcos Pilon</span></div>
+        <div class="crm-field"><span class="field-label">Empresa</span><span class="field-value">Abastecedora Pilon</span></div>
+        <div class="crm-field"><span class="field-label">Telefone</span><span class="field-value accent">(55) 99912-3456</span></div>
+        <div class="crm-field"><span class="field-label">E-mail</span><span class="field-value">marcos@pilon.com.br</span></div>
+        <div class="crm-field"><span class="field-label">Origem</span><span class="field-value">Indica&ccedil;&atilde;o</span></div>
+      </div>
+      <div class="crm-section">
+        <div class="crm-label">Etiquetas</div>
+        <div class="crm-tags">
+          <span class="crm-tag-item" style="color: #fbbf24; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.06);">Empresarial</span>
+          <span class="crm-tag-item" style="color: #60A5FA; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.06);">Auto</span>
+          <span class="crm-tag-item" style="color: #7a7a96; border-color: #1a1a2a; background: transparent;">+ Adicionar</span>
+        </div>
+      </div>
+      </div>
+
+      <!-- TAB: Negócios -->
+      <div class="crm-tab-content" id="crmtab-negocios" style="display:none;">
+      <div class="crm-section">
+        <div class="crm-label">Neg&oacute;cio 1 &mdash; Empresarial</div>
+        <div class="crm-stage">
+          <div class="crm-stage-step done"></div>
+          <div class="crm-stage-step current"></div>
+          <div class="crm-stage-step"></div>
+          <div class="crm-stage-step"></div>
+          <div class="crm-stage-step"></div>
+        </div>
+        <div class="crm-stage-labels">
+          <span>Prosp.</span>
+          <span class="current-label">Cota&ccedil;&atilde;o</span>
+          <span>Proposta</span>
+          <span>Emiss&atilde;o</span>
+          <span>Emitido</span>
+        </div>
+        <div style="margin-top: 10px;">
+          <div class="crm-field"><span class="field-label">Pr&ecirc;mio</span><span class="field-value">R$ 8.200</span></div>
+          <div class="crm-field"><span class="field-label">Comiss&atilde;o</span><span class="field-value green">20% (R$ 1.640)</span></div>
+          <div class="crm-field"><span class="field-label">Seguradora</span><span class="field-value">Bradesco Seguros</span></div>
+          <div class="crm-field"><span class="field-label">Produtor</span><span class="field-value">Marcel Foletto</span></div>
+          <div class="crm-field"><span class="field-label">Vig&ecirc;ncia</span><span class="field-value">12 meses</span></div>
+          <div class="crm-field"><span class="field-label">Respons&aacute;vel</span><span class="field-value accent">Adria</span></div>
+        </div>
+      </div>
+
+      <!-- Negócio 2 -->
+      <div class="crm-section">
+        <div class="crm-label">Neg&oacute;cio 2 &mdash; Auto (frota)</div>
+        <div class="crm-stage">
+          <div class="crm-stage-step done"></div>
+          <div class="crm-stage-step done"></div>
+          <div class="crm-stage-step done"></div>
+          <div class="crm-stage-step current"></div>
+          <div class="crm-stage-step"></div>
+        </div>
+        <div class="crm-stage-labels">
+          <span>Prosp.</span>
+          <span>Cota&ccedil;&atilde;o</span>
+          <span>Proposta</span>
+          <span class="current-label">Emiss&atilde;o</span>
+          <span>Emitido</span>
+        </div>
+        <div style="margin-top: 10px;">
+          <div class="crm-field"><span class="field-label">Pr&ecirc;mio</span><span class="field-value">R$ 14.600</span></div>
+          <div class="crm-field"><span class="field-label">Comiss&atilde;o</span><span class="field-value green">18% (R$ 2.628)</span></div>
+          <div class="crm-field"><span class="field-label">Seguradora</span><span class="field-value">Porto Seguro</span></div>
+          <div class="crm-field"><span class="field-label">Ap&oacute;lice</span><span class="field-value amber">Aguardando emiss&atilde;o</span></div>
+        </div>
+      </div>
+
+      </div>
+
+      <!-- TAB: Notas -->
+      <div class="crm-tab-content" id="crmtab-notas" style="display:none;">
+      <div class="crm-section">
+        <div class="crm-label">Notas</div>
+        <div class="crm-note">
+          <span class="note-user">Marcel</span> &mdash; Marcos pediu pra incluir cobertura de RC no empresarial. J&aacute; solicitei nova cota&ccedil;&atilde;o com RC.
+          <div class="note-date">07/05 &agrave;s 10:30</div>
+        </div>
+        <div class="crm-note">
+          <span class="note-user">Adria</span> &mdash; Frota: 3 ve&iacute;culos (2 caminh&otilde;es + 1 van). Porto Seguro ofereceu melhor condi&ccedil;&atilde;o.
+          <div class="note-date">05/05 &agrave;s 14:20</div>
+        </div>
+        <button class="crm-add-btn">+ Adicionar nota</button>
+      </div>
+
+      </div>
+
+      <!-- TAB: Automações -->
+      <div class="crm-tab-content" id="crmtab-autom" style="display:none;">
+      <div class="crm-section">
+        <div class="crm-label">Automa&ccedil;&otilde;es ativas</div>
+        <div class="crm-auto-item">
+          <div class="crm-auto-dot active"></div>
+          <div class="crm-auto-text"><strong>Follow-up autom&aacute;tico</strong><br>Se sem resposta em 3 dias &rarr; lembrete via WhatsApp</div>
+        </div>
+        <div class="crm-auto-item">
+          <div class="crm-auto-dot pending"></div>
+          <div class="crm-auto-text"><strong>Ao emitir p&oacute;lice (Neg. 2)</strong><br>Enviar boas-vindas + n&uacute;meros assist&ecirc;ncia 24h</div>
+        </div>
+        <div class="crm-auto-item">
+          <div class="crm-auto-dot pending"></div>
+          <div class="crm-auto-text"><strong>Aviso de parcela</strong><br>5 dias antes do vencimento &rarr; lembrete WhatsApp</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== KANBAN VIEW ===== -->
+  <div class="view kanban-view" id="view-kanban">
+    <div class="kanban-topbar">
+      <span class="page-title">Funis</span>
+      <select id="funnelSelect" onchange="switchFunnel(this.value)">
+        <option value="vendas">Funil de Vendas</option>
+        <option value="assistencia">Assist&ecirc;ncia 24h</option>
+        <option value="sinistros">Sinistros</option>
+        <option value="renovacoes">Renova&ccedil;&otilde;es</option>
+        <option value="campanha">Campanha Instagram</option>
+      </select>
+      <div class="topbar-right">
+        <button class="view-btn active">Kanban</button>
+        <button class="view-btn">Grade</button>
+        <button class="add-btn">+ Novo neg&oacute;cio</button>
+      </div>
+    </div>
+    <div class="kanban-wrapper" id="kanbanContent">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- ===== CAMPANHAS VIEW ===== -->
+  <div class="view generic-view" id="view-campanhas">
+    <div class="gv-header"><h2>Campanhas</h2><span class="gv-badge">5 campanhas</span><div style="margin-left:auto;"><button class="add-btn">+ Nova campanha</button></div></div>
+    <div class="gv-body">
+      <div class="gv-stats">
+        <div class="gv-stat"><div class="gs-val" style="color:#3B82F6;">1.247</div><div class="gs-label">Mensagens enviadas (m&ecirc;s)</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#22c55e;">94%</div><div class="gs-label">Taxa de entrega</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#f59e0b;">78%</div><div class="gs-label">Taxa de leitura</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#8b5cf6;">12</div><div class="gs-label">Respostas geradas</div></div>
+      </div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Renova&ccedil;&atilde;o Auto &mdash; Maio 2026</span><span style="font-size:11px;color:#22c55e;font-weight:600;">Enviada</span></div><div class="gc-desc">Lembrete para todos os clientes de auto com vig&ecirc;ncia vencendo em junho. Segmentado por ramo Auto.</div><div class="gc-meta"><span>Enviadas: <span class="gm-val">342</span></span><span>Lidas: <span class="gm-val">267 (78%)</span></span><span>Respostas: <span class="gm-val">8</span></span><span>Data: <span class="gm-val">01/05</span></span></div></div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Cross-sell Vida &mdash; Abril 2026</span><span style="font-size:11px;color:#22c55e;font-weight:600;">Enviada</span></div><div class="gc-desc">Oferta de seguro de vida para toda a base de clientes de auto. Template personalizado com nome.</div><div class="gc-meta"><span>Enviadas: <span class="gm-val">518</span></span><span>Lidas: <span class="gm-val">412 (80%)</span></span><span>Respostas: <span class="gm-val">3</span></span><span>Data: <span class="gm-val">15/04</span></span></div></div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Boas Festas 2025</span><span style="font-size:11px;color:#4a4a64;">Finalizada</span></div><div class="gc-desc">Mensagem de fim de ano para toda a base de clientes ativos.</div><div class="gc-meta"><span>Enviadas: <span class="gm-val">387</span></span><span>Lidas: <span class="gm-val">351 (91%)</span></span><span>Data: <span class="gm-val">20/12</span></span></div></div>
+    </div>
+  </div>
+
+  <!-- ===== AUTOMACOES VIEW ===== -->
+  <div class="view generic-view" id="view-automacoes">
+    <div class="gv-header"><h2>Automa&ccedil;&otilde;es</h2><span class="gv-badge">5 ativas</span><div style="margin-left:auto;"><button class="add-btn">+ Nova automa&ccedil;&atilde;o</button></div></div>
+    <div class="gv-body">
+      <div class="gv-stats">
+        <div class="gv-stat"><div class="gs-val" style="color:#22c55e;">162</div><div class="gs-label">Execu&ccedil;&otilde;es este m&ecirc;s</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#3B82F6;">5</div><div class="gs-label">Automa&ccedil;&otilde;es ativas</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#f59e0b;">~4h</div><div class="gs-label">Tempo economizado / dia</div></div>
+      </div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Boas-vindas ao emitir p&oacute;lice</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:#22c55e;">67x este m&ecirc;s</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div><div class="gc-desc"><strong>Gatilho:</strong> Mudan&ccedil;a de etapa &rarr; &ldquo;Emitido&rdquo; (qualquer funil de vendas)<br><strong>A&ccedil;&atilde;o:</strong> Enviar template de boas-vindas + n&uacute;meros assist&ecirc;ncia 24h via WhatsApp</div></div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Aviso de parcela (5 dias antes)</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:#22c55e;">48x este m&ecirc;s</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div><div class="gc-desc"><strong>Gatilho:</strong> 5 dias antes da data de vencimento da parcela (sync Corp)<br><strong>A&ccedil;&atilde;o:</strong> Lembrete WhatsApp com valor e data de vencimento</div></div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Follow-up sem resposta (3 dias)</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:#22c55e;">27x este m&ecirc;s</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div><div class="gc-desc"><strong>Gatilho:</strong> Cliente sem resposta h&aacute; 3 dias em &ldquo;Cota&ccedil;&atilde;o Enviada&rdquo;<br><strong>A&ccedil;&atilde;o:</strong> Mensagem de follow-up personalizada</div></div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Pesquisa satisfa&ccedil;&atilde;o p&oacute;s-assist&ecirc;ncia</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:#22c55e;">12x este m&ecirc;s</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div><div class="gc-desc"><strong>Gatilho:</strong> Mudan&ccedil;a de etapa &rarr; &ldquo;Finalizada&rdquo; (funil Assist&ecirc;ncia 24h)<br><strong>A&ccedil;&atilde;o:</strong> Pesquisa NPS via WhatsApp (nota 1-10)</div></div>
+      <div class="gv-card"><div class="gc-top"><span class="gc-title">Aviso renova&ccedil;&atilde;o (60 dias)</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:#22c55e;">8x este m&ecirc;s</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div><div class="gc-desc"><strong>Gatilho:</strong> 60 dias antes do vencimento da p&oacute;lice (sync Corp)<br><strong>A&ccedil;&atilde;o:</strong> Mover para funil Renova&ccedil;&otilde;es + avisar cliente via WhatsApp</div></div>
+    </div>
+  </div>
+
+  <!-- ===== LINKS VIEW ===== -->
+  <div class="view generic-view" id="view-links">
+    <div class="gv-header"><h2>Links Rastreados</h2><span class="gv-badge">4 links</span><div style="margin-left:auto;"><button class="add-btn">+ Novo link</button></div></div>
+    <div class="gv-body">
+      <div class="gv-stats">
+        <div class="gv-stat"><div class="gs-val" style="color:#3B82F6;">89</div><div class="gs-label">Total cliques (m&ecirc;s)</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#22c55e;">18%</div><div class="gs-label">Taxa convers&atilde;o</div></div>
+        <div class="gv-stat"><div class="gs-val" style="color:#f59e0b;">Instagram</div><div class="gs-label">Top origem</div></div>
+      </div>
+      <table class="gv-table">
+        <thead><tr><th>Nome</th><th>Origem</th><th>Funil destino</th><th>Cliques</th><th>Convers&otilde;es</th><th>Criado</th></tr></thead>
+        <tbody>
+          <tr><td style="color:#e0e0ec;font-weight:500;">Bio Instagram</td><td>Instagram</td><td>Campanha Instagram</td><td style="color:#3B82F6;">42</td><td style="color:#22c55e;">8</td><td>01/05</td></tr>
+          <tr><td style="color:#e0e0ec;font-weight:500;">Site Parceiro Pilon</td><td>Site parceiro</td><td>Vendas</td><td style="color:#3B82F6;">23</td><td style="color:#22c55e;">5</td><td>15/04</td></tr>
+          <tr><td style="color:#e0e0ec;font-weight:500;">Google Meu Neg&oacute;cio</td><td>Google</td><td>Vendas</td><td style="color:#3B82F6;">18</td><td style="color:#22c55e;">2</td><td>10/04</td></tr>
+          <tr><td style="color:#e0e0ec;font-weight:500;">Assinatura e-mail</td><td>E-mail</td><td>Vendas</td><td style="color:#3B82F6;">6</td><td style="color:#22c55e;">1</td><td>05/04</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== CONFIGURACOES VIEW ===== -->
+  <div class="view generic-view" id="view-config">
+    <div class="gv-header"><h2>Configura&ccedil;&otilde;es</h2></div>
+    <div class="gv-body">
+      <div class="gv-section-title">Perfil da corretora</div>
+      <div class="settings-row"><span class="sr-label">Nome</span><span class="sr-value">Marpe Corretora de Seguros</span></div>
+      <div class="settings-row"><span class="sr-label">CNPJ</span><span class="sr-value">12.345.678/0001-90</span></div>
+      <div class="settings-row"><span class="sr-label">Cidade</span><span class="sr-value">S&atilde;o Sep&eacute; &mdash; RS</span></div>
+
+      <div class="gv-section-title">Usu&aacute;rios</div>
+      <table class="gv-table">
+        <thead><tr><th>Nome</th><th>E-mail</th><th>Perfil</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td style="color:#e0e0ec;font-weight:500;">Marcel Foletto</td><td>marcel@marpeseguros.com.br</td><td><span class="user-badge admin">Admin</span></td><td><span class="status-dot on"></span> Online</td></tr>
+          <tr><td style="color:#e0e0ec;font-weight:500;">Adria</td><td>adria@marpeseguros.com.br</td><td><span class="user-badge op">Operador</span></td><td><span class="status-dot on"></span> Online</td></tr>
+        </tbody>
+      </table>
+
+      <div class="gv-section-title">WhatsApp (API Oficial Meta)</div>
+      <div class="settings-row"><span class="sr-label">(55) 99912-0001 &mdash; Comercial</span><span class="sr-value"><span class="status-dot on"></span> Conectado</span></div>
+      <div class="settings-row"><span class="sr-label">(55) 99912-0002 &mdash; Atendimento</span><span class="sr-value"><span class="status-dot on"></span> Conectado</span></div>
+      <div class="settings-row"><span class="sr-label">(55) 99912-0003 &mdash; Sinistros</span><span class="sr-value"><span class="status-dot on"></span> Conectado</span></div>
+      <div class="settings-row"><span class="sr-label">Status API</span><span class="sr-value" style="color:#22c55e;">Ativo &mdash; 24/7</span></div>
+
+      <div class="gv-section-title">Integra&ccedil;&otilde;es</div>
+      <div class="settings-row"><span class="sr-label">Corp (Agia)</span><span class="sr-value"><span class="status-dot on"></span> Sincronizado</span></div>
+      <div class="settings-row"><span class="sr-label">&Uacute;ltimo sync</span><span class="sr-value">Hoje &agrave;s 10:30</span></div>
+
+      <div class="gv-section-title">Notifica&ccedil;&otilde;es</div>
+      <div class="settings-row"><span class="sr-label">Alerta por e-mail (novos leads)</span><span class="sr-value"><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></span></div>
+      <div class="settings-row"><span class="sr-label">Alerta WhatsApp (sinistro aberto)</span><span class="sr-value"><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></span></div>
+      <div class="settings-row"><span class="sr-label">Relat&oacute;rio semanal por e-mail</span><span class="sr-value"><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></span></div>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD VIEW ===== -->
+  <div class="view dash-view" id="view-dashboard">
+    <div class="dash-header">
+      <h2>Dashboard</h2>
+      <p>Vis&atilde;o geral &mdash; Maio 2026</p>
+    </div>
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dc-label">Neg&oacute;cios ativos</div>
+        <div class="dc-value" style="color: #3B82F6;">24</div>
+        <div class="dc-change up">+3 esta semana</div>
+      </div>
+      <div class="dash-card">
+        <div class="dc-label">Pr&ecirc;mio em carteira</div>
+        <div class="dc-value" style="color: #22c55e;">R$ 187K</div>
+        <div class="dc-change up">+R$ 12K vs. m&ecirc;s anterior</div>
+      </div>
+      <div class="dash-card">
+        <div class="dc-label">Comiss&atilde;o estimada</div>
+        <div class="dc-value" style="color: #f59e0b;">R$ 38K</div>
+        <div class="dc-change up">M&eacute;dia 20.3%</div>
+      </div>
+      <div class="dash-card">
+        <div class="dc-label">Msgs autom&aacute;ticas (m&ecirc;s)</div>
+        <div class="dc-value" style="color: #8b5cf6;">142</div>
+        <div class="dc-change up">67 boas-vindas, 48 parcelas, 27 follow-ups</div>
+      </div>
+    </div>
+    <div class="dash-charts">
+      <div class="dash-chart-card">
+        <h4>Funil de Vendas</h4>
+        <div class="funnel-bar"><span class="fb-label">Prospec&ccedil;&atilde;o</span><div class="fb-bar"><div class="fb-fill" style="width: 100%; background: #3B82F6;"></div></div><span class="fb-count">8</span></div>
+        <div class="funnel-bar"><span class="fb-label">Cota&ccedil;&atilde;o enviada</span><div class="fb-bar"><div class="fb-fill" style="width: 75%; background: #f59e0b;"></div></div><span class="fb-count">6</span></div>
+        <div class="funnel-bar"><span class="fb-label">Proposta transmit.</span><div class="fb-bar"><div class="fb-fill" style="width: 50%; background: #8b5cf6;"></div></div><span class="fb-count">4</span></div>
+        <div class="funnel-bar"><span class="fb-label">Aguard. emiss&atilde;o</span><div class="fb-bar"><div class="fb-fill" style="width: 37%; background: #06b6d4;"></div></div><span class="fb-count">3</span></div>
+        <div class="funnel-bar"><span class="fb-label">Emitido</span><div class="fb-bar"><div class="fb-fill" style="width: 37%; background: #22c55e;"></div></div><span class="fb-count">3</span></div>
+      </div>
+      <div class="dash-chart-card">
+        <h4>Atividade recente</h4>
+        <div class="activity-item"><div class="activity-dot" style="background: #22c55e;"></div><div><div class="activity-text"><strong>Automa&ccedil;&atilde;o:</strong> Boas-vindas enviada para Carlos Melo (Residencial)</div><div class="activity-time">Hoje 09:00</div></div></div>
+        <div class="activity-item"><div class="activity-dot" style="background: #3B82F6;"></div><div><div class="activity-text"><strong>Marcel</strong> moveu Padaria Central para Proposta Transmitida</div><div class="activity-time">Ontem 16:30</div></div></div>
+        <div class="activity-item"><div class="activity-dot" style="background: #f59e0b;"></div><div><div class="activity-text"><strong>Automa&ccedil;&atilde;o:</strong> Aviso parcela enviado para Maria Eduarda</div><div class="activity-time">Ontem 08:00</div></div></div>
+        <div class="activity-item"><div class="activity-dot" style="background: #8b5cf6;"></div><div><div class="activity-text"><strong>Adria</strong> adicionou nota em Transportes Foletto</div><div class="activity-time">06/05 14:20</div></div></div>
+        <div class="activity-item"><div class="activity-dot" style="background: #22c55e;"></div><div><div class="activity-text"><strong>Corp sync:</strong> P&oacute;lice #847291 emitida (Carlos Melo)</div><div class="activity-time">05/05 11:00</div></div></div>
+      </div>
+    </div>
+    <div class="dash-charts">
+      <div class="dash-chart-card">
+        <h4>Pr&ecirc;mio por ramo</h4>
+        <div class="funnel-bar"><span class="fb-label">Empresarial</span><div class="fb-bar"><div class="fb-fill" style="width: 100%; background: #f59e0b;"></div></div><span class="fb-count">R$ 82K</span></div>
+        <div class="funnel-bar"><span class="fb-label">Auto</span><div class="fb-bar"><div class="fb-fill" style="width: 60%; background: #3B82F6;"></div></div><span class="fb-count">R$ 49K</span></div>
+        <div class="funnel-bar"><span class="fb-label">Equipamento</span><div class="fb-bar"><div class="fb-fill" style="width: 40%; background: #06b6d4;"></div></div><span class="fb-count">R$ 33K</span></div>
+        <div class="funnel-bar"><span class="fb-label">Vida</span><div class="fb-bar"><div class="fb-fill" style="width: 15%; background: #8b5cf6;"></div></div><span class="fb-count">R$ 12K</span></div>
+        <div class="funnel-bar"><span class="fb-label">Residencial</span><div class="fb-bar"><div class="fb-fill" style="width: 13%; background: #22c55e;"></div></div><span class="fb-count">R$ 11K</span></div>
+      </div>
+      <div class="dash-chart-card">
+        <h4>Performance por produtor</h4>
+        <div style="margin-bottom: 16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;">Marcel Foletto</span><span style="font-size:12px;color:#3B82F6;font-weight:600;">14 neg&oacute;cios</span></div>
+          <div style="display:flex;gap:12px;font-size:11px;color:#7a7a96;">
+            <span>Pr&ecirc;mio: <strong style="color:#e0e0ec;">R$ 112K</strong></span>
+            <span>Com.: <strong style="color:#22c55e;">R$ 22K</strong></span>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;">Adria</span><span style="font-size:12px;color:#f59e0b;font-weight:600;">10 neg&oacute;cios</span></div>
+          <div style="display:flex;gap:12px;font-size:11px;color:#7a7a96;">
+            <span>Pr&ecirc;mio: <strong style="color:#e0e0ec;">R$ 75K</strong></span>
+            <span>Com.: <strong style="color:#22c55e;">R$ 16K</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Reply Popover -->
+<div class="qr-popover" id="qrPopover">
+  <div class="qr-title">Mensagens r&aacute;pidas</div>
+  <div class="qr-item" onclick="insertQuickReply('Ol\u00e1! Sua cota\u00e7\u00e3o j\u00e1 est\u00e1 pronta. Posso enviar os detalhes agora?')"><div class="qr-name">Cota&ccedil;&atilde;o pronta</div><div class="qr-preview">Ol&aacute;! Sua cota&ccedil;&atilde;o j&aacute; est&aacute; pronta...</div></div>
+  <div class="qr-item" onclick="insertQuickReply('Sua proposta foi transmitida com sucesso! Assim que a p\u00f3lice for emitida, te aviso.')"><div class="qr-name">Proposta transmitida</div><div class="qr-preview">Sua proposta foi transmitida com sucesso...</div></div>
+  <div class="qr-item" onclick="insertQuickReply('Seja bem-vindo \u00e0 Marpe Corretora! Sua p\u00f3lice j\u00e1 foi emitida. Assist\u00eancia 24h: 0800-123-4567')"><div class="qr-name">P&oacute;lice emitida</div><div class="qr-preview">Seja bem-vindo! Sua p&oacute;lice j&aacute; foi emitida...</div></div>
+  <div class="qr-item" onclick="insertQuickReply('Seu guincho foi acionado! Previs\u00e3o de chegada: 40 minutos. Qualquer problema, me avise.')"><div class="qr-name">Guincho acionado</div><div class="qr-preview">Seu guincho foi acionado! Previs&atilde;o...</div></div>
+  <div class="qr-item" onclick="insertQuickReply('Lembrete: sua parcela vence em 5 dias. Valor: R$ [VALOR]. Qualquer d\u00favida, estou \u00e0 disposi\u00e7\u00e3o.')"><div class="qr-name">Aviso de parcela</div><div class="qr-preview">Lembrete: sua parcela vence em 5 dias...</div></div>
+</div>
+
+<!-- Note Modal -->
+<div class="modal-overlay" id="noteModal">
+  <div class="modal">
+    <h3>Adicionar nota</h3>
+    <label>Nota sobre o contato</label>
+    <textarea placeholder="Ex: Cliente pediu para incluir cobertura de RC..."></textarea>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" onclick="closeModal('noteModal')">Cancelar</button>
+      <button class="modal-btn primary" onclick="closeModal('noteModal')">Salvar nota</button>
+    </div>
+  </div>
+</div>
+
+<!-- Schedule Modal -->
+<div class="modal-overlay" id="scheduleModal">
+  <div class="modal">
+    <h3>Agendar mensagem</h3>
+    <div class="modal-row">
+      <div><label>Data</label><input type="date" value="2026-05-09"></div>
+      <div><label>Hor&aacute;rio</label><input type="time" value="09:00"></div>
+    </div>
+    <label>Mensagem</label>
+    <textarea placeholder="Digite a mensagem que ser&aacute; enviada..."></textarea>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" onclick="closeModal('scheduleModal')">Cancelar</button>
+      <button class="modal-btn primary" onclick="closeModal('scheduleModal')">Agendar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// View switching
+function switchView(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.sidebar-icon').forEach(i => i.classList.remove('active'));
+  const target = document.getElementById('view-' + view);
+  if (target) { target.classList.add('active'); }
+  if (event && event.currentTarget) event.currentTarget.classList.add('active');
+  if (view === 'kanban') renderKanban('vendas');
+  closeQuickReply();
+}
+
+// Quick Reply
+function toggleQuickReply() {
+  document.getElementById('qrPopover').classList.toggle('show');
+}
+function closeQuickReply() {
+  document.getElementById('qrPopover').classList.remove('show');
+}
+function insertQuickReply(text) {
+  const input = document.querySelector('.chat-input input');
+  input.value = text;
+  input.focus();
+  closeQuickReply();
+}
+
+// Modals
+function openModal(id) {
+  document.getElementById(id).classList.add('show');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+// Close popover/modal on outside click
+document.addEventListener('click', function(e) {
+  const qr = document.getElementById('qrPopover');
+  if (qr.classList.contains('show') && !e.target.closest('.qr-popover') && !e.target.closest('.input-btn.quick') && !e.target.closest('.ch-action-btn')) {
+    closeQuickReply();
+  }
+});
+
+// Contact search filter
+document.querySelector('.contact-search').addEventListener('input', function(e) {
+  const q = e.target.value.toLowerCase();
+  document.querySelectorAll('.contact-item').forEach(item => {
+    const name = item.querySelector('.c-name')?.textContent.toLowerCase() || '';
+    const preview = item.querySelector('.c-preview')?.textContent.toLowerCase() || '';
+    item.style.display = (name.includes(q) || preview.includes(q) || q === '') ? 'flex' : 'none';
+  });
+});
+
+// Contact tabs
+document.querySelectorAll('.contact-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.contact-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const text = this.textContent.trim();
+    document.querySelectorAll('.contact-item').forEach((item, i) => {
+      if (text.startsWith('N\u00e3o') || text.startsWith('Não')) {
+        item.style.display = item.classList.contains('unread') ? 'flex' : 'none';
+      } else {
+        item.style.display = 'flex';
+      }
+    });
+  });
+});
+
+// CRM panel tabs
+function switchCrmTab(tabId) {
+  document.querySelectorAll('.crm-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.crm-tab-content').forEach(c => c.style.display = 'none');
+  event.currentTarget.classList.add('active');
+  const el = document.getElementById('crmtab-' + tabId);
+  if (el) el.style.display = 'block';
+}
+
+// Chat switching
+const chats = [
+  { name: 'Marcos Pilon', status: 'Abastecedora Pilon \u2022 (55) 99912-3456', avatar: 'MP', color: '#4ade80',
+    messages: [
+      { type: 'date', text: 'Hoje' },
+      { type: 'received', text: 'Bom dia Marcel! Conseguiu fazer a cota\u00e7\u00e3o do seguro empresarial? Estou precisando dar uma resposta pro meu s\u00f3cio at\u00e9 sexta.', time: '10:42' },
+      { type: 'sent', text: 'Bom dia Marcos! Sim, j\u00e1 recebi tr\u00eas cota\u00e7\u00f5es. A Bradesco ficou com o melhor custo-benef\u00edcio. Vou te enviar o comparativo agora.', time: '10:45' },
+      { type: 'sent', text: 'Seguinte: Bradesco R$ 8.200/ano (cobertura completa + RC), Porto R$ 9.100 e Allianz R$ 8.800. Recomendo a Bradesco.', time: '10:46' },
+      { type: 'received', text: 'Boa! Valor do Bradesco t\u00e1 bom. Qual a forma de pagamento?', time: '10:48' },
+      { type: 'sent', text: 'Pode ser em at\u00e9 10x no boleto sem juros, ou \u00e0 vista com 5% de desconto. Quer que eu transmita a proposta da Bradesco?', time: '10:50' },
+    ]},
+  { name: 'Tiago Donicht', status: '2 neg\u00f3cios ativos \u2022 (55) 99654-7890', avatar: 'TD', color: '#60A5FA',
+    messages: [
+      { type: 'date', text: 'Hoje' },
+      { type: 'received', text: 'Marcel, recebi as duas cota\u00e7\u00f5es. Vou analisar e te dou um retorno at\u00e9 amanh\u00e3.', time: '10:15' },
+      { type: 'sent', text: 'Perfeito, Tiago! Sem pressa. A do auto ficou R$ 4.100 e a de vida R$ 1.800/ano. Qualquer d\u00favida me chama.', time: '10:20' },
+    ]},
+  { name: 'Dra. Ana Costa', status: 'Cl\u00ednica Bem Estar \u2022 (55) 99432-1000', avatar: 'AC', color: '#fbbf24',
+    messages: [
+      { type: 'date', text: 'Hoje' },
+      { type: 'received', text: 'Ol\u00e1 Marcel, quando sai a p\u00f3lice da empresa? J\u00e1 faz uma semana que transmitimos.', time: '09:50' },
+      { type: 'sent', text: 'Bom dia Dra. Ana! Vou verificar no portal agora e j\u00e1 te dou um retorno. Normalmente leva 5 a 7 dias \u00fateis.', time: '10:02' },
+    ]},
+  { name: 'Carlos Melo', status: 'Resid\u00eancia Melo \u2022 (55) 99321-0987', avatar: 'CM', color: '#a78bfa',
+    messages: [
+      { type: 'date', text: 'Ontem' },
+      { type: 'auto', text: 'Ol\u00e1 Carlos! Seja bem-vindo \u00e0 Marpe Corretora de Seguros! Sua p\u00f3lice residencial j\u00e1 foi emitida. N\u00famero: #847291. Em caso de emerg\u00eancia, ligue para a Assist\u00eancia 24h: 0800-123-4567.', time: '09:00' },
+      { type: 'received', text: 'Muito obrigado pelo atendimento! Recebi a p\u00f3lice por e-mail tamb\u00e9m. Excelente servi\u00e7o!', time: '09:45' },
+      { type: 'sent', text: 'N\u00f3s que agradecemos, Carlos! Qualquer coisa estamos \u00e0 disposi\u00e7\u00e3o. Abra\u00e7o!', time: '10:00' },
+    ]},
+  { name: 'Roberto Foletto', status: 'Transportes Foletto \u2022 (55) 99887-6543', avatar: 'RF', color: '#22d3ee',
+    messages: [
+      { type: 'date', text: '06/05' },
+      { type: 'received', text: 'Marcel, preciso de seguro pra 2 caminh\u00f5es novos que chegaram. Modelo Scania R450. Consegue cotar?', time: '14:30' },
+      { type: 'sent', text: 'Fala Roberto! Consigo sim. Me manda as notas fiscais e os documentos dos ve\u00edculos que j\u00e1 encaminho pra cota\u00e7\u00e3o.', time: '14:45' },
+    ]},
+  { name: 'Jo\u00e3o Silva (Padaria)', status: 'Padaria Central \u2022 (55) 99543-2100', avatar: 'JS', color: '#60A5FA',
+    messages: [
+      { type: 'date', text: '05/05' },
+      { type: 'sent', text: 'Jo\u00e3o, a cota\u00e7\u00e3o do empresarial ficou em R$ 6.700/ano com a Bradesco. Cobertura completa + RC. Quer que eu transmita?', time: '15:20' },
+      { type: 'received', text: 'Perfeito, pode transmitir a proposta ent\u00e3o. T\u00e1 bom esse valor.', time: '16:00' },
+      { type: 'sent', text: '\u00d3timo! Transmitindo agora. Te aviso quando emitir a p\u00f3lice.', time: '16:05' },
+    ]},
+];
+
+function switchChat(idx) {
+  const chat = chats[idx];
+  document.querySelectorAll('.contact-item').forEach((c, i) => {
+    c.classList.toggle('active', i === idx);
+    c.classList.remove('unread');
+  });
+  document.getElementById('chatName').textContent = chat.name;
+  document.getElementById('chatStatus').textContent = chat.status;
+  const container = document.getElementById('chatMessages');
+  container.innerHTML = chat.messages.map(m => {
+    if (m.type === 'date') return '<div class="msg-date">' + m.text + '</div>';
+    if (m.type === 'auto') return '<div class="msg auto-msg">' + m.text + '<div class="msg-time">' + m.time + '</div></div>';
+    return '<div class="msg ' + (m.type === 'sent' ? 'sent' : 'received') + '">' + m.text + '<div class="msg-time">' + m.time + '</div></div>';
+  }).join('');
+  container.scrollTop = container.scrollHeight;
+}
+
+// Kanban data
+const kanbanData = {
+  vendas: {
+    columns: [
+      { title: 'Prospec\u00e7\u00e3o', color: '#3B82F6', cards: [
+        { name: 'Abastecedora Pilon', ramo: 'Empresarial', ramoClass: 'emp', contact: 'Marcos Pilon', premio: 'R$ 8.200', com: '20%', date: 'Contato: hoje', user: 'AD' },
+        { name: 'Transportes Foletto', ramo: 'Equipamento', ramoClass: 'equip', contact: 'Roberto Foletto', premio: 'R$ 12.500', com: '18%', date: 'Contato: 09/05', user: 'MF' },
+        { name: 'Marielle Santos', ramo: 'Auto', ramoClass: 'auto', contact: 'Marielle Santos', premio: 'R$ 3.400', com: '22%', date: 'Contato: ontem', dateUrgent: true, user: 'MF' },
+      ]},
+      { title: 'Cota\u00e7\u00e3o Enviada', color: '#f59e0b', cards: [
+        { name: 'Tiago Donicht', ramo: 'Auto', ramoClass: 'auto', contact: 'Tiago Donicht', premio: 'R$ 4.100', com: '20%', date: 'Aguardando retorno', auto: 'Follow-up em 3 dias', user: 'MF' },
+        { name: 'Tiago Donicht', ramo: 'Vida', ramoClass: 'vida', contact: 'Tiago Donicht', premio: 'R$ 1.800', com: '35%', date: 'Aguardando retorno', user: 'MF' },
+      ]},
+      { title: 'Proposta Transmitida', color: '#8b5cf6', cards: [
+        { name: 'Padaria Central', ramo: 'Empresarial', ramoClass: 'emp', contact: 'Jo\u00e3o Silva', premio: 'R$ 6.700', com: '18%', date: 'Transmitida 03/05', auto: 'Corp: aguardando', user: 'AD' },
+      ]},
+      { title: 'Aguardando Emiss\u00e3o', color: '#06b6d4', cards: [
+        { name: 'Cl\u00ednica Bem Estar', ramo: 'Empresarial', ramoClass: 'emp', contact: 'Dra. Ana Costa', premio: 'R$ 15.300', com: '15%', date: 'Proposta 28/04', auto: 'Ao emitir \u2192 boas-vindas', user: 'MF' },
+      ]},
+      { title: 'Emitido \u2713', color: '#22c55e', cards: [
+        { name: 'Resid\u00eancia Melo', ramo: 'Residencial', ramoClass: 'res', contact: 'Carlos Melo', premio: 'R$ 2.100', com: '25%', date: 'Emitido 05/05 \u2014 #847291', auto: '\u2713 Boas-vindas enviada', user: 'AD' },
+      ]},
+    ]
+  },
+  assistencia: {
+    columns: [
+      { title: 'Assist\u00eancia Aberta', color: '#ef4444', cards: [
+        { name: 'Maria Eduarda', ramo: 'Auto', ramoClass: 'auto', contact: 'Maria Eduarda', premio: 'Guincho', com: '\u2014', date: 'Aberto hoje 08:30', auto: 'Cliente notificado', user: 'MF' },
+      ]},
+      { title: 'Prestador Acionado', color: '#f59e0b', cards: [
+        { name: 'Pedro Almeida', ramo: 'Auto', ramoClass: 'auto', contact: 'Pedro Almeida', premio: 'Guincho', com: '\u2014', date: 'Acionado 11:00', auto: 'Msg: prestador a caminho', user: 'AD' },
+      ]},
+      { title: 'Prestador Chegou', color: '#06b6d4', cards: [] },
+      { title: 'Finalizada', color: '#22c55e', cards: [] },
+    ]
+  },
+  sinistros: {
+    columns: [
+      { title: 'Sinistro Aberto', color: '#ef4444', cards: [] },
+      { title: 'Docs Pendentes', color: '#f59e0b', cards: [] },
+      { title: 'Em An\u00e1lise', color: '#8b5cf6', cards: [] },
+      { title: 'Autorizado', color: '#06b6d4', cards: [] },
+      { title: 'Finalizado', color: '#22c55e', cards: [] },
+    ]
+  },
+  renovacoes: {
+    columns: [
+      { title: '60 dias', color: '#f59e0b', cards: [
+        { name: 'Cl\u00ednica Bem Estar', ramo: 'Empresarial', ramoClass: 'emp', contact: 'Dra. Ana Costa', premio: 'R$ 14.200', com: '15%', date: 'Vence 15/07', auto: 'Aviso em 15/05', user: 'MF' },
+      ]},
+      { title: '30 dias', color: '#ef4444', cards: [
+        { name: 'Marcos Pilon (Auto)', ramo: 'Auto', ramoClass: 'auto', contact: 'Marcos Pilon', premio: 'R$ 5.600', com: '20%', date: 'Vence 08/06', user: 'AD' },
+      ]},
+      { title: 'Cota\u00e7\u00e3o Enviada', color: '#8b5cf6', cards: [] },
+      { title: 'Renovado', color: '#22c55e', cards: [] },
+      { title: 'Cancelado', color: '#4a4a64', cards: [] },
+    ]
+  },
+  campanha: {
+    columns: [
+      { title: 'Novo Lead', color: '#3B82F6', cards: [] },
+      { title: 'Qualificado', color: '#f59e0b', cards: [] },
+      { title: 'Cota\u00e7\u00e3o', color: '#8b5cf6', cards: [] },
+      { title: 'Convertido', color: '#22c55e', cards: [] },
+    ]
+  }
+};
+
+function renderKanban(funnel) {
+  const data = kanbanData[funnel];
+  const wrapper = document.getElementById('kanbanContent');
+  wrapper.innerHTML = data.columns.map(col => {
+    const sum = col.cards.reduce((a, c) => a + (parseFloat((c.premio || '').replace(/[^\d]/g, '')) || 0), 0);
+    return '<div class="kanban-col"><div class="kcol-header"><div class="kcol-dot" style="background:' + col.color + ';"></div><span class="kcol-title">' + col.title + '</span><span class="kcol-count">' + col.cards.length + '</span>' + (sum > 0 ? '<span class="kcol-sum">R$ ' + (sum/1000).toFixed(1) + 'K</span>' : '') + '</div><div class="kcol-cards">' +
+    col.cards.map(c => '<div class="kcard"><div class="kc-top"><span class="kc-name">' + c.name + '</span><span class="kc-ramo ramo-' + c.ramoClass + '">' + c.ramo + '</span></div><div class="kc-contact">' + c.contact + '</div><div class="kc-fields"><div class="kc-field"><span class="kf-label">Pr\u00eamio </span><span class="kf-value">' + c.premio + '</span></div><div class="kc-field"><span class="kf-label">Com. </span><span class="kf-value">' + c.com + '</span></div></div><div class="kc-bottom"><span class="kc-date' + (c.dateUrgent ? ' urgent' : '') + '">' + c.date + '</span><div class="kc-user">' + c.user + '</div></div>' + (c.auto ? '<div class="kc-auto">\u26a1 ' + c.auto + '</div>' : '') + '</div>').join('') +
+    '</div></div>';
+  }).join('');
+}
+
+function switchFunnel(val) {
+  document.getElementById('funnelSelect').value = val;
+  renderKanban(val);
+}
+
+// Init
+renderKanban('vendas');
+</script>
+</body>
+</html>

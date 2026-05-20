@@ -1,0 +1,590 @@
+[
+  {
+    "selector": "/* ── https://press.tiffany.com/wp-content/plugins/easy-digital-downloads/includes/blocks/assets/css/edd-blocks.css?ver=3.2.9 ── */ :root",
+    "name": "--edd-blocks-light-grey",
+    "value": "#eee",
+    "is_alias": false,
+    "line": 1
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025 .sustainability-navigation,.page-template-template-sustainability-2025-chapter .inner-content .sustainability-2025 .sust",
+    "name": "--search-phase-duration",
+    "value": "0.35s",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025 .sustainability-navigation,.page-template-template-sustainability-2025-chapter .inner-content .sustainability-2025 .sust",
+    "name": "--search-phase-delay",
+    "value": "0.35s",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media (prefers-reduced-motion:reduce)",
+    "name": "--search-phase-duration",
+    "value": "0.01s",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media (prefers-reduced-motion:reduce)",
+    "name": "--search-phase-delay",
+    "value": "0s",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-intro .intro-chapters__row,.page-template-template-sustainability-2025-chapter .inner-content .sustainabi",
+    "name": "--intro-chapter-gap",
+    "value": "20px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-intro .intro-chapters__row,.page-template-template-sustainability-2025-chapter .inner-content .sustainabi",
+    "name": "--intro-chapter-hover-gap",
+    "value": "20px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-intro .intro-chapters__row,.page-template-template-sustainability-2025-chapter .inner-content .sustainabi",
+    "name": "--intro-chapter-hover-width",
+    "value": "25%",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-intro .intro-chapters__row,.page-template-template-sustainability-2025-chapter .inner-content .sustainabi",
+    "name": "--intro-chapter-count",
+    "value": "2",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-intro .intro-chapters__row,.page-template-template-sustainability-2025-chapter .inner-content .sustainabi",
+    "name": "--intro-hover-gradient-x",
+    "value": "50%",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-intro .intro-chapters__row,.page-template-template-sustainability-2025-chapter .inner-content .sustainabi",
+    "name": "--intro-hover-gradient-opacity",
+    "value": "0",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media print,screen and (min-width:48em)",
+    "name": "--intro-chapter-gap",
+    "value": "40px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media print,screen and (min-width:48em)",
+    "name": "--intro-chapter-hover-gap",
+    "value": "30px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media print,screen and (min-width:48em)",
+    "name": "--intro-chapter-hover-width",
+    "value": "32%",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media print,screen and (min-width:48em)",
+    "name": "--intro-chapter-count",
+    "value": "4",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-chapter .chapter-sections .chapter-section--timeline .chapter-timeline,.page-template-template-sustainabi",
+    "name": "--timeline-progress",
+    "value": "0px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-chapter .chapter-sections .chapter-section--timeline .chapter-timeline,.page-template-template-sustainabi",
+    "name": "--timeline-track-width",
+    "value": "100%",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-chapter .chapter-sections .chapter-section--timeline .chapter-timeline,.page-template-template-sustainabi",
+    "name": "--timeline-dash-length",
+    "value": "10px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-chapter .chapter-sections .chapter-section--timeline .chapter-timeline,.page-template-template-sustainabi",
+    "name": "--timeline-dash-gap",
+    "value": "14px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": ".page-template-template-sustainability-2025 .inner-content .sustainability-2025.sustainability-chapter .chapter-sections .chapter-section--timeline .chapter-timeline__item,.page-template-template-sust",
+    "name": "--timeline-dot-offset",
+    "value": "50%",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "@media print,screen and (min-width:48em)",
+    "name": "--timeline-dot-offset",
+    "value": "100px",
+    "is_alias": false,
+    "line": 325
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-block-synced-color",
+    "value": "#7a00df",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-block-synced-color--rgb",
+    "value": "122,0,223",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-bound-block-color",
+    "value": "var(--wp-block-synced-color)",
+    "is_alias": true,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-editor-canvas-background",
+    "value": "#ddd",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-theme-color",
+    "value": "#007cba",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-theme-color--rgb",
+    "value": "0,124,186",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-theme-color-darker-10",
+    "value": "#006ba1",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-theme-color-darker-10--rgb",
+    "value": "0,107,160.5",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-theme-color-darker-20",
+    "value": "#005a87",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-theme-color-darker-20--rgb",
+    "value": "0,90,135",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "/*# sourceURL=wp-emoji-styles-inline-css */ /* ── inline <style> #3 ── */ :root",
+    "name": "--wp-admin-border-width-focus",
+    "value": "2px",
+    "is_alias": false,
+    "line": 348
+  },
+  {
+    "selector": "@media (min-resolution:192dpi)",
+    "name": "--wp-admin-border-width-focus",
+    "value": "1.5px",
+    "is_alias": false,
+    "line": 354
+  },
+  {
+    "selector": ":root",
+    "name": "--wp--preset--font-size--normal",
+    "value": "16px",
+    "is_alias": false,
+    "line": 354
+  },
+  {
+    "selector": ":root",
+    "name": "--wp--preset--font-size--huge",
+    "value": "42px",
+    "is_alias": false,
+    "line": 354
+  },
+  {
+    "selector": "html :where(.is-position-sticky)",
+    "name": "--wp-admin--admin-bar--position-offset",
+    "value": "var(--wp-admin--admin-bar--height,0px)",
+    "is_alias": true,
+    "line": 354
+  },
+  {
+    "selector": "@media screen and (max-width:600px)",
+    "name": "--wp-admin--admin-bar--position-offset",
+    "value": "0px",
+    "is_alias": false,
+    "line": 354
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--square",
+    "value": "1",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--4-3",
+    "value": "4/3",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--3-4",
+    "value": "3/4",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--3-2",
+    "value": "3/2",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--2-3",
+    "value": "2/3",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--16-9",
+    "value": "16/9",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--aspect-ratio--9-16",
+    "value": "9/16",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--black",
+    "value": "#000000",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--cyan-bluish-gray",
+    "value": "#abb8c3",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--white",
+    "value": "#ffffff",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--pale-pink",
+    "value": "#f78da7",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--vivid-red",
+    "value": "#cf2e2e",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--luminous-vivid-orange",
+    "value": "#ff6900",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--luminous-vivid-amber",
+    "value": "#fcb900",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--light-green-cyan",
+    "value": "#7bdcb5",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--vivid-green-cyan",
+    "value": "#00d084",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--pale-cyan-blue",
+    "value": "#8ed1fc",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--vivid-cyan-blue",
+    "value": "#0693e3",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--color--vivid-purple",
+    "value": "#9b51e0",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple",
+    "value": "linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan",
+    "value": "linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange",
+    "value": "linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--luminous-vivid-orange-to-vivid-red",
+    "value": "linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray",
+    "value": "linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--cool-to-warm-spectrum",
+    "value": "linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--blush-light-purple",
+    "value": "linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--blush-bordeaux",
+    "value": "linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--luminous-dusk",
+    "value": "linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--pale-ocean",
+    "value": "linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--electric-grass",
+    "value": "linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--gradient--midnight",
+    "value": "linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--font-size--small",
+    "value": "13px",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--font-size--medium",
+    "value": "20px",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--font-size--large",
+    "value": "36px",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--font-size--x-large",
+    "value": "42px",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--20",
+    "value": "0.44rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--30",
+    "value": "0.67rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--40",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--50",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--60",
+    "value": "2.25rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--70",
+    "value": "3.38rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--spacing--80",
+    "value": "5.06rem",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--shadow--natural",
+    "value": "6px 6px 9px rgba(0, 0, 0, 0.2)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--shadow--deep",
+    "value": "12px 12px 50px rgba(0, 0, 0, 0.4)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--shadow--sharp",
+    "value": "6px 6px 0px rgba(0, 0, 0, 0.2)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--shadow--outlined",
+    "value": "6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0)",
+    "is_alias": false,
+    "line": 362
+  },
+  {
+    "selector": "/*# sourceURL=/wp-includes/css/classic-themes.min.css */ /* ── inline <style> #5 ── */ :root",
+    "name": "--wp--preset--shadow--crisp",
+    "value": "6px 6px 0px rgb(0, 0, 0)",
+    "is_alias": false,
+    "line": 362
+  }
+]

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priscilla Andrade — Filhas de Eva</title>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@300,400,500,600,300i,400i&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --black:#0f0d0b;--warm:#1a1612;--cream:#f5f0ea;--white:#faf7f3;
+      --text-l:#e8e2da;--text-d:#0f0d0b;--muted-l:rgba(232,226,218,.5);--muted-d:rgba(15,13,11,.45);
+      --bronze:#c4956a;--bronze-dim:rgba(196,149,106,.4);
+      --display:'Zodiak',Georgia,serif;
+      --body:'Outfit','Helvetica Neue',sans-serif;
+    }
+    @page{size:810px 1440px;margin:0}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{font-size:16px;-webkit-font-smoothing:antialiased;width:810px}
+    body{font-family:var(--body);color:var(--text-l);background:var(--black);width:810px;overflow:hidden}
+    img{display:block;max-width:100%;height:auto}
+    .page{width:810px;height:1440px;overflow:hidden;page-break-after:always;break-after:page;position:relative}
+
+    /* ═══════════════════════════════════════
+       PAGE 1 — COVER: Cinema poster
+    ═══════════════════════════════════════ */
+    .p1{display:flex;align-items:flex-end;justify-content:center}
+    .p1-bg{position:absolute;inset:0}
+    .p1-bg img{width:100%;height:100%;object-fit:cover;object-position:center 8%}
+    .p1-bg::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(to top,
+        rgba(15,13,11,.92) 0%,
+        rgba(15,13,11,.5) 30%,
+        rgba(15,13,11,.1) 55%,
+        transparent 75%
+      )}
+    .p1-content{position:relative;z-index:1;text-align:center;padding:0 72px 80px;width:100%}
+    .p1-name{font-family:var(--display);font-weight:300;font-size:120px;line-height:.85;color:#fff;letter-spacing:-.03em}
+    .p1-role{font-family:var(--body);font-weight:300;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--bronze);margin-top:24px}
+
+    /* ═══════════════════════════════════════
+       PAGE 2 — QUEM É: Light, editorial
+    ═══════════════════════════════════════ */
+    .p2{background:var(--white);color:var(--text-d);display:flex;flex-direction:column}
+    .p2-txt{padding:72px 72px 40px}
+    .p2-eyebrow{font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze)}
+    .p2-bio{font-family:var(--display);font-weight:300;font-size:26px;line-height:1.5;color:var(--text-d);margin-top:28px;max-width:620px}
+    .p2-bio strong{font-weight:500}
+    .p2-programs{margin-top:24px;display:flex;gap:10px}
+    .p2-prog{font-family:var(--body);font-weight:500;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);padding:6px 16px;border:1px solid var(--bronze-dim)}
+    .p2-stats{display:flex;gap:0;margin-top:32px;border-top:1px solid rgba(15,13,11,.06)}
+    .p2-stat{flex:1;padding:24px 0;text-align:center;border-right:1px solid rgba(15,13,11,.06)}
+    .p2-stat:last-child{border-right:none}
+    .p2-stat b{display:block;font-family:var(--display);font-weight:300;font-size:36px;color:var(--text-d)}
+    .p2-stat b span{color:var(--bronze)}
+    .p2-stat small{font-family:var(--body);font-weight:500;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-d)}
+    .p2-photo{flex:1;overflow:hidden}
+    .p2-photo img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
+
+    /* ═══════════════════════════════════════
+       PAGE 3 — 980K: Held silence
+    ═══════════════════════════════════════ */
+    .p3{background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .p3-num{font-family:var(--display);font-weight:300;font-size:320px;line-height:.7;color:var(--text-l);letter-spacing:-.06em}
+    .p3-num span{color:var(--bronze)}
+    .p3-label{font-family:var(--body);font-weight:300;font-size:18px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-l);margin-top:32px}
+    .p3-sub{font-family:var(--display);font-weight:300;font-style:italic;font-size:22px;color:var(--muted-l);margin-top:48px;max-width:440px;line-height:1.5}
+
+    /* ═══════════════════════════════════════
+       PAGE 4 — AUDIÊNCIA: Light, metrics
+    ═══════════════════════════════════════ */
+    .p4{background:var(--cream);color:var(--text-d);display:flex;flex-direction:column;justify-content:center;padding:80px 72px}
+    .p4-head{margin-bottom:56px}
+    .p4-title{font-family:var(--display);font-weight:300;font-size:48px;line-height:1.1;color:var(--text-d);margin-top:20px}
+    .p4-desc{font-family:var(--body);font-weight:300;font-size:16px;color:var(--muted-d);line-height:1.65;margin-top:16px;max-width:480px}
+    .p4-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    .p4-cell{padding:40px 36px;border-bottom:1px solid rgba(15,13,11,.06);border-right:1px solid rgba(15,13,11,.06)}
+    .p4-cell:nth-child(2n){border-right:none}
+    .p4-cell b{display:block;font-family:var(--display);font-weight:300;font-size:64px;color:var(--text-d);line-height:1;letter-spacing:-.02em}
+    .p4-cell b span{color:var(--bronze)}
+    .p4-cell small{display:block;font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d);margin-top:8px}
+
+    /* ═══════════════════════════════════════
+       PAGE 5 — PALCOS: Full-bleed + overlay
+    ═══════════════════════════════════════ */
+    .p5{display:flex;align-items:flex-end}
+    .p5-bg{position:absolute;inset:0}
+    .p5-bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+    .p5-bg::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(15,13,11,.9) 0%,rgba(15,13,11,.4) 40%,transparent 70%)}
+    .p5-content{position:relative;z-index:1;padding:72px;width:100%}
+    .p5-title{font-family:var(--display);font-weight:300;font-size:44px;line-height:1.1;color:#fff}
+    .p5-desc{font-family:var(--body);font-weight:300;font-size:15px;color:rgba(255,255,255,.65);line-height:1.65;margin-top:20px;max-width:480px}
+    .p5-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px}
+    .p5-list li{font-family:var(--body);font-weight:400;font-size:15px;color:rgba(255,255,255,.75);padding-left:20px;position:relative}
+    .p5-list li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--bronze)}
+    .p5-tags{margin-top:24px;display:flex;gap:8px}
+    .p5-tag{font-family:var(--body);font-weight:500;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);padding:5px 12px;border:1px solid var(--bronze-dim)}
+
+    /* ═══════════════════════════════════════
+       PAGE 6 — MUNDO: Film strip vertical
+    ═══════════════════════════════════════ */
+    .p6{background:var(--black);display:flex;flex-direction:column}
+    .p6-header{padding:48px 72px 0}
+    .p6-title{font-family:var(--display);font-weight:300;font-size:36px;color:var(--text-l);margin-top:16px}
+    .p6-desc{font-family:var(--body);font-weight:300;font-size:14px;color:var(--muted-l);margin-top:12px}
+    .p6-strip{flex:1;display:grid;grid-template-columns:1fr;gap:2px;padding:32px 72px 48px}
+    .p6-frame{position:relative;overflow:hidden}
+    .p6-frame img{width:100%;height:100%;object-fit:cover}
+    .p6-frame-label{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(15,13,11,.8),transparent)}
+    .p6-frame-label h4{font-family:var(--display);font-weight:400;font-style:italic;font-size:20px;color:#fff}
+    .p6-frame-label p{font-family:var(--body);font-weight:300;font-size:11px;color:rgba(255,255,255,.6);margin-top:4px}
+
+    /* ═══════════════════════════════════════
+       PAGE 7 — NOIVA: Full-bleed emocional
+    ═══════════════════════════════════════ */
+    .p7{display:flex;align-items:center;justify-content:flex-start}
+    .p7-bg{position:absolute;inset:0}
+    .p7-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+    .p7-bg::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(to right,rgba(15,13,11,.85) 0%,rgba(15,13,11,.3) 50%,transparent 80%)}
+    .p7-content{position:relative;z-index:1;padding:72px;max-width:420px}
+    .p7-title{font-family:var(--display);font-weight:300;font-style:italic;font-size:56px;line-height:.9;color:#fff}
+    .p7-desc{font-family:var(--body);font-weight:300;font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;margin-top:28px}
+    .p7-badge{display:inline-block;margin-top:32px;font-family:var(--body);font-weight:500;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);padding:6px 16px;border:1px solid var(--bronze-dim)}
+
+    /* ═══════════════════════════════════════
+       PAGE 8 — PARCERIAS: Light, structured
+    ═══════════════════════════════════════ */
+    .p8{background:var(--white);color:var(--text-d);padding:72px;display:flex;flex-direction:column;justify-content:center}
+    .p8-title{font-family:var(--display);font-weight:300;font-size:42px;line-height:1.1;color:var(--text-d);margin-top:20px}
+    .p8-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:48px;border-top:1px solid rgba(15,13,11,.06)}
+    .p8-card{padding:40px 32px;border-bottom:1px solid rgba(15,13,11,.06);border-right:1px solid rgba(15,13,11,.06)}
+    .p8-card:nth-child(2n){border-right:none}
+    .p8-num{font-family:var(--display);font-weight:300;font-size:48px;color:rgba(15,13,11,.08);line-height:1}
+    .p8-card h3{font-family:var(--display);font-weight:400;font-style:italic;font-size:22px;color:var(--text-d);margin-top:-12px;line-height:1.2}
+    .p8-card p{font-family:var(--body);font-weight:300;font-size:13px;color:var(--muted-d);line-height:1.6;margin-top:12px}
+    .p8-scarcity{font-family:var(--display);font-weight:300;font-style:italic;font-size:20px;color:var(--bronze);text-align:center;margin-top:48px}
+
+    /* ═══════════════════════════════════════
+       PAGE 9 — CONTATO: Dark, statement
+    ═══════════════════════════════════════ */
+    .p9{background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 72px}
+    .p9-brand{font-family:var(--display);font-weight:300;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze);margin-bottom:64px}
+    .p9-quote{font-family:var(--display);font-weight:300;font-style:italic;font-size:28px;line-height:1.45;color:var(--text-l);max-width:520px}
+    .p9-line{width:40px;height:1px;background:var(--bronze-dim);margin:48px auto}
+    .p9-title{font-family:var(--display);font-weight:300;font-size:36px;color:var(--text-l);margin-bottom:24px}
+    .p9-info{font-family:var(--body);font-weight:300;font-size:17px;color:var(--muted-l);line-height:2.2}
+    .p9-info strong{font-weight:500;color:var(--text-l)}
+    .p9-scarcity{margin-top:48px;font-family:var(--body);font-weight:500;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze)}
+    .p9-ft{margin-top:auto;font-family:var(--body);font-weight:300;font-size:10px;color:rgba(232,226,218,.2);letter-spacing:.1em}
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 — CINEMA POSTER -->
+  <div class="page p1">
+    <div class="p1-bg"><img src="assets-pdf/pri-orquidea-cidade.jpg" alt="Priscilla Andrade" style="object-position:center 8%"></div>
+    <div class="p1-content">
+      <h1 class="p1-name">Priscilla<br>Andrade</h1>
+      <p class="p1-role">Posicionamento · Imagem · Comportamento</p>
+    </div>
+  </div>
+
+  <!-- PAGE 2 — QUEM É -->
+  <div class="page p2">
+    <div class="p2-txt">
+      <p class="p2-eyebrow">Sobre Priscilla</p>
+      <p class="p2-bio">Ensina mulheres a serem percebidas pelo que realmente são. <strong>Moda, psicologia comportamental e marca pessoal</strong> — reunidos numa metodologia que alcança 25 países e quase um milhão de mulheres.</p>
+      <div class="p2-programs">
+        <span class="p2-prog">Rainha Magnética</span>
+        <span class="p2-prog">Eden's Club</span>
+        <span class="p2-prog">Filhas de Eva</span>
+      </div>
+      <div class="p2-stats">
+        <div class="p2-stat"><b>980<span>K</span></b><small>Seguidoras</small></div>
+        <div class="p2-stat"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+        <div class="p2-stat"><b>120<span>K</span></b><small>Média Reels</small></div>
+        <div class="p2-stat"><b>4.2<span>%</span></b><small>Saves</small></div>
+      </div>
+    </div>
+    <div class="p2-photo">
+      <img src="assets-pdf/editorial-vermelho-close.jpg" alt="Priscilla Andrade">
+    </div>
+  </div>
+
+  <!-- PAGE 3 — 980K HELD SILENCE -->
+  <div class="page p3">
+    <div class="p3-num">980<span>K</span></div>
+    <p class="p3-label">Seguidoras no Instagram</p>
+    <p class="p3-sub">Mulheres que lideram. Classe A-B, ensino superior, empreendedoras. Elas não seguem tendências — definem.</p>
+  </div>
+
+  <!-- PAGE 4 — AUDIÊNCIA METRICS -->
+  <div class="page p4">
+    <div class="p4-head">
+      <p class="p2-eyebrow">Audiência</p>
+      <h2 class="p4-title">Quem nos acompanha</h2>
+      <p class="p4-desc">Uma comunidade feminina de alto padrão com poder de decisão e influência direta sobre consumo.</p>
+    </div>
+    <div class="p4-grid">
+      <div class="p4-cell"><b>94<span>%</span></b><small>Feminino</small></div>
+      <div class="p4-cell"><b>72<span>%</span></b><small>Classes A e B</small></div>
+      <div class="p4-cell"><b>48<span>%</span></b><small>Empreendedoras</small></div>
+      <div class="p4-cell"><b>81<span>%</span></b><small>Ensino superior</small></div>
+      <div class="p4-cell"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+      <div class="p4-cell"><b>120<span>K</span></b><small>Média views Reels</small></div>
+    </div>
+  </div>
+
+  <!-- PAGE 5 — NOS PALCOS -->
+  <div class="page p5">
+    <div class="p5-bg"><img src="assets-pdf/ceara-palestrando-close.jpg" alt="Palestra"></div>
+    <div class="p5-content">
+      <p class="p2-eyebrow" style="color:var(--bronze)">Palestras & Eventos</p>
+      <h2 class="p5-title">Palcos por onde<br>já passou</h2>
+      <p class="p5-desc">Do Brasil a Portugal, nos palcos mais relevantes de posicionamento feminino e liderança.</p>
+      <ul class="p5-list">
+        <li>Como a imagem constrói — ou destrói — autoridade</li>
+        <li>O que você comunica antes de abrir a boca</li>
+        <li>Marca pessoal como ativo financeiro</li>
+        <li>Presença executiva feminina</li>
+        <li>Moda como linguagem de poder</li>
+      </ul>
+      <div class="p5-tags">
+        <span class="p5-tag">Ceará</span><span class="p5-tag">Portugal</span><span class="p5-tag">Oratória</span><span class="p5-tag">BH</span><span class="p5-tag">SP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 6 — MUNDO: FILM STRIP -->
+  <div class="page p6">
+    <div class="p6-header">
+      <p class="p2-eyebrow" style="color:var(--bronze)">Presença Internacional</p>
+      <h2 class="p6-title">Parcerias de nível ao redor do mundo</h2>
+      <p class="p6-desc">De Dubai a Lisboa, cada parceria reflete um padrão que não se negocia.</p>
+    </div>
+    <div class="p6-strip">
+      <div class="p6-frame">
+        <img src="assets-pdf/portugal-editorial-escada.jpg" alt="Portugal" style="object-position:center 20%">
+        <div class="p6-frame-label"><h4>Portugal</h4><p>Eventos exclusivos, workshops em hotel premium, ensaio editorial.</p></div>
+      </div>
+      <div class="p6-frame">
+        <img src="assets-pdf/dubai-noivado-beijo-arco.jpg?v=5" alt="Dubai">
+        <div class="p6-frame-label"><h4>Dubai</h4><p>Iate privado, hotéis de referência, noivado acompanhado por quase 1 milhão.</p></div>
+      </div>
+      <div class="p6-frame">
+        <img src="assets-pdf/ceara-palco-dramatico.jpg" alt="Brasil">
+        <div class="p6-frame-label"><h4>Brasil</h4><p>Ceará, BH, SP. Palestras corporativas, conferências de empreendedorismo.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 7 — NOIVA -->
+  <div class="page p7">
+    <div class="p7-bg"><img src="assets-pdf/dubai-noivado-beijo-arco.jpg?v=5" alt="Noivado"></div>
+    <div class="p7-content">
+      <p class="p2-eyebrow" style="color:var(--bronze)">Noiva</p>
+      <h2 class="p7-title">Uma jornada que quase 1 milhão acompanha</h2>
+      <p class="p7-desc">Cada detalhe do casamento será acompanhado por quase um milhão de mulheres que confiam na curadoria de Priscilla.</p>
+      <span class="p7-badge">Sob consulta — Categoria exclusiva e temporária</span>
+    </div>
+  </div>
+
+  <!-- PAGE 8 — PARCERIAS -->
+  <div class="page p8">
+    <p class="p2-eyebrow">Colaborações</p>
+    <h2 class="p8-title">Como trabalhamos juntos</h2>
+    <div class="p8-grid">
+      <div class="p8-card"><div class="p8-num">01</div><h3>Presença Imersiva</h3><p>Experiências em destinos exclusivos — viagens, iates, hotéis premium. A marca se integra ao universo real de Priscilla.</p></div>
+      <div class="p8-card"><div class="p8-num">02</div><h3>Narrativa de Marca</h3><p>Série editorial de 30 a 90 dias. A marca se integra à vida de Priscilla com a naturalidade de quem pertence àquele universo.</p></div>
+      <div class="p8-card"><div class="p8-num">03</div><h3>Noiva & Lifestyle</h3><p>Categoria exclusiva e temporária. Parcerias com marcas de casamento, joias, vestidos e experiências nupciais.</p></div>
+      <div class="p8-card"><div class="p8-num">04</div><h3>Consultoria & Método</h3><p>Co-criação com o método Rainha Magnética ou patrocínio do ecossistema Filhas de Eva.</p></div>
+    </div>
+    <p class="p8-scarcity">Máximo 4 parcerias estratégicas por trimestre.</p>
+  </div>
+
+  <!-- PAGE 9 — CONTATO -->
+  <div class="page p9">
+    <p class="p9-brand">Filhas de Eva</p>
+    <p class="p9-quote">"Cada parceria é uma extensão da minha essência. Seleciono com curadoria e a certeza de que a marca está à altura da comunidade que construí."</p>
+    <div class="p9-line"></div>
+    <h2 class="p9-title">Parcerias estratégicas</h2>
+    <p class="p9-info">
+      <strong>Amanda</strong> — Assessoria<br>
+      contato@filhasdeeva.com.br<br>
+      @filhasdeeva · filhasdeeva.com.br
+    </p>
+    <p class="p9-scarcity">Máximo 4 parcerias estratégicas por trimestre</p>
+    <p class="p9-ft">Mídia Kit 2026</p>
+  </div>
+
+</body>
+</html>

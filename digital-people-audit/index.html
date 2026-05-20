@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital People — Análise Completa de Tráfego Pago</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            accent: '#4A90FF',
+            'accent-dim': '#4A90FF20',
+            'accent-med': '#4A90FF40',
+            danger: '#FF4A4A',
+            'danger-dim': '#FF4A4A15',
+            warning: '#FFB84A',
+            'warning-dim': '#FFB84A15',
+            success: '#4AFF8B',
+            'success-dim': '#4AFF8B15',
+            surface: { 1: '#0A0A0A', 2: '#111111', 3: '#1A1A1A', 4: '#222222', 5: '#2A2A2A' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0A0A0A; color: #E5E5E5; }
+    .score-ring { background: conic-gradient(var(--color) calc(var(--pct) * 1%), #1A1A1A 0); }
+    @media print { body { background: white; color: #111; } .no-print { display: none; } .print-break { page-break-before: always; } }
+    .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    nav a { transition: color 0.2s; }
+    nav a:hover { color: #4A90FF; }
+    .bar { transition: width 0.8s ease-out; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-surface-1/90 backdrop-blur-xl border-b border-white/5 no-print">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-white font-light text-sm tracking-wide">DIGITAL PEOPLE</span>
+        <span class="text-white/20">|</span>
+        <span class="text-white/40 text-xs">Audit Report</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-xs text-white/40">
+        <a href="#resumo">Resumo</a>
+        <a href="#contas">Contas</a>
+        <a href="#performance">Performance</a>
+        <a href="#demografico">Demográfico</a>
+        <a href="#criativos">Criativos</a>
+        <a href="#problemas">Problemas</a>
+        <a href="#oportunidades">Oportunidades</a>
+        <a href="#estrategia">Estratégia</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 pt-24 pb-20">
+
+    <!-- Header -->
+    <header class="mb-16 fade-in">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-3 py-1 bg-danger-dim text-danger text-xs font-medium rounded-full">Spend Cap Esgotado</span>
+        <span class="px-3 py-1 bg-danger-dim text-danger text-xs font-medium rounded-full">Health Score: 32/100</span>
+        <span class="px-3 py-1 bg-warning-dim text-warning text-xs font-medium rounded-full">Conta Principal Inativa 8+ Meses</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Digital People</h1>
+      <p class="text-lg text-white/50 font-light mb-2">Análise Completa de Tráfego Pago — Meta Ads</p>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-white/30 mt-4">
+        <span>04 de maio de 2026</span>
+        <span class="text-white/10">|</span>
+        <span>Contas: act_2499094033564404 + act_1232353421907288</span>
+        <span class="text-white/10">|</span>
+        <span>Moeda: BRL</span>
+        <span class="text-white/10">|</span>
+        <span>Business: Jose Trindade Pessoa</span>
+        <span class="text-white/10">|</span>
+        <span class="text-accent/60">Preparado por REIS [IA]</span>
+      </div>
+    </header>
+
+    <!-- Section 1: Executive Summary -->
+    <section id="resumo" class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">01 — Resumo Executivo</h2>
+
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-8 mb-8">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="relative w-40 h-40 flex-shrink-0">
+            <div class="score-ring w-full h-full rounded-full flex items-center justify-center" style="--color: #FF4A4A; --pct: 32;">
+              <div class="w-32 h-32 bg-surface-2 rounded-full flex items-center justify-center">
+                <div class="text-center">
+                  <span class="text-4xl font-bold text-danger">32</span>
+                  <span class="text-white/30 text-sm">/100</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-white mb-2">Empresa de 36 anos com presença digital frágil</h3>
+            <p class="text-white/50 leading-relaxed">
+              A Digital People tem <span class="text-success font-medium">credibilidade presencial excepcional</span> (4.9 no Google, 36 anos de mercado), mas sua operação de tráfego pago e amadora. <span class="text-danger font-medium">A única campanha ativa está prestes a parar</span> por esgotamento do spend cap (R$0,23 restantes). A conta principal (100+ campanhas) está <span class="text-danger font-medium">morta há 8 meses</span> com 8 campanhas "ativas" sem entrega. Os resultados quando gasta são razoáveis — <span class="text-accent font-medium">R$6,18/conversa no WhatsApp</span> com CTR de 2,21% — mas há apenas <span class="text-warning font-medium">2 criativos estáticos</span> em rotação para uma empresa de FOTOGRAFIA E VÍDEO. Zero video ads, zero pixel, zero funil de qualificação. O potencial de melhoria é enorme.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Metrics Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Gasto Total (All-time)</p>
+          <p class="text-2xl font-bold text-white">R$19.056</p>
+          <p class="text-xs text-white/20 mt-1">Ambas contas</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Últimos 30 dias</p>
+          <p class="text-2xl font-bold text-accent">R$1.322</p>
+          <p class="text-xs text-white/20 mt-1">~R$44/dia</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Conversas WhatsApp</p>
+          <p class="text-2xl font-bold text-success">214</p>
+          <p class="text-xs text-white/20 mt-1">Últimos 30d</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Custo/Conversa</p>
+          <p class="text-2xl font-bold text-white">R$6,18</p>
+          <p class="text-xs text-white/20 mt-1">30d average</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">CTR</p>
+          <p class="text-2xl font-bold text-success">2,21%</p>
+          <p class="text-xs text-danger text-xs mt-1">Caindo (7d: 2,01%)</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Criativos Ativos</p>
+          <p class="text-2xl font-bold text-danger">2</p>
+          <p class="text-xs text-white/20 mt-1">Ambos estáticos</p>
+        </div>
+      </div>
+
+      <!-- Score Breakdown -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs text-white/40">Estrutura da Conta</p>
+            <span class="text-warning text-xs font-bold">15/25</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full"><div class="h-full bg-warning rounded-full" style="width:60%"></div></div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs text-white/40">Qualidade Criativa</p>
+            <span class="text-danger text-xs font-bold">8/25</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full"><div class="h-full bg-danger rounded-full" style="width:32%"></div></div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs text-white/40">Performance</p>
+            <span class="text-success text-xs font-bold">18/25</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full"><div class="h-full bg-success rounded-full" style="width:72%"></div></div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs text-white/40">Rastreamento</p>
+            <span class="text-danger text-xs font-bold">2/25</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full"><div class="h-full bg-danger rounded-full" style="width:8%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Accounts Overview -->
+    <section id="contas" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">02 — Visão Geral das Contas</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Account 1 -->
+        <div class="bg-surface-2 rounded-2xl border border-danger/20 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-2 py-0.5 bg-danger-dim text-danger text-xs rounded">INATIVA</span>
+            <h3 class="text-white font-semibold">Digital People</h3>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between"><span class="text-white/40">ID</span><span class="text-white/70 font-mono text-xs">act_2499094033564404</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Pagamento</span><span class="text-white/70">VISA *6797</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Spend Cap</span><span class="text-success">Sem limite</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Gasto Histórico</span><span class="text-white/70">R$16.421,15</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Gasto 90 dias</span><span class="text-danger">R$0,00</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Campanhas</span><span class="text-white/70">100+ (8 "ativas", 0 entregando)</span></div>
+          </div>
+          <div class="mt-4 p-3 bg-danger-dim rounded-lg">
+            <p class="text-danger text-xs">Efetivamente morta há 8+ meses. 8 campanhas com status ACTIVE mas zero impressões desde setembro/2025. Provável: criativos reprovados ou posts deletados.</p>
+          </div>
+        </div>
+
+        <!-- Account 2 -->
+        <div class="bg-surface-2 rounded-2xl border border-warning/20 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-2 py-0.5 bg-warning-dim text-warning text-xs rounded">SPEND CAP</span>
+            <h3 class="text-white font-semibold">CA - D People Pix</h3>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between"><span class="text-white/40">ID</span><span class="text-white/70 font-mono text-xs">act_1232353421907288</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Pagamento</span><span class="text-white/70">Pre-pago (Pix)</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Spend Cap</span><span class="text-danger">R$2.635,56 (ESGOTADO)</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Saldo Restante</span><span class="text-danger font-bold">R$0,23</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Gasto desde 03/03</span><span class="text-white/70">R$2.635,27</span></div>
+            <div class="flex justify-between"><span class="text-white/40">Campanhas</span><span class="text-white/70">1 campanha, 3 ad sets, 4 ads</span></div>
+          </div>
+          <div class="mt-4 p-3 bg-danger-dim rounded-lg">
+            <p class="text-danger text-xs">CRITICO: Saldo de R$0,23. Campanha vai parar de entregar nas próximas horas. Recarregar urgentemente ou migrar para conta com cartão.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campaign Structure -->
+      <div class="mt-8 bg-surface-2 rounded-2xl border border-white/5 p-6">
+        <h3 class="text-white font-semibold mb-4">Estrutura da Campanha Ativa (CA - D People Pix)</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="text-white/30 text-xs border-b border-white/5">
+              <th class="text-left py-2">Campanha / Ad Set / Ad</th>
+              <th class="text-left py-2">Status</th>
+              <th class="text-left py-2">Targeting</th>
+              <th class="text-right py-2">Budget</th>
+            </tr></thead>
+            <tbody class="text-white/60">
+              <tr class="border-b border-white/5">
+                <td class="py-3 text-white font-medium">[ZARB] [ENGAJAMENTO] [WHATSAPP] - 03/03</td>
+                <td><span class="text-success text-xs">ACTIVE</span></td>
+                <td class="text-xs">WhatsApp Conversations</td>
+                <td class="text-right">R$42/dia</td>
+              </tr>
+              <tr class="border-b border-white/5 bg-surface-3/30">
+                <td class="py-2 pl-4">01 - 20 km / mix de casamento</td>
+                <td><span class="text-success text-xs">ACTIVE</span></td>
+                <td class="text-xs">Mulheres 18-65, SP 20km, Noiva+Foto casamento</td>
+                <td></td>
+              </tr>
+              <tr class="border-b border-white/5 bg-surface-3/30">
+                <td class="py-2 pl-4">02 - 20 km / Amplo</td>
+                <td><span class="text-white/30 text-xs">PAUSED</span></td>
+                <td class="text-xs">Todos 18-65, SP 20km, Sem interesses</td>
+                <td></td>
+              </tr>
+              <tr class="border-b border-white/5 bg-surface-3/30">
+                <td class="py-2 pl-4">02 - 20 km / mix casamento + buffet</td>
+                <td><span class="text-white/30 text-xs">PAUSED</span></td>
+                <td class="text-xs">Mulheres 18-65, SP 20km, Noiva+Buffet+Foto+Alianca</td>
+                <td></td>
+              </tr>
+              <tr class="bg-surface-3/20">
+                <td class="py-2 pl-8 text-xs">Ads 02 - Estático abril (Photo Booth)</td>
+                <td><span class="text-success text-xs">ACTIVE</span></td>
+                <td class="text-xs">Imagem estática</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Performance -->
+    <section id="performance" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">03 — Performance</h2>
+
+      <!-- Period comparison -->
+      <div class="grid md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <p class="text-xs text-white/30 mb-3">Últimos 7 dias</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-white/50">Gasto</span><span class="text-white">R$272,46</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Impressões</span><span class="text-white">9.487</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Alcance</span><span class="text-white">5.468</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Frequência</span><span class="text-success">1,74</span></div>
+            <div class="flex justify-between"><span class="text-white/50">CTR</span><span class="text-warning">2,01%</span></div>
+            <div class="flex justify-between"><span class="text-white/50">CPC</span><span class="text-white">R$1,43</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Conversas</span><span class="text-white">42</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Custo/Conversa</span><span class="text-warning">R$6,49</span></div>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-accent/20 p-5">
+          <p class="text-xs text-accent mb-3">Últimos 30 dias</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-white/50">Gasto</span><span class="text-white font-medium">R$1.321,82</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Impressões</span><span class="text-white">43.565</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Alcance</span><span class="text-white">16.488</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Frequência</span><span class="text-white">2,64</span></div>
+            <div class="flex justify-between"><span class="text-white/50">CTR</span><span class="text-success">2,21%</span></div>
+            <div class="flex justify-between"><span class="text-white/50">CPC</span><span class="text-success">R$1,38</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Conversas</span><span class="text-white">214</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Custo/Conversa</span><span class="text-success">R$6,18</span></div>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <p class="text-xs text-white/30 mb-3">All-time (desde 03/03)</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-white/50">Gasto</span><span class="text-white">R$2.635,27</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Impressões</span><span class="text-white">73.061</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Alcance</span><span class="text-white">24.658</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Frequência</span><span class="text-warning">2,96</span></div>
+            <div class="flex justify-between"><span class="text-white/50">CTR</span><span class="text-success">2,42%</span></div>
+            <div class="flex justify-between"><span class="text-white/50">CPC</span><span class="text-white">R$1,49</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Conversas</span><span class="text-white">381</span></div>
+            <div class="flex justify-between"><span class="text-white/50">Custo/Conversa</span><span class="text-white">R$6,92</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trend Alert -->
+      <div class="bg-surface-2 rounded-xl border border-warning/20 p-5 mb-8">
+        <h3 class="text-warning text-sm font-medium mb-2">Tendência de Queda Detectada (7d vs 30d)</h3>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="text-center">
+            <p class="text-xs text-white/30">CTR</p>
+            <p class="text-warning text-lg font-bold">-9%</p>
+            <p class="text-xs text-white/40">2,21% → 2,01%</p>
+          </div>
+          <div class="text-center">
+            <p class="text-xs text-white/30">CPC</p>
+            <p class="text-warning text-lg font-bold">+3,6%</p>
+            <p class="text-xs text-white/40">R$1,38 → R$1,43</p>
+          </div>
+          <div class="text-center">
+            <p class="text-xs text-white/30">Custo/Conversa</p>
+            <p class="text-warning text-lg font-bold">+5%</p>
+            <p class="text-xs text-white/40">R$6,18 → R$6,49</p>
+          </div>
+        </div>
+        <p class="text-white/40 text-xs mt-3">Sinal de fadiga criativa. Com apenas 2 criativos estáticos em rotacao, o publico esta saturando. Novos criativos (video) sao urgentes.</p>
+      </div>
+
+      <!-- Engagement depth -->
+      <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+        <h3 class="text-white text-sm font-medium mb-4">Profundidade de Engajamento (30 dias)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center">
+            <p class="text-3xl font-bold text-white">247</p>
+            <p class="text-xs text-white/30">Conexões de msg</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-white">214</p>
+            <p class="text-xs text-white/30">Conversas iniciadas</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-white">202</p>
+            <p class="text-xs text-white/30">Primeiras respostas</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-accent">282</p>
+            <p class="text-xs text-white/30">Msgs 5+ profundidade</p>
+          </div>
+        </div>
+        <p class="text-white/40 text-xs mt-4">282 conversas com 5+ mensagens indicam alto interesse real. O lead está engajando — o gargalo e a capacidade de atendimento da Juliane, não a qualidade do tráfego.</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Demographics -->
+    <section id="demografico" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">04 — Análise Demográfica</h2>
+
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+        <h3 class="text-white font-semibold mb-6">Performance por Faixa Etária (Mulheres, 30 dias)</h3>
+
+        <!-- Bar chart -->
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white/60">18-24</span>
+              <span class="text-xs text-white/40">42 conexões | R$5,55/conn | R$233</span>
+            </div>
+            <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+              <div class="bar h-full bg-accent/60 rounded-full" style="width:46%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white font-medium">25-34 <span class="text-success text-xs ml-2">MELHOR</span></span>
+              <span class="text-xs text-success">91 conexões | R$4,88/conn | R$444</span>
+            </div>
+            <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+              <div class="bar h-full bg-success rounded-full" style="width:100%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white/60">35-44</span>
+              <span class="text-xs text-white/40">63 conexões | R$5,49/conn | R$346</span>
+            </div>
+            <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+              <div class="bar h-full bg-accent/60 rounded-full" style="width:69%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white/60">45-54</span>
+              <span class="text-xs text-white/40">44 conexões | R$5,64/conn | R$248</span>
+            </div>
+            <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+              <div class="bar h-full bg-accent/40 rounded-full" style="width:48%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white/60">55-64 <span class="text-danger text-xs ml-2">PIOR</span></span>
+              <span class="text-xs text-danger">5 conexões | R$8,27/conn | R$41</span>
+            </div>
+            <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+              <div class="bar h-full bg-danger/60 rounded-full" style="width:5%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white/60">65+</span>
+              <span class="text-xs text-white/40">2 conexões | R$4,73/conn | R$9</span>
+            </div>
+            <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+              <div class="bar h-full bg-accent/30 rounded-full" style="width:2%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-surface-3 rounded-lg">
+          <p class="text-sm text-white/60"><span class="text-success font-medium">Insight:</span> Mulheres de 25-34 são o sweet spot — maior volume (91 conexões) E menor custo (R$4,88). Provavelmente noivas em fase de planejamento. A faixa 35-44 também performa bem e pode incluir mães de debutantes.</p>
+          <p class="text-sm text-white/60 mt-2"><span class="text-warning font-medium">Ação:</span> Considerar segmentar campanhas: 18-34 (noivas) e 35-54 (mães de debutantes/corporativo), com criativos diferentes para cada grupo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Creatives -->
+    <section id="criativos" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">05 — Análise de Criativos</h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- Creative 1 -->
+        <div class="bg-surface-2 rounded-2xl border border-success/20 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded">ATIVO</span>
+            <span class="text-white/40 text-xs">Ads 02 - Estático abril</span>
+          </div>
+          <h4 class="text-white font-medium mb-2">Photo Booth / Totem / 360</h4>
+          <p class="text-white/40 text-xs leading-relaxed mb-3">"Transforme sua festa em uma experiência inesquecível com atrações que vão muito além das fotos comuns. Com opções como Espelho Mágico, Totem Retrô, Totem Fotográfico e o incrível Túnel Infinity..."</p>
+          <div class="border-t border-white/5 pt-3 space-y-1 text-xs">
+            <div class="flex justify-between"><span class="text-white/30">Formato</span><span class="text-white/60">Imagem estática</span></div>
+            <div class="flex justify-between"><span class="text-white/30">CTA</span><span class="text-white/60">"Consulte as condições e garanta já a sua data"</span></div>
+            <div class="flex justify-between"><span class="text-white/30">Ticket servico</span><span class="text-white/60">R$490 - R$1.499</span></div>
+          </div>
+        </div>
+
+        <!-- Creative 2 -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-warning-dim text-warning text-xs rounded">ADSET PAUSADO</span>
+            <span class="text-white/40 text-xs">Ads 01 - Estático abril</span>
+          </div>
+          <h4 class="text-white font-medium mb-2">Fotografia + Video Casamento</h4>
+          <p class="text-white/40 text-xs leading-relaxed mb-3">"Se você quer viver seu grande dia e ainda ter cada detalhe registrado com emoção e qualidade... Com equipe completa de fotografia e filmes, 1 fotógrafo e 2 filmmakers, making of da noiva..."</p>
+          <div class="border-t border-white/5 pt-3 space-y-1 text-xs">
+            <div class="flex justify-between"><span class="text-white/30">Formato</span><span class="text-white/60">Imagem estática</span></div>
+            <div class="flex justify-between"><span class="text-white/30">CTA</span><span class="text-white/60">"Últimas vagas para 2026 e 2027"</span></div>
+            <div class="flex justify-between"><span class="text-white/30">Ticket servico</span><span class="text-accent">~R$9.500</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creative Issues -->
+      <div class="bg-surface-2 rounded-xl border border-danger/20 p-5">
+        <h3 class="text-danger text-sm font-medium mb-3">Problemas Críticos de Criativo</h3>
+        <div class="space-y-3 text-sm text-white/50">
+          <div class="flex items-start gap-2">
+            <span class="text-danger mt-0.5">1.</span>
+            <p><span class="text-white font-medium">Zero video ads</span> — Para uma empresa de FOTOGRAFIA E VÍDEO, não ter vídeo ads é absurdo. Vídeo performa 2-3x melhor em CTR no Instagram.</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-danger mt-0.5">2.</span>
+            <p><span class="text-white font-medium">Apenas 2 criativos</span> — Meta recomenda 3-6 criativos por ad set para otimização adequada. Fadiga já visível (CTR caindo).</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-danger mt-0.5">3.</span>
+            <p><span class="text-white font-medium">Sem carrossel</span> — Portfolio de 36 anos ideal para carrossel mostrando diferentes eventos/setups.</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-danger mt-0.5">4.</span>
+            <p><span class="text-white font-medium">Sem prova social</span> — 4.9 no Google e nenhum anúncio usa testimonial/review.</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-danger mt-0.5">5.</span>
+            <p><span class="text-white font-medium">Copy mistura serviços</span> — O criativo ativo (photo booth) veicula no ad set "mix de casamento" — desalinhamento entre criativo e targeting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Issues -->
+    <section id="problemas" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">06 — Problemas Detectados</h2>
+
+      <div class="space-y-3">
+        <div class="bg-surface-2 rounded-xl border border-danger/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-danger-dim text-danger text-xs rounded flex-shrink-0 mt-0.5">CRITICO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Spend cap esgotado — campanha vai parar</p>
+            <p class="text-white/40 text-xs mt-1">Conta CA - D People Pix com apenas R$0,23. Toda a operação de tráfego depende desta única campanha.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-danger/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-danger-dim text-danger text-xs rounded flex-shrink-0 mt-0.5">CRITICO</span>
+          <div>
+            <p class="text-white text-sm font-medium">100+ campanhas órfãs na conta principal</p>
+            <p class="text-white/40 text-xs mt-1">8 campanhas "ACTIVE" sem entrega há 8 meses. Padrão da agência anterior: boost diário de posts sem estratégia.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-danger/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-danger-dim text-danger text-xs rounded flex-shrink-0 mt-0.5">ALTO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Zero vídeo ads para empresa de foto/vídeo</p>
+            <p class="text-white/40 text-xs mt-1">36 anos de portfólio, centenas de eventos filmados, e nenhum vídeo sendo usado como anúncio. Oportunidade massiva desperdiçada.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-danger/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-danger-dim text-danger text-xs rounded flex-shrink-0 mt-0.5">ALTO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Apenas 2 criativos estáticos — fadiga criativa ativa</p>
+            <p class="text-white/40 text-xs mt-1">CTR caindo de 2,21% para 2,01% em 7 dias. CPC subindo. Sem criativos novos, performance vai continuar deteriorando.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-warning/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-warning-dim text-warning text-xs rounded flex-shrink-0 mt-0.5">ALTO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Zero Pixel/CAPI — sem rastreamento de conversão</p>
+            <p class="text-white/40 text-xs mt-1">Impossível otimizar para vendas reais. Meta não sabe quem comprou — só quem iniciou conversa.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-warning/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-warning-dim text-warning text-xs rounded flex-shrink-0 mt-0.5">MEDIO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Funil WhatsApp sem qualificação</p>
+            <p class="text-white/40 text-xs mt-1">451 conversas em 2 meses caem direto na Juliane (única operadora). Sem filtro, curiosos e compradores recebem o mesmo atendimento.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-warning/20 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-warning-dim text-warning text-xs rounded flex-shrink-0 mt-0.5">MEDIO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Sem segmentação por serviço</p>
+            <p class="text-white/40 text-xs mt-1">Foto/video (R$9.500) e photo booth (R$490) competem pelo mesmo budget. Impossível calcular ROAS real por linha.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded flex-shrink-0 mt-0.5">BAIXO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Apenas Instagram — sem Facebook/Messenger</p>
+            <p class="text-white/40 text-xs mt-1">Audiência 35+ (mães de debutantes, corporativo) ainda usa Facebook ativamente. Limitando alcance.</p>
+          </div>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4 flex items-start gap-4">
+          <span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded flex-shrink-0 mt-0.5">BAIXO</span>
+          <div>
+            <p class="text-white text-sm font-medium">Zero retargeting</p>
+            <p class="text-white/40 text-xs mt-1">Visitantes do site e engajadores do Instagram não são re-impactados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Opportunities -->
+    <section id="oportunidades" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">07 — Oportunidades</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-surface-2 rounded-2xl border border-success/20 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-success text-lg font-bold">1</span>
+            <h3 class="text-white font-medium">Video-First Creative Strategy</h3>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed">36 anos de portfolio. Centenas de casamentos, debutantes e eventos filmados. Reels de 15-30s mostrando momentos reais são o formato #1 no Instagram para o nicho de eventos. Impacto esperado: <span class="text-success">2-3x melhoria no CTR</span>.</p>
+          <div class="mt-3 p-2 bg-surface-3 rounded text-xs text-white/40">Formatos: Reels (highlight reel), Carrossel (portfolio), UGC (noiva reagindo ao album)</div>
+        </div>
+
+        <div class="bg-surface-2 rounded-2xl border border-success/20 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-success text-lg font-bold">2</span>
+            <h3 class="text-white font-medium">Segmentação por Serviço</h3>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed">Separar campanhas por linha: Casamento (R$9.500), Debutante, Photo Booth (R$490-1.499), Corporativo. Cada linha com criativos, copy e budget próprios. Permite calcular ROAS real e investir mais no que dá retorno.</p>
+          <div class="mt-3 p-2 bg-surface-3 rounded text-xs text-white/40">Prioridade: Casamento primeiro (maior ticket), depois Photo Booth (maior volume)</div>
+        </div>
+
+        <div class="bg-surface-2 rounded-2xl border border-accent/20 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-accent text-lg font-bold">3</span>
+            <h3 class="text-white font-medium">Funil de Qualificação</h3>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed">Substituir WhatsApp direto por: Ad → Landing page com portfolio + formulario (nome, tipo de evento, data, orçamento estimado) → Mensagem automática → Lead qualificado → Juliane atende so quem tem fit. Reduz carga em 60-70%.</p>
+          <div class="mt-3 p-2 bg-surface-3 rounded text-xs text-white/40">Bonus: formulário permite retargeting por etapa do funil</div>
+        </div>
+
+        <div class="bg-surface-2 rounded-2xl border border-accent/20 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-accent text-lg font-bold">4</span>
+            <h3 class="text-white font-medium">Pixel + CAPI + Lookalikes</h3>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed">Instalar Meta Pixel no site, configurar CAPI para eventos de lead/compra. Com dados de conversão, Meta otimiza para quem realmente compra — não só quem clica. Lookalikes de clientes reais ampliam alcance qualificado.</p>
+          <div class="mt-3 p-2 bg-surface-3 rounded text-xs text-white/40">Pré-requisito: site precisa de landing pages por serviço (hoje não tem)</div>
+        </div>
+
+        <div class="bg-surface-2 rounded-2xl border border-white/10 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-white/60 text-lg font-bold">5</span>
+            <h3 class="text-white font-medium">Prova Social como Arma</h3>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed">4.9 no Google com 36 anos de mercado. Screenshots de avaliações, vídeo-depoimentos de noivas, before/after de eventos. O concorrente Estudio K fecha vendas só com marketing apesar de ter reclamações — Digital People tem a qualidade E pode provar.</p>
+          <div class="mt-3 p-2 bg-surface-3 rounded text-xs text-white/40">Low-effort: screenshots de reviews. High-effort: video testimonials pos-evento</div>
+        </div>
+
+        <div class="bg-surface-2 rounded-2xl border border-white/10 p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-white/60 text-lg font-bold">6</span>
+            <h3 class="text-white font-medium">Calendário Sazonal</h3>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed">Casamentos pico: Set-Dez e Mar-Mai. Debutantes: todo ano com pico em Out-Nov. Corporativo: Jun-Jul e Nov-Dez. Alinhar budget surges com demanda — escalar 30% nos meses quentes, reduzir nos frios.</p>
+          <div class="mt-3 p-2 bg-surface-3 rounded text-xs text-white/40">Maio = início de temporada. Budget deveria estar subindo agora.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Strategy -->
+    <section id="estrategia" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">08 — Estratégia Recomendada</h2>
+
+      <!-- Immediate -->
+      <div class="mb-8">
+        <h3 class="text-danger text-sm font-medium mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-danger rounded-full"></span>
+          Imediato (Esta Semana)
+        </h3>
+        <div class="bg-surface-2 rounded-xl border border-danger/10 p-5 space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="text-danger text-xs font-bold mt-0.5">1</span>
+            <div>
+              <p class="text-white text-sm font-medium">Recarregar saldo da CA - D People Pix</p>
+              <p class="text-white/40 text-xs">OU migrar campanha ativa para conta Digital People (VISA). Prioridade #1 — sem isso, zero tráfego.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-danger text-xs font-bold mt-0.5">2</span>
+            <div>
+              <p class="text-white text-sm font-medium">Pausar 8 campanhas fantasma na conta principal</p>
+              <p class="text-white/40 text-xs">Status ACTIVE sem entrega polui relatórios e pode reativar acidentalmente.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-danger text-xs font-bold mt-0.5">3</span>
+            <div>
+              <p class="text-white text-sm font-medium">Criar 2-3 novos criativos</p>
+              <p class="text-white/40 text-xs">1 vídeo Reels (highlight reel 15-30s de casamento), 1 carrossel (portfólio), 1 estático com testimonial/review. Urgente para combater fadiga.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Short-term -->
+      <div class="mb-8">
+        <h3 class="text-warning text-sm font-medium mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-warning rounded-full"></span>
+          Curto Prazo (Próximos 30 Dias)
+        </h3>
+        <div class="bg-surface-2 rounded-xl border border-warning/10 p-5 space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="text-warning text-xs font-bold mt-0.5">4</span>
+            <div>
+              <p class="text-white text-sm font-medium">Reestruturar em 3 campanhas por serviço</p>
+              <p class="text-white/40 text-xs">Casamento (R$9.500 ticket), Photo Booth (R$490-1.499), Debutante. Budget proporcional ao ticket.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-warning text-xs font-bold mt-0.5">5</span>
+            <div>
+              <p class="text-white text-sm font-medium">Produzir 5-8 vídeo ads com portfólio existente</p>
+              <p class="text-white/40 text-xs">Formato: Reels 15-30s. Conteúdo: making of, noiva vendo álbum, setup photo booth, 360 em ação. Zero custo de produção — material já existe.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-warning text-xs font-bold mt-0.5">6</span>
+            <div>
+              <p class="text-white text-sm font-medium">Instalar Meta Pixel no site</p>
+              <p class="text-white/40 text-xs">Mesmo sem landing pages dedicadas, o pixel começa a coletar dados de visitantes para retargeting futuro.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-warning text-xs font-bold mt-0.5">7</span>
+            <div>
+              <p class="text-white text-sm font-medium">Testar Advantage+ Audience</p>
+              <p class="text-white/40 text-xs">Ad set adicional com público aberto (Advantage+ ligado) para comparar com targeting manual. Meta frequentemente performa melhor sem restrições.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-warning text-xs font-bold mt-0.5">8</span>
+            <div>
+              <p class="text-white text-sm font-medium">Adicionar Facebook + Messenger nos placements</p>
+              <p class="text-white/40 text-xs">Audiência 35+ (mães de debutantes) ainda ativa no Facebook. Custo geralmente menor que Instagram-only.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medium-term -->
+      <div>
+        <h3 class="text-success text-sm font-medium mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-success rounded-full"></span>
+          Médio Prazo (60-90 Dias)
+        </h3>
+        <div class="bg-surface-2 rounded-xl border border-success/10 p-5 space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="text-success text-xs font-bold mt-0.5">9</span>
+            <div>
+              <p class="text-white text-sm font-medium">Landing pages por serviço com formulário</p>
+              <p class="text-white/40 text-xs">Casamento, Debutante, Photo Booth — cada uma com portfolio, preços base, depoimentos, e formulário de qualificação.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-success text-xs font-bold mt-0.5">10</span>
+            <div>
+              <p class="text-white text-sm font-medium">CAPI + eventos de conversão</p>
+              <p class="text-white/40 text-xs">Server-side tracking para eventos: Lead (formulario), QualifiedLead (respondeu qualificacao), Sale (fechou). Habilita otimização por conversão real.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-success text-xs font-bold mt-0.5">11</span>
+            <div>
+              <p class="text-white text-sm font-medium">Lookalike audiences de compradores</p>
+              <p class="text-white/40 text-xs">Com pixel + CAPI coletando dados por 30-60 dias, criar LAL 1% de quem converteu. Escalar com confiança.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-success text-xs font-bold mt-0.5">12</span>
+            <div>
+              <p class="text-white text-sm font-medium">Retargeting de engajadores + visitantes</p>
+              <p class="text-white/40 text-xs">Quem interagiu com Instagram nos últimos 30d + visitou site = público quente. Criativo diferente: urgência, preço, prova social.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-success text-xs font-bold mt-0.5">13</span>
+            <div>
+              <p class="text-white text-sm font-medium">Escalonamento sazonal</p>
+              <p class="text-white/40 text-xs">Set-Dez e Mar-Mai: budget +30-50%. Jan-Fev e Jun-Ago: budget base ou prospecção (corporativo).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: Roadmap -->
+    <section id="roadmap" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">09 — Roadmap Visual</h2>
+
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+        <div class="space-y-6">
+          <!-- Week 1 -->
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-danger rounded-full"></div>
+              <div class="w-0.5 h-16 bg-white/10"></div>
+            </div>
+            <div>
+              <p class="text-danger text-xs font-medium mb-1">SEMANA 1 — Emergência</p>
+              <p class="text-white text-sm">Recarregar saldo / migrar conta</p>
+              <p class="text-white text-sm">Pausar campanhas fantasma</p>
+              <p class="text-white text-sm">Criar 2-3 criativos novos (1 video)</p>
+            </div>
+          </div>
+
+          <!-- Week 2-3 -->
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-warning rounded-full"></div>
+              <div class="w-0.5 h-16 bg-white/10"></div>
+            </div>
+            <div>
+              <p class="text-warning text-xs font-medium mb-1">SEMANA 2-3 — Reestruturação</p>
+              <p class="text-white text-sm">Reestruturar campanhas por servico</p>
+              <p class="text-white text-sm">Produzir 5-8 video ads de portfolio</p>
+              <p class="text-white text-sm">Testar Advantage+ e novos placements</p>
+            </div>
+          </div>
+
+          <!-- Week 4 -->
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-accent rounded-full"></div>
+              <div class="w-0.5 h-16 bg-white/10"></div>
+            </div>
+            <div>
+              <p class="text-accent text-xs font-medium mb-1">SEMANA 4 — Fundação Técnica</p>
+              <p class="text-white text-sm">Instalar Meta Pixel</p>
+              <p class="text-white text-sm">Configurar eventos basicos</p>
+              <p class="text-white text-sm">Adicionar Facebook + Messenger</p>
+            </div>
+          </div>
+
+          <!-- Month 2 -->
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success rounded-full"></div>
+              <div class="w-0.5 h-16 bg-white/10"></div>
+            </div>
+            <div>
+              <p class="text-success text-xs font-medium mb-1">MES 2 — Funil de Qualificação</p>
+              <p class="text-white text-sm">Landing pages por servico</p>
+              <p class="text-white text-sm">Formulário de qualificação</p>
+              <p class="text-white text-sm">Automação de follow-up</p>
+            </div>
+          </div>
+
+          <!-- Month 3 -->
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success rounded-full"></div>
+            </div>
+            <div>
+              <p class="text-success text-xs font-medium mb-1">MES 3 — Escala</p>
+              <p class="text-white text-sm">CAPI + Lookalike audiences</p>
+              <p class="text-white text-sm">Retargeting campaigns</p>
+              <p class="text-white text-sm">Escalonamento sazonal (pico casamento Set-Dez)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projected Results -->
+      <div class="mt-8 bg-surface-2 rounded-xl border border-accent/20 p-6">
+        <h3 class="text-white font-semibold mb-4">Projeção de Resultados (com implementação completa)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center">
+            <p class="text-xs text-white/30 mb-1">Custo/Conversa</p>
+            <p class="text-white/40 text-sm line-through">R$6,18</p>
+            <p class="text-success text-xl font-bold">R$3-4</p>
+            <p class="text-xs text-white/20">-40% com vídeo + segmentação</p>
+          </div>
+          <div class="text-center">
+            <p class="text-xs text-white/30 mb-1">Conversas/Mes</p>
+            <p class="text-white/40 text-sm line-through">214</p>
+            <p class="text-success text-xl font-bold">400-600</p>
+            <p class="text-xs text-white/20">Melhor CTR + budget otimizado</p>
+          </div>
+          <div class="text-center">
+            <p class="text-xs text-white/30 mb-1">Leads Qualificados</p>
+            <p class="text-white/40 text-sm">Hoje: desconhecido</p>
+            <p class="text-accent text-xl font-bold">80-120/mes</p>
+            <p class="text-xs text-white/20">Com funil de qualificação</p>
+          </div>
+          <div class="text-center">
+            <p class="text-xs text-white/30 mb-1">ROAS Estimado</p>
+            <p class="text-white/40 text-sm">Hoje: impossível medir</p>
+            <p class="text-accent text-xl font-bold">15-25x</p>
+            <p class="text-xs text-white/20">Ticket R$9.500 / CPA ~R$400</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 pt-8 text-center">
+      <p class="text-white/20 text-xs">Digital People — Análise de Tráfego Pago</p>
+      <p class="text-white/10 text-xs mt-1">Preparado por REIS [IA] | 04 de maio de 2026</p>
+      <p class="text-white/10 text-xs mt-1">Dados: Meta Ads API v24.0 | Contas: act_2499094033564404 + act_1232353421907288</p>
+    </footer>
+
+  </main>
+</body>
+</html>

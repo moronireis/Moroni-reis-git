@@ -1,0 +1,8 @@
+{
+  "original_bytes": 567339,
+  "kept_bytes": 102400,
+  "blocks_total": 4053,
+  "blocks_kept": 688,
+  "dropped": true,
+  "reduction_pct": 82
+}

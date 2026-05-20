@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "crashed_at": "2026-05-14T19:22:29.240Z",
+  "last_phase": "phase_1_fetch",
+  "completed_phases": {},
+  "error": {
+    "message": "Request failed with status code 403",
+    "name": "AxiosError",
+    "stack": "AxiosError: Request failed with status code 403\n    at settle (/Users/moronireis/Projetos vscode/.claude/skills/design-md/node_modules/axios/dist/node/axios.cjs:2049:12)\n    at IncomingMessage.handleStreamEnd (/Users/moronireis/Projetos vscode/.claude/skills/design-md/node_modules/axios/dist/node/axios.cjs:3591:11)\n    at IncomingMessage.emit (node:events:520:35)\n    at endReadableNT (node:internal/streams/readable:1729:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\n    at Axios.request (/Users/moronireis/Projetos vscode/.claude/skills/design-md/node_modules/axios/dist/node/axios.cjs:4871:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async fetchHtml (/Users/moronireis/Projetos vscode/.claude/skills/design-md/lib/fetch.cjs:25:15)\n    at async main (/Users/moronireis/Projetos vscode/.claude/skills/design-md/run.cjs:279:43)",
+    "code": "ERR_BAD_REQUEST",
+    "exit_code": null,
+    "details": null
+  },
+  "inputs": {
+    "url": "https://www.tiffany.com",
+    "out_dir": "brain/design-library/references/tiffany/",
+    "inputs_dir": "brain/design-library/references/tiffany/inputs"
+  },
+  "partial_outputs": [
+    "inputs"
+  ],
+  "debug_hint": "Initial HTTP fetch failed. Check URL accessibility and rate limits."
+}

@@ -17,7 +17,7 @@ export default function HeroGrid() {
 
     let w = 0, h = 0, rafId = 0;
     const mouse = { x: -9999, y: -9999 };
-    const SP = 52, BR = 1, REPEL = 160;
+    const SP = 48, BR = 1.2, REPEL = 200;
     let dots: { x: number; y: number; offX: number; offY: number }[] = [];
 
     function resize() {
@@ -66,7 +66,12 @@ export default function HeroGrid() {
         }
         d.offX += (tox - d.offX) * 0.06;
         d.offY += (toy - d.offY) * 0.06;
-        ctx!.fillStyle = 'rgba(74,144,255,0.07)';
+        const cDist = Math.hypot(d.x - w/2, d.y - h/2);
+        const cMax = Math.hypot(w/2, h/2);
+        const cFade = 1 - Math.min(cDist / (cMax * 0.7), 1);
+        const baseA = 0.12 * cFade + 0.03;
+        const repelA = Math.hypot(d.offX, d.offY) > 0.5 ? Math.min(baseA + 0.15, 0.35) : baseA;
+        ctx!.fillStyle = `rgba(74,144,255,${repelA})`;
         ctx!.beginPath();
         ctx!.arc(d.x + d.offX, d.y + d.offY, BR, 0, Math.PI * 2);
         ctx!.fill();
@@ -88,8 +93,12 @@ export default function HeroGrid() {
   return (
     <div ref={containerRef} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }} aria-hidden="true">
       <canvas ref={canvasRef} style={{ display: 'block' }} />
-      {/* Center glow */}
-      <div style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 500, background: 'radial-gradient(ellipse 65% 55% at 50% 50%, rgba(74,144,255,0.05) 0%, transparent 60%)', filter: 'blur(40px)', pointerEvents: 'none' }} />
+      {/* Primary center glow */}
+      <div style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%,-50%)', width: 900, height: 600, background: 'radial-gradient(ellipse 65% 55% at 50% 50%, rgba(74,144,255,0.12) 0%, rgba(74,144,255,0.04) 40%, transparent 65%)', filter: 'blur(50px)', pointerEvents: 'none' }} />
+      {/* Secondary top-right orb */}
+      <div className="hero-orb-float" style={{ position: 'absolute', top: '10%', right: '15%', width: 400, height: 400, background: 'radial-gradient(circle, rgba(74,144,255,0.08) 0%, transparent 65%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+      {/* Tertiary bottom-left orb */}
+      <div className="hero-orb-float-reverse" style={{ position: 'absolute', bottom: '15%', left: '10%', width: 350, height: 350, background: 'radial-gradient(circle, rgba(45,122,255,0.06) 0%, transparent 65%)', filter: 'blur(50px)', pointerEvents: 'none' }} />
     </div>
   );
 }

@@ -236,15 +236,15 @@ const processSteps = [
           const Icon = iconMap[service.icon];
           return (
             <div
-              style="background: var(--surface-0); border: 1px solid var(--border-default); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 16px;"
+              style="background: var(--surface-0); border: 1px solid var(--border-default); border-radius: var(--radius-xl); padding: 24px; display: flex; flex-direction: column; gap: 16px;"
             >
-              <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(74,144,255,0.08); border: 1px solid rgba(74,144,255,0.12); display: flex; align-items: center; justify-content: center;">
+              <div style="width: 40px; height: 40px; border-radius: 8px; background: var(--accent-08); border: 1px solid var(--blue-12); display: flex; align-items: center; justify-content: center;">
                 <Icon size={20} color="var(--accent-blue)" />
               </div>
               <div>
                 <p style="font-size: var(--text-body-sm); font-weight: 600; color: var(--text-primary); margin: 0 0 4px;">{service.title}</p>
                 <p style="font-size: var(--text-caption); font-weight: 600; color: var(--accent-blue); margin: 0;">{service.hours}</p>
-                {service.revenue && <p style="font-size: var(--text-caption); font-weight: 600; color: #22C55E; margin: 2px 0 0;">{service.revenue}</p>}
+                {service.revenue && <p style="font-size: var(--text-caption); font-weight: 600; color: var(--color-success); margin: 2px 0 0;">{service.revenue}</p>}
                 <p style="font-size: var(--text-caption); color: var(--text-tertiary); margin: 0;">{service.subtitle}</p>
               </div>
               <p style="font-size: var(--text-caption); line-height: 1.65; color: var(--text-secondary); margin: 0; flex: 1;">{service.description}</p>
@@ -286,9 +286,9 @@ const processSteps = [
 
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-on-scroll">
         {processSteps.map((step) => (
-          <div style="background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 12px; padding: 24px;">
+          <div style="background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-xl); padding: 24px;">
             <div class="flex items-start gap-4 mb-4">
-              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(74,144,255,0.1); border: 1px solid rgba(74,144,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-10); border: 1px solid var(--blue-20); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <span style="font-size: 11px; font-weight: 700; color: var(--accent-blue);">{step.phase}</span>
               </div>
               <div>
@@ -365,10 +365,10 @@ const processSteps = [
             <!-- Stats -->
             <div style="padding:20px">
               <div class="grid grid-cols-4 gap-3 mb-4">
-                <div class="stat-card"><p class="stat-label">Horas recuperadas</p><p class="stat-value">+127h</p><p class="stat-sub" style="color:#22C55E">↑ 23%</p></div>
-                <div class="stat-card"><p class="stat-label">Receita gerada</p><p class="stat-value" style="color:#22C55E">+R$82k</p><p class="stat-sub">este mês</p></div>
+                <div class="stat-card"><p class="stat-label">Horas recuperadas</p><p class="stat-value">+127h</p><p class="stat-sub" style="color:var(--color-success)">↑ 23%</p></div>
+                <div class="stat-card"><p class="stat-label">Receita gerada</p><p class="stat-value" style="color:var(--color-success)">+R$82k</p><p class="stat-sub">este mês</p></div>
                 <div class="stat-card"><p class="stat-label">Agentes ativos</p><p class="stat-value">8</p><p class="stat-sub">online</p></div>
-                <div class="stat-card" style="border-color:rgba(74,144,255,0.15)"><p class="stat-label">ROI</p><p class="stat-value" style="color:var(--accent-blue)">4.2x</p><p class="stat-sub">acumulado</p></div>
+                <div class="stat-card" style="border-color:var(--accent-15)"><p class="stat-label">ROI</p><p class="stat-value" style="color:var(--accent-blue)">4.2x</p><p class="stat-sub">acumulado</p></div>
               </div>
               <!-- Chart -->
               <div class="stat-card mb-3">
@@ -376,7 +376,7 @@ const processSteps = [
                   <p class="stat-label" style="margin:0">Performance — últimas 8 semanas</p>
                   <div class="flex items-center gap-3">
                     <span class="flex items-center gap-1" style="font-size:8px;font-weight:500"><span style="display:inline-block;width:8px;height:2px;border-radius:1px;background:var(--accent-blue)"></span><span style="color:var(--text-tertiary)">Horas</span></span>
-                    <span class="flex items-center gap-1" style="font-size:8px;font-weight:500"><span style="display:inline-block;width:8px;height:2px;border-radius:1px;background:#22C55E"></span><span style="color:var(--text-tertiary)">Receita</span></span>
+                    <span class="flex items-center gap-1" style="font-size:8px;font-weight:500"><span style="display:inline-block;width:8px;height:2px;border-radius:1px;background:var(--color-success)"></span><span style="color:var(--text-tertiary)">Receita</span></span>
                   </div>
                 </div>
                 <svg viewBox="0 0 240 56" width="100%" height="56" aria-hidden="true" preserveAspectRatio="none">
@@ -394,8 +394,8 @@ const processSteps = [
                   <circle cx="240" cy="4" r="3" fill="var(--accent-blue)"/>
                   <!-- Receita (verde) -->
                   <path d="M0,52 L30,48 L60,46 L90,40 L120,34 L150,28 L180,20 L210,14 L240,10 L240,56 L0,56 Z" fill="url(#sys-fill-rev)"/>
-                  <polyline points="0,52 30,48 60,46 90,40 120,34 150,28 180,20 210,14 240,10" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"/>
-                  <circle cx="240" cy="10" r="2.5" fill="#22C55E"/>
+                  <polyline points="0,52 30,48 60,46 90,40 120,34 150,28 180,20 210,14 240,10" fill="none" stroke="var(--color-success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"/>
+                  <circle cx="240" cy="10" r="2.5" fill="var(--color-success)"/>
                 </svg>
               </div>
               <!-- Agents -->
@@ -445,29 +445,29 @@ const processSteps = [
         <div class="animate-on-scroll" style="position:relative">
           <!-- Mini chat flutuante por cima do painel -->
           <div class="hidden lg:block" style="position:absolute;top:-30px;right:-20px;z-index:3;width:280px;animation:floatChat 6s ease-in-out infinite">
-            <div class="rounded-xl overflow-hidden" style="background:var(--surface-1);border:1px solid rgba(74,144,255,0.15);box-shadow:0 20px 50px rgba(0,0,0,0.6)">
+            <div class="rounded-xl overflow-hidden" style="background:var(--surface-1);border:1px solid var(--accent-15);box-shadow:0 20px 50px rgba(0,0,0,0.6)">
               <div class="flex items-center gap-2 px-3 py-2" style="background:var(--surface-0);border-bottom:1px solid var(--border-default)">
-                <div class="w-2 h-2 rounded-full" style="background:#22C55E"></div>
+                <div class="w-2 h-2 rounded-full" style="background:var(--color-success)"></div>
                 <span class="text-[8px] font-medium" style="color:var(--text-tertiary)">WhatsApp · Ao vivo</span>
                 <span class="ml-auto text-[7px]" style="color:var(--text-tertiary)">Agora</span>
               </div>
               <div style="padding:10px 12px;display:flex;flex-direction:column;gap:8px">
                 <!-- User -->
                 <div style="display:flex;justify-content:flex-end">
-                  <div style="background:rgba(74,144,255,0.12);border:1px solid rgba(74,144,255,0.15);border-radius:8px;border-top-right-radius:2px;padding:7px 10px;font-size:10px;color:var(--text-primary);line-height:1.4;max-width:190px">Oi! Vocês atendem empresas de logística?</div>
+                  <div style="background:var(--blue-12);border:1px solid var(--accent-15);border-radius:8px;border-top-right-radius:2px;padding:7px 10px;font-size:10px;color:var(--text-primary);line-height:1.4;max-width:190px">Oi! Vocês atendem empresas de logística?</div>
                 </div>
                 <!-- Agent -->
                 <div style="display:flex;gap:5px">
-                  <div style="width:18px;height:18px;border-radius:4px;background:rgba(74,144,255,0.08);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/></svg></div>
+                  <div style="width:18px;height:18px;border-radius:4px;background:var(--accent-08);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/></svg></div>
                   <div style="background:var(--surface-0);border:1px solid var(--border-default);border-radius:8px;border-top-left-radius:2px;padding:7px 10px;font-size:10px;color:var(--text-secondary);line-height:1.4;max-width:200px">Sim! Já implementamos IA em 3 empresas de logística. Posso agendar uma sessão de diagnóstico pra mapear onde IA gera mais resultado no seu caso?</div>
                 </div>
                 <!-- User -->
                 <div style="display:flex;justify-content:flex-end">
-                  <div style="background:rgba(74,144,255,0.12);border:1px solid rgba(74,144,255,0.15);border-radius:8px;border-top-right-radius:2px;padding:7px 10px;font-size:10px;color:var(--text-primary);line-height:1.4;max-width:190px">Quero sim. Amanhã às 10h funciona?</div>
+                  <div style="background:var(--blue-12);border:1px solid var(--accent-15);border-radius:8px;border-top-right-radius:2px;padding:7px 10px;font-size:10px;color:var(--text-primary);line-height:1.4;max-width:190px">Quero sim. Amanhã às 10h funciona?</div>
                 </div>
                 <!-- Agent typing -->
                 <div style="display:flex;gap:5px">
-                  <div style="width:18px;height:18px;border-radius:4px;background:rgba(74,144,255,0.08);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/></svg></div>
+                  <div style="width:18px;height:18px;border-radius:4px;background:var(--accent-08);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/></svg></div>
                   <div style="background:var(--surface-0);border:1px solid var(--border-default);border-radius:8px;border-top-left-radius:2px;padding:7px 10px;font-size:10px;color:var(--text-secondary);line-height:1.4;max-width:200px;overflow:hidden">
                     <span class="sys-typewriter">Perfeito! Agendei para amanhã às 10h. Enviei a confirmação no seu e-mail.</span>
                   </div>
@@ -477,15 +477,15 @@ const processSteps = [
           </div>
 
           <!-- Painel principal -->
-          <div class="rounded-xl overflow-hidden" style="background:var(--surface-0);border:1px solid var(--border-default);box-shadow:0 20px 50px rgba(0,0,0,0.4)">
+          <div class="rounded-xl overflow-hidden" style="background:var(--surface-0);border:1px solid var(--border-default);box-shadow:var(--shadow-elevated)">
             <!-- Header with status -->
             <div class="flex items-center justify-between px-4 py-2.5" style="background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border-default)">
               <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full" style="background:#22C55E"></div>
+                <div class="w-2 h-2 rounded-full" style="background:var(--color-success)"></div>
                 <span class="text-[9px] font-medium" style="color:var(--text-tertiary)">REIS [IA] — Painel do Agente</span>
               </div>
               <div class="flex items-center gap-3">
-                <span class="text-[8px] px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.1);color:#22C55E">3 atendimentos agora</span>
+                <span class="text-[8px] px-2 py-0.5 rounded" style="background:var(--color-success-bg);color:var(--color-success)">3 atendimentos agora</span>
               </div>
             </div>
 
@@ -497,28 +497,28 @@ const processSteps = [
               <div class="p-3 rounded-lg mb-2" style="background:var(--surface-1);border:1px solid var(--border-default)">
                 <div class="flex items-center justify-between mb-2">
                   <div class="flex items-center gap-2">
-                    <div class="w-5 h-5 rounded flex items-center justify-center" style="background:rgba(34,197,94,0.1)"><svg width="10" height="10" viewBox="0 0 24 24" fill="#22C55E"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></div>
+                    <div class="w-5 h-5 rounded flex items-center justify-center" style="background:var(--color-success-bg)"><svg width="10" height="10" viewBox="0 0 24 24" fill="var(--color-success)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></div>
                     <div>
                       <p class="text-[10px] font-semibold" style="color:var(--text-primary)">Maria Silva</p>
                       <p class="text-[8px]" style="color:var(--text-tertiary)">WhatsApp · Suporte</p>
                     </div>
                   </div>
-                  <span class="text-[7px] px-1.5 py-0.5 rounded" style="background:rgba(34,197,94,0.1);color:#22C55E">Resolvido</span>
+                  <span class="text-[7px] px-1.5 py-0.5 rounded" style="background:var(--color-success-bg);color:var(--color-success)">Resolvido</span>
                 </div>
                 <p class="text-[9px]" style="color:var(--text-secondary)"><strong style="color:var(--text-tertiary)">Agente:</strong> "Pronto, Maria! Seu boleto foi atualizado e enviado por e-mail. Precisa de mais alguma coisa?"</p>
               </div>
 
               <!-- Conversation 2: Site - Vendas -->
-              <div class="p-3 rounded-lg mb-2" style="background:var(--surface-1);border:1px solid rgba(74,144,255,0.1)">
+              <div class="p-3 rounded-lg mb-2" style="background:var(--surface-1);border:1px solid var(--accent-10)">
                 <div class="flex items-center justify-between mb-2">
                   <div class="flex items-center gap-2">
-                    <div class="w-5 h-5 rounded flex items-center justify-center" style="background:rgba(74,144,255,0.08)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                    <div class="w-5 h-5 rounded flex items-center justify-center" style="background:var(--accent-08)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                     <div>
                       <p class="text-[10px] font-semibold" style="color:var(--text-primary)">Carlos Mendes</p>
                       <p class="text-[8px]" style="color:var(--text-tertiary)">Site · Qualificação</p>
                     </div>
                   </div>
-                  <span class="text-[7px] px-1.5 py-0.5 rounded" style="background:rgba(74,144,255,0.1);color:var(--accent-blue)">Qualificando</span>
+                  <span class="text-[7px] px-1.5 py-0.5 rounded" style="background:var(--accent-10);color:var(--accent-blue)">Qualificando</span>
                 </div>
                 <p class="text-[9px]" style="color:var(--text-secondary)"><strong style="color:var(--text-tertiary)">Agente:</strong> "Entendi, Carlos. Com 15 vendedores e 300 leads/mês, posso agendar uma sessão de diagnóstico pra mapear onde IA gera mais resultado. Terça às 14h funciona?"</p>
               </div>
@@ -542,7 +542,7 @@ const processSteps = [
               <div class="mt-3 flex items-center justify-between p-2.5 rounded-lg" style="background:var(--surface-1);border:1px solid var(--border-default)">
                 <div class="text-center"><p class="text-[14px] font-bold" style="color:var(--accent-blue)">142</p><p class="text-[7px]" style="color:var(--text-tertiary)">atendidos hoje</p></div>
                 <div style="width:1px;height:24px;background:var(--border-default)"></div>
-                <div class="text-center"><p class="text-[14px] font-bold" style="color:#22C55E">94%</p><p class="text-[7px]" style="color:var(--text-tertiary)">resolvidos</p></div>
+                <div class="text-center"><p class="text-[14px] font-bold" style="color:var(--color-success)">94%</p><p class="text-[7px]" style="color:var(--text-tertiary)">resolvidos</p></div>
                 <div style="width:1px;height:24px;background:var(--border-default)"></div>
                 <div class="text-center"><p class="text-[14px] font-bold" style="color:var(--text-primary)">12s</p><p class="text-[7px]" style="color:var(--text-tertiary)">tempo médio</p></div>
               </div>
@@ -563,7 +563,7 @@ const processSteps = [
     style="background: var(--surface-0); padding: var(--space-3xl) 0;"
   >
     <div class="container-standard relative z-10">
-      <div class="animate-on-scroll rounded-2xl overflow-hidden" style="background:var(--surface-1);border:1px solid rgba(74,144,255,0.12);max-width:900px;margin:0 auto">
+      <div class="animate-on-scroll rounded-2xl overflow-hidden" style="background:var(--surface-1);border:1px solid var(--blue-12);max-width:900px;margin:0 auto">
         <div class="grid grid-cols-1 lg:grid-cols-5">
           <div class="lg:col-span-3 p-8 lg:p-10">
             <p class="text-[11px] font-semibold uppercase tracking-wider mb-4" style="color:var(--accent-blue)">Agende seu diagnóstico</p>
@@ -579,7 +579,7 @@ const processSteps = [
               </Button>
             </div>
           </div>
-          <div class="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center gap-5" style="background:rgba(74,144,255,0.03);border-left:1px solid rgba(74,144,255,0.08)">
+          <div class="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center gap-5" style="background:var(--accent-02);border-left:1px solid var(--accent-08)">
             <div class="flex items-start gap-3">
               <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
               <p class="text-[13px]" style="color:var(--text-secondary)">50+ implementações entregues</p>
@@ -611,15 +611,15 @@ const processSteps = [
       <div class="animate-on-scroll"><SectionLabel>Para quem é</SectionLabel></div>
       <h2 id="para-quem-heading" class="animate-on-scroll mt-5" style="font-size:var(--text-h2);font-weight:600;line-height:1.10;letter-spacing:-0.02em;color:var(--text-primary);max-width:560px;">Para empresários que querem resultado, não demo.</h2>
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 animate-on-scroll">
-        <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:12px;padding:32px;">
-          <p style="font-size:var(--text-caption);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#22C55E;margin:0 0 20px">Pra quem é</p>
+        <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:var(--radius-xl);padding:32px;">
+          <p style="font-size:var(--text-caption);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-success);margin:0 0 20px">Pra quem é</p>
           <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
             {['CEOs e COOs que delegam e exigem resultado','Empresas que já faturam e querem escalar com IA','Quem tem processos manuais consumindo tempo e dinheiro','Quem quer IA que gera receita — não apenas economia de tempo'].map((item) => (
-              <li class="flex items-start gap-3"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:#22C55E;margin-top:2px;flex-shrink:0"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><polyline points="5,8 7,10 11,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:var(--text-body-sm);line-height:1.55;color:var(--text-secondary)">{item}</span></li>
+              <li class="flex items-start gap-3"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--color-success);margin-top:2px;flex-shrink:0"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><polyline points="5,8 7,10 11,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:var(--text-body-sm);line-height:1.55;color:var(--text-secondary)">{item}</span></li>
             ))}
           </ul>
         </div>
-        <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:12px;padding:32px;">
+        <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:var(--radius-xl);padding:32px;">
           <p style="font-size:var(--text-caption);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);margin:0 0 20px">Pra quem não é</p>
           <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
             {['Quem quer explorar IA sem problema concreto pra resolver','Quem busca chatbot genérico sem integração ao negócio','Quem precisa de meses de aprovação interna pra cada decisão','Quem quer resultado sem investir no processo'].map((item) => (
@@ -715,14 +715,14 @@ const processSteps = [
 
 <style>
   /* Dashboard mockup helpers */
-  .sys-mockup { background: var(--surface-0); border: 1px solid var(--border-default); border-radius: 12px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
+  .sys-mockup { background: var(--surface-0); border: 1px solid var(--border-default); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-dramatic); }
   .sys-chrome { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(10,10,15,0.8); border-bottom: 1px solid var(--border-default); }
   .stat-card { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px; }
   .stat-label { font-size: 9px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 6px; }
   .stat-value { font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1; }
   .stat-sub { font-size: 9px; color: var(--text-tertiary); margin: 4px 0 0; font-weight: 500; }
   .agent-row { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; }
-  .agent-dot { width: 6px; height: 6px; border-radius: 50%; background: #22C55E; flex-shrink: 0; }
+  .agent-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-success); flex-shrink: 0; }
 
   /* Typing animation */
   @keyframes sysTyping { 0%,100%{opacity:.3} 50%{opacity:1} }
@@ -748,8 +748,8 @@ const processSteps = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent-blue);
-    background: rgba(74, 144, 255, 0.08);
-    border: 1px solid rgba(74, 144, 255, 0.2);
+    background: var(--accent-08);
+    border: 1px solid var(--blue-20);
     border-radius: 20px;
     padding: 5px 14px;
   }
@@ -758,8 +758,8 @@ const processSteps = [
   .scroll-indicator {
     width: 24px;
     height: 38px;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    border: 1.5px solid var(--border-visible);
+    border-radius: var(--radius-xl);
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
@@ -770,7 +770,7 @@ const processSteps = [
   .scroll-dot {
     width: 4px;
     height: 8px;
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--text-quaternary);
     border-radius: 2px;
     animation: scroll-bounce 2s ease-in-out infinite;
   }

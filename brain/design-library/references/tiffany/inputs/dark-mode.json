@@ -1,0 +1,8 @@
+{
+  "has_dark_mode": true,
+  "signals": [
+    "prefers-color-scheme: dark media query"
+  ],
+  "dark_var_count": 0,
+  "dark_var_sample": []
+}

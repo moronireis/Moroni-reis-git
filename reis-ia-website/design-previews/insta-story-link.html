@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Story — REIS [IA]</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #000;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Subtle grid background */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74,144,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,144,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 0%, transparent 80%);
+  }
+
+  /* Center glow */
+  .glow {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,144,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Film grain */
+  body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    z-index: 100;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 80px;
+    gap: 0;
+  }
+
+  /* Top label */
+  .label {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #4A90FF;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .label::before, .label::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: #4A90FF;
+    opacity: 0.4;
+  }
+
+  /* Logo */
+  .logo {
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 64px;
+  }
+  .logo span { color: #4A90FF; }
+
+  /* Main headline */
+  .headline {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 40px;
+    max-width: 900px;
+  }
+  .headline em {
+    font-style: normal;
+    color: #4A90FF;
+  }
+
+  /* Sub text */
+  .sub {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    max-width: 750px;
+    margin-bottom: 72px;
+  }
+
+  /* Stats row */
+  .stats {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 80px;
+  }
+  .stat-num {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-num.blue { color: #4A90FF; }
+  .stat-label {
+    font-size: 16px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* CTA pill */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 52px;
+    border-radius: 60px;
+    background: #4A90FF;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border: none;
+    margin-bottom: 24px;
+  }
+  .cta svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* URL */
+  .url {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: 0.04em;
+  }
+
+  /* Swipe up hint at bottom */
+  .swipe {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+  }
+  .swipe-arrow {
+    width: 40px;
+    height: 40px;
+    border-left: 2px solid rgba(255,255,255,0.3);
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    transform: rotate(-45deg);
+    animation: bounce 1.5s ease infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(-45deg) translateY(0); }
+    50% { transform: rotate(-45deg) translateY(-12px); }
+  }
+  .swipe-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="glow"></div>
+
+<div class="content">
+  <div class="label">Novo no ar</div>
+
+  <div class="logo">REIS <span>[IA]</span></div>
+
+  <h1 class="headline">
+    IA que gera <em>resultado real</em> no seu negócio
+  </h1>
+
+  <p class="sub">
+    Marketing, vendas, atendimento e automação com inteligência artificial
+  </p>
+
+  <div class="stats">
+    <div>
+      <div class="stat-num blue">R$400K+</div>
+      <div class="stat-label">em contratos</div>
+    </div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">anos de mercado</div>
+    </div>
+    <div>
+      <div class="stat-num blue">40+</div>
+      <div class="stat-label">agentes de IA</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    Acessar agora
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </div>
+
+  <div class="url">reisia.moronireis.com.br</div>
+</div>
+
+<div class="swipe">
+  <div class="swipe-arrow"></div>
+  <div class="swipe-text">Arraste pra cima</div>
+</div>
+
+</body>
+</html>

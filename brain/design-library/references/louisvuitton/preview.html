@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Louis Vuitton — DESIGN.md Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --lv-black: #000000;
+    --lv-white: #FFFFFF;
+    --lv-brown: #6B4226;
+    --lv-tan: #C19A6B;
+    --lv-monogram: #8B6914;
+    --lv-dark-brown: #3C2415;
+    --off-white: #F9F6F1;
+    --light-beige: #F2EDE7;
+    --warm-gray: #B0A89F;
+    --medium-gray: #8C8C8C;
+    --dark-gray: #333333;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--lv-white); color: var(--dark-gray); }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 80px 0; border-bottom: 1px solid #E5E5E5; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 300; letter-spacing: -0.01em; margin-bottom: 48px; }
+  .meta { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 8px; }
+  h1.brand { font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 300; letter-spacing: -0.03em; margin-bottom: 16px; text-align: center; padding: 120px 0 40px; }
+  .subtitle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--medium-gray); text-align: center; margin-bottom: 120px; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 24px; }
+  .swatch { }
+  .swatch-color { height: 90px; }
+  .swatch-info { padding: 12px 0; }
+  .swatch-name { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+  .swatch-value { font-size: 11px; color: var(--medium-gray); margin-top: 2px; font-family: monospace; }
+  .type-specimen { margin-bottom: 48px; }
+  .type-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 8px; }
+  .type-hero { font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 300; letter-spacing: -0.03em; line-height: 1.05; }
+  .type-display { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 300; letter-spacing: -0.01em; line-height: 1.1; }
+  .type-h1 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; line-height: 1.15; }
+  .type-h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.2; }
+  .type-body { font-size: 15px; font-weight: 400; line-height: 1.5; max-width: 600px; }
+  .type-nav { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
+  .type-caption { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; color: var(--medium-gray); }
+  .spacing-row { display: flex; align-items: center; margin-bottom: 12px; }
+  .spacing-block { background: var(--lv-brown); height: 16px; }
+  .spacing-label { font-size: 11px; color: var(--medium-gray); width: 70px; font-family: monospace; }
+  .spacing-value { font-size: 11px; color: var(--medium-gray); margin-left: 12px; font-family: monospace; }
+  .btn-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
+  .btn-primary { background: var(--lv-black); color: var(--lv-white); border: none; padding: 0 32px; height: 48px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; font-family: 'Inter', sans-serif; }
+  .btn-primary:hover { background: var(--lv-white); color: var(--lv-black); outline: 1px solid var(--lv-black); }
+  .btn-secondary { background: var(--lv-white); color: var(--lv-black); border: 1px solid var(--lv-black); padding: 0 32px; height: 48px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; font-family: 'Inter', sans-serif; }
+  .btn-secondary:hover { background: var(--lv-black); color: var(--lv-white); }
+  .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .card { }
+  .card-image { background: #F5F5F5; aspect-ratio: 3/4; }
+  .card-body { padding: 12px 0; }
+  .card-title { font-size: 13px; font-weight: 400; }
+  .card-price { font-size: 13px; color: var(--medium-gray); margin-top: 2px; }
+  .card-colors { display: flex; gap: 6px; margin-top: 8px; }
+  .card-color-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #ddd; }
+  .motion-demo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  .motion-box { background: var(--lv-black); height: 80px; }
+  .motion-box:nth-child(1) { transition: transform 0.2s ease-out; }
+  .motion-box:nth-child(2) { transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .motion-box:nth-child(3) { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-box:nth-child(4) { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-box:nth-child(5) { transition: transform 1.5s ease; }
+  .motion-box:hover { transform: translateY(-8px); }
+  .motion-label { font-size: 10px; color: var(--medium-gray); margin-top: 8px; text-align: center; font-family: monospace; }
+  .dark-section { background: var(--lv-black); color: var(--lv-white); }
+  .dark-section .section-title { color: var(--lv-white); }
+  .dark-section .meta { color: var(--warm-gray); }
+  .heritage-section { background: var(--off-white); }
+  .monogram-pattern { background: var(--lv-dark-brown); color: var(--lv-tan); padding: 64px; text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.6; line-height: 2.5; }
+  .confidence-badge { display: inline-block; padding: 4px 12px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(107,66,38,0.1); color: var(--lv-brown); border: 1px solid var(--lv-brown); }
+  .editorial-hero { background: #1A1A1A; color: white; padding: 120px 0; text-align: center; }
+  .editorial-hero .type-hero { color: white; }
+  .editorial-hero .type-body { color: var(--warm-gray); margin: 24px auto 0; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <p class="meta" style="padding-top:48px;">Design System Preview</p>
+    <h1 class="brand">Louis Vuitton</h1>
+    <p class="subtitle">Research-Based Extraction &mdash; May 2026 <span class="confidence-badge">Medium Confidence</span></p>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Color Palette</h2>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">LV Black</div><div class="swatch-value">#000000</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFFFFF; border:1px solid #E5E5E5;"></div><div class="swatch-info"><div class="swatch-name">LV White</div><div class="swatch-value">#FFFFFF</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6B4226;"></div><div class="swatch-info"><div class="swatch-name">LV Brown</div><div class="swatch-value">#6B4226</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#C19A6B;"></div><div class="swatch-info"><div class="swatch-name">LV Tan</div><div class="swatch-value">#C19A6B</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8B6914;"></div><div class="swatch-info"><div class="swatch-name">Monogram Brown</div><div class="swatch-value">#8B6914</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#3C2415;"></div><div class="swatch-info"><div class="swatch-name">Dark Brown</div><div class="swatch-value">#3C2415</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F9F6F1;"></div><div class="swatch-info"><div class="swatch-name">Off White</div><div class="swatch-value">#F9F6F1</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F2EDE7;"></div><div class="swatch-info"><div class="swatch-name">Light Beige</div><div class="swatch-value">#F2EDE7</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B0A89F;"></div><div class="swatch-info"><div class="swatch-name">Warm Gray</div><div class="swatch-value">#B0A89F</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8C8C8C;"></div><div class="swatch-info"><div class="swatch-name">Medium Gray</div><div class="swatch-value">#8C8C8C</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#333333;"></div><div class="swatch-info"><div class="swatch-name">Dark Gray</div><div class="swatch-value">#333333</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Typography</h2>
+      <div class="type-specimen"><div class="type-label">Hero &mdash; 80px / 300 / -0.03em</div><div class="type-hero">Louis Vuitton</div></div>
+      <div class="type-specimen"><div class="type-label">Display &mdash; 52px / 300 / -0.01em</div><div class="type-display">The Art of Travel</div></div>
+      <div class="type-specimen"><div class="type-label">H1 &mdash; 38px / 400</div><div class="type-h1">New Arrivals</div></div>
+      <div class="type-specimen"><div class="type-label">H2 &mdash; 28px / 400 / 0.02em</div><div class="type-h2">Men's Fall-Winter Collection</div></div>
+      <div class="type-specimen"><div class="type-label">Body &mdash; 15px / 400 / 1.5</div><div class="type-body">Since 1854, Louis Vuitton has brought unique designs to the world, combining innovation with style and always aiming for the finest quality. Today, the Maison remains faithful to the spirit of its founder and continues to push the boundaries of creativity.</div></div>
+      <div class="type-specimen"><div class="type-label">Navigation &mdash; 11px / 500 / 0.15em</div><div class="type-nav">New &nbsp;&nbsp; Women &nbsp;&nbsp; Men &nbsp;&nbsp; Bags &nbsp;&nbsp; Accessories &nbsp;&nbsp; Watches &nbsp;&nbsp; Jewelry &nbsp;&nbsp; Fragrance &nbsp;&nbsp; Art of Living</div></div>
+      <div class="type-specimen"><div class="type-label">Caption &mdash; 11px / 400 / 0.06em</div><div class="type-caption">M46895 &mdash; Monogram Canvas &mdash; Available Online</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Spacing Scale</h2>
+      <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-block" style="width:4px;"></div><span class="spacing-value">4px</span></div>
+      <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-block" style="width:8px;"></div><span class="spacing-value">8px</span></div>
+      <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-block" style="width:16px;"></div><span class="spacing-value">16px</span></div>
+      <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-block" style="width:24px;"></div><span class="spacing-value">24px</span></div>
+      <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-block" style="width:32px;"></div><span class="spacing-value">32px</span></div>
+      <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-block" style="width:48px;"></div><span class="spacing-value">48px</span></div>
+      <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-block" style="width:64px;"></div><span class="spacing-value">64px</span></div>
+      <div class="spacing-row"><span class="spacing-label">4xl</span><div class="spacing-block" style="width:80px;"></div><span class="spacing-value">80px</span></div>
+      <div class="spacing-row"><span class="spacing-label">5xl</span><div class="spacing-block" style="width:120px;"></div><span class="spacing-value">120px</span></div>
+      <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-block" style="width:140px;"></div><span class="spacing-value">140px</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Components</h2>
+      <p class="meta">Buttons</p>
+      <div class="btn-row">
+        <button class="btn-primary">Add to Cart</button>
+        <button class="btn-secondary">Select Size</button>
+        <button class="btn-primary">Find in Store</button>
+      </div>
+      <p class="meta" style="margin-top:64px;">Product Cards</p>
+      <div class="card-grid" style="margin-top:24px;">
+        <div class="card"><div class="card-image"></div><div class="card-body"><div class="card-title">Speedy Bandouli&egrave;re 25</div><div class="card-price">$1,730</div><div class="card-colors"><span class="card-color-dot" style="background:#6B4226;"></span><span class="card-color-dot" style="background:#000;"></span><span class="card-color-dot" style="background:#C19A6B;"></span></div></div></div>
+        <div class="card"><div class="card-image"></div><div class="card-body"><div class="card-title">Neverfull MM</div><div class="card-price">$2,030</div><div class="card-colors"><span class="card-color-dot" style="background:#6B4226;"></span><span class="card-color-dot" style="background:#8B6914;"></span></div></div></div>
+        <div class="card"><div class="card-image"></div><div class="card-body"><div class="card-title">Capucines BB</div><div class="card-price">$5,900</div><div class="card-colors"><span class="card-color-dot" style="background:#000;"></span><span class="card-color-dot" style="background:#fff; border-color:#ccc;"></span></div></div></div>
+        <div class="card"><div class="card-image"></div><div class="card-body"><div class="card-title">Tambour Watch</div><div class="card-price">$4,250</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Motion</h2>
+      <p class="meta">Hover to see easing curves</p>
+      <div class="motion-demo" style="margin-top:32px;">
+        <div><div class="motion-box"></div><div class="motion-label">0.2s fast</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.4s default</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.8s slow</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">1.2s hero</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">1.5s crossfade</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="editorial-hero">
+    <div class="container">
+      <div class="type-hero">Voyage</div>
+      <div class="type-body">The spirit of travel has been at the heart of Louis Vuitton since 1854. Every creation is an invitation to explore.</div>
+      <div class="btn-row" style="justify-content:center; margin-top:48px;">
+        <button style="background:transparent; color:#fff; border:1px solid #fff; padding:0 32px; height:48px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.4s ease;">Discover the Collection</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section heritage-section">
+    <div class="container">
+      <h2 class="section-title" style="color:var(--lv-dark-brown);">Heritage Tones</h2>
+      <div class="monogram-pattern">
+        LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV<br>
+        &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull;<br>
+        LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV &bull; LV
+      </div>
+      <p class="meta" style="margin-top:24px;">The monogram canvas palette: Dark Brown #3C2415, Monogram Brown #8B6914, Tan #C19A6B</p>
+    </div>
+  </div>
+
+  <div style="padding:48px 0; text-align:center;">
+    <p class="meta">Extracted 2026-05-14 &mdash; Research-Based (louisvuitton.com blocks automated fetching)</p>
+  </div>
+</body>
+</html>

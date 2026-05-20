@@ -1,0 +1,92 @@
+{
+  "durations": [
+    {
+      "value": "15s",
+      "count": 83
+    },
+    {
+      "value": "22s",
+      "count": 38
+    },
+    {
+      "value": "6s",
+      "count": 14
+    },
+    {
+      "value": "35s",
+      "count": 10
+    },
+    {
+      "value": "50ms",
+      "count": 4
+    },
+    {
+      "value": "100ms",
+      "count": 4
+    },
+    {
+      "value": "150ms",
+      "count": 4
+    },
+    {
+      "value": "200ms",
+      "count": 4
+    },
+    {
+      "value": "250ms",
+      "count": 4
+    },
+    {
+      "value": "300ms",
+      "count": 4
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.4,0,.4,1)",
+      "count": 12
+    },
+    {
+      "value": "cubic-bezier(.55,.085,.68,.53)",
+      "count": 6
+    },
+    {
+      "value": "cubic-bezier(.25,.46,.45,.94)",
+      "count": 6
+    },
+    {
+      "value": "cubic-bezier(.455,.03,.515,.955)",
+      "count": 6
+    },
+    {
+      "value": "cubic-bezier(.9,0,.9,1)",
+      "count": 4
+    },
+    {
+      "value": "cubic-bezier(.25,.25,.75,.75)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.25,.1,.25,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.42,0,1,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(0,0,.58,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.42,0,.58,1)",
+      "count": 2
+    }
+  ],
+  "keyframes": [
+    "bs-notify-fadeOut",
+    "progress-bar-stripes",
+    "animation-underline",
+    "animation-underline-end"
+  ]
+}

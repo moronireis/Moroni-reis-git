@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castelo dos Lagos — Análise Completa de Tráfego Pago</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            accent: '#4A90FF',
+            'accent-dim': '#4A90FF20',
+            'accent-med': '#4A90FF40',
+            danger: '#FF4A4A',
+            'danger-dim': '#FF4A4A15',
+            warning: '#FFB84A',
+            'warning-dim': '#FFB84A15',
+            success: '#4AFF8B',
+            'success-dim': '#4AFF8B15',
+            surface: { 1: '#0A0A0A', 2: '#111111', 3: '#1A1A1A', 4: '#222222', 5: '#2A2A2A' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0A0A0A; color: #E5E5E5; }
+    .score-ring { background: conic-gradient(var(--color) calc(var(--pct) * 1%), #1A1A1A 0); }
+    .gradient-border { background: linear-gradient(135deg, #4A90FF20, transparent 60%); }
+    @media print {
+      body { background: white; color: #111; }
+      .no-print { display: none; }
+      .print-break { page-break-before: always; }
+    }
+    .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    nav a { transition: color 0.2s; }
+    nav a:hover { color: #4A90FF; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-surface-1/90 backdrop-blur-xl border-b border-white/5 no-print">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-white font-light text-sm tracking-wide">CASTELO DOS LAGOS</span>
+        <span class="text-white/20">|</span>
+        <span class="text-white/40 text-xs">Audit Report</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-xs text-white/40">
+        <a href="#resumo">Resumo</a>
+        <a href="#conta">Conta</a>
+        <a href="#campanhas">Campanhas</a>
+        <a href="#performance">Performance</a>
+        <a href="#scores">Scores</a>
+        <a href="#problemas">Problemas</a>
+        <a href="#oportunidades">Oportunidades</a>
+        <a href="#estrategia">Estratégia</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 pt-24 pb-20">
+
+    <!-- Header -->
+    <header class="mb-16 fade-in">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-3 py-1 bg-danger-dim text-danger text-xs font-medium rounded-full">Spend Cap Esgotado</span>
+        <span class="px-3 py-1 bg-warning-dim text-warning text-xs font-medium rounded-full">Health Score: 35/100</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+        Castelo dos Lagos
+      </h1>
+      <p class="text-lg text-white/50 font-light mb-2">Análise Completa de Tráfego Pago — Meta Ads</p>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-white/30 mt-4">
+        <span>28 de abril de 2026</span>
+        <span class="text-white/10">|</span>
+        <span>Conta: act_785263856592449</span>
+        <span class="text-white/10">|</span>
+        <span>Moeda: BRL</span>
+        <span class="text-white/10">|</span>
+        <span>Business: PLAGI Participações</span>
+        <span class="text-white/10">|</span>
+        <span class="text-accent/60">Preparado por REIS [IA]</span>
+      </div>
+    </header>
+
+    <!-- Section 1: Executive Summary -->
+    <section id="resumo" class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">01 — Resumo Executivo</h2>
+
+      <!-- Health Score -->
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-8 mb-8">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="relative w-40 h-40 flex-shrink-0">
+            <div class="score-ring w-full h-full rounded-full flex items-center justify-center" style="--color: #FFB84A; --pct: 35;">
+              <div class="w-32 h-32 bg-surface-2 rounded-full flex items-center justify-center">
+                <div class="text-center">
+                  <span class="text-4xl font-bold text-warning">35</span>
+                  <span class="text-white/30 text-sm">/100</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-white mb-2">Conta ativa com oportunidades significativas</h3>
+            <p class="text-white/50 leading-relaxed">
+              O Castelo dos Lagos tem <span class="text-success font-medium">3 campanhas ativas</span> com gasto consistente desde 2025,
+              totalizando R$5.494 investidos. A conta gera <span class="text-accent font-medium">862 conexões de mensagem</span> (principal
+              conversão) a um custo médio de R$6,37/conversa. <span class="text-danger font-medium">Problema crítico: o spend cap foi 100% esgotado</span> —
+              restam apenas R$2,37 e a fonte de pagamento está zerada. A conta vai parar de entregar nas próximas horas.
+              Além disso: <span class="text-warning font-medium">estrutura fragmentada</span>,
+              campanhas de engajamento sem funil de conversão, e
+              <span class="text-danger font-medium">zero pixel/CAPI</span> para rastreamento offsite. Há potencial claro para
+              dobrar resultados, mas primeiro o spend cap precisa ser resetado.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Metrics Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Campanhas</p>
+          <p class="text-2xl font-bold text-white">8</p>
+          <p class="text-xs text-white/20 mt-1">3 ativas / 5 pausadas</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Gasto Total</p>
+          <p class="text-2xl font-bold text-white">R$5.494</p>
+          <p class="text-xs text-white/20 mt-1">Desde jun/2023</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Últimos 30 dias</p>
+          <p class="text-2xl font-bold text-success">R$375</p>
+          <p class="text-xs text-white/20 mt-1">~R$12,50/dia</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Conversas (total)</p>
+          <p class="text-2xl font-bold text-accent">862</p>
+          <p class="text-xs text-white/20 mt-1">R$6,37/conversa</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Leads (Form)</p>
+          <p class="text-2xl font-bold text-warning">51</p>
+          <p class="text-xs text-white/20 mt-1">R$107,73/lead</p>
+        </div>
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-4">
+          <p class="text-xs text-white/30 mb-1">Video Views</p>
+          <p class="text-2xl font-bold text-white">46.6K</p>
+          <p class="text-xs text-white/20 mt-1">R$0,12/view</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Account Status -->
+    <section id="conta" class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">02 — Status da Conta</h2>
+
+      <!-- CRITICAL: Spend Cap Alert -->
+      <div class="bg-danger-dim border border-danger/20 rounded-xl p-6 mb-8">
+        <div class="flex items-start gap-3">
+          <div class="w-5 h-5 rounded-full bg-danger/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div class="w-2 h-2 rounded-full bg-danger animate-pulse"></div>
+          </div>
+          <div>
+            <h3 class="text-danger font-semibold mb-1">Spend Cap Esgotado — Conta Prestes a Parar</h3>
+            <p class="text-white/50 text-sm mb-3">
+              O limite de gasto da conta (R$5.494,02) foi <span class="text-danger font-medium">100% consumido</span>.
+              Restam apenas R$2,37 de saldo. A conta vai parar de entregar anúncios nas próximas horas/dias.
+              É necessário resetar ou aumentar o spend cap em Meta Business Settings &gt; Payment Settings.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div class="bg-surface-1/50 rounded-lg p-3">
+                <p class="text-xs text-white/30">Spend Cap</p>
+                <p class="text-lg font-bold text-danger">R$5.494,02</p>
+              </div>
+              <div class="bg-surface-1/50 rounded-lg p-3">
+                <p class="text-xs text-white/30">Gasto Total</p>
+                <p class="text-lg font-bold text-white">R$5.494,02</p>
+              </div>
+              <div class="bg-surface-1/50 rounded-lg p-3">
+                <p class="text-xs text-white/30">Saldo Restante</p>
+                <p class="text-lg font-bold text-danger">R$2,37</p>
+              </div>
+              <div class="bg-surface-1/50 rounded-lg p-3">
+                <p class="text-xs text-white/30">Funding Source</p>
+                <p class="text-lg font-bold text-danger">R$0,00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Account Info -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <h3 class="text-sm font-medium text-white mb-4">Informações da Conta</h3>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-white/5">
+              <tr><td class="py-2 text-white/30">Nome</td><td class="py-2 text-white text-right">CA01 - Castelo dos Lagos</td></tr>
+              <tr><td class="py-2 text-white/30">ID</td><td class="py-2 text-white/50 text-right font-mono text-xs">act_785263856592449</td></tr>
+              <tr><td class="py-2 text-white/30">Business</td><td class="py-2 text-white text-right">PLAGI Participações</td></tr>
+              <tr><td class="py-2 text-white/30">Status</td><td class="py-2 text-success text-right">1 (Ativa)</td></tr>
+              <tr><td class="py-2 text-white/30">Moeda</td><td class="py-2 text-white text-right">BRL</td></tr>
+              <tr><td class="py-2 text-white/30">Timezone</td><td class="py-2 text-white text-right">America/Sao_Paulo</td></tr>
+              <tr><td class="py-2 text-white/30">Página</td><td class="py-2 text-white text-right">Castelo dos Lagos</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Second Account -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <h3 class="text-sm font-medium text-white mb-4">Segunda Conta (MKT)</h3>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-white/5">
+              <tr><td class="py-2 text-white/30">Nome</td><td class="py-2 text-white text-right">Castelo dos Lagos - MKT</td></tr>
+              <tr><td class="py-2 text-white/30">ID</td><td class="py-2 text-white/50 text-right font-mono text-xs">act_773405445178649</td></tr>
+              <tr><td class="py-2 text-white/30">Status</td><td class="py-2 text-success text-right">1 (Ativa)</td></tr>
+              <tr><td class="py-2 text-white/30">Moeda</td><td class="py-2 text-warning text-right">USD</td></tr>
+              <tr><td class="py-2 text-white/30">Gasto</td><td class="py-2 text-white/30 text-right">$0,00</td></tr>
+              <tr><td class="py-2 text-white/30">Observação</td><td class="py-2 text-white/40 text-right text-xs">Conta inativa, nunca utilizada</td></tr>
+            </tbody>
+          </table>
+          <div class="mt-4 pt-3 border-t border-white/5">
+            <p class="text-xs text-warning/60">Conta em USD sem uso. Considerar fechar ou converter para BRL se necessário.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spend Trend -->
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+        <h3 class="text-sm font-medium text-white mb-4">Evolução de Gasto Mensal</h3>
+        <div class="grid grid-cols-5 md:grid-cols-10 gap-2">
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 38%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Fev/25</p>
+            <p class="text-xs text-white/50">R$454</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 12%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Ago/25</p>
+            <p class="text-xs text-white/50">R$137</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 50%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Set/25</p>
+            <p class="text-xs text-white/50">R$590</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 51%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Out/25</p>
+            <p class="text-xs text-white/50">R$610</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 50%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Nov/25</p>
+            <p class="text-xs text-white/50">R$594</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/40 rounded-t" style="height: 10%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Dez/25</p>
+            <p class="text-xs text-white/50">R$114</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 42%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Jan/26</p>
+            <p class="text-xs text-white/50">R$501</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-success/60 rounded-t" style="height: 100%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Fev/26</p>
+            <p class="text-xs text-success">R$1.187</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-accent/60 rounded-t" style="height: 87%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Mar/26</p>
+            <p class="text-xs text-white/50">R$1.032</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-4 rounded-lg overflow-hidden h-32 flex flex-col justify-end">
+              <div class="bg-warning/60 rounded-t" style="height: 23%"></div>
+            </div>
+            <p class="text-xs text-white/30 mt-2">Abr/26</p>
+            <p class="text-xs text-warning">R$274*</p>
+          </div>
+        </div>
+        <p class="text-xs text-white/20 mt-3">* Abril ainda em andamento (28/04). Meses sem dados (Mar-Jul/25) omitidos.</p>
+        <div class="mt-4 pt-3 border-t border-white/5">
+          <p class="text-xs text-white/40">Pico em Fev/26 (R$1.187) coincide com temporada de casamentos. Queda em Dez/25 e Abr/26 sugere falta de consistência no investimento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Campaigns -->
+    <section id="campanhas" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">03 — Campanhas</h2>
+
+      <!-- Active Campaigns -->
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6 mb-6">
+        <h3 class="text-sm font-medium text-white mb-4">Campanhas Ativas (3)</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm min-w-[800px]">
+            <thead>
+              <tr class="text-white/30 text-xs border-b border-white/5">
+                <th class="text-left py-3 font-medium">Campanha</th>
+                <th class="text-right py-3 font-medium">Objetivo</th>
+                <th class="text-right py-3 font-medium">Budget/dia</th>
+                <th class="text-right py-3 font-medium">Gasto (30d)</th>
+                <th class="text-right py-3 font-medium">Conversas (30d)</th>
+                <th class="text-right py-3 font-medium">CPA Conversa</th>
+                <th class="text-right py-3 font-medium">CTR</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+              <tr class="bg-accent-dim">
+                <td class="py-3 text-accent font-medium">WM | [FORM] [NOIVAS]</td>
+                <td class="py-3 text-white/50 text-right">Leads</td>
+                <td class="py-3 text-white text-right">R$20</td>
+                <td class="py-3 text-white text-right">-</td>
+                <td class="py-3 text-white/30 text-right">-</td>
+                <td class="py-3 text-white/30 text-right">-</td>
+                <td class="py-3 text-white/30 text-right">-</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">WM | NOIVOS</td>
+                <td class="py-3 text-white/50 text-right">Engagement</td>
+                <td class="py-3 text-white text-right">R$22,70</td>
+                <td class="py-3 text-white text-right">R$279</td>
+                <td class="py-3 text-white text-right">43</td>
+                <td class="py-3 text-white text-right">R$6,49</td>
+                <td class="py-3 text-white/50 text-right">4,34%</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">WM | DEBUTANTES</td>
+                <td class="py-3 text-white/50 text-right">Engagement</td>
+                <td class="py-3 text-white text-right">-</td>
+                <td class="py-3 text-white text-right">R$97</td>
+                <td class="py-3 text-white text-right">21</td>
+                <td class="py-3 text-success font-bold text-right">R$4,60</td>
+                <td class="py-3 text-white/50 text-right">4,79%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/5">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-accent"></div>
+            <p class="text-xs text-white/40">A campanha FORM (Leads) está ativa desde Mar/26 mas <span class="text-accent">não gastou nos últimos 30d</span> — possível problema de entrega.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Campaigns Lifetime -->
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6 overflow-x-auto">
+        <h3 class="text-sm font-medium text-white mb-4">Histórico Completo (Lifetime)</h3>
+        <table class="w-full text-sm min-w-[900px]">
+          <thead>
+            <tr class="text-white/30 text-xs border-b border-white/5">
+              <th class="text-left py-3 font-medium">Campanha</th>
+              <th class="text-right py-3 font-medium">Status</th>
+              <th class="text-right py-3 font-medium">Objetivo</th>
+              <th class="text-right py-3 font-medium">Gasto Total</th>
+              <th class="text-right py-3 font-medium">Impressões</th>
+              <th class="text-right py-3 font-medium">Conversas</th>
+              <th class="text-right py-3 font-medium">Leads</th>
+              <th class="text-right py-3 font-medium">CPA</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr>
+              <td class="py-3 text-white">WM | NOIVOS</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded-full">Ativa</span></td>
+              <td class="py-3 text-white/50 text-right">Engagement</td>
+              <td class="py-3 text-white text-right">R$3.155</td>
+              <td class="py-3 text-white/50 text-right">126.5K</td>
+              <td class="py-3 text-white text-right">556</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-white text-right">R$5,67</td>
+            </tr>
+            <tr>
+              <td class="py-3 text-white">WM | DEBUTANTES</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded-full">Ativa</span></td>
+              <td class="py-3 text-white/50 text-right">Engagement</td>
+              <td class="py-3 text-white text-right">R$770</td>
+              <td class="py-3 text-white/50 text-right">31.7K</td>
+              <td class="py-3 text-white text-right">168</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-success font-bold text-right">R$4,58</td>
+            </tr>
+            <tr class="bg-accent-dim">
+              <td class="py-3 text-accent">WM | [FORM] [NOIVAS]</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded-full">Ativa</span></td>
+              <td class="py-3 text-white/50 text-right">Leads</td>
+              <td class="py-3 text-white text-right">R$905</td>
+              <td class="py-3 text-white/50 text-right">19.2K</td>
+              <td class="py-3 text-white text-right">107</td>
+              <td class="py-3 text-accent font-bold text-right">51</td>
+              <td class="py-3 text-white text-right">R$17,76*</td>
+            </tr>
+            <tr>
+              <td class="py-3 text-white/50">CAFE COM ASSESSORES</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-surface-4 text-white/30 text-xs rounded-full">Pausada</span></td>
+              <td class="py-3 text-white/30 text-right">Engagement</td>
+              <td class="py-3 text-white/50 text-right">R$295</td>
+              <td class="py-3 text-white/30 text-right">23.4K</td>
+              <td class="py-3 text-white/50 text-right">-</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+            </tr>
+            <tr>
+              <td class="py-3 text-white/50">CP001 - Reconhecimento</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-surface-4 text-white/30 text-xs rounded-full">Finalizada</span></td>
+              <td class="py-3 text-white/30 text-right">Awareness</td>
+              <td class="py-3 text-white/50 text-right">R$185</td>
+              <td class="py-3 text-white/30 text-right">29.4K</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+            </tr>
+            <tr>
+              <td class="py-3 text-white/50">CP002 - Engajamento Retargeting</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-surface-4 text-white/30 text-xs rounded-full">Finalizada</span></td>
+              <td class="py-3 text-white/30 text-right">Engagement</td>
+              <td class="py-3 text-white/50 text-right">R$40</td>
+              <td class="py-3 text-white/30 text-right">4.9K</td>
+              <td class="py-3 text-white/50 text-right">31</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-white/30 text-right">R$1,29</td>
+            </tr>
+            <tr>
+              <td class="py-3 text-white/50">FINALIZADA 07/02/25</td>
+              <td class="py-3 text-right"><span class="px-2 py-0.5 bg-surface-4 text-white/30 text-xs rounded-full">Finalizada</span></td>
+              <td class="py-3 text-white/30 text-right">Engagement</td>
+              <td class="py-3 text-white/50 text-right">R$144</td>
+              <td class="py-3 text-white/30 text-right">4.9K</td>
+              <td class="py-3 text-white/50 text-right">31</td>
+              <td class="py-3 text-white/30 text-right">-</td>
+              <td class="py-3 text-white text-right">R$4,66</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-white/20 mt-3">* CPA da campanha FORM calculado sobre conversas de mensagem (107). Custo por lead de formulário: R$107,73.</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Performance Deep Dive -->
+    <section id="performance" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">04 — Performance Detalhada</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Platform Breakdown -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <h3 class="text-sm font-medium text-white mb-4">Breakdown por Plataforma (Lifetime)</h3>
+
+          <div class="space-y-4 mb-6">
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white">Instagram</span>
+                <span class="text-white/50">70,3% do gasto</span>
+              </div>
+              <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-accent to-accent/60 rounded-full" style="width: 70.3%"></div>
+              </div>
+              <div class="flex justify-between text-xs text-white/30 mt-1">
+                <span>R$3.866 gasto</span>
+                <span>574 conversas</span>
+                <span>R$6,73/conv</span>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white">Facebook</span>
+                <span class="text-white/50">28,2% do gasto</span>
+              </div>
+              <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-accent to-accent/60 rounded-full" style="width: 28.2%"></div>
+              </div>
+              <div class="flex justify-between text-xs text-white/30 mt-1">
+                <span>R$1.551 gasto</span>
+                <span>274 conversas</span>
+                <span>R$5,66/conv</span>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white">WhatsApp</span>
+                <span class="text-white/50">1,0% do gasto</span>
+              </div>
+              <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-success to-success/60 rounded-full" style="width: 5%"></div>
+              </div>
+              <div class="flex justify-between text-xs text-white/30 mt-1">
+                <span>R$56 gasto</span>
+                <span>11 conversas</span>
+                <span>R$5,11/conv</span>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white">Audience Network</span>
+                <span class="text-white/50">0,4% do gasto</span>
+              </div>
+              <div class="h-3 bg-surface-4 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-warning to-warning/60 rounded-full" style="width: 2%"></div>
+              </div>
+              <div class="flex justify-between text-xs text-white/30 mt-1">
+                <span>R$21 gasto</span>
+                <span>3 conversas</span>
+                <span>R$6,96/conv</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-surface-3 rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-2 h-2 rounded-full bg-success"></div>
+              <p class="text-xs text-white/50 font-medium">Insight</p>
+            </div>
+            <p class="text-xs text-white/40">Facebook tem CPA <span class="text-success">16% menor</span> que Instagram (R$5,66 vs R$6,73) apesar de receber menos budget. WhatsApp tem o melhor CPA (R$5,11) mas volume mínimo.</p>
+          </div>
+        </div>
+
+        <!-- Key Metrics Lifetime -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <h3 class="text-sm font-medium text-white mb-4">Métricas Gerais (Lifetime)</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">Impressões</span>
+              <span class="text-white font-medium">231.603</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">Alcance</span>
+              <span class="text-white font-medium">78.593</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">Cliques</span>
+              <span class="text-white font-medium">7.210</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">CTR</span>
+              <span class="text-white font-medium">3,11%</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">CPC</span>
+              <span class="text-white font-medium">R$0,76</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">CPM</span>
+              <span class="text-white font-medium">R$23,72</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">Frequência</span>
+              <span class="text-warning font-medium">2,95</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-white/40 text-sm">Conversas Iniciadas (7d)</span>
+              <span class="text-accent font-medium">717</span>
+            </div>
+            <div class="flex justify-between items-center py-2">
+              <span class="text-white/40 text-sm">First Reply</span>
+              <span class="text-white font-medium">636</span>
+            </div>
+          </div>
+          <div class="bg-warning-dim rounded-xl p-4 mt-4">
+            <p class="text-xs text-warning/80">Frequência de 2,95 está próxima do limiar de fadiga (3.0). Público está vendo os mesmos anúncios repetidamente.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30-day comparison -->
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6 mt-6">
+        <h3 class="text-sm font-medium text-white mb-4">Últimos 30 Dias — Snapshot</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div class="text-center p-3 bg-surface-3 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">Gasto</p>
+            <p class="text-xl font-bold text-white">R$376</p>
+          </div>
+          <div class="text-center p-3 bg-surface-3 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">Impressões</p>
+            <p class="text-xl font-bold text-white">12.1K</p>
+          </div>
+          <div class="text-center p-3 bg-surface-3 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">Alcance</p>
+            <p class="text-xl font-bold text-white">5.122</p>
+          </div>
+          <div class="text-center p-3 bg-surface-3 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">Conversas</p>
+            <p class="text-xl font-bold text-accent">64</p>
+          </div>
+          <div class="text-center p-3 bg-surface-3 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">CPA/Conversa</p>
+            <p class="text-xl font-bold text-white">R$5,87</p>
+          </div>
+          <div class="text-center p-3 bg-surface-3 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">Frequência</p>
+            <p class="text-xl font-bold text-warning">2,37</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Scores -->
+    <section id="scores" class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">05 — Scores por Categoria</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-medium text-white">Estrutura da Conta</h3>
+            <span class="text-2xl font-bold text-warning">45</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full mb-3">
+            <div class="h-full bg-warning rounded-full" style="width: 45%"></div>
+          </div>
+          <p class="text-xs text-white/40 leading-relaxed">8 campanhas com nomenclatura parcial. Mistura de objetivos (Awareness, Engagement, Leads) sem funil claro. Campanhas finalizadas não arquivadas. Convenção "WM |" é parcialmente consistente.</p>
+        </div>
+
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-medium text-white">Saúde Criativa</h3>
+            <span class="text-2xl font-bold text-danger">25</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full mb-3">
+            <div class="h-full bg-danger rounded-full" style="width: 25%"></div>
+          </div>
+          <p class="text-xs text-white/40 leading-relaxed">Frequência global de 2,95 — próximo de fadiga. Sem rotação de criativos evidente. Zero teste A/B documentado. Mesmos anúncios rodando desde agosto/2025.</p>
+        </div>
+
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-medium text-white">Estratégia de Audiência</h3>
+            <span class="text-2xl font-bold text-warning">40</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full mb-3">
+            <div class="h-full bg-warning rounded-full" style="width: 40%"></div>
+          </div>
+          <p class="text-xs text-white/40 leading-relaxed">Targeting com interesses relevantes (Noiva, casamento, recém-noivos). Segmentação geográfica em SP. Porém: sem Lookalike Audiences, sem Custom Audiences de engajamento, sem exclusão de leads convertidos.</p>
+        </div>
+
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-medium text-white">Eficiência de Budget</h3>
+            <span class="text-2xl font-bold text-warning">50</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full mb-3">
+            <div class="h-full bg-warning rounded-full" style="width: 50%"></div>
+          </div>
+          <p class="text-xs text-white/40 leading-relaxed">CPA de R$6,37/conversa é competitivo para o segmento. Budget de ~R$12-22/dia é baixo mas sustentado. Inconsistência nos meses (R$114 em Dez vs R$1.187 em Fev) prejudica aprendizado do algoritmo.</p>
+        </div>
+
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-medium text-white">Conversion Tracking</h3>
+            <span class="text-2xl font-bold text-danger">20</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full mb-3">
+            <div class="h-full bg-danger rounded-full" style="width: 20%"></div>
+          </div>
+          <p class="text-xs text-white/40 leading-relaxed">Zero Pixel/CAPI configurado no site. 51 leads de formulário são os únicos eventos offsite rastreados. Sem tracking de visitas, agendamentos ou conversões no site. Impossível medir ROAS real.</p>
+        </div>
+
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-medium text-white">Funil de Conversão</h3>
+            <span class="text-2xl font-bold text-danger">30</span>
+          </div>
+          <div class="h-1.5 bg-surface-4 rounded-full mb-3">
+            <div class="h-full bg-danger rounded-full" style="width: 30%"></div>
+          </div>
+          <p class="text-xs text-white/40 leading-relaxed">Sem funil estruturado. Campanhas de engajamento são a maioria mas sem retargeting de quem engajou. Campanha de leads ativa mas sem gasto recente. Nenhuma campanha de conversão (site).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Top 5 Problems -->
+    <section id="problemas" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">06 — Top 5 Problemas</h2>
+
+      <div class="space-y-4">
+        <div class="bg-danger-dim border border-danger/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-danger font-bold text-lg">1</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Zero Pixel / CAPI no Site</h3>
+              <p class="text-white/50 text-sm leading-relaxed">Não há rastreamento de conversões no site do Castelo dos Lagos. Isso significa: sem retargeting de visitantes, sem otimização por conversão, sem medição de ROAS. Cada visita ao site é invisível para o Meta Ads. É o problema número 1 porque impede qualquer otimização baseada em dados reais.</p>
+              <p class="text-danger/60 text-xs mt-2">Impacto estimado: impossível calcular ROAS real. Potencialmente 30-50% do budget pode estar sendo desperdicado em públicos que não convertem.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-danger-dim border border-danger/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-danger font-bold text-lg">2</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Fadiga Criativa (Frequência 2,95)</h3>
+              <p class="text-white/50 text-sm leading-relaxed">A frequência global de 2,95 indica que cada pessoa do público viu os anúncios quase 3 vezes em média. Acima de 3.0, o custo por resultado sobe drasticamente. Sem rotação de criativos, os mesmos anúncios rodam desde agosto/2025 — mais de 8 meses com os mesmos visuais.</p>
+              <p class="text-danger/60 text-xs mt-2">Impacto estimado: CPM inflado em 15-25%, equivalente a ~R$800-R$1.400 desperdicados no lifetime.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-warning-dim border border-warning/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-warning font-bold text-lg">3</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Ausência de Funil (Topo sem Fundo)</h3>
+              <p class="text-white/50 text-sm leading-relaxed">75% do gasto está em campanhas de Engagement sem camada de conversão. Pessoas veem vídeos e engajam, mas não há campanha de retargeting para converter quem já demonstrou interesse. O único funil (FORM NOIVAS) está sem gasto nos últimos 30 dias.</p>
+              <p class="text-warning/60 text-xs mt-2">Impacto: leads potenciais que engajaram nos últimos 8 meses mas nunca foram impactados por um anúncio de conversão.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-warning-dim border border-warning/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-warning font-bold text-lg">4</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Inconsistência de Investimento</h3>
+              <p class="text-white/50 text-sm leading-relaxed">De R$114 (Dez/25) a R$1.187 (Fev/26) — variação de 10x entre meses. O algoritmo do Meta precisa de consistência para otimizar. Cada pausa e retomada reseta o aprendizado. R$12/dia é insuficiente para sair da fase de aprendizado em audiências novas.</p>
+              <p class="text-warning/60 text-xs mt-2">Recomendação: manter budget mínimo de R$30-50/dia sem interrupções.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-2 border border-white/10 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-white/50 font-bold text-lg">5</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Campanha de Leads (FORM) Parada</h3>
+              <p class="text-white/50 text-sm leading-relaxed">A única campanha com objetivo de Leads (WM | [FORM] [NOIVAS]) não gastou nos últimos 30 dias apesar de estar "ativa". Pode ser problema de audiência esgotada, bid muito baixo, ou conflito com as campanhas de engagement. Os 51 leads gerados historicamente custaram R$107,73 cada — caro para o segmento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Top 5 Opportunities -->
+    <section id="oportunidades" class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">07 — Top 5 Oportunidades</h2>
+
+      <div class="space-y-4">
+        <div class="bg-success-dim border border-success/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-success font-bold text-lg">1</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Instalar Pixel + CAPI no Site</h3>
+              <p class="text-white/50 text-sm leading-relaxed">Ação de maior impacto. Com Pixel instalado: retargeting de visitantes (custo 3-5x menor que cold traffic), otimização por conversão em vez de engajamento, Lookalike Audiences baseadas em quem visitou/agendou visita, e finalmente medir ROAS real.</p>
+              <p class="text-success/60 text-xs mt-2">Impacto potencial: redução de 40-60% no custo por lead qualificado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-success-dim border border-success/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-success font-bold text-lg">2</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Construir Funil de 3 Camadas</h3>
+              <p class="text-white/50 text-sm leading-relaxed">Topo: vídeo/awareness (manter WM | NOIVOS adaptado). Meio: retargeting de quem assistiu 50%+ dos vídeos com conteúdo do espaço (carrossel, tour virtual). Fundo: retargeting de visitantes do site com oferta direta (agende sua visita). Esse funil transforma engajamento em agendamentos.</p>
+              <p class="text-success/60 text-xs mt-2">Benchmark do segmento: visitas agendadas via funil completo custam R$15-30 vs R$100+ sem funil.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-success-dim border border-success/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-success font-bold text-lg">3</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Rotação de Criativos (3-5 por Campanha)</h3>
+              <p class="text-white/50 text-sm leading-relaxed">Criar batch de 3-5 criativos novos por campanha ativa: vídeo tour do espaço, depoimentos de casais, carrossel antes/depois de eventos, Reels com bastidores. Frequência cairia de 2,95 para &lt;2,0 e o CPM reduziria 15-20%.</p>
+              <p class="text-success/60 text-xs mt-2">Custo: produção mínima (celular + boa iluminação). Retorno: economia de R$100-200/mes em CPM inflado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-accent-dim border border-accent/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-accent font-bold text-lg">4</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Explorar Debutantes (Melhor CPA)</h3>
+              <p class="text-white/50 text-sm leading-relaxed">A campanha DEBUTANTES tem o melhor CPA da conta: R$4,60/conversa (vs R$6,49 de NOIVOS). Audiência sub-explorada com potencial de escalar. Considerar budget dedicado de R$15-20/dia para este segmento.</p>
+              <p class="text-accent/60 text-xs mt-2">O segmento de debutantes tem menos competição por attention no Meta que casamentos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-accent-dim border border-accent/20 rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-accent font-bold text-lg">5</span>
+            <div>
+              <h3 class="text-white font-semibold mb-2">Lookalike de Conversas de Alta Qualidade</h3>
+              <p class="text-white/50 text-sm leading-relaxed">Com 636 first replies e 406 pessoas que enviaram 2+ mensagens, há massa crítica para criar Lookalike Audiences de qualidade. Uma Lookalike 1% de quem chegou a depth 3+ (301 pessoas) seria o público mais qualificado possível para escalar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Strategy -->
+    <section id="estrategia" class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">08 — Estratégia Recomendada</h2>
+
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-8">
+        <h3 class="text-lg font-semibold text-white mb-6">Reestruturação: De Engagement Isolado para Funil de Conversão</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- TOFU -->
+          <div class="bg-surface-3 rounded-xl p-5 border border-accent/10">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center">
+                <span class="text-accent text-xs font-bold">T</span>
+              </div>
+              <h4 class="text-sm font-medium text-white">Topo — Awareness</h4>
+            </div>
+            <p class="text-xs text-white/40 mb-3">Objetivo: Alcance e vídeo views</p>
+            <ul class="text-xs text-white/50 space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">-</span>
+                <span>Vídeos curtos do espaço (15-30s Reels)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">-</span>
+                <span>Público frio: interesses casamento + debutante + eventos</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">-</span>
+                <span>Lookalike 1-3% de conversas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">-</span>
+                <span>Budget: 40% do total (~R$20/dia)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- MOFU -->
+          <div class="bg-surface-3 rounded-xl p-5 border border-warning/10">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-warning/20 rounded-lg flex items-center justify-center">
+                <span class="text-warning text-xs font-bold">M</span>
+              </div>
+              <h4 class="text-sm font-medium text-white">Meio — Consideração</h4>
+            </div>
+            <p class="text-xs text-white/40 mb-3">Objetivo: Mensagens + engagement profundo</p>
+            <ul class="text-xs text-white/50 space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-warning mt-0.5">-</span>
+                <span>Carrossel: tour completo, diferenciais, depoimentos</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-warning mt-0.5">-</span>
+                <span>Retargeting: 50%+ vídeo viewers (7-30 dias)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-warning mt-0.5">-</span>
+                <span>Retargeting: engajaram na pagina (30 dias)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-warning mt-0.5">-</span>
+                <span>Budget: 35% do total (~R$17/dia)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- BOFU -->
+          <div class="bg-surface-3 rounded-xl p-5 border border-success/10">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-success/20 rounded-lg flex items-center justify-center">
+                <span class="text-success text-xs font-bold">B</span>
+              </div>
+              <h4 class="text-sm font-medium text-white">Fundo — Conversão</h4>
+            </div>
+            <p class="text-xs text-white/40 mb-3">Objetivo: Leads + agendamento de visita</p>
+            <ul class="text-xs text-white/50 space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-success mt-0.5">-</span>
+                <span>CTA direto: "Agende sua visita" com formulário</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success mt-0.5">-</span>
+                <span>Retargeting: visitantes do site (Pixel)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success mt-0.5">-</span>
+                <span>Retargeting: conversas iniciadas mas não agendaram</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success mt-0.5">-</span>
+                <span>Budget: 25% do total (~R$13/dia)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-white/5">
+          <p class="text-xs text-white/40">Budget recomendado: <span class="text-white font-medium">R$50/dia (R$1.500/mes)</span> — aumento gradual de ~R$12/dia atual. Este budget permite sair da fase de aprendizado e manter 3 camadas de funil ativas simultaneamente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: Roadmap -->
+    <section id="roadmap" class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">09 — Roadmap de Execução</h2>
+
+      <div class="space-y-6">
+        <!-- Week 1 -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-danger-dim text-danger text-xs font-bold rounded-full">SEMANA 1</span>
+            <span class="text-white font-medium text-sm">Fundação</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Instalar Meta Pixel no site castelo dos lagos</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Configurar eventos: PageView, Lead, Contact, Schedule</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Configurar CAPI (server-side) se possível</span>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Criar Custom Audiences: 50%+ vídeo viewers, page engagers</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Criar Lookalike 1% de messaging depth 3+</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Auditar e corrigir campanha FORM (sem entrega)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weeks 2-3 -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-warning-dim text-warning text-xs font-bold rounded-full">SEMANAS 2-3</span>
+            <span class="text-white font-medium text-sm">Reestruturação</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Produzir 5 criativos novos (videos + carrosséis)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Reestruturar em 3 campanhas (TOFU/MOFU/BOFU)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Subir budget para R$30/dia (transição)</span>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Separar campanhas NOIVOS e DEBUTANTES em funis distintos</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Ativar retargeting de vídeo viewers (MOFU)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Testar WhatsApp como canal (melhor CPA histórico)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Month 2 -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-success-dim text-success text-xs font-bold rounded-full">MÊS 2</span>
+            <span class="text-white font-medium text-sm">Escala</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Escalar budget para R$50/dia (R$1.500/mes)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Ativar retargeting de site (Pixel pronto)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Expandir geo: considerar Grande SP + interior</span>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Otimizar por conversão (evento "Schedule" no Pixel)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Testar Advantage+ Shopping para eventos</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+                <span class="text-white/60">Primeiro relatório de ROAS real (com Pixel data)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ongoing -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-accent-dim text-accent text-xs font-bold rounded-full">CONTÍNUO</span>
+            <span class="text-white font-medium text-sm">Otimização</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-sm">
+              <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+              <span class="text-white/60">Rotação de criativos: 3-5 novos por mes</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+              <span class="text-white/60">Monitoramento semanal: CPA, frequência, CTR</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+              <span class="text-white/60">Ajuste sazonal: aumentar budget em temporada alta (Set-Mar)</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <div class="w-4 h-4 rounded border border-white/20 flex-shrink-0"></div>
+              <span class="text-white/60">A/B test contínuo de copy, visuais e públicos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: Top Criativos -->
+    <section class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">10 — Top Criativos por Performance</h2>
+
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6 mb-6">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm min-w-[900px]">
+            <thead>
+              <tr class="text-white/30 text-xs border-b border-white/5">
+                <th class="text-left py-3 font-medium">Nome</th>
+                <th class="text-left py-3 font-medium">Campanha</th>
+                <th class="text-right py-3 font-medium">Gasto</th>
+                <th class="text-right py-3 font-medium">Impressões</th>
+                <th class="text-right py-3 font-medium">Conversas</th>
+                <th class="text-right py-3 font-medium">CPA</th>
+                <th class="text-right py-3 font-medium">CTR</th>
+                <th class="text-right py-3 font-medium">Freq.</th>
+                <th class="text-right py-3 font-medium">Tipo</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+              <tr class="bg-success-dim">
+                <td class="py-3 text-success font-medium">AN001 - TF VÍDEO DEGUSTAÇÃO</td>
+                <td class="py-3 text-white/50">FINALIZADA 08/02/25</td>
+                <td class="py-3 text-white text-right">R$144</td>
+                <td class="py-3 text-white/50 text-right">4.861</td>
+                <td class="py-3 text-white font-bold text-right">31</td>
+                <td class="py-3 text-success font-bold text-right">R$4,66</td>
+                <td class="py-3 text-white/50 text-right">3,79%</td>
+                <td class="py-3 text-white/50 text-right">2,06</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">CRIATIVO 2 (NOIVOS)</td>
+                <td class="py-3 text-white/50">WM NOIVOS</td>
+                <td class="py-3 text-white text-right">R$113</td>
+                <td class="py-3 text-white/50 text-right">5.228</td>
+                <td class="py-3 text-white text-right">20</td>
+                <td class="py-3 text-white text-right">R$5,63</td>
+                <td class="py-3 text-white/50 text-right">3,60%</td>
+                <td class="py-3 text-white/50 text-right">2,24</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">CRIATIVO 1 (NOIVOS)</td>
+                <td class="py-3 text-white/50">WM NOIVOS</td>
+                <td class="py-3 text-white text-right">R$58</td>
+                <td class="py-3 text-white/50 text-right">2.170</td>
+                <td class="py-3 text-white text-right">7</td>
+                <td class="py-3 text-white text-right">R$8,25</td>
+                <td class="py-3 text-white/50 text-right">2,63%</td>
+                <td class="py-3 text-white/50 text-right">1,81</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">CRIATIVO 3 (NOIVOS)</td>
+                <td class="py-3 text-white/50">WM NOIVOS</td>
+                <td class="py-3 text-white text-right">R$43</td>
+                <td class="py-3 text-white/50 text-right">1.975</td>
+                <td class="py-3 text-white text-right">5</td>
+                <td class="py-3 text-white text-right">R$8,63</td>
+                <td class="py-3 text-white/50 text-right">4,35%</td>
+                <td class="py-3 text-white/50 text-right">1,91</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">CRIATIVO 4 (NOIVOS)</td>
+                <td class="py-3 text-white/50">WM NOIVOS</td>
+                <td class="py-3 text-white text-right">R$21</td>
+                <td class="py-3 text-white/50 text-right">853</td>
+                <td class="py-3 text-white text-right">2</td>
+                <td class="py-3 text-white text-right">R$10,55</td>
+                <td class="py-3 text-white/30 text-right">—</td>
+                <td class="py-3 text-white/50 text-right">1,45</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">AN002 - TF VÍDEO DEGUSTAÇÃO</td>
+                <td class="py-3 text-white/50">FINALIZADA 07/02/25</td>
+                <td class="py-3 text-white text-right">R$59</td>
+                <td class="py-3 text-white/50 text-right">2.440</td>
+                <td class="py-3 text-white text-right">2</td>
+                <td class="py-3 text-white text-right">R$29,51</td>
+                <td class="py-3 text-white/50 text-right">2,01%</td>
+                <td class="py-3 text-white/50 text-right">2,08</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+              <tr class="bg-danger-dim">
+                <td class="py-3 text-danger font-medium">AN001 - MF VÍDEO</td>
+                <td class="py-3 text-white/50">CP002 Retargeting</td>
+                <td class="py-3 text-white text-right">R$67</td>
+                <td class="py-3 text-white/50 text-right">5.005</td>
+                <td class="py-3 text-white text-right">1</td>
+                <td class="py-3 text-danger font-bold text-right">R$66,50</td>
+                <td class="py-3 text-white/50 text-right">1,22%</td>
+                <td class="py-3 text-danger font-medium text-right">3,72</td>
+                <td class="py-3 text-right"><span class="px-2 py-0.5 bg-accent-dim text-accent text-xs rounded-full">Vídeo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bg-surface-3 rounded-xl p-5 border border-success/10">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-2 h-2 rounded-full bg-success"></div>
+          <p class="text-xs text-white/50 font-medium">Insight Criativo</p>
+        </div>
+        <p class="text-sm text-white/60 leading-relaxed">Vídeos de degustação performam 2x melhor que vídeos institucionais. O criativo AN001 DEGUSTAÇÃO tem o melhor CPA (R$4,66) da conta inteira — um formato que deveria ser replicado com variações.</p>
+      </div>
+    </section>
+
+    <!-- Section 11: Estrutura de Tráfego -->
+    <section class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">11 — Estrutura de Tráfego</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+        <!-- Ad Set 1: DEGUSTAÇÕES -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-sm font-semibold text-white">DEGUSTAÇÕES</h3>
+              <p class="text-xs text-white/30 mt-0.5">WM | NOIVOS</p>
+            </div>
+            <span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded-full flex-shrink-0">Ativo</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-white/40">Objetivo</span>
+              <span class="text-white">CONVERSATIONS</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Lance</span>
+              <span class="text-white">Lowest Cost</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Idade</span>
+              <span class="text-white">25–50</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Gênero</span>
+              <span class="text-white">Todos</span>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Geo (16 cidades)</p>
+              <p class="text-xs text-white/50 leading-relaxed">Diadema, Guarulhos, Itaquaquecetuba, Mauá, Mogi das Cruzes, Ribeirão Pires, Rio Grande da Serra, Santo André, São Bernardo do Campo, São Caetano do Sul, São Paulo, Suzano + mais</p>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Interesses</p>
+              <p class="text-xs text-white/50">Noiva, Sites e blogs de casamento</p>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Life Events</p>
+              <p class="text-xs text-white/50">Recém-noivos (1 ano), Recém-noivos (3 meses)</p>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Relacionamento</p>
+              <p class="text-xs text-white/50">Noivos (4)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ad Set 2: NOIVAS REGIÃO -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-sm font-semibold text-white">NOIVAS REGIÃO</h3>
+              <p class="text-xs text-white/30 mt-0.5">WM | NOIVOS</p>
+            </div>
+            <span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded-full flex-shrink-0">Ativo</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-white/40">Objetivo</span>
+              <span class="text-white">CONVERSATIONS</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Lance</span>
+              <span class="text-white">Lowest Cost</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Idade</span>
+              <span class="text-white">18–65</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Gênero</span>
+              <span class="text-white">Todos</span>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Geo (7 cidades)</p>
+              <p class="text-xs text-white/50 leading-relaxed">Diadema, Mauá, Ribeirão Pires, Rio Grande da Serra, Santo André, São Bernardo do Campo, São Caetano do Sul</p>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Interesses</p>
+              <p class="text-xs text-white/50 leading-relaxed">Bolo de casamento, Anel de noivado, Noiva, Fotografia de casamento, Noivado, Convite de casamento</p>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Life Events</p>
+              <p class="text-xs text-white/50">Recém-noivos (6 meses), Recém-noivos (3 meses)</p>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Relacionamento</p>
+              <p class="text-xs text-white/50">Noivos (2, 4)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ad Set 3: DEBUTANTES -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-sm font-semibold text-white">DEBUTANTES</h3>
+              <p class="text-xs text-white/30 mt-0.5">WM | DEBUTANTES</p>
+            </div>
+            <span class="px-2 py-0.5 bg-success-dim text-success text-xs rounded-full flex-shrink-0">Ativo</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-white/40">Budget</span>
+              <span class="text-white">R$8/dia</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Objetivo</span>
+              <span class="text-white">CONVERSATIONS</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Lance</span>
+              <span class="text-white">LOWEST_COST_WITHOUT_CAP</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Idade</span>
+              <span class="text-white">18–65</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Gênero</span>
+              <span class="text-white">Todos</span>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Geo (5 cidades)</p>
+              <p class="text-xs text-white/50">Mauá, Ribeirão Pires, Santo André, São Bernardo do Campo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ad Set 4: PRÓXIMO AO CASTELO -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-sm font-semibold text-white">PRÓXIMO AO CASTELO</h3>
+              <p class="text-xs text-white/30 mt-0.5">CAFÉ COM ASSESSORES</p>
+            </div>
+            <span class="px-2 py-0.5 bg-surface-4 text-white/30 text-xs rounded-full flex-shrink-0">Pausado</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-white/40">Budget</span>
+              <span class="text-white">R$10/dia</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Objetivo</span>
+              <span class="text-white">CONVERSATIONS</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Lance</span>
+              <span class="text-white">LOWEST_COST_WITHOUT_CAP</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Idade</span>
+              <span class="text-white">18–65</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-white/40">Gênero</span>
+              <span class="text-white">Todos</span>
+            </div>
+            <div class="border-t border-white/5 pt-3">
+              <p class="text-xs text-white/30 mb-1.5">Geo</p>
+              <p class="text-xs text-white/50">Sem detalhes (broad)</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-surface-3 rounded-xl p-5">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-2 h-2 rounded-full bg-warning"></div>
+          <p class="text-xs text-white/50 font-medium">Problemas Identificados na Estrutura</p>
+        </div>
+        <ol class="space-y-2">
+          <li class="flex items-start gap-2 text-sm text-white/50">
+            <span class="text-warning font-bold flex-shrink-0">1.</span>
+            <span>Dois ad sets (DEGUSTAÇÕES e NOIVAS REGIÃO) na mesma campanha competem entre si — audience overlap provável.</span>
+          </li>
+          <li class="flex items-start gap-2 text-sm text-white/50">
+            <span class="text-warning font-bold flex-shrink-0">2.</span>
+            <span>Sem exclusão de clientes/leads existentes.</span>
+          </li>
+          <li class="flex items-start gap-2 text-sm text-white/50">
+            <span class="text-warning font-bold flex-shrink-0">3.</span>
+            <span>Sem separação de gênero — homens e mulheres recebem o mesmo anúncio.</span>
+          </li>
+          <li class="flex items-start gap-2 text-sm text-white/50">
+            <span class="text-warning font-bold flex-shrink-0">4.</span>
+            <span>Faixa etária muito ampla (18–65) nos ad sets NOIVAS REGIÃO e DEBUTANTES.</span>
+          </li>
+          <li class="flex items-start gap-2 text-sm text-white/50">
+            <span class="text-warning font-bold flex-shrink-0">5.</span>
+            <span>Sem Custom Audiences de retargeting.</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Section 12: Resultados por Campanha -->
+    <section class="mb-20 fade-in print-break">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">12 — Resultados Detalhados por Campanha</h2>
+
+      <div class="space-y-6">
+
+        <!-- Campaign 1: WM | NOIVOS -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+            <div>
+              <h3 class="text-base font-semibold text-white">WM | NOIVOS</h3>
+              <p class="text-xs text-white/30 mt-0.5">Engagement — Ativa desde Ago/2025</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-success-dim text-success text-xs font-medium rounded-full">ATIVA</span>
+              <span class="text-xs text-white/30">Budget: R$22,70/dia</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-xs text-white/30 uppercase tracking-wider mb-3">Lifetime</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Gasto</span>
+                  <span class="text-white font-medium">R$3.155</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Impressões</span>
+                  <span class="text-white">126.5K</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Conversas</span>
+                  <span class="text-white font-medium">556</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">CPA Conversa</span>
+                  <span class="text-white">R$5,67</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Video Views</span>
+                  <span class="text-white">2.006</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-white/40">Ads totais</span>
+                  <span class="text-white/50">12 (maioria pausados)</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-white/30 uppercase tracking-wider mb-3">Últimos 30 dias</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Gasto</span>
+                  <span class="text-white font-medium">R$279</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Impressões</span>
+                  <span class="text-white">8.798</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Conversas</span>
+                  <span class="text-white font-medium">43</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">CPA Conversa</span>
+                  <span class="text-white">R$6,49</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">CTR</span>
+                  <span class="text-white">4,34%</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Frequência</span>
+                  <span class="text-warning">2,46</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">First Replies</span>
+                  <span class="text-white">29</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Depth 2+ msgs</span>
+                  <span class="text-white">21</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-white/40">Depth 3+ msgs</span>
+                  <span class="text-white">13</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-4 text-xs text-white/30">
+            <span>Ad Sets ativos: <span class="text-white/50">DEGUSTAÇÕES, NOIVAS REGIÃO</span></span>
+            <span>Criativo ativo: <span class="text-white/50">CRIATIVO 2 (vídeo — best performer)</span></span>
+          </div>
+        </div>
+
+        <!-- Campaign 2: WM | DEBUTANTES -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+            <div>
+              <h3 class="text-base font-semibold text-white">WM | DEBUTANTES</h3>
+              <p class="text-xs text-white/30 mt-0.5">Engagement — Ativa desde Ago/2025</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-success-dim text-success text-xs font-medium rounded-full">ATIVA</span>
+              <span class="px-3 py-1 bg-success-dim text-success text-xs font-medium rounded-full">MELHOR CPA</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-xs text-white/30 uppercase tracking-wider mb-3">Lifetime</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Gasto</span>
+                  <span class="text-white font-medium">R$770</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Impressões</span>
+                  <span class="text-white">31.7K</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Conversas</span>
+                  <span class="text-white font-medium">168</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-white/40">CPA Conversa</span>
+                  <span class="text-success font-bold">R$4,58</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-white/30 uppercase tracking-wider mb-3">Últimos 30 dias</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Gasto</span>
+                  <span class="text-white font-medium">R$97</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Impressões</span>
+                  <span class="text-white">3.340</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Conversas</span>
+                  <span class="text-white font-medium">21</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">CPA Conversa</span>
+                  <span class="text-success font-bold">R$4,60</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">CTR</span>
+                  <span class="text-white">4,79%</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Frequência</span>
+                  <span class="text-white">1,71</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">First Replies</span>
+                  <span class="text-white">17</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-white/40">Depth 2+ msgs</span>
+                  <span class="text-white">12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-4 text-xs text-white/30">
+            <span>Ad Set ativo: <span class="text-white/50">DEBUTANTES</span></span>
+            <span>Criativo ativo: <span class="text-white/50">CRIATIVO 2 (vídeo 15 anos)</span></span>
+          </div>
+        </div>
+
+        <!-- Campaign 3: WM | [FORM] [NOIVAS] -->
+        <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+            <div>
+              <h3 class="text-base font-semibold text-white">WM | [FORM] [NOIVAS]</h3>
+              <p class="text-xs text-white/30 mt-0.5">Leads — Ativa desde Mar/2026</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-success-dim text-success text-xs font-medium rounded-full">ATIVA</span>
+              <span class="text-xs text-white/30">Budget: R$20/dia</span>
+            </div>
+          </div>
+
+          <!-- Danger Alert -->
+          <div class="bg-danger-dim border border-danger/20 rounded-xl p-4 mb-5">
+            <div class="flex items-start gap-3">
+              <svg class="w-4 h-4 text-danger flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <p class="text-sm text-danger/80">Esta campanha está ativa mas seu ad set está <strong>PAUSADO</strong> — explica o zero delivery nos últimos 30 dias.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-xs text-white/30 uppercase tracking-wider mb-3">Lifetime</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Gasto</span>
+                  <span class="text-white font-medium">R$905</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Impressões</span>
+                  <span class="text-white">19.2K</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Conversas</span>
+                  <span class="text-white font-medium">107</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">CPA Conversa</span>
+                  <span class="text-white">R$17,76</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/5">
+                  <span class="text-white/40">Leads (Form)</span>
+                  <span class="text-accent font-bold">51</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-white/40">Custo/Lead</span>
+                  <span class="text-warning">R$107,73</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-white/30 uppercase tracking-wider mb-3">Últimos 30 dias</p>
+              <div class="bg-danger-dim rounded-xl p-4 flex items-center justify-center h-full min-h-[120px]">
+                <div class="text-center">
+                  <p class="text-3xl font-bold text-danger">R$0</p>
+                  <p class="text-xs text-white/40 mt-1">Sem entrega</p>
+                  <p class="text-xs text-white/30 mt-1">Ad set pausado</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-4 text-xs text-white/30">
+            <span>Ad Set: <span class="text-white/50">Novo conjunto de anúncios de Leads (PAUSADO)</span></span>
+            <span>Criativos: <span class="text-white/50">Vídeo Degustação, Quinta Atualizado, 20262027, 2026-2027</span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Summary Bar -->
+      <div class="mt-6 bg-surface-3 rounded-xl p-5">
+        <p class="text-xs text-white/30 uppercase tracking-wider mb-4">Resumo Consolidado — Últimos 30 dias</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center p-3 bg-surface-4 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">Total Ativo</p>
+            <p class="text-xl font-bold text-white">R$376</p>
+            <p class="text-xs text-white/20 mt-0.5">64 conversas</p>
+          </div>
+          <div class="text-center p-3 bg-surface-4 rounded-xl">
+            <p class="text-xs text-white/30 mb-1">CPA Médio</p>
+            <p class="text-xl font-bold text-white">R$5,87</p>
+            <p class="text-xs text-white/20 mt-0.5">por conversa</p>
+          </div>
+          <div class="text-center p-3 bg-success-dim rounded-xl border border-success/10">
+            <p class="text-xs text-white/30 mb-1">Melhor Campanha</p>
+            <p class="text-sm font-bold text-success">DEBUTANTES</p>
+            <p class="text-xs text-success/60 mt-0.5">R$4,60/conversa</p>
+          </div>
+          <div class="text-center p-3 bg-danger-dim rounded-xl border border-danger/10">
+            <p class="text-xs text-white/30 mb-1">Pior Campanha</p>
+            <p class="text-sm font-bold text-danger">FORM NOIVAS</p>
+            <p class="text-xs text-danger/60 mt-0.5">Sem entrega</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 13: Gasto Desperdiçado -->
+    <section class="mb-20 fade-in">
+      <h2 class="text-xs font-medium text-accent uppercase tracking-widest mb-8">13 — Gasto Desperdiçado Estimado</h2>
+
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-white/30 text-xs border-b border-white/5">
+                <th class="text-left py-3 font-medium">Fonte de Desperdício</th>
+                <th class="text-right py-3 font-medium">Estimativa</th>
+                <th class="text-left py-3 font-medium pl-6">Como Recuperar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+              <tr>
+                <td class="py-3 text-white">Fadiga criativa (freq > 2.5)</td>
+                <td class="py-3 text-danger text-right">~R$800</td>
+                <td class="py-3 text-white/40 pl-6">Rotação de criativos (3-5 novos/campanha)</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">Audience Network (CPA pior)</td>
+                <td class="py-3 text-danger text-right">~R$21</td>
+                <td class="py-3 text-white/40 pl-6">Excluir Audience Network dos placements</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">Campanha FORM sem entrega</td>
+                <td class="py-3 text-danger text-right">~R$200</td>
+                <td class="py-3 text-white/40 pl-6">Diagnosticar e reativar ou reconstruir</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-white">Sem retargeting (tráfego perdido)</td>
+                <td class="py-3 text-danger text-right">~R$1.500</td>
+                <td class="py-3 text-white/40 pl-6">Instalar Pixel + criar camada BOFU</td>
+              </tr>
+              <tr class="font-medium bg-danger-dim">
+                <td class="py-3 text-white">Total recuperável estimado</td>
+                <td class="py-3 text-danger text-right">R$2.500 — R$3.500</td>
+                <td class="py-3 text-white/40 pl-6">~45-64% do gasto total poderia ter gerado mais resultado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-8 no-print">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-white font-light text-sm">REIS <span class="text-accent">[IA]</span></span>
+        <span class="text-white/20">|</span>
+        <span class="text-white/30 text-xs">Audit Report — Castelo dos Lagos</span>
+      </div>
+      <p class="text-white/20 text-xs">Gerado em 28 de abril de 2026 via Meta Marketing API v24.0</p>
+    </div>
+  </footer>
+
+</body>
+</html>

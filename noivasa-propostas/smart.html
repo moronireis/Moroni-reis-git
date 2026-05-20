@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F4F3EE" />
+  <title>Proposta Smart — Noiva S.A.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --rose: #DBA99F;
+      --blush: #FFCBC1;
+      --cream: #F4F3EE;
+      --cream-light: #FAFAF7;
+      --cream-dark: #E8E6DF;
+      --silver: #BAB9B6;
+      --taupe: #9C958F;
+      --taupe-dark: #6b635d;
+      --eucalyptus: #4A6741;
+      --blush-light: #FFF5F3;
+      --rose-light: #ECC8BE;
+      --rose-dark: #C49189;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b635d;
+      --text-tertiary: #9C958F;
+      --white: #FFFFFF;
+      --bg: #F4F3EE;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', 'Helvetica Neue', sans-serif;
+      --font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+      --font-script: 'Great Vibes', cursive;
+
+      --transition-slide: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); font-family: var(--font-body); }
+    ::selection { background: var(--blush); color: var(--text-primary); }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ─── Progress Bar ─── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: linear-gradient(90deg, var(--rose-dark), var(--rose), var(--blush));
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+      z-index: 200;
+    }
+    #progress-bar::after {
+      content: ''; position: absolute; right: 0; top: -1px;
+      width: 40px; height: 4px;
+      background: radial-gradient(ellipse, rgba(255,203,193,0.8) 0%, transparent 70%);
+      animation: progressPulse 2s ease-in-out infinite;
+    }
+    @keyframes progressPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    /* ─── Slide Counter ─── */
+    #slide-counter {
+      position: fixed; bottom: 28px; right: 36px;
+      font-family: var(--font-sans); font-size: 11px; font-weight: 400;
+      letter-spacing: 0.12em; color: var(--taupe);
+      z-index: 200;
+    }
+    #slide-counter span { color: var(--rose); }
+
+    /* ─── Nav Arrows ─── */
+    .nav-arrow {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 200; opacity: 0;
+      transition: opacity 0.3s, transform 0.3s, background 0.3s, box-shadow 0.3s;
+      background: rgba(244,243,238,0.7);
+      border: 1px solid rgba(219,169,159,0.25);
+      border-radius: 50%;
+    }
+    .nav-arrow:hover {
+      opacity: 1 !important;
+      background: rgba(219,169,159,0.1);
+      box-shadow: 0 0 16px rgba(219,169,159,0.15);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .nav-arrow:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+    .nav-arrow svg { width: 16px; height: 16px; stroke: var(--rose-dark); stroke-width: 1.5; fill: none; }
+    #nav-prev { left: 16px; }
+    #nav-next { right: 16px; }
+    body:hover .nav-arrow { opacity: 0.4; }
+    @media (hover: none) { .nav-arrow { display: none; } }
+
+    /* ─── Back Link ─── */
+    .back-link {
+      position: fixed; top: 24px; left: 24px;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.04em; color: var(--taupe-dark);
+      z-index: 200; display: flex; align-items: center; gap: 6px;
+      transition: color 200ms ease;
+    }
+    .back-link:hover { color: var(--rose); }
+    .back-link svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+
+    /* ─── Slides Container ─── */
+    #slides-container { position: fixed; inset: 0; width: 100%; height: 100%; }
+
+    /* ─── Slide Base ─── */
+    .slide {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      background: var(--bg);
+      opacity: 0; transform: scale(0.97); filter: blur(3px);
+      transition: opacity var(--transition-slide), transform var(--transition-slide), filter var(--transition-slide);
+      pointer-events: none; will-change: opacity, transform, filter;
+      overflow-y: auto; overflow-x: hidden;
+      z-index: 2; padding: 60px 24px;
+    }
+    .slide.active { opacity: 1; transform: scale(1); filter: blur(0); pointer-events: all; }
+    .slide.prev { opacity: 0; transform: scale(1.03); filter: blur(3px); }
+
+    /* ─── Animation System ─── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes dividerGrow {
+      from { width: 0; opacity: 0; }
+      to { width: 48px; opacity: 0.6; }
+    }
+    @keyframes cardEntrance {
+      from { opacity: 0; transform: scale(0.94) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .slide [data-animate] { opacity: 0; }
+    .slide.animate-in [data-animate] { animation: fadeSlideUp 0.65s cubic-bezier(0.4,0,0.2,1) forwards; }
+    .slide.animate-in [data-animate].card-anim { animation: cardEntrance 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+    .slide.animate-in .divider { animation: dividerGrow 0.5s cubic-bezier(0.4,0,0.2,1) forwards; animation-delay: 0.35s !important; }
+
+    .slide.animate-in [data-animate]:nth-child(1)  { animation-delay: 0.08s; }
+    .slide.animate-in [data-animate]:nth-child(2)  { animation-delay: 0.17s; }
+    .slide.animate-in [data-animate]:nth-child(3)  { animation-delay: 0.26s; }
+    .slide.animate-in [data-animate]:nth-child(4)  { animation-delay: 0.35s; }
+    .slide.animate-in [data-animate]:nth-child(5)  { animation-delay: 0.44s; }
+    .slide.animate-in [data-animate]:nth-child(6)  { animation-delay: 0.53s; }
+    .slide.animate-in [data-animate]:nth-child(7)  { animation-delay: 0.62s; }
+    .slide.animate-in [data-animate]:nth-child(8)  { animation-delay: 0.71s; }
+    .slide.animate-in [data-animate]:nth-child(9)  { animation-delay: 0.80s; }
+    .slide.animate-in [data-animate]:nth-child(10) { animation-delay: 0.89s; }
+
+    /* ─── Shared Slide Components ─── */
+    .slide-inner {
+      max-width: 680px; width: 100%; text-align: center;
+    }
+
+    .slide-label {
+      font-family: var(--font-sans);
+      font-size: clamp(9px, 0.75vw, 11px);
+      font-weight: 600; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--rose);
+      margin-bottom: 20px;
+    }
+
+    .slide-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 300; line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .slide-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.1vw, 17px);
+      font-weight: 400; line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 520px; margin: 0 auto;
+    }
+
+    .divider {
+      width: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rose), transparent);
+      margin: 20px auto; opacity: 0;
+    }
+
+    .slide-script {
+      font-family: var(--font-script);
+      font-size: clamp(24px, 3vw, 36px);
+      color: var(--rose);
+      opacity: 0.7;
+    }
+
+    /* ─── Cover Slide ─── */
+    .cover-logo {
+      font-family: var(--font-serif);
+      font-weight: 300; font-size: clamp(32px, 4.5vw, 48px);
+      letter-spacing: 6px; margin-bottom: 32px;
+    }
+    .cover-logo .noiva { color: var(--rose); }
+    .cover-logo .sa { color: var(--taupe); }
+
+    .cover-package {
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--taupe-dark);
+      padding: 10px 28px;
+      border: 1px solid var(--silver);
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* ─── Content Cards ─── */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 4px;
+      padding: 32px;
+      text-align: left;
+      box-shadow: 0 2px 16px rgba(156,149,143,0.08);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+      max-width: 680px;
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature-item {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 4px;
+      padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .feature-item .icon {
+      width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+    }
+    .feature-item .icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--rose); stroke-width: 1.5; fill: none;
+    }
+    .feature-item .text {
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .feature-item .text strong {
+      color: var(--text-primary); font-weight: 600;
+      display: block; margin-bottom: 2px;
+      font-family: var(--font-sans); font-size: 13px;
+    }
+
+    /* ─── Timeline ─── */
+    .timeline {
+      max-width: 520px; width: 100%; margin: 24px auto 0;
+      text-align: left;
+    }
+    .timeline-item {
+      display: flex; gap: 16px; padding-bottom: 24px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute; left: 11px; top: 28px;
+      width: 1px; height: calc(100% - 28px);
+      background: var(--cream-dark);
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border: 1.5px solid var(--rose);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--white);
+      font-family: var(--font-sans);
+      font-size: 9px; font-weight: 600;
+      color: var(--rose);
+    }
+    .timeline-content h4 {
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .timeline-content p {
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─── Stats Row ─── */
+    .stats-row {
+      display: flex; justify-content: center;
+      gap: 48px; margin-top: 24px; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 3.5vw, 44px);
+      font-weight: 400; color: var(--rose);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--font-sans);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--taupe); margin-top: 8px;
+    }
+
+    /* ─── Testimonial ─── */
+    .testimonial {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 4px;
+      padding: 32px;
+      max-width: 520px; width: 100%;
+      text-align: left;
+      position: relative;
+    }
+    .testimonial-quote {
+      font-family: var(--font-script);
+      font-size: 48px; color: var(--rose);
+      opacity: 0.3; position: absolute;
+      top: 16px; left: 24px; line-height: 1;
+    }
+    .testimonial-text {
+      font-family: var(--font-body);
+      font-size: 16px; font-style: italic;
+      line-height: 1.7; color: var(--text-primary);
+      margin-top: 16px; margin-bottom: 16px;
+    }
+    .testimonial-author {
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 600;
+      color: var(--text-primary);
+    }
+    .testimonial-location {
+      font-family: var(--font-sans);
+      font-size: 12px; font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    /* ─── Pricing ─── */
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--rose);
+      border-radius: 4px;
+      padding: 40px 32px;
+      max-width: 400px; width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(219,169,159,0.12);
+    }
+    .pricing-value {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400; color: var(--text-primary);
+      line-height: 1;
+    }
+    .pricing-year {
+      font-family: var(--font-sans);
+      font-size: 12px; font-weight: 500;
+      color: var(--taupe); letter-spacing: 0.06em;
+      margin-top: 4px; margin-bottom: 24px;
+    }
+    .pricing-table {
+      width: 100%; text-align: left;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+    }
+    .pricing-table td {
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .pricing-table td:last-child {
+      text-align: right; font-weight: 600;
+      color: var(--text-primary);
+    }
+    .pricing-table tr:last-child td { border-bottom: none; }
+
+    /* ─── Payment Info ─── */
+    .payment-options {
+      max-width: 520px; width: 100%;
+      margin-top: 24px;
+    }
+    .payment-option {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .payment-option .badge {
+      font-family: var(--font-sans);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--white); background: var(--eucalyptus);
+      padding: 3px 10px; border-radius: 3px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .payment-option .badge.rose-badge {
+      background: var(--rose);
+    }
+    .payment-option p {
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .payment-option p strong {
+      color: var(--text-primary);
+    }
+
+    /* ─── Conditions List ─── */
+    .conditions-list {
+      max-width: 520px; width: 100%;
+      margin-top: 20px; text-align: left;
+    }
+    .conditions-list li {
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.6; padding: 8px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      display: flex; align-items: flex-start; gap: 10px;
+      list-style: none;
+    }
+    .conditions-list li:last-child { border-bottom: none; }
+    .conditions-list .bullet {
+      color: var(--rose); font-size: 8px;
+      margin-top: 6px; flex-shrink: 0;
+    }
+
+    /* ─── CTA Slide ─── */
+    .cta-section {
+      max-width: 480px; width: 100%;
+      text-align: center;
+    }
+    .btn-cta {
+      display: inline-block;
+      height: 56px; line-height: 56px;
+      padding: 0 40px;
+      background: var(--rose);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      letter-spacing: 0.06em;
+      border: none; border-radius: 4px;
+      cursor: pointer; text-align: center;
+      transition: transform 200ms cubic-bezier(0.4,0,0.2,1),
+                  opacity 200ms cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 200ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn-cta:hover {
+      transform: translateY(-1px); opacity: 0.9;
+      box-shadow: 0 4px 16px rgba(219,169,159,0.25);
+    }
+    .btn-cta:active { transform: translateY(0) scale(0.98); }
+    .btn-cta:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+    .contact-info {
+      margin-top: 24px;
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .contact-info a {
+      color: var(--rose);
+      transition: opacity 200ms ease;
+    }
+    .contact-info a:hover { opacity: 0.7; }
+
+    /* ─── Extras Table ─── */
+    .extras-table {
+      width: 100%; max-width: 520px;
+      border-collapse: collapse; margin-top: 20px;
+    }
+    .extras-table td {
+      font-family: var(--font-body);
+      font-size: 14px; color: var(--text-secondary);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      vertical-align: top;
+    }
+    .extras-table td:last-child {
+      text-align: right; white-space: nowrap;
+      font-weight: 600; color: var(--text-primary);
+    }
+
+    /* ─── Overview Panel ─── */
+    #overview {
+      position: fixed; inset: 0;
+      background: rgba(244,243,238,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 300;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    #overview.visible { opacity: 1; pointer-events: all; }
+    #overview-close {
+      position: absolute; top: 24px; right: 24px;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; background: none; border: none;
+    }
+    #overview-close svg { width: 20px; height: 20px; stroke: var(--taupe-dark); stroke-width: 1.5; fill: none; }
+    #overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px; max-width: 600px; width: 90%;
+      max-height: 70vh; overflow-y: auto;
+      padding: 16px;
+    }
+    .overview-thumb {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 4px;
+      padding: 16px 12px; text-align: center;
+      cursor: pointer;
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .overview-thumb:hover { border-color: var(--rose); box-shadow: 0 4px 12px rgba(219,169,159,0.12); }
+    .overview-thumb.current { border-color: var(--rose); background: var(--blush-light); }
+    .overview-thumb-num {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 300;
+      color: var(--rose); margin-bottom: 4px;
+    }
+    .overview-thumb-label {
+      font-family: var(--font-sans);
+      font-size: 9px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .slide { padding: 48px 20px; }
+      .stats-row { gap: 32px; }
+      .pricing-card { padding: 32px 24px; }
+      #slide-counter { bottom: 16px; right: 20px; }
+      .back-link { top: 16px; left: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar" style="width: 0%"></div>
+
+  <!-- Back Link -->
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 14 14" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,2 4,7 9,12"/></svg>
+    Propostas
+  </a>
+
+  <!-- Slide Counter -->
+  <div id="slide-counter">
+    <span id="current-num">01</span> / <span id="total-num">11</span>
+  </div>
+
+  <!-- Nav Arrows -->
+  <button class="nav-arrow" id="nav-prev" aria-label="Slide anterior">
+    <svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,2 4,8 10,14"/></svg>
+  </button>
+  <button class="nav-arrow" id="nav-next" aria-label="Próximo slide">
+    <svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,2 12,8 6,14"/></svg>
+  </button>
+
+  <!-- Overview -->
+  <div id="overview">
+    <button id="overview-close" aria-label="Fechar"><svg viewBox="0 0 20 20" stroke-linecap="round"><line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/></svg></button>
+    <div id="overview-grid"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ SLIDES ═══════════════════════════════════════ -->
+  <div id="slides-container">
+
+    <!-- SLIDE 1 — Cover -->
+    <div class="slide" data-title="Capa">
+      <div class="slide-inner">
+        <div data-animate>
+          <svg viewBox="0 0 80 52" fill="none" style="width:56px; height:36px; margin: 0 auto 24px;">
+            <circle cx="26" cy="26" r="18" stroke="#DBA99F" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="54" cy="26" r="18" stroke="#9C958F" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="cover-logo" data-animate>
+          <span class="noiva">NOIVA</span><span class="sa"> S.A.</span>
+        </div>
+        <div class="divider"></div>
+        <p class="slide-label" data-animate>Proposta de Assessoria</p>
+        <h1 class="slide-title" data-animate style="font-size: clamp(36px, 5vw, 56px);">Smart</h1>
+        <p class="slide-subtitle" data-animate>O essencial para o seu grande dia, com a segurança de quem ja realizou mais de 400 casamentos.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — Sobre Nós -->
+    <div class="slide" data-title="Sobre Nos">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Quem Somos</p>
+        <h2 class="slide-title" data-animate>Mais de 400 casamentos realizados</h2>
+        <div class="divider"></div>
+        <p class="slide-subtitle" data-animate>
+          Uma equipe treinada pela própria Noiva S.A., formada para cuidar de cada detalhe do seu casamento
+          com método, carinho e segurança técnica.
+        </p>
+        <div class="stats-row" data-animate>
+          <div class="stat-item">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">Casamentos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Anos de experiência</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Profissionais por evento</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 — Equipe de Elite -->
+    <div class="slide" data-title="Equipe">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Nossa Equipe</p>
+        <h2 class="slide-title" data-animate>Equipe de Elite</h2>
+        <div class="divider"></div>
+        <p class="slide-subtitle" data-animate>
+          Formação própria, suporte 360 graus e segurança técnica em cada etapa.
+        </p>
+        <div class="features-grid" data-animate>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2a5 5 0 015 5v1a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M3 18c0-3.87 3.13-7 7-7s7 3.13 7 7"/></svg></div>
+            <div class="text"><strong>Formação Própria</strong>Profissionais treinados pelo método Noiva S.A.</div>
+          </div>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><polyline points="10,4 10,10 14,12"/></svg></div>
+            <div class="text"><strong>Suporte 360 graus</strong>Acompanhamento completo antes, durante e após.</div>
+          </div>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="14" height="14" rx="2"/></svg></div>
+            <div class="text"><strong>Segurança Técnica</strong>Checklist validado, contratos revisados, tudo sob controle.</div>
+          </div>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 0114 0"/><path d="M6 10a4 4 0 018 0"/><circle cx="10" cy="10" r="1"/></svg></div>
+            <div class="text"><strong>Conteudo e Comunidade</strong>App, tutoriais e rede de apoio exclusiva.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 — Método Smart -->
+    <div class="slide" data-title="Método">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Como Funciona</p>
+        <h2 class="slide-title" data-animate>Método Smart</h2>
+        <div class="divider"></div>
+        <div class="timeline" data-animate>
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+              <h4>Reunião Inicial Online</h4>
+              <p>60 dias antes do casamento. Alinhamento completo do evento, expectativas e cronograma.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+              <h4>Análise de Contratos</h4>
+              <p>Revisamos todos os contratos com fornecedores para garantir segurança e clareza.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+              <h4>Reunião Final + Validação Técnica</h4>
+              <p>Alinhamento final com validação técnica por video do espaço e detalhes logísticos.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+              <h4>Contato com Fornecedores</h4>
+              <p>Alinhamento direto com até 8 fornecedores para cronograma do dia.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+              <h4>RSVP e Cerimônial</h4>
+              <p>Gestão da lista de convidados e montagem completa do roteiro do cerimônial.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">6</div>
+            <div class="timeline-content">
+              <h4>Dia do Casamento</h4>
+              <p>Equipe de 4 pessoas presente 3 horas antes, acompanhando as 6 horas do evento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — Dia do Casamento -->
+    <div class="slide" data-title="O Dia">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>O Grande Dia</p>
+        <h2 class="slide-title" data-animate>Dia do Casamento</h2>
+        <div class="divider"></div>
+        <p class="slide-subtitle" data-animate>Cada momento planejado para que você só precise viver.</p>
+        <div class="features-grid" data-animate>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><polyline points="10,4 10,10 14,12"/></svg></div>
+            <div class="text"><strong>Pre-cerimônia</strong>Equipe chega 3 horas antes. Conferência de todos os pontos com fornecedores.</div>
+          </div>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L13 8H7L10 2Z"/><line x1="10" y1="8" x2="10" y2="18"/><line x1="6" y1="18" x2="14" y2="18"/></svg></div>
+            <div class="text"><strong>Cerimônia</strong>Coordenação de padrinhos, cortejo, entrada e toda a liturgia.</div>
+          </div>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="10" rx="1"/><path d="M3 9h14"/><circle cx="7" cy="13" r="1.5"/><circle cx="13" cy="13" r="1.5"/></svg></div>
+            <div class="text"><strong>Recepção</strong>Gestão de tempo, intervencoes com fornecedores, suporte total até o final.</div>
+          </div>
+          <div class="feature-item card-anim">
+            <div class="icon"><svg viewBox="0 0 20 20" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17V7l7-5 7 5v10a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><polyline points="8,17 8,11 12,11 12,17"/></svg></div>
+            <div class="text"><strong>Encerramento</strong>Desmontagem organizada, checklist final com cada fornecedor.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 — Depoimentos -->
+    <div class="slide" data-title="Depoimentos">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Feedback</p>
+        <h2 class="slide-title" data-animate>O que dizem nossos casais</h2>
+        <div class="divider"></div>
+        <div class="testimonial" data-animate style="margin: 0 auto;">
+          <span class="testimonial-quote">"</span>
+          <p class="testimonial-text">
+            A equipe da Noiva S.A. foi essencial para que tudo saísse perfeito.
+            Nós não precisamos nos preocupar com nada no dia. Foi tudo lindo, organizado
+            e do jeitinho que sonhamos.
+          </p>
+          <p class="testimonial-author">Beatriz e Giovanni</p>
+          <p class="testimonial-location">Afrikan House</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 — Depoimento 2 -->
+    <div class="slide" data-title="Depoimentos">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Feedback</p>
+        <div class="testimonial" data-animate style="margin: 0 auto;">
+          <span class="testimonial-quote">"</span>
+          <p class="testimonial-text">
+            Desde a primeira reunião sentimos confiança. A Noiva S.A. entendeu
+            o que queriamos e entregou muito além das expectativas. O cerimônial
+            foi impecável.
+          </p>
+          <p class="testimonial-author">Carol e Augusto</p>
+          <p class="testimonial-location">Espaço Carpe Diem</p>
+        </div>
+        <div style="height: 24px;"></div>
+        <div class="testimonial" data-animate style="margin: 0 auto;">
+          <span class="testimonial-quote">"</span>
+          <p class="testimonial-text">
+            Profissionalismo do inicio ao fim. A equipe resolveu tudo nos bastidores
+            e nos só curtimos. Recomendo de olhos fechados.
+          </p>
+          <p class="testimonial-author">Fernanda e Joao Guilherme</p>
+          <p class="testimonial-location">Estação 840</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 — Investimento -->
+    <div class="slide" data-title="Investimento">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Investimento</p>
+        <h2 class="slide-title" data-animate>Quanto custa o pacote Smart</h2>
+        <div class="divider"></div>
+        <div class="pricing-card" data-animate style="margin: 0 auto;">
+          <p class="pricing-value">R$ 2.890</p>
+          <p class="pricing-year">Casamentos em 2026</p>
+          <table class="pricing-table">
+            <tr><td>Casamentos 2027</td><td>R$ 3.200</td></tr>
+            <tr><td>Casamentos 2028</td><td>R$ 3.600</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 — Pagamento -->
+    <div class="slide" data-title="Pagamento">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Formas de Pagamento</p>
+        <h2 class="slide-title" data-animate>Condições facilitadas</h2>
+        <div class="divider"></div>
+        <div class="payment-options" data-animate>
+          <div class="payment-option">
+            <span class="badge">10% off</span>
+            <p><strong>À vista</strong> — pagamento único com 10% de desconto.</p>
+          </div>
+          <div class="payment-option">
+            <span class="badge rose-badge">Boleto</span>
+            <p><strong>Entrada de 30% + parcelas</strong> — valor quitado 10 dias antes do evento.</p>
+          </div>
+          <div class="payment-option">
+            <span class="badge rose-badge">Cartão</span>
+            <p><strong>Até 12x no cartão de crédito</strong> — parcelamento facilitado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10 — Condições e Extras -->
+    <div class="slide" data-title="Condições">
+      <div class="slide-inner">
+        <p class="slide-label" data-animate>Condições e Extras</p>
+        <h2 class="slide-title" data-animate>O que está incluso</h2>
+        <div class="divider"></div>
+        <ul class="conditions-list" data-animate>
+          <li><span class="bullet">&#9679;</span> Até 150 convidados</li>
+          <li><span class="bullet">&#9679;</span> 4 profissionais na equipe</li>
+          <li><span class="bullet">&#9679;</span> Cerimônia e recepção no mesmo local</li>
+          <li><span class="bullet">&#9679;</span> 6 horas de evento</li>
+          <li><span class="bullet">&#9679;</span> Região: São Paulo</li>
+          <li><span class="bullet">&#9679;</span> Reuniões online</li>
+          <li><span class="bullet">&#9679;</span> Validação técnica por video</li>
+          <li><span class="bullet">&#9679;</span> Até 8 fornecedores</li>
+        </ul>
+        <table class="extras-table" data-animate>
+          <tr><td>Hora adicional de evento</td><td>R$ 675</td></tr>
+          <tr><td>Cerimônia em igreja</td><td>R$ 600</td></tr>
+          <tr><td>Reunião presencial extra</td><td>R$ 200</td></tr>
+          <tr><td>Reunião com fornecedores</td><td>R$ 350</td></tr>
+          <tr><td>Fora de São Paulo</td><td>Consultar</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- SLIDE 11 — CTA Final -->
+    <div class="slide" data-title="Próximo Passo">
+      <div class="slide-inner">
+        <div data-animate>
+          <svg viewBox="0 0 80 52" fill="none" style="width:48px; height:32px; margin: 0 auto 20px;">
+            <circle cx="26" cy="26" r="18" stroke="#DBA99F" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="54" cy="26" r="18" stroke="#9C958F" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="slide-script" data-animate>Vamos conversar?</p>
+        <h2 class="slide-title" data-animate>O próximo passo é seu</h2>
+        <div class="divider"></div>
+        <div class="cta-section" data-animate style="margin: 0 auto;">
+          <a href="https://wa.me/5511918548938?text=Oi!%20Tenho%20interesse%20no%20pacote%20Smart%20da%20Noiva%20S.A." class="btn-cta" target="_blank" rel="noopener">
+            Falar pelo WhatsApp
+          </a>
+          <div class="contact-info">
+            <a href="mailto:assessoria@noivasa.com.br">assessoria@noivasa.com.br</a><br />
+            <a href="https://instagram.com/noiva.sa" target="_blank" rel="noopener">@noiva.sa</a><br />
+            Rua Frei Caneca, 740 — São Paulo
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════ SCRIPT ═══════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let isTransitioning = false;
+    let overviewOpen = false;
+    let wheelCooldown = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const progressBar  = document.getElementById('progress-bar');
+    const currentNum   = document.getElementById('current-num');
+    const totalNum     = document.getElementById('total-num');
+    const navPrev      = document.getElementById('nav-prev');
+    const navNext      = document.getElementById('nav-next');
+    const overviewEl   = document.getElementById('overview');
+    const overviewGrid = document.getElementById('overview-grid');
+    const overviewClose= document.getElementById('overview-close');
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    totalNum.textContent = String(totalSlides).padStart(2, '0');
+
+    function init() {
+      buildOverview();
+      goToSlide(0, true);
+    }
+
+    function goToSlide(index, instant) {
+      if (index < 0 || index >= totalSlides) return;
+      if (isTransitioning && !instant) return;
+
+      currentSlide = index;
+      isTransitioning = true;
+
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev', 'animate-in');
+        if (i === index) slide.classList.add('active');
+        else if (i < index) slide.classList.add('prev');
+      });
+
+      if (!prefersReducedMotion) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            slides[index].classList.add('animate-in');
+          });
+        });
+      } else {
+        slides[index].classList.add('animate-in');
+      }
+
+      updateProgress();
+      updateCounter();
+      setTimeout(() => { isTransitioning = false; }, instant ? 0 : 550);
+    }
+
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
+
+    function updateProgress() {
+      const pct = ((currentSlide + 1) / totalSlides) * 100;
+      progressBar.style.width = pct + '%';
+    }
+
+    function updateCounter() {
+      currentNum.textContent = String(currentSlide + 1).padStart(2, '0');
+      document.querySelectorAll('.overview-thumb').forEach((el, i) => {
+        el.classList.toggle('current', i === currentSlide);
+      });
+    }
+
+    function buildOverview() {
+      overviewGrid.innerHTML = '';
+      slides.forEach((slide, i) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'overview-thumb' + (i === currentSlide ? ' current' : '');
+        const num = document.createElement('div');
+        num.className = 'overview-thumb-num';
+        num.textContent = String(i + 1).padStart(2, '0');
+        const label = document.createElement('div');
+        label.className = 'overview-thumb-label';
+        label.textContent = slide.dataset.title || ('Slide ' + (i + 1));
+        thumb.appendChild(num);
+        thumb.appendChild(label);
+        thumb.addEventListener('click', () => { closeOverview(); goToSlide(i); });
+        overviewGrid.appendChild(thumb);
+      });
+    }
+
+    function openOverview()  { overviewOpen = true;  overviewEl.classList.add('visible'); buildOverview(); }
+    function closeOverview() { overviewOpen = false; overviewEl.classList.remove('visible'); }
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+      if (overviewOpen) { if (e.key === 'Escape') closeOverview(); return; }
+      switch(e.key) {
+        case 'ArrowRight': case 'ArrowDown': case ' ':
+          e.preventDefault(); nextSlide(); break;
+        case 'ArrowLeft': case 'ArrowUp':
+          e.preventDefault(); prevSlide(); break;
+        case 'Escape':
+          openOverview(); break;
+      }
+    });
+
+    // Wheel
+    document.addEventListener('wheel', function(e) {
+      if (overviewOpen) return;
+      e.preventDefault();
+      if (wheelCooldown) return;
+      wheelCooldown = true;
+      if (e.deltaY > 0) nextSlide(); else prevSlide();
+      setTimeout(() => { wheelCooldown = false; }, 800);
+    }, { passive: false });
+
+    // Touch
+    document.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+      if (overviewOpen) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        if (dx < 0) nextSlide(); else prevSlide();
+      }
+    }, { passive: true });
+
+    // Nav arrows
+    navPrev.addEventListener('click', prevSlide);
+    navNext.addEventListener('click', nextSlide);
+    overviewClose.addEventListener('click', closeOverview);
+    overviewEl.addEventListener('click', function(e) { if (e.target === overviewEl) closeOverview(); });
+
+    init();
+  })();
+  </script>
+</body>
+</html>

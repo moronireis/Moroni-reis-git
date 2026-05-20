@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout Elements — AGENTES [IA]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #111; color: #fff; padding: 40px; }
+    .sep { margin: 40px 0; border: none; border-top: 1px solid #222; }
+    .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #4A90FF; margin-bottom: 12px; font-weight: 600; }
+
+    /* ===== BANNER TOPO (Desktop + Mobile): 1200x400 ===== */
+    .banner-topo {
+      width: 1200px; height: 400px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0a0a 100%);
+      display: flex; align-items: center; padding: 0 80px; gap: 56px;
+      position: relative; overflow: hidden;
+    }
+    .banner-topo::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(74,144,255,0.07) 0%, transparent 50%), radial-gradient(circle at 85% 30%, rgba(74,144,255,0.04) 0%, transparent 50%); }
+    .banner-topo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(74,144,255,0.4), transparent); }
+    .banner-topo .photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid rgba(74,144,255,0.3); position: relative; z-index: 1; flex-shrink: 0; }
+    .banner-topo .txt { position: relative; z-index: 1; }
+    .banner-topo .txt .brand { font-size: 16px; text-transform: uppercase; letter-spacing: 4px; color: #4A90FF; margin-bottom: 12px; font-weight: 500; }
+    .banner-topo .txt h2 { font-size: 40px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 12px; }
+    .banner-topo .txt h2 span { color: #4A90FF; }
+    .banner-topo .txt p { font-size: 20px; color: #888; line-height: 1.5; }
+
+    /* ===== BANNER LATERAL (Desktop only): 350x600 ===== */
+    .banner-lateral {
+      width: 350px; height: 600px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #0d1117 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px 28px; gap: 24px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .banner-lateral::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 20%, rgba(74,144,255,0.08) 0%, transparent 60%); }
+    .banner-lateral::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(74,144,255,0.4), transparent); }
+    .banner-lateral .photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(74,144,255,0.3); position: relative; z-index: 1; }
+    .banner-lateral .txt { position: relative; z-index: 1; text-align: center; }
+    .banner-lateral .txt .brand { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #4A90FF; margin-bottom: 10px; font-weight: 500; }
+    .banner-lateral .txt h2 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 10px; }
+    .banner-lateral .txt h2 span { color: #4A90FF; }
+    .banner-lateral .txt p { font-size: 13px; color: #888; line-height: 1.5; }
+    .banner-lateral .squads { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 8px; }
+    .banner-lateral .squads span { font-size: 10px; color: #666; background: rgba(74,144,255,0.08); border: 1px solid rgba(74,144,255,0.12); padding: 3px 8px; border-radius: 4px; }
+
+    /* ===== BANNER RODAPE (Desktop + Mobile): 1200x300 ===== */
+    .banner-rodape {
+      width: 1200px; height: 300px;
+      background: linear-gradient(135deg, #0a0a0a, #0d1117);
+      display: flex; align-items: center; justify-content: center; gap: 48px;
+      position: relative; overflow: hidden;
+    }
+    .banner-rodape::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(34,197,94,0.05) 0%, transparent 60%); }
+    .banner-rodape::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(34,197,94,0.3), transparent); }
+    .banner-rodape .garantia-icon { position: relative; z-index: 1; flex-shrink: 0; }
+    .banner-rodape .garantia-txt { position: relative; z-index: 1; max-width: 600px; }
+    .banner-rodape .garantia-txt h3 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .banner-rodape .garantia-txt h3 span { color: #22c55e; }
+    .banner-rodape .garantia-txt p { font-size: 18px; color: #888; line-height: 1.6; }
+    .banner-rodape .trust-row { position: relative; z-index: 1; display: flex; gap: 24px; }
+    .banner-rodape .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .banner-rodape .trust-item svg { opacity: 0.5; }
+    .banner-rodape .trust-item span { font-size: 9px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; line-height: 1.3; }
+
+    /* ===== OUTROS ELEMENTOS ===== */
+    .garantia-elem { width: 1100px; background: linear-gradient(135deg, #0a0a0a, #0d1117); border: 1px solid rgba(74,144,255,0.15); border-radius: 12px; padding: 36px; display: flex; align-items: flex-start; gap: 28px; }
+    .garantia-elem .gi { width: 80px; height: 80px; flex-shrink: 0; }
+    .garantia-elem h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .garantia-elem h3 span { color: #4A90FF; }
+    .garantia-elem p { font-size: 16px; color: #888; line-height: 1.6; }
+
+    .trust-badges-elem { width: 1100px; display: flex; justify-content: center; gap: 48px; padding: 28px; background: #0a0a0a; border-radius: 8px; }
+    .tb { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .tb svg { opacity: 0.6; }
+    .tb span { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; text-align: center; line-height: 1.4; }
+
+    .bullets-elem { width: 1100px; background: linear-gradient(135deg, #0a0a0a, #0d1117); border: 1px solid #1a1a1a; border-radius: 12px; padding: 32px; }
+    .bi { display: flex; align-items: center; gap: 18px; padding: 16px 0; }
+    .bi + .bi { border-top: 1px solid #1a1a1a; }
+    .bic { width: 32px; height: 32px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .bic svg { width: 18px; height: 18px; }
+    .bit { font-size: 17px; color: #ccc; font-weight: 500; }
+    .bit small { display: block; font-size: 13px; color: #666; font-weight: 400; margin-top: 3px; }
+
+    .bump-elem { width: 1100px; background: linear-gradient(135deg, rgba(234,179,8,0.05), rgba(234,179,8,0.02)); border: 2px dashed rgba(234,179,8,0.3); border-radius: 12px; padding: 32px; }
+    .bh { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .bcb { width: 30px; height: 30px; border-radius: 6px; border: 2px solid #eab308; background: rgba(234,179,8,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .bcb svg { width: 18px; height: 18px; }
+    .bt { font-size: 20px; font-weight: 700; color: #eab308; }
+    .bd { font-size: 16px; color: #aaa; line-height: 1.6; margin-bottom: 20px; padding-left: 46px; }
+    .bp { display: flex; align-items: baseline; gap: 12px; padding-left: 46px; }
+    .bp .old { font-size: 18px; color: #666; text-decoration: line-through; }
+    .bp .new { font-size: 28px; font-weight: 700; color: #eab308; }
+    .bp .det { font-size: 14px; color: #888; }
+
+    .urg-elem { width: 1100px; background: linear-gradient(90deg, #dc2626, #b91c1c); padding: 16px 28px; border-radius: 8px; text-align: center; }
+    .urg-elem p { font-size: 18px; font-weight: 600; color: #fff; }
+    .urg-elem span { font-weight: 800; font-size: 20px; }
+
+    .price-elem { width: 1100px; background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 12px; padding: 40px; text-align: center; }
+    .price-elem .pl { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #666; margin-bottom: 10px; }
+    .price-elem .po { font-size: 26px; color: #666; text-decoration: line-through; margin-bottom: 6px; }
+    .price-elem .pn { font-size: 64px; font-weight: 800; color: #22c55e; line-height: 1; margin-bottom: 10px; }
+    .price-elem .pn small { font-size: 28px; font-weight: 400; }
+    .price-elem .pd { font-size: 16px; color: #888; }
+
+    .cta-elem { width: 1100px; text-align: center; padding: 32px; }
+    .cta-elem button { width: 100%; padding: 24px 40px; background: linear-gradient(135deg, #22c55e, #16a34a); border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 6px 32px rgba(34,197,94,0.3); margin-bottom: 16px; }
+    .cta-elem .cs { font-size: 14px; color: #666; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .cta-elem .cs svg { width: 16px; height: 16px; opacity: 0.5; }
+
+    .review-elem { width: 1100px; background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 12px; padding: 32px; }
+    .rs { display: flex; gap: 3px; margin-bottom: 16px; }
+    .rs svg { width: 20px; height: 20px; }
+    .rt { font-size: 18px; color: #ccc; line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+    .ra { display: flex; align-items: center; gap: 16px; }
+    .rav { width: 44px; height: 44px; border-radius: 50%; background: rgba(74,144,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; color: #4A90FF; }
+    .ran { font-size: 15px; font-weight: 600; color: #fff; }
+    .rar { font-size: 13px; color: #666; }
+  </style>
+</head>
+<body>
+
+  <!-- BANNER TOPO Desktop/Mobile: 1200x400 -->
+  <div class="label">Banner Topo (Desktop + Mobile) — 1200x400</div>
+  <div class="banner-topo" id="banner-topo">
+    <img src="public/moroni-reis.png" class="photo">
+    <div class="txt">
+      <div class="brand">REIS [IA]</div>
+      <h2>40+ Agentes de IA.<br><span>7 Squads.</span> Acesso imediato.</h2>
+      <p>Testado em projetos reais de R$300K+ — o mesmo sistema que uso na minha operacao.</p>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <!-- BANNER LATERAL Desktop: 350x600 -->
+  <div class="label">Banner Lateral (Desktop) — 350x600</div>
+  <div class="banner-lateral" id="banner-lateral">
+    <img src="public/moroni-reis.png" class="photo">
+    <div class="txt">
+      <div class="brand">REIS [IA]</div>
+      <h2>40+ Agentes.<br><span>7 Squads.</span></h2>
+      <p>O time de IA que trabalha 24h por voce.</p>
+    </div>
+    <div class="squads">
+      <span>Strategy</span><span>Copy</span><span>Brand</span><span>Design</span><span>Content</span><span>Growth</span><span>Ops</span>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <!-- BANNER RODAPE Desktop/Mobile: 1200x300 -->
+  <div class="label">Banner Rodape (Desktop + Mobile) — 1200x300</div>
+  <div class="banner-rodape" id="banner-rodape">
+    <div class="garantia-icon">
+      <svg width="100" height="100" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="2" fill="rgba(34,197,94,0.08)"/><path d="M28 42L18 32l2.8-2.8L28 36.4 43.2 21.2 46 24 28 42z" fill="#22c55e"/><text x="32" y="56" text-anchor="middle" font-size="8" font-weight="700" fill="#22c55e" font-family="Inter">7 DIAS</text></svg>
+    </div>
+    <div class="garantia-txt">
+      <h3>Garantia incondicional de <span>7 dias</span></h3>
+      <p>Teste todos os agentes. Nao gostou? Devolvemos 100% — sem perguntas.</p>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span>Compra<br>segura</span></div>
+      <div class="trust-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Dados<br>protegidos</span></div>
+      <div class="trust-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Acesso<br>imediato</span></div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <!-- DEMAIS ELEMENTOS (para upload como imagem em Textos/Banners) -->
+
+  <div class="label">Selo de Garantia</div>
+  <div class="garantia-elem" id="garantia">
+    <svg class="gi" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#4A90FF" stroke-width="2" fill="rgba(74,144,255,0.08)"/><path d="M28 42L18 32l2.8-2.8L28 36.4 43.2 21.2 46 24 28 42z" fill="#4A90FF"/><text x="32" y="56" text-anchor="middle" font-size="8" font-weight="700" fill="#4A90FF" font-family="Inter">7 DIAS</text></svg>
+    <div><h3>Garantia incondicional de <span>7 dias</span></h3><p>Teste todos os agentes. Se nao gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia.</p></div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">Trust Badges</div>
+  <div class="trust-badges-elem" id="trust-badges">
+    <div class="tb"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span>Compra<br>segura</span></div>
+    <div class="tb"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Dados<br>protegidos</span></div>
+    <div class="tb"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Cartao ou<br>PIX</span></div>
+    <div class="tb"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Acesso<br>imediato</span></div>
+    <div class="tb"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Garantia<br>7 dias</span></div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">Bullets de Reforco</div>
+  <div class="bullets-elem" id="bullets">
+    <div class="bi"><div class="bic"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bit">40+ agentes especializados em 7 squads<small>Copy, Brand, Strategy, Design, Content, Growth, Operations</small></div></div>
+    <div class="bi"><div class="bic"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bit">4 videoaulas praticas<small>Da instalacao ao uso avancado no Claude Code</small></div></div>
+    <div class="bi"><div class="bic"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bit">Templates + regras prontas<small>Hormozi, brand voice, humanizacao — configurados</small></div></div>
+    <div class="bi"><div class="bic"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bit">Pipelines completos<small>Copy Squad (5 agentes), Brand Protocol (10 fases), Content Pipeline</small></div></div>
+    <div class="bi"><div class="bic"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bit">Acesso imediato apos a compra<small>Pagamento confirmado = acesso liberado automaticamente</small></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">Order Bump</div>
+  <div class="bump-elem" id="order-bump">
+    <div class="bh"><div class="bcb"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="bt">SIM! Quero atualizacoes vitalicias</div></div>
+    <div class="bd">Receba todos os novos agentes, squads e atualizacoes que lancarmos — para sempre. Sem mensalidade. Quem comprar hoje com o bump nunca mais paga por upgrade.</div>
+    <div class="bp"><span class="old">R$ 97</span><span class="new">R$ 19,90</span><span class="det">pagamento unico</span></div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">Barra de Urgencia</div>
+  <div class="urg-elem" id="urgency-bar"><p>Oferta especial por <span>R$ 47</span> expira em breve — preco volta para R$ 97</p></div>
+
+  <hr class="sep">
+
+  <div class="label">Bloco de Preco</div>
+  <div class="price-elem" id="price-stack">
+    <div class="pl">Valor total do pacote</div>
+    <div class="po">R$ 297</div>
+    <div class="pn"><small>R$</small> 47</div>
+    <div class="pd">Pagamento unico — acesso imediato</div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">CTA</div>
+  <div class="cta-elem" id="cta-section">
+    <button>GARANTIR MEU ACESSO AGORA</button>
+    <div class="cs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Compra 100% segura — Garantia de 7 dias</div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">Review 1</div>
+  <div class="review-elem" id="review-1">
+    <div class="rs"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg></div>
+    <div class="rt">"Configurei em 30 minutos e ja saiu a primeira copy do Copy Squad melhor do que eu escreveria em 2 horas."</div>
+    <div class="ra"><div class="rav">P</div><div><div class="ran">Paulo R.</div><div class="rar">Empresario — E-commerce</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <div class="label">Review 2</div>
+  <div class="review-elem" id="review-2">
+    <div class="rs"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6 11,9.5 13,15 8,11.5 3,15 5,9.5 0,6 6,6" fill="#eab308"/></svg></div>
+    <div class="rt">"O Brand Squad criou um posicionamento mais forte do que a agencia que eu pagava R$3K/mes."</div>
+    <div class="ra"><div class="rav">C</div><div><div class="ran">Camila S.</div><div class="rar">Fundadora — Consultoria</div></div></div>
+  </div>
+
+</body>
+</html>

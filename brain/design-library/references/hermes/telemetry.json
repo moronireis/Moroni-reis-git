@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "url": "https://www.hermes.com/us/en/",
+  "provider": "claude-cli",
+  "phases": {
+    "phase_1_fetch": 82,
+    "phase_2_collect": 55,
+    "phase_3_detect": 32,
+    "phase_4_markdown": 50,
+    "phase_5_prompt": 1,
+    "phase_6_llm": 254561,
+    "phase_7_log": 13,
+    "phase_8_preview": 7
+  },
+  "wall_clock_ms": 256750,
+  "reuse": {
+    "enabled": true,
+    "previous_run": null,
+    "hits": 0,
+    "trace": {
+      "fetch": "MISS",
+      "collect": "MISS",
+      "detect": "MISS",
+      "markdown": "MISS",
+      "llm": "MISS"
+    }
+  },
+  "llm": {
+    "model": "claude-opus-4-7",
+    "provider": "claude-cli",
+    "reused": false,
+    "input_tokens": 10,
+    "output_tokens": 12488,
+    "cache_read_tokens": 659062,
+    "cache_creation_tokens": 119878,
+    "turns_used": 14,
+    "retries": 0,
+    "max_turns_hit": false,
+    "cost_estimate": {
+      "usd": 4.1731,
+      "source": "sdk-usage",
+      "model": "claude-opus-4-7",
+      "breakdown": {
+        "input_usd": 0.0002,
+        "output_usd": 0.9366,
+        "cache_read_usd": 0.9886,
+        "cache_write_usd": 2.2477
+      }
+    }
+  }
+}

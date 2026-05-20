@@ -160,7 +160,7 @@ const painIconMap: Record<string, any> = {
     <HeroGrid client:load />
 
     <!-- Top accent line -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" style="width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(74,144,255,0.15) 50%,transparent);"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" style="width:400px;height:1px;background:linear-gradient(90deg,transparent,var(--blue-15) 50%,transparent);"></div>
 
     <!-- Radial glow behind content -->
     <div
@@ -182,7 +182,7 @@ const painIconMap: Record<string, any> = {
         <h1
           id="marketing-hero-heading"
           class="hero-animate hero-animate-2"
-          style="font-size: clamp(2.8rem, 1.5rem + 5vw, 5.5rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--text-primary);"
+          style="font-size: var(--text-display); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--text-primary);"
         >
           Marketing que Gera Demanda.
           <br />
@@ -361,7 +361,7 @@ const painIconMap: Record<string, any> = {
             <div class="card-interactive" style="background: var(--surface-0); padding: 32px 28px; cursor: default;">
               <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
                 <div
-                  style="width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(74,144,255,0.12), rgba(74,144,255,0.04)); border: 1px solid rgba(74,144,255,0.2); flex-shrink: 0;"
+                  style="width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(74,144,255,0.12), var(--accent-05)); border: 1px solid rgba(74,144,255,0.2); flex-shrink: 0;"
                 >
                   <ServiceIcon size={18} class="text-[var(--accent-blue)]" />
                 </div>
@@ -497,7 +497,7 @@ const painIconMap: Record<string, any> = {
     style="background: var(--surface-0); padding: var(--space-3xl) 0;"
   >
     <div class="container-standard relative z-10">
-      <div class="animate-on-scroll rounded-2xl overflow-hidden" style="background: var(--surface-1); border: 1px solid rgba(74,144,255,0.15); max-width: 900px; margin: 0 auto;">
+      <div class="animate-on-scroll rounded-2xl overflow-hidden" style="background: var(--surface-1); border: 1px solid var(--blue-15); max-width: 900px; margin: 0 auto;">
         <div class="grid grid-cols-1 lg:grid-cols-5">
           <!-- Left: copy -->
           <div class="lg:col-span-3 p-8 lg:p-10">
@@ -513,7 +513,7 @@ const painIconMap: Record<string, any> = {
             </Button>
           </div>
           <!-- Right: checkmarks -->
-          <div class="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center gap-5" style="background: rgba(74,144,255,0.03); border-left: 1px solid rgba(74,144,255,0.08);">
+          <div class="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center gap-5" style="background: rgba(74,144,255,0.03); border-left: 1px solid var(--accent-08);">
             <div class="flex items-start gap-3">
               <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A90FF" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
               <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">Funil completo de aquisição</p>
@@ -706,11 +706,11 @@ const painIconMap: Record<string, any> = {
 
   /* ---- Dashboard mockup window ---- */
   .mkt-mockup-window {
-    border-radius: 12px;
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-subtle);
     background: var(--surface-2);
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(74, 144, 255, 0.06);
+    box-shadow: var(--shadow-dramatic);
   }
 
   .mkt-mockup-chrome {
@@ -719,7 +719,7 @@ const painIconMap: Record<string, any> = {
     gap: 12px;
     padding: 12px 16px;
     background: var(--surface-3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .mkt-mockup-dots {

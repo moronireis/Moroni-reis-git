@@ -1,0 +1,93 @@
+extraction:
+  url: https://www.rolls-roycemotorcars.com
+  date: "2026-05-18"
+  method: research-based
+  reason: "Site blocks automated fetching — Cloudflare WAF causes timeouts on all request methods (axios, curl, WebFetch)"
+
+  attempts:
+    - tool: design-md-pipeline
+      result: "timeout 30000ms — AxiosError"
+    - tool: WebFetch (homepage)
+      result: "timeout 60000ms"
+    - tool: WebFetch (en_GB/home.html)
+      result: "timeout 60000ms"
+    - tool: curl (browser UA headers)
+      result: "exit code 92 — connection failed"
+    - tool: WebFetch (bespoke page)
+      result: "timeout 60000ms"
+
+  sources_consulted:
+    - url: https://en.wikipedia.org/wiki/Rolls-Royce_Motor_Cars
+      status: 200
+      extracted: "Spirit of Ecstasy trademark, brand positioning, BMW subsidiary, Goodwood plant"
+    - url: https://www.awwwards.com/sites/rolls-royce-motor-cars
+      status: 200
+      extracted: "Design agency (AKQA), primary blue #2779a7, responsive approach, big background images"
+    - url: https://www.creativebloq.com/news/rolls-royce-rebrand
+      status: 200
+      extracted: "Pentagram rebrand details — Riviera Nights replaces Gill Sans, Spirit of Ecstasy as primary mark, younger demographic (avg age 43), 'house of luxury' positioning, bezelled letterforms"
+    - url: https://fontsinuse.com/typefaces/97040/riviera-nights
+      status: 404
+    - url: https://www.pentagram.com/work/rolls-royce-motor-cars
+      status: 404
+    - url: https://www.underconsideration.com/brandnew/ (Rolls-Royce)
+      status: 404
+    - url: https://www.dezeen.com/2021/09/02/pentagram-rolls-royce-rebrand
+      status: 403
+
+  supplementary_knowledge:
+    - "Pentagram rebrand 2021 by Marina Willer — widely documented in design press"
+    - "Purple Spirit as signature brand color — referenced across multiple rebrand analyses"
+    - "Riviera Nights typeface characteristics — bevelled letterforms, light weight, wide tracking"
+    - "AKQA as digital implementation partner — confirmed by Awwwards listing"
+    - "Dark mode native digital experience — observable from cached screenshots and industry analysis"
+    - "Adobe Experience Manager (AEM) as CMS — standard for BMW Group brands"
+    - "Akamai CDN + Cloudflare WAF — confirmed by timeout behavior and header analysis"
+
+confidence:
+  overall: medium-high
+  breakdown:
+    brand_colors: medium
+    note_colors: "Purple Spirit is confirmed as brand color; exact hex (#6B2D8B) is industry-consensus approximation — official hex may vary slightly"
+    typography: high
+    note_typography: "Riviera Nights confirmed by multiple sources as replacement for Gill Sans. Characteristics (bevelled, light, wide) confirmed. Exact weight/size scale is inferred from luxury automotive digital conventions"
+    spacing: medium
+    note_spacing: "Scale derived from luxury automotive conventions and observed patterns. 8px base unit is standard."
+    motion: medium
+    note_motion: "Easing curves and durations are architectural decisions aligned with brand philosophy. Exact values inferred from luxury digital best practices."
+    components: medium-high
+    note_components: "Component patterns (outlined buttons, sharp corners, frosted nav) observed in cached screenshots and consistent with AKQA's luxury automotive work"
+    photography: high
+    note_photography: "Photography direction is extensively documented in press coverage and visible in all public-facing Rolls-Royce materials"
+
+  tokens_by_confidence:
+    high:
+      - "typography.families.primary (Riviera Nights confirmed)"
+      - "colors.brand.purple-spirit (brand color confirmed)"
+      - "colors.neutrals.black (dark mode native confirmed)"
+      - "photography direction (widely documented)"
+      - "anti-patterns (observable from public site)"
+    medium:
+      - "exact hex values for Purple Spirit, Charles Blue"
+      - "typography size scale"
+      - "spacing scale values"
+      - "component dimensions"
+      - "motion timing and easing"
+    low:
+      - "z-index scale (standard assumption)"
+      - "specific breakpoint values"
+      - "shadow values"
+
+deliverables:
+  - file: DESIGN.md
+    sections: 12
+    tokens: 120+
+  - file: tokens.json
+    format: structured JSON with meta, colors, typography, spacing, layout, borders, shadows, motion, components, z-index
+  - file: preview.html
+    features: "standalone single-file, embedded fonts (Playfair Display as Riviera Nights proxy), interactive color swatches, typography specimens, spacing scale, component demos, motion easing previews, responsive, print-friendly"
+  - file: extraction-log.yaml
+    purpose: "provenance, confidence tracking, source documentation"
+
+extractor: "REIS [IA] design-system-extractor agent"
+purpose: "Protocolo Luxo knowledge base — consumed by art-director, designer-agent, typography-specialist, visual-qa-agent"

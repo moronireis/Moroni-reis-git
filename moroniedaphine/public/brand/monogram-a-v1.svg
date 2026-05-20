@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="currentColor">
-  <!-- Variation A — Classical serif M&D (Cormorant Garamond 300) -->
-  <text x="120" y="112" text-anchor="middle"
-        font-family="'Cormorant Garamond', 'EB Garamond', Garamond, serif"
-        font-weight="300" font-size="128" letter-spacing="2"
-        font-style="normal">M<tspan font-style="italic" font-size="116" dx="-2" dy="0">&amp;</tspan><tspan font-style="normal" dx="-2">D</tspan></text>
-</svg>

@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.1",
+  "source": {
+    "run_dir_basename": "bottegaveneta"
+  },
+  "components": {
+    "button": {
+      "font_size": ".875rem",
+      "font_weight": "700",
+      "outline": "1px solid #000",
+      "text": "#000",
+      "bg": "transparent",
+      "outline_offset": "-.0625rem",
+      "cursor": "pointer",
+      "transform": "translateY(-50%)",
+      "opacity": ".4",
+      "transition": "-webkit-transform .2s linear",
+      "shadow": "none",
+      "states": {
+        "focus": {
+          "outline": "none",
+          "text": "#000"
+        },
+        "hover": {
+          "bg": "transparent",
+          "cursor": "pointer",
+          "text": "#000",
+          "font_weight": "700"
+        },
+        "active": {
+          "text": "#000"
+        }
+      }
+    },
+    "card": {
+      "font_weight": "400",
+      "font_size": ".875rem",
+      "text": "#767676",
+      "bg": "#000",
+      "states": {
+        "active": {
+          "text": "#000"
+        },
+        "hover": {
+          "text": "#000"
+        }
+      }
+    },
+    "input": {
+      "font_size": ".875rem",
+      "outline": "0",
+      "text": "#000",
+      "cursor": "pointer",
+      "transition": "all .2s linear",
+      "transform": "scaleY(1.6)",
+      "bg": "#fff",
+      "font_weight": "400",
+      "shadow": "none",
+      "states": {
+        "focus-visible": {
+          "outline": "none"
+        },
+        "hover": {
+          "cursor": "pointer",
+          "transform": "scaleY(1.6)"
+        },
+        "focus": {
+          "outline": "none"
+        },
+        "checked": {
+          "bg": "#009539"
+        }
+      }
+    },
+    "badge": {
+      "font_size": ".625rem",
+      "text": "rgba(0,0,0,.4)"
+    },
+    "link": {
+      "text": "#000",
+      "bg": "transparent",
+      "outline": "1px solid #000",
+      "font_size": ".875rem",
+      "cursor": "pointer",
+      "outline_offset": "2px",
+      "font_weight": "400",
+      "transition": "all .2s linear",
+      "transform": "scaleY(1.6)",
+      "shadow": "none",
+      "radius": ".1875rem",
+      "states": {
+        "focus": {
+          "bg": "#eee",
+          "outline": "none",
+          "text": "#000",
+          "outline_offset": "0",
+          "cursor": "pointer",
+          "transform": "none",
+          "font_size": ".75rem"
+        },
+        "hover": {
+          "bg": "#eee",
+          "text": "#000",
+          "cursor": "pointer",
+          "transform": "scaleY(1.6)",
+          "font_size": ".75rem"
+        },
+        "active": {
+          "text": "#000",
+          "bg": "#fff"
+        }
+      },
+      "variants": {
+        "link": {
+          "outline": "none",
+          "outline_offset": ".125rem"
+        }
+      }
+    },
+    "nav": {
+      "bg": "#fff",
+      "transition": "opacity 1s",
+      "cursor": "pointer",
+      "font_size": ".75rem",
+      "outline": "1px solid #fff",
+      "outline_offset": ".1875rem",
+      "font_weight": "700",
+      "transform": "translateX(100%)",
+      "text": "#fff"
+    },
+    "tab": {
+      "text": "#000",
+      "padding": "0 0 .9375rem",
+      "font_size": ".875rem",
+      "font_weight": "400",
+      "cursor": "help",
+      "states": {
+        "hover": {
+          "bg": "#f1f3f2"
+        }
+      }
+    },
+    "alert": {
+      "bg": "#fff",
+      "font_size": ".875rem",
+      "font_weight": "400",
+      "transform": "translateX(0) matrix(1,0,0,1,0,0)",
+      "text": "#767676",
+      "opacity": "1",
+      "transition": "opacity .2s ease-in,-webkit-transform .2s ease-in",
+      "cursor": "pointer",
+      "radius": "50%"
+    },
+    "table": {
+      "font_weight": "400",
+      "font_size": ".875rem",
+      "padding": ".625rem",
+      "text": "#000"
+    },
+    "tooltip": {
+      "font_size": ".875rem",
+      "text": "#000",
+      "bg": "#fff"
+    },
+    "modal": {
+      "padding": "0 1rem 1rem",
+      "bg": "#fff",
+      "opacity": "1",
+      "transition": "opacity .1s ease-in,visibility 0ms ease-in .1s",
+      "cursor": "pointer",
+      "transform": "translateX(100%)"
+    },
+    "label": {
+      "font_size": ".75rem",
+      "text": "#272727"
+    },
+    "error_text": {
+      "font_size": ".75rem",
+      "text": "#eb0000"
+    }
+  },
+  "shadow": {
+    "xs": "0 19px 38px rgba(0,0,0,.12),0 15px 12px rgba(0,0,0,.22)"
+  },
+  "motion": {
+    "duration_fast": "1000ms",
+    "duration_base": "1000ms",
+    "duration_slow": "1000ms",
+    "easing": "cubic-bezier(.645,.045,.355,1)",
+    "keyframes_count": 26
+  },
+  "meta": {
+    "style_archetype": "polaris-friendly",
+    "archetype_confidence": 89,
+    "density": "compact",
+    "motion_preference": "minimal"
+  },
+  "gradient": {
+    "primary": "linear-gradient(#000,#000)",
+    "secondary": "linear-gradient(90deg,transparent 0,#000 .75rem,#000 calc(100% - 2.9375rem),transparent)",
+    "total_unique": 15
+  },
+  "opacity": {
+    "disabled": 0.15,
+    "muted": 0.5,
+    "hover": 0.95
+  },
+  "focus_ring": {
+    "outline": "1px solid #000",
+    "outline_offset": "0",
+    "box_shadow": null
+  },
+  "z_index": {
+    "base": 0,
+    "dropdown": 9,
+    "modal": 1001,
+    "toast": 1050,
+    "tooltip": 9999
+  },
+  "container": {
+    "max_width": "87rem"
+  },
+  "themed": {
+    "supportsDark": false,
+    "preferredSelector": null,
+    "preferred": {},
+    "light": {
+      "--nav-offset-top": "rem(20px)",
+      "--nav-height": "calc(100dvh - var(--festiveBannerHeight, 0px) - 1.25rem)",
+      "--apple-pay-button-width": "100%",
+      "--apple-pay-button-height": "40px",
+      "--apple-pay-button-border-radius": "0",
+      "--apple-pay-button-padding": "0px 0px",
+      "--apple-pay-button-box-sizing": "border-box",
+      "--topBannersHeight": "Max(var(--cookieBannerHeight,0px),var(--festiveBannerHeight,0px))"
+    },
+    "dark": {},
+    "defaultMode": "light"
+  },
+  "coverage": {
+    "overall": {
+      "detected": 24,
+      "total": 32,
+      "percent": 75
+    },
+    "by_layer": {
+      "L1": {
+        "detected": 0,
+        "total": 5,
+        "percent": 0
+      },
+      "L2": {
+        "detected": 13,
+        "total": 15,
+        "percent": 87
+      },
+      "L3": {
+        "detected": 5,
+        "total": 6,
+        "percent": 83
+      },
+      "L4": {
+        "detected": 3,
+        "total": 3,
+        "percent": 100
+      },
+      "L5": {
+        "detected": 3,
+        "total": 3,
+        "percent": 100
+      }
+    },
+    "detected": [
+      "L2.button",
+      "L2.button.states",
+      "L2.card",
+      "L2.input",
+      "L2.badge",
+      "L2.link",
+      "L2.nav",
+      "L2.tab",
+      "L2.alert",
+      "L2.table",
+      "L2.tooltip",
+      "L2.modal",
+      "L2.label",
+      "L3.shadow_ladder",
+      "L3.motion_buckets",
+      "L3.gradient",
+      "L3.opacity_scale",
+      "L3.focus_ring",
+      "L4.breakpoints",
+      "L4.z_index",
+      "L4.container_max_width",
+      "L5.style_archetype",
+      "L5.density",
+      "L5.motion_preference"
+    ],
+    "missing": [
+      {
+        "category": "L1.colors_semantic",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.colors_extended",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.typography",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.rounded",
+        "reason": "unknown"
+      },
+      {
+        "category": "L1.spacing",
+        "reason": "unknown"
+      },
+      {
+        "category": "L2.button.variants",
+        "reason": "extractor_limitation"
+      },
+      {
+        "category": "L2.avatar",
+        "reason": "marketing_surface"
+      },
+      {
+        "category": "L3.backdrop_blur",
+        "reason": "no_glassmorphism"
+      }
+    ],
+    "reason_codes": {
+      "not_used_by_site": "Site does not use this token category. CSS has no relevant declarations.",
+      "flat_design": "Site is intentionally flat. No box-shadow declarations beyond 'none'.",
+      "no_glassmorphism": "Site does not use backdrop-filter. Glass effects absent by design.",
+      "no_form_surface": "Site lacks public forms. Label/help/error tokens are conventionally undefined.",
+      "marketing_surface": "Marketing-only site. Component (tabs/avatar/tooltip) doesn't appear in homepage flow.",
+      "no_variants": "Site uses a single button style. No variant suffix detected (primary/secondary/ghost).",
+      "obfuscated": "Site uses CSS-in-JS / hash-based class names that elude pattern matching.",
+      "extractor_limitation": "Signal exists in CSS but current detector heuristics didn't match.",
+      "theme_mismatch": "Tokens encode the opposite theme of what the site renders by default. Re-extract recommended.",
+      "unknown": "Could not classify — investigate manually."
+    }
+  },
+  "theme": {
+    "default": "light",
+    "confidence": "medium",
+    "signals": [
+      "theme-color=\"#ffffff\" luminance=1.00 → light"
+    ]
+  }
+}

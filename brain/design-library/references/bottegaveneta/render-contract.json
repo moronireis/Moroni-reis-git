@@ -1,0 +1,312 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "url": "https://www.bottegaveneta.com"
+  },
+  "theme": {
+    "default": "light",
+    "default_mode": "light",
+    "supports_dark": false,
+    "supports_dark_reason": "light-default surface without dark toggle evidence",
+    "declared_default": "light",
+    "confidence": "high",
+    "inferred_from_surface": "light",
+    "surface": "#ffffff",
+    "surface_alt": "#ffffff",
+    "text": "#000000",
+    "muted": "#767676",
+    "border": "#d8d8d8",
+    "accent": "#000000"
+  },
+  "native_vars": {
+    "supports_dark": false,
+    "has_explicit_dark_scope": false,
+    "preferred_selector": null,
+    "preferred_count": 0,
+    "light": {
+      "--nav-offset-top": "rem(20px)",
+      "--nav-height": "calc(100dvh - var(--festiveBannerHeight, 0px) - 1.25rem)",
+      "--apple-pay-button-width": "100%",
+      "--apple-pay-button-height": "40px",
+      "--apple-pay-button-border-radius": "0",
+      "--apple-pay-button-padding": "0px 0px",
+      "--apple-pay-button-box-sizing": "border-box",
+      "--topBannersHeight": "Max(var(--cookieBannerHeight,0px),var(--festiveBannerHeight,0px))"
+    },
+    "dark": {},
+    "preferred": {}
+  },
+  "components": {
+    "button": {
+      "renderable": true,
+      "base": {
+        "bg": "#000000",
+        "text": "#ffffff",
+        "border_color": "#000000",
+        "border_width": "1px",
+        "radius": "0px",
+        "padding": "0.65rem 1.2rem",
+        "font_size": ".875rem",
+        "font_weight": "700",
+        "transition": "-webkit-transform .2s linear",
+        "shadow": "none"
+      },
+      "variants": {
+        "primary": {
+          "renderable": true,
+          "missing": [],
+          "bg": "#000000",
+          "text": "#ffffff",
+          "border_color": "#000000",
+          "border_width": "1px",
+          "radius": "0px",
+          "padding": "0.65rem 1.2rem",
+          "font_size": ".875rem",
+          "font_weight": "700",
+          "transition": "-webkit-transform .2s linear",
+          "shadow": "none"
+        },
+        "secondary": {
+          "renderable": true,
+          "missing": [],
+          "bg": "transparent",
+          "text": "#000000",
+          "border_color": "#000000",
+          "border_width": "1px",
+          "radius": "0px",
+          "padding": "0.65rem 1.2rem",
+          "font_size": ".875rem",
+          "font_weight": "700",
+          "transition": "-webkit-transform .2s linear",
+          "shadow": "none"
+        }
+      },
+      "states": {
+        "hover": {
+          "bg": "transparent",
+          "text": "#000"
+        },
+        "active": {
+          "text": "#000"
+        },
+        "disabled": {},
+        "focus_visible": {}
+      },
+      "source_confidence": "high"
+    },
+    "card": {
+      "renderable": true,
+      "base": {
+        "bg": "#000",
+        "text": "#767676",
+        "border_color": "#d8d8d8",
+        "border_width": "1px",
+        "radius": "0px",
+        "padding": "1.25rem"
+      },
+      "states": {
+        "active": {
+          "text": "#000"
+        },
+        "hover": {
+          "text": "#000"
+        }
+      },
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "input": {
+      "renderable": true,
+      "base": {
+        "bg": "#fff",
+        "text": "#000",
+        "border_color": "#d8d8d8",
+        "border_width": "1px",
+        "radius": "0px",
+        "shadow": "none",
+        "transition": "all .2s linear"
+      },
+      "states": {
+        "focus-visible": {
+          "outline": "none"
+        },
+        "hover": {
+          "cursor": "pointer",
+          "transform": "scaleY(1.6)"
+        },
+        "focus": {
+          "outline": "none"
+        },
+        "checked": {
+          "bg": "#009539"
+        }
+      },
+      "variants": {},
+      "source_confidence": "high"
+    },
+    "badge": {
+      "renderable": true,
+      "base": {
+        "text": "rgba(0,0,0,.4)"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    },
+    "link": {
+      "renderable": true,
+      "base": {
+        "bg": "transparent",
+        "text": "#000",
+        "radius": ".1875rem",
+        "font_size": ".875rem",
+        "font_weight": "400"
+      },
+      "states": {
+        "focus": {
+          "bg": "#eee",
+          "outline": "none",
+          "text": "#000",
+          "outline_offset": "0",
+          "cursor": "pointer",
+          "transform": "none",
+          "font_size": ".75rem"
+        },
+        "hover": {
+          "bg": "#eee",
+          "text": "#000",
+          "cursor": "pointer",
+          "transform": "scaleY(1.6)",
+          "font_size": ".75rem"
+        },
+        "active": {
+          "text": "#000",
+          "bg": "#fff"
+        }
+      },
+      "variants": {
+        "link": {
+          "outline": "none",
+          "outline_offset": ".125rem"
+        }
+      },
+      "source_confidence": "high"
+    },
+    "nav": {
+      "renderable": true,
+      "base": {
+        "bg": "#fff",
+        "text": "#fff",
+        "font_size": ".75rem",
+        "font_weight": "700"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "tab": {
+      "renderable": true,
+      "base": {
+        "text": "#000",
+        "padding": "0 0 .9375rem",
+        "font_size": ".875rem",
+        "font_weight": "400"
+      },
+      "states": {
+        "hover": {
+          "bg": "#f1f3f2"
+        }
+      },
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "alert": {
+      "renderable": true,
+      "base": {
+        "bg": "#fff",
+        "text": "#767676",
+        "radius": "50%",
+        "font_size": ".875rem",
+        "font_weight": "400"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "table": {
+      "renderable": true,
+      "base": {
+        "text": "#000",
+        "padding": ".625rem",
+        "font_size": ".875rem",
+        "font_weight": "400"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    },
+    "tooltip": {
+      "renderable": true,
+      "base": {
+        "bg": "#fff",
+        "text": "#000",
+        "font_size": ".875rem"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    },
+    "modal": {
+      "renderable": true,
+      "base": {
+        "bg": "#fff",
+        "text": "#000000",
+        "padding": "0 1rem 1rem"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "label": {
+      "renderable": true,
+      "base": {
+        "text": "#272727",
+        "font_size": ".75rem"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    }
+  },
+  "warnings": [
+    {
+      "code": "component_non_flow_transform",
+      "message": "button base transform is layout-destructive and was ignored by render cleanup.",
+      "severity": "medium",
+      "component": "button",
+      "scope": "base"
+    },
+    {
+      "code": "component_font_size_below_min",
+      "message": "badge base font-size is below 12px and was ignored by render cleanup.",
+      "severity": "medium",
+      "component": "badge",
+      "scope": "base",
+      "min_px": 12
+    },
+    {
+      "code": "component_bg_equals_text",
+      "message": "nav base uses the same background and text color.",
+      "severity": "high",
+      "component": "nav",
+      "scope": "base"
+    },
+    {
+      "code": "component_non_flow_transform",
+      "message": "alert base transform is layout-destructive and was ignored by render cleanup.",
+      "severity": "medium",
+      "component": "alert",
+      "scope": "base"
+    }
+  ]
+}

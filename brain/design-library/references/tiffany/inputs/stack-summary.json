@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Cloudflare",
+    "kind": "cdn",
+    "confidence": "high"
+  },
+  {
+    "name": "WordPress",
+    "kind": "cms",
+    "confidence": "high"
+  },
+  {
+    "name": "Google Analytics / GTM",
+    "kind": "analytics",
+    "confidence": "high"
+  }
+]

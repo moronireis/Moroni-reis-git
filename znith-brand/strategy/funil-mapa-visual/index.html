@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH — Mapa Visual dos Funis</title>
+<style>
+  :root {
+    --navy: #091022;
+    --navy-light: #0f1a33;
+    --navy-mid: #141f3a;
+    --gold: #DF9F3E;
+    --gold-dim: rgba(223,159,62,0.15);
+    --gold-glow: rgba(223,159,62,0.25);
+    --white: #F5F5F5;
+    --gray: #8899AA;
+    --green: #2ECC71;
+    --red: #E74C3C;
+    --blue: #3498DB;
+    --purple: #9B59B6;
+    --cyan: #00B4D8;
+    --orange: #F39C12;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    padding: 60px 24px 40px;
+    border-bottom: 1px solid rgba(223,159,62,0.1);
+  }
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .header p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .header .version {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: var(--gold);
+    border: 1px solid rgba(223,159,62,0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .header-actions {
+    margin-top: 20px;
+  }
+  .btn-flowchart {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-dim);
+    color: var(--gold);
+    border: 1px solid rgba(223,159,62,0.3);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+  }
+  .btn-flowchart:hover {
+    background: rgba(223,159,62,0.25);
+    border-color: var(--gold);
+  }
+  .btn-flowchart svg { width: 16px; height: 16px; }
+
+  /* ── NAV ── */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: rgba(9,16,34,0.95);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(223,159,62,0.08);
+  }
+  .nav a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    transition: all 0.3s;
+    letter-spacing: 0.04em;
+  }
+  .nav a:hover, .nav a.active {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  /* ── SECTIONS ── */
+  section { max-width: 1400px; margin: 0 auto; padding: 60px 24px; }
+  section + section { border-top: 1px solid rgba(223,159,62,0.06); }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.06em;
+  }
+  .section-subtitle {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── VALUE LADDER ── */
+  .ladder { display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 700px; margin: 0 auto; }
+  .ladder-rung { width: 100%; position: relative; transition: transform 0.3s; }
+  .ladder-rung:hover { transform: scale(1.02); }
+  .ladder-rung .rung-inner {
+    padding: 24px 32px;
+    border: 1px solid rgba(223,159,62,0.15);
+    border-radius: 12px;
+    background: var(--navy-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .rung-label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
+    display: inline-block; margin-bottom: 6px;
+  }
+  .rung-backend .rung-inner { border-color: var(--gold); background: rgba(223,159,62,0.06); }
+  .rung-backend .rung-label { background: var(--gold); color: var(--navy); }
+  .rung-middle .rung-label { background: var(--blue); color: #fff; }
+  .rung-frontend .rung-label { background: var(--green); color: var(--navy); }
+  .rung-bait .rung-label { background: var(--gray); color: var(--navy); }
+  .rung-name { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+  .rung-ticket { font-size: 0.85rem; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ladder-arrow {
+    width: 2px; height: 32px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 0 auto; position: relative;
+  }
+  .ladder-arrow::after {
+    content: ''; position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 6px solid transparent; border-right: 6px solid transparent;
+    border-top: 8px solid var(--gold);
+  }
+
+  /* ── FUNNEL FLOW ── */
+  .funnel-flow { display: flex; flex-direction: column; gap: 0; max-width: 1100px; margin: 0 auto; }
+  .flow-stage { display: flex; align-items: flex-start; gap: 24px; position: relative; }
+  .flow-marker { flex-shrink: 0; width: 56px; display: flex; flex-direction: column; align-items: center; padding-top: 28px; }
+  .flow-dot {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--gold); border: 3px solid var(--navy);
+    box-shadow: 0 0 12px var(--gold-glow); z-index: 2; position: relative;
+  }
+  .flow-line { width: 2px; flex: 1; min-height: 40px; background: linear-gradient(to bottom, var(--gold), rgba(223,159,62,0.1)); }
+  .flow-card {
+    flex: 1; background: var(--navy-light); border: 1px solid rgba(223,159,62,0.1);
+    border-radius: 12px; padding: 24px 28px; margin-bottom: 16px;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .flow-card:hover { border-color: rgba(223,159,62,0.3); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+  .flow-tag {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
+    display: inline-block; margin-bottom: 10px;
+  }
+  .tag-tof { background: rgba(52,152,219,0.15); color: var(--blue); border: 1px solid rgba(52,152,219,0.3); }
+  .tag-mof { background: rgba(243,156,18,0.15); color: var(--orange); border: 1px solid rgba(243,156,18,0.3); }
+  .tag-bof { background: rgba(46,204,113,0.15); color: var(--green); border: 1px solid rgba(46,204,113,0.3); }
+  .tag-pos { background: rgba(155,89,182,0.15); color: var(--purple); border: 1px solid rgba(155,89,182,0.3); }
+  .flow-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+  .flow-card .flow-desc { font-size: 0.82rem; color: var(--gray); margin-bottom: 12px; line-height: 1.6; }
+  .flow-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .flow-meta span {
+    font-size: 0.7rem; padding: 4px 10px; border-radius: 4px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: var(--gray);
+  }
+  .flow-meta .page { color: var(--cyan); border-color: rgba(0,180,216,0.2); }
+  .flow-meta .kpi { color: var(--green); border-color: rgba(46,204,113,0.2); }
+  .flow-meta .tool { color: var(--gold); border-color: rgba(223,159,62,0.2); }
+
+  /* ── BRANCH / SPLIT ── */
+  .branch-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 16px 80px; }
+  .branch-card {
+    background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px; padding: 20px 22px; position: relative;
+  }
+  .branch-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+  .branch-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.5; }
+  .branch-card .branch-tag {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 8px; display: inline-block;
+  }
+  .branch-yes { border-left: 3px solid var(--green); }
+  .branch-yes .branch-tag { color: var(--green); }
+  .branch-no { border-left: 3px solid var(--red); }
+  .branch-no .branch-tag { color: var(--red); }
+  .branch-qual { border-left: 3px solid var(--blue); }
+  .branch-qual .branch-tag { color: var(--blue); }
+  .branch-nqual { border-left: 3px solid var(--orange); }
+  .branch-nqual .branch-tag { color: var(--orange); }
+
+  /* ── PROFILES ── */
+  .profiles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 0 0 16px 80px; }
+  .profile-card {
+    background: var(--navy-mid); border-radius: 10px; padding: 18px 20px;
+    border-left: 3px solid; transition: transform 0.2s;
+  }
+  .profile-card:hover { transform: translateY(-2px); }
+  .profile-card h4 { font-size: 0.85rem; margin-bottom: 4px; }
+  .profile-card .score { font-size: 0.7rem; color: var(--gray); margin-bottom: 6px; }
+  .profile-card p { font-size: 0.75rem; color: var(--gray); line-height: 1.5; }
+  .profile-caos { border-color: var(--red); }
+  .profile-caos h4 { color: var(--red); }
+  .profile-movimento { border-color: var(--orange); }
+  .profile-movimento h4 { color: var(--orange); }
+  .profile-maturacao { border-color: var(--green); }
+  .profile-maturacao h4 { color: var(--green); }
+  .profile-governo { border-color: var(--blue); }
+  .profile-governo h4 { color: var(--blue); }
+
+  /* ── SEQUENCES ── */
+  .sequences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .seq-card {
+    background: var(--navy-light); border: 1px solid rgba(223,159,62,0.1);
+    border-radius: 10px; padding: 22px 24px; border-top: 3px solid var(--gold);
+  }
+  .seq-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--gold); }
+  .seq-card .seq-trigger { font-size: 0.72rem; color: var(--cyan); margin-bottom: 10px; }
+  .seq-emails { list-style: none; padding: 0; }
+  .seq-emails li {
+    font-size: 0.75rem; color: var(--gray); padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; gap: 8px;
+  }
+  .seq-emails li .day { color: var(--gold); font-weight: 600; min-width: 40px; }
+
+  /* ── ECONOMICS ── */
+  .econ-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto; }
+  .econ-card {
+    background: var(--navy-light); border: 1px solid rgba(223,159,62,0.1);
+    border-radius: 10px; padding: 24px; text-align: center;
+  }
+  .econ-card .econ-value {
+    font-family: 'Cinzel', serif; font-size: 1.6rem;
+    color: var(--gold); font-weight: 700; margin-bottom: 4px;
+  }
+  .econ-card .econ-label { font-size: 0.78rem; color: var(--gray); }
+  .econ-total { background: rgba(223,159,62,0.08); border-color: var(--gold); }
+  .econ-total .econ-value { font-size: 2rem; }
+
+  /* ── KPI TABLE ── */
+  .kpi-table { width: 100%; max-width: 900px; margin: 0 auto; border-collapse: collapse; }
+  .kpi-table th {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); padding: 12px 16px; text-align: left;
+    border-bottom: 1px solid rgba(223,159,62,0.15);
+  }
+  .kpi-table td {
+    font-size: 0.82rem; padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);
+  }
+  .kpi-table td:first-child { color: var(--white); font-weight: 500; }
+  .kpi-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ── PHASES ── */
+  .phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+  .phase-card {
+    background: var(--navy-light); border: 1px solid rgba(223,159,62,0.1);
+    border-radius: 12px; padding: 28px;
+  }
+  .phase-card h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); margin-bottom: 4px; }
+  .phase-card .phase-time { font-size: 0.72rem; color: var(--gray); margin-bottom: 14px; }
+  .phase-card ul { list-style: none; padding: 0; }
+  .phase-card li {
+    font-size: 0.8rem; color: var(--gray); padding: 5px 0;
+    padding-left: 16px; position: relative;
+  }
+  .phase-card li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+  }
+
+  .connector-label {
+    text-align: center; margin: 8px 0 8px 80px;
+    font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; font-weight: 500; opacity: 0.7;
+  }
+
+  .crossfeed {
+    margin: 0 0 16px 80px; padding: 14px 20px;
+    background: rgba(223,159,62,0.04); border: 1px dashed rgba(223,159,62,0.15);
+    border-radius: 8px; font-size: 0.78rem; color: var(--gold);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .crossfeed svg { flex-shrink: 0; }
+
+  .footnote { text-align: center; padding: 40px 24px 60px; border-top: 1px solid rgba(223,159,62,0.06); }
+  .footnote p { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+  @media (max-width: 768px) {
+    .branch-container { grid-template-columns: 1fr; margin-left: 20px; }
+    .profiles-grid { grid-template-columns: 1fr 1fr; margin-left: 20px; }
+    .flow-marker { width: 36px; }
+    .flow-card { padding: 18px 20px; }
+    .connector-label { margin-left: 20px; }
+    section { padding: 40px 16px; }
+  }
+  @media (max-width: 480px) {
+    .profiles-grid { grid-template-columns: 1fr; }
+    .sequences-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ZNITH — Mapa dos Funis</h1>
+  <p>Trajetoria completa do lead, do primeiro toque ao upsell. Dois funis simultaneos alimentando a mesma Value Ladder.</p>
+  <span class="version">Documento de trabalho &mdash; v1.0</span>
+  <div class="header-actions">
+    <a href="flowchart.html" class="btn-flowchart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="8" y="14" width="7" height="7" rx="1"/><path d="M6.5 10v1.5a1 1 0 001 1h9a1 1 0 001-1V10M11.5 12.5V14"/></svg>
+      Flowchart Interativo
+    </a>
+    <a href="estrategia-ads.html" class="btn-flowchart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+      Estrategia Meta Ads
+    </a>
+    <a href="publico-icp.html" class="btn-flowchart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      Publico ICP
+    </a>
+    <a href="amostras-copy.html" class="btn-flowchart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Amostras de Copy
+    </a>
+    <a href="execucao.html" class="btn-flowchart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Painel de Execução
+    </a>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#ladder">Value Ladder</a>
+  <a href="#funnel1">Funil 1 &mdash; Mestre</a>
+  <a href="#funnel2">Funil 2 &mdash; IA</a>
+  <a href="#sequences">Sequencias Email</a>
+  <a href="#economics">Economia</a>
+  <a href="#kpis">KPIs</a>
+  <a href="#phases">Fases</a>
+</nav>
+
+<!-- VALUE LADDER -->
+<section id="ladder">
+  <h2 class="section-title">Value Ladder</h2>
+  <p class="section-subtitle">Cada produto e um degrau. O lead sobe conforme a confianca cresce.</p>
+  <div class="ladder">
+    <div class="ladder-rung rung-backend">
+      <div class="rung-inner">
+        <div><span class="rung-label">BACKEND</span><div class="rung-name">ZNITH.AI OS</div><div style="font-size:0.78rem;color:var(--gray);">Implantacao completa da arquitetura comercial</div></div>
+        <div class="rung-ticket">R$50K-150K setup<br>+ R$5-15K/mes</div>
+      </div>
+    </div>
+    <div class="ladder-arrow"></div>
+    <div class="ladder-rung rung-middle">
+      <div class="rung-inner">
+        <div><span class="rung-label">MIDDLE — PROTAGONISTA</span><div class="rung-name">Consulting Expansao</div><div style="font-size:0.78rem;color:var(--gray);">8 semanas de diagnostico + arquitetura + roadmap</div></div>
+        <div class="rung-ticket">R$25K-65K<br>(avg R$35K)</div>
+      </div>
+    </div>
+    <div class="ladder-arrow"></div>
+    <div class="ladder-rung rung-frontend">
+      <div class="rung-inner">
+        <div><span class="rung-label">FRONTEND</span><div class="rung-name" style="font-size:0.9rem;">Leitura Estrategica &bull; ZNITH.AI Agent &bull; Workshop</div><div style="font-size:0.78rem;color:var(--gray);">Primeiro toque pago / valor entregue antes da venda</div></div>
+        <div class="rung-ticket">Free &mdash; R$785/mes</div>
+      </div>
+    </div>
+    <div class="ladder-arrow"></div>
+    <div class="ladder-rung rung-bait">
+      <div class="rung-inner">
+        <div><span class="rung-label">BAIT</span><div class="rung-name">Raio-X Comercial ZNITH</div><div style="font-size:0.78rem;color:var(--gray);">Diagnostico gratuito — 15-20 perguntas, PDF com 3 maiores gargalos</div></div>
+        <div class="rung-ticket">Gratuito<br>(6 minutos)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNNEL 1 -->
+<section id="funnel1">
+  <h2 class="section-title">Funil 1 — Mestre (Consulting Expansao)</h2>
+  <p class="section-subtitle">O motor primario de receita. Converte trafego frio em contratos de R$35K via diagnostico-first.</p>
+  <div class="funnel-flow">
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-tof">TOF &mdash; DESCOBERTA</span><h3>Fontes de Trafego</h3><p class="flow-desc">O lead descobre a ZNITH atraves de conteudo da Leilaine. LinkedIn organico e o motor primario nos primeiros 3 meses.</p><div class="flow-meta"><span>LinkedIn (3 posts/semana)</span><span>Google Search (mes 3+)</span><span>YouTube / Podcast</span><span>Referrals</span><span>Artigos ZNITH</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-tof">TOF &mdash; CAPTURA</span><h3>Landing Page &mdash; /raio-x</h3><p class="flow-desc">"Quanto sua operacao comercial esta custando em receita invisivel?"</p><div class="flow-meta"><span class="page">/raio-x</span><span class="kpi">Conv. 35-45%</span><span>Captura: email, empresa, faturamento, cargo</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-tof">TOF/MOF &mdash; DIAGNOSTICO</span><h3>Raio-X Comercial (Quiz)</h3><p class="flow-desc">15-20 perguntas sobre CRM, follow-up, funil, cadencia, dependencia do dono, uso de IA. Scoring automatico em 4 perfis. Tempo medio: 6 minutos.</p><div class="flow-meta"><span class="tool">Quiz interativo</span><span class="kpi">Conclusao >60%</span><span class="kpi">Qualificacao 25-30%</span></div></div>
+    </div>
+    <div class="connector-label">&#9660; RESULTADO &mdash; 4 PERFIS</div>
+    <div class="profiles-grid">
+      <div class="profile-card profile-caos"><h4>Operacao em Caos</h4><div class="score">Score 0-40</div><p>Nurture longo prazo + convite Formacao. NAO vira Leitura.</p></div>
+      <div class="profile-card profile-movimento"><h4>Operacao em Movimento</h4><div class="score">Score 41-65</div><p>QUALIFICADO. Convite Leitura Estrategica. Proposta padrao R$25-45K.</p></div>
+      <div class="profile-card profile-maturacao"><h4>Operacao em Maturacao</h4><div class="score">Score 66-85</div><p>QUALIFICADO. Convite Leitura premium. Proposta customizada R$45-120K.</p></div>
+      <div class="profile-card profile-governo"><h4>Operacao em Governo</h4><div class="score">Score 86-100</div><p>Nao e prospect. Canal de parceria e conteudo.</p></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-mof">MOF &mdash; NURTURE</span><h3>PDF Report + Sequencia "A Arquitetura Invisivel"</h3><p class="flow-desc">Lead recebe PDF personalizado com 3 maiores gargalos + perfil. Qualificados entram na sequencia de 7 emails em 21 dias. WhatsApp shadow track rodando em paralelo.</p><div class="flow-meta"><span class="page">/raio-x/resultado (4 variantes)</span><span class="tool">Email Seq. A (7 emails, 21 dias)</span><span class="tool">WhatsApp (Evolution API)</span><span class="kpi">Open rate >45%</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-bof">MOF/BOF &mdash; CONVERSA</span><h3>Leitura Estrategica (45 min com Leilaine)</h3><p class="flow-desc">10 min contexto / 20 min leitura ao vivo / 10 min apresentacao Expansao / 5 min proximo passo. NAO apresenta preco do OS.</p><div class="flow-meta"><span class="page">/agendar (Cal.com)</span><span class="kpi">Show-up 80-90%</span><span class="kpi">Avanco p/ proposta 70-80%</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-bof">BOF &mdash; PROPOSTA</span><h3>Proposta Consulting Expansao (~R$35K)</h3><p class="flow-desc">Documento visual premium: leitura do cenario + entregaveis + cronograma 8 semanas + value stack R$81K + investimento R$35K + Garantia de Arquitetura Implantavel.</p><div class="flow-meta"><span class="kpi">Conversao 45-60%</span><span class="kpi">Tempo medio &lt;14 dias</span><span class="tool">Seq. C se nao fechar (4 emails, 45 dias)</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-bof">BOF &mdash; CONTRATO</span><h3>Consulting Expansao (8 semanas)</h3><p class="flow-desc">Sem. 1: Kick-off. Sem. 2-3: Diagnostico. Sem. 4-5: Desenho. Sem. 6-7: Plano. Sem. 8: Apresentacao final + Caderno de Arquitetura Comercial.</p><div class="flow-meta"><span>50% upfront, 50% semana 4</span><span>Max 4 projetos paralelos</span><span>2h/semana do CEO exigidas</span></div></div>
+    </div>
+    <div class="connector-label">&#9660; SEMANA 8 &mdash; "CAMINHOS DE IMPLANTACAO"</div>
+    <div class="branch-container">
+      <div class="branch-card branch-yes"><div class="branch-tag">OPCAO A &mdash; 40-55%</div><h4>ZNITH.AI OS</h4><p>ZNITH implanta o que foi desenhado. R$50-150K setup + R$5-15K/mes. 4-6 meses.</p></div>
+      <div class="branch-card branch-qual"><div class="branch-tag">OPCAO B &mdash; 15-20%</div><h4>RCaaS (Governanca)</h4><p>Cliente implanta com time interno. ZNITH acompanha. R$5-15K/mes recorrente.</p></div>
+    </div>
+    <div class="branch-container">
+      <div class="branch-card branch-nqual"><div class="branch-tag">OPCAO C &mdash; 25-35%</div><h4>Execucao Interna Solo</h4><p>Cliente implanta sozinho com base no Caderno. Entra na nurture "Arquitetura Viva".</p></div>
+      <div class="branch-card" style="border-left: 3px solid var(--purple);"><div class="branch-tag" style="color:var(--purple);">ONGOING</div><h4>Programa Indicador ZNITH</h4><p>Todos os clientes sao convidados pro programa de indicacao privado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNNEL 2 -->
+<section id="funnel2">
+  <h2 class="section-title">Funil 2 — Implementar IA (Volume)</h2>
+  <p class="section-subtitle">Captura leads no hype de IA, qualifica por maturidade comercial, e roteia para Funil 1 ou ZNITH.AI Agent.</p>
+  <div class="funnel-flow">
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-tof">TOF &mdash; TRAFEGO PAGO</span><h3>Fontes de Trafego (mes 3+)</h3><p class="flow-desc">Meta Ads focado em construcao civil + donos buscando IA. Google Search para intent de fundo de funil.</p><div class="flow-meta"><span>Meta Ads (R$2-5 CPC)</span><span>Google Search (R$3-7 CPC)</span><span>LinkedIn (IA + comercial)</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-tof">TOF &mdash; CAPTURA</span><h3>Landing Page &mdash; /implementar-ia</h3><p class="flow-desc">"Como implementar IA na sua operacao comercial (sem automatizar o caos)."</p><div class="flow-meta"><span class="page">/implementar-ia</span><span class="kpi">Conv. 25-35%</span></div></div>
+    </div>
+    <div class="flow-stage"><div class="flow-marker"><div class="flow-dot"></div><div class="flow-line"></div></div>
+      <div class="flow-card"><span class="flow-tag tag-tof">TOF/MOF &mdash; QUALIFICACAO RAPIDA</span><h3>Quiz de Maturidade IA (5-7 perguntas, 3 min)</h3><p class="flow-desc">Playbook? CRM ativo? Processo definido? Score 0-9 baseado nas 3 primeiras perguntas.</p><div class="flow-meta"><span class="tool">Quiz rapido</span><span class="kpi">Conclusao 70-80%</span></div></div>
+    </div>
+    <div class="connector-label">&#9660; ROTEAMENTO POR SCORE</div>
+    <div class="branch-container">
+      <div class="branch-card branch-yes"><div class="branch-tag">SCORE 7-9 &mdash; TEM PROCESSO (20-25%)</div><h4>Qualificado para ZNITH.AI</h4><p>"Sua empresa ja tem base. Agora e hora de acelerar." Seq. D (5 emails, 14 dias) → ZNITH.AI Agent R$785/mes.</p></div>
+      <div class="branch-card branch-no"><div class="branch-tag">SCORE 0-6 &mdash; SEM PROCESSO (50%)</div><h4>Redirecionado pro Funil 1</h4><p>"IA sem direcao so acelera o caos." Seq. E (5 emails, 21 dias) → Raio-X Comercial → Funil Mestre.</p></div>
+    </div>
+    <div class="crossfeed">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+      <span>BRIDGE CRITICO: 50% dos leads do Funil 2 sao redirecionados para o Funil 1 — alimentando o pipeline de Consulting Expansao.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SEQUENCES -->
+<section id="sequences">
+  <h2 class="section-title">Sequencias de Email</h2>
+  <p class="section-subtitle">5 sequencias cobrindo cada estagio da jornada. WhatsApp shadow track em paralelo.</p>
+  <div class="sequences-grid">
+    <div class="seq-card"><h4>A &mdash; "A Arquitetura Invisivel"</h4><div class="seq-trigger">Trigger: Raio-X qualificado (Movimento/Maturacao)</div><ul class="seq-emails"><li><span class="day">D0</span> Resultados + conceito de "receita invisivel"</li><li><span class="day">D3</span> Cemiterio de ferramentas</li><li><span class="day">D7</span> R$500M em vendas: o que Leilaine aprendeu</li><li><span class="day">D10</span> Pergunta que sua vidracaria nao sabe responder</li><li><span class="day">D14</span> Antes vs. Depois (case anonimizado)</li><li><span class="day">D17</span> "Nao tenho tempo" = precisa de estrutura</li><li><span class="day">D21</span> CTA final: Leitura Estrategica</li></ul></div>
+    <div class="seq-card"><h4>B &mdash; Carta da Leilaine</h4><div class="seq-trigger">Trigger: Caos + pos-sequencia sem conversao</div><ul class="seq-emails"><li><span class="day">Mensal</span> Uma reflexao longa. Nao vende. Posiciona.</li><li><span class="day">Trim.</span> WhatsApp check-in pessoal</li><li><span class="day">Final</span> Soft CTA para refazer o Raio-X</li></ul></div>
+    <div class="seq-card"><h4>C &mdash; Post-Leitura Follow-up</h4><div class="seq-trigger">Trigger: Leitura sem fechamento em 14 dias</div><ul class="seq-emails"><li><span class="day">D3</span> Recap dos gargalos identificados</li><li><span class="day">D14</span> Case study relevante ao setor</li><li><span class="day">D30</span> "Ja se passou 1 mes. Quanto custou?"</li><li><span class="day">D45</span> Soft close ou release honesto</li></ul></div>
+    <div class="seq-card"><h4>D &mdash; "IA Com Direcao"</h4><div class="seq-trigger">Trigger: Funil 2 qualificado (score 7-9)</div><ul class="seq-emails"><li><span class="day">D0</span> Resultados + "sua operacao esta pronta pra IA"</li><li><span class="day">D2</span> Como ZNITH.AI agents funcionam</li><li><span class="day">D5</span> Case: agente IA em vidracaria</li><li><span class="day">D9</span> "O que seu concorrente ja esta fazendo"</li><li><span class="day">D14</span> CTA direto: agendar call</li></ul></div>
+    <div class="seq-card"><h4>E &mdash; "Processo Primeiro"</h4><div class="seq-trigger">Trigger: Funil 2 nao qualificado (score 0-6)</div><ul class="seq-emails"><li><span class="day">D0</span> "A verdade honesta sobre AI readiness"</li><li><span class="day">D3</span> Custo invisivel do caos comercial</li><li><span class="day">D7</span> Vidracaria que queria IA mas precisava de arquitetura</li><li><span class="day">D14</span> "6 minutos que revelam sua arquitetura"</li><li><span class="day">D21</span> "Quando voce estiver pronto" → Carta da Leilaine</li></ul></div>
+  </div>
+</section>
+
+<!-- ECONOMICS -->
+<section id="economics">
+  <h2 class="section-title">Economia Combinada</h2>
+  <p class="section-subtitle">Projecao estado estavel (mes 6+). Os dois funis somados.</p>
+  <div class="econ-grid">
+    <div class="econ-card"><div class="econ-value">R$252-336K</div><div class="econ-label">Consulting Expansao<br>6-8 contratos x R$42K avg</div></div>
+    <div class="econ-card"><div class="econ-value">R$80-120K</div><div class="econ-label">Upsell OS<br>(amortizado mensal)</div></div>
+    <div class="econ-card"><div class="econ-value">R$80K</div><div class="econ-label">RCaaS MRR<br>Governanca recorrente</div></div>
+    <div class="econ-card"><div class="econ-value">R$144K</div><div class="econ-label">ZNITH.AI Agents<br>12 contratos x R$12K avg</div></div>
+    <div class="econ-card econ-total" style="grid-column: 1 / -1;"><div class="econ-value">R$556K — R$680K / mes</div><div class="econ-label">Receita mensal combinada — estado estavel</div></div>
+  </div>
+</section>
+
+<!-- KPIS -->
+<section id="kpis">
+  <h2 class="section-title">KPIs por Estagio</h2>
+  <p class="section-subtitle">Metricas de acompanhamento mensal.</p>
+  <table class="kpi-table">
+    <thead><tr><th>Estagio</th><th>Metrica</th><th>Mes 1-3</th><th>Mes 4-6</th><th>Estavel (6+)</th></tr></thead>
+    <tbody>
+      <tr><td>TOF</td><td>Raio-X completions</td><td>60/mes</td><td>120/mes</td><td>200/mes</td></tr>
+      <tr><td>TOF&rarr;MOF</td><td>Taxa qualificacao</td><td>25%</td><td>30%</td><td>30%</td></tr>
+      <tr><td>MOF</td><td>Leads qualificados</td><td>15/mes</td><td>36/mes</td><td>60/mes</td></tr>
+      <tr><td>MOF&rarr;BOF</td><td>Leituras agendadas</td><td>6/mes</td><td>12/mes</td><td>18/mes</td></tr>
+      <tr><td>BOF</td><td>Show-up rate</td><td>80%</td><td>85%</td><td>90%</td></tr>
+      <tr><td>BOF</td><td>Propostas enviadas</td><td>4/mes</td><td>9/mes</td><td>14/mes</td></tr>
+      <tr style="background:rgba(223,159,62,0.06);"><td style="color:var(--gold);font-weight:700;">BOF</td><td style="color:var(--gold);font-weight:700;">Contratos Expansao</td><td style="color:var(--gold);font-weight:700;">2/mes</td><td style="color:var(--gold);font-weight:700;">4/mes</td><td style="color:var(--gold);font-weight:700;">6-8/mes</td></tr>
+      <tr><td>POS</td><td>Expansao&rarr;OS</td><td>30%</td><td>40%</td><td>50%</td></tr>
+      <tr><td>POS</td><td>RCaaS MRR</td><td>R$10K</td><td>R$40K</td><td>R$80K</td></tr>
+      <tr><td>F2</td><td>ZNITH.AI contratos</td><td>2/mes</td><td>6/mes</td><td>12/mes</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PHASES -->
+<section id="phases">
+  <h2 class="section-title">Fases de Implementacao</h2>
+  <p class="section-subtitle">3 fases, 12 semanas.</p>
+  <div class="phases">
+    <div class="phase-card"><h3>Fase 1 &mdash; Funil Minimo Viavel</h3><div class="phase-time">Semanas 1-4</div><ul><li>Quiz Raio-X Comercial</li><li>Landing /raio-x</li><li>Paginas de resultado (4 variantes)</li><li>Booking /agendar (Cal.com)</li><li>Sales page /expansao</li><li>Email Seq. A (7 emails)</li><li>WhatsApp welcome flow</li><li>Template proposta visual</li><li>Script Leitura Estrategica</li></ul></div>
+    <div class="phase-card"><h3>Fase 2 &mdash; Segundo Funil</h3><div class="phase-time">Semanas 5-8</div><ul><li>Landing /implementar-ia</li><li>Quiz maturidade IA</li><li>Routing pages</li><li>Email Seq. D + E</li><li>3 case studies</li><li>30 posts LinkedIn</li><li>4 video scripts</li></ul></div>
+    <div class="phase-card"><h3>Fase 3 &mdash; Trafego + Escala</h3><div class="phase-time">Semanas 9-12</div><ul><li>Meta Ads Funil 2</li><li>Google Ads ambos funis</li><li>LinkedIn Ads Funil 1</li><li>Newsletter "Carta da Leilaine"</li><li>Programa Indicador ZNITH</li><li>Review 30 dias</li></ul></div>
+  </div>
+</section>
+
+<div class="footnote"><p>ZNITH &mdash; Documento de trabalho produzido por Reis IA Agency &bull; 2026</p></div>
+</body>
+</html>

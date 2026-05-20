@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import brands from '../../data/brands.json';
+
+export function getStaticPaths() {
+  return brands.map((brand) => ({
+    params: { slug: brand.slug },
+    props: { brand },
+  }));
+}
+
+const { brand } = Astro.props;
+---
+
+<Layout title={`${brand.name} — AGENTS Design System`}>
+  <div class="w-full h-[calc(100vh-56px)]">
+    <iframe
+      src={`/previews/${brand.slug}.html`}
+      class="w-full h-full border-0"
+      title={`${brand.name} Design System Preview`}
+    />
+  </div>
+</Layout>

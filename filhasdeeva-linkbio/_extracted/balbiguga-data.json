@@ -1,0 +1,2310 @@
+{
+  "links": [
+    {
+      "href": "https://balbiguga.com.br/balbi-cursu/",
+      "text": "",
+      "class": "link-img-card reveal on"
+    },
+    {
+      "href": "https://otomen.com.br/",
+      "text": "",
+      "class": "link-img-card reveal on"
+    },
+    {
+      "href": "https://balbiguga.com.br/ebook/",
+      "text": "",
+      "class": "link-img-card reveal on"
+    },
+    {
+      "href": "https://360link.bio/balbiguga/#youtube-destaque",
+      "text": "",
+      "class": "link-img-card reveal on"
+    },
+    {
+      "href": "https://otomen.com.br/products/shampoo-limpeza-e-volume",
+      "text": "Shampoo\n                        \n                        \n                            Limpeza e Volu",
+      "class": "oto-prod-card reveal"
+    },
+    {
+      "href": "https://otomen.com.br/products/condicionador-hidratacao-e-volume",
+      "text": "Condicionador\n                        \n                        \n                            Hidrataç",
+      "class": "oto-prod-card reveal"
+    },
+    {
+      "href": "https://otomen.com.br/products/kit-shampoo-condicionador",
+      "text": "Kit Exclusivo\n                            Shampoo +Condicionador\n                            A dupla",
+      "class": "oto-kit-card reveal"
+    },
+    {
+      "href": "https://otomen.com.br/",
+      "text": "Ver Loja OTO",
+      "class": "flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-"
+    },
+    {
+      "href": "https://www.instagram.com/oto.homem/",
+      "text": "@oto.homem",
+      "class": "flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=HHdQVgicijc",
+      "text": "Podcast · 2025\n                            Os Sócios 242\n                            Como se vestir ",
+      "class": "midia-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=6sMfACGh_IM",
+      "text": "Podcast · 2024\n                            PrimoCast 313\n                            Como ficar mais",
+      "class": "midia-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=VGwBwFAue3Y",
+      "text": "Podcast · Caio Carneiro #111\n                            Como sua Vestimenta impacta no seu Faturame",
+      "class": "midia-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=r96muUDPb4g",
+      "text": "330K views\n                        \n                        \n                            Balbi In Ho",
+      "class": "yt-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=ZiWVw17jfNQ",
+      "text": "220K views\n                        \n                        \n                            Balbi In Ho",
+      "class": "yt-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=EDnz827QNqg",
+      "text": "160K views\n                        \n                        \n                            Balbi In Ho",
+      "class": "yt-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=DTVj2F3S_I8",
+      "text": "145K views\n                        \n                        \n                            Balbi In Ho",
+      "class": "yt-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=5nFO4nMSNSA",
+      "text": "130K views\n                        \n                        \n                            Balbi In Ho",
+      "class": "yt-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/@Balbiguga",
+      "text": "Ver Todos os Vídeos no Canal",
+      "class": "mt-5 flex items-center justify-center gap-3 py-4 rounded-2xl font-bold text-[.65"
+    },
+    {
+      "href": "https://www.instagram.com/balbiguga/",
+      "text": "@balbiguga ✓\n                            130.5K seguidores",
+      "class": "social-card reveal"
+    },
+    {
+      "href": "https://www.tiktok.com/@balbiguga",
+      "text": "@balbiguga\n                            373K · 5.2M curtidas",
+      "class": "social-card reveal"
+    },
+    {
+      "href": "https://www.youtube.com/@Balbiguga",
+      "text": "@Balbiguga\n                            84.9K inscritos",
+      "class": "social-card reveal"
+    },
+    {
+      "href": "https://www.tiktok.com/@balbigugastories",
+      "text": "@balbigugastories\n                            290.5K seguidores",
+      "class": "social-card reveal"
+    },
+    {
+      "href": "https://balbiguga.com.br/",
+      "text": "balbiguga.com.br\n                            Site oficial — cursos e produtos",
+      "class": "social-card col-span-2 reveal"
+    },
+    {
+      "href": "https://balbiguga.com.br/balbi-cursu/",
+      "text": "Quero Me Vestir Melhor",
+      "class": "btn btn-dark-solid px-8 py-4 w-full shadow-xl mb-3"
+    },
+    {
+      "href": "https://www.instagram.com/balbiguga/",
+      "text": "Seguir @balbiguga",
+      "class": "flex items-center justify-center gap-2 py-3 text-[.6rem] font-bold uppercase tra"
+    },
+    {
+      "href": "https://www.instagram.com/balbiguga/",
+      "text": "",
+      "class": "footer-social"
+    },
+    {
+      "href": "https://www.tiktok.com/@balbiguga",
+      "text": "",
+      "class": "footer-social"
+    },
+    {
+      "href": "https://www.youtube.com/@Balbiguga",
+      "text": "",
+      "class": "footer-social"
+    },
+    {
+      "href": "https://balbiguga.com.br/",
+      "text": "",
+      "class": "footer-social"
+    },
+    {
+      "href": "https://www.ag5agencia.com.br/",
+      "text": "Desenvolvido por \n                AG5 Agência",
+      "class": ""
+    },
+    {
+      "href": "https://balbiguga.com.br/balbi-cursu/",
+      "text": "Quero o Curso",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://balbiguga.com.br/gp-wpp-black",
+      "text": "Quero o Combão",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://otomen.com.br/",
+      "text": "Comprar na OTO",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://balbiguga.com.br/ebook/",
+      "text": "Quero o Guia",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-guia-de-looks-femininos-2mdfz/P89343876K?sck=HOTMART_PRODUCT_PAGE",
+      "text": "Quero o Guia",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://balbiguga.com.br/gdp-pv1-ads/?utm_source=FB&utm_campaign=Perfume03%20-%20CP05%20-%20gdp-pv1-ads%7C120243966406290776&utm_medium=Adset01%7C120243966406310776&utm_content=Ad01%7C120243966406320776&utm_term=Instagram_Stories&utm_id=120243966406290776&fbclid=PAdGRzdgRgM05leHRuA2FlbQEwAGFkaWQBqzFArXvQmHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpz2MyFAK_HGXn2m-ZFJR6tc07GDE7HyXqFa6ojSP0bckeB14GyvHQtiJKA8Y_aem_Cc_1aQ7zNOn-epjBHteE2w",
+      "text": "Quero o Guia",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://balbiguga.com.br/ebook/",
+      "text": "Quero o Guia",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-acessorios-3gsw1/F88056240L?sck=HOTMART_PRODUCT_PAGE",
+      "text": "Quero o Curso",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://hotmart.com/pt-br/marketplace/produtos/guia-de-acessorios-masculinos/I87128752D?sck=HOTMART_PRODUCT_PAGE",
+      "text": "Quero o Guia Premium",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://hotmart.com/pt-br/marketplace/produtos/guia-de-perfumes-feminino/F89597709Q",
+      "text": "Quero o Guia",
+      "class": "mprod-btn"
+    },
+    {
+      "href": "https://www.instagram.com/balbiguga/",
+      "text": "Ver no Instagram",
+      "class": "w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 upperca"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://360link.bio/balbiguga/assets/hero2.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/imagens%20links/balbicurso.webp",
+      "alt": "Balbi Cursu — Curso de Moda Masculina"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/imagens%20links/otomen.webp",
+      "alt": "OTO — Cosméticos Masculinos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/imagens%20links/guia-de-looks.webp",
+      "alt": "Guia de Looks Masculinos — E-book"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/imagens%20links/youtube.webp",
+      "alt": "Canal YouTube — @Balbiguga"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/balbicurso.webp",
+      "alt": "Balbi Curso"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/GUIA-DE-LOOKS-MASCULINOS.webp",
+      "alt": "Guia de Looks Masculinos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/ACESS%C3%93RIOS-PREMIUM-GUIA-COMPLETO.webp",
+      "alt": "Acessórios Premium"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/ARTE-DOS-PERFUMES-MASCULINOS.webp",
+      "alt": "Arte dos Perfumes Masculinos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/acessorios.webp",
+      "alt": "Acessórios"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/GUIA-DE-LOOKS-FEMININOS.webp",
+      "alt": "Guia de Looks Femininos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/GUIA-DE-PERFUMES-FEMININO.webp",
+      "alt": "Guia de Perfumes Feminino"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/979696ae-f0df-4aac-929a-2509fb45ebfe_rw_1920.webp",
+      "alt": "OTO — O cuidado masculino com alma de perfume"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/no-banheiro-de-frente-para-espelho-com-oto-shampoo-e-condicionador-na-pia.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/balbiguga_1763469325_3768576305068592717_263506374.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/balbiguga_1763469325_3768576305093785702_263506374.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/balbiguga_1763469325_3768576305068610130_263506374.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/balbiguga_1763469325_3768576305068622481_263506374.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/balbiguga_1763469325_3768576305051797042_263506374.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/balbiguga_1763469325_3768576305211217919_263506374.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/Fotos%20Oto%20dia%20a%20dia/tomando-banho-com-oto.webp",
+      "alt": "OTO Homem"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/shampoo-oto.webp",
+      "alt": "Shampoo OTO Limpeza e Volume"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/condicionador-oto.webp",
+      "alt": "Condicionador OTO Hidratação e Volume"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/oto/condicionador-e-shampoo-oto-na-praia.webp",
+      "alt": "Kit OTO Shampoo + Condicionador"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392129082316_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392212948551_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392321912611_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1733422654_3516526562487152872_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1733422654_3516526562512399106_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1736947781_3546097466878309436_263506374%20(1).webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995529036695_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995579218128_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995612701180_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566866984_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566898479_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566928090_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050575245505_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1740657736_3577218828040541376_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1742412421_3591938187066843709_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961296874930_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961322177092_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961338862182_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1751300397_3666495936085184780_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1755182623_3699062407403215864_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1758823143_3729601300481768388_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1758823143_3729601300657916123_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1760632975_3744783279175313273_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1761086621_3748588733059925114_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1762165916_3757642512450815016_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1764104559_3773905035047583712_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835657621160_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835665996280_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835666017917_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835699574840_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835716353692_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609661030179_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609661048914_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609669440532_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609669464907_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609677806179_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686188886_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686195041_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686204730_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686233396_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609694583459_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609694593920_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609702979463_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609702989560_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609703012597_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609711371439_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609719784768_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382117295781699_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382119753668810_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382122245037225_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382129383792416_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769891835_3822443801697079533_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769891835_3822443870483684301_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176423175933_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176431532216_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439920788_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439922261_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439941565_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176590937511_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176590960266_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401958103547_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401991657338_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401991678712_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587402000029291_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392129082316_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392212948551_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392321912611_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1733422654_3516526562487152872_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1733422654_3516526562512399106_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1736947781_3546097466878309436_263506374%20(1).webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995529036695_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995579218128_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995612701180_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566866984_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566898479_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566928090_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050575245505_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1740657736_3577218828040541376_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1742412421_3591938187066843709_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961296874930_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961322177092_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961338862182_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1751300397_3666495936085184780_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1755182623_3699062407403215864_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1758823143_3729601300481768388_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1758823143_3729601300657916123_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1760632975_3744783279175313273_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1761086621_3748588733059925114_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1762165916_3757642512450815016_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1764104559_3773905035047583712_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835657621160_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835665996280_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835666017917_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835699574840_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835716353692_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609661030179_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609661048914_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609669440532_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609669464907_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609677806179_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686188886_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686195041_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686204730_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686233396_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609694583459_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609694593920_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609702979463_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609702989560_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609703012597_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609711371439_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609719784768_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382117295781699_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382119753668810_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382122245037225_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382129383792416_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769891835_3822443801697079533_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769891835_3822443870483684301_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176423175933_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176431532216_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439920788_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439922261_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439941565_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176590937511_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176590960266_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401958103547_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401991657338_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401991678712_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587402000029291_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1736947781_3546097466878309436_263506374%20(1).webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1762165916_3757642512450815016_263506374.webp",
+      "alt": "Look"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401958103547_263506374.webp",
+      "alt": "Estilo"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609719784768_263506374.webp",
+      "alt": "Ver mais"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835666017917_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/1.webp",
+      "alt": "Trajetória 1"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/2.webp",
+      "alt": "Trajetória 2"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/3.webp",
+      "alt": "Trajetória 3"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/6.webp",
+      "alt": "Trajetória 6"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/7.webp",
+      "alt": "Trajetória 7"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/8.webp",
+      "alt": "Trajetória 8"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/9.webp",
+      "alt": "Trajetória 9"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/10.webp",
+      "alt": "Trajetória 10"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/11.webp",
+      "alt": "Trajetória 11"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/12.webp",
+      "alt": "Trajetória 12"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/13.webp",
+      "alt": "Trajetória 13"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/14.webp",
+      "alt": "Trajetória 14"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/15.webp",
+      "alt": "Trajetória 15"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/16.webp",
+      "alt": "Trajetória 16"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/17.webp",
+      "alt": "Trajetória 17"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/historia%20carrosel/18.webp",
+      "alt": "Trajetória 18"
+    },
+    {
+      "src": "https://img.youtube.com/vi/HHdQVgicijc/hqdefault.jpg",
+      "alt": "Os Sócios 242"
+    },
+    {
+      "src": "https://img.youtube.com/vi/6sMfACGh_IM/hqdefault.jpg",
+      "alt": "PrimoCast 313"
+    },
+    {
+      "src": "https://img.youtube.com/vi/VGwBwFAue3Y/hqdefault.jpg",
+      "alt": "Podcast Caio Carneiro #111"
+    },
+    {
+      "src": "https://img.youtube.com/vi/r96muUDPb4g/hqdefault.jpg",
+      "alt": "Balbi In House com Felipe Titto"
+    },
+    {
+      "src": "https://img.youtube.com/vi/ZiWVw17jfNQ/mqdefault.jpg",
+      "alt": "Balbi In House com Pedro Scooby"
+    },
+    {
+      "src": "https://img.youtube.com/vi/EDnz827QNqg/hqdefault.jpg",
+      "alt": "Balbi House com Tallis Gomes"
+    },
+    {
+      "src": "https://img.youtube.com/vi/DTVj2F3S_I8/mqdefault.jpg",
+      "alt": "Como se Vestir Como um Milionário com Thiago Finch"
+    },
+    {
+      "src": "https://img.youtube.com/vi/5nFO4nMSNSA/mqdefault.jpg",
+      "alt": "Balbi In House com Alfredo Soares"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835666017917_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/balbicurso.webp",
+      "alt": "Balbi Curso"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176423175933_263506374.webp",
+      "alt": "Combão"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382117295781699_263506374.webp",
+      "alt": "OTO"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382122245037225_263506374.webp",
+      "alt": "Guia de Looks"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/GUIA-DE-LOOKS-FEMININOS.webp",
+      "alt": "Guia de Looks Femininos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/ARTE-DOS-PERFUMES-MASCULINOS.webp",
+      "alt": "Arte dos Perfumes Masculinos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/GUIA-DE-LOOKS-MASCULINOS.webp",
+      "alt": "Guia de Looks Masculinos"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/acessorios.webp",
+      "alt": "Acessórios"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/ACESS%C3%93RIOS-PREMIUM-GUIA-COMPLETO.webp",
+      "alt": "Acessórios Premium"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/ebook-cursos/GUIA-DE-PERFUMES-FEMININO.webp",
+      "alt": "Guia de Perfumes Feminino"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392129082316_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392212948551_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1732906816_3512199392321912611_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1733422654_3516526562487152872_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1733422654_3516526562512399106_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1736947781_3546097466878309436_263506374%20(1).webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995529036695_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995579218128_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1737052867_3546978995612701180_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566866984_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566898479_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050566928090_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1739315585_3565960050575245505_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1740657736_3577218828040541376_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1742412421_3591938187066843709_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961296874930_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961322177092_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1747920936_3638146961338862182_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1751300397_3666495936085184780_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1755182623_3699062407403215864_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1758823143_3729601300481768388_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1758823143_3729601300657916123_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1760632975_3744783279175313273_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1761086621_3748588733059925114_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1762165916_3757642512450815016_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1764104559_3773905035047583712_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835657621160_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835665996280_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835666017917_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835699574840_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1766017368_3789950835716353692_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609661030179_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609661048914_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609669440532_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609669464907_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609677806179_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686188886_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686195041_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686204730_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609686233396_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609694583459_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609694593920_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609702979463_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609702989560_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609703012597_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609711371439_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1767722987_3804258609719784768_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382117295781699_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382119753668810_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382122245037225_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769168486_3816382129383792416_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769891835_3822443801697079533_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1769891835_3822443870483684301_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176423175933_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176431532216_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439920788_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439922261_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176439941565_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176590937511_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1771934400_3839547176590960266_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401958103547_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401991657338_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587401991678712_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/assets/balbiguga_1776859200_3880587402000029291_263506374.webp",
+      "alt": "Gustavo Balbi"
+    },
+    {
+      "src": "https://360link.bio/balbiguga/",
+      "alt": ""
+    }
+  ],
+  "structure": [
+    {
+      "tag": "H1",
+      "text": "GUSTAVO BALBI",
+      "class": "font-title leading-tight mb-2"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Founder @oto.homem",
+      "class": "hero-pill-tag"
+    },
+    {
+      "tag": "SPAN",
+      "text": "+40 mil alunos",
+      "class": "hero-pill-sub"
+    },
+    {
+      "tag": "P",
+      "text": "“Quem se veste bem, se sente bem”",
+      "class": "hero-quote"
+    },
+    {
+      "tag": "DIV",
+      "text": "Ver Links",
+      "class": "absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Ver Links",
+      "class": "hero-scroll-label"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conteúdo em Movimento",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "Vídeosem Destaque",
+      "class": "sec-title"
+    },
+    {
+      "tag": "P",
+      "text": "Moda, perfumes e lifestyle do @balbiguga",
+      "class": "sec-sub"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Por que o Gustavo?",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "MinhaAbordagem",
+      "class": "sec-title"
+    },
+    {
+      "tag": "DIV",
+      "text": "ModaMasculina",
+      "class": "stat-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "ModaMasculina",
+      "class": "text-xs font-bold uppercase tracking-tight leading-tight stat-card-text"
+    },
+    {
+      "tag": "DIV",
+      "text": "Perfumes&\n                            Nicho",
+      "class": "stat-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Perfumes&\n                            Nicho",
+      "class": "text-xs font-bold uppercase tracking-tight leading-tight stat-card-text"
+    },
+    {
+      "tag": "DIV",
+      "text": "ImagemPessoal",
+      "class": "stat-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "ImagemPessoal",
+      "class": "text-xs font-bold uppercase tracking-tight leading-tight stat-card-text"
+    },
+    {
+      "tag": "DIV",
+      "text": "Empreende-dorismo",
+      "class": "stat-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Empreende-dorismo",
+      "class": "text-xs font-bold uppercase tracking-tight leading-tight stat-card-text"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Produtos & Cursos",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "MeuEcossistema",
+      "class": "sec-title"
+    },
+    {
+      "tag": "P",
+      "text": "Tudo que você precisa para transformar sua imagem",
+      "class": "sec-sub"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Curso Online",
+      "class": "eco-hero-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Balbi Curso",
+      "class": "eco-hero-name"
+    },
+    {
+      "tag": "P",
+      "text": "\"Quem se veste bem, se sente bem\"",
+      "class": "eco-hero-quote"
+    },
+    {
+      "tag": "DIV",
+      "text": "7 módulos\n                                    32 aulas\n                                    Especialistas\n                                \n                                Ver detalhes",
+      "class": "eco-hero-foot"
+    },
+    {
+      "tag": "SPAN",
+      "text": "7 módulos",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "32 aulas",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Especialistas",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "E-books & Guias",
+      "class": "eco-section-label mt-5"
+    },
+    {
+      "tag": "DIV",
+      "text": "Masculino · E-book\n                            Guia de Looks Masc.\n                            Conhecer",
+      "class": "eco-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Masculino · E-book",
+      "class": "eco-label"
+    },
+    {
+      "tag": "P",
+      "text": "Guia de Looks Masc.",
+      "class": "eco-title"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecer",
+      "class": "eco-cta"
+    },
+    {
+      "tag": "DIV",
+      "text": "Premium · E-book\n                            Guia de Acessórios\n                            Conhecer",
+      "class": "eco-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Premium · E-book",
+      "class": "eco-label eco-label-gold"
+    },
+    {
+      "tag": "P",
+      "text": "Guia de Acessórios",
+      "class": "eco-title"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecer",
+      "class": "eco-cta eco-cta-gold"
+    },
+    {
+      "tag": "DIV",
+      "text": "Masculino · E-book\n                            Arte dos Perfumes\n                            Conhecer",
+      "class": "eco-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Masculino · E-book",
+      "class": "eco-label"
+    },
+    {
+      "tag": "P",
+      "text": "Arte dos Perfumes",
+      "class": "eco-title"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecer",
+      "class": "eco-cta"
+    },
+    {
+      "tag": "DIV",
+      "text": "Masculino · Curso\n                            Acessórios\n                            Conhecer",
+      "class": "eco-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Masculino · Curso",
+      "class": "eco-label"
+    },
+    {
+      "tag": "P",
+      "text": "Acessórios",
+      "class": "eco-title"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecer",
+      "class": "eco-cta"
+    },
+    {
+      "tag": "DIV",
+      "text": "Feminino · E-book\n                            Guia de Looks Femininos\n                            Conhecer",
+      "class": "eco-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Feminino · E-book",
+      "class": "eco-label"
+    },
+    {
+      "tag": "P",
+      "text": "Guia de Looks Femininos",
+      "class": "eco-title"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecer",
+      "class": "eco-cta"
+    },
+    {
+      "tag": "DIV",
+      "text": "Feminino · E-book\n                            Guia de Perfumes Fem.\n                            Conhecer",
+      "class": "eco-card reveal on"
+    },
+    {
+      "tag": "P",
+      "text": "Feminino · E-book",
+      "class": "eco-label"
+    },
+    {
+      "tag": "P",
+      "text": "Guia de Perfumes Fem.",
+      "class": "eco-title"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Conhecer",
+      "class": "eco-cta"
+    },
+    {
+      "tag": "DIV",
+      "text": "Marca Própria\n                        O cuidado masculinocom alma de perfume",
+      "class": "oto-cover-content"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Marca Própria",
+      "class": "oto-cover-eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "O cuidado masculinocom alma de perfume",
+      "class": "oto-cover-title"
+    },
+    {
+      "tag": "P",
+      "text": "A marca de cosméticos masculinos criada com Gustavo Balbi, a partir de\n                        um propósito claro: ressignificar o autocuidado do homem contemporâneo.",
+      "class": "oto-editorial-lead"
+    },
+    {
+      "tag": "DIV",
+      "text": "OTO\n                        \n                            One to One\n                            Quem cuida bem de si, cuida bem de tudo",
+      "class": "oto-hero-content"
+    },
+    {
+      "tag": "DIV",
+      "text": "OTO",
+      "class": "oto-hero-logo"
+    },
+    {
+      "tag": "P",
+      "text": "One to One\n                            Quem cuida bem de si, cuida bem de tudo",
+      "class": "oto-hero-tagline"
+    },
+    {
+      "tag": "SPAN",
+      "text": "One to One",
+      "class": "oto-hero-onetone"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Quem cuida bem de si, cuida bem de tudo",
+      "class": "oto-hero-tagline-sub"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Shampoo",
+      "class": "oto-prod-badge"
+    },
+    {
+      "tag": "P",
+      "text": "Limpeza e Volume",
+      "class": "oto-prod-info-name"
+    },
+    {
+      "tag": "P",
+      "text": "Força · Resistência · Volume",
+      "class": "oto-prod-info-desc"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Comprar",
+      "class": "oto-prod-info-cta"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Condicionador",
+      "class": "oto-prod-badge"
+    },
+    {
+      "tag": "P",
+      "text": "Hidratação e Volume",
+      "class": "oto-prod-info-name"
+    },
+    {
+      "tag": "P",
+      "text": "Maciez · Leveza · Movimento",
+      "class": "oto-prod-info-desc"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Comprar",
+      "class": "oto-prod-info-cta"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Kit Exclusivo",
+      "class": "oto-kit-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Shampoo +Condicionador",
+      "class": "oto-kit-name"
+    },
+    {
+      "tag": "P",
+      "text": "A dupla completa do cuidado masculino",
+      "class": "oto-kit-sub"
+    },
+    {
+      "tag": "DIV",
+      "text": "Economize",
+      "class": "oto-kit-right"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Economize",
+      "class": "oto-kit-save"
+    },
+    {
+      "tag": "DIV",
+      "text": "Ver Loja OTO\n                    \n                    \n                         @oto.homem",
+      "class": "flex gap-2.5 mt-3"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Registros",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "Galeria deFotos e Vídeos",
+      "class": "sec-title"
+    },
+    {
+      "tag": "DIV",
+      "text": "Ver Galeria Completa",
+      "class": "mt-8 flex justify-center"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Quem sou",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "SobreGustavo",
+      "class": "sec-title sobre-title"
+    },
+    {
+      "tag": "P",
+      "text": "Quem se veste bem, se sente bem.",
+      "class": "text-[.7rem] text-center mb-6 sobre-quote"
+    },
+    {
+      "tag": "DIV",
+      "text": "1,3M+\n                            Instagram",
+      "class": "text-center p-4 rounded-2xl stat-mini"
+    },
+    {
+      "tag": "P",
+      "text": "1,3M+",
+      "class": "font-title text-2xl"
+    },
+    {
+      "tag": "P",
+      "text": "Instagram",
+      "class": "text-[.58rem] uppercase tracking-[.12em] mt-1"
+    },
+    {
+      "tag": "DIV",
+      "text": "373K+\n                            TikTok",
+      "class": "text-center p-4 rounded-2xl stat-mini"
+    },
+    {
+      "tag": "P",
+      "text": "373K+",
+      "class": "font-title text-2xl"
+    },
+    {
+      "tag": "P",
+      "text": "TikTok",
+      "class": "text-[.58rem] uppercase tracking-[.12em] mt-1"
+    },
+    {
+      "tag": "DIV",
+      "text": "85K+\n                            YouTube",
+      "class": "text-center p-4 rounded-2xl stat-mini"
+    },
+    {
+      "tag": "P",
+      "text": "85K+",
+      "class": "font-title text-2xl"
+    },
+    {
+      "tag": "P",
+      "text": "YouTube",
+      "class": "text-[.58rem] uppercase tracking-[.12em] mt-1"
+    },
+    {
+      "tag": "DIV",
+      "text": "40K+\n                            Alunos",
+      "class": "text-center p-4 rounded-2xl stat-mini"
+    },
+    {
+      "tag": "P",
+      "text": "40K+",
+      "class": "font-title text-2xl"
+    },
+    {
+      "tag": "P",
+      "text": "Alunos",
+      "class": "text-[.58rem] uppercase tracking-[.12em] mt-1"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Minha História",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "MinhaTrajetória",
+      "class": "sec-title traj-title"
+    },
+    {
+      "tag": "P",
+      "text": "\"Um pouco da trajetória (bem resumida) até aqui, e eu só quero motivar a você a continuar.\"",
+      "class": "text-[.78rem] leading-[1.6] mb-3 font-medium italic"
+    },
+    {
+      "tag": "P",
+      "text": "Quem esquece de onde saiu, um dia vai esquecer quem é. Eu só quero me manter focado e com\n                            pés no chão.",
+      "class": "traj-text text-[.72rem] leading-[1.6] mb-3"
+    },
+    {
+      "tag": "P",
+      "text": "Grato pelo que eu tenho, faminto pelo que vou ter e impulsionando quem me acompanha.",
+      "class": "traj-text-bold text-[.75rem] leading-[1.6] font-bold uppercase tracking-wider"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Aparições",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "NaMídia",
+      "class": "sec-title"
+    },
+    {
+      "tag": "P",
+      "text": "Onde Gustavo já foi destaque",
+      "class": "sec-sub"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Podcast · 2025",
+      "class": "midia-card-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Os Sócios 242",
+      "class": "midia-card-title"
+    },
+    {
+      "tag": "P",
+      "text": "Como se vestir bem e passar autoridade",
+      "class": "midia-card-desc"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Assistir",
+      "class": "midia-card-cta"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Podcast · 2024",
+      "class": "midia-card-tag"
+    },
+    {
+      "tag": "P",
+      "text": "PrimoCast 313",
+      "class": "midia-card-title"
+    },
+    {
+      "tag": "P",
+      "text": "Como ficar mais bonito e fazer mais dinheiro",
+      "class": "midia-card-desc"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Assistir",
+      "class": "midia-card-cta"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Podcast · Caio Carneiro #111",
+      "class": "midia-card-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Como sua Vestimenta impacta no seu Faturamento?",
+      "class": "midia-card-title"
+    },
+    {
+      "tag": "P",
+      "text": "Clara do Vale e Gustavo Balbi",
+      "class": "midia-card-desc"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Assistir",
+      "class": "midia-card-cta"
+    },
+    {
+      "tag": "P",
+      "text": "Momentos com pessoas importantes",
+      "class": "midia-reel-label"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Thiago Finch",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Alfredo Soares",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Pablo Marçal e +",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Prefeito Eduardo Paes",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Tallis Gomes",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Caio Carneiro",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Thiago Finch",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Alfredo Soares",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Pablo Marçal e +",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Prefeito Eduardo Paes",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Tallis Gomes",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Caio Carneiro",
+      "class": "midia-reel-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "No YouTube",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "VídeosMais Vistos",
+      "class": "sec-title"
+    },
+    {
+      "tag": "P",
+      "text": "Os episódios que mais bombaram no canal @Balbiguga",
+      "class": "sec-sub"
+    },
+    {
+      "tag": "SPAN",
+      "text": "330K views",
+      "class": "yt-views-badge"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi In House",
+      "class": "yt-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Com Felipe Titto",
+      "class": "yt-title"
+    },
+    {
+      "tag": "P",
+      "text": "26 min",
+      "class": "yt-duration"
+    },
+    {
+      "tag": "SPAN",
+      "text": "220K views",
+      "class": "yt-views-badge"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi In House",
+      "class": "yt-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Com Pedro Scooby",
+      "class": "yt-title"
+    },
+    {
+      "tag": "P",
+      "text": "1h 04min",
+      "class": "yt-duration"
+    },
+    {
+      "tag": "SPAN",
+      "text": "160K views",
+      "class": "yt-views-badge"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi In House",
+      "class": "yt-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Com Tallis Gomes",
+      "class": "yt-title"
+    },
+    {
+      "tag": "P",
+      "text": "28 min",
+      "class": "yt-duration"
+    },
+    {
+      "tag": "SPAN",
+      "text": "145K views",
+      "class": "yt-views-badge"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi In House",
+      "class": "yt-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Com Thiago Finch",
+      "class": "yt-title"
+    },
+    {
+      "tag": "P",
+      "text": "46 min",
+      "class": "yt-duration"
+    },
+    {
+      "tag": "SPAN",
+      "text": "130K views",
+      "class": "yt-views-badge"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi In House",
+      "class": "yt-tag"
+    },
+    {
+      "tag": "P",
+      "text": "Com Alfredo Soares",
+      "class": "yt-title"
+    },
+    {
+      "tag": "P",
+      "text": "55 min",
+      "class": "yt-duration"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Me Encontre",
+      "class": "eyebrow"
+    },
+    {
+      "tag": "H2",
+      "text": "RedesSociais",
+      "class": "sec-title"
+    },
+    {
+      "tag": "DIV",
+      "text": "@balbiguga ✓\n                            130.5K seguidores",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "@balbiguga ✓",
+      "class": "social-handle"
+    },
+    {
+      "tag": "P",
+      "text": "130.5K seguidores",
+      "class": "social-count"
+    },
+    {
+      "tag": "DIV",
+      "text": "@balbiguga\n                            373K · 5.2M curtidas",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "@balbiguga",
+      "class": "social-handle"
+    },
+    {
+      "tag": "P",
+      "text": "373K · 5.2M curtidas",
+      "class": "social-count"
+    },
+    {
+      "tag": "DIV",
+      "text": "@Balbiguga\n                            84.9K inscritos",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "@Balbiguga",
+      "class": "social-handle"
+    },
+    {
+      "tag": "P",
+      "text": "84.9K inscritos",
+      "class": "social-count"
+    },
+    {
+      "tag": "DIV",
+      "text": "@balbigugastories\n                            290.5K seguidores",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "@balbigugastories",
+      "class": "social-handle"
+    },
+    {
+      "tag": "P",
+      "text": "290.5K seguidores",
+      "class": "social-count"
+    },
+    {
+      "tag": "DIV",
+      "text": "balbiguga.com.br\n                            Site oficial — cursos e produtos",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "balbiguga.com.br",
+      "class": "social-handle"
+    },
+    {
+      "tag": "P",
+      "text": "Site oficial — cursos e produtos",
+      "class": "social-count"
+    },
+    {
+      "tag": "H3",
+      "text": "Pronto\n                            paraTransformar?",
+      "class": "font-title text-white leading-none mb-2"
+    },
+    {
+      "tag": "P",
+      "text": "Descubra como se vestir bem pode abrir portas,\n                            aumentar sua confiança e mudar como o mundo te vê.",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "GUSTAVO BALBI",
+      "class": "font-title text-2xl mb-0.5"
+    },
+    {
+      "tag": "P",
+      "text": "Moda Masculina · Rio de Janeiro",
+      "class": ""
+    },
+    {
+      "tag": "P",
+      "text": "© 2025 Gustavo Balbi · Todos os direitos reservados",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Desenvolvido por",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "AG5 Agência",
+      "class": "font-bold"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Gustavo Balbi",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Moda Masculina",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Perfumes",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Fundador OTO",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi Cursu",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Estilo de Vida",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "@balbiguga",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rio de Janeiro",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Gustavo Balbi",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Moda Masculina",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Perfumes",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Fundador OTO",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Balbi Cursu",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Estilo de Vida",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "@balbiguga",
+      "class": ""
+    },
+    {
+      "tag": "SPAN",
+      "text": "Rio de Janeiro",
+      "class": ""
+    },
+    {
+      "tag": "DIV",
+      "text": "Curso Online",
+      "class": "mprod-img-badge"
+    },
+    {
+      "tag": "H3",
+      "text": "Balbi Curso",
+      "class": "mprod-title"
+    },
+    {
+      "tag": "P",
+      "text": "O acompanhamento completo que te transforma em um homem de estilo e presença",
+      "class": "mprod-sub"
+    },
+    {
+      "tag": "P",
+      "text": "A sua imagem te vende em silêncio a todo momento. Com o Balbi Curso você aprende a\n                    se vestir com estilo, segurança e identidade — partindo do zero ou refinando o que já sabe.",
+      "class": "mprod-desc"
+    },
+    {
+      "tag": "DIV",
+      "text": "Bundle",
+      "class": "mprod-img-badge"
+    },
+    {
+      "tag": "H3",
+      "text": "Combão da Vestimenta",
+      "class": "mprod-title"
+    },
+    {
+      "tag": "P",
+      "text": "O pacote definitivo de transformação de imagem masculina",
+      "class": "mprod-sub"
+    },
+    {
+      "tag": "P",
+      "text": "O pacote definitivo de transformação de imagem masculina. Acesso vitalício a tudo.",
+      "class": "mprod-desc"
+    },
+    {
+      "tag": "DIV",
+      "text": "Fundador",
+      "class": "mprod-img-badge"
+    }
+  ],
+  "fonts": [
+    "DM Sans",
+    "Times New Roman",
+    "Cormorant Garamond",
+    "Bebas Neue",
+    "Playfair Display"
+  ],
+  "colors": [
+    "rgb(229, 231, 235)",
+    "rgb(26, 23, 20)",
+    "rgb(247, 244, 238)",
+    "rgb(212, 175, 55)",
+    "rgb(255, 255, 255)",
+    "rgba(212, 175, 55, 0.25)",
+    "rgba(255, 255, 255, 0.92)",
+    "rgba(255, 255, 255, 0.75)",
+    "rgb(68, 68, 68)",
+    "rgba(212, 175, 55, 0.15)",
+    "rgba(26, 23, 20, 0.55)",
+    "rgba(212, 175, 55, 0.4)",
+    "rgb(122, 114, 104)",
+    "rgb(226, 228, 232)",
+    "rgba(255, 255, 255, 0.3)",
+    "rgba(0, 0, 0, 0.3)",
+    "rgb(29, 26, 23)",
+    "rgba(212, 175, 55, 0.1)",
+    "rgba(26, 23, 20, 0.45)",
+    "rgba(212, 175, 55, 0.08)",
+    "rgba(212, 175, 55, 0.3)",
+    "rgba(212, 175, 55, 0.2)",
+    "rgba(212, 175, 55, 0.8)",
+    "rgba(255, 255, 255, 0.65)",
+    "rgba(255, 255, 255, 0.2)",
+    "rgb(245, 242, 238)",
+    "rgb(17, 17, 17)",
+    "rgb(184, 134, 11)",
+    "rgba(255, 255, 255, 0.12)",
+    "rgba(247, 244, 238, 0.9)",
+    "rgba(247, 244, 238, 0.5)",
+    "rgba(247, 244, 238, 0.55)",
+    "rgba(212, 175, 55, 0.9)",
+    "rgba(212, 175, 55, 0.12)",
+    "rgba(212, 175, 55, 0.85)",
+    "rgba(255, 255, 255, 0.25)",
+    "rgba(26, 23, 20, 0.04)",
+    "rgba(212, 175, 55, 0.03)",
+    "rgba(26, 23, 20, 0.75)",
+    "rgba(255, 255, 255, 0.8)",
+    "rgba(0, 0, 0, 0.6)",
+    "rgba(0, 0, 0, 0.1)",
+    "rgba(0, 0, 0, 0.05)",
+    "rgba(0, 0, 0, 0.35)",
+    "rgba(212, 175, 55, 0.5)",
+    "rgba(247, 244, 238, 0.85)",
+    "rgba(0, 0, 0, 0.32)",
+    "rgba(0, 0, 0, 0.72)",
+    "rgb(255, 0, 0)",
+    "rgba(255, 255, 255, 0.82)",
+    "rgba(255, 255, 255, 0.6)",
+    "rgba(212, 175, 55, 0.2) rgb(229, 231, 235) rgb(229, 231, 235)",
+    "rgba(212, 175, 55, 0.45)",
+    "rgba(26, 23, 20, 0.92)",
+    "rgba(26, 23, 20, 0.65)",
+    "rgb(45, 106, 79)",
+    "rgb(245, 237, 232)",
+    "rgb(201, 124, 93)",
+    "rgb(232, 237, 245)",
+    "rgb(74, 96, 128)"
+  ]
+}

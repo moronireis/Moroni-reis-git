@@ -1,0 +1,10 @@
+{
+  "external": [],
+  "preload": [
+    "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css"
+  ],
+  "inline_style_blocks": 22,
+  "inline_style_attrs": 0,
+  "imports_resolved": 0,
+  "failed": []
+}

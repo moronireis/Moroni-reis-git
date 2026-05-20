@@ -178,8 +178,83 @@ const profileIncomplete = !profile?.company || !profile?.phone;
     </>
   )}
 
-  {/* ── STUDENT DASHBOARD ── */}
-  {!isAdmin && (
+  {/* ── STARTER DASHBOARD (academy-only) ── */}
+  {!isAdmin && userRole === 'starter' && (
+    <>
+      {/* Academy hero card */}
+      <a href="/academy" class="block rounded-xl p-6 mb-6 module-card" style="background: var(--surface-1); border: 1px solid rgba(74,144,255,0.2); text-decoration: none;">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: var(--blue-10);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-medium text-lg" style="color: var(--text-primary);">Academy</h3>
+            <p class="text-sm mt-1" style="color: var(--text-tertiary);">Acesse suas aulas e continue aprendendo</p>
+          </div>
+          <span style="color: var(--accent-blue); font-size: 14px; font-weight: 500;">Acessar →</span>
+        </div>
+      </a>
+
+      {/* Upgrade CTA */}
+      <div class="rounded-xl p-5 mb-6" style="background: var(--surface-1); border: 1px solid var(--border-subtle);">
+        <h3 class="font-medium text-sm mb-2" style="color: var(--text-primary);">Quer ir além?</h3>
+        <p class="text-xs mb-4" style="color: var(--text-tertiary);">Converse com nossa equipe para desbloquear mais recursos, mentorias e projetos personalizados.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <a href="https://wa.me/5511970578082?text=Ol%C3%A1!%20Tenho%20interesse%20em%20projetos%20de%20implementa%C3%A7%C3%A3o%20de%20IA.%20Pode%20me%20contar%20mais?" target="_blank" rel="noopener" class="module-card rounded-lg p-4" style="background: var(--surface-2); border: 1px solid var(--border-subtle); text-decoration: none;">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(34,197,94,0.1);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5"><path d="M12 2 2 7l10 5 10-5-10-5z" /><path d="m2 17 10 5 10-5" /><path d="m2 12 10 5 10-5" /></svg>
+              </div>
+              <div>
+                <h4 class="font-medium text-xs" style="color: var(--text-primary);">Projetos</h4>
+                <p class="text-xs" style="color: #22C55E;">Implementação de IA →</p>
+              </div>
+            </div>
+          </a>
+          <a href="https://wa.me/5511970578082?text=Ol%C3%A1!%20Tenho%20interesse%20na%20Mentoria.%20Pode%20me%20contar%20mais?" target="_blank" rel="noopener" class="module-card rounded-lg p-4" style="background: var(--surface-2); border: 1px solid var(--border-subtle); text-decoration: none;">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(139,92,246,0.1);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="1.5"><circle cx="12" cy="12" r="10" /><polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88" /></svg>
+              </div>
+              <div>
+                <h4 class="font-medium text-xs" style="color: var(--text-primary);">Mentoria</h4>
+                <p class="text-xs" style="color: #8B5CF6;">Acompanhamento 1:1 →</p>
+              </div>
+            </div>
+          </a>
+          <a href="https://wa.me/5511970578082?text=Ol%C3%A1!%20Quero%20fazer%20parte%20da%20Comunidade.%20Como%20fa%C3%A7o%20para%20ter%20acesso?" target="_blank" rel="noopener" class="module-card rounded-lg p-4" style="background: var(--surface-2); border: 1px solid var(--border-subtle); text-decoration: none;">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(245,158,11,0.1);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+              </div>
+              <div>
+                <h4 class="font-medium text-xs" style="color: var(--text-primary);">Comunidade</h4>
+                <p class="text-xs" style="color: #F59E0B;">Networking + suporte →</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Settings link */}
+      <a href="/settings" class="block module-card rounded-xl p-4" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9" /></svg>
+          </div>
+          <div>
+            <h3 class="font-medium text-sm" style="color: var(--text-primary);">Configurações</h3>
+            <p class="text-xs" style="color: var(--text-quaternary);">Editar perfil e dados</p>
+          </div>
+        </div>
+      </a>
+    </>
+  )}
+
+  {/* ── STUDENT DASHBOARD (journey+) ── */}
+  {!isAdmin && userRole !== 'starter' && (
     <>
       {/* Onboarding prompt */}
       {profileIncomplete && (
@@ -211,11 +286,9 @@ const profileIncomplete = !profile?.company || !profile?.phone;
               <div class="text-xs" style="color: var(--text-quaternary);">{doneNodes}/{totalNodes} nodes</div>
             </div>
           </div>
-          {/* Progress bar */}
           <div style="height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; margin-bottom: 12px;">
             <div style={`height: 100%; width: ${progressPct}%; background: var(--accent-blue); border-radius: 2px;`}></div>
           </div>
-          {/* Phase dots */}
           <div class="flex items-center gap-2">
             {journeyPhases.map((p: any) => (
               <div style={`width: 8px; height: 8px; border-radius: 50%; ${p.status === 'completed' ? 'background: #22C55E;' : p.status === 'in_progress' || p.status === 'available' ? 'background: var(--accent-blue);' : 'background: rgba(255,255,255,0.1);'}`} title={p.title}></div>
@@ -231,6 +304,17 @@ const profileIncomplete = !profile?.company || !profile?.phone;
 
       {/* Quick links */}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <a href="/academy" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5"><polygon points="5,3 19,12 5,21" /></svg>
+            </div>
+            <div>
+              <h3 class="font-medium text-sm" style="color: var(--text-primary);">Academy</h3>
+              <p class="text-xs" style="color: var(--text-quaternary);">Aulas e formações</p>
+            </div>
+          </div>
+        </a>
         <a href="/community" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
@@ -242,22 +326,11 @@ const profileIncomplete = !profile?.company || !profile?.phone;
             </div>
           </div>
         </a>
-        <a href="/settings" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--blue-10);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9" /></svg>
-            </div>
-            <div>
-              <h3 class="font-medium text-sm" style="color: var(--text-primary);">Configurações</h3>
-              <p class="text-xs" style="color: var(--text-quaternary);">Editar perfil e dados</p>
-            </div>
-          </div>
-        </a>
       </div>
 
       {/* CTA Cards — WhatsApp */}
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <a href="https://wa.me/5511970578082?text=Quero%20contratar%20um%20projeto%20de%20implementação%20de%20IA" target="_blank" rel="noopener" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
+        <a href="https://wa.me/5511970578082?text=Quero%20contratar%20um%20projeto%20de%20implementa%C3%A7%C3%A3o%20de%20IA" target="_blank" rel="noopener" class="module-card rounded-xl p-5" style="background: var(--surface-1); border: 1px solid var(--border-subtle); text-decoration: none;">
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(34,197,94,0.1);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5"><path d="M12 2 2 7l10 5 10-5-10-5z" /><path d="m2 17 10 5 10-5" /><path d="m2 12 10 5 10-5" /></svg>

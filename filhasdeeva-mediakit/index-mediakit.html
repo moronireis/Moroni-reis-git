@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priscilla Andrade — Filhas de Eva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --iv:#FAF8F3;--cr:#F0ECE9;--dk:#0e141b;
+      --tx:#1A1714;--mt:#9A9088;--gd:#C5A55A;
+      --rs:#88636E;--mv:#A57080;--ds:#DCB4B4;
+      --dm:rgba(220,180,180,.18);--sg:#ADBEBE;
+      --f:'Cormorant Garamond',Georgia,serif;
+      --s:'DM Sans','Helvetica Neue',sans-serif;
+      --e:cubic-bezier(.16,1,.3,1);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{font-size:16px;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--s);color:var(--tx);background:var(--dk);overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}
+    .ey{font-family:var(--s);font-weight:500;font-size:.5625rem;letter-spacing:.2em;text-transform:uppercase}
+    .gl{width:32px;height:1px;background:var(--gd)}
+    .pad{padding:clamp(60px,8vw,120px) clamp(24px,5vw,80px)}
+    .mx{max-width:1300px;margin:0 auto}
+
+    /* ═══ 1. COVER ═══ */
+    .cover{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--dk)}
+    .cover-ph{overflow:hidden;position:relative}
+    .cover-ph img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+    .cover-info{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px);color:#fff}
+    .cover-n{font-family:var(--f);font-weight:300;font-size:clamp(2.8rem,5vw,5rem);line-height:.9;margin-bottom:6px}
+    .cover-n em{font-style:italic;font-weight:400;color:var(--ds);display:block}
+    .cover-sub{font-family:var(--s);font-weight:300;font-size:.75rem;color:var(--sg);margin-top:20px;line-height:1.8;max-width:340px}
+    .cover-nums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border-top:1px solid rgba(255,255,255,.06);padding-top:24px}
+    .cover-num{text-align:center}
+    .cover-num b{display:block;font-family:var(--f);font-weight:300;font-size:1.5rem;color:#fff}
+    .cover-num b span{color:var(--gd)}
+    .cover-num small{font-family:var(--s);font-weight:400;font-size:.4375rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+    /* ═══ 2. SOBRE ═══ */
+    .about{display:grid;grid-template-columns:1.1fr 1fr;background:var(--iv)}
+    .about-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px)}
+    .about-bio{font-family:var(--f);font-weight:300;font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.8;color:var(--tx);margin-top:16px}
+    .about-bio strong{font-weight:500;color:var(--rs)}
+    .about-stats{display:grid;grid-template-columns:1fr 1fr;margin-top:32px}
+    .about-st{padding:16px 20px 16px 0;border-bottom:1px solid var(--dm)}
+    .about-st:nth-child(even){padding-left:20px;border-left:1px solid var(--dm)}
+    .about-st b{display:block;font-family:var(--f);font-weight:300;font-size:1.5rem;color:var(--tx)}
+    .about-st b span{color:var(--gd)}
+    .about-st small{font-family:var(--s);font-weight:400;font-size:.4375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt)}
+    .about-ph{overflow:hidden}
+    .about-ph img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
+
+    /* ═══ 3. AUDIÊNCIA (elegant) ═══ */
+    .aud{background:var(--cr)}
+    .aud-hero{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+    .aud-number{font-family:var(--f);font-weight:300;font-size:clamp(6rem,14vw,11rem);line-height:.7;color:var(--tx);letter-spacing:-.06em}
+    .aud-number span{color:var(--gd)}
+    .aud-follow{font-family:var(--f);font-weight:300;font-style:italic;font-size:clamp(1rem,1.5vw,1.3rem);color:var(--mt);align-self:flex-end;padding-bottom:.6em}
+    .aud-desc{font-family:var(--f);font-weight:300;font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.7;color:var(--tx);max-width:600px;margin-top:24px}
+    .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--dm)}
+    .aud-cell{padding:clamp(16px,2vw,28px);border-bottom:1px solid var(--dm);border-right:1px solid var(--dm)}
+    .aud-cell:nth-child(4n){border-right:none}
+    .aud-cell b{display:block;font-family:var(--f);font-weight:300;font-size:clamp(1.5rem,2.5vw,2.2rem);color:var(--tx)}
+    .aud-cell b span{color:var(--gd)}
+    .aud-cell small{font-family:var(--s);font-weight:400;font-size:.4375rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);margin-top:2px;display:block}
+
+    /* ═══ 4. PALESTRAS ═══ */
+    .spk{background:var(--iv)}
+    .spk-hero{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+    .spk-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px)}
+    .spk-txt h2{font-family:var(--f);font-weight:400;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.15}
+    .spk-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:8px}
+    .spk-list li{font-family:var(--s);font-weight:300;font-size:.7rem;color:var(--mt);padding-left:14px;position:relative;line-height:1.5}
+    .spk-list li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:1px;background:var(--gd)}
+    .spk-tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:4px}
+    .spk-tag{font-family:var(--s);font-weight:400;font-size:.375rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rs);padding:3px 8px;border:1px solid var(--dm)}
+    .spk-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+    .spk-imgs img{width:100%;height:100%;object-fit:cover}
+    .spk-imgs img:first-child{grid-row:1/3}
+    .spk-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .spk-sub img{width:100%;aspect-ratio:3/2;object-fit:cover}
+
+    /* ═══ 5. INTERNACIONAL ═══ */
+    .intl{background:var(--dk);color:#fff}
+    .intl-hero{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+    .intl-ph{overflow:hidden}
+    .intl-ph img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+    .intl-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px)}
+    .intl-places{margin-top:28px;display:flex;flex-direction:column;gap:16px}
+    .intl-place{padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .intl-place h4{font-family:var(--f);font-weight:400;font-style:italic;font-size:1.0625rem;color:#fff;margin-bottom:4px}
+    .intl-place p{font-family:var(--s);font-weight:300;font-size:.625rem;color:var(--sg);line-height:1.6}
+    .intl-sub{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:2px clamp(20px,2vw,32px) clamp(20px,2vw,32px)}
+    .intl-sub img{width:100%;aspect-ratio:4/5;object-fit:cover}
+
+    /* ═══ 6. NOIVA ═══ */
+    .noiva{display:grid;grid-template-columns:1.2fr 1fr;min-height:80vh;background:var(--iv)}
+    .noiva-ph{overflow:hidden;position:relative}
+    .noiva-ph img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+    .noiva-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px)}
+    .noiva-h{font-family:var(--f);font-weight:300;font-style:italic;font-size:clamp(2.5rem,5vw,4.5rem);line-height:.9;color:var(--tx);margin-bottom:24px}
+    .noiva-p{font-family:var(--s);font-weight:300;font-size:.8125rem;line-height:1.75;color:var(--mt);max-width:380px}
+    .noiva-badge{display:inline-block;margin-top:24px;font-family:var(--s);font-weight:400;font-size:.375rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gd);padding:4px 12px;border:1px solid rgba(197,165,90,.3)}
+    .noiva-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--iv)}
+    .noiva-sub img{width:100%;aspect-ratio:4/5;object-fit:cover}
+
+    /* ═══ 7. PARCERIAS ═══ */
+    .ptr{background:var(--dk);color:#fff}
+    .pg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.03);margin-top:clamp(24px,3vw,36px)}
+    .pc{background:var(--dk);padding:clamp(20px,2.5vw,36px)}
+    .pc .ey{color:var(--gd);margin-bottom:10px}
+    .pc h3{font-family:var(--f);font-weight:400;font-style:italic;font-size:1.0625rem;color:#fff;margin-bottom:8px;line-height:1.2}
+    .pc p{font-family:var(--s);font-weight:300;font-size:.625rem;color:var(--sg);line-height:1.65}
+    .ps{font-family:var(--f);font-weight:400;font-style:italic;font-size:.8125rem;color:var(--sg);text-align:center;margin-top:clamp(20px,2vw,32px)}
+
+    /* ═══ 8. CONTEÚDO & MÍDIA ═══ */
+    .media{background:var(--iv)}
+    .media-hero{display:grid;grid-template-columns:1fr 1fr;min-height:50vh}
+    .media-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px)}
+    .media-stats{margin-top:24px;display:flex;flex-direction:column;gap:8px}
+    .media-stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--dm)}
+    .media-stat:first-child{border-top:1px solid var(--dm)}
+    .media-stat span:first-child{font-family:var(--s);font-weight:300;font-size:.7rem;color:var(--mt)}
+    .media-stat span:last-child{font-family:var(--f);font-weight:400;font-size:.875rem;color:var(--tx)}
+    .media-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+    .media-grid img{width:100%;aspect-ratio:1;object-fit:cover}
+    .media-yt{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:2px 0 0}
+    .media-yt img{width:100%;aspect-ratio:16/9;object-fit:cover}
+
+    /* ═══ 9. EDITORIAL ═══ */
+    .ed{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .ed-bg{position:absolute;inset:0}
+    .ed-bg img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+    .ed-bg::after{content:'';position:absolute;inset:0;background:rgba(14,20,27,.55)}
+    .ed-q{position:relative;z-index:1;text-align:center;max-width:520px;padding:0 24px}
+    .ed-q blockquote{font-family:var(--f);font-weight:300;font-style:italic;font-size:clamp(1.15rem,1.8vw,1.6rem);line-height:1.55;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+    .ed-q cite{display:block;font-family:var(--s);font-weight:400;font-size:.4375rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ds);margin-top:20px;font-style:normal}
+
+    /* ═══ 10. CONTATO ═══ */
+    .fin{background:var(--iv);text-align:center}
+    .fin-seal{width:28px;height:28px;border:1px solid rgba(220,180,180,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px}
+    .fin-seal::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--gd)}
+    .fin h2{font-family:var(--f);font-weight:300;font-size:clamp(1.4rem,2.5vw,2rem);color:var(--tx);margin-bottom:16px}
+    .fin p{font-family:var(--s);font-weight:300;font-size:.8125rem;color:var(--mt);line-height:2.2}
+    .fin strong{font-weight:500;color:var(--tx)}
+    .fin-ch{display:flex;justify-content:center;gap:40px;margin-top:32px;flex-wrap:wrap}
+    .fin-c{text-align:center}
+    .fin-c .ey{color:var(--gd);margin-bottom:4px;display:block}
+    .fin-c span{font-family:var(--s);font-weight:400;font-size:.75rem;color:var(--tx)}
+    .fin-ft{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--dm);display:flex;justify-content:space-between}
+    .fin-ft span{font-family:var(--s);font-weight:300;font-size:.4375rem;color:rgba(154,144,136,.4)}
+
+    /* ═══ RESPONSIVE ═══ */
+    /* ═══ TABLET ═══ */
+    @media(max-width:1024px){
+      .cover,.about,.spk-hero,.intl-hero,.noiva{grid-template-columns:1fr}
+      .cover-ph,.about-ph,.intl-ph{height:55vh;order:-1}
+      .noiva-ph{height:55vh;order:-1}
+      .spk-imgs{order:-1;height:auto;grid-template-columns:1fr 1fr 1fr}
+      .spk-imgs img:first-child{grid-row:auto}
+      .spk-imgs img{aspect-ratio:3/4}
+      .spk-hero{min-height:auto}
+      .spk-sub{grid-template-columns:1fr 1fr}
+      .intl-sub{grid-template-columns:1fr 1fr}
+      .pg{grid-template-columns:1fr}
+      .aud-grid-resp{grid-template-columns:repeat(2,1fr)!important}
+      .aud-grid-resp>div:nth-child(2n){border-right:none!important}
+      .gal-resp{grid-template-columns:repeat(2,1fr)!important;grid-auto-rows:320px!important}
+    }
+
+    /* ═══ MOBILE — editorial-first ═══ */
+    @media(max-width:640px){
+
+      /* 1. COVER — full-bleed magazine cover */
+      .cover{grid-template-columns:1fr;position:relative;min-height:100vh}
+      .cover-ph{position:absolute;inset:0;height:100%!important;order:0}
+      .cover-ph img{width:100%;height:100%;object-fit:cover}
+      .cover-ph::after{
+        content:'';position:absolute;inset:0;z-index:1;
+        background:linear-gradient(to top,rgba(14,20,27,.85) 0%,rgba(14,20,27,.5) 40%,rgba(14,20,27,.15) 70%,transparent 90%);
+      }
+      .cover-info{position:relative;z-index:1;justify-content:flex-end;padding:32px 24px 40px;min-height:100vh}
+      .cover-n{font-size:2.8rem;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+      .cover-sub{font-size:.7rem;margin-top:16px;max-width:100%;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+      .cover-num b{text-shadow:0 1px 8px rgba(0,0,0,.4)}
+      .cover-num small{text-shadow:0 1px 6px rgba(0,0,0,.3)}
+      .cover-nums{margin-top:28px;padding-top:20px}
+      .cover-num b{font-size:1.3rem}
+      .cover .ey{text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+      /* 2. SOBRE — compact */
+      .about-ph{height:45vh}
+      .about-txt{padding:32px 24px 40px}
+      .about-bio{font-size:1rem}
+      .about-stats{grid-template-columns:1fr 1fr}
+
+      /* 3. AUDIÊNCIA — hero number fullscreen feel */
+      .aud-grid-resp{grid-template-columns:repeat(2,1fr)!important}
+      .aud-grid-resp>div{padding:20px 16px!important}
+      .aud-grid-resp>div:nth-child(odd){border-right:1px solid var(--dm)!important}
+      .aud-grid-resp>div:nth-child(even){border-right:none!important}
+
+      /* 4. PALESTRAS — hero photo like other sections */
+      .spk-hero{min-height:auto!important}
+      .spk-txt{padding:32px 24px 40px}
+      .spk-imgs{order:-1!important;height:55vh!important;display:block!important}
+      .spk-imgs img{display:none!important}
+      .spk-imgs img:first-child{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;grid-row:auto!important}
+      .spk-sub{grid-template-columns:1fr 1fr}
+      .spk-sub img{aspect-ratio:1}
+
+      /* 5. INTERNACIONAL */
+      .intl-ph{height:45vh}
+      .intl-txt{padding:32px 24px 40px}
+      .intl-sub{grid-template-columns:1fr 1fr}
+
+      /* 6. NOIVA — full-bleed immersive (like cover) */
+      .noiva{position:relative;min-height:85vh}
+      .noiva-ph{position:absolute!important;inset:0;height:100%!important;order:0}
+      .noiva-ph::after{
+        content:'';position:absolute;inset:0;z-index:1;
+        background:linear-gradient(to top,rgba(14,20,27,.85) 0%,rgba(14,20,27,.5) 40%,rgba(14,20,27,.15) 70%,transparent 90%);
+      }
+      .noiva-txt{position:relative;z-index:1;justify-content:flex-end;padding:32px 24px 40px;min-height:85vh}
+      .noiva-h{font-size:2.2rem;color:#fff!important;text-shadow:0 3px 20px rgba(0,0,0,.6)}
+      .noiva-p{color:rgba(255,255,255,.85)!important;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+      .noiva .ey{text-shadow:0 1px 8px rgba(0,0,0,.4)}
+      .noiva .gl{box-shadow:0 1px 8px rgba(0,0,0,.3)}
+      .noiva-badge{border-color:rgba(197,165,90,.5)!important}
+
+      /* 7. PARCERIAS */
+      .pg{grid-template-columns:1fr}
+      .pc{padding:24px 20px}
+      .pc h3{font-size:.9375rem}
+
+      /* 8. EDITORIAL */
+      .ed{min-height:55vh}
+      .ed-q blockquote{font-size:1.05rem;padding:0 16px}
+
+      /* 9. GALERIA — 2 cols keeps rhythm */
+      .gal-resp{grid-template-columns:repeat(2,1fr)!important;grid-auto-rows:240px!important;gap:3px!important}
+
+      /* 10. CONTATO */
+      .fin-seal{margin-bottom:20px}
+
+      /* Global mobile typography breathing */
+      .pad{padding:48px 24px}
+      .ey{font-size:.5rem}
+    }
+
+    @media print{section{page-break-after:always}}
+  </style>
+</head>
+<body>
+
+  <!-- 1. COVER — foto branco de costas -->
+  <section class="cover">
+    <div class="cover-ph">
+      <img src="assets/pri-orquidea-cidade.jpg" alt="Priscilla Andrade" style="object-position:center 10%">
+    </div>
+    <div class="cover-info">
+      <p class="ey" style="color:var(--gd)">Mídia Kit 2026</p>
+      <div class="gl" style="margin:14px 0 28px"></div>
+      <h1 class="cover-n">Priscilla<em>Andrade</em></h1>
+      <p class="cover-sub">Especialista em posicionamento, imagem e comportamento. Fundadora da Filhas de Eva. Quase 1 milhão de seguidoras. Clientes em mais de 25 países. Palestrante internacional. Noiva.</p>
+      <div class="cover-nums">
+        <div class="cover-num"><b>980<span>K</span></b><small>Seguidoras</small></div>
+        <div class="cover-num"><b>25<span>+</span></b><small>Países</small></div>
+        <div class="cover-num"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SOBRE — foto vermelho close -->
+  <section class="about">
+    <div class="about-txt">
+      <p class="ey" style="color:var(--mv)">Sobre Priscilla</p>
+      <div class="gl" style="margin:12px 0 20px"></div>
+      <p class="about-bio">Há mais de 8 anos, Priscilla Andrade transforma a forma como mulheres se posicionam no mundo. Seu trabalho une <strong>moda, psicologia comportamental e estratégia de marca pessoal</strong> — entregando resultados tangíveis em como suas clientes são percebidas e valorizadas. Criadora do método <strong>Rainha Magnética</strong>, do <strong>Eden's Club</strong> e fundadora da <strong>Filhas de Eva</strong>.</p>
+      <div class="about-stats">
+        <div class="about-st"><b>980<span>K</span></b><small>Seguidoras</small></div>
+        <div class="about-st"><b>3.8<span>%</span></b><small>Engajamento</small></div>
+        <div class="about-st"><b>120<span>K</span></b><small>Média Reels</small></div>
+        <div class="about-st"><b>4.2<span>%</span></b><small>Saves rate</small></div>
+      </div>
+    </div>
+    <div class="about-ph">
+      <img src="assets/editorial-vermelho-close.jpg" alt="Priscilla Andrade">
+    </div>
+  </section>
+
+  <!-- 3. AUDIÊNCIA — expanded, harmonic typography -->
+  <section style="background:var(--cr);padding:clamp(80px,10vw,140px) clamp(24px,5vw,80px)">
+    <div class="mx">
+      <!-- Hero number centered -->
+      <div style="text-align:center;margin-bottom:clamp(48px,6vw,80px)">
+        <p class="ey" style="color:var(--mv);margin-bottom:16px">Audiência</p>
+        <div style="font-family:var(--f);font-weight:300;font-size:clamp(7rem,16vw,13rem);line-height:.7;color:var(--tx);letter-spacing:-.06em">980<span style="color:var(--gd)">K</span></div>
+        <div style="font-family:var(--f);font-weight:300;font-style:italic;font-size:clamp(1rem,1.5vw,1.25rem);color:var(--mt);margin-top:16px">seguidoras no Instagram</div>
+        <p style="font-family:var(--s);font-weight:300;font-size:.875rem;color:var(--mt);line-height:1.7;margin-top:20px;max-width:520px;margin-left:auto;margin-right:auto">Uma comunidade de mulheres de alto padrão — empreendedoras, executivas e líderes com poder de decisão que investem em posicionamento, imagem e desenvolvimento pessoal.</p>
+      </div>
+      <!-- Metrics grid -->
+      <div class="aud-grid-resp" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--dm)">
+        <div style="padding:clamp(24px,3vw,40px);border-bottom:1px solid var(--dm);border-right:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">94<span style="color:var(--gd)">%</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Feminino</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-bottom:1px solid var(--dm);border-right:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">72<span style="color:var(--gd)">%</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Classes A e B</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-bottom:1px solid var(--dm);border-right:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">48<span style="color:var(--gd)">%</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Empreendedoras</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-bottom:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">81<span style="color:var(--gd)">%</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Ensino superior</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-right:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">3.8<span style="color:var(--gd)">%</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Engajamento</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-right:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">120<span style="color:var(--gd)">K</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Média Reels</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-right:1px solid var(--dm);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">4.2<span style="color:var(--gd)">%</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Saves rate</div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);text-align:center">
+          <div style="font-family:var(--f);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);color:var(--tx);line-height:1">25<span style="color:var(--gd)">+</span></div>
+          <div style="font-family:var(--s);font-weight:400;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mt);margin-top:8px">Países</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PALESTRAS — "palcos por onde já passou" -->
+  <section class="spk">
+    <div class="spk-hero">
+      <div class="spk-txt">
+        <p class="ey" style="color:var(--mv)">Palestras &amp; Eventos</p>
+        <div class="gl" style="margin:12px 0 20px"></div>
+        <h2>Palcos por onde<br>já passou</h2>
+        <p style="font-family:var(--s);font-weight:300;font-size:.75rem;color:var(--mt);margin-top:14px;max-width:380px;line-height:1.7">Priscilla já levou sua mensagem aos palcos mais relevantes de posicionamento e empreendedorismo feminino — do Brasil a Portugal.</p>
+        <ul class="spk-list">
+          <li>Posicionamento de marca pessoal como diferencial competitivo</li>
+          <li>O poder da imagem nos negócios e na liderança</li>
+          <li>Comunicação não-verbal e presença executiva</li>
+          <li>Empreendedorismo feminino e monetização de autoridade</li>
+          <li>Moda como estratégia de posicionamento</li>
+        </ul>
+        <div class="spk-tags">
+          <span class="spk-tag">Ceará</span><span class="spk-tag">Portugal</span><span class="spk-tag">Academia de Oratória</span><span class="spk-tag">BH</span><span class="spk-tag">SP</span>
+        </div>
+      </div>
+      <div class="spk-imgs">
+        <img src="assets/ceara-palestrando-close.jpg" alt="Palestra">
+        <img src="assets/ceara-palco-perfil.jpg" alt="Palco">
+        <img src="assets/ceara-palco-dramatico.jpg" alt="Palco">
+      </div>
+    </div>
+    <div class="spk-sub">
+      <img src="assets/ceara-palco-fullbody.jpg" alt="Ceará">
+      <img src="assets/portugal-evento-interacao.jpg" alt="Portugal">
+      <img src="assets/portugal-evento-palco.jpg" alt="Portugal Palco">
+    </div>
+  </section>
+
+  <!-- 5. INTERNACIONAL -->
+  <section class="intl">
+    <div class="intl-hero">
+      <div class="intl-ph">
+        <img src="assets/portugal-editorial-escada.jpg" alt="Portugal">
+      </div>
+      <div class="intl-txt">
+        <p class="ey" style="color:var(--gd)">Presença Internacional</p>
+        <div class="gl" style="margin:12px 0 20px"></div>
+        <h2 style="font-family:var(--f);font-weight:400;font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.15;color:#fff">Parcerias de nível<br>ao redor do mundo</h2>
+        <p style="font-family:var(--s);font-weight:300;font-size:.75rem;color:var(--sg);margin-top:12px;max-width:380px;line-height:1.7">Hotéis internacionais, hospedagens premium, experiências em iates, eventos exclusivos. Priscilla fecha parcerias que refletem o nível do seu posicionamento.</p>
+        <div class="intl-places">
+          <div class="intl-place"><h4>Dubai</h4><p>Experiências em iate privado, hotéis premium, noivado com cobertura para quase 1 milhão de seguidoras.</p></div>
+          <div class="intl-place"><h4>Portugal</h4><p>Dois eventos exclusivos do Baia — workshops presenciais para mulheres em hotel premium.</p></div>
+          <div class="intl-place"><h4>Brasil</h4><p>Ceará, BH, SP. Palestras corporativas, conferências de empreendedorismo feminino.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="intl-sub">
+      <img src="assets/portugal-lobby-frontal.jpg" alt="Portugal">
+      <img src="assets/portugal-janela-costas.jpg" alt="Portugal">
+      <img src="assets/portugal-bastidores-pb.jpg" alt="Bastidores">
+      <img src="assets/portugal-escada-fullbody.jpg" alt="Portugal">
+    </div>
+  </section>
+
+  <!-- 6. NOIVA — só a foto beijo no arco -->
+  <section class="noiva">
+    <div class="noiva-ph">
+      <img src="assets/dubai-noivado-beijo-arco.jpg?v=4" alt="Noivado Dubai">
+    </div>
+    <div class="noiva-txt">
+      <p class="ey" style="color:var(--gd);margin-bottom:12px">Noiva</p>
+      <div class="gl" style="margin-bottom:24px"></div>
+      <h2 class="noiva-h">Uma jornada que<br>quase 1 milhão<br>acompanha</h2>
+      <p class="noiva-p">Do pedido em um iate em Dubai ao planejamento do casamento, sua audiência vive cada detalhe. Uma oportunidade única para marcas de casamento, joias, vestidos, decoração e experiências nupciais.</p>
+      <span class="noiva-badge">Sob consulta — Categoria exclusiva e temporária</span>
+    </div>
+  </section>
+
+  <!-- 7. PARCERIAS -->
+  <section class="ptr pad">
+    <div class="mx">
+      <p class="ey" style="color:var(--gd)">Colaborações</p>
+      <div class="gl" style="margin:12px 0 16px"></div>
+      <h2 style="font-family:var(--f);font-weight:400;font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.15;color:#fff">Como trabalhamos juntos</h2>
+      <div class="pg">
+        <div class="pc"><p class="ey">01</p><h3>Presença Imersiva</h3><p>Experiências de marca em destinos exclusivos — viagens, iates, hotéis premium. A marca se integra ao universo real de Priscilla.</p></div>
+        <div class="pc"><p class="ey">02</p><h3>Narrativa de Marca</h3><p>Série integrada de 30 a 90 dias onde a marca faz parte da vida de Priscilla de forma orgânica e editorial.</p></div>
+        <div class="pc"><p class="ey">03</p><h3>Noiva &amp; Lifestyle</h3><p>Categoria exclusiva e temporária. Parcerias com marcas de casamento, joias, vestidos e experiências nupciais.</p></div>
+        <div class="pc"><p class="ey">04</p><h3>Consultoria &amp; Método</h3><p>Marcas que co-criam com o método Rainha Magnética ou patrocinam o ecossistema Filhas de Eva.</p></div>
+      </div>
+      <p class="ps">Priscilla aceita no máximo 4 parcerias estratégicas por trimestre.</p>
+    </div>
+  </section>
+
+  <!-- seção mídia removida -->
+
+  <!-- 9. EDITORIAL — foto escudo gold + quote sobre posicionamento -->
+  <section class="ed">
+    <div class="ed-bg"><img src="assets/editorial-vermelho-close.jpg" alt="Priscilla Andrade" style="object-position:center 30%"></div>
+    <div class="ed-q">
+      <blockquote>&ldquo;A falta de posicionamento não só te trava — ela te faz perder oportunidades todos os dias. Quem não se posiciona, aceita qualquer lugar.&rdquo;</blockquote>
+      <cite>Priscilla Andrade</cite>
+    </div>
+  </section>
+
+  <!-- 9. GALERIA EDITORIAL + CONTATO -->
+  <section class="pad" style="background:var(--iv)">
+    <div class="mx">
+      <p class="ey" style="color:var(--mv);margin-bottom:clamp(28px,3vw,40px)">Galeria Editorial</p>
+      <div class="gal-resp" style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:360px;gap:4px;margin-bottom:clamp(56px,7vw,100px)">
+        <img src="assets/pri-vermelho-sorrindo.jpg" alt="Editorial" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/pri-closeup-gold.jpg" alt="Closeup" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/portugal-editorial-retrato.jpg" alt="Portugal" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/pri-espelho-gold.jpg" alt="Escudo" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/pri-espelho-branco.jpg" alt="Espelho" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/portugal-branco-costas.jpg" alt="Portugal" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/pri-orquidea-cidade.jpg" alt="Orquídea" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/pri-laptop.jpg" alt="Professional" style="width:100%;height:100%;object-fit:cover">
+        <img src="assets/editorial-vermelho-close.jpg" alt="Vermelho" style="width:100%;height:100%;object-fit:cover">
+      </div>
+
+      <div style="text-align:center;padding-top:clamp(40px,5vw,72px);border-top:1px solid var(--dm)">
+        <div class="fin-seal"></div>
+        <h2 style="font-family:var(--f);font-weight:300;font-size:clamp(1.5rem,2.5vw,2.2rem);color:var(--tx);margin-bottom:16px">Parcerias estratégicas e booking</h2>
+        <p style="max-width:480px;margin:0 auto 20px;font-family:var(--f);font-weight:300;font-style:italic;font-size:.9375rem;color:var(--mt);line-height:1.6">&ldquo;Seleciono parcerias que refletem os valores da minha comunidade. Cada colaboração é tratada como um editorial — com curadoria, intenção e respeito pela audiência.&rdquo;</p>
+        <p style="font-family:var(--s);font-weight:300;font-size:.8125rem;color:var(--mt);line-height:2.2;margin-top:24px">
+          <strong style="font-weight:500;color:var(--tx)">Amanda</strong> — Assessoria<br>
+          contato@filhasdeeva.com.br<br>
+          <span style="font-size:.6875rem">@filhasdeeva &middot; filhasdeeva.com.br</span>
+        </p>
+        <p style="margin-top:28px;font-family:var(--s);font-weight:400;font-size:.4375rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gd)">Máximo 4 parcerias estratégicas por trimestre</p>
+        <div style="margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--dm);display:flex;justify-content:space-between">
+          <span style="font-family:var(--s);font-weight:300;font-size:.4375rem;color:rgba(154,144,136,.4)">Filhas de Eva</span>
+          <span style="font-family:var(--s);font-weight:300;font-size:.4375rem;color:rgba(154,144,136,.4)">Mídia Kit 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

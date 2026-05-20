@@ -1,0 +1,600 @@
+---
+name: "Brunello Cucinelli"
+colors:
+  primary: "#262626"          # from body color declaration — brand's signature warm near-black (used 73× across CSS)
+  secondary: "#8d8277"        # from .slick-active button::before background — warm taupe accent
+  tertiary: "#71685f"         # from hex inventory — darker taupe, earthy tone in brand palette
+  neutral: "#939494"          # from hex inventory — mid-gray for secondary UI
+  surface: "#ffffff"          # from body background-color declaration
+  text: "#262626"             # from body{color:#262626} declaration
+  text-muted: "#7a7a7b"       # from hex inventory — lighter text for captions/metadata
+  border: "#f2f2f2"           # from .cc-footer border-top and .cc-formGroup border declarations
+  error: "#dc3545"            # from --danger CSS var
+  success: "#28a745"          # from --success CSS var
+  warm-white: "#f1f0ef"       # from hex inventory — warm off-white surface
+  parchment: "#f5f5f5"        # from hex inventory — light background surface
+  cashmere-gray: "#989898"    # from hex inventory — mid neutral
+  dark-taupe: "#495057"       # from hex inventory — deep neutral for contrast
+typography:
+  display-hero:
+    fontFamily: "IvyPresto"                       # from @font-face declaration
+    fontSize: "7rem"                               # from tokens-detected.json typography.size
+    fontWeight: 300                                # from @font-face — only weight 300 loaded
+    lineHeight: "11rem"                            # from tokens-detected.json typography.line_height
+    letterSpacing: "0em"                           # inferred from luxury serif convention — no explicit tracking
+    features: "'lnum'"                             # from body font-feature-settings declaration
+  display-large:
+    fontFamily: "IvyPresto"                       # from @font-face declaration
+    fontSize: "5rem"                               # from tokens-detected.json typography.size
+    fontWeight: 300                                # from @font-face — only weight 300 loaded
+    lineHeight: "6.4rem"                           # from tokens-detected.json typography.line_height
+    letterSpacing: "0em"                           # inferred from luxury serif convention
+    features: "'lnum'"                             # from body font-feature-settings
+  section-heading:
+    fontFamily: "IvyPresto"                       # from @font-face declaration
+    fontSize: "4rem"                               # from tokens-detected.json typography.size
+    fontWeight: 300                                # from @font-face
+    lineHeight: "5rem"                             # from tokens-detected.json typography.line_height
+    letterSpacing: "0em"                           # inferred from luxury serif convention
+    features: "'lnum'"                             # from body font-feature-settings
+  subheading-large:
+    fontFamily: "GTEesti"                          # from @font-face declaration
+    fontSize: "2.2rem"                             # from tokens-detected.json typography.size
+    fontWeight: 300                                # from .cc-pressRoom heading pattern
+    lineHeight: "3.4rem"                           # from tokens-detected.json typography.line_height
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  subheading:
+    fontFamily: "GTEesti"                          # from @font-face declaration
+    fontSize: "1.8rem"                             # from .cc-pressRoom__table heading — font-size:1.8rem
+    fontWeight: 300                                # from .cc-pressRoom__table heading — font-weight:300
+    lineHeight: "2.8rem"                           # from .cc-pressRoom__table heading — line-height:2.8rem
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  body-large:
+    fontFamily: "TTLivretText"                     # from @font-face declaration — editorial body serif
+    fontSize: "1.8rem"                             # from tokens-detected.json typography.size
+    fontWeight: 300                                # from @font-face — primary weight for TTLivretText
+    lineHeight: "2.8rem"                           # from tokens-detected.json typography.line_height
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  body:
+    fontFamily: "GTEesti"                          # from body{font-family:"GTEesti"} declaration
+    fontSize: "1.6rem"                             # from body{font-size:1.6rem} declaration
+    fontWeight: 400                                # from body{font-weight:400} declaration
+    lineHeight: "1.5"                              # from body{line-height:1.5} declaration
+    letterSpacing: "0em"                           # from .tooltip letter-spacing:normal
+    features: "'lnum'"                             # from body{font-feature-settings:"lnum"} declaration
+  body-small:
+    fontFamily: "GTEesti"                          # from @font-face declaration
+    fontSize: "1.4rem"                             # from .cc-btn--primary--menu font-size:1.4rem
+    fontWeight: 400                                # from .cc-btn--primary--menu font-weight:400
+    lineHeight: "2.1rem"                           # from tokens-detected.json typography.line_height
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  button:
+    fontFamily: "GTEesti"                          # from body font-family inheritance
+    fontSize: "1.4rem"                             # from component-properties.json button font-size most_common
+    fontWeight: 300                                # from component-properties.json button font-weight most_common
+    lineHeight: "1.5"                              # inferred from body line-height inheritance
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  link:
+    fontFamily: "GTEesti"                          # from body font-family inheritance
+    fontSize: "1.4rem"                             # from .cc-btn--primary--menu font-size
+    fontWeight: 400                                # from button.variants.link font-weight most_common
+    lineHeight: "1.5"                              # inferred from body line-height inheritance
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  caption:
+    fontFamily: "GTEesti"                          # from @font-face declaration
+    fontSize: "1.2rem"                             # from .cc-formGroup language select font-size:1.2rem
+    fontWeight: 300                                # from GTEesti light weight usage pattern
+    lineHeight: "1.4rem"                           # from .cc-headerSearch__close button line-height:1.4rem
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  micro:
+    fontFamily: "GTEesti"                          # from @font-face declaration
+    fontSize: "1rem"                               # from tokens-detected.json typography.size
+    fontWeight: 400                                # inferred from body base weight
+    lineHeight: "1.5"                              # inferred from body line-height
+    letterSpacing: "0em"                           # inferred from no explicit declaration
+    features: "'lnum'"                             # from body font-feature-settings
+  h1:
+    fontFamily: "IvyPresto"                        # alias for display-hero
+    fontSize: "7rem"
+    fontWeight: 300
+    lineHeight: "11rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  h2:
+    fontFamily: "IvyPresto"                        # alias for display-large
+    fontSize: "5rem"
+    fontWeight: 300
+    lineHeight: "6.4rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  h3:
+    fontFamily: "IvyPresto"                        # alias for section-heading
+    fontSize: "4rem"
+    fontWeight: 300
+    lineHeight: "5rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  h4:
+    fontFamily: "GTEesti"                          # alias for subheading-large
+    fontSize: "2.2rem"
+    fontWeight: 300
+    lineHeight: "3.4rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  body-lg:
+    fontFamily: "TTLivretText"                     # alias for body-large
+    fontSize: "1.8rem"
+    fontWeight: 300
+    lineHeight: "2.8rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  body-md:
+    fontFamily: "GTEesti"                          # alias for body
+    fontSize: "1.6rem"
+    fontWeight: 400
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  body-sm:
+    fontFamily: "GTEesti"                          # alias for body-small
+    fontSize: "1.4rem"
+    fontWeight: 400
+    lineHeight: "2.1rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  label:
+    fontFamily: "GTEesti"                          # alias for caption
+    fontSize: "1.2rem"
+    fontWeight: 300
+    lineHeight: "1.4rem"
+    letterSpacing: "0em"
+    features: "'lnum'"
+  mono:
+    fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, monospace"  # from --font-family-monospace CSS var
+    fontSize: "1.4rem"
+    fontWeight: 400
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: "'lnum'"
+rounded:
+  none: "0px"                 # from component-properties.json button border-radius most_common
+  sm: "3px"                   # from tokens-detected.json radii — .2rem = 3.2px ≈ 3px
+  md: "4px"                   # from tokens-detected.json radii — .25rem = 4px
+  lg: "6px"                   # from tokens-detected.json radii — .4rem = 6.4px ≈ 6px
+  full: "9999px"              # from tokens-detected.json radii — 50% functionally equivalent
+spacing:
+  xs: "4px"                   # from tokens-detected.json spacing — 3px/5px cluster ≈ 4px
+  sm: "8px"                   # from tokens-detected.json spacing — .5rem = 8px
+  md: "16px"                  # from tokens-detected.json spacing — 1rem = 16px
+  lg: "24px"                  # from tokens-detected.json spacing — 1.5rem = 24px
+  xl: "48px"                  # from tokens-detected.json spacing — 3rem = 48px
+preview_tokens:
+  button_primary_bg: "#262626"        # from .cc-btn--primary underline bar background:#262626
+  button_primary_text: "#262626"      # from .cc-btn--primary:hover color:#262626
+  button_primary_border: "transparent" # from component-properties.json — no visible border, underline animation instead
+  button_secondary_bg: "transparent"  # inferred from brand pattern — ghost buttons on white
+  button_secondary_text: "#262626"    # from .cc-btn--primary color inheritance
+  button_secondary_border: "#262626"  # inferred from dark border-bottom pattern
+  button_tertiary_text: "#262626"     # from button link variant color
+  surface_bg: "#ffffff"               # from body background-color:#fff
+  card_bg: "#ffffff"                  # from component-properties.json card background-color:#fff
+  text: "#262626"                     # from body{color:#262626}
+  text_muted: "#7a7a7b"              # from hex inventory — lighter caption text
+  border: "#f2f2f2"                   # from .cc-footer border-top and .cc-formGroup input border
+  accent: "#8d8277"                   # from .slick-active button::before background — warm taupe active indicator
+  button_radius: "0px"               # from component-properties.json button border-radius most_common = "0"
+  card_radius: "0px"                 # from component-properties.json card border-radius most_common = "0"
+  input_radius: "0px"               # from .cc-formGroup select border-radius:0
+components:
+  button-primary:
+    bg: "transparent"
+    text: "#262626"
+    border: "transparent"
+    radius: "0px"
+    padding: "6px 0px"
+    font: "1.4rem GTEesti weight 300"
+    hover_bg: "transparent"
+  button-primary-hover:
+    bg: "transparent"
+    text: "#262626"
+  button-primary-white:
+    bg: "transparent"
+    text: "#ffffff"
+    border: "transparent"
+    radius: "0px"
+    padding: "6px 0px"
+    font: "1.4rem GTEesti weight 300"
+    hover_bg: "transparent"
+  button-ghost:
+    bg: "transparent"
+    text: "#262626"
+    border: "transparent"
+    radius: "0px"
+    padding: "0px"
+  card:
+    bg: "#ffffff"
+    border: "transparent"
+    radius: "0px"
+    shadow: "none"
+    padding: "20px"
+  input-text:
+    bg: "transparent"
+    text: "#262626"
+    border: "#f2f2f2"
+    radius: "0px"
+    padding: "15px 20px"
+    focus_border: "#262626"
+  badge-default:
+    bg: "#8d8277"
+    text: "#ffffff"
+    border: "transparent"
+    radius: "6px"
+    padding: "0px 6px"
+    font: "1.2rem GTEesti weight 300"
+  nav-header:
+    bg: "#ffffff"
+    text: "#262626"
+    border_bottom: "transparent"
+    backdrop_filter: "none"
+    height: "7.3rem"
+---
+
+## 1. Visual Theme & Atmosphere
+
+Brunello Cucinelli's digital presence is an exercise in restraint that mirrors the house's philosophy of humanistic capitalism. The palette is built on warm near-black (`#262626`) against pure white, with the only chromatic accent being the cashmere taupe (`#8d8277`) — an earth tone drawn directly from the Umbrian landscape surrounding Solomeo. There are no blues, no gradients, no saturated accents. Color, when it appears at all, arrives through full-bleed photography of Italian countryside, cashmere textures, and classical architecture.
+
+The typographic system is the most distinctive element: IvyPresto Display at weight 300 for headlines creates a feather-light serif voice that reads as philosophical rather than commercial. This pairs with GT Eesti Pro Display as the sans-serif workhorse, and TT Livret Text as the editorial body serif — a three-font system that enables the brand to shift register from contemplative editorial (IvyPresto) to functional navigation (GTEesti) to literary body copy (TTLivretText). The universal `font-feature-settings: "lnum"` ensures lining numerals throughout, maintaining the formal character even in data-heavy investor sections.
+
+Surfaces are deliberately flat. There are no box shadows, no glassmorphism, no elevation layers. Depth is created exclusively through the image mask reveal system — white curtains that part horizontally to unveil photography, timed at 1.2s with `ease-in-out`. This single animation motif replaces what most brands accomplish with an entire motion library. The `.22s ease-in-out` timing function appears across all UI transitions, creating a quiet, unhurried rhythm that signals luxury through patience.
+
+The overall impression is that of a beautifully bound book — white pages, black ink, carefully chosen serif, and images that breathe.
+
+**Key Characteristics:**
+- Warm near-black `#262626` instead of pure `#000000` — every black carries warmth
+- Three-font High-Low-Mid system: IvyPresto (display serif) / GTEesti (sans UI) / TTLivretText (body serif)
+- Weight 300 dominates: headlines, buttons, inputs, table headings — lightness is the brand voice
+- Zero border-radius on all interactive elements (buttons, cards, inputs, selects)
+- Animated underline links replace traditional hover color changes
+- Image mask reveals (white curtain, 1.2s ease) as the signature motion motif
+- Photography-dominant: the UI recedes, imagery commands
+- `font-feature-settings: "lnum"` on the body — lining numerals system-wide
+- No shadows, no blur, no elevation — completely flat surface model
+- Warm taupe `#8d8277` as the sole chromatic accent (carousel active indicator)
+
+## 2. Color Palette & Roles
+
+### Primary
+
+- **Cucinelli Near-Black** (`#262626`): The brand's signature text and interactive element color. Used for body text, button text, link text, underline bars, and menu items. Appears 73 times in the stylesheet — it IS the brand color.
+
+### Brand & Dark
+
+- **Dark Taupe** (`#71685f`): A deeper earth tone for secondary emphasis and darker UI elements.
+- **Deep Neutral** (`#495057`): Used in form controls and input text for slightly softened contrast.
+- **Charcoal** (`#343a40`): `--dark` Bootstrap var, used for dark section backgrounds when needed.
+
+### Accent Colors
+
+- **Cashmere Taupe** (`#8d8277`): The house's warmest accent. Used for active carousel dots and hover states. This is the color of raw cashmere and Umbrian stone.
+- **Warm Gray** (`#939494`): Mid-tone neutral for secondary interactive indicators.
+- **Muted Stone** (`#989898`): Tertiary accent for less prominent UI elements.
+
+### Interactive
+
+- **Underline Bar**: `#262626` animating via `translateX` at `0.6s cubic-bezier(.4,0,.4,1)` — the primary interactive signal
+- **White Variant**: `#ffffff` underline bar and text on dark/transparent header sections
+- **Disabled State**: `opacity: .3` or `rgba(38,38,38,.4)` — the brand reduces presence rather than graying out
+
+### Neutral Scale
+
+- **Near-Black** (`#262626`): Primary text, headings, body
+- **Medium Gray** (`#7a7a7b`): Secondary text, captions, metadata
+- **Mid Gray** (`#939494`): Tertiary text, placeholder hints
+- **Light Gray** (`#989898`): De-emphasized labels
+
+### Surface & Borders
+
+- **Pure White** (`#ffffff`): Primary surface, menu backgrounds, card backgrounds
+- **Warm White** (`#f1f0ef`): Subtle warm surface differentiation — 4 uses
+- **Parchment** (`#f2f2f2`): Border color for inputs, selects, footer separator — the primary structural hairline
+- **Snow** (`#f5f5f5`): Alternate light surface
+
+### Shadow Colors
+
+The system is intentionally shadowless. The one exception is the select dropdown, which uses `box-shadow: 0 .2rem 2rem 0 rgba(0,0,0,.15)` — a minimal, warm-neutral shadow for floating panels only.
+
+### Color Philosophy
+
+Brunello Cucinelli's color system is a deliberate rejection of digital convention. Where most luxury brands permit at least one saturated accent, Cucinelli restricts the entire palette to the grayscale spectrum with warm undertones. The brand color IS the warm near-black — not a decorative accent but the medium itself, like ink on paper. The `#262626` instead of `#000000` decision is foundational: it introduces the warmth of aged paper and natural fiber without any visible "color." Photography carries all chromatic information, and the UI exists only to frame it. This is the typographic equivalent of "quiet luxury" — you notice the quality of the type, not its color.
+
+## 3. Typography Rules
+
+### Font Family
+
+- **IvyPresto Display** — Display serif for editorial headlines. Weight 300 (light) only, with 300 italic available. This is the philosophical voice: contemplative, classical, drawing from humanist type tradition.
+- **GT Eesti Pro Display** — Sans-serif workhorse for body, navigation, buttons, forms. Weights 300 (light), 400 (regular), 600 (bold). The functional voice — clean, Nordic, modern without being cold.
+- **TT Livret Text** — Text serif for editorial body copy. Weights 300 (light), 300 italic, 400 (regular), 500 (medium). The literary voice — designed for sustained reading at body sizes.
+- **OpenType Features**: `"lnum"` (lining numerals) applied globally at the `body` level.
+
+### Hierarchy
+
+| Role | Font | Size | Weight | Line Height | Letter Spacing | Features | Notes |
+|------|------|------|--------|-------------|----------------|----------|-------|
+| display-hero | IvyPresto | 7rem | 300 | 11rem | 0em | lnum | Hero headlines, full-viewport quotes |
+| display-large | IvyPresto | 5rem | 300 | 6.4rem | 0em | lnum | Section titles, major editorial headings |
+| section-heading | IvyPresto | 4rem | 300 | 5rem | 0em | lnum | Section subdivisions |
+| subheading-large | GTEesti | 2.2rem | 300 | 3.4rem | 0em | lnum | Secondary headings |
+| subheading | GTEesti | 1.8rem | 300 | 2.8rem | 0em | lnum | Table headings, tertiary sections |
+| body-large | TTLivretText | 1.8rem | 300 | 2.8rem | 0em | lnum | Editorial body text, long-form reading |
+| body | GTEesti | 1.6rem | 400 | 1.5 | 0em | lnum | Default body text, UI text |
+| body-small | GTEesti | 1.4rem | 400 | 2.1rem | 0em | lnum | Secondary body text |
+| button | GTEesti | 1.4rem | 300 | 1.5 | 0em | lnum | Button labels, CTAs |
+| link | GTEesti | 1.4rem | 400 | 1.5 | 0em | lnum | Navigation items, text links |
+| caption | GTEesti | 1.2rem | 300 | 1.4rem | 0em | lnum | Metadata, language selector, labels |
+| micro | GTEesti | 1rem | 400 | 1.5 | 0em | lnum | Legal, fine print |
+
+### Principles
+
+- Weight 300 is the brand's default voice — headlines, buttons, table headings, form labels all default to light. Weight 400 is reserved for body text where sustained readability requires it. Weight 600 exists but is rarely deployed.
+- IvyPresto at 300 creates the "silk thread" effect: the serif hairlines are almost transparent at display sizes, giving headlines a delicate, handwritten quality that reads as philosophical rather than commercial.
+- The three-font system maps to three registers: contemplation (IvyPresto), function (GTEesti), and narration (TTLivretText). Mixing these within a single component breaks the register system.
+- The `62.5%` root font-size reset sets `1rem = 10px`, making all rem values a direct pixel-to-rem conversion (1.6rem = 16px). This is the base unit for the entire type scale.
+- `font-feature-settings: "lnum"` is declared at the body level. Do not override this — lining numerals are part of the brand's typographic DNA.
+- Letter-spacing is `0em` everywhere. The brand relies on the typeface's native metrics. Do not add tracking to IvyPresto or GTEesti.
+
+## 4. Components
+
+### Buttons
+
+**Animated Underline** (`button-primary`)
+- Background: `transparent`
+- Text: `#262626`
+- Border: none visible — a `0.1rem` underline bar at the bottom animates via `translateX`
+- Padding: 6px 0px (essentially text-only with vertical breathing room)
+- Radius: 0px
+- Font: 1.4rem GTEesti weight 300, `"lnum"`
+- Hover: underline animates in at `0.6s cubic-bezier(.4,0,.4,1)` — the bar slides out left and re-enters from right
+- Transition: `all .22s ease-in-out`
+- Use: Primary CTA ("EXPLORE", "DISCOVER MORE", "ONLINE BOUTIQUE")
+
+**White Variant** (`button-primary-white`)
+- Same anatomy as primary but with white text and white underline bar
+- Text: `#ffffff`
+- Underline bar: `#ffffff`
+- Use: CTAs over dark/transparent header backgrounds and hero imagery
+
+**Ghost / Invisible** (`button-ghost`)
+- Background: `transparent`
+- Text: `#262626`
+- Border: `transparent`
+- Radius: 0px
+- Padding: 0px
+- Use: Menu close buttons, search submit, utility actions
+
+The system uses a single button style with a color variant. There is no secondary/outlined button pattern — emphasis is conveyed by placement, copy, and the animated underline. This is intentional minimalism: one gesture, one interaction pattern.
+
+### Cards & Containers
+
+**Default Card** (`card`)
+- Background: `#ffffff`
+- Border: none (transparent)
+- Radius: 0px (sharp edges)
+- Shadow: none
+- Padding: ~20px
+- Use: Content cards, press room entries
+
+Cards are deliberately invisible containers — they provide structural grouping without any visual embellishment. No shadows, no borders, no rounded corners. Content and photography carry the visual weight.
+
+### Inputs & Forms
+
+**Text Input / Select** (`input-text`)
+- Background: `transparent`
+- Text: `#262626`
+- Border: `0.1rem solid #f2f2f2` (hairline, warm light gray)
+- Radius: 0px (sharp edges)
+- Padding: 1.5rem 2rem (24px 32px — generous for luxury touch targets)
+- Focus: `#262626 auto 0.1rem` outline — the brand color, not a focus ring blue
+- Font: GTEesti weight 300, 1.6rem
+- Placeholder opacity: 0.7
+- Use: Contact forms, search input, language selectors
+
+**Select Dropdown**
+- Menu background: `#ffffff`
+- Border: `0.1rem solid #ffffff` (invisible border)
+- Radius: `0.4rem` (the only rounded element in the system — a nod to usability)
+- Shadow: `0 0.2rem 2rem 0 rgba(0,0,0,.15)` (subtle, neutral)
+- Item padding: `0.8rem 0`
+- Item font: GTEesti weight 300, 1.6rem
+
+### Badges / Tags / Pills
+
+**Carousel Active Indicator** (`badge-default`)
+- Background: `#8d8277` (cashmere taupe)
+- Default inactive: `opacity: 0.5`, no background
+- Shape: `0.4rem` radius, `0.3rem` height bar
+- Use: Slick carousel pagination dots
+
+This surface does not define traditional badge/tag/pill tokens. If your context requires them, follow the typography and spacing primitives to derive consistent ones: GTEesti 1.2rem weight 300 with 0px radius and `#262626` border.
+
+### Navigation
+
+**Header** (`nav-header`)
+- Background: `#ffffff` (solid on scroll)
+- Text: `#262626`
+- Height: `7.3rem` (mobile) / `9.4rem` (desktop)
+- Transition: `all .22s ease-in-out`
+- Border: none
+- Fixed variant: `7.2rem` / `9.3rem` (slightly reduced)
+
+**Transparent Header** (over hero imagery)
+- Background: `linear-gradient(180deg, rgba(0,0,0,.6) 0, rgba(38,38,38,0) 100%)` — dark gradient fading to transparent
+- Text: `#ffffff`
+- Logo: white variant displayed
+- Same height values, same transition timing
+
+**Menu Overlay**
+- Background: `#ffffff`
+- Animation: slide from top (mobile) or from left (desktop)
+- Overlay scrim: `#000000` at `opacity: .6`
+- Timing: `.22s ease-in-out`
+- Menu items: GTEesti weight 400, 1.4rem
+
+### Decorative Elements
+
+**Image Mask Reveals** — The signature decorative motif. White pseudo-element curtains (`::before` and `::after`) overlay images at varying widths per breakpoint. When the image scrolls into view (`[data-aos=visible]`), the curtains animate to `width: 0` over `1.2s ease-in-out`, revealing the photograph beneath. Four mask sizes: large, medium, small, xsmall — each with different curtain widths at mobile/tablet/desktop/ultra-wide breakpoints.
+
+**Animated Underline** — A `0.1rem` horizontal bar beneath link/button text that animates via `translateX` keyframes. The bar slides out to the left (-100%), then instantly repositions to the right (100%), then slides back in to center. Timing: `0.6s cubic-bezier(.4, 0, .4, 1)`. This creates a sweeping wipe effect rather than a simple grow-from-center.
+
+**Footer Separator** — A single `0.2rem solid #f2f2f2` border at the top of the footer. This is the only visible structural border in the entire layout.
+
+## 5. Layout Principles
+
+### Spacing System
+
+Base unit: `10px` (derived from the `62.5%` root font-size, making `1rem = 10px`). All spacing uses rem values.
+
+Scale: 4px (0.4rem), 8px (0.8rem), 12px (1.2rem), 16px (1.6rem), 20px (2rem), 24px (2.4rem), 32px (3.2rem), 40px (4rem), 48px (4.8rem).
+
+The generous padding on interactive elements (inputs at 1.5rem 2rem, menu items at 1.2rem 2rem, dropdown menus at 0.7rem 2rem) creates the unhurried, spacious feel characteristic of luxury digital.
+
+### Grid & Container
+
+The site uses a Bootstrap-derived 12-column grid with custom breakpoints:
+- **xs**: 0px (mobile)
+- **sm**: 768px (tablet)
+- **md**: 1024px (small desktop)
+- **lg**: 1200px (desktop — primary design target)
+- **xl**: 2100px (ultra-wide / 4K)
+
+The image mask system creates the most distinctive layout behavior: at desktop (≥1200px), masks can be 11.2rem (large), 21.6rem (medium), 32rem (small), or 42.2rem (xsmall) wide — consuming significant horizontal space as deliberate negative space framing each photograph.
+
+### Whitespace Philosophy
+
+Whitespace at Brunello Cucinelli is not empty space — it is the material of contemplation. The image mask system codifies this: rather than letting images fill their containers, the masks impose architectural margins of white that frame each photograph like a museum gallery wall. At desktop resolution, these masks can occupy up to 42.2rem (422px) per side, meaning the actual visible image may be less than half the viewport width. This is the digital equivalent of hanging a small painting on a large white wall — the negative space amplifies the image's presence rather than diminishing it.
+
+Section spacing follows the same principle: generous vertical padding (4rem between sections on desktop), wide horizontal margins, and minimal content density per viewport.
+
+### Border Radius Scale
+
+- **0px** — Buttons, cards, inputs, selects, images: the default. Sharp edges are the brand's geometric signature.
+- **3px** (0.2rem) — Small form controls (Bootstrap sm variant, rarely used on-brand)
+- **4px** (0.25rem) — Dropdowns and tooltips (Bootstrap default, lightly present)
+- **6px** (0.4rem) — Select dropdown menus and carousel dot indicators: the maximum radius in the brand system
+- **50%** — Carousel dots only (circular shape for indicator dots)
+
+The near-total absence of border-radius is a defining characteristic. Zero radius on all primary interactive elements (buttons, cards, inputs) creates sharp rectangular geometry that reads as architectural rather than friendly.
+
+## 6. Depth & Elevation
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (default) | No shadow, no border | Cards, containers, all primary surfaces |
+| Hairline | `0.1rem solid #f2f2f2` | Form inputs, footer separator |
+| Elevated | `0 0.2rem 2rem 0 rgba(0,0,0,.15)` | Select dropdown menus only |
+| Overlay | `background: #000; opacity: .6` | Menu overlay scrim |
+| Focus ring | `#262626 auto 0.1rem` | Form element focus state |
+
+### Shadow Philosophy
+
+The system is intentionally low-elevation. Depth is communicated via border + surface contrast and the image mask reveal system, not shadow. The single box-shadow in the entire custom CSS — the select dropdown at `0 0.2rem 2rem 0 rgba(0,0,0,.15)` — uses a warm neutral shadow (pure black, not tinted) and is reserved exclusively for floating panels that must communicate layer separation. There is no ambient shadow, no card shadow, no button shadow. This deliberate flatness is the typographic equivalent of letterpress: ink meets paper, nothing in between. The Bootstrap framework layer includes default focus shadows (`0 0 0 .2rem rgba(...)`) but these are functional accessibility indicators, not decorative depth.
+
+## 7. Do's and Don'ts
+
+**Do's:**
+- Do use IvyPresto Display at weight 300 for all editorial headlines — this hairline serif IS the brand voice
+- Do maintain `font-feature-settings: "lnum"` on all text — lining numerals are mandatory
+- Do use the animated underline (`translateX` keyframe at `0.6s cubic-bezier(.4,0,.4,1)`) for link hover instead of color change
+- Do keep all buttons, cards, and inputs at `border-radius: 0` — sharp geometry is the architectural signature
+- Do use `#262626` (warm near-black) instead of `#000000` for all text and interactive elements
+- Do frame photography with generous negative space — the image mask system exists for this purpose
+- Do use the `.22s ease-in-out` timing function for all UI transitions — this is the brand's temporal rhythm
+- Do maintain the three-font register system: IvyPresto for contemplation, GTEesti for function, TTLivretText for narration
+- Do let images carry all color — the UI palette is monochrome by design
+
+**Don'ts:**
+- Don't use GTEesti at weight 600 for headlines — bold weight destroys the feather-light brand voice; weight 300 is the ceiling for display text
+- Don't add border-radius to buttons or cards — even `4px` reads as SaaS/tech and breaks the architectural geometry
+- Don't introduce saturated accent colors (blue, green, orange) — the only chromatic accent is cashmere taupe `#8d8277`
+- Don't use box-shadows on cards or containers — the brand is deliberately shadowless; depth comes from white space framing
+- Don't add letter-spacing to IvyPresto headlines — the typeface's native metrics define the brand's tracking
+- Don't use bounce, spring, or elastic easing — the `.22s ease-in-out` and `0.6s cubic-bezier(.4,0,.4,1)` curves are the only sanctioned easings
+- Don't use `#000000` (pure black) for text — `#262626` carries the warmth of natural fiber and aged paper
+- Don't replace the animated underline hover with background color transitions or opacity changes — the sweeping wipe is the signature interaction
+- Don't use `#f2f2f2` borders on anything besides inputs and the footer separator — most containers should be borderless
+- Don't introduce frosted glass, backdrop-blur, or glassmorphism — the visual language relies on solid, opaque white surfaces
+
+## 8. Responsive Behavior
+
+### Breakpoints
+
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| xs (mobile) | 0px | Single column, hamburger menu, image masks at 1.6rem |
+| sm (tablet) | 768px | Multi-column grid, image masks widen to 3.2rem, transparent header labels visible |
+| md (small desktop) | 1024px | Intermediate layout adjustments |
+| lg (desktop) | 1200px | Full layout, image masks at 11.2-42.2rem, menu slides from left, underline animations active |
+| xl (ultra-wide) | 2100px | Image masks at maximum width (22.4-42.2rem), content centered in vast white space |
+
+### Touch Targets
+
+Form inputs use generous padding (1.5rem 2rem = 24px 32px) providing comfortable touch targets. Menu action height is set at `6.6rem` (66px) on desktop. Buttons inherit body padding and rely on the full text area as touch target. Search close button SVG is `2.4rem × 2.4rem` (24px × 24px).
+
+### Collapsing Strategy
+
+- **Navigation**: Full side-panel menu on desktop (slides from left) collapses to top-sliding overlay on mobile
+- **Header height**: Reduces from `9.4rem` to `7.3rem` on mobile (fixed variant: `9.3rem` to `7.2rem`)
+- **Image masks**: Dramatic reduction from 11.2-42.2rem (desktop) to 1.6rem (mobile) — images gain much more visible area on small screens
+- **Animated underline**: Disabled below 1200px — links use standard text decoration on mobile
+- **Menu button labels**: Hidden below 768px, showing only icons
+- **Video switching**: Separate mobile and desktop video elements, swapped via display:none/block at 768px
+
+### Image Behavior
+
+The image mask reveal system adapts per breakpoint with four size tiers (large, medium, small, xsmall). On mobile, all masks collapse to a minimal 1.6rem, making images nearly full-bleed. On desktop, masks can be substantial (up to 42.2rem per side), creating the gallery-wall framing effect. Images use Cloudinary's `f_auto,q_auto` for format and quality optimization. Mobile and desktop video sources are separate elements, not responsive resizing.
+
+## 9. Agent Prompt Guide
+
+### Quick Color Reference
+
+- Primary text: Cucinelli Near-Black (`#262626`)
+- Body text: Cucinelli Near-Black (`#262626`)
+- Secondary text: Soft Gray (`#7a7a7b`)
+- Background: Pure White (`#ffffff`)
+- Warm surface: Warm White (`#f1f0ef`)
+- Border / hairline: Parchment (`#f2f2f2`)
+- Active accent: Cashmere Taupe (`#8d8277`)
+- Disabled: `rgba(38,38,38,.4)`
+- Overlay scrim: `rgba(0,0,0,.6)`
+- CTA underline: `#262626` (or `#ffffff` on dark backgrounds)
+
+### Example Component Prompts
+
+> "Create a hero section with a full-bleed background image. Overlay text centered: headline at 5rem IvyPresto weight 300, line-height 6.4rem, color #ffffff, font-feature-settings 'lnum'. Subtitle at 1.4rem GTEesti weight 300, color #ffffff, above the headline. CTA button: text 'EXPLORE' at 1.4rem GTEesti weight 300, color #ffffff, no background, no border, with a 0.1rem white underline bar at the bottom. Header transparent with linear-gradient(180deg, rgba(0,0,0,.6) 0, rgba(38,38,38,0) 100%)."
+
+> "Create a content card with zero border-radius, no shadow, no border, white background #ffffff. Heading at 2.2rem GTEesti weight 300, color #262626, line-height 3.4rem. Body text at 1.6rem GTEesti weight 400, color #262626, line-height 1.5. All text with font-feature-settings 'lnum'."
+
+> "Create a contact form on white background. Inputs: border 0.1rem solid #f2f2f2, border-radius 0, padding 1.5rem 2rem, font 1.6rem GTEesti weight 300, color #262626, focus border #262626. Labels: 1.2rem GTEesti weight 300, color #262626. Submit button: text only at 1.4rem GTEesti weight 300, with animated underline bar #262626."
+
+> "Create a navigation header at height 9.4rem on white background #ffffff. Logo centered. Menu items at 1.4rem GTEesti weight 400, color #262626, with animated underline hover. Transition all .22s ease-in-out. On transparent variant: gradient background from rgba(0,0,0,.6) to transparent, white text, white logo."
+
+> "Create a dark brand section with background image, white text overlay. Section heading at 4rem IvyPresto weight 300, color #ffffff, line-height 5rem. Body at 1.8rem TTLivretText weight 300, color rgba(255,255,255,.75), line-height 2.8rem. CTA: 'DISCOVER MORE' at 1.4rem GTEesti weight 300, white, animated underline white."
+
+> "Create a press room table. Heading labels: GTEesti weight 300, 1.8rem, line-height 2.8rem, color #262626. Sort buttons at opacity .5, hover opacity 1 with .22s ease-in-out transition. Active sort button at opacity 1. SVG icons 1.6rem × 1.6rem, fill currentColor."
+
+### Iteration Guide
+
+1. Always declare `font-feature-settings: "lnum"` on the body or root text element — this is Brunello Cucinelli's typographic DNA, ensuring lining numerals in all contexts
+2. Weight 300 is the default for everything except body text (400) and occasional navigation (400) — if a heading feels too heavy at 400, drop to 300 immediately
+3. The animated underline uses keyframes with translateX (not scale or width): out to -100%, reposition to 100%, slide back to 0 — this creates a sweeping wipe, not a grow effect
+4. Border-radius stays at 0px for all primary elements. The only exception is select dropdowns at 0.4rem and carousel dots at 50% — these are functional affordances, not style choices
+5. Transition timing is `all .22s ease-in-out` for UI transitions and `0.6s cubic-bezier(.4,0,.4,1)` for the underline animation — never faster, never bouncy
+6. The `62.5%` root font-size means `1rem = 10px` — convert all px values by dividing by 10 to get rem (16px → 1.6rem, 14px → 1.4rem)
+7. Photography reveals use white mask curtains at `1.2s ease-in-out` — this is the only complex motion in the system. Everything else is restrained to .22s transitions
+8. Never introduce color to the UI surface. If you need visual differentiation, adjust opacity (`.5`, `.6`, `.7`) or switch between `#262626` and `#f2f2f2`. The only chromatic accent permitted is `#8d8277` for active state indicators

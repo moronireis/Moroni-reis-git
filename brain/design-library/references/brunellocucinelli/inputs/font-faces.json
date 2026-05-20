@@ -1,0 +1,166 @@
+[
+  {
+    "family": "slick",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "./fonts/slick.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"slick\";src:url(./fonts/slick.eot);src:url(./fonts/slick.eot?#iefix) format(\"embedded-opentype\"),url(./fonts/slick.woff) format(\"woff\"),url(./fonts/slick.ttf) format(\"truetype\"),url(./fonts/slick.svg#slick) format(\"svg\");font-weight:400;font-style:normal}"
+  },
+  {
+    "family": "GTEesti",
+    "weight": "300",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/GTEesti/GTEestiProDisplay-Light.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"GTEesti\";src:url(../fonts/GTEesti/GTEestiProDisplay-Light.eot);src:url(../fonts/GTEesti/GTEestiProDisplay-Light.eot?#iefix) format(\"embedded-opentype\"),url(../fonts/GTEesti/GTEestiProDisplay-Light.woff) format(\"woff\"),url(../fonts/GTEesti/GTEestiProDisplay-Light.ttf) format(\"truetype\"),url(\"../fonts/GTEesti/GTEestiProDisplay-Light.svg#GTEesti Light\") format(\"svg\");font-weight:300;font-style:normal;display:swap}"
+  },
+  {
+    "family": "GTEesti",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/GTEesti/GTEestiProDisplay-Regular.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"GTEesti\";src:url(../fonts/GTEesti/GTEestiProDisplay-Regular.eot);src:url(../fonts/GTEesti/GTEestiProDisplay-Regular.eot?#iefix) format(\"embedded-opentype\"),url(../fonts/GTEesti/GTEestiProDisplay-Regular.woff) format(\"woff\"),url(../fonts/GTEesti/GTEestiProDisplay-Regular.ttf) format(\"truetype\"),url(\"../fonts/GTEesti/GTEestiProDisplay-Regular.svg#GTEesti Regular\") format(\"svg\");font-weight:400;font-style:normal;display:swap}"
+  },
+  {
+    "family": "GTEesti",
+    "weight": "600",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/GTEesti/GTEestiDisplay-Bold.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"GTEesti\";src:url(../fonts/GTEesti/GTEestiDisplay-Bold.eot);src:url(../fonts/GTEesti/GTEestiDisplay-Bold.eot?#iefix) format(\"embedded-opentype\"),url(../fonts/GTEesti/GTEestiDisplay-Bold.woff) format(\"woff\"),url(../fonts/GTEesti/GTEestiDisplay-Bold.ttf) format(\"truetype\"),url(\"../fonts/GTEesti/GTEestiDisplay-Bold.svg#GTEesti Bold\") format(\"svg\");font-weight:600;font-style:normal;display:swap}"
+  },
+  {
+    "family": "TTLivretText",
+    "weight": "300",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/TTLivretText/TTLivretText-Light.woff",
+      "../fonts/TTLivretText/TTLivretText-Light.woff2"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"TTLivretText\";src:url(../fonts/TTLivretText/TTLivretText-Light.woff) format(\"woff\"),url(../fonts/TTLivretText/TTLivretText-Light.woff2) format(\"woff2\");font-weight:300;font-style:normal;display:swap}"
+  },
+  {
+    "family": "TTLivretText",
+    "weight": "300",
+    "style": "italic",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/TTLivretText/TTLivretText-Italic.woff",
+      "../fonts/TTLivretText/TTLivretText-Italic.woff2"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"TTLivretText\";src:url(../fonts/TTLivretText/TTLivretText-Italic.woff) format(\"woff\"),url(../fonts/TTLivretText/TTLivretText-Italic.woff2) format(\"woff2\");font-weight:300;font-style:italic;display:swap}"
+  },
+  {
+    "family": "TTLivretText",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/TTLivretText/TTLivretText-Regular.woff",
+      "../fonts/TTLivretText/TTLivretText-Regular.woff2"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"TTLivretText\";src:url(../fonts/TTLivretText/TTLivretText-Regular.woff) format(\"woff\"),url(../fonts/TTLivretText/TTLivretText-Regular.woff2) format(\"woff2\");font-weight:400;font-style:normal;display:swap}"
+  },
+  {
+    "family": "TTLivretText",
+    "weight": "500",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/TTLivretText/TTLivretText-Medium.woff",
+      "../fonts/TTLivretText/TTLivretText-Medium.woff2"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"TTLivretText\";src:url(../fonts/TTLivretText/TTLivretText-Medium.woff) format(\"woff\"),url(../fonts/TTLivretText/TTLivretText-Medium.woff2) format(\"woff2\");font-weight:500;font-style:normal;display:swap}"
+  },
+  {
+    "family": "IvyPresto",
+    "weight": "300",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/IvyPresto/IvyPrestoDisplay-Light.woff",
+      "../fonts/IvyPresto/IvyPrestoDisplay-Light.woff2"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"IvyPresto\";src:url(../fonts/IvyPresto/IvyPrestoDisplay-Light.woff) format(\"woff\"),url(../fonts/IvyPresto/IvyPrestoDisplay-Light.woff2) format(\"woff2\");font-weight:300;font-style:normal;display:swap}"
+  },
+  {
+    "family": "IvyPresto",
+    "weight": "300",
+    "style": "italic",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/IvyPresto/IvyPrestoDisplay-LightItalic.woff",
+      "../fonts/IvyPresto/IvyPrestoDisplay-LightItalic.woff2"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.brunellocucinelli.com/on/demandware.static/Sites-bc-corp-new-Site/-/en/v1776696490002/css/global.css",
+    "raw": "@font-face{font-family:\"IvyPresto\";src:url(../fonts/IvyPresto/IvyPrestoDisplay-LightItalic.woff) format(\"woff\"),url(../fonts/IvyPresto/IvyPrestoDisplay-LightItalic.woff2) format(\"woff2\");font-weight:300;font-style:italic;display:swap}"
+  }
+]

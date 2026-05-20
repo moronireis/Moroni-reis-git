@@ -1,0 +1,47 @@
+{
+  "primary": "linear-gradient(#000,#000)",
+  "secondary": "linear-gradient(90deg,transparent 0,#000 .75rem,#000 calc(100% - 2.9375rem),transparent)",
+  "total_unique": 15,
+  "top": [
+    {
+      "value": "linear-gradient(#000,#000)",
+      "count": 4
+    },
+    {
+      "value": "linear-gradient(90deg,transparent 0,#000 .75rem,#000 calc(100% - 2.9375rem),transparent)",
+      "count": 4
+    },
+    {
+      "value": "linear-gradient(90deg,transparent 0,#000 2.9375rem,#000 calc(100% - 2.9375rem),transparent)",
+      "count": 4
+    },
+    {
+      "value": "linear-gradient(90deg,transparent 0,#000 2.9375rem,#000 calc(100% - .75rem),transparent)",
+      "count": 4
+    },
+    {
+      "value": "linear-gradient(90deg,transparent 0,#000 1rem,#000 calc(100% - 1rem),transparent)",
+      "count": 4
+    },
+    {
+      "value": "linear-gradient(180deg,transparent 0,#fff 98%,transparent 99%)",
+      "count": 3
+    },
+    {
+      "value": "linear-gradient(270deg,#000 1.25rem,transparent 0,#000 120px)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(0deg,#000 .125rem,transparent 0)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(-90deg,hsla(0,0%,100%,0),#fff 50%)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(90deg,hsla(0,0%,100%,0),#fff 50%)",
+      "count": 2
+    }
+  ]
+}

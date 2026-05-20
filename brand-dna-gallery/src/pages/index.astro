@@ -1,0 +1,585 @@
+---
+import '../styles/global.css';
+import { brands } from '../data/brands';
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Brand DNA Gallery — 12 luxury houses decoded through their visual grammar" />
+  <title>Brand DNA Gallery — REIS [IA]</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%234A90FF'/><text x='16' y='22' text-anchor='middle' font-size='16' fill='%23000' font-family='sans-serif' font-weight='700'>D</text></svg>" />
+</head>
+<body>
+
+  <!-- ═══ FIXED NAV ═══ -->
+  <nav id="nav" style="
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 48px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(6,6,6,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: opacity 0.4s ease;
+  ">
+    <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 3px;">
+      <span style="font-family: 'Inter'; font-size: 12px; font-weight: 300; letter-spacing: 0.18em; color: #fff;">REIS</span>
+      <span style="font-family: 'Inter'; font-size: 12px; font-weight: 300; letter-spacing: 0.18em; color: #4A90FF;">[IA]</span>
+      <span style="font-family: 'Inter'; font-size: 10px; font-weight: 400; letter-spacing: 0.15em; color: #555; text-transform: uppercase; margin-left: 16px;">Brand DNA Gallery</span>
+    </a>
+    <div style="display: flex; gap: 32px; align-items: center;">
+      <span id="brand-counter" style="font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.1em; color: #555;">01 / 15</span>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO COVER ═══ -->
+  <section style="
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background: #060606; position: relative; overflow: hidden;
+  ">
+    <!-- Subtle grid lines -->
+    <div style="position: absolute; inset: 0; opacity: 0.03;">
+      <div style="position: absolute; left: 25%; top: 0; bottom: 0; width: 1px; background: #fff;"></div>
+      <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #fff;"></div>
+      <div style="position: absolute; left: 75%; top: 0; bottom: 0; width: 1px; background: #fff;"></div>
+    </div>
+
+    <div style="text-align: center; position: relative; z-index: 1;">
+      <div style="font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.2em; color: #4A90FF; text-transform: uppercase; margin-bottom: 48px;" class="anim-fade">
+        Design Intelligence
+      </div>
+      <h1 style="font-family: 'Instrument Serif'; font-size: clamp(64px, 12vw, 160px); font-weight: 400; font-style: italic; line-height: 0.95; letter-spacing: -0.03em; color: #fff; margin-bottom: 40px;" class="anim-fade anim-d1">
+        Brand DNA
+      </h1>
+      <p style="font-family: 'Inter'; font-size: 15px; font-weight: 300; color: #666; letter-spacing: 0.02em; max-width: 480px; line-height: 1.7; margin: 0 auto 64px;" class="anim-fade anim-d2">
+        Fifteen luxury houses decoded through their visual grammar — color, typography, motion, and component decisions rendered in their own design language.
+      </p>
+      <div style="display: flex; gap: 48px; justify-content: center;" class="anim-fade anim-d3">
+        {['Fashion', 'Jewelry', 'Beauty', 'Fragrance', 'Automotive', 'Hospitality', 'Luxury Goods'].map((v) => (
+          <span style="font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.12em; color: #444; text-transform: uppercase;">{v}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px;">
+      <span style="font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; color: #333; text-transform: uppercase;">Scroll</span>
+      <div style="width: 1px; height: 40px; background: linear-gradient(to bottom, #333, transparent);"></div>
+    </div>
+  </section>
+
+  <!-- ═══ BRAND SECTIONS ═══ -->
+  {brands.map((brand, i) => (
+    <section
+      class="brand-section"
+      data-index={i + 1}
+      id={brand.slug}
+      style={`background: ${brand.bg}; color: ${brand.textColor}; position: relative; overflow: hidden;`}
+    >
+
+      <!-- Section divider line -->
+      <div style={`height: 1px; background: ${brand.textColor}; opacity: 0.08;`}></div>
+
+      <!-- ─── TOP BAR: index + vertical + year ─── -->
+      <div style="padding: 32px 64px; display: flex; justify-content: space-between; align-items: center;">
+        <span style={`font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.15em; color: ${brand.textColor}; opacity: 0.3;`}>
+          {String(i + 1).padStart(2, '0')} / 15
+        </span>
+        <div style="display: flex; gap: 32px; align-items: center;">
+          <span style={`font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3;`}>
+            {brand.vertical}
+          </span>
+          <span style={`font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.12em; color: ${brand.textColor}; opacity: 0.2;`}>
+            Est. {brand.year}
+          </span>
+        </div>
+      </div>
+
+      <!-- ─── HERO: Logo + Brand wordmark + hero word ─── -->
+      <div style="padding: 80px 64px 64px; position: relative;">
+        <!-- Large decorative hero word (background) -->
+        <div style={`
+          position: absolute; top: 40px; right: 64px;
+          font-family: ${brand.displayFontCSS}; font-size: clamp(80px, 14vw, 200px);
+          font-weight: 300; font-style: italic; line-height: 1;
+          color: ${brand.textColor}; opacity: 0.04;
+          pointer-events: none; user-select: none;
+        `}>
+          {brand.heroWord}
+        </div>
+
+        <!-- Brand logo -->
+        <div style={`margin-bottom: 40px; position: relative; z-index: 1;`}>
+          <img
+            src={`/logos/${brand.slug}.svg`}
+            alt={`${brand.name} logo`}
+            style={`
+              height: 40px; width: auto;
+              filter: ${brand.bg === '#0D0D0D' ? 'none' : (brand.textColor === '#000000' || brand.textColor === '#262626' || brand.textColor === '#333D2C') ? 'brightness(0)' : 'none'};
+            `}
+          />
+        </div>
+
+        <!-- Brand name as wordmark -->
+        <h2 style={`
+          font-family: ${brand.displayFontCSS};
+          font-size: clamp(48px, 8vw, ${brand.heroSize === '112px' ? '112px' : '96px'});
+          font-weight: 400; line-height: 1.05; letter-spacing: -0.01em;
+          color: ${brand.textColor}; margin: 0 0 16px; position: relative; z-index: 1;
+        `}>
+          {brand.name}
+        </h2>
+
+        <!-- URL link -->
+        <a
+          href={brand.url}
+          target="_blank"
+          rel="noopener"
+          style={`
+            font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.08em;
+            color: ${brand.accent === '#000000' ? brand.textColor : brand.accent};
+            opacity: 0.5; text-decoration: none; display: inline-block; margin-bottom: 24px;
+            border-bottom: 1px solid ${brand.accent === '#000000' ? brand.textColor : brand.accent}30;
+            padding-bottom: 2px;
+          `}
+        >
+          {brand.url.replace('https://www.', '')} ↗
+        </a>
+
+        <p style={`
+          font-family: ${brand.bodyFontCSS}; font-size: 14px; font-weight: 300;
+          color: ${brand.textColor}; opacity: 0.5; max-width: 560px; line-height: 1.7;
+        `}>
+          {brand.signatureStyle}
+        </p>
+      </div>
+
+      <!-- ─── LIVE NAV MOCKUP ─── -->
+      <div style={`
+        margin: 0 64px; padding: 20px 0;
+        border-top: 1px solid ${brand.textColor}10;
+        border-bottom: 1px solid ${brand.textColor}10;
+        display: flex; gap: 40px; align-items: center;
+      `}>
+        {brand.navItems.map((item) => (
+          <span style={`
+            font-family: ${brand.bodyFontCSS};
+            font-size: ${brand.navSize};
+            font-weight: 500;
+            letter-spacing: ${brand.navTracking};
+            text-transform: uppercase;
+            color: ${brand.textColor};
+            opacity: 0.6;
+          `}>
+            {item}
+          </span>
+        ))}
+      </div>
+
+      <!-- ─── VISUAL GRID: Palette + Typography + Button + Motion ─── -->
+      <div style="padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(128,128,128,0.06);">
+
+        <!-- PALETTE BLOCK -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            Color Palette
+          </div>
+
+          <!-- Large swatches -->
+          <div style="display: flex; gap: 0; height: 80px; margin-bottom: 16px; overflow: hidden;">
+            {brand.palette.map((c) => (
+              <div style={`flex: 1; background: ${c.hex}; border: 1px solid ${brand.textColor}08;`}></div>
+            ))}
+          </div>
+
+          <!-- Color names + hex -->
+          <div style="display: flex; gap: 0;">
+            {brand.palette.map((c) => (
+              <div style="flex: 1; text-align: center;">
+                <div style={`font-family: ${brand.bodyFontCSS}; font-size: 10px; font-weight: 400; color: ${brand.textColor}; opacity: 0.5; margin-bottom: 2px;`}>
+                  {c.name}
+                </div>
+                <div style={`font-family: 'JetBrains Mono'; font-size: 9px; color: ${brand.textColor}; opacity: 0.25;`}>
+                  {c.hex}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Accent highlight -->
+          <div style="margin-top: 32px; display: flex; align-items: center; gap: 16px;">
+            <div style={`width: 32px; height: 32px; background: ${brand.accent}; border: 1px solid ${brand.textColor}08;`}></div>
+            <div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3;`}>Signature Accent</div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 11px; color: ${brand.textColor}; opacity: 0.6;`}>{brand.accent}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TYPOGRAPHY BLOCK -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            Typography System
+          </div>
+
+          <!-- Display sample -->
+          <div style={`font-family: ${brand.displayFontCSS}; font-size: clamp(36px, 5vw, 56px); font-weight: 400; line-height: 1.1; color: ${brand.textColor}; margin-bottom: 8px;`}>
+            Aa Bb Cc
+          </div>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.08em; color: ${brand.textColor}; opacity: 0.25; margin-bottom: 32px;`}>
+            {brand.displayFont} — Display — {brand.heroSize}
+          </div>
+
+          <!-- Body sample -->
+          <div style={`font-family: ${brand.bodyFontCSS}; font-size: 15px; font-weight: 400; line-height: 1.6; color: ${brand.textColor}; opacity: 0.6; margin-bottom: 8px;`}>
+            The essence of luxury is restraint in service of beauty. Every surface, every transition, every typographic choice carries intention.
+          </div>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.08em; color: ${brand.textColor}; opacity: 0.25; margin-bottom: 32px;`}>
+            {brand.bodyFont} — Body
+          </div>
+
+          <!-- Nav sample -->
+          <div style="display: flex; gap: 24px;">
+            {['WOMEN', 'MEN', 'HOME'].map((item) => (
+              <span style={`font-family: ${brand.bodyFontCSS}; font-size: ${brand.navSize}; font-weight: 500; letter-spacing: ${brand.navTracking}; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.4;`}>
+                {item}
+              </span>
+            ))}
+          </div>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.08em; color: ${brand.textColor}; opacity: 0.25; margin-top: 8px;`}>
+            Navigation — {brand.navSize} / {brand.navTracking}
+          </div>
+        </div>
+
+        <!-- BUTTON / CTA BLOCK -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            CTA / Button
+          </div>
+
+          <!-- Primary button -->
+          <div style="margin-bottom: 24px;">
+            <div style={`
+              display: inline-flex; align-items: center; padding: 14px 40px;
+              background: ${brand.buttonStyle.bg};
+              color: ${brand.buttonStyle.color};
+              border: 1px solid ${brand.buttonStyle.border};
+              font-family: ${brand.bodyFontCSS};
+              font-size: ${brand.buttonStyle.size};
+              font-weight: 500;
+              letter-spacing: ${brand.buttonStyle.tracking};
+              text-transform: uppercase;
+            `}>
+              {brand.buttonStyle.text}
+            </div>
+          </div>
+
+          <!-- Secondary button (outline) -->
+          <div style="margin-bottom: 32px;">
+            <div style={`
+              display: inline-flex; align-items: center; padding: 14px 40px;
+              background: transparent;
+              color: ${brand.textColor};
+              border: 1px solid ${brand.textColor}30;
+              font-family: ${brand.bodyFontCSS};
+              font-size: ${brand.buttonStyle.size};
+              font-weight: 500;
+              letter-spacing: ${brand.buttonStyle.tracking};
+              text-transform: uppercase;
+            `}>
+              LEARN MORE
+            </div>
+          </div>
+
+          <!-- Button specs -->
+          <div style="display: flex; gap: 32px;">
+            <div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.25; margin-bottom: 4px;`}>Radius</div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 13px; color: ${brand.textColor}; opacity: 0.6;`}>0px</div>
+            </div>
+            <div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.25; margin-bottom: 4px;`}>Size</div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 13px; color: ${brand.textColor}; opacity: 0.6;`}>{brand.buttonStyle.size}</div>
+            </div>
+            <div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.25; margin-bottom: 4px;`}>Tracking</div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 13px; color: ${brand.textColor}; opacity: 0.6;`}>{brand.buttonStyle.tracking}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOTION BLOCK -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            Motion Timing
+          </div>
+
+          <!-- Animated bar showing transition speed -->
+          <div style="margin-bottom: 24px;">
+            <div style={`height: 2px; background: ${brand.textColor}10; position: relative; overflow: hidden;`}>
+              <div
+                class="motion-bar"
+                data-duration={brand.transitionDuration}
+                style={`
+                  height: 100%; width: 0%; background: ${brand.accent};
+                  transition: width ${brand.transitionDuration} cubic-bezier(0.25, 0.1, 0.25, 1.0);
+                `}
+              ></div>
+            </div>
+          </div>
+
+          <!-- Duration display -->
+          <div style={`font-family: ${brand.displayFontCSS}; font-size: 48px; font-weight: 300; color: ${brand.textColor}; margin-bottom: 8px;`}>
+            {brand.transitionDuration}
+          </div>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.08em; color: ${brand.textColor}; opacity: 0.25; margin-bottom: 40px;`}>
+            Default Transition Duration
+          </div>
+
+          <!-- Motion comparison scale -->
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            {[
+              { label: 'Micro', value: '0.2s' },
+              { label: 'Default', value: brand.transitionDuration },
+              { label: 'Reveal', value: parseFloat(brand.transitionDuration) * 1.5 + 's' },
+            ].map((t) => (
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <span style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.25; width: 56px;`}>{t.label}</span>
+                <div style={`flex: 1; height: 1px; background: ${brand.textColor}10;`}></div>
+                <span style={`font-family: 'JetBrains Mono'; font-size: 11px; color: ${brand.textColor}; opacity: 0.5;`}>{t.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ─── FULL-WIDTH ACCENT STRIP ─── -->
+      <div style={`height: 3px; background: ${brand.accent}; opacity: 0.6;`}></div>
+
+      <!-- ─── ROW 2: Card Mockup + Input/Form + Mini Hero ─── -->
+      <div style="padding: 64px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: rgba(128,128,128,0.06);">
+
+        <!-- SIGNATURE ELEMENT (unique per brand) -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            Signature Element
+          </div>
+
+          <!-- Accent color showcase -->
+          <div style={`
+            height: 120px; margin-bottom: 24px; position: relative; overflow: hidden;
+            background: ${brand.accent};
+            display: flex; align-items: center; justify-content: center;
+          `}>
+            <span style={`
+              font-family: ${brand.displayFontCSS}; font-size: 32px; font-weight: 300;
+              color: ${brand.accent === '#000000' ? '#FFFFFF' : (brand.bg === '#000000' || brand.bg === '#0D0D0D') ? '#000000' : '#FFFFFF'};
+              letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.9;
+            `}>
+              {brand.heroWord}
+            </span>
+          </div>
+
+          <!-- Signature description -->
+          <p style={`
+            font-family: ${brand.bodyFontCSS}; font-size: 12px; font-weight: 300;
+            color: ${brand.textColor}; opacity: 0.45; line-height: 1.7;
+          `}>
+            {brand.signatureElement}
+          </p>
+        </div>
+
+        <!-- INPUT / FORM MOCKUP -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            Form Elements
+          </div>
+
+          <!-- Label + Underline input -->
+          <div style="margin-bottom: 28px;">
+            <div style={`font-family: ${brand.bodyFontCSS}; font-size: 10px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.4; margin-bottom: 8px;`}>
+              Full Name
+            </div>
+            <div style={`border-bottom: 1px solid ${brand.textColor}25; padding-bottom: 12px;`}>
+              <span style={`font-family: ${brand.bodyFontCSS}; font-size: 15px; color: ${brand.textColor}; opacity: 0.7;`}>
+                Alexandra Dubois
+              </span>
+            </div>
+          </div>
+
+          <!-- Email input -->
+          <div style="margin-bottom: 28px;">
+            <div style={`font-family: ${brand.bodyFontCSS}; font-size: 10px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.4; margin-bottom: 8px;`}>
+              Email
+            </div>
+            <div style={`border-bottom: 1px solid ${brand.textColor}25; padding-bottom: 12px;`}>
+              <span style={`font-family: ${brand.bodyFontCSS}; font-size: 15px; color: ${brand.textColor}; opacity: 0.35;`}>
+                your@email.com
+              </span>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div style={`
+            display: inline-flex; align-items: center; padding: 14px 40px;
+            background: ${brand.buttonStyle.bg}; color: ${brand.buttonStyle.color};
+            border: 1px solid ${brand.buttonStyle.border};
+            font-family: ${brand.bodyFontCSS}; font-size: ${brand.buttonStyle.size};
+            font-weight: 500; letter-spacing: ${brand.buttonStyle.tracking}; text-transform: uppercase;
+          `}>
+            SUBSCRIBE
+          </div>
+        </div>
+
+        <!-- SURFACE & SPACING VISUALIZATION -->
+        <div style={`background: ${brand.bg}; padding: 48px;`}>
+          <div style={`font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.3; margin-bottom: 32px;`}>
+            Type Scale & Hierarchy
+          </div>
+
+          <!-- Live hierarchy demonstration -->
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <!-- Display level -->
+            <div style={`padding: 16px 0; border-bottom: 1px solid ${brand.textColor}08;`}>
+              <div style={`font-family: ${brand.displayFontCSS}; font-size: ${brand.heroSize}; font-weight: 400; line-height: 1; color: ${brand.textColor}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;`}>
+                {brand.heroWord}
+              </div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 8px; color: ${brand.textColor}; opacity: 0.2; margin-top: 4px;`}>
+                DISPLAY — {brand.heroSize} — {brand.displayFont}
+              </div>
+            </div>
+
+            <!-- Subhead level -->
+            <div style={`padding: 12px 0; border-bottom: 1px solid ${brand.textColor}08;`}>
+              <div style={`font-family: ${brand.displayFontCSS}; font-size: 24px; font-weight: 400; color: ${brand.textColor}; opacity: 0.8;`}>
+                The Art of {brand.heroWord}
+              </div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 8px; color: ${brand.textColor}; opacity: 0.2; margin-top: 4px;`}>
+                SUBHEAD — 24px
+              </div>
+            </div>
+
+            <!-- Body level -->
+            <div style={`padding: 12px 0; border-bottom: 1px solid ${brand.textColor}08;`}>
+              <div style={`font-family: ${brand.bodyFontCSS}; font-size: 15px; font-weight: 400; color: ${brand.textColor}; opacity: 0.6; line-height: 1.6;`}>
+                Every detail carries intention. The restraint of luxury is never absence — it is the presence of only what matters.
+              </div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 8px; color: ${brand.textColor}; opacity: 0.2; margin-top: 4px;`}>
+                BODY — 15px — {brand.bodyFont}
+              </div>
+            </div>
+
+            <!-- Caption level -->
+            <div style={`padding: 12px 0; border-bottom: 1px solid ${brand.textColor}08;`}>
+              <div style={`font-family: ${brand.bodyFontCSS}; font-size: ${brand.navSize}; font-weight: 500; letter-spacing: ${brand.navTracking}; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.4;`}>
+                {brand.navItems.join(' / ')}
+              </div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 8px; color: ${brand.textColor}; opacity: 0.2; margin-top: 4px;`}>
+                NAV — {brand.navSize} / {brand.navTracking}
+              </div>
+            </div>
+
+            <!-- Metadata level -->
+            <div style={`padding: 12px 0;`}>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: ${brand.textColor}; opacity: 0.25;`}>
+                EST. {brand.year} — {brand.vertical.toUpperCase()}
+              </div>
+              <div style={`font-family: 'JetBrains Mono'; font-size: 8px; color: ${brand.textColor}; opacity: 0.2; margin-top: 4px;`}>
+                METADATA — 10px / 0.12em
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom padding -->
+      <div style="height: 64px;"></div>
+
+    </section>
+  ))}
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="background: #060606; border-top: 1px solid rgba(255,255,255,0.06); padding: 64px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 3px;">
+        <span style="font-family: 'Inter'; font-size: 11px; font-weight: 300; letter-spacing: 0.18em; color: #444;">REIS</span>
+        <span style="font-family: 'Inter'; font-size: 11px; font-weight: 300; letter-spacing: 0.18em; color: #4A90FF;">[IA]</span>
+        <span style="font-family: 'Inter'; font-size: 10px; font-weight: 300; letter-spacing: 0.12em; color: #333; text-transform: uppercase; margin-left: 16px;">Design Intelligence</span>
+      </div>
+      <span style="font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.1em; color: #333;">15 BRANDS / 7 VERTICALS</span>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+<style>
+  .brand-section {
+    min-height: 100vh;
+  }
+
+  @media (max-width: 1024px) {
+    .brand-section > div:last-of-type {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .brand-section div[style*="padding: 32px 64px"],
+    .brand-section div[style*="padding: 80px 64px"],
+    .brand-section div[style*="margin: 0 64px"],
+    .brand-section div[style*="padding: 64px"] {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+      margin-left: 24px !important;
+      margin-right: 24px !important;
+    }
+  }
+
+  /* Fade-in animations */
+  .anim-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .anim-d1 { animation-delay: 0.1s; }
+  .anim-d2 { animation-delay: 0.2s; }
+  .anim-d3 { animation-delay: 0.3s; }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  // Update brand counter on scroll
+  const sections = document.querySelectorAll('.brand-section');
+  const counter = document.getElementById('brand-counter');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && counter) {
+        const idx = (entry.target as HTMLElement).dataset.index;
+        counter.textContent = `${idx?.padStart(2, '0')} / 15`;
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach((s) => observer.observe(s));
+
+  // Animate motion bars on scroll
+  const motionBars = document.querySelectorAll('.motion-bar');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).style.width = '100%';
+      } else {
+        (entry.target as HTMLElement).style.width = '0%';
+      }
+    });
+  }, { threshold: 0.5 });
+
+  motionBars.forEach((bar) => barObserver.observe(bar));
+</script>

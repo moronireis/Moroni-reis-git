@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220">
+  <!-- Variation C — Script/Calligraphic: Flowing script with serif accent -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Cormorant+Garamond:wght@300;400&amp;display=swap');
+    </style>
+  </defs>
+  <text x="350" y="120" font-family="'Great Vibes', cursive" font-size="72" fill="#DBA99F" text-anchor="middle">Giovanna Paola</text>
+  <line x1="140" y1="145" x2="560" y2="145" stroke="#DBA99F" stroke-width="0.5" opacity="0.4"/>
+</svg>

@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'REIS [IA] Luxury Design Library — 12 Brands · 21 Patterns · 85+ References' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title} — Luxury Design Library</title>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50" style="transition: background var(--transition-base), border-bottom-color var(--transition-base);">
+    <div class="container-luxury" style="display: flex; align-items: center; justify-content: space-between; height: 72px;">
+
+      <!-- Wordmark -->
+      <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 2px;">
+        <span style="font-family: var(--font-sans); font-size: 14px; font-weight: 300; letter-spacing: 0.18em; color: #fff;">REIS</span>
+        <span style="font-family: var(--font-sans); font-size: 14px; font-weight: 300; letter-spacing: 0.18em; color: var(--accent);">[IA]</span>
+      </a>
+
+      <!-- Nav links -->
+      <div style="display: flex; align-items: center; gap: 40px;">
+        <a href="/brands" class="nav-label">Brand DNA</a>
+        <a href="/patterns" class="nav-label">Patterns</a>
+        <a href="/grammar" class="nav-label">Grammar</a>
+        <a href="/mood-reports" class="nav-label">Mood Reports</a>
+        <a href="/filhas-de-eva" class="nav-label">Filhas de Eva</a>
+        <a href="/comparison" class="nav-label">Lab</a>
+      </div>
+
+    </div>
+    <!-- Nav bottom border -->
+    <div id="nav-border" style="height: 1px; background: transparent; transition: background var(--transition-base);"></div>
+  </nav>
+
+  <!-- Page content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border-default); padding: 48px 0;">
+    <div class="container-luxury" style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 2px;">
+        <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary);">REIS</span>
+        <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);">[IA]</span>
+        <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-tertiary); margin-left: 16px;">DESIGN LIBRARY</span>
+      </div>
+      <span class="section-label">2026</span>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+<script>
+  // Nav: transparent over hero → solid on scroll
+  const nav = document.getElementById('site-nav');
+  const navBorder = document.getElementById('nav-border');
+
+  function updateNav() {
+    const scrolled = window.scrollY > 80;
+    if (nav) {
+      nav.style.background = scrolled
+        ? 'rgba(10, 10, 10, 0.96)'
+        : 'transparent';
+      nav.style.backdropFilter = scrolled ? 'blur(12px)' : 'none';
+    }
+    if (navBorder) {
+      navBorder.style.background = scrolled
+        ? 'var(--border-default)'
+        : 'transparent';
+    }
+  }
+
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+</script>

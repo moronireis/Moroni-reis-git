@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TaskManager from '../components/TaskManager';
+import { createServerClient } from '../lib/supabase';
+
+const CLIENT_ID = import.meta.env.CLIENT_ID;
+const CLIENT_NAME = import.meta.env.CLIENT_NAME || 'Cliente';
+const CONSULTANT_NAME = import.meta.env.CONSULTANT_NAME || 'Moroni';
+
+const supabase = createServerClient();
+
+const { data: tasks } = await supabase
+  .from('task_manager')
+  .select('*')
+  .eq('client_id', CLIENT_ID)
+  .order('position', { ascending: true })
+  .order('created_at', { ascending: false });
+---
+
+<Layout>
+  <TaskManager
+    client:load
+    initialTasks={tasks || []}
+    supabaseUrl={import.meta.env.PUBLIC_SUPABASE_URL}
+    supabaseAnonKey={import.meta.env.PUBLIC_SUPABASE_ANON_KEY}
+    clientName={CLIENT_NAME}
+    consultantName={CONSULTANT_NAME}
+    clientId={CLIENT_ID}
+  />
+</Layout>

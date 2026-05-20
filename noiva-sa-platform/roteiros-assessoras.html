@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roteiros para Assessoras — Noiva S.A.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #D4B87A;
+      --gold-dark: #A68B4B;
+      --gold-muted: rgba(201, 169, 110, 0.15);
+      --black: #0A0A0A;
+      --black-card: #111111;
+      --black-hover: #1A1A1A;
+      --gray: #888888;
+      --gray-light: #AAAAAA;
+      --gray-dark: #555555;
+      --white: #F5F5F5;
+      --white-bright: #FFFFFF;
+      --border: rgba(201, 169, 110, 0.2);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.7;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      background: linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--white-bright);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .header h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      font-weight: 300;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .instructions {
+      background: var(--black-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .instructions h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      color: var(--white-bright);
+    }
+
+    .instructions p {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+    }
+
+    .instructions ul {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .instructions ul li {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .instructions ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white-bright);
+    }
+
+    .section-subtitle {
+      font-size: 0.75rem;
+      color: var(--gray);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .roteiro-card {
+      background: var(--black-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .roteiro-card:hover {
+      border-color: var(--gold-dark);
+      box-shadow: 0 4px 20px rgba(201, 169, 110, 0.08);
+    }
+
+    .roteiro-header {
+      padding: 1.5rem 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .roteiro-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+
+    .roteiro-meta {
+      flex: 1;
+    }
+
+    .roteiro-pergunta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--white-bright);
+      line-height: 1.4;
+      margin-bottom: 0.3rem;
+    }
+
+    .roteiro-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-right: 0.4rem;
+    }
+
+    .tag-atracao { background: rgba(201, 169, 110, 0.15); color: var(--gold-light); }
+    .tag-nutricao { background: rgba(255, 255, 255, 0.08); color: var(--gray-light); }
+
+    .roteiro-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .roteiro-toggle svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .roteiro-card.open .roteiro-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .roteiro-body {
+      display: none;
+      padding: 0 1.8rem 1.8rem;
+      padding-left: 5.3rem;
+    }
+
+    .roteiro-card.open .roteiro-body {
+      display: block;
+    }
+
+    .roteiro-section {
+      margin-bottom: 1.2rem;
+    }
+
+    .roteiro-section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .roteiro-section-text {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+    }
+
+    .roteiro-section-text em {
+      font-style: italic;
+      color: var(--white-bright);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--gray);
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .footer strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 3.5rem 1.5rem 2.5rem; }
+      .container { padding: 2rem 1.2rem 4rem; }
+      .roteiro-header { padding: 1.2rem 1.3rem; }
+      .roteiro-body { padding: 0 1.3rem 1.5rem; padding-left: 4rem; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-label">Noiva S.A. — Roteiros de Gravação</div>
+    <h1>Roteiros para <em>Assessoras</em></h1>
+    <p>20 roteiros completos para Stories e Reels. Posicionamento, autoridade e captação de noivas — prontos para gravar.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="instructions">
+      <h3>Como usar estes roteiros</h3>
+      <p>Cada roteiro foi pensado para posicionar você como autoridade no mercado de casamentos. Use nas caixinhas de perguntas, Reels e Stories. O tom é de profissional que domina o assunto — direto, confiante, sem ser arrogante.</p>
+      <ul>
+        <li>Adapte a linguagem pro seu estilo pessoal — o roteiro é um guia, não uma leitura</li>
+        <li>Nos ganchos, fale com energia e convicção nos primeiros 3 segundos</li>
+        <li>No desenvolvimento, compartilhe experiência real — exemplos vendem</li>
+        <li>O CTA posiciona você como mentora/referência — nunca como desesperada por cliente</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 1: ATRAÇÃO -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <div>
+          <div class="section-title">Atração</div>
+          <div class="section-subtitle">Alcance e posicionamento — atrair novas seguidoras assessoras</div>
+        </div>
+      </div>
+
+      <!-- Roteiro 1 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">01</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Quanto cobrar pela minha primeira assessoria?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Se você está cobrando menos de 3 mil na sua primeira assessoria, para e me ouve."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">O erro mais comum de quem está começando é precificar por medo. Você pensa: "Ninguém me conhece, preciso cobrar barato pra conseguir cliente." Errado. Você vai atrair noiva que não valoriza seu trabalho e vai se queimar por um valor que não paga nem seu deslocamento. O mínimo pra começar, mesmo sem portfólio, é calcular suas horas reais de trabalho — e uma assessoria completa são no mínimo 200 horas. Faz a conta. Seu tempo vale quanto? Comece por aí e ajuste conforme ganha experiência e prova social.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer uma planilha de precificação que eu uso? Me manda "planilha" no direct.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 2 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">02</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como conseguir as primeiras noivas sem ter portfólio?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu consegui minhas 3 primeiras noivas sem ter feito um casamento sequer. Vou te contar como."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Três caminhos que funcionam. Primeiro: ofereça assessoria de dia para amigas ou conhecidas que vão casar — você não cobra o valor cheio, mas ganha experiência e fotos. Segundo: faça parcerias com fotógrafos e decoradores que já atuam — eles indicam você pra noivas que precisam de coordenação. Terceiro e mais poderoso: produza conteúdo como se já tivesse 50 casamentos. Mostre bastidores de montagem, de reuniões, dicas práticas. A noiva não contrata portfólio — ela contrata confiança. E conteúdo gera confiança.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Você está nessa fase? Me segue que toda semana eu compartilho estratégias pra assessoras que estão começando.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 3 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">03</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Qual o maior erro de assessoras iniciantes?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu já cometi esse erro e quase desisti da profissão por causa dele."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">O maior erro é aceitar tudo. Toda noiva, todo orçamento, todo estilo. Você vira uma faz-tudo desesperada e não constrói posicionamento. Resultado: trabalha muito, ganha pouco e atrai noivas que não são seu perfil. A virada de chave é aprender a dizer não. Definir qual tipo de casamento você quer fazer, qual faixa de orçamento você atende e qual é o seu diferencial. Quando você filtra, você atrai melhor. Parece contraintuitivo no início, mas é o que separa assessora de sucesso de assessora que sobrevive.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Já cometeu esse erro? Me conta nos comentários. Sem julgamento — a gente aprende errando.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 4 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">04</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Preciso de curso ou certificação pra ser assessora?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Certificado não faz assessora. Casamento feito faz assessora."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Você não precisa de diploma pra atuar. Mas precisa de conhecimento real. Cursos bons te encurtam o caminho — te ensinam processos, cronogramas, gestão de crise, precificação. O problema é achar que fazer 5 cursos substitui a prática. Não substitui. O ideal é: faça um bom curso de formação, assista casamentos reais como sombra de outra assessora, e coloque a mão na massa o mais rápido possível. Experiência prática vale mais que qualquer certificado na parede.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você quer acelerar e aprender com quem já fez, fica de olho que em breve eu vou abrir vagas pra mentoria.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 5 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">05</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como criar um Instagram que atrai noivas de verdade?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Para de postar foto de decoração e começa a falar com a noiva. É diferente."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">A maioria das assessoras posta foto bonita de casamento achando que isso atrai cliente. Não atrai. O que atrai é conteúdo que resolve uma dor. A noiva está perdida, ansiosa, sem saber por onde começar. Se você mostra que entende isso e oferece solução, ela vai te seguir e te lembrar quando precisar. Poste: dicas práticas, erros comuns, bastidores reais, sua opinião sobre tendências. Mostre sua cara, sua voz, seu jeito. Noiva contrata pessoa, não logo bonito. Consistência e personalidade vencem estética impecável.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Salva esse vídeo e aplica essa semana. Depois me conta o resultado.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 6 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">06</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Dá pra viver só de assessoria ou preciso de outra renda?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu largo — dá pra viver de assessoria. Mas não foi no primeiro ano. Vou te dar o caminho real."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Nos primeiros 12 meses, a maioria não vai conseguir se sustentar só com assessoria — e tá tudo bem. O mercado de casamento é sazonal: tem meses fortes e meses fracos. A estratégia é: no primeiro ano, construa base — portfólio, processos, rede de fornecedores. A partir do segundo ano, com 8 a 12 casamentos por ano cobrando valores justos, você já tem uma renda sólida. Quem chega em 15 a 20 casamentos por ano com ticket médio acima de 8 mil vive muito bem. Mas é uma construção. Quem quer resultado imediato geralmente desiste antes de colher.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Você quer chegar nesse nível? Me segue que eu mostro o caminho passo a passo aqui.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 7 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">07</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como me diferenciar das outras assessoras da minha cidade?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Você não precisa ser melhor que as outras. Precisa ser diferente. E eu vou te explicar."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Diferenciação não é sobre ser mais barata ou ter mais seguidores. É sobre clareza de posicionamento. Pergunte: qual tipo de casamento eu quero ser conhecida por fazer? Rústico? Luxo? Intimista? Destino? Escolha um nicho e se torne referência nele. Segundo: sua personalidade é seu maior ativo. A forma como você se comunica, atende, resolve problemas — ninguém copia isso. Terceiro: invista em experiência do cliente. O diferencial está no processo, não só no resultado. Uma assessora que entrega relatório bonito, tem comunicação impecável e surpreende com detalhes — essa não perde cliente pra preço.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Qual é o seu diferencial hoje? Pensa nisso e me conta aqui. Se não souber, é um sinal de que precisa trabalhar isso.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 8 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">08</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Quais ferramentas toda assessora precisa ter?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Você não precisa de 20 aplicativos. Precisa de 4 muito bem usados."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">As ferramentas essenciais: um bom sistema de gestão de projetos — pode ser Trello, Notion ou Asana — pra controlar prazos e tarefas de cada casamento. Uma planilha de orçamento detalhada que você compartilha com a noiva. Um modelo de contrato revisado por advogado. E um sistema de comunicação organizado — eu uso pasta no Google Drive por noiva com todos os documentos, orçamentos e cronogramas. Não precisa de ferramenta cara. Precisa de processo claro. Uma assessora organizada com Google gratuito entrega mais que uma desorganizada com software premium.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quer ver como eu organizo meus casamentos na prática? Me manda "organização" que eu te mostro.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 9 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">09</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como cobrar mais sem perder clientes?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Você não perde cliente por cobrar caro. Perde por não saber mostrar valor."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Aumentar preço sem perder cliente exige duas coisas: reposicionamento e comunicação de valor. Primeiro, melhore sua apresentação comercial. Mostre o que está incluído de forma detalhada — a noiva precisa ver as 200 horas, os 15 fornecedores gerenciados, os problemas evitados. Segundo: compartilhe resultados. Quanto suas noivas economizaram? Quantos imprevistos você resolveu? Quanto tempo elas ganharam de volta? Quando a noiva entende que assessoria não é gasto e sim investimento que se paga, preço deixa de ser objeção.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você sente que cobra menos do que deveria, fica aqui que esse tema é frequente no meu conteúdo.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 10 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">10</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Assessoria é uma profissão saturada?</div>
+            <span class="roteiro-tag tag-atracao">Atração</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Saturada? Não. Mal posicionada? Sim. E isso é uma oportunidade pra você."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Tem muita assessora? Tem. Mas a maioria não se posiciona, não produz conteúdo, não tem processo profissional e cobra qualquer coisa. Ou seja: o mercado é grande mas o padrão é baixo. Quando você entra com posicionamento claro, conteúdo consistente e entrega profissional, você se destaca sem esforço. O Brasil tem mais de 1 milhão de casamentos por ano. Não falta noiva. Falta assessora que se apresenta como profissional séria. Se você fizer isso, sempre vai ter espaço.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Concorda? Discorda? Me conta aqui que eu quero ouvir sua visão.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 2: NUTRIÇÃO -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <div>
+          <div class="section-title">Nutrição</div>
+          <div class="section-subtitle">Autoridade profunda — escala, processos, mentalidade</div>
+        </div>
+      </div>
+
+      <!-- Roteiro 11 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">11</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como lidar com noiva difícil sem perder a profissionalidade?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Noiva difícil não existe. Existe noiva ansiosa que não se sente segura. E a diferença é enorme."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Quando uma noiva está sendo "difícil" — mudando de ideia, cobrando, questionando tudo — geralmente é porque está com medo. Medo de gastar errado, de não ficar bonito, de ser julgada. Seu papel é acolher primeiro e resolver depois. Valide a preocupação dela: "Entendo que isso te preocupa. Vamos olhar juntas?" Depois, ofereça clareza com dados. Mostre opções, explique consequências. E se mesmo assim não funcionar, tenha um contrato que proteja você. Limites profissionais não são grosseria — são saúde do negócio.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Já passou por uma situação assim? Me conta aqui que eu posso trazer mais conteúdo sobre gestão de clientes.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 12 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">12</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como montar um contrato blindado pra assessoria?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu já perdi dinheiro por causa de contrato mal feito. Você não precisa passar por isso."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Seu contrato precisa ter no mínimo: escopo claro do que está e o que não está incluído, cronograma de pagamentos com multa por atraso, política de cancelamento com retenção proporcional, cláusula de hora extra no dia do evento e limite de alterações. Não copie contrato da internet. Invista em um advogado que entenda prestação de serviço. É o documento mais importante do seu negócio. Um bom contrato te protege, protege a noiva e evita 90% dos conflitos. E revise todo ano — o mercado muda, seu contrato precisa acompanhar.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você ainda não tem contrato profissional, isso é prioridade número um. Me manda direct que eu indico profissionais.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 13 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">13</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Quantos casamentos por mês é o ideal pra não surtar?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Eu já fiz 4 casamentos no mesmo mês. Nunca mais. E vou te explicar por quê."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Depende do tipo de assessoria. Pra completa, o ideal é no máximo 2 casamentos simultâneos em fase ativa de planejamento. No mês do evento, máximo 2 por mês — de preferência com pelo menos uma semana entre eles. Pra assessoria de dia, dá pra fazer mais porque o envolvimento prévio é menor. Mas o segredo é: não venda mais do que você consegue entregar com excelência. Uma noiva mal atendida é um anti-portfólio ambulante. Prefira menos casamentos com valor maior do que muitos casamentos entregando meia-boca.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Você está sobrecarregada ou com agenda vazia? Em ambos os casos, precificação e posicionamento resolvem. Me segue pra mais sobre isso.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 14 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">14</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como construir uma rede de fornecedores de confiança?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Sua rede de fornecedores é seu maior ativo. Mais que portfólio, mais que Instagram."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Comece frequentando eventos do setor, feiras de noivas, open days de espaços. Se apresente, troque contato, demonstre interesse genuíno pelo trabalho do outro. Depois: indique antes de pedir indicação. Quando você manda cliente pra um fotógrafo bom, ele naturalmente vai lembrar de você. Terceiro: trabalhe junto. Cada casamento que você faz é uma oportunidade de avaliar o fornecedor ao vivo. Mantenha uma lista interna — quem entrega bem, quem atrasa, quem dá problema. Essa curadoria é o que te permite indicar com segurança. E indicação segura é o que fideliza noiva.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Você tem rede ou ainda está construindo? Me conta que eu trago mais sobre networking pra assessoras.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 15 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">15</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Vale a pena ter equipe ou é melhor trabalhar sozinha?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Trabalhar sozinha tem limite. E você provavelmente já está perto dele."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Se você faz tudo — vende, planeja, coordena, posta, responde mensagem — seu teto é de 12 a 15 casamentos por ano, no máximo. Pra crescer, você precisa delegar. O primeiro passo não é contratar CLT. É ter uma assistente de dia — alguém que te ajuda no evento. Depois: um auxiliar administrativo pra responder leads e organizar documentos. Com essas duas pessoas, você dobra sua capacidade sem dobrar seu estresse. Escalar é sobre fazer mais do que só você faz bem e delegar o resto com processo.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você já sente que não dá conta sozinha, é hora de pensar em estrutura. Eu posso te ajudar com isso — me chama.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 16 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">16</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como transformar assessoria em um negócio escalável?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Você é assessora ou você é dona de um negócio de assessoria? São coisas muito diferentes."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Assessora vende hora. Dona de negócio vende sistema. Pra escalar, você precisa de três pilares: processos documentados que qualquer pessoa treinada consiga executar, uma marca forte que atrai sem depender só de você, e fontes de receita além do dia do casamento — mentoria pra noivas, curso pra assessoras, consultoria avulsa, curadoria de fornecedores. Quando você constrói isso, sai da troca de tempo por dinheiro e entra num modelo que cresce sem te consumir. Mas aviso: isso leva tempo. Não é pra quem está no primeiro ano.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se você já atende bem e quer ir pro próximo nível, eu tenho algo especial chegando. Fica atenta.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 17 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">17</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Qual a hora certa de aumentar meu preço?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Se toda noiva que te procura fecha sem reclamar do preço, você está barata demais."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Indicadores de que é hora de subir: você está recusando casamento por falta de agenda, suas noivas fecham rápido sem negociar, você entrega muito mais do que o contrato prevê. A regra prática: aumente entre 15 e 25% a cada 5 casamentos bem executados. Não precisa avisar quem já fechou — o novo preço vale para novos clientes. E não tenha medo da objeção de preço. Se uma noiva fala que é caro, pode ser que você não é pra ela — e tudo bem. Você não precisa atender todo mundo. Precisa atender quem valoriza.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Quando foi a última vez que você reajustou? Se faz mais de 6 meses, está na hora. Começa essa semana.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 18 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">18</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Como criar autoridade no mercado de casamentos da minha região?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Autoridade não se compra. Se constrói. E eu vou te mostrar os 3 pilares."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Pilar um: presença consistente. Poste conteúdo toda semana, sem falta. As pessoas precisam te ver repetidamente pra te considerar referência. Pilar dois: prova social visível. Depoimentos de noivas, bastidores reais, números (quantos casamentos, quantos anos de mercado). Mostre seu histórico. Pilar três: relacionamento com o mercado local. Seja vista em feiras, eventos, parcerias. Quando outros fornecedores te indicam, você vira top of mind automaticamente. Autoridade é o resultado de consistência no tempo — não de um post viral.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Me conta: qual desses pilares você precisa fortalecer? Comenta aqui que eu direciono conteúdo pra você.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 19 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">19</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">O que fazer nos meses de baixa temporada?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Mês sem casamento não é mês sem trabalho. É mês de construção."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Baixa temporada é quando você organiza a casa. Primeiro: revise seus processos. O que deu errado na temporada passada? Que e-mail poderia ser um template? Que etapa pode ser otimizada? Segundo: produza conteúdo em lote. Grave 10 vídeos de uma vez, programe pra semana toda. Terceiro: invista em relacionamento — mande mensagem pra fornecedores parceiros, peça depoimentos atrasados de noivas antigas, atualize seu portfólio. Quarto: estude. Faça aquele curso que ficou pra depois. Meses de baixa são quando assessoras inteligentes se preparam pra temporada forte ser ainda melhor.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Você tá em mês de baixa agora? Aproveita pra organizar e voltar mais forte. Me segue pra dicas práticas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roteiro 20 -->
+      <div class="roteiro-card">
+        <div class="roteiro-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="roteiro-number">20</span>
+          <div class="roteiro-meta">
+            <div class="roteiro-pergunta">Qual conselho você daria pra quem está começando agora?</div>
+            <span class="roteiro-tag tag-nutricao">Nutrição</span>
+          </div>
+          <div class="roteiro-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="roteiro-body">
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Gancho</div>
+            <div class="roteiro-section-text"><em>"Se eu pudesse voltar no tempo e falar com a Giovanna do primeiro casamento, eu diria três coisas."</em></div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">Desenvolvimento</div>
+            <div class="roteiro-section-text">Primeira: não espere estar pronta. Você nunca vai estar 100% pronta. Comece com o que tem e melhore no caminho. Segunda: invista em você antes de investir no negócio. Conhecimento, mentoria, experiência prática — isso vale mais que logotipo bonito ou site perfeito. Terceira: tenha paciência com o processo mas urgência com a ação. O mercado não é pra quem espera — é pra quem aparece, faz, erra, ajusta e continua. Em dois anos fazendo isso com consistência, você vai estar num lugar que hoje parece impossível. Mas só se começar.</div>
+          </div>
+          <div class="roteiro-section">
+            <div class="roteiro-section-label">CTA</div>
+            <div class="roteiro-section-text">Se esse conteúdo te ajudou, me manda um direct dizendo "comecei". Eu quero acompanhar sua jornada. Vamos juntas.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <strong>Noiva S.A.</strong> — Roteiros de Gravação para Assessoras<br>
+    20 roteiros prontos para Stories e Reels
+  </footer>
+
+  <script>
+    document.querySelector('.roteiro-card').classList.add('open');
+  </script>
+
+</body>
+</html>

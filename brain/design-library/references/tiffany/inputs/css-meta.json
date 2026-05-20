@@ -1,0 +1,15 @@
+{
+  "external": [
+    "https://press.tiffany.com/wp-content/plugins/easy-digital-downloads/includes/blocks/assets/css/edd-blocks.css?ver=3.2.9",
+    "https://press.tiffany.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1",
+    "https://press.tiffany.com/wp-content/plugins/easy-digital-downloads/assets/css/edd.min.css?ver=3.2.9",
+    "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css?ver=4.3.0",
+    "https://press.tiffany.com/wp-content/plugins/dk-pdf/assets/css/frontend.css?ver=2.0.2",
+    "https://press.tiffany.com/wp-content/themes/tiffany/assets/styles/style.css?ver=1778266576"
+  ],
+  "preload": [],
+  "inline_style_blocks": 9,
+  "inline_style_attrs": 0,
+  "imports_resolved": 0,
+  "failed": []
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kickoff | Marpe CRM Seguros - u4digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060608; --bg2: #0a0a10; --card: #0f0f18; --border: #1a1a2a;
+    --text: #e8e8f0; --text2: #7a7a96; --muted: #4a4a64;
+    --blue: #3B82F6; --blue-dim: rgba(59,130,246,0.12);
+    --green: #22c55e; --green-dim: rgba(34,197,94,0.12);
+    --amber: #f59e0b; --amber-dim: rgba(245,158,11,0.10);
+    --red: #ef4444; --red-dim: rgba(239,68,68,0.10);
+    --purple: #8b5cf6; --purple-dim: rgba(139,92,246,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,6,8,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  nav .logo { font-weight: 600; font-size: 16px; }
+  nav .tag { font-size: 11px; color: var(--blue); background: var(--blue-dim); padding: 4px 10px; border-radius: 100px; font-weight: 600; }
+  .content { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+  h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--blue); }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 10px; }
+  p { color: var(--text2); margin-bottom: 12px; font-size: 14px; }
+  .sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+  strong { color: var(--text); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+  th { text-align: left; padding: 10px 16px; background: var(--card); border: 1px solid var(--border); color: var(--blue); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 10px 16px; border: 1px solid var(--border); color: var(--text2); }
+  tr:hover td { background: var(--card); }
+  ul, ol { padding-left: 20px; margin: 8px 0 16px; }
+  li { color: var(--text2); margin-bottom: 6px; font-size: 13px; line-height: 1.6; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .card.blue { border-color: rgba(59,130,246,0.25); background: var(--blue-dim); }
+  .card.amber { border-color: rgba(245,158,11,0.25); background: var(--amber-dim); }
+  .card.red { border-color: rgba(239,68,68,0.25); background: var(--red-dim); }
+  .card.green { border-color: rgba(34,197,94,0.25); background: var(--green-dim); }
+  .badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+  .badge.need { background: var(--red-dim); color: var(--red); }
+  .badge.have { background: var(--green-dim); color: var(--green); }
+  .badge.pending { background: var(--amber-dim); color: var(--amber); }
+  .badge.info { background: var(--blue-dim); color: var(--blue); }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 10px 0; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid rgba(26,26,42,0.5); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box { width: 20px; height: 20px; border-radius: 4px; border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px; }
+  .check-label { flex: 1; }
+  .check-label strong { display: block; color: var(--text); font-size: 14px; margin-bottom: 2px; }
+  .check-label span { color: var(--muted); font-size: 12px; }
+  .timeline { position: relative; margin: 24px 0; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--blue), var(--green)); border-radius: 2px; }
+  .tl-item { padding-bottom: 28px; position: relative; }
+  .tl-dot { position: absolute; left: -32px; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .tl-dot.blue { background: #0b0e1e; color: var(--blue); border: 2px solid var(--blue); }
+  .tl-dot.green { background: #0b1e12; color: var(--green); border: 2px solid var(--green); }
+  .tl-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .tl-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+  .tl-tag { display: inline-block; font-size: 10px; color: var(--muted); background: var(--bg2); padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
+  .section-num { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 768px) { .content { padding: 80px 20px 40px; } .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">u4digital</span>
+  <span class="tag">Documento de Kickoff</span>
+</nav>
+
+<div class="content">
+
+<div class="section-num">Kickoff T&eacute;cnico</div>
+<h1>Marpe CRM Seguros</h1>
+<p class="sub">Marcel Foletto &mdash; Marpe Corretora de Seguros | S&atilde;o Sep&eacute;, RS<br>Respons&aacute;vel t&eacute;cnico: Moroni Reis (u4digital) | Comercial: Tiago Donicht (uhunter.io)</p>
+
+<!-- RESUMO DO PROJETO -->
+<h2>1. Resumo do Projeto</h2>
+<p>Constru&ccedil;&atilde;o de um CRM personalizado para corretora de seguros, integrando WhatsApp (API oficial Meta 24/7), ERP Corp (Agia) e automa&ccedil;&otilde;es por mudan&ccedil;a de etapa. Substitui a necessidade de Clint + iSpeed + WhatsApp Web fragmentados.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <strong>Escopo</strong>
+    <ul style="margin-top: 8px;">
+      <li>Inbox WhatsApp unificado (3 n&uacute;meros + grupos)</li>
+      <li>CRM com campos de seguros</li>
+      <li>N neg&oacute;cios por contato</li>
+      <li>Funis personaliz&aacute;veis (aberto)</li>
+      <li>Automa&ccedil;&otilde;es por etapa</li>
+      <li>Avisos de parcela via WhatsApp</li>
+      <li>Campanhas em massa segmentadas</li>
+      <li>Vari&aacute;veis em mensagens (#nome, #ve&iacute;culo, #per&iacute;odo_dia)</li>
+      <li>Visualiza&ccedil;&atilde;o e intera&ccedil;&atilde;o com grupos WhatsApp</li>
+      <li>Dashboard + relat&oacute;rios (CSV/PDF)</li>
+      <li>Tracking de links por campanha</li>
+      <li>Multi-usu&aacute;rio com perfis</li>
+      <li>Integra&ccedil;&atilde;o Corp (API Agia)</li>
+      <li>Chatbot de primeiro atendimento</li>
+    </ul>
+  </div>
+  <div class="card">
+    <strong>Cronograma</strong>
+    <div class="timeline" style="margin-top: 12px;">
+      <div class="tl-item"><div class="tl-dot blue">1</div><div class="tl-title">Semana 1-2: Infra + WhatsApp API</div><div class="tl-desc">Conex&atilde;o dos 3 n&uacute;meros, webhook 24/7, inbox funcional</div></div>
+      <div class="tl-item"><div class="tl-dot blue">2</div><div class="tl-title">Semana 3-4: CRM + Funis + Campos</div><div class="tl-desc">Kanban/Grade, campos seguros, m&uacute;ltiplos neg&oacute;cios</div></div>
+      <div class="tl-item"><div class="tl-dot blue">3</div><div class="tl-title">Semana 5-6: Automa&ccedil;&otilde;es + Corp</div><div class="tl-desc">Motor de regras, integra&ccedil;&atilde;o API, disparos</div></div>
+      <div class="tl-item"><div class="tl-dot green">4</div><div class="tl-title">Semana 7-8: Refinamento</div><div class="tl-desc">Ajustes, treinamento, chatbot, go-live</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORICO DE REUNIOES -->
+<h2>2. Hist&oacute;rico de Reuni&otilde;es</h2>
+<table>
+  <tr><th>Data</th><th>Tipo</th><th>Participantes</th><th>Resultado</th></tr>
+  <tr><td>30/04/2026</td><td>Levantamento inicial</td><td>Marcel, Moroni, Tiago</td><td>Mapeamento completo de dores, ferramentas atuais (Corp, Clint, iSpeed), processos de seguros. Marcel mostrou tela a tela o Corp e o iSpeed.</td></tr>
+  <tr><td>05/05/2026</td><td>Apresenta&ccedil;&atilde;o de proposta</td><td>Marcel, Moroni, Tiago</td><td>Proposta aceita (R$ 4.900 + R$ 597/m&ecirc;s). Marcel confirmou que vai manter Corp + iSpeed + Clint para refer&ecirc;ncia durante o dev. Demo prometida.</td></tr>
+  <tr><td>08/05/2026</td><td>Demo funcional</td><td>Marcel, Tiago</td><td>Demo aprovada. Marcel pediu vari&aacute;veis em msgs r&aacute;pidas (nome, per&iacute;odo do dia, dados de campos). Confirmou envio da documenta&ccedil;&atilde;o API Corp. Pr&oacute;ximo passo: kickoff + mapeamento.</td></tr>
+</table>
+
+<!-- FERRAMENTAS DO CLIENTE -->
+<h2>3. Ferramentas Atuais do Cliente</h2>
+<table>
+  <tr><th>Ferramenta</th><th>Fun&ccedil;&atilde;o</th><th>Status</th><th>A&ccedil;&atilde;o no projeto</th></tr>
+  <tr><td><strong>Corp (Agia)</strong></td><td>ERP seguros &mdash; contratos, p&oacute;lices, comiss&otilde;es, rob&ocirc;s de portal, importa&ccedil;&atilde;o PDF</td><td><span class="badge have">Mant&eacute;m</span></td><td>Integrar via API. Fonte de verdade para p&oacute;lices, parcelas, emiss&otilde;es.</td></tr>
+  <tr><td><strong>Clint</strong></td><td>CRM gen&eacute;rico &mdash; funis, WhatsApp, atendimento</td><td><span class="badge pending">Ativo (R$ 800/m&ecirc;s)</span></td><td>Refer&ecirc;ncia de funcionalidades. Ser&aacute; substitu&iacute;do pela nova plataforma.</td></tr>
+  <tr><td><strong>WaSpeed (iSpeed)</strong></td><td>Extens&atilde;o WhatsApp &mdash; CRM lateral, msgs r&aacute;pidas, agendamento, Kanban</td><td><span class="badge pending">Ativo</span></td><td>Refer&ecirc;ncia principal de UX. Acesso liberado para u4digital.</td></tr>
+  <tr><td><strong>WhatsApp Web</strong></td><td>Atendimento direto (3 n&uacute;meros)</td><td><span class="badge have">Ativo</span></td><td>Migrar para API oficial Meta (Cloud). Manter os mesmos n&uacute;meros.</td></tr>
+</table>
+
+<div class="card amber">
+  <strong>Ferramentas j&aacute; descartadas pelo cliente:</strong>
+  <p style="margin: 8px 0 0;">RD Station (engessado), Monday (gen&eacute;rico), Chatbot anterior (n&atilde;o funcionou), ManyChet (muito caro pra implementar). Marcel j&aacute; investiu valor significativo em ferramentas que n&atilde;o atenderam.</p>
+</div>
+
+<!-- ACESSOS NECESSARIOS -->
+<h2>4. Acessos e Credenciais Necess&aacute;rias</h2>
+<p>Itens que Marcel precisa fornecer para iniciar o desenvolvimento:</p>
+
+<ul class="checklist">
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Documenta&ccedil;&atilde;o API Corp (Agia)</strong>
+      <span>PDF ou link com endpoints dispon&iacute;veis, m&eacute;todos de autentica&ccedil;&atilde;o (token/OAuth), exemplos de requests. Marcel mencionou que j&aacute; enviou para a Clint anteriormente &mdash; reenviar para u4digital.</span>
+    </div>
+    <span class="badge need">Cr&iacute;tico</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Acesso ao Corp (usu&aacute;rio de teste)</strong>
+      <span>Login e senha para a equipe u4digital explorar a estrutura de dados: contratos, p&oacute;lices, parcelas, campos dispon&iacute;veis, nomenclaturas de ramos.</span>
+    </div>
+    <span class="badge need">Cr&iacute;tico</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>N&uacute;meros WhatsApp Business</strong>
+      <span>Os 3 n&uacute;meros que ser&atilde;o conectados. Confirmar se j&aacute; s&atilde;o WhatsApp Business ou se precisam migrar. Para API oficial Meta, &eacute; necess&aacute;rio ter Meta Business Manager verificado.</span>
+    </div>
+    <span class="badge need">Cr&iacute;tico</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Meta Business Manager</strong>
+      <span>Acesso ao Business Manager da Marpe (ou criar). Necess&aacute;rio para ativar a API Cloud do WhatsApp. Verificar se j&aacute; tem conta verificada.</span>
+    </div>
+    <span class="badge need">Cr&iacute;tico</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Acesso ao WaSpeed (iSpeed)</strong>
+      <span>Usu&aacute;rio de teste j&aacute; oferecido por Marcel. Instalar e mapear funcionalidades como refer&ecirc;ncia de UX (CRM lateral, msgs r&aacute;pidas, vari&aacute;veis, agendamento).</span>
+    </div>
+    <span class="badge pending">Oferecido</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Acesso &agrave; Clint</strong>
+      <span>Marcel mant&eacute;m a assinatura ativa (R$ 800/m&ecirc;s, 8 meses restantes). Usu&aacute;rio para u4digital explorar funis, inbox, automa&ccedil;&otilde;es como refer&ecirc;ncia.</span>
+    </div>
+    <span class="badge pending">Oferecido</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Lista de campos personalizados</strong>
+      <span>Todos os campos que Marcel precisa por neg&oacute;cio: pr&ecirc;mio, comiss&atilde;o%, produtor, ramo, vig&ecirc;ncia, n&uacute;mero da ap&oacute;lice, seguradora, ve&iacute;culo/im&oacute;vel segurado, forma de pagamento, parcelas. A ser mapeado na sess&atilde;o de mapeamento.</span>
+    </div>
+    <span class="badge info">Mapeamento</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Lista de funis e etapas</strong>
+      <span>Quais funis Marcel usa (Vendas, Assist&ecirc;ncia 24h, Sinistros, Renova&ccedil;&otilde;es, outros?) e quais etapas dentro de cada um. Mapear quais mudan&ccedil;as de etapa disparam automa&ccedil;&otilde;es.</span>
+    </div>
+    <span class="badge info">Mapeamento</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Templates de mensagens</strong>
+      <span>Mensagens padr&atilde;o que a equipe j&aacute; usa: boas-vindas, guincho acionado, cota&ccedil;&atilde;o enviada, p&oacute;lice emitida, aviso parcela, pesquisa satisfa&ccedil;&atilde;o. Com vari&aacute;veis (#nome, #ve&iacute;culo, #per&iacute;odo_dia, etc.).</span>
+    </div>
+    <span class="badge info">Mapeamento</span>
+  </li>
+  <li>
+    <div class="check-box"></div>
+    <div class="check-label">
+      <strong>Lista de usu&aacute;rios e perfis</strong>
+      <span>Quem vai usar a plataforma, com qual perfil (Admin/Operador). Confirmados: Marcel Foletto (Admin), Adria (Operador). Outros?</span>
+    </div>
+    <span class="badge info">Mapeamento</span>
+  </li>
+</ul>
+
+<!-- SESSAO DE MAPEAMENTO -->
+<h2>5. Sess&atilde;o de Mapeamento (1h-1h30)</h2>
+<p>Ap&oacute;s receber os acessos, agendaremos uma sess&atilde;o de mapeamento com Marcel para documentar:</p>
+
+<div class="grid-2">
+  <div class="card">
+    <strong>Processos a mapear</strong>
+    <ol style="margin-top: 8px;">
+      <li>Fluxo completo de venda de seguro (prospec&ccedil;&atilde;o &rarr; emiss&atilde;o)</li>
+      <li>Fluxo de assist&ecirc;ncia 24h (abertura &rarr; pesquisa satisfa&ccedil;&atilde;o)</li>
+      <li>Fluxo de sinistro (abertura &rarr; finaliza&ccedil;&atilde;o)</li>
+      <li>Fluxo de renova&ccedil;&atilde;o (aviso &rarr; renova&ccedil;&atilde;o/cancelamento)</li>
+      <li>Fluxo de cons&oacute;rcio e financiamento (futuro)</li>
+      <li>Rela&ccedil;&atilde;o entre Corp e WhatsApp no dia a dia</li>
+      <li>Quem faz o qu&ecirc; (Marcel vs. Adria vs. outros)</li>
+    </ol>
+  </div>
+  <div class="card">
+    <strong>Perguntas espec&iacute;ficas</strong>
+    <ol style="margin-top: 8px;">
+      <li>Quantos ramos de seguro ativos? Lista completa.</li>
+      <li>Quantos clientes ativos na carteira?</li>
+      <li>Volume m&eacute;dio de conversas WhatsApp/dia?</li>
+      <li>Quais seguradoras parceiras? (para campos de sele&ccedil;&atilde;o)</li>
+      <li>Quais vari&aacute;veis precisa nos templates? (#nome, #ve&iacute;culo, #valor, #vencimento, #per&iacute;odo_dia, outras?)</li>
+      <li>Quais grupos WhatsApp precisa visualizar? (seguradoras, parceiros, equipe)</li>
+      <li>Quais relat&oacute;rios/m&eacute;tricas s&atilde;o mais importantes?</li>
+    </ol>
+  </div>
+</div>
+
+<!-- REQUISITOS CONFIRMADOS -->
+<h2>6. Requisitos Confirmados nas Reuni&otilde;es</h2>
+
+<h3>Da reuni&atilde;o de 30/04 (levantamento):</h3>
+<ul>
+  <li>Corp &eacute; insubstitu&iacute;vel &mdash; nova plataforma complementa, n&atilde;o substitui</li>
+  <li>Automa&ccedil;&atilde;o por mudan&ccedil;a de etapa &eacute; a funcionalidade #1 (&ldquo;pulo do gato&rdquo;)</li>
+  <li>Hist&oacute;rico de conversa precisa ser permanente (prova jur&iacute;dica)</li>
+  <li>N neg&oacute;cios por contato (1 cliente pode ter auto + vida + empresarial + residencial)</li>
+  <li>Visualiza&ccedil;&atilde;o em grade &eacute; prefer&ecirc;ncia do Marcel (al&eacute;m de Kanban)</li>
+  <li>Visualizar e interagir com grupos do WhatsApp (seguradoras, parceiros)</li>
+  <li>E-mail para aviso de parcela n&atilde;o funciona &mdash; precisa ser WhatsApp</li>
+  <li>Capta&ccedil;&atilde;o via tr&aacute;fego pago n&atilde;o funciona no interior RS &mdash; cliente vem por indica&ccedil;&atilde;o</li>
+</ul>
+
+<h3>Da reuni&atilde;o de 05/05 (proposta):</h3>
+<ul>
+  <li>Funis devem ser ambiente aberto &mdash; criar, editar, nomear livremente</li>
+  <li>Dashboard com m&eacute;tricas por usu&aacute;rio e vis&atilde;o admin global</li>
+  <li>Tracking de links para campanhas (Instagram, parceiros, Google Meu Neg&oacute;cio)</li>
+  <li>Sugest&atilde;o autom&aacute;tica de funis de atendimento por campanha (via API Meta)</li>
+  <li>Exporta&ccedil;&atilde;o CSV/PDF dos relat&oacute;rios</li>
+  <li>Chatbot de primeiro atendimento como b&ocirc;nus</li>
+</ul>
+
+<h3>Da reuni&atilde;o de 08/05 (demo):</h3>
+<ul>
+  <li>Vari&aacute;veis em mensagens r&aacute;pidas: #primeiro_nome, #per&iacute;odo_dia (bom dia/boa tarde/boa noite autom&aacute;tico), #ve&iacute;culo, dados de campos do cadastro</li>
+  <li>Vari&aacute;veis em disparos em massa (personaliza&ccedil;&atilde;o por contato)</li>
+  <li>Configur&aacute;vel com templates da Meta</li>
+  <li>Marcel vai manter Clint (8 meses restantes, R$ 800/m&ecirc;s) e iSpeed ativos para refer&ecirc;ncia</li>
+  <li>Marcel vai enviar documenta&ccedil;&atilde;o da API Corp</li>
+  <li>Marcel vai liberar acesso ao Corp para u4digital</li>
+</ul>
+
+<!-- INTEGRACAO CORP -->
+<h2>7. Integra&ccedil;&atilde;o Corp (Agia) &mdash; Pontos Cr&iacute;ticos</h2>
+
+<div class="card red">
+  <strong>Depend&ecirc;ncia principal do projeto.</strong>
+  <p style="margin: 8px 0 0;">A integra&ccedil;&atilde;o com o Corp define o que conseguimos automatizar. Precisamos validar os endpoints ANTES de come&ccedil;ar o desenvolvimento das automa&ccedil;&otilde;es (Fase 3). Se a API for limitada, adaptamos o escopo.</p>
+</div>
+
+<h3>Dados que precisamos ler do Corp:</h3>
+<table>
+  <tr><th>Dado</th><th>Para qu&ecirc;</th><th>Prioridade</th></tr>
+  <tr><td>P&oacute;lices emitidas (data, n&uacute;mero, status)</td><td>Automa&ccedil;&atilde;o boas-vindas + atualizar Kanban</td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Parcelas (valor, vencimento, status)</td><td>Aviso autom&aacute;tico 5 dias antes</td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Contratos ativos (ramo, vig&ecirc;ncia, cobertura)</td><td>Popular CRM + funil de renova&ccedil;&otilde;es</td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Comiss&otilde;es (valor, percentual)</td><td>Dashboard + relat&oacute;rios financeiros</td><td><span class="badge pending">Importante</span></td></tr>
+  <tr><td>Propostas transmitidas (status)</td><td>Mover cards automaticamente no Kanban</td><td><span class="badge pending">Importante</span></td></tr>
+  <tr><td>Dados do segurado (nome, CPF/CNPJ, contato)</td><td>Sincronizar com contatos do CRM</td><td><span class="badge info">Desej&aacute;vel</span></td></tr>
+</table>
+
+<!-- INVESTIMENTO -->
+<h2>8. Investimento Acordado</h2>
+<div class="grid-2">
+  <div class="card">
+    <strong>Implanta&ccedil;&atilde;o</strong>
+    <div style="font-size: 32px; font-weight: 800; color: var(--blue); margin: 12px 0 4px;">R$ 4.900</div>
+    <p style="margin: 0;">PIX &agrave; vista: R$ 4.500 | Ou 3x R$ 1.633 (cart&atilde;o)</p>
+  </div>
+  <div class="card">
+    <strong>Mensalidade</strong>
+    <div style="font-size: 32px; font-weight: 800; color: var(--green); margin: 12px 0 4px;">R$ 597/m&ecirc;s</div>
+    <p style="margin: 0;">Inicia ap&oacute;s go-live. Inclui hospedagem, API Meta, suporte, atualiza&ccedil;&otilde;es.</p>
+  </div>
+</div>
+
+<!-- PROXIMOS PASSOS -->
+<h2>9. Pr&oacute;ximos Passos</h2>
+<div class="timeline">
+  <div class="tl-item"><div class="tl-dot blue">1</div><div class="tl-title">Marcel envia documenta&ccedil;&atilde;o API Corp</div><div class="tl-desc">PDF ou link com endpoints, autentica&ccedil;&atilde;o, exemplos.</div><div class="tl-tag">Respons&aacute;vel: Marcel</div></div>
+  <div class="tl-item"><div class="tl-dot blue">2</div><div class="tl-title">Marcel libera acessos (Corp + WaSpeed + Clint)</div><div class="tl-desc">Usu&aacute;rios de teste para equipe u4digital.</div><div class="tl-tag">Respons&aacute;vel: Marcel</div></div>
+  <div class="tl-item"><div class="tl-dot blue">3</div><div class="tl-title">u4digital valida API Corp</div><div class="tl-desc">Testar endpoints, confirmar o que &eacute; poss&iacute;vel integrar.</div><div class="tl-tag">Respons&aacute;vel: u4digital</div></div>
+  <div class="tl-item"><div class="tl-dot blue">4</div><div class="tl-title">Sess&atilde;o de mapeamento (1h-1h30)</div><div class="tl-desc">Marcel mostra processos tela a tela. u4digital documenta campos, funis, etapas, automa&ccedil;&otilde;es, templates.</div><div class="tl-tag">Todos</div></div>
+  <div class="tl-item"><div class="tl-dot green">5</div><div class="tl-title">In&iacute;cio do desenvolvimento (Fase 1)</div><div class="tl-desc">WhatsApp API + Inbox. Primeiras entregas em 2 semanas.</div><div class="tl-tag">u4digital</div></div>
+</div>
+
+<div class="card green" style="margin-top: 32px;">
+  <strong>Contato direto</strong>
+  <p style="margin: 8px 0 0;">Moroni Reis &mdash; u4digital (desenvolvimento)<br>Tiago Donicht &mdash; uhunter.io (comercial + coordena&ccedil;&atilde;o)<br>Marcel Foletto &mdash; Marpe Corretora (cliente)</p>
+</div>
+
+</div>
+</body>
+</html>

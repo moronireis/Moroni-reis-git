@@ -1,0 +1,137 @@
+[
+  {
+    "name": "--festiveBannerHeight",
+    "declarations": 0,
+    "references": 27
+  },
+  {
+    "name": "--topBannersHeight",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--viewport-height",
+    "declarations": 0,
+    "references": 6
+  },
+  {
+    "name": "--header-height",
+    "declarations": 0,
+    "references": 6
+  },
+  {
+    "name": "--bottom-sheet-height",
+    "declarations": 0,
+    "references": 6
+  },
+  {
+    "name": "--vh",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-offset-top",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cookieBannerHeight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--submenuPosition",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--recaptchaBadgeVisibilityValue",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--recaptchaBadgeZIndex",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--primary",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--aslink",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--title",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--applepayterms",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--skiplogin",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--clicked",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--unclicked",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--footerseparator",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--footer",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--asset",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-width",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-height",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-border-radius",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-padding",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-box-sizing",
+    "declarations": 1,
+    "references": 0
+  }
+]

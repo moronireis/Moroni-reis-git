@@ -1,0 +1,1835 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>u4digital — Design System</title>
+  <meta name="description" content="u4digital Design System — tokens, components, and patterns for applied intelligence systems." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="components.css" />
+
+  <style>
+    /* ─── Showcase-specific styles ─────────────────────────── */
+
+    /* Page layout */
+    .ds-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar nav */
+    .ds-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-bg-sunken);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-8) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .ds-sidebar__brand {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+      text-decoration: none;
+      display: block;
+    }
+
+    .ds-sidebar__brand .accent { color: var(--color-accent); }
+
+    .ds-sidebar__section-label {
+      font-size: 0.65rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .ds-sidebar__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .ds-sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .ds-sidebar__link:hover {
+      color: var(--color-text-primary);
+      background: var(--color-hover);
+    }
+
+    .ds-sidebar__link.is-active {
+      color: var(--color-accent);
+      background: var(--color-accent-muted);
+    }
+
+    .ds-sidebar__link-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-border-strong);
+      flex-shrink: 0;
+    }
+
+    /* Main content area */
+    .ds-main {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Content sections */
+    .ds-section {
+      padding: var(--space-16) var(--space-16);
+      border-bottom: 1px solid var(--color-border-muted);
+      scroll-margin-top: var(--space-8);
+    }
+
+    .ds-section:last-of-type { border-bottom: none; }
+
+    .ds-section-header {
+      margin-bottom: var(--space-10);
+    }
+
+    .ds-section-title {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+    }
+
+    .ds-section-desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      line-height: var(--leading-relaxed);
+      max-width: 560px;
+    }
+
+    /* Token rows */
+    .ds-token-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border-muted);
+      font-size: var(--font-xs);
+    }
+
+    .ds-token-row:last-child { border-bottom: none; }
+
+    .ds-token-name {
+      font-family: var(--font-family-mono);
+      color: var(--color-accent-light);
+      min-width: 260px;
+    }
+
+    .ds-token-value {
+      color: var(--color-text-muted);
+      min-width: 100px;
+    }
+
+    .ds-token-desc {
+      color: var(--color-text-disabled);
+    }
+
+    /* Color swatches */
+    .ds-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .ds-swatch {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .ds-swatch__color {
+      width: 100%;
+      aspect-ratio: 1 / 0.7;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ds-swatch__name {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-secondary);
+    }
+
+    .ds-swatch__hex {
+      font-family: var(--font-family-mono);
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+    }
+
+    .ds-swatch__token {
+      font-family: var(--font-family-mono);
+      font-size: 0.65rem;
+      color: var(--color-text-disabled);
+    }
+
+    .ds-swatch-group-label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .ds-swatch-group-label:first-child { margin-top: 0; }
+
+    /* Type scale demo */
+    .ds-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-8);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .ds-type-row:last-child { border-bottom: none; }
+
+    .ds-type-meta {
+      min-width: 180px;
+      flex-shrink: 0;
+    }
+
+    .ds-type-label {
+      font-family: var(--font-family-mono);
+      font-size: var(--font-xs);
+      color: var(--color-accent-light);
+      display: block;
+    }
+
+    .ds-type-size {
+      font-size: 0.65rem;
+      color: var(--color-text-disabled);
+      display: block;
+      margin-top: var(--space-1);
+    }
+
+    .ds-type-sample { flex: 1; }
+
+    /* Spacing scale */
+    .ds-space-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      padding: var(--space-2) 0;
+    }
+
+    .ds-space-bar-wrap {
+      min-width: 200px;
+    }
+
+    .ds-space-bar {
+      height: 8px;
+      background: var(--color-accent-muted);
+      border: 1px solid var(--color-accent-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .ds-space-label {
+      font-family: var(--font-family-mono);
+      font-size: var(--font-xs);
+      color: var(--color-accent-light);
+      min-width: 96px;
+    }
+
+    .ds-space-value {
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Shadow demos */
+    .ds-shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .ds-shadow-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      align-items: center;
+      text-align: center;
+    }
+
+    .ds-shadow-card__name {
+      font-family: var(--font-family-mono);
+      font-size: var(--font-xs);
+      color: var(--color-accent-light);
+    }
+
+    .ds-shadow-card__desc {
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Component demo groups */
+    .ds-demo-group {
+      margin-bottom: var(--space-10);
+    }
+
+    .ds-demo-group:last-child { margin-bottom: 0; }
+
+    .ds-demo-group__label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .ds-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .ds-demo-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    /* Hero section */
+    .ds-hero {
+      padding: var(--space-24) var(--space-16);
+      border-bottom: 1px solid var(--color-border-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ds-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 60% 50% at 20% 50%,
+        rgba(116, 198, 158, 0.04) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .ds-hero__eyebrow {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-5);
+    }
+
+    .ds-hero__title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--color-text-primary);
+      max-width: 680px;
+      margin-bottom: var(--space-6);
+    }
+
+    .ds-hero__desc {
+      font-size: var(--font-md);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      max-width: 540px;
+      margin-bottom: var(--space-8);
+    }
+
+    .ds-hero__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .ds-hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+    }
+
+    .ds-hero__meta-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    /* Wordmark */
+    .wordmark {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .wordmark .four {
+      color: var(--color-accent);
+    }
+
+    /* Logo mark SVG container */
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Radius demo */
+    .ds-radius-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      align-items: flex-end;
+    }
+
+    .ds-radius-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .ds-radius-box {
+      width: 60px;
+      height: 60px;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border-strong);
+    }
+
+    .ds-radius-label {
+      font-family: var(--font-family-mono);
+      font-size: 0.65rem;
+      color: var(--color-accent-light);
+      text-align: center;
+    }
+
+    .ds-radius-value {
+      font-size: 0.65rem;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    /* Code block in showcase */
+    .ds-code {
+      background: var(--color-bg-sunken);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      font-family: var(--font-family-mono);
+      font-size: var(--font-xs);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      overflow-x: auto;
+    }
+
+    .ds-code .kw  { color: #C778DD; }
+    .ds-code .str { color: var(--color-accent); }
+    .ds-code .cm  { color: var(--color-text-disabled); }
+    .ds-code .pr  { color: #7EB8D4; }
+
+    /* Mobile: hide sidebar */
+    @media (max-width: 900px) {
+      .ds-sidebar { display: none; }
+      .ds-section { padding: var(--space-12) var(--space-6); }
+      .ds-hero { padding: var(--space-16) var(--space-6); }
+      .ds-type-row { flex-direction: column; gap: var(--space-2); }
+      .ds-type-meta { min-width: unset; }
+    }
+
+    /* Footer */
+    .ds-footer {
+      padding: var(--space-10) var(--space-16);
+      border-top: 1px solid var(--color-border-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 900px) {
+      .ds-footer { padding: var(--space-8) var(--space-6); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ds-layout">
+
+  <!-- ─── Sidebar ─────────────────────────────────────────── -->
+  <aside class="ds-sidebar" aria-label="Design system navigation">
+
+    <a href="#hero" class="ds-sidebar__brand">
+      u<span class="accent">4</span>digital
+    </a>
+
+    <nav>
+      <div class="ds-sidebar__section-label">Tokens</div>
+      <div class="ds-sidebar__links">
+        <a href="#colors" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Colors
+        </a>
+        <a href="#typography" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Typography
+        </a>
+        <a href="#spacing" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Spacing
+        </a>
+        <a href="#radii" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Border Radius
+        </a>
+        <a href="#shadows" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Shadows
+        </a>
+      </div>
+    </nav>
+
+    <nav>
+      <div class="ds-sidebar__section-label">Components</div>
+      <div class="ds-sidebar__links">
+        <a href="#buttons" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Buttons
+        </a>
+        <a href="#cards" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Cards
+        </a>
+        <a href="#forms" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Forms
+        </a>
+        <a href="#badges" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Badges &amp; Tags
+        </a>
+        <a href="#alerts" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Alerts
+        </a>
+        <a href="#nav-demo" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Navigation
+        </a>
+        <a href="#avatars" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Avatars
+        </a>
+        <a href="#data" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Data &amp; Stats
+        </a>
+        <a href="#layout" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Layout
+        </a>
+      </div>
+    </nav>
+
+    <nav>
+      <div class="ds-sidebar__section-label">Usage</div>
+      <div class="ds-sidebar__links">
+        <a href="#code" class="ds-sidebar__link">
+          <span class="ds-sidebar__link-dot"></span>
+          Quick Start
+        </a>
+      </div>
+    </nav>
+
+  </aside>
+
+  <!-- ─── Main ─────────────────────────────────────────────── -->
+  <main class="ds-main">
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section class="ds-hero" id="hero">
+      <p class="ds-hero__eyebrow">v1.0.0 — Production Ready</p>
+
+      <h1 class="ds-hero__title">
+        Design System
+      </h1>
+
+      <p class="ds-hero__desc">
+        Tokens, components, and patterns for applied intelligence systems.
+        Built for teams that value control over decoration.
+      </p>
+
+      <div class="ds-hero__meta">
+        <div class="ds-hero__meta-item">
+          <span class="ds-hero__meta-dot"></span>
+          Dark mode only
+        </div>
+        <div class="ds-hero__meta-item">
+          <span class="ds-hero__meta-dot"></span>
+          No build tools
+        </div>
+        <div class="ds-hero__meta-item">
+          <span class="ds-hero__meta-dot"></span>
+          Inter typeface
+        </div>
+        <div class="ds-hero__meta-item">
+          <span class="ds-hero__meta-dot"></span>
+          CSS custom properties
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Colors ─────────────────────────────────────────── -->
+    <section class="ds-section" id="colors">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Colors</h2>
+        <p class="ds-section-desc">
+          Three base colors. The surface hierarchy is derived from black.
+          Green (#74C69E) is a signal — sparse, meaningful, never dominant.
+        </p>
+      </div>
+
+      <!-- Base -->
+      <p class="ds-swatch-group-label">Base Palette</p>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#1E1E1E; border-color: rgba(255,255,255,0.12);"></div>
+          <span class="ds-swatch__name">Black</span>
+          <span class="ds-swatch__hex">#1E1E1E</span>
+          <span class="ds-swatch__token">--color-black</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#FDFDFD;"></div>
+          <span class="ds-swatch__name">White</span>
+          <span class="ds-swatch__hex">#FDFDFD</span>
+          <span class="ds-swatch__token">--color-white</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#74C69E;"></div>
+          <span class="ds-swatch__name">Green</span>
+          <span class="ds-swatch__hex">#74C69E</span>
+          <span class="ds-swatch__token">--color-green</span>
+        </div>
+      </div>
+
+      <!-- Surfaces -->
+      <p class="ds-swatch-group-label">Background Surfaces</p>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#161616; border-color:rgba(255,255,255,0.08);"></div>
+          <span class="ds-swatch__name">Sunken</span>
+          <span class="ds-swatch__hex">#161616</span>
+          <span class="ds-swatch__token">--color-bg-sunken</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#1E1E1E; border-color:rgba(255,255,255,0.1);"></div>
+          <span class="ds-swatch__name">Background</span>
+          <span class="ds-swatch__hex">#1E1E1E</span>
+          <span class="ds-swatch__token">--color-bg</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#252525; border-color:rgba(255,255,255,0.08);"></div>
+          <span class="ds-swatch__name">Card</span>
+          <span class="ds-swatch__hex">#252525</span>
+          <span class="ds-swatch__token">--color-bg-card</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#2C2C2C; border-color:rgba(255,255,255,0.08);"></div>
+          <span class="ds-swatch__name">Elevated</span>
+          <span class="ds-swatch__hex">#2C2C2C</span>
+          <span class="ds-swatch__token">--color-bg-elevated</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#333333; border-color:rgba(255,255,255,0.08);"></div>
+          <span class="ds-swatch__name">Elevated Hover</span>
+          <span class="ds-swatch__hex">#333333</span>
+          <span class="ds-swatch__token">--color-bg-elevated-hover</span>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <p class="ds-swatch-group-label">Text</p>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#FDFDFD;"></div>
+          <span class="ds-swatch__name">Primary</span>
+          <span class="ds-swatch__hex">#FDFDFD</span>
+          <span class="ds-swatch__token">--color-text-primary</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#B8B8B8;"></div>
+          <span class="ds-swatch__name">Secondary</span>
+          <span class="ds-swatch__hex">#B8B8B8</span>
+          <span class="ds-swatch__token">--color-text-secondary</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#717171;"></div>
+          <span class="ds-swatch__name">Muted</span>
+          <span class="ds-swatch__hex">#717171</span>
+          <span class="ds-swatch__token">--color-text-muted</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#444444;"></div>
+          <span class="ds-swatch__name">Disabled</span>
+          <span class="ds-swatch__hex">#444444</span>
+          <span class="ds-swatch__token">--color-text-disabled</span>
+        </div>
+      </div>
+
+      <!-- Borders -->
+      <p class="ds-swatch-group-label">Borders</p>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#2E2E2E;"></div>
+          <span class="ds-swatch__name">Border</span>
+          <span class="ds-swatch__hex">#2E2E2E</span>
+          <span class="ds-swatch__token">--color-border</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#252525;"></div>
+          <span class="ds-swatch__name">Border Muted</span>
+          <span class="ds-swatch__hex">#252525</span>
+          <span class="ds-swatch__token">--color-border-muted</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#3D3D3D;"></div>
+          <span class="ds-swatch__name">Border Strong</span>
+          <span class="ds-swatch__hex">#3D3D3D</span>
+          <span class="ds-swatch__token">--color-border-strong</span>
+        </div>
+      </div>
+
+      <!-- Accent Green -->
+      <p class="ds-swatch-group-label">Accent — Green (Signal Color)</p>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#57A880;"></div>
+          <span class="ds-swatch__name">Accent Dark</span>
+          <span class="ds-swatch__hex">#57A880</span>
+          <span class="ds-swatch__token">--color-accent-dark</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#74C69E;"></div>
+          <span class="ds-swatch__name">Accent</span>
+          <span class="ds-swatch__hex">#74C69E</span>
+          <span class="ds-swatch__token">--color-accent</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#9BD6B8;"></div>
+          <span class="ds-swatch__name">Accent Light</span>
+          <span class="ds-swatch__hex">#9BD6B8</span>
+          <span class="ds-swatch__token">--color-accent-light</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:rgba(116,198,158,0.08); border-color:rgba(116,198,158,0.3);"></div>
+          <span class="ds-swatch__name">Accent Muted</span>
+          <span class="ds-swatch__hex">rgba(116,198,158,.08)</span>
+          <span class="ds-swatch__token">--color-accent-muted</span>
+        </div>
+      </div>
+
+      <!-- Semantic -->
+      <p class="ds-swatch-group-label">Semantic States</p>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#74C69E;"></div>
+          <span class="ds-swatch__name">Success</span>
+          <span class="ds-swatch__hex">#74C69E</span>
+          <span class="ds-swatch__token">--color-success</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#D4A843;"></div>
+          <span class="ds-swatch__name">Warning</span>
+          <span class="ds-swatch__hex">#D4A843</span>
+          <span class="ds-swatch__token">--color-warning</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#CC5555;"></div>
+          <span class="ds-swatch__name">Error</span>
+          <span class="ds-swatch__hex">#CC5555</span>
+          <span class="ds-swatch__token">--color-error</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background:#5B9BD5;"></div>
+          <span class="ds-swatch__name">Info</span>
+          <span class="ds-swatch__hex">#5B9BD5</span>
+          <span class="ds-swatch__token">--color-info</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Typography ─────────────────────────────────────── -->
+    <section class="ds-section" id="typography">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Typography</h2>
+        <p class="ds-section-desc">
+          Inter across all weights. Scale uses a 1.25 minor-third ratio,
+          snapped to pixel-friendly values.
+        </p>
+      </div>
+
+      <!-- Type scale -->
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Type Scale</div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-6xl</span>
+            <span class="ds-type-size">72px / 4.5rem</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-6xl);font-weight:600;letter-spacing:-0.04em;line-height:1;color:var(--color-text-primary);">System</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-5xl</span>
+            <span class="ds-type-size">60px / 3.75rem</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-5xl);font-weight:600;letter-spacing:-0.04em;line-height:1;color:var(--color-text-primary);">Intelligence</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-4xl</span>
+            <span class="ds-type-size">48px / 3rem — H1</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-4xl);font-weight:600;letter-spacing:-0.03em;line-height:1.1;color:var(--color-text-primary);">Applied Intelligence</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-3xl</span>
+            <span class="ds-type-size">36px / 2.25rem — H2</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-3xl);font-weight:600;letter-spacing:-0.02em;line-height:1.2;color:var(--color-text-primary);">Strategic Infrastructure</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-2xl</span>
+            <span class="ds-type-size">30px / 1.875rem — H3</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-2xl);font-weight:500;letter-spacing:-0.015em;line-height:1.3;color:var(--color-text-primary);">Structured for Scale</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-xl</span>
+            <span class="ds-type-size">24px / 1.5rem — H4</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-xl);font-weight:500;color:var(--color-text-primary);">Implementation Layer</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-lg</span>
+            <span class="ds-type-size">20px / 1.25rem — H5</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-lg);font-weight:500;color:var(--color-text-primary);">Process Architecture</div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-md</span>
+            <span class="ds-type-size">18px / 1.125rem — Lead</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-md);color:var(--color-text-secondary);line-height:1.65;">
+            The gap between AI investment and AI revenue is a systems problem, not a technology problem.
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-base</span>
+            <span class="ds-type-size">16px / 1rem — Body</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-base);color:var(--color-text-secondary);line-height:1.65;">
+            We design, structure, and implement applied intelligence systems that connect directly to business output.
+            Every system we build has a defined owner, a measurable outcome, and an integration plan.
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-sm</span>
+            <span class="ds-type-size">14px / 0.875rem</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-sm);color:var(--color-text-muted);line-height:1.65;">
+            Secondary text used for supporting content, descriptions, and metadata.
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <span class="ds-type-label">--font-xs</span>
+            <span class="ds-type-size">12px / 0.75rem</span>
+          </div>
+          <div class="ds-type-sample" style="font-size:var(--font-xs);color:var(--color-text-muted);">
+            Labels, captions, badges, and micro-copy.
+          </div>
+        </div>
+      </div>
+
+      <!-- Weights -->
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Font Weights — Inter</div>
+        <div class="ds-demo-col">
+          <div style="font-size:var(--font-xl);font-weight:300;color:var(--color-text-primary);">Light 300 — Intelligence infrastructure</div>
+          <div style="font-size:var(--font-xl);font-weight:400;color:var(--color-text-primary);">Regular 400 — Intelligence infrastructure</div>
+          <div style="font-size:var(--font-xl);font-weight:500;color:var(--color-text-primary);">Medium 500 — Intelligence infrastructure</div>
+          <div style="font-size:var(--font-xl);font-weight:600;color:var(--color-text-primary);">Semibold 600 — Intelligence infrastructure</div>
+          <div style="font-size:var(--font-xl);font-weight:700;color:var(--color-text-primary);">Bold 700 — Intelligence infrastructure</div>
+        </div>
+      </div>
+
+      <!-- Letter spacing -->
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Letter Spacing</div>
+        <div class="ds-demo-col">
+          <div style="font-size:var(--font-base);letter-spacing:-0.03em;color:var(--color-text-secondary);">tracking-tight  — Strategic intelligence systems</div>
+          <div style="font-size:var(--font-base);letter-spacing:0;color:var(--color-text-secondary);">tracking-normal — Strategic intelligence systems</div>
+          <div style="font-size:var(--font-xs);letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:var(--color-text-muted);">tracking-caps — System Architecture</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Spacing ─────────────────────────────────────────── -->
+    <section class="ds-section" id="spacing">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Spacing</h2>
+        <p class="ds-section-desc">Base unit: 4px. All values are multiples. Use tokens — never magic numbers.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-1</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:4px;"></div></div>
+          <span class="ds-space-value">4px / 0.25rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-2</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:8px;"></div></div>
+          <span class="ds-space-value">8px / 0.5rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-3</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:12px;"></div></div>
+          <span class="ds-space-value">12px / 0.75rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-4</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:16px;"></div></div>
+          <span class="ds-space-value">16px / 1rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-5</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:20px;"></div></div>
+          <span class="ds-space-value">20px / 1.25rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-6</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:24px;"></div></div>
+          <span class="ds-space-value">24px / 1.5rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-8</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:32px;"></div></div>
+          <span class="ds-space-value">32px / 2rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-10</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:40px;"></div></div>
+          <span class="ds-space-value">40px / 2.5rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-12</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:48px;"></div></div>
+          <span class="ds-space-value">48px / 3rem</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-16</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:64px;"></div></div>
+          <span class="ds-space-value">64px / 4rem — section-sm</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-24</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:96px;"></div></div>
+          <span class="ds-space-value">96px / 6rem — section-md</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-32</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:128px;"></div></div>
+          <span class="ds-space-value">128px / 8rem — section-lg</span>
+        </div>
+        <div class="ds-space-row">
+          <span class="ds-space-label">--space-40</span>
+          <div class="ds-space-bar-wrap"><div class="ds-space-bar" style="width:160px;"></div></div>
+          <span class="ds-space-value">160px / 10rem — section-xl</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Border Radius ──────────────────────────────────── -->
+    <section class="ds-section" id="radii">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Border Radius</h2>
+        <p class="ds-section-desc">Structural, not decorative. Prefer --radius-none and --radius-sm for data-dense UI.</p>
+      </div>
+
+      <div class="ds-radius-grid">
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:0;"></div>
+          <span class="ds-radius-label">--radius-none</span>
+          <span class="ds-radius-value">0px</span>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:3px;"></div>
+          <span class="ds-radius-label">--radius-sm</span>
+          <span class="ds-radius-value">3px</span>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:6px;"></div>
+          <span class="ds-radius-label">--radius-md</span>
+          <span class="ds-radius-value">6px</span>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:10px;"></div>
+          <span class="ds-radius-label">--radius-lg</span>
+          <span class="ds-radius-value">10px</span>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:16px;"></div>
+          <span class="ds-radius-label">--radius-xl</span>
+          <span class="ds-radius-value">16px</span>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:24px;"></div>
+          <span class="ds-radius-label">--radius-2xl</span>
+          <span class="ds-radius-value">24px</span>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:9999px;width:80px;height:40px;"></div>
+          <span class="ds-radius-label">--radius-full</span>
+          <span class="ds-radius-value">9999px</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Shadows ─────────────────────────────────────────── -->
+    <section class="ds-section" id="shadows">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Shadows</h2>
+        <p class="ds-section-desc">
+          Structural, not theatrical. Shadows separate surfaces — they do not decorate them.
+          Never use drop shadows for emphasis; use borders and surface contrast instead.
+        </p>
+      </div>
+
+      <div class="ds-shadow-grid">
+        <div class="ds-shadow-card" style="box-shadow:none;">
+          <span class="ds-shadow-card__name">--shadow-none</span>
+          <span class="ds-shadow-card__desc">Flat — same plane</span>
+        </div>
+        <div class="ds-shadow-card" style="box-shadow:0 1px 2px rgba(0,0,0,0.35);">
+          <span class="ds-shadow-card__name">--shadow-xs</span>
+          <span class="ds-shadow-card__desc">Micro-lift</span>
+        </div>
+        <div class="ds-shadow-card" style="box-shadow:0 1px 3px rgba(0,0,0,0.40),0 1px 2px rgba(0,0,0,0.30);">
+          <span class="ds-shadow-card__name">--shadow-sm</span>
+          <span class="ds-shadow-card__desc">Default card</span>
+        </div>
+        <div class="ds-shadow-card" style="box-shadow:0 4px 6px rgba(0,0,0,0.40),0 2px 4px rgba(0,0,0,0.28);">
+          <span class="ds-shadow-card__name">--shadow-md</span>
+          <span class="ds-shadow-card__desc">Elevated surface</span>
+        </div>
+        <div class="ds-shadow-card" style="box-shadow:0 10px 15px rgba(0,0,0,0.45),0 4px 6px rgba(0,0,0,0.30);">
+          <span class="ds-shadow-card__name">--shadow-lg</span>
+          <span class="ds-shadow-card__desc">Dropdowns, popovers</span>
+        </div>
+        <div class="ds-shadow-card" style="box-shadow:0 20px 25px rgba(0,0,0,0.50),0 8px 10px rgba(0,0,0,0.30);">
+          <span class="ds-shadow-card__name">--shadow-xl</span>
+          <span class="ds-shadow-card__desc">Modals</span>
+        </div>
+        <div class="ds-shadow-card" style="box-shadow:0 0 0 3px rgba(116,198,158,0.40);">
+          <span class="ds-shadow-card__name">--shadow-green</span>
+          <span class="ds-shadow-card__desc">Focus ring / accent</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Buttons ─────────────────────────────────────────── -->
+    <section class="ds-section" id="buttons">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Buttons</h2>
+        <p class="ds-section-desc">
+          Primary uses the accent green — reserve it for the single most important action per view.
+          Secondary and ghost handle everything else.
+        </p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Variants</div>
+        <div class="ds-demo-row">
+          <button class="btn btn--primary">Primary</button>
+          <button class="btn btn--secondary">Secondary</button>
+          <button class="btn btn--ghost">Ghost</button>
+          <button class="btn btn--accent">Accent Outline</button>
+          <button class="btn btn--danger">Danger</button>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Sizes</div>
+        <div class="ds-demo-row" style="align-items:flex-end;">
+          <button class="btn btn--primary btn--sm">Small</button>
+          <button class="btn btn--primary">Medium</button>
+          <button class="btn btn--primary btn--lg">Large</button>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">States</div>
+        <div class="ds-demo-row">
+          <button class="btn btn--primary" disabled>Disabled Primary</button>
+          <button class="btn btn--secondary" disabled>Disabled Secondary</button>
+          <button class="btn btn--primary btn--loading">Loading</button>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">With Icons (SVG)</div>
+        <div class="ds-demo-row">
+          <button class="btn btn--primary">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            New System
+          </button>
+          <button class="btn btn--secondary">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M11.5 7A4.5 4.5 0 1 1 7 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M7 1l3 1.5L7 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Refresh
+          </button>
+          <button class="btn btn--ghost btn--icon" aria-label="Settings">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 1v2M8 13v2M1 8h2M13 8h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Full Width</div>
+        <div style="max-width:400px;">
+          <button class="btn btn--primary btn--block">Deploy System</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cards ──────────────────────────────────────────── -->
+    <section class="ds-section" id="cards">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Cards</h2>
+        <p class="ds-section-desc">Surface containers with consistent padding, border, and radius. Elevation communicates hierarchy.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Variants</div>
+        <div class="grid grid--3">
+
+          <div class="card">
+            <div class="card__header">
+              <p class="card__subtitle">--color-bg-card</p>
+              <h3 class="card__title">Default Card</h3>
+            </div>
+            <p class="card__body">Standard surface for grouping related content. Border provides separation without elevation.</p>
+            <div class="card__footer">
+              <span class="badge">Default</span>
+              <button class="btn btn--ghost btn--sm">View</button>
+            </div>
+          </div>
+
+          <div class="card card--elevated">
+            <div class="card__header">
+              <p class="card__subtitle">--color-bg-elevated</p>
+              <h3 class="card__title">Elevated Card</h3>
+            </div>
+            <p class="card__body">Lifted surface with shadow. Use for modals, dropdowns, and content that floats above the page.</p>
+            <div class="card__footer">
+              <span class="badge badge--info">Elevated</span>
+              <button class="btn btn--ghost btn--sm">View</button>
+            </div>
+          </div>
+
+          <div class="card card--bordered">
+            <div class="card__header">
+              <p class="card__subtitle">Transparent bg</p>
+              <h3 class="card__title">Bordered Card</h3>
+            </div>
+            <p class="card__body">Transparent background with strong border. Good for secondary information or side panels.</p>
+            <div class="card__footer">
+              <span class="badge badge--outline">Bordered</span>
+              <button class="btn btn--ghost btn--sm">View</button>
+            </div>
+          </div>
+
+          <div class="card card--interactive">
+            <div class="card__header">
+              <p class="card__subtitle">Hover to see lift</p>
+              <h3 class="card__title">Interactive Card</h3>
+            </div>
+            <p class="card__body">Adds hover lift and cursor pointer. Use for clickable cards and list items.</p>
+          </div>
+
+          <div class="card card--accent">
+            <div class="card__header">
+              <p class="card__subtitle">Green left border</p>
+              <h3 class="card__title">Accent Card</h3>
+            </div>
+            <p class="card__body">Left border in accent green. Signals a featured item, active state, or important alert.</p>
+            <div class="card__footer">
+              <span class="badge badge--accent">Active</span>
+            </div>
+          </div>
+
+          <div class="card card--sunken">
+            <div class="card__header">
+              <p class="card__subtitle">--color-bg-sunken</p>
+              <h3 class="card__title">Sunken Card</h3>
+            </div>
+            <p class="card__body">Below-surface. Use for code blocks, input areas, or nested content within a card.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Forms ──────────────────────────────────────────── -->
+    <section class="ds-section" id="forms">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Forms</h2>
+        <p class="ds-section-desc">Focus states use green. Sunken background reinforces the input as an editable field within the surface hierarchy.</p>
+      </div>
+
+      <div style="max-width: 560px;">
+
+        <div class="ds-demo-group">
+          <div class="ds-demo-group__label">Text Inputs</div>
+          <div class="stack stack--4">
+            <div class="form-group">
+              <label class="form-label form-label--required" for="input-name">System Name</label>
+              <input class="input" type="text" id="input-name" placeholder="e.g. Lead Qualification Engine" />
+              <span class="form-hint">Used as the identifier across all integrations.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-sm">Small Input</label>
+              <input class="input input--sm" type="text" id="input-sm" placeholder="Small size" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-lg">Large Input</label>
+              <input class="input input--lg" type="text" id="input-lg" placeholder="Large size" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-error">With Error</label>
+              <input class="input input--error" type="text" id="input-error" value="invalid-value" />
+              <span class="form-error">This value is not a valid system identifier.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-disabled">Disabled</label>
+              <input class="input" type="text" id="input-disabled" placeholder="Not editable" disabled />
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-demo-group">
+          <div class="ds-demo-group__label">Textarea</div>
+          <div class="form-group">
+            <label class="form-label" for="textarea-desc">System Description</label>
+            <textarea class="textarea" id="textarea-desc" rows="4" placeholder="Describe what this system does, its inputs, and its expected output..."></textarea>
+            <span class="form-hint">Max 500 characters.</span>
+          </div>
+        </div>
+
+        <div class="ds-demo-group">
+          <div class="ds-demo-group__label">Select</div>
+          <div class="form-group">
+            <label class="form-label" for="select-type">System Type</label>
+            <select class="select" id="select-type">
+              <option value="">Select type...</option>
+              <option>Lead Qualification</option>
+              <option>Content Generation</option>
+              <option>Data Enrichment</option>
+              <option>Customer Support</option>
+              <option>Internal Operations</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ds-demo-group">
+          <div class="ds-demo-group__label">Checkboxes &amp; Radios</div>
+          <div class="stack stack--3">
+            <label class="checkbox">
+              <input type="checkbox" checked />
+              <span class="checkbox__label">Enable real-time monitoring</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" />
+              <span class="checkbox__label">Send weekly performance reports</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="tier" checked />
+              <span class="radio__label">Production environment</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="tier" />
+              <span class="radio__label">Staging environment</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Badges & Tags ──────────────────────────────────── -->
+    <section class="ds-section" id="badges">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Badges &amp; Tags</h2>
+        <p class="ds-section-desc">Inline labels for status, categories, and metadata. Keep badge counts to a minimum.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Badges</div>
+        <div class="ds-demo-row">
+          <span class="badge">Default</span>
+          <span class="badge badge--accent">
+            <span class="badge__dot"></span>
+            Active
+          </span>
+          <span class="badge badge--success">
+            <span class="badge__dot"></span>
+            Running
+          </span>
+          <span class="badge badge--warning">
+            <span class="badge__dot"></span>
+            Degraded
+          </span>
+          <span class="badge badge--error">
+            <span class="badge__dot"></span>
+            Failed
+          </span>
+          <span class="badge badge--info">In Review</span>
+          <span class="badge badge--outline">Archived</span>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Tags</div>
+        <div class="ds-demo-row">
+          <span class="tag">Infrastructure</span>
+          <span class="tag">AI / ML</span>
+          <span class="tag">Operations</span>
+          <span class="tag tag--accent">New</span>
+          <span class="tag">API</span>
+          <span class="tag">v2.4</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Alerts ─────────────────────────────────────────── -->
+    <section class="ds-section" id="alerts">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Alerts</h2>
+        <p class="ds-section-desc">Contextual feedback messages. Each variant carries semantic meaning — do not use color decoratively.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Variants</div>
+        <div class="stack stack--4" style="max-width:640px;">
+
+          <div class="alert alert--info" role="status">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 9v5M10 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="alert__content">
+              <p class="alert__title">System Deployment Queued</p>
+              <p class="alert__body">Your system will be deployed in the next 5 minutes. No action required.</p>
+            </div>
+          </div>
+
+          <div class="alert alert--success" role="status">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="alert__content">
+              <p class="alert__title">Integration Successful</p>
+              <p class="alert__body">All 3 data sources are now connected. The system processed 1,240 records in the last 24h.</p>
+            </div>
+          </div>
+
+          <div class="alert alert--warning" role="alert">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 3L18.5 17.5H1.5L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M10 9v4M10 14.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="alert__content">
+              <p class="alert__title">API Rate Limit at 82%</p>
+              <p class="alert__body">Usage is approaching the monthly quota. Consider upgrading your plan or throttling batch jobs.</p>
+            </div>
+          </div>
+
+          <div class="alert alert--error" role="alert">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7.5 7.5l5 5M12.5 7.5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div class="alert__content">
+              <p class="alert__title">Webhook Delivery Failed</p>
+              <p class="alert__body">The endpoint <code>api.yourcrm.com/hook</code> returned 503 for 3 consecutive calls. Events are queued for retry.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Navigation ─────────────────────────────────────── -->
+    <section class="ds-section" id="nav-demo">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Navigation</h2>
+        <p class="ds-section-desc">Horizontal nav bar with sticky blur variant. Active link uses white with a subtle bg tint.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Nav Bar</div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-border);">
+          <nav class="nav">
+            <div class="nav__inner">
+              <a href="#" class="nav__brand">
+                u<span style="color:var(--color-accent)">4</span>digital
+              </a>
+              <div class="nav__links">
+                <a href="#" class="nav__link nav__link--active">Systems</a>
+                <a href="#" class="nav__link">Integrations</a>
+                <a href="#" class="nav__link">Analytics</a>
+                <a href="#" class="nav__link">Docs</a>
+              </div>
+              <div class="nav__actions">
+                <button class="btn btn--ghost btn--sm">Sign in</button>
+                <button class="btn btn--primary btn--sm">Deploy</button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Avatars ─────────────────────────────────────────── -->
+    <section class="ds-section" id="avatars">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Avatars</h2>
+        <p class="ds-section-desc">Circular identity marks. Supports image, initials, and icon variants.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Sizes</div>
+        <div class="ds-demo-row" style="align-items:flex-end;">
+          <div class="avatar avatar--xs">XS</div>
+          <div class="avatar avatar--sm">SM</div>
+          <div class="avatar avatar--md">MD</div>
+          <div class="avatar avatar--lg">LG</div>
+          <div class="avatar avatar--xl">XL</div>
+          <div class="avatar avatar--2xl">2X</div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Variants</div>
+        <div class="ds-demo-row">
+          <div class="avatar avatar--md">AB</div>
+          <div class="avatar avatar--md avatar--accent">u4</div>
+          <div class="avatar avatar--md">
+            <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true">
+              <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Avatar Group</div>
+        <div class="avatar-group">
+          <div class="avatar avatar--md">A1</div>
+          <div class="avatar avatar--md avatar--accent">A2</div>
+          <div class="avatar avatar--md">A3</div>
+          <div class="avatar avatar--md">+4</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Data & Stats ───────────────────────────────────── -->
+    <section class="ds-section" id="data">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Data &amp; Stats</h2>
+        <p class="ds-section-desc">Metric display, table, skeleton loader, and spinner patterns.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Stat Cards</div>
+        <div class="grid grid--4">
+          <div class="card">
+            <div class="stat">
+              <span class="stat__value stat__value--accent">98.4%</span>
+              <span class="stat__label">System Uptime</span>
+              <span class="stat__delta stat__delta--positive">+0.2% vs last month</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="stat">
+              <span class="stat__value">1,240</span>
+              <span class="stat__label">Records Processed</span>
+              <span class="stat__delta stat__delta--positive">+18% vs last week</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="stat">
+              <span class="stat__value">4.2s</span>
+              <span class="stat__label">Avg Response Time</span>
+              <span class="stat__delta stat__delta--negative">+0.8s vs baseline</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="stat">
+              <span class="stat__value">12</span>
+              <span class="stat__label">Active Integrations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Table</div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>System</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Last Run</th>
+                <th>Records</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="color:var(--color-text-primary);font-weight:500;">Lead Qualifier</span></td>
+                <td><span class="tag">Qualification</span></td>
+                <td><span class="badge badge--success"><span class="badge__dot"></span>Running</span></td>
+                <td class="text-muted">2 min ago</td>
+                <td style="font-variant-numeric:tabular-nums;">284</td>
+              </tr>
+              <tr>
+                <td><span style="color:var(--color-text-primary);font-weight:500;">Content Engine</span></td>
+                <td><span class="tag">Generation</span></td>
+                <td><span class="badge badge--accent"><span class="badge__dot"></span>Active</span></td>
+                <td class="text-muted">12 min ago</td>
+                <td style="font-variant-numeric:tabular-nums;">1,041</td>
+              </tr>
+              <tr>
+                <td><span style="color:var(--color-text-primary);font-weight:500;">CRM Enricher</span></td>
+                <td><span class="tag">Enrichment</span></td>
+                <td><span class="badge badge--warning"><span class="badge__dot"></span>Degraded</span></td>
+                <td class="text-muted">1 hour ago</td>
+                <td style="font-variant-numeric:tabular-nums;">92</td>
+              </tr>
+              <tr>
+                <td><span style="color:var(--color-text-primary);font-weight:500;">Support Router</span></td>
+                <td><span class="tag">Operations</span></td>
+                <td><span class="badge badge--error"><span class="badge__dot"></span>Failed</span></td>
+                <td class="text-muted">3 hours ago</td>
+                <td style="font-variant-numeric:tabular-nums;">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Loading States</div>
+        <div class="ds-demo-row" style="align-items:center;gap:var(--space-8);">
+          <div class="stack stack--2" style="flex:1;max-width:300px;">
+            <div class="skeleton" style="height:12px;width:80%;"></div>
+            <div class="skeleton" style="height:12px;width:60%;"></div>
+            <div class="skeleton" style="height:12px;width:70%;"></div>
+          </div>
+          <div class="flex flex--center" style="gap:var(--space-6);">
+            <div class="spinner spinner--sm"></div>
+            <div class="spinner"></div>
+            <div class="spinner spinner--lg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Tooltip</div>
+        <div class="ds-demo-row">
+          <div class="tooltip-wrapper">
+            <button class="btn btn--secondary">Hover me</button>
+            <div class="tooltip" role="tooltip">Deploy to production environment</div>
+          </div>
+          <div class="tooltip-wrapper">
+            <button class="btn btn--ghost">Another</button>
+            <div class="tooltip tooltip--bottom" role="tooltip">Opens below the trigger</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Layout ─────────────────────────────────────────── -->
+    <section class="ds-section" id="layout">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Layout</h2>
+        <p class="ds-section-desc">12-column grid, container widths, and flex utilities. Always use tokens — never hardcode widths.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Grid — 2 columns</div>
+        <div class="grid grid--2" style="max-width:600px;">
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 1</span></div>
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 2</span></div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Grid — 3 columns</div>
+        <div class="grid grid--3">
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 1</span></div>
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 2</span></div>
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 3</span></div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Grid — 4 columns</div>
+        <div class="grid grid--4">
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 1</span></div>
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 2</span></div>
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 3</span></div>
+          <div class="card card--sunken" style="text-align:center;padding:var(--space-5);"><span class="caption">col 4</span></div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Container Widths</div>
+        <div class="stack stack--3">
+          <div class="card card--sunken" style="max-width:var(--container-sm);padding:var(--space-3);">
+            <span class="caption">container-sm — 640px</span>
+          </div>
+          <div class="card card--sunken" style="max-width:var(--container-md);padding:var(--space-3);">
+            <span class="caption">container-md — 768px</span>
+          </div>
+          <div class="card card--sunken" style="max-width:var(--container-lg);padding:var(--space-3);">
+            <span class="caption">container-lg — 1024px</span>
+          </div>
+          <div class="card card--sunken" style="padding:var(--space-3);">
+            <span class="caption">container-xl — 1200px (default)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Dividers</div>
+        <div class="stack stack--4" style="max-width:500px;">
+          <p class="text-sm text-secondary">Content above</p>
+          <hr class="divider" />
+          <p class="text-sm text-secondary">Default divider</p>
+          <hr class="divider divider--strong" />
+          <p class="text-sm text-secondary">Strong divider</p>
+          <div class="separator">or</div>
+          <p class="text-sm text-secondary">Content below separator</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Quick Start ────────────────────────────────────── -->
+    <section class="ds-section" id="code">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Quick Start</h2>
+        <p class="ds-section-desc">Two files. No build tools. Drop both into your project and start building.</p>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">HTML Setup</div>
+        <div class="ds-code">
+<span class="cm">&lt;!-- 1. Inter from Google Fonts --&gt;</span>
+<span class="kw">&lt;link</span> <span class="pr">rel</span>=<span class="str">"preconnect"</span> <span class="pr">href</span>=<span class="str">"https://fonts.googleapis.com"</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;link</span> <span class="pr">href</span>=<span class="str">"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"</span> <span class="pr">rel</span>=<span class="str">"stylesheet"</span> <span class="kw">/&gt;</span>
+
+<span class="cm">&lt;!-- 2. Design system — ORDER MATTERS: tokens first, then components --&gt;</span>
+<span class="kw">&lt;link</span> <span class="pr">rel</span>=<span class="str">"stylesheet"</span> <span class="pr">href</span>=<span class="str">"design-system.css"</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;link</span> <span class="pr">rel</span>=<span class="str">"stylesheet"</span> <span class="pr">href</span>=<span class="str">"components.css"</span> <span class="kw">/&gt;</span>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Using Tokens in Your CSS</div>
+        <div class="ds-code">
+<span class="cm">/* Use tokens — never magic numbers */</span>
+<span class="pr">.my-component</span> {
+  background: <span class="str">var(--color-bg-card)</span>;
+  border: 1px solid <span class="str">var(--color-border)</span>;
+  border-radius: <span class="str">var(--radius-lg)</span>;
+  padding: <span class="str">var(--space-6)</span>;
+  font-size: <span class="str">var(--font-sm)</span>;
+  color: <span class="str">var(--color-text-secondary)</span>;
+  transition: border-color <span class="str">var(--transition-fast)</span>;
+}
+
+<span class="pr">.my-component:hover</span> {
+  border-color: <span class="str">var(--color-border-strong)</span>;
+}
+
+<span class="cm">/* Accent green = signal, not decoration */</span>
+<span class="pr">.my-component--active</span> {
+  border-left: 2px solid <span class="str">var(--color-accent)</span>;
+  background: <span class="str">var(--color-accent-muted)</span>;
+}
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Component Composition</div>
+        <div class="ds-code">
+<span class="cm">&lt;!-- Primary action with icon --&gt;</span>
+<span class="kw">&lt;button</span> <span class="pr">class</span>=<span class="str">"btn btn--primary"</span><span class="kw">&gt;</span>Deploy System<span class="kw">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Status badge --&gt;</span>
+<span class="kw">&lt;span</span> <span class="pr">class</span>=<span class="str">"badge badge--success"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;span</span> <span class="pr">class</span>=<span class="str">"badge__dot"</span><span class="kw">&gt;&lt;/span&gt;</span>
+  Running
+<span class="kw">&lt;/span&gt;</span>
+
+<span class="cm">&lt;!-- Interactive card --&gt;</span>
+<span class="kw">&lt;div</span> <span class="pr">class</span>=<span class="str">"card card--interactive card--accent"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span> <span class="pr">class</span>=<span class="str">"card__header"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h3</span> <span class="pr">class</span>=<span class="str">"card__title"</span><span class="kw">&gt;</span>Lead Qualifier<span class="kw">&lt;/h3&gt;</span>
+    <span class="kw">&lt;p</span> <span class="pr">class</span>=<span class="str">"card__subtitle"</span><span class="kw">&gt;</span>AI / ML<span class="kw">&lt;/p&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;p</span> <span class="pr">class</span>=<span class="str">"card__body"</span><span class="kw">&gt;</span>Qualifies leads from 5 sources in real time.<span class="kw">&lt;/p&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+        </div>
+      </div>
+
+      <div class="ds-demo-group">
+        <div class="ds-demo-group__label">Green Usage Rule</div>
+        <div class="card card--accent">
+          <p class="card__body" style="color:var(--color-text-secondary);">
+            Green (#74C69E) is a <strong style="color:var(--color-text-primary);">signal color</strong>
+            — use it for one thing per screen: the primary CTA, an active/success state, or a single
+            data point that needs attention. When everything is highlighted, nothing is.
+            Never use green for decoration, background fills, or as a dominant hue.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer class="ds-footer">
+      <div>
+        <span class="wordmark">u<span class="four">4</span>digital</span>
+        <span class="caption" style="margin-left:var(--space-3);">Design System v1.0.0</span>
+      </div>
+      <p class="caption">
+        &copy; <script>document.write(new Date().getFullYear())</script> u4digital.
+        Applied intelligence infrastructure.
+      </p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Sidebar active link highlight on scroll -->
+<script>
+  (function () {
+    const links = document.querySelectorAll('.ds-sidebar__link');
+    const sections = Array.from(document.querySelectorAll('[id]')).filter(el =>
+      Array.from(links).some(l => l.getAttribute('href') === '#' + el.id)
+    );
+
+    function onScroll() {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 120) current = section.id;
+      });
+      links.forEach(link => {
+        link.classList.toggle('is-active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>

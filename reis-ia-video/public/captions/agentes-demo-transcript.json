@@ -1,0 +1,1302 @@
+{
+  "source": "agentes-demo-vo.mp3",
+  "language": "pt",
+  "duration": 46.94,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.76,
+      "text": "É isso que acontece quando você usa a AI sem saber o que está fazendo.",
+      "words": [
+        {
+          "word": "É",
+          "start": 0.0,
+          "end": 0.18,
+          "probability": 0.859
+        },
+        {
+          "word": "isso",
+          "start": 0.18,
+          "end": 0.44,
+          "probability": 0.992
+        },
+        {
+          "word": "que",
+          "start": 0.44,
+          "end": 0.68,
+          "probability": 0.866
+        },
+        {
+          "word": "acontece",
+          "start": 0.68,
+          "end": 1.0,
+          "probability": 0.999
+        },
+        {
+          "word": "quando",
+          "start": 1.0,
+          "end": 1.28,
+          "probability": 0.999
+        },
+        {
+          "word": "você",
+          "start": 1.28,
+          "end": 1.64,
+          "probability": 0.996
+        },
+        {
+          "word": "usa",
+          "start": 1.64,
+          "end": 1.84,
+          "probability": 0.996
+        },
+        {
+          "word": "a",
+          "start": 1.84,
+          "end": 2.14,
+          "probability": 0.429
+        },
+        {
+          "word": "AI",
+          "start": 2.14,
+          "end": 2.28,
+          "probability": 0.483
+        },
+        {
+          "word": "sem",
+          "start": 2.28,
+          "end": 2.5,
+          "probability": 0.982
+        },
+        {
+          "word": "saber",
+          "start": 2.5,
+          "end": 2.8,
+          "probability": 0.998
+        },
+        {
+          "word": "o",
+          "start": 2.8,
+          "end": 2.92,
+          "probability": 0.997
+        },
+        {
+          "word": "que",
+          "start": 2.92,
+          "end": 3.06,
+          "probability": 0.997
+        },
+        {
+          "word": "está",
+          "start": 3.06,
+          "end": 3.2,
+          "probability": 0.991
+        },
+        {
+          "word": "fazendo.",
+          "start": 3.2,
+          "end": 3.76,
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "start": 4.9,
+      "end": 10.32,
+      "text": "41 agentes, cada um treinado para uma coisa só, já instalados no Cloud Code.",
+      "words": [
+        {
+          "word": "41",
+          "start": 4.9,
+          "end": 5.46,
+          "probability": 0.806
+        },
+        {
+          "word": "agentes,",
+          "start": 5.46,
+          "end": 6.02,
+          "probability": 0.91
+        },
+        {
+          "word": "cada",
+          "start": 6.24,
+          "end": 6.42,
+          "probability": 0.995
+        },
+        {
+          "word": "um",
+          "start": 6.42,
+          "end": 6.56,
+          "probability": 0.998
+        },
+        {
+          "word": "treinado",
+          "start": 6.56,
+          "end": 7.0,
+          "probability": 0.996
+        },
+        {
+          "word": "para",
+          "start": 7.0,
+          "end": 7.18,
+          "probability": 0.902
+        },
+        {
+          "word": "uma",
+          "start": 7.18,
+          "end": 7.4,
+          "probability": 0.982
+        },
+        {
+          "word": "coisa",
+          "start": 7.4,
+          "end": 7.74,
+          "probability": 0.998
+        },
+        {
+          "word": "só,",
+          "start": 7.74,
+          "end": 8.08,
+          "probability": 0.999
+        },
+        {
+          "word": "já",
+          "start": 8.46,
+          "end": 8.64,
+          "probability": 0.992
+        },
+        {
+          "word": "instalados",
+          "start": 8.64,
+          "end": 9.16,
+          "probability": 0.998
+        },
+        {
+          "word": "no",
+          "start": 9.16,
+          "end": 9.4,
+          "probability": 0.995
+        },
+        {
+          "word": "Cloud",
+          "start": 9.4,
+          "end": 9.7,
+          "probability": 0.387
+        },
+        {
+          "word": "Code.",
+          "start": 9.7,
+          "end": 10.32,
+          "probability": 0.931
+        }
+      ]
+    },
+    {
+      "start": 10.9,
+      "end": 12.4,
+      "text": "Precisa de um site profissional?",
+      "words": [
+        {
+          "word": "Precisa",
+          "start": 10.9,
+          "end": 11.08,
+          "probability": 0.967
+        },
+        {
+          "word": "de",
+          "start": 11.08,
+          "end": 11.24,
+          "probability": 0.999
+        },
+        {
+          "word": "um",
+          "start": 11.24,
+          "end": 11.4,
+          "probability": 0.991
+        },
+        {
+          "word": "site",
+          "start": 11.4,
+          "end": 11.66,
+          "probability": 0.998
+        },
+        {
+          "word": "profissional?",
+          "start": 11.66,
+          "end": 12.4,
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "start": 13.04,
+      "end": 14.38,
+      "text": "Copy que vende de verdade?",
+      "words": [
+        {
+          "word": "Copy",
+          "start": 13.04,
+          "end": 13.26,
+          "probability": 0.439
+        },
+        {
+          "word": "que",
+          "start": 13.26,
+          "end": 13.44,
+          "probability": 0.899
+        },
+        {
+          "word": "vende",
+          "start": 13.44,
+          "end": 13.68,
+          "probability": 0.996
+        },
+        {
+          "word": "de",
+          "start": 13.68,
+          "end": 13.92,
+          "probability": 0.996
+        },
+        {
+          "word": "verdade?",
+          "start": 13.92,
+          "end": 14.38,
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "start": 14.82,
+      "end": 15.6,
+      "text": "Campanha no meta?",
+      "words": [
+        {
+          "word": "Campanha",
+          "start": 14.82,
+          "end": 15.18,
+          "probability": 0.959
+        },
+        {
+          "word": "no",
+          "start": 15.18,
+          "end": 15.38,
+          "probability": 0.961
+        },
+        {
+          "word": "meta?",
+          "start": 15.38,
+          "end": 15.6,
+          "probability": 0.609
+        }
+      ]
+    },
+    {
+      "start": 16.1,
+      "end": 17.04,
+      "text": "Do zero ao ar?",
+      "words": [
+        {
+          "word": "Do",
+          "start": 16.1,
+          "end": 16.28,
+          "probability": 0.976
+        },
+        {
+          "word": "zero",
+          "start": 16.28,
+          "end": 16.6,
+          "probability": 0.926
+        },
+        {
+          "word": "ao",
+          "start": 16.6,
+          "end": 16.82,
+          "probability": 0.998
+        },
+        {
+          "word": "ar?",
+          "start": 16.82,
+          "end": 17.04,
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "start": 17.56,
+      "end": 20.48,
+      "text": "Análise de concorrentes, estratégia, posicionamento?",
+      "words": [
+        {
+          "word": "Análise",
+          "start": 17.56,
+          "end": 17.98,
+          "probability": 0.99
+        },
+        {
+          "word": "de",
+          "start": 17.98,
+          "end": 18.26,
+          "probability": 0.998
+        },
+        {
+          "word": "concorrentes,",
+          "start": 18.26,
+          "end": 18.88,
+          "probability": 0.998
+        },
+        {
+          "word": "estratégia,",
+          "start": 19.16,
+          "end": 19.62,
+          "probability": 0.986
+        },
+        {
+          "word": "posicionamento?",
+          "start": 19.76,
+          "end": 20.48,
+          "probability": 0.989
+        }
+      ]
+    },
+    {
+      "start": 21.0,
+      "end": 22.72,
+      "text": "Um app ou software do zero?",
+      "words": [
+        {
+          "word": "Um",
+          "start": 21.0,
+          "end": 21.18,
+          "probability": 0.988
+        },
+        {
+          "word": "app",
+          "start": 21.18,
+          "end": 21.46,
+          "probability": 0.978
+        },
+        {
+          "word": "ou",
+          "start": 21.46,
+          "end": 21.72,
+          "probability": 0.989
+        },
+        {
+          "word": "software",
+          "start": 21.72,
+          "end": 22.2,
+          "probability": 0.992
+        },
+        {
+          "word": "do",
+          "start": 22.2,
+          "end": 22.44,
+          "probability": 0.977
+        },
+        {
+          "word": "zero?",
+          "start": 22.44,
+          "end": 22.72,
+          "probability": 0.984
+        }
+      ]
+    },
+    {
+      "start": 23.48,
+      "end": 25.88,
+      "text": "Social, design, vídeo, branding?",
+      "words": [
+        {
+          "word": "Social,",
+          "start": 23.48,
+          "end": 24.04,
+          "probability": 0.968
+        },
+        {
+          "word": "design,",
+          "start": 24.3,
+          "end": 24.72,
+          "probability": 0.834
+        },
+        {
+          "word": "vídeo,",
+          "start": 25.0,
+          "end": 25.3,
+          "probability": 0.905
+        },
+        {
+          "word": "branding?",
+          "start": 25.6,
+          "end": 25.88,
+          "probability": 0.984
+        }
+      ]
+    },
+    {
+      "start": 26.4,
+      "end": 27.1,
+      "text": "Você pede.",
+      "words": [
+        {
+          "word": "Você",
+          "start": 26.4,
+          "end": 26.78,
+          "probability": 0.993
+        },
+        {
+          "word": "pede.",
+          "start": 26.78,
+          "end": 27.1,
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "start": 27.1,
+      "end": 33.72,
+      "text": "Eles executam 41 agentes, testados em 300 mil reais de projetos reais.",
+      "words": [
+        {
+          "word": "Eles",
+          "start": 27.1,
+          "end": 27.84,
+          "probability": 0.235
+        },
+        {
+          "word": "executam",
+          "start": 27.84,
+          "end": 28.88,
+          "probability": 0.998
+        },
+        {
+          "word": "41",
+          "start": 28.88,
+          "end": 29.46,
+          "probability": 0.964
+        },
+        {
+          "word": "agentes,",
+          "start": 29.46,
+          "end": 30.46,
+          "probability": 0.969
+        },
+        {
+          "word": "testados",
+          "start": 30.8,
+          "end": 31.26,
+          "probability": 0.984
+        },
+        {
+          "word": "em",
+          "start": 31.26,
+          "end": 31.48,
+          "probability": 0.992
+        },
+        {
+          "word": "300",
+          "start": 31.48,
+          "end": 31.98,
+          "probability": 0.403
+        },
+        {
+          "word": "mil",
+          "start": 31.98,
+          "end": 32.28,
+          "probability": 0.957
+        },
+        {
+          "word": "reais",
+          "start": 32.28,
+          "end": 32.6,
+          "probability": 0.995
+        },
+        {
+          "word": "de",
+          "start": 32.6,
+          "end": 32.84,
+          "probability": 0.991
+        },
+        {
+          "word": "projetos",
+          "start": 32.84,
+          "end": 33.36,
+          "probability": 0.983
+        },
+        {
+          "word": "reais.",
+          "start": 33.36,
+          "end": 33.72,
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "start": 34.16,
+      "end": 38.26,
+      "text": "Por 47 reais, pagamento único, sem mensalidade.",
+      "words": [
+        {
+          "word": "Por",
+          "start": 34.16,
+          "end": 34.42,
+          "probability": 0.973
+        },
+        {
+          "word": "47",
+          "start": 34.42,
+          "end": 35.14,
+          "probability": 0.799
+        },
+        {
+          "word": "reais,",
+          "start": 35.14,
+          "end": 35.76,
+          "probability": 0.995
+        },
+        {
+          "word": "pagamento",
+          "start": 36.22,
+          "end": 36.56,
+          "probability": 0.997
+        },
+        {
+          "word": "único,",
+          "start": 36.56,
+          "end": 36.92,
+          "probability": 0.997
+        },
+        {
+          "word": "sem",
+          "start": 37.26,
+          "end": 37.38,
+          "probability": 0.998
+        },
+        {
+          "word": "mensalidade.",
+          "start": 37.38,
+          "end": 38.26,
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "start": 39.14,
+      "end": 41.28,
+      "text": "Cinco minutos para instalar no Cloud Code.",
+      "words": [
+        {
+          "word": "Cinco",
+          "start": 39.14,
+          "end": 39.38,
+          "probability": 0.772
+        },
+        {
+          "word": "minutos",
+          "start": 39.38,
+          "end": 39.74,
+          "probability": 0.996
+        },
+        {
+          "word": "para",
+          "start": 39.74,
+          "end": 40.06,
+          "probability": 0.942
+        },
+        {
+          "word": "instalar",
+          "start": 40.06,
+          "end": 40.42,
+          "probability": 0.998
+        },
+        {
+          "word": "no",
+          "start": 40.42,
+          "end": 40.66,
+          "probability": 0.99
+        },
+        {
+          "word": "Cloud",
+          "start": 40.66,
+          "end": 40.98,
+          "probability": 0.323
+        },
+        {
+          "word": "Code.",
+          "start": 40.98,
+          "end": 41.28,
+          "probability": 0.455
+        }
+      ]
+    },
+    {
+      "start": 41.82,
+      "end": 42.9,
+      "text": "Você começa hoje?",
+      "words": [
+        {
+          "word": "Você",
+          "start": 41.82,
+          "end": 42.02,
+          "probability": 0.997
+        },
+        {
+          "word": "começa",
+          "start": 42.02,
+          "end": 42.36,
+          "probability": 0.968
+        },
+        {
+          "word": "hoje?",
+          "start": 42.36,
+          "end": 42.9,
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "start": 43.24,
+      "end": 46.94,
+      "text": "Acessa agora em agentesia.moronireis.com.br",
+      "words": [
+        {
+          "word": "Acessa",
+          "start": 43.24,
+          "end": 43.56,
+          "probability": 0.912
+        },
+        {
+          "word": "agora",
+          "start": 43.56,
+          "end": 43.9,
+          "probability": 0.997
+        },
+        {
+          "word": "em",
+          "start": 43.9,
+          "end": 44.08,
+          "probability": 0.966
+        },
+        {
+          "word": "agentesia",
+          "start": 44.08,
+          "end": 44.74,
+          "probability": 0.743
+        },
+        {
+          "word": ".moronireis",
+          "start": 44.74,
+          "end": 45.78,
+          "probability": 0.921
+        },
+        {
+          "word": ".com",
+          "start": 45.78,
+          "end": 46.3,
+          "probability": 0.997
+        },
+        {
+          "word": ".br",
+          "start": 46.3,
+          "end": 46.94,
+          "probability": 0.999
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": "É",
+      "start": 0.0,
+      "end": 0.18,
+      "probability": 0.859
+    },
+    {
+      "word": "isso",
+      "start": 0.18,
+      "end": 0.44,
+      "probability": 0.992
+    },
+    {
+      "word": "que",
+      "start": 0.44,
+      "end": 0.68,
+      "probability": 0.866
+    },
+    {
+      "word": "acontece",
+      "start": 0.68,
+      "end": 1.0,
+      "probability": 0.999
+    },
+    {
+      "word": "quando",
+      "start": 1.0,
+      "end": 1.28,
+      "probability": 0.999
+    },
+    {
+      "word": "você",
+      "start": 1.28,
+      "end": 1.64,
+      "probability": 0.996
+    },
+    {
+      "word": "usa",
+      "start": 1.64,
+      "end": 1.84,
+      "probability": 0.996
+    },
+    {
+      "word": "a",
+      "start": 1.84,
+      "end": 2.14,
+      "probability": 0.429
+    },
+    {
+      "word": "AI",
+      "start": 2.14,
+      "end": 2.28,
+      "probability": 0.483
+    },
+    {
+      "word": "sem",
+      "start": 2.28,
+      "end": 2.5,
+      "probability": 0.982
+    },
+    {
+      "word": "saber",
+      "start": 2.5,
+      "end": 2.8,
+      "probability": 0.998
+    },
+    {
+      "word": "o",
+      "start": 2.8,
+      "end": 2.92,
+      "probability": 0.997
+    },
+    {
+      "word": "que",
+      "start": 2.92,
+      "end": 3.06,
+      "probability": 0.997
+    },
+    {
+      "word": "está",
+      "start": 3.06,
+      "end": 3.2,
+      "probability": 0.991
+    },
+    {
+      "word": "fazendo.",
+      "start": 3.2,
+      "end": 3.76,
+      "probability": 0.999
+    },
+    {
+      "word": "41",
+      "start": 4.9,
+      "end": 5.46,
+      "probability": 0.806
+    },
+    {
+      "word": "agentes,",
+      "start": 5.46,
+      "end": 6.02,
+      "probability": 0.91
+    },
+    {
+      "word": "cada",
+      "start": 6.24,
+      "end": 6.42,
+      "probability": 0.995
+    },
+    {
+      "word": "um",
+      "start": 6.42,
+      "end": 6.56,
+      "probability": 0.998
+    },
+    {
+      "word": "treinado",
+      "start": 6.56,
+      "end": 7.0,
+      "probability": 0.996
+    },
+    {
+      "word": "para",
+      "start": 7.0,
+      "end": 7.18,
+      "probability": 0.902
+    },
+    {
+      "word": "uma",
+      "start": 7.18,
+      "end": 7.4,
+      "probability": 0.982
+    },
+    {
+      "word": "coisa",
+      "start": 7.4,
+      "end": 7.74,
+      "probability": 0.998
+    },
+    {
+      "word": "só,",
+      "start": 7.74,
+      "end": 8.08,
+      "probability": 0.999
+    },
+    {
+      "word": "já",
+      "start": 8.46,
+      "end": 8.64,
+      "probability": 0.992
+    },
+    {
+      "word": "instalados",
+      "start": 8.64,
+      "end": 9.16,
+      "probability": 0.998
+    },
+    {
+      "word": "no",
+      "start": 9.16,
+      "end": 9.4,
+      "probability": 0.995
+    },
+    {
+      "word": "Cloud",
+      "start": 9.4,
+      "end": 9.7,
+      "probability": 0.387
+    },
+    {
+      "word": "Code.",
+      "start": 9.7,
+      "end": 10.32,
+      "probability": 0.931
+    },
+    {
+      "word": "Precisa",
+      "start": 10.9,
+      "end": 11.08,
+      "probability": 0.967
+    },
+    {
+      "word": "de",
+      "start": 11.08,
+      "end": 11.24,
+      "probability": 0.999
+    },
+    {
+      "word": "um",
+      "start": 11.24,
+      "end": 11.4,
+      "probability": 0.991
+    },
+    {
+      "word": "site",
+      "start": 11.4,
+      "end": 11.66,
+      "probability": 0.998
+    },
+    {
+      "word": "profissional?",
+      "start": 11.66,
+      "end": 12.4,
+      "probability": 0.997
+    },
+    {
+      "word": "Copy",
+      "start": 13.04,
+      "end": 13.26,
+      "probability": 0.439
+    },
+    {
+      "word": "que",
+      "start": 13.26,
+      "end": 13.44,
+      "probability": 0.899
+    },
+    {
+      "word": "vende",
+      "start": 13.44,
+      "end": 13.68,
+      "probability": 0.996
+    },
+    {
+      "word": "de",
+      "start": 13.68,
+      "end": 13.92,
+      "probability": 0.996
+    },
+    {
+      "word": "verdade?",
+      "start": 13.92,
+      "end": 14.38,
+      "probability": 0.999
+    },
+    {
+      "word": "Campanha",
+      "start": 14.82,
+      "end": 15.18,
+      "probability": 0.959
+    },
+    {
+      "word": "no",
+      "start": 15.18,
+      "end": 15.38,
+      "probability": 0.961
+    },
+    {
+      "word": "meta?",
+      "start": 15.38,
+      "end": 15.6,
+      "probability": 0.609
+    },
+    {
+      "word": "Do",
+      "start": 16.1,
+      "end": 16.28,
+      "probability": 0.976
+    },
+    {
+      "word": "zero",
+      "start": 16.28,
+      "end": 16.6,
+      "probability": 0.926
+    },
+    {
+      "word": "ao",
+      "start": 16.6,
+      "end": 16.82,
+      "probability": 0.998
+    },
+    {
+      "word": "ar?",
+      "start": 16.82,
+      "end": 17.04,
+      "probability": 0.997
+    },
+    {
+      "word": "Análise",
+      "start": 17.56,
+      "end": 17.98,
+      "probability": 0.99
+    },
+    {
+      "word": "de",
+      "start": 17.98,
+      "end": 18.26,
+      "probability": 0.998
+    },
+    {
+      "word": "concorrentes,",
+      "start": 18.26,
+      "end": 18.88,
+      "probability": 0.998
+    },
+    {
+      "word": "estratégia,",
+      "start": 19.16,
+      "end": 19.62,
+      "probability": 0.986
+    },
+    {
+      "word": "posicionamento?",
+      "start": 19.76,
+      "end": 20.48,
+      "probability": 0.989
+    },
+    {
+      "word": "Um",
+      "start": 21.0,
+      "end": 21.18,
+      "probability": 0.988
+    },
+    {
+      "word": "app",
+      "start": 21.18,
+      "end": 21.46,
+      "probability": 0.978
+    },
+    {
+      "word": "ou",
+      "start": 21.46,
+      "end": 21.72,
+      "probability": 0.989
+    },
+    {
+      "word": "software",
+      "start": 21.72,
+      "end": 22.2,
+      "probability": 0.992
+    },
+    {
+      "word": "do",
+      "start": 22.2,
+      "end": 22.44,
+      "probability": 0.977
+    },
+    {
+      "word": "zero?",
+      "start": 22.44,
+      "end": 22.72,
+      "probability": 0.984
+    },
+    {
+      "word": "Social,",
+      "start": 23.48,
+      "end": 24.04,
+      "probability": 0.968
+    },
+    {
+      "word": "design,",
+      "start": 24.3,
+      "end": 24.72,
+      "probability": 0.834
+    },
+    {
+      "word": "vídeo,",
+      "start": 25.0,
+      "end": 25.3,
+      "probability": 0.905
+    },
+    {
+      "word": "branding?",
+      "start": 25.6,
+      "end": 25.88,
+      "probability": 0.984
+    },
+    {
+      "word": "Você",
+      "start": 26.4,
+      "end": 26.78,
+      "probability": 0.993
+    },
+    {
+      "word": "pede.",
+      "start": 26.78,
+      "end": 27.1,
+      "probability": 0.998
+    },
+    {
+      "word": "Eles",
+      "start": 27.1,
+      "end": 27.84,
+      "probability": 0.235
+    },
+    {
+      "word": "executam",
+      "start": 27.84,
+      "end": 28.88,
+      "probability": 0.998
+    },
+    {
+      "word": "41",
+      "start": 28.88,
+      "end": 29.46,
+      "probability": 0.964
+    },
+    {
+      "word": "agentes,",
+      "start": 29.46,
+      "end": 30.46,
+      "probability": 0.969
+    },
+    {
+      "word": "testados",
+      "start": 30.8,
+      "end": 31.26,
+      "probability": 0.984
+    },
+    {
+      "word": "em",
+      "start": 31.26,
+      "end": 31.48,
+      "probability": 0.992
+    },
+    {
+      "word": "300",
+      "start": 31.48,
+      "end": 31.98,
+      "probability": 0.403
+    },
+    {
+      "word": "mil",
+      "start": 31.98,
+      "end": 32.28,
+      "probability": 0.957
+    },
+    {
+      "word": "reais",
+      "start": 32.28,
+      "end": 32.6,
+      "probability": 0.995
+    },
+    {
+      "word": "de",
+      "start": 32.6,
+      "end": 32.84,
+      "probability": 0.991
+    },
+    {
+      "word": "projetos",
+      "start": 32.84,
+      "end": 33.36,
+      "probability": 0.983
+    },
+    {
+      "word": "reais.",
+      "start": 33.36,
+      "end": 33.72,
+      "probability": 0.997
+    },
+    {
+      "word": "Por",
+      "start": 34.16,
+      "end": 34.42,
+      "probability": 0.973
+    },
+    {
+      "word": "47",
+      "start": 34.42,
+      "end": 35.14,
+      "probability": 0.799
+    },
+    {
+      "word": "reais,",
+      "start": 35.14,
+      "end": 35.76,
+      "probability": 0.995
+    },
+    {
+      "word": "pagamento",
+      "start": 36.22,
+      "end": 36.56,
+      "probability": 0.997
+    },
+    {
+      "word": "único,",
+      "start": 36.56,
+      "end": 36.92,
+      "probability": 0.997
+    },
+    {
+      "word": "sem",
+      "start": 37.26,
+      "end": 37.38,
+      "probability": 0.998
+    },
+    {
+      "word": "mensalidade.",
+      "start": 37.38,
+      "end": 38.26,
+      "probability": 0.998
+    },
+    {
+      "word": "Cinco",
+      "start": 39.14,
+      "end": 39.38,
+      "probability": 0.772
+    },
+    {
+      "word": "minutos",
+      "start": 39.38,
+      "end": 39.74,
+      "probability": 0.996
+    },
+    {
+      "word": "para",
+      "start": 39.74,
+      "end": 40.06,
+      "probability": 0.942
+    },
+    {
+      "word": "instalar",
+      "start": 40.06,
+      "end": 40.42,
+      "probability": 0.998
+    },
+    {
+      "word": "no",
+      "start": 40.42,
+      "end": 40.66,
+      "probability": 0.99
+    },
+    {
+      "word": "Cloud",
+      "start": 40.66,
+      "end": 40.98,
+      "probability": 0.323
+    },
+    {
+      "word": "Code.",
+      "start": 40.98,
+      "end": 41.28,
+      "probability": 0.455
+    },
+    {
+      "word": "Você",
+      "start": 41.82,
+      "end": 42.02,
+      "probability": 0.997
+    },
+    {
+      "word": "começa",
+      "start": 42.02,
+      "end": 42.36,
+      "probability": 0.968
+    },
+    {
+      "word": "hoje?",
+      "start": 42.36,
+      "end": 42.9,
+      "probability": 0.997
+    },
+    {
+      "word": "Acessa",
+      "start": 43.24,
+      "end": 43.56,
+      "probability": 0.912
+    },
+    {
+      "word": "agora",
+      "start": 43.56,
+      "end": 43.9,
+      "probability": 0.997
+    },
+    {
+      "word": "em",
+      "start": 43.9,
+      "end": 44.08,
+      "probability": 0.966
+    },
+    {
+      "word": "agentesia",
+      "start": 44.08,
+      "end": 44.74,
+      "probability": 0.743
+    },
+    {
+      "word": ".moronireis",
+      "start": 44.74,
+      "end": 45.78,
+      "probability": 0.921
+    },
+    {
+      "word": ".com",
+      "start": 45.78,
+      "end": 46.3,
+      "probability": 0.997
+    },
+    {
+      "word": ".br",
+      "start": 46.3,
+      "end": 46.94,
+      "probability": 0.999
+    }
+  ]
+}

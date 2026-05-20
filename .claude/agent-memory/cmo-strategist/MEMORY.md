@@ -50,6 +50,7 @@
 
 ## Client Projects
 - [project_noiva_sa_funnel.md](project_noiva_sa_funnel.md) — Noiva S.A. funnel strategy: sales process redesign, content pillars, lead magnets, 90-day plan. April 2026.
+- [project_u4digital.md](project_u4digital.md) — u4digital Assessoria de IA: ICP, positioning, narrative enemy, Hormozi angles for digital experts. May 2026.
 
 ## Reviews
 - [project_phase1_review.md](project_phase1_review.md) — Phase 1 funnel review completed 2026-03-12. Critical: zero conversion mechanisms on PT-BR site. All CTAs are dead-end anchors.

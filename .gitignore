@@ -1,8 +1,9 @@
 node_modules
 **/node_modules
 
-# MCP config (contains API tokens)
+# MCP config and API tokens
 .mcp.json
+brain/context/meta-tokens.md
 daphine-portfolio/
 
 # video pipeline
@@ -21,9 +22,24 @@ di-matoso-site/
 reis-ia-comunidade-agentes/
 screenize-base/
 
+# Design-md skill outputs (large extraction artifacts)
+outputs/design-md/
+.claude/skills/design-md/node_modules/
+
 # OS files
 .DS_Store
 **/.DS_Store
 
 # Environment files
 **/.env
+
+# Mediakit assets (deployed via Vercel, not git)
+filhasdeeva-mediakit/assets/*.mp4
+filhasdeeva-mediakit/assets/*.mov
+filhasdeeva-mediakit/assets-pdf/
+filhasdeeva-mediakit/node_modules/
+filhasdeeva-mediakit/.vercel/
+filhasdeeva-mediakit/Priscilla-Andrade-Media-Kit-2026.pdf
+filhasdeeva-mediakit/mediakit.pdf
+filhasdeeva-mediakit/mediakit-landscape.pdf
+filhasdeeva-mediakit/mediakit-fullpage.png

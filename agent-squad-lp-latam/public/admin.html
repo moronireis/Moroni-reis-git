@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGENTES [IA] — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #000;
+      --surface: #111;
+      --surface-hover: #161616;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-hover: rgba(255, 255, 255, 0.12);
+      --accent: #4A90FF;
+      --accent-dim: rgba(74, 144, 255, 0.15);
+      --text-primary: #fff;
+      --text-secondary: rgba(255, 255, 255, 0.70);
+      --text-muted: rgba(255, 255, 255, 0.45);
+      --text-dim: rgba(255, 255, 255, 0.25);
+      --green: #22c55e;
+      --green-bg: rgba(34, 197, 94, 0.12);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.12);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.12);
+      --blue: #4A90FF;
+      --blue-bg: rgba(74, 144, 255, 0.12);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Dashboard layout ───────────────────────────────── */
+    #dashboard {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo {
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .header-logo span {
+      color: var(--accent);
+    }
+
+    .header-sep {
+      width: 1px;
+      height: 16px;
+      background: var(--border-hover);
+    }
+
+    .header-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .refresh-timer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .refresh-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .refresh-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+
+    .refresh-btn:hover {
+      background: rgba(255, 255, 255, 0.10);
+      border-color: var(--border-hover);
+    }
+
+    /* ── Main content ───────────────────────────────────── */
+    .main {
+      flex: 1;
+      padding: 32px 24px;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ── Stats bar ──────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 200ms ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .stat-value.accent {
+      color: var(--accent);
+    }
+
+    .stat-value.green {
+      color: var(--green);
+    }
+
+    .stat-value.red {
+      color: var(--red);
+    }
+
+    .stat-value.yellow {
+      color: var(--yellow);
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ── Table section ──────────────────────────────────── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .table-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      padding: 12px 16px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 120ms ease;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: var(--surface-hover);
+    }
+
+    td {
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    td.date {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    td.email {
+      font-size: 12px;
+    }
+
+    td.amount {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+    }
+
+    td.txid {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    td.product {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--text-secondary);
+    }
+
+    td.name {
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── Status badges ──────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .badge-verified {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .badge-verified::before {
+      background: var(--green);
+    }
+
+    .badge-cancelled, .badge-chargeback {
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .badge-cancelled::before, .badge-chargeback::before {
+      background: var(--red);
+    }
+
+    .badge-refunded {
+      background: var(--yellow-bg);
+      color: var(--yellow);
+    }
+
+    .badge-refunded::before {
+      background: var(--yellow);
+    }
+
+    .badge-default {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+    }
+
+    .badge-default::before {
+      background: var(--text-muted);
+    }
+
+    /* ── Empty state ────────────────────────────────────── */
+    .empty-state {
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .empty-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 16px;
+      opacity: 0.25;
+    }
+
+    .empty-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .empty-sub {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ── Loading state ──────────────────────────────────── */
+    .loading-row td {
+      padding: 48px 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 600ms linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Error banner ───────────────────────────────────── */
+    .error-banner {
+      background: var(--red-bg);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--red);
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .error-banner.visible {
+      display: block;
+    }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    .footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .footer-last-updated {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .main {
+        padding: 20px 16px;
+      }
+
+      .header {
+        padding: 0 16px;
+      }
+
+      .header-tag {
+        display: none;
+      }
+
+      .header-sep {
+        display: none;
+      }
+
+      .footer {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dashboard -->
+  <div id="dashboard">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="header-logo">AGENTES <span>[IA]</span></div>
+        <div class="header-sep"></div>
+        <div class="header-tag">Admin</div>
+      </div>
+      <div class="header-right">
+        <div class="refresh-timer">
+          <div class="refresh-dot"></div>
+          <span id="refresh-countdown">Atualizando em 30s</span>
+        </div>
+        <button class="refresh-btn" id="refresh-btn">Atualizar</button>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Error banner -->
+      <div class="error-banner" id="error-banner"></div>
+
+      <!-- Stats -->
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Compras verificadas</div>
+          <div class="stat-value green" id="stat-verified">—</div>
+          <div class="stat-sub">pagamentos confirmados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Receita total</div>
+          <div class="stat-value accent" id="stat-revenue">—</div>
+          <div class="stat-sub">de compras verificadas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Cancelamentos</div>
+          <div class="stat-value red" id="stat-cancelled">—</div>
+          <div class="stat-sub">pedidos cancelados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Reembolsos / Chargebacks</div>
+          <div class="stat-value yellow" id="stat-refunds">—</div>
+          <div class="stat-sub">disputas e devoluções</div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="section-header">
+        <div class="section-title">Histórico de transações</div>
+        <div class="section-count" id="row-count"></div>
+      </div>
+
+      <div class="table-wrapper">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Evento</th>
+                <th>Email</th>
+                <th>Nome</th>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>ID Transação</th>
+              </tr>
+            </thead>
+            <tbody id="purchases-tbody">
+              <tr class="loading-row">
+                <td colspan="8">
+                  <span class="spinner"></span>Carregando dados...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-text">AGENTES [IA] — Painel administrativo</div>
+      <div class="footer-last-updated" id="last-updated"></div>
+    </footer>
+
+  </div>
+
+  <script>
+    // ── Config ────────────────────────────────────────────
+    const SUPABASE_URL = 'https://weirdpigeon-supabase.cloudfy.live';
+    const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzczNzY4NTE2LCJleHAiOjE4MDUzMDQ1MTZ9.zOD4Q5UJStzMrjaAeRT13i0wfemPl8SmP3DOMKfqrYs';
+    const REFRESH_INTERVAL = 30; // seconds
+
+    // Initialize dashboard immediately
+    loadData();
+    startRefreshTimer();
+
+    // ── Refresh timer ──────────────────────────────────────
+    let countdown = REFRESH_INTERVAL;
+    let timerInterval = null;
+    const countdownEl = document.getElementById('refresh-countdown');
+
+    function startRefreshTimer() {
+      countdown = REFRESH_INTERVAL;
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        countdown--;
+        if (countdown <= 0) {
+          countdown = REFRESH_INTERVAL;
+          loadData();
+        }
+        countdownEl.textContent = `Atualizando em ${countdown}s`;
+      }, 1000);
+    }
+
+    document.getElementById('refresh-btn').addEventListener('click', () => {
+      countdown = REFRESH_INTERVAL;
+      countdownEl.textContent = `Atualizando em ${countdown}s`;
+      loadData();
+    });
+
+    // ── Fetch data ────────────────────────────────────────
+    async function loadData() {
+      const errorBanner = document.getElementById('error-banner');
+      errorBanner.classList.remove('visible');
+
+      try {
+        const res = await fetch(
+          `${SUPABASE_URL}/rest/v1/hotmart_purchases?select=*&order=created_at.desc&limit=100`,
+          {
+            headers: {
+              'apikey': ANON_KEY,
+              'Authorization': `Bearer ${ANON_KEY}`,
+              'Content-Type': 'application/json',
+            }
+          }
+        );
+
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`HTTP ${res.status}: ${text}`);
+        }
+
+        const data = await res.json();
+        renderStats(data);
+        renderTable(data);
+        updateLastUpdated();
+      } catch (err) {
+        errorBanner.textContent = `Erro ao carregar dados: ${err.message}`;
+        errorBanner.classList.add('visible');
+        console.error('[Admin] Fetch error:', err);
+      }
+    }
+
+    // ── Stats ─────────────────────────────────────────────
+    function normalizeStatus(row) {
+      // Try common field names for status
+      return (row.status || row.hotmart_event || row.event_type || '').toLowerCase();
+    }
+
+    function isVerified(row) {
+      const s = normalizeStatus(row);
+      return s.includes('purchase_approved') || s.includes('approved') || s.includes('purchase_complete') || s === 'verified';
+    }
+
+    function isCancelled(row) {
+      const s = normalizeStatus(row);
+      return s.includes('cancelled') || s.includes('canceled') || s.includes('purchase_cancelled');
+    }
+
+    function isRefunded(row) {
+      const s = normalizeStatus(row);
+      return s.includes('refund') || s.includes('purchase_refunded');
+    }
+
+    function isChargeback(row) {
+      const s = normalizeStatus(row);
+      return s.includes('chargeback');
+    }
+
+    function renderStats(data) {
+      const verified    = data.filter(isVerified);
+      const cancelled   = data.filter(isCancelled);
+      const refunded    = data.filter(isRefunded);
+      const chargebacks = data.filter(isChargeback);
+
+      const totalRevenue = verified.reduce((sum, row) => {
+        const amt = parseFloat(row.paid_amount || row.price || row.value || 0);
+        return sum + amt;
+      }, 0);
+
+      const currency = verified.length > 0
+        ? (verified[0].currency || verified[0].currency_value || 'BRL')
+        : 'BRL';
+
+      document.getElementById('stat-verified').textContent  = verified.length;
+      document.getElementById('stat-revenue').textContent   = formatCurrency(totalRevenue, currency);
+      document.getElementById('stat-cancelled').textContent = cancelled.length;
+      document.getElementById('stat-refunds').textContent   = refunded.length + chargebacks.length;
+    }
+
+    // ── Table ─────────────────────────────────────────────
+    function renderTable(data) {
+      const tbody = document.getElementById('purchases-tbody');
+      const rowCountEl = document.getElementById('row-count');
+
+      if (!data || data.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8">
+              <div class="empty-state">
+                <svg class="empty-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                  <path d="M4 14h32" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M10 20h8M10 25h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <div class="empty-title">Nenhuma compra registrada</div>
+                <div class="empty-sub">Os dados aparecerão aqui quando houver transações.</div>
+              </div>
+            </td>
+          </tr>
+        `;
+        rowCountEl.textContent = '';
+        return;
+      }
+
+      rowCountEl.textContent = `${data.length} registro${data.length !== 1 ? 's' : ''}`;
+
+      const rows = data.map(row => {
+        const date      = formatDate(row.created_at || row.purchase_date || row.event_date);
+        const event     = row.hotmart_event || row.event_type || row.event || '—';
+        const email     = row.buyer_email || row.email || row.customer_email || '—';
+        const name      = row.buyer_name || row.name || row.customer_name || '—';
+        const product   = row.product_name || row.product || row.offer_name || '—';
+        const amount    = parseFloat(row.paid_amount || row.price || row.value || 0);
+        const currency  = row.currency || row.currency_value || 'BRL';
+        const txid      = row.transaction_id || row.purchase_id || row.order_id || row.id || '—';
+
+        const statusRaw = row.status || row.hotmart_event || row.event_type || '';
+        const { label, cls } = getBadge(statusRaw);
+
+        return `<tr>
+          <td class="date">${escHtml(date)}</td>
+          <td>${escHtml(shortEvent(event))}</td>
+          <td class="email">${escHtml(email)}</td>
+          <td class="name">${escHtml(name)}</td>
+          <td class="product" title="${escHtml(product)}">${escHtml(truncate(product, 32))}</td>
+          <td class="amount">${formatCurrency(amount, currency)}</td>
+          <td><span class="badge ${cls}">${label}</span></td>
+          <td class="txid" title="${escHtml(String(txid))}">${escHtml(truncate(String(txid), 20))}</td>
+        </tr>`;
+      });
+
+      tbody.innerHTML = rows.join('');
+    }
+
+    // ── Helpers ───────────────────────────────────────────
+    function getBadge(status) {
+      const s = status.toLowerCase();
+      if (s.includes('approved') || s.includes('complete') || s === 'verified') {
+        return { label: 'Aprovado', cls: 'badge-verified' };
+      }
+      if (s.includes('refund')) {
+        return { label: 'Reembolso', cls: 'badge-refunded' };
+      }
+      if (s.includes('chargeback')) {
+        return { label: 'Chargeback', cls: 'badge-chargeback' };
+      }
+      if (s.includes('cancel')) {
+        return { label: 'Cancelado', cls: 'badge-cancelled' };
+      }
+      if (!s || s === '—') {
+        return { label: 'Desconhecido', cls: 'badge-default' };
+      }
+      return { label: shortEvent(status), cls: 'badge-default' };
+    }
+
+    function shortEvent(event) {
+      // Convert PURCHASE_APPROVED -> Compra Aprovada, etc.
+      const map = {
+        'PURCHASE_APPROVED': 'Compra Aprovada',
+        'PURCHASE_COMPLETE': 'Compra Completa',
+        'PURCHASE_CANCELLED': 'Cancelamento',
+        'PURCHASE_REFUNDED': 'Reembolso',
+        'PURCHASE_CHARGEBACK': 'Chargeback',
+        'PURCHASE_BILLET_PRINTED': 'Boleto Gerado',
+        'PURCHASE_PROTEST': 'Protesto',
+        'PURCHASE_EXPIRED': 'Expirado',
+        'SUBSCRIPTION_CANCELLATION': 'Cancelamento Assinatura',
+      };
+      return map[event.toUpperCase()] || event;
+    }
+
+    function formatDate(raw) {
+      if (!raw) return '—';
+      try {
+        const d = new Date(raw);
+        if (isNaN(d)) return raw;
+        const day   = String(d.getDate()).padStart(2, '0');
+        const month = d.toLocaleString('pt-BR', { month: 'short' }).replace('.', '');
+        const hrs   = String(d.getHours()).padStart(2, '0');
+        const mins  = String(d.getMinutes()).padStart(2, '0');
+        return `${day} ${capitalize(month)} ${hrs}:${mins}`;
+      } catch {
+        return raw;
+      }
+    }
+
+    function formatCurrency(amount, currency) {
+      if (!amount && amount !== 0) return '—';
+      const cur = (currency || 'BRL').toUpperCase();
+      try {
+        return new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: cur === 'USD' ? 'USD' : 'BRL',
+          minimumFractionDigits: 2,
+        }).format(amount);
+      } catch {
+        return `${cur} ${amount.toFixed(2)}`;
+      }
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function truncate(str, max) {
+      return str && str.length > max ? str.slice(0, max) + '…' : str;
+    }
+
+    function escHtml(str) {
+      if (str === null || str === undefined) return '—';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function updateLastUpdated() {
+      const el = document.getElementById('last-updated');
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      el.textContent = `Última atualização: ${h}:${m}:${s}`;
+    }
+  </script>
+</body>
+</html>

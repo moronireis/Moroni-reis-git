@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GJ Eventos — Brandbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal-50: #F2FDFB; --teal-100: #E5FAF6; --teal-200: #C2F5EC;
+    --teal-300: #99EDE0; --teal-400: #6AE3D0; --teal-500: #3BD4BE;
+    --teal-600: #2EB8A6; --teal-700: #249688; --teal-800: #1D7A6D;
+    --teal-900: #155C53;
+    --warm-50: #FDFBF9; --warm-100: #F7F4F0; --warm-200: #EDE8E2;
+    --warm-300: #DDD5CC; --warm-400: #B8ADA1; --warm-500: #8C8176;
+    --warm-600: #6B6158; --warm-700: #4A423B; --warm-800: #332D28;
+    --warm-900: #1F1B18;
+    --charcoal-900: #1A1F1E; --charcoal-800: #252B2A; --charcoal-700: #333B39;
+    --coral-500: #E8725A; --coral-300: #F4B5A6; --coral-100: #FDE8E2;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', Arial, sans-serif;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-50);
+    color: var(--warm-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,251,249,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--warm-200);
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo svg { height: 28px; color: var(--warm-800); }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--warm-600);
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: color 200ms;
+  }
+  .nav-links a:hover { color: var(--teal-700); }
+  @media (max-width: 768px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; }
+  @media (max-width: 768px) { section { padding: 72px 20px; } }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+  .container-narrow { max-width: 720px; margin: 0 auto; }
+
+  .overline {
+    font-family: var(--font-body);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal-600);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .overline::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 2px;
+    background: var(--teal-600);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 500;
+    color: var(--warm-800);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-lead {
+    font-size: 18px; color: var(--warm-600);
+    line-height: 1.65; max-width: 600px;
+    margin-bottom: 64px;
+  }
+
+  .teal-bar {
+    width: 48px; height: 3px;
+    background: var(--teal-600);
+    border-radius: 2px;
+    margin-bottom: 40px;
+  }
+
+  /* FADE IN ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    min-height: 100vh;
+    background: var(--charcoal-900);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(46,184,166,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-bars-deco {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--teal-600) 40%, var(--teal-400) 60%, transparent 100%);
+    opacity: 0.6;
+  }
+  .hero-logo {
+    width: clamp(200px, 40vw, 320px);
+    margin-bottom: 48px;
+    color: #ffffff;
+  }
+  .hero-tagline {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .hero-heritage {
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-400);
+    margin-bottom: 64px;
+  }
+  .hero-divider {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
+    margin: 0 auto 48px;
+  }
+  .hero-meta {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; }
+  }
+
+  /* ===================== ESSÊNCIA ===================== */
+  .essencia { background: var(--warm-50); }
+  .essencia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--warm-200);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .essencia-card {
+    background: var(--warm-50);
+    padding: 40px 36px;
+    position: relative;
+  }
+  .essencia-card-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal-600); margin-bottom: 16px;
+  }
+  .essencia-card-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 500;
+    color: var(--warm-800); margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .essencia-card p {
+    font-size: 15px; color: var(--warm-600); line-height: 1.65;
+  }
+  .essencia-promise {
+    margin-top: 64px;
+    background: var(--teal-600);
+    border-radius: 16px;
+    padding: 56px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .essencia-promise::before {
+    content: '"';
+    position: absolute; top: -20px; left: 32px;
+    font-family: var(--font-display);
+    font-size: 200px; font-weight: 700;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .essencia-promise blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1.4;
+    max-width: 680px;
+    margin: 0 auto 24px;
+    position: relative;
+  }
+  .essencia-promise cite {
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-style: normal;
+  }
+
+  /* ===================== CORES ===================== */
+  .cores { background: var(--warm-100); }
+  .cores-section-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem; font-weight: 500;
+    color: var(--warm-700); margin-bottom: 24px;
+  }
+  .color-scale {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  @media (max-width: 768px) {
+    .color-scale { grid-template-columns: repeat(5, 1fr); }
+  }
+  .color-swatch {
+    aspect-ratio: 1;
+    position: relative;
+    cursor: pointer;
+    transition: transform 150ms;
+  }
+  .color-swatch:hover { transform: scaleY(1.08); z-index: 1; }
+  .color-swatch-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 6px 4px;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    background: rgba(0,0,0,0.15);
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  .color-swatch:hover .color-swatch-info { opacity: 1; }
+
+  .color-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .color-card {
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .color-card-swatch {
+    height: 100px;
+  }
+  .color-card-body {
+    background: var(--warm-50);
+    padding: 14px 16px;
+  }
+  .color-card-name {
+    font-size: 13px; font-weight: 600;
+    color: var(--warm-800); margin-bottom: 4px;
+  }
+  .color-card-hex {
+    font-size: 12px; font-weight: 500;
+    color: var(--warm-500); font-family: 'Courier New', monospace;
+  }
+  .color-card-role {
+    font-size: 11px; color: var(--warm-400);
+    margin-top: 4px;
+  }
+
+  /* ===================== TIPOGRAFIA ===================== */
+  .tipografia { background: var(--warm-50); }
+  .type-specimen {
+    border: 1px solid var(--warm-200);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .type-specimen-header {
+    background: var(--warm-100);
+    padding: 16px 28px;
+    display: flex; align-items: center; gap: 16px;
+    border-bottom: 1px solid var(--warm-200);
+  }
+  .type-specimen-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--warm-500);
+  }
+  .type-specimen-tag {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    background: var(--teal-100); color: var(--teal-800);
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .type-specimen-body { padding: 36px 28px; }
+
+  .type-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--warm-100);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-row-meta {
+    min-width: 120px; flex-shrink: 0;
+  }
+  .type-row-name {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--warm-400); margin-bottom: 4px;
+  }
+  .type-row-spec {
+    font-size: 10px; color: var(--warm-300);
+    font-family: 'Courier New', monospace;
+  }
+  .type-row-sample { flex: 1; color: var(--warm-800); }
+
+  .playfair-display { font-family: var(--font-display); font-weight: 700; font-size: 2.5rem; line-height: 1.1; }
+  .playfair-h1 { font-family: var(--font-display); font-weight: 700; font-size: 2rem; line-height: 1.15; }
+  .playfair-h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; line-height: 1.2; }
+  .playfair-italic { font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 1.25rem; line-height: 1.4; }
+  .dm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; line-height: 1.3; }
+  .dm-body-lg { font-family: var(--font-body); font-weight: 400; font-size: 1.125rem; line-height: 1.65; }
+  .dm-body { font-family: var(--font-body); font-weight: 400; font-size: 1rem; line-height: 1.6; }
+  .dm-caption { font-family: var(--font-body); font-weight: 500; font-size: 0.8125rem; line-height: 1.4; color: var(--warm-500); }
+  .dm-overline-sample { font-family: var(--font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-600); }
+
+  .type-pair-demo {
+    background: linear-gradient(135deg, var(--teal-100) 0%, var(--warm-50) 100%);
+    border-radius: 16px; padding: 56px 48px;
+    margin-top: 40px;
+  }
+  .type-pair-demo .overline-demo {
+    font-family: var(--font-body); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal-600); margin-bottom: 16px;
+  }
+  .type-pair-demo h2 {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; color: var(--warm-800);
+    line-height: 1.15; margin-bottom: 24px;
+  }
+  .type-pair-demo p {
+    font-family: var(--font-body); font-size: 17px;
+    color: var(--warm-600); line-height: 1.65;
+    max-width: 560px; margin-bottom: 32px;
+  }
+  .type-pair-demo .btn {
+    display: inline-block;
+    background: var(--teal-600); color: #fff;
+    font-family: var(--font-body); font-size: 13px;
+    font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 12px 28px; border-radius: 8px; text-decoration: none;
+  }
+
+  /* ===================== LOGO ===================== */
+  .logo-section { background: var(--warm-100); }
+  .logo-demos {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px; background: var(--warm-200);
+    border-radius: 16px; overflow: hidden; margin-bottom: 48px;
+  }
+  .logo-demo {
+    padding: 56px 40px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 20px; min-height: 220px;
+  }
+  .logo-demo svg { width: 200px; }
+  .logo-demo-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .logo-on-light { background: var(--warm-50); color: var(--warm-800); }
+  .logo-on-light .logo-demo-label { color: var(--warm-500); }
+  .logo-on-teal { background: var(--teal-600); color: #ffffff; }
+  .logo-on-teal .logo-demo-label { color: rgba(255,255,255,0.6); }
+  .logo-on-dark { background: var(--charcoal-900); color: #ffffff; }
+  .logo-on-dark .logo-demo-label { color: rgba(255,255,255,0.4); }
+
+  .logo-rules {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .logo-rule-card {
+    background: var(--warm-50); border-radius: 12px;
+    padding: 28px; border: 1px solid var(--warm-200);
+  }
+  .logo-rule-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    margin-bottom: 16px; display: flex; align-items: center; justify-content: center;
+  }
+  .logo-rule-icon.green { background: #E8F5E9; }
+  .logo-rule-icon.red { background: var(--coral-100); }
+  .logo-rule-title {
+    font-size: 13px; font-weight: 600;
+    color: var(--warm-800); margin-bottom: 10px;
+  }
+  .logo-rule-list {
+    list-style: none; display: flex; flex-direction: column; gap: 8px;
+  }
+  .logo-rule-list li {
+    font-size: 13px; color: var(--warm-600);
+    padding-left: 16px; position: relative;
+  }
+  .logo-rule-list li::before {
+    content: '–'; position: absolute; left: 0;
+    color: var(--warm-400);
+  }
+
+  /* ===================== TOM DE VOZ ===================== */
+  .voz { background: var(--charcoal-900); }
+  .voz .overline { color: var(--teal-400); }
+  .voz .overline::before { background: var(--teal-400); }
+  .voz .section-title { color: #ffffff; }
+  .voz .section-lead { color: rgba(255,255,255,0.55); }
+  .voz .teal-bar { background: var(--teal-400); }
+
+  .voz-persona {
+    background: var(--charcoal-800);
+    border-radius: 16px; padding: 40px 48px;
+    border: 1px solid var(--charcoal-700);
+    margin-bottom: 48px;
+  }
+  .voz-persona-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-style: italic; color: rgba(255,255,255,0.85);
+    line-height: 1.4; margin-bottom: 20px;
+  }
+  .voz-persona-attr {
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; color: var(--teal-400);
+  }
+
+  .voz-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-bottom: 48px;
+  }
+  @media (max-width: 768px) { .voz-grid { grid-template-columns: 1fr; } }
+
+  .voz-card {
+    border-radius: 12px; padding: 32px;
+  }
+  .voz-card.do { background: rgba(46,184,166,0.08); border: 1px solid rgba(46,184,166,0.2); }
+  .voz-card.dont { background: rgba(232,114,90,0.06); border: 1px solid rgba(232,114,90,0.15); }
+  .voz-card-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px;
+  }
+  .voz-card-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .voz-card.do .voz-card-dot { background: var(--teal-400); }
+  .voz-card.dont .voz-card-dot { background: var(--coral-300); }
+  .voz-card-title {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .voz-card.do .voz-card-title { color: var(--teal-400); }
+  .voz-card.dont .voz-card-title { color: var(--coral-300); }
+  .voz-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .voz-card ul li {
+    font-size: 14px; line-height: 1.5;
+    padding-left: 18px; position: relative;
+  }
+  .voz-card.do ul li { color: rgba(255,255,255,0.75); }
+  .voz-card.dont ul li { color: rgba(255,255,255,0.6); }
+  .voz-card.do ul li::before { content: '+'; position: absolute; left: 0; color: var(--teal-400); font-weight: 700; }
+  .voz-card.dont ul li::before { content: '×'; position: absolute; left: 0; color: var(--coral-300); }
+
+  .voz-channels {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px; background: var(--charcoal-700);
+    border-radius: 12px; overflow: hidden;
+  }
+  .voz-channel {
+    background: var(--charcoal-800); padding: 24px;
+  }
+  .voz-channel-name {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal-400); margin-bottom: 10px;
+  }
+  .voz-channel-tone {
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.7); margin-bottom: 10px;
+  }
+  .voz-channel-example {
+    font-size: 12px; color: rgba(255,255,255,0.4);
+    line-height: 1.5; font-style: italic;
+  }
+
+  /* ===================== FOTOGRAFIA ===================== */
+  .fotografia { background: var(--warm-50); }
+  .foto-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-bottom: 48px;
+  }
+  @media (max-width: 768px) { .foto-grid { grid-template-columns: 1fr 1fr; } }
+  .foto-placeholder {
+    border-radius: 12px; overflow: hidden;
+    aspect-ratio: 4/5;
+    position: relative;
+    background: var(--warm-200);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    padding: 20px;
+  }
+  .foto-placeholder.landscape { aspect-ratio: 3/2; }
+  .foto-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,31,30,0.7) 0%, transparent 50%);
+  }
+  .foto-label {
+    position: relative; z-index: 1;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+  }
+  .foto-1 { background: linear-gradient(135deg, var(--teal-300), var(--teal-600)); }
+  .foto-2 { background: linear-gradient(135deg, #d4b896, #c4a07a); }
+  .foto-3 { background: linear-gradient(135deg, var(--teal-200), var(--warm-300)); }
+  .foto-4 { background: linear-gradient(135deg, var(--charcoal-800), var(--charcoal-700)); }
+  .foto-5 { background: linear-gradient(135deg, #c9a0b0, #b88090); }
+  .foto-6 { background: linear-gradient(135deg, var(--teal-100), var(--teal-300)); }
+
+  .foto-rules {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 768px) { .foto-rules { grid-template-columns: 1fr; } }
+  .foto-rule-block {
+    background: var(--warm-100); border-radius: 12px;
+    padding: 28px; border: 1px solid var(--warm-200);
+  }
+  .foto-rule-block h4 {
+    font-size: 13px; font-weight: 600;
+    color: var(--warm-700); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .foto-rule-block ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .foto-rule-block li {
+    font-size: 13px; color: var(--warm-600);
+    padding-left: 18px; position: relative; line-height: 1.5;
+  }
+  .foto-rule-block li.yes::before { content: '✓'; position: absolute; left: 0; color: var(--teal-600); font-weight: 700; }
+  .foto-rule-block li.no::before { content: '✕'; position: absolute; left: 0; color: var(--coral-500); font-weight: 700; }
+
+  /* ===================== PADRÕES ===================== */
+  .padroes { background: var(--warm-100); }
+  .padrao-demos {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; margin-bottom: 48px;
+  }
+  .padrao-card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--warm-200);
+  }
+  .padrao-preview {
+    height: 200px; display: flex;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .padrao-body {
+    background: var(--warm-50); padding: 24px;
+  }
+  .padrao-name {
+    font-size: 14px; font-weight: 600;
+    color: var(--warm-800); margin-bottom: 6px;
+  }
+  .padrao-desc { font-size: 13px; color: var(--warm-500); line-height: 1.5; }
+
+  /* Bars pattern */
+  .padrao-bars-preview {
+    background: var(--warm-50);
+  }
+  .bars-group {
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .bar {
+    background: var(--teal-600); border-radius: 2px;
+    height: 3px; opacity: 0.7;
+  }
+  .bar-1 { width: 80px; }
+  .bar-2 { width: 104px; }
+  .bar-3 { width: 80px; }
+
+  /* Tiled bars */
+  .padrao-tiled-preview {
+    background: var(--warm-50);
+    overflow: hidden;
+  }
+  .bars-tiled {
+    position: absolute; inset: -20px;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 10px,
+        rgba(46,184,166,0.12) 10px,
+        rgba(46,184,166,0.12) 13px,
+        transparent 13px,
+        transparent 20px,
+        rgba(46,184,166,0.12) 20px,
+        rgba(46,184,166,0.12) 23px,
+        transparent 23px,
+        transparent 30px,
+        rgba(46,184,166,0.12) 30px,
+        rgba(46,184,166,0.12) 33px
+      );
+  }
+
+  /* Floral geometric */
+  .padrao-floral-preview {
+    background: var(--teal-100);
+  }
+  .floral-svg { width: 160px; height: 160px; opacity: 0.4; }
+
+  /* Gradient */
+  .padrao-gradient-preview {
+    background: linear-gradient(135deg, var(--teal-100) 0%, var(--warm-50) 100%);
+  }
+  .gradient-label {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-style: italic;
+    color: var(--teal-700); opacity: 0.6;
+  }
+
+  /* ===================== APLICAÇÕES ===================== */
+  .aplicacoes { background: var(--warm-50); }
+  .app-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .app-card { display: flex; flex-direction: column; gap: 16px; }
+  .app-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--warm-400);
+  }
+
+  /* Business card mockup */
+  .biz-card {
+    width: 100%; max-width: 320px;
+    aspect-ratio: 90/50;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    display: flex;
+  }
+  .biz-card-front {
+    flex: 1; background: var(--warm-50);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    padding: 16px;
+  }
+  .biz-card-front svg { width: 90px; color: var(--warm-800); }
+  .biz-card-front .biz-name {
+    font-family: var(--font-body); font-size: 9px;
+    font-weight: 600; color: var(--warm-700);
+    letter-spacing: 0.04em;
+  }
+  .biz-card-front .biz-role {
+    font-size: 8px; color: var(--warm-400);
+  }
+
+  /* Instagram post mockup */
+  .ig-post {
+    width: 100%; max-width: 280px;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+  .ig-header {
+    background: var(--warm-50);
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--warm-200);
+  }
+  .ig-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--teal-600);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ig-avatar svg { width: 16px; color: white; }
+  .ig-handle { font-size: 11px; font-weight: 600; color: var(--warm-800); }
+  .ig-image {
+    height: 200px; background: linear-gradient(135deg, var(--teal-300), var(--teal-600));
+    position: relative; display: flex; align-items: flex-end; padding: 16px;
+  }
+  .ig-image-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,31,30,0.6) 0%, transparent 50%);
+  }
+  .ig-image-text {
+    position: relative; z-index: 1;
+  }
+  .ig-image-text .ig-overline {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal-300); margin-bottom: 4px;
+  }
+  .ig-image-text p {
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 500;
+    color: white; line-height: 1.2;
+  }
+  .ig-footer {
+    background: var(--warm-50); padding: 12px 14px;
+  }
+  .ig-caption { font-size: 11px; color: var(--warm-600); line-height: 1.4; }
+  .ig-caption strong { color: var(--warm-800); }
+
+  /* WhatsApp message */
+  .wa-demo {
+    background: #E8F5E9;
+    border-radius: 16px; overflow: hidden;
+    max-width: 320px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .wa-header {
+    background: #075E54;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .wa-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--teal-500);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: white;
+    flex-shrink: 0;
+  }
+  .wa-header-info .wa-name {
+    font-size: 13px; font-weight: 600; color: white;
+  }
+  .wa-header-info .wa-status {
+    font-size: 11px; color: rgba(255,255,255,0.6);
+  }
+  .wa-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .wa-bubble {
+    max-width: 80%; padding: 10px 14px;
+    border-radius: 16px 16px 16px 4px;
+    font-size: 13px; line-height: 1.5;
+  }
+  .wa-bubble.received {
+    background: white; color: var(--warm-800);
+    align-self: flex-start;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .wa-bubble.received strong { color: var(--teal-700); }
+  .wa-time {
+    font-size: 10px; color: rgba(0,0,0,0.3);
+    text-align: right; margin-top: 4px;
+  }
+
+  /* ===================== VALORES ===================== */
+  .valores { background: var(--warm-100); }
+  .valores-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px; background: var(--warm-200);
+    border-radius: 16px; overflow: hidden;
+  }
+  .valor-card {
+    background: var(--warm-50); padding: 36px 28px;
+    position: relative; overflow: hidden;
+  }
+  .valor-number {
+    font-family: var(--font-display); font-size: 5rem; font-weight: 700;
+    color: var(--teal-100); line-height: 1;
+    position: absolute; top: 16px; right: 20px;
+    pointer-events: none;
+  }
+  .valor-name {
+    font-family: var(--font-display); font-size: 1.25rem; font-weight: 500;
+    color: var(--warm-800); margin-bottom: 12px; line-height: 1.2;
+  }
+  .valor-desc { font-size: 13px; color: var(--warm-600); line-height: 1.6; }
+
+  /* ===================== FOOTER ===================== */
+  .footer {
+    background: var(--charcoal-900);
+    padding: 64px 40px 40px;
+    border-top: 1px solid var(--charcoal-700);
+  }
+  @media (max-width: 768px) { .footer { padding: 48px 20px 32px; } }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+  .footer-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 48px; flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo { width: 180px; color: rgba(255,255,255,0.8); }
+  .footer-tagline {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1rem; color: rgba(255,255,255,0.4);
+  }
+  .footer-divider {
+    width: 100%; height: 1px;
+    background: var(--charcoal-700); margin-bottom: 32px;
+  }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy {
+    font-size: 12px; color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em;
+  }
+  .footer-contacts {
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .footer-contact {
+    font-size: 12px; color: rgba(255,255,255,0.3);
+  }
+  .footer-contact span { color: var(--teal-400); }
+
+  /* SECTION DARK ALTERNATION */
+  .section-dark { background: var(--charcoal-900); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+      <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+      <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+      <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+      <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+      <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+      <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+      <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+      <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+      <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#essencia">Essência</a></li>
+    <li><a href="#cores">Cores</a></li>
+    <li><a href="#tipografia">Tipografia</a></li>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#voz">Voz</a></li>
+    <li><a href="#aplicacoes">Aplicações</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bars-deco"></div>
+  <svg class="hero-logo" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+    <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+    <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+    <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+    <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+    <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+    <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+    <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+    <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+    <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+  </svg>
+  <p class="hero-tagline">"Cada celebração merece ser linda."</p>
+  <p class="hero-heritage">Desde 2005, a Zona Sul comemora com a GJ</p>
+  <div class="hero-divider"></div>
+  <p class="hero-meta">Brandbook — Identidade Visual v1.0 — Abril 2026</p>
+  <div class="hero-scroll">Explorar</div>
+</section>
+
+<!-- ESSÊNCIA -->
+<section class="essencia" id="essencia">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Essência da Marca</div>
+      <h2 class="section-title">Quem é a GJ Eventos</h2>
+      <p class="section-lead">Uma empresa de decoração e produção de eventos com DNA floral. Com mais de 20 anos de raiz na Zona Sul de São Paulo.</p>
+    </div>
+
+    <div class="essencia-grid fade-in">
+      <div class="essencia-card">
+        <div class="essencia-card-label">Missão</div>
+        <h3 class="essencia-card-title">Transformar celebrações</h3>
+        <p>Transformar celebrações em experiências memoráveis, levando arte floral e produção de eventos com excelência para a Zona Sul de São Paulo e região.</p>
+      </div>
+      <div class="essencia-card">
+        <div class="essencia-card-label">Visão</div>
+        <h3 class="essencia-card-title">Ser a referência</h3>
+        <p>Ser a referência em decoração e produção de eventos na Zona Sul de São Paulo — reconhecida pela qualidade, criatividade e pelo cuidado que só 20 anos de experiência trazem.</p>
+      </div>
+      <div class="essencia-card">
+        <div class="essencia-card-label">Propósito</div>
+        <h3 class="essencia-card-title">Cada festa merece beleza</h3>
+        <p>Não importa o tamanho, o orçamento ou o bairro. A GJ existe para garantir que todo momento especial tenha a beleza que ele merece.</p>
+      </div>
+    </div>
+
+    <div class="essencia-promise fade-in">
+      <blockquote>"Quem celebra com a GJ não precisa se preocupar com nada. Da primeira conversa até a última flor no lugar, a gente cuida de tudo — com o mesmo carinho que cuidaríamos de uma festa da nossa própria família."</blockquote>
+      <cite>Promessa da Marca</cite>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores" id="valores">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Valores da Marca</div>
+      <h2 class="section-title">O que nos move</h2>
+      <div class="teal-bar"></div>
+    </div>
+    <div class="valores-grid fade-in">
+      <div class="valor-card">
+        <div class="valor-number">01</div>
+        <div class="valor-name">Cuidado</div>
+        <p class="valor-desc">Cada detalhe importa. Cada flor é posicionada com intenção. A GJ não entrega "mais ou menos" — entrega como se fosse pra gente.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-number">02</div>
+        <div class="valor-name">Proximidade</div>
+        <p class="valor-desc">A GJ conhece seus clientes pelo nome. Não é uma empresa que vende e desaparece — é uma vizinha que participa da história.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-number">03</div>
+        <div class="valor-name">Criatividade<br>Acessível</div>
+        <p class="valor-desc">Decoração bonita não precisa custar uma fortuna. A GJ encontra soluções criativas pra qualquer orçamento.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-number">04</div>
+        <div class="valor-name">Raiz</div>
+        <p class="valor-desc">A GJ tem orgulho de onde veio. Zona Sul, Jardim Miriam, Avenida Cupece. É premium no seu próprio território, do seu próprio jeito.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-number">05</div>
+        <div class="valor-name">Celebração</div>
+        <p class="valor-desc">A GJ existe porque festas importam. Comemorar importa. Reunir as pessoas importa. Esse é o motor de tudo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORES -->
+<section class="cores" id="cores">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Sistema de Cores</div>
+      <h2 class="section-title">A paleta da GJ</h2>
+      <p class="section-lead">O teal é o protagonista. Enquanto 80% do mercado usa dourado e rosé, a GJ escolheu uma cor que é sua — moderna, fresca, inconfundível.</p>
+    </div>
+
+    <div class="fade-in">
+      <p class="cores-section-title">Escala Teal — Cor Primária</p>
+      <div class="color-scale">
+        <div class="color-swatch" style="background:#F2FDFB"><div class="color-swatch-info" style="color:#2EB8A6">50</div></div>
+        <div class="color-swatch" style="background:#E5FAF6"><div class="color-swatch-info" style="color:#2EB8A6">100</div></div>
+        <div class="color-swatch" style="background:#C2F5EC"><div class="color-swatch-info" style="color:#2EB8A6">200</div></div>
+        <div class="color-swatch" style="background:#99EDE0"><div class="color-swatch-info" style="color:#1D7A6D">300</div></div>
+        <div class="color-swatch" style="background:#6AE3D0"><div class="color-swatch-info" style="color:#1D7A6D">400</div></div>
+        <div class="color-swatch" style="background:#3BD4BE"><div class="color-swatch-info" style="color:#fff">500</div></div>
+        <div class="color-swatch" style="background:#2EB8A6"><div class="color-swatch-info" style="color:#fff">600 ★</div></div>
+        <div class="color-swatch" style="background:#249688"><div class="color-swatch-info" style="color:#fff">700</div></div>
+        <div class="color-swatch" style="background:#1D7A6D"><div class="color-swatch-info" style="color:#fff">800</div></div>
+        <div class="color-swatch" style="background:#155C53"><div class="color-swatch-info" style="color:#fff">900</div></div>
+      </div>
+    </div>
+
+    <div class="color-row fade-in">
+      <div class="color-card">
+        <div class="color-card-swatch" style="background:#2EB8A6"></div>
+        <div class="color-card-body">
+          <div class="color-card-name">Teal Primário</div>
+          <div class="color-card-hex">#2EB8A6</div>
+          <div class="color-card-role">Logo, CTAs, destaques</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-swatch" style="background:#FDFBF9;border:1px solid #EDE8E2;"></div>
+        <div class="color-card-body">
+          <div class="color-card-name">Warm White</div>
+          <div class="color-card-hex">#FDFBF9</div>
+          <div class="color-card-role">Background principal</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-swatch" style="background:#332D28"></div>
+        <div class="color-card-body">
+          <div class="color-card-name">Warm Dark</div>
+          <div class="color-card-hex">#332D28</div>
+          <div class="color-card-role">Headlines, texto forte</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-swatch" style="background:#E8725A"></div>
+        <div class="color-card-body">
+          <div class="color-card-name">Coral Acento</div>
+          <div class="color-card-hex">#E8725A</div>
+          <div class="color-card-role">Destaques pontuais</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-swatch" style="background:#1A1F1E"></div>
+        <div class="color-card-body">
+          <div class="color-card-name">Charcoal</div>
+          <div class="color-card-hex">#1A1F1E</div>
+          <div class="color-card-role">Fundo escuro, elegância</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="background:var(--warm-50);border-radius:16px;padding:32px;border:1px solid var(--warm-200);">
+      <p style="font-size:13px;font-weight:600;color:var(--warm-700);margin-bottom:20px;letter-spacing:0.04em;">REGRA DO CORAL</p>
+      <p style="font-size:14px;color:var(--warm-600);line-height:1.6;">O coral é o ponto de exclamação — o teal é a voz. <strong style="color:var(--warm-800);">Máximo 1 elemento coral por composição.</strong> O dourado, rosé gold e champagne são proibidos — são a commodity visual do setor. O teal é o que diferencia a GJ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section class="tipografia" id="tipografia">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Tipografia</div>
+      <h2 class="section-title">As duas famílias</h2>
+      <p class="section-lead">Playfair Display traz a elegância editorial. DM Sans traz a clareza moderna. Juntas, comunicam: somos artísticos E profissionais.</p>
+    </div>
+
+    <div class="type-specimen fade-in">
+      <div class="type-specimen-header">
+        <div class="type-specimen-label">Playfair Display</div>
+        <div class="type-specimen-tag">Headlines & Citações</div>
+      </div>
+      <div class="type-specimen-body">
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">Display</div>
+            <div class="type-row-spec">700 / 56px / lh 1.1</div>
+          </div>
+          <div class="type-row-sample playfair-display">Cada celebração merece ser linda.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">H1</div>
+            <div class="type-row-spec">700 / 42px / lh 1.15</div>
+          </div>
+          <div class="type-row-sample playfair-h1">Arte floral com alma.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">H2</div>
+            <div class="type-row-spec">500 / 32px / lh 1.2</div>
+          </div>
+          <div class="type-row-sample playfair-h2">Desde 2005 na Zona Sul</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">Italic</div>
+            <div class="type-row-spec">400i / 24px / lh 1.4</div>
+          </div>
+          <div class="type-row-sample playfair-italic" style="color:var(--warm-600)">"O casamento ficou mais bonito do que eu sonhei."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-specimen fade-in">
+      <div class="type-specimen-header">
+        <div class="type-specimen-label">DM Sans</div>
+        <div class="type-specimen-tag">Corpo & Interface</div>
+      </div>
+      <div class="type-specimen-body">
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">H3</div>
+            <div class="type-row-spec">600 / 24px / lh 1.3</div>
+          </div>
+          <div class="type-row-sample dm-h3">Decoração Floral Completa</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">Body LG</div>
+            <div class="type-row-spec">400 / 18px / lh 1.65</div>
+          </div>
+          <div class="type-row-sample dm-body-lg" style="color:var(--warm-600)">Arte floral integrada à produção completa do evento — um único ponto de contato, uma única visão criativa.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">Body</div>
+            <div class="type-row-spec">400 / 16px / lh 1.6</div>
+          </div>
+          <div class="type-row-sample dm-body" style="color:var(--warm-600)">A GJ Eventos foi fundada em 2005 por Gilberto e Juciene no Jardim Miriam, Zona Sul de São Paulo. O que começou como floricultura se tornou referência em decoração e produção de eventos da região.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">Caption</div>
+            <div class="type-row-spec">500 / 13px / lh 1.4</div>
+          </div>
+          <div class="type-row-sample dm-caption">Casamento • Espaço Quintal • Maio 2025</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <div class="type-row-name">Overline</div>
+            <div class="type-row-spec">600 / 12px / ls 0.08em</div>
+          </div>
+          <div class="type-row-sample dm-overline-sample">Casamento — Decoração — Depoimento</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-pair-demo fade-in">
+      <div class="overline-demo">Composição Tipográfica</div>
+      <h2>Eventos que ficam<br>na <em style="color:var(--teal-700)">memória.</em></h2>
+      <p>Cada arranjo conta uma história. Cada espaço decorado pela GJ é pensado para que os convidados entrem e sintam que chegaram em algum lugar especial.</p>
+      <a class="btn" href="#">Solicitar Orçamento</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section class="logo-section" id="logo">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Identidade Visual</div>
+      <h2 class="section-title">O Logo GJ</h2>
+      <p class="section-lead">As iniciais G e J enquadradas pelas barras teal — o mesmo elemento que deu origem à marca. Simples, reconhecível, versátil.</p>
+    </div>
+
+    <div class="logo-demos fade-in">
+      <div class="logo-demo logo-on-light">
+        <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="#332D28">GJ</text>
+          <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="#332D28" opacity="0.4">EVENTOS</text>
+          <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-demo-label">Fundo claro</span>
+      </div>
+      <div class="logo-demo logo-on-teal">
+        <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="44" y="34" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <rect x="38" y="44" width="32" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <rect x="44" y="54" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="white">GJ</text>
+          <rect x="250" y="34" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <rect x="250" y="44" width="32" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <rect x="250" y="54" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="white" opacity="0.5">EVENTOS</text>
+          <line x1="112" y1="112" x2="208" y2="112" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-demo-label">Fundo teal</span>
+      </div>
+      <div class="logo-demo logo-on-dark">
+        <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="white">GJ</text>
+          <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+          <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+          <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="white" opacity="0.4">EVENTOS</text>
+          <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-demo-label">Fundo escuro</span>
+      </div>
+    </div>
+
+    <div class="logo-rules fade-in">
+      <div class="logo-rule-card">
+        <div class="logo-rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="logo-rule-title">Use o logo assim</div>
+        <ul class="logo-rule-list">
+          <li>Sobre fundos lisos e limpos</li>
+          <li>Com espaço de respiro de ao menos 20px em volta</li>
+          <li>Em fundos claro, teal ou escuro apenas</li>
+          <li>Tamanho mínimo: 80px de largura em digital</li>
+          <li>Proporcional — nunca distorcido</li>
+        </ul>
+      </div>
+      <div class="logo-rule-card">
+        <div class="logo-rule-icon red">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div class="logo-rule-title">Nunca faça isso</div>
+        <ul class="logo-rule-list">
+          <li>Não altere as cores do logo</li>
+          <li>Não aplique sombra ou efeitos sobre ele</li>
+          <li>Não coloque sobre fotos sem overlay</li>
+          <li>Não use em fundos dourados ou coloridos</li>
+          <li>Não rotacione nem espelhe</li>
+        </ul>
+      </div>
+      <div class="logo-rule-card">
+        <div style="margin-bottom:16px">
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+            <div style="width:80px;height:3px;background:#2EB8A6;border-radius:2px;opacity:0.7"></div>
+            <div style="width:104px;height:3px;background:#2EB8A6;border-radius:2px;opacity:0.7"></div>
+            <div style="width:80px;height:3px;background:#2EB8A6;border-radius:2px;opacity:0.7"></div>
+          </div>
+        </div>
+        <div class="logo-rule-title">Elemento de barras</div>
+        <ul class="logo-rule-list">
+          <li>As 3 barras podem ser usadas como elemento decorativo isolado</li>
+          <li>Sempre nas proporções 80px / 104px / 80px</li>
+          <li>Cor: teal-600 (#2EB8A6)</li>
+          <li>Separadores, watermarks, embalagens</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOM DE VOZ -->
+<section class="voz" id="voz">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Tom de Voz</div>
+      <h2 class="section-title" style="color:white">Como a GJ fala</h2>
+      <p class="section-lead">A GJ fala como uma <em style="font-style:italic;color:var(--teal-300)">amiga profissional</em>. Alguém que você confia pra cuidar da sua festa porque ela é competente E gente boa.</p>
+    </div>
+
+    <div class="voz-persona fade-in">
+      <div class="voz-persona-quote">"Oi, Maria! Tudo bem? Recebi sua mensagem sobre o chá da Luisa. Que lindo! Vamos marcar pra conversar essa semana?"</div>
+      <div class="voz-persona-attr">Exemplo real — WhatsApp comercial da GJ</div>
+    </div>
+
+    <div class="voz-grid fade-in">
+      <div class="voz-card do">
+        <div class="voz-card-header">
+          <div class="voz-card-dot"></div>
+          <div class="voz-card-title">A GJ usa</div>
+        </div>
+        <ul>
+          <li>Celebração, comemorar, festejar</li>
+          <li>Cuidar, caprichar, capricho</li>
+          <li>Bonito, lindo, encantador</li>
+          <li>Nosso, junto, pra você</li>
+          <li>Arte, criação, composição</li>
+          <li>Desde 2005, há mais de 20 anos</li>
+          <li>Zona Sul, nossa região</li>
+        </ul>
+      </div>
+      <div class="voz-card dont">
+        <div class="voz-card-header">
+          <div class="voz-card-dot"></div>
+          <div class="voz-card-title">A GJ evita</div>
+        </div>
+        <ul>
+          <li>Luxo, premium, exclusivo, sofisticado</li>
+          <li>Solução, otimizar, alavancar</li>
+          <li>Inovador, disruptivo, revolucionário</li>
+          <li>Barato, em conta, promoção</li>
+          <li>Loja, comércio, varejo</li>
+          <li>Mais de 3 emojis por post</li>
+          <li>CAPS LOCK fora de overlines</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="voz-channels fade-in">
+      <div class="voz-channel">
+        <div class="voz-channel-name">Instagram Feed</div>
+        <div class="voz-channel-tone">Inspiracional + Orgulhoso</div>
+        <div class="voz-channel-example">"Cada arranjo conta uma história. Essa mesa contou a de 15 anos de uma menina que sonhava com rosa e teal."</div>
+      </div>
+      <div class="voz-channel">
+        <div class="voz-channel-name">Stories</div>
+        <div class="voz-channel-tone">Bastidores + Espontâneo</div>
+        <div class="voz-channel-example">"Gente, olha essa mesa de doces! To suando mas to feliz"</div>
+      </div>
+      <div class="voz-channel">
+        <div class="voz-channel-name">WhatsApp</div>
+        <div class="voz-channel-tone">Próximo + Profissional</div>
+        <div class="voz-channel-example">"Oi! Recebi sua mensagem. Que evento lindo vamos fazer juntos!"</div>
+      </div>
+      <div class="voz-channel">
+        <div class="voz-channel-name">Orçamento</div>
+        <div class="voz-channel-tone">Profissional + Humano</div>
+        <div class="voz-channel-example">"Qualquer dúvida, pode ligar pra mim direto."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTOGRAFIA -->
+<section class="fotografia" id="fotografia">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Direção Fotográfica</div>
+      <h2 class="section-title">A foto que vende</h2>
+      <p class="section-lead">Quente, luminosa, com contrastes suaves. Como se tivesse sido tirada na golden hour — mesmo quando não foi.</p>
+    </div>
+
+    <div class="foto-grid fade-in">
+      <div class="foto-placeholder foto-1">
+        <div class="foto-overlay"></div>
+        <div class="foto-label">Arranjos Florais<br><span style="font-weight:400;opacity:0.7;font-size:9px">Close com profundidade rasa</span></div>
+      </div>
+      <div class="foto-placeholder foto-2">
+        <div class="foto-overlay"></div>
+        <div class="foto-label">Mesa Decorada<br><span style="font-weight:400;opacity:0.7;font-size:9px">Panorâmica, regra dos terços</span></div>
+      </div>
+      <div class="foto-placeholder foto-3">
+        <div class="foto-overlay"></div>
+        <div class="foto-label">Detalhe de Acabamento<br><span style="font-weight:400;opacity:0.7;font-size:9px">Guardanapo, vela, placa de nome</span></div>
+      </div>
+      <div class="foto-placeholder foto-4">
+        <div class="foto-overlay"></div>
+        <div class="foto-label">Bastidores de Montagem<br><span style="font-weight:400;opacity:0.7;font-size:9px">Mostra profissionalismo</span></div>
+      </div>
+      <div class="foto-placeholder foto-5">
+        <div class="foto-overlay"></div>
+        <div class="foto-label">Momento de Emoção<br><span style="font-weight:400;opacity:0.7;font-size:9px">Reação ao ver a decoração</span></div>
+      </div>
+      <div class="foto-placeholder foto-6">
+        <div class="foto-overlay"></div>
+        <div class="foto-label">Espaço Completo<br><span style="font-weight:400;opacity:0.7;font-size:9px">A transformação total</span></div>
+      </div>
+    </div>
+
+    <div class="foto-rules fade-in">
+      <div class="foto-rule-block">
+        <h4>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2EB8A6" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Faça sempre
+        </h4>
+        <ul>
+          <li class="yes">Temperatura quente (+200K a +400K)</li>
+          <li class="yes">Exposição levemente sobre-exposta (+0.3 EV)</li>
+          <li class="yes">Pretos levantados — efeito matte/filme</li>
+          <li class="yes">Horizonte sempre nivelado</li>
+          <li class="yes">f/1.8 a f/2.8 para detalhes florais</li>
+          <li class="yes">Incluir ao menos 1 elemento teal na cena</li>
+          <li class="yes">Espaço negativo generoso no enquadramento</li>
+        </ul>
+      </div>
+      <div class="foto-rule-block">
+        <h4>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8725A" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Nunca faça
+        </h4>
+        <ul>
+          <li class="no">Iluminação mista (LED azul + incandescente)</li>
+          <li class="no">Flash direto ou fotos escuras demais</li>
+          <li class="no">Saturação excessiva ou HDR agressivo</li>
+          <li class="no">Marca d'água de outros fornecedores visível</li>
+          <li class="no">Cenários com cabos, caixas ou bagunça visível</li>
+          <li class="no">Filtros prontos do Instagram sobre portfólio</li>
+          <li class="no">Enquadramento "apertado" — sem respiro</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PADRÕES -->
+<section class="padroes" id="padroes">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Padrões & Texturas</div>
+      <h2 class="section-title">A linguagem visual</h2>
+      <p class="section-lead">Elementos decorativos derivados do DNA do logo — sempre sutis, nunca competindo com o conteúdo principal.</p>
+    </div>
+
+    <div class="padrao-demos fade-in">
+      <div class="padrao-card">
+        <div class="padrao-preview padrao-bars-preview" style="background:var(--warm-50)">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="width:80px;height:3px;background:#2EB8A6;border-radius:2px;opacity:0.7"></div>
+            <div style="width:104px;height:3px;background:#2EB8A6;border-radius:2px;opacity:0.7"></div>
+            <div style="width:80px;height:3px;background:#2EB8A6;border-radius:2px;opacity:0.7"></div>
+          </div>
+        </div>
+        <div class="padrao-body">
+          <div class="padrao-name">Padrão de Barras</div>
+          <div class="padrao-desc">Derivado diretamente das barras do logo. Usado como separador decorativo, watermark e em embalagens. Proporção: 80px / 104px / 80px.</div>
+        </div>
+      </div>
+
+      <div class="padrao-card">
+        <div class="padrao-preview padrao-tiled-preview" style="background:var(--warm-100)">
+          <div class="bars-tiled"></div>
+          <div style="position:relative;z-index:1;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal-700)">Textura de Fundo</div>
+        </div>
+        <div class="padrao-body">
+          <div class="padrao-name">Barras como Textura</div>
+          <div class="padrao-desc">O padrão de barras repetido em baixa opacidade (5–8%) como textura sutil de seção. Cria profundidade sem chamar atenção.</div>
+        </div>
+      </div>
+
+      <div class="padrao-card">
+        <div class="padrao-preview padrao-floral-preview">
+          <svg class="floral-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(80,80)">
+              <ellipse cx="0" cy="-28" rx="10" ry="22" fill="none" stroke="#2EB8A6" stroke-width="1.5" transform="rotate(0)"/>
+              <ellipse cx="0" cy="-28" rx="10" ry="22" fill="none" stroke="#2EB8A6" stroke-width="1.5" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-28" rx="10" ry="22" fill="none" stroke="#2EB8A6" stroke-width="1.5" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-28" rx="10" ry="22" fill="none" stroke="#2EB8A6" stroke-width="1.5" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-28" rx="10" ry="22" fill="none" stroke="#2EB8A6" stroke-width="1.5" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="7" fill="none" stroke="#2EB8A6" stroke-width="1.5"/>
+              <circle cx="0" cy="0" r="3" fill="#2EB8A6" opacity="0.5"/>
+              <ellipse cx="0" cy="-50" rx="6" ry="14" fill="none" stroke="#6AE3D0" stroke-width="1" transform="rotate(36)" opacity="0.6"/>
+              <ellipse cx="0" cy="-50" rx="6" ry="14" fill="none" stroke="#6AE3D0" stroke-width="1" transform="rotate(108)" opacity="0.6"/>
+              <ellipse cx="0" cy="-50" rx="6" ry="14" fill="none" stroke="#6AE3D0" stroke-width="1" transform="rotate(180)" opacity="0.6"/>
+              <ellipse cx="0" cy="-50" rx="6" ry="14" fill="none" stroke="#6AE3D0" stroke-width="1" transform="rotate(252)" opacity="0.6"/>
+              <ellipse cx="0" cy="-50" rx="6" ry="14" fill="none" stroke="#6AE3D0" stroke-width="1" transform="rotate(324)" opacity="0.6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="padrao-body">
+          <div class="padrao-name">Ornamento Floral Geométrico</div>
+          <div class="padrao-desc">Abstração geométrica de pétalas — não é floral realista. 5 elipses rotacionadas em 72° formando uma flor estilizada. Sempre em segundo plano.</div>
+        </div>
+      </div>
+
+      <div class="padrao-card">
+        <div class="padrao-preview padrao-gradient-preview">
+          <div class="gradient-label">GJ Eventos</div>
+        </div>
+        <div class="padrao-body">
+          <div class="padrao-name">Gradiente Teal</div>
+          <div class="padrao-desc">Fundo suave de teal-100 para warm-50 em 135°. Usado em seções de destaque e composições digitais. Nunca multicolorido.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APLICAÇÕES -->
+<section class="aplicacoes" id="aplicacoes">
+  <div class="container">
+    <div class="fade-in">
+      <div class="overline">Aplicações da Marca</div>
+      <h2 class="section-title">A identidade em uso</h2>
+      <p class="section-lead">Como a marca GJ aparece nos principais pontos de contato com o cliente.</p>
+    </div>
+
+    <div class="app-grid fade-in">
+      <!-- Business card -->
+      <div class="app-card">
+        <div class="app-label">Cartão de Visita</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="width:200px;height:111px;border-radius:8px;background:var(--warm-50);box-shadow:0 8px 32px rgba(0,0,0,0.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;border:1px solid var(--warm-200);">
+            <svg viewBox="0 0 320 140" style="width:100px;color:var(--warm-800)" xmlns="http://www.w3.org/2000/svg">
+              <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+              <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+              <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+              <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="#332D28">GJ</text>
+              <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+              <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+              <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+              <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="#332D28" opacity="0.4">EVENTOS</text>
+              <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+            <div style="font-size:8px;font-weight:600;color:var(--warm-600);">Juciene Souza</div>
+            <div style="font-size:7px;color:var(--warm-400);">Sócia Fundadora</div>
+          </div>
+          <div style="width:200px;height:111px;border-radius:8px;background:#2EB8A6;box-shadow:0 8px 32px rgba(46,184,166,0.3);display:flex;flex-direction:column;justify-content:center;padding:16px;gap:6px;">
+            <div style="font-size:9px;font-weight:500;color:rgba(255,255,255,0.9);display:flex;align-items:center;gap:6px;">
+              <span style="opacity:0.6">📞</span>(11) 9XXXX-XXXX
+            </div>
+            <div style="font-size:9px;font-weight:500;color:rgba(255,255,255,0.9);display:flex;align-items:center;gap:6px;">
+              <span style="opacity:0.6">💬</span>(11) 9XXXX-XXXX
+            </div>
+            <div style="font-size:9px;font-weight:500;color:rgba(255,255,255,0.9);display:flex;align-items:center;gap:6px;">
+              <span style="opacity:0.6">📷</span>@gj_eventos.sp
+            </div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:4px;">Av. Cupece, Jardim Miriam — SP</div>
+            <div style="font-size:7px;font-style:italic;color:rgba(255,255,255,0.35);font-family:'Playfair Display',serif;margin-top:4px;">Desde 2005</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--warm-400);margin-top:8px;">90 × 50mm — Fosco + Hot stamp teal no logo</p>
+      </div>
+
+      <!-- Instagram post -->
+      <div class="app-card">
+        <div class="app-label">Post Instagram</div>
+        <div class="ig-post">
+          <div class="ig-header">
+            <div class="ig-avatar">
+              <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="44" y="34" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+                <rect x="38" y="44" width="32" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+                <rect x="44" y="54" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+                <text x="160" y="70" text-anchor="middle" font-family="Arial" font-size="52" font-weight="600" letter-spacing="8" fill="white">GJ</text>
+                <rect x="250" y="34" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+                <rect x="250" y="44" width="32" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+                <rect x="250" y="54" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+              </svg>
+            </div>
+            <div class="ig-handle">gj_eventos.sp</div>
+          </div>
+          <div class="ig-image">
+            <div class="ig-image-overlay"></div>
+            <div class="ig-image-text">
+              <div class="ig-overline">Casamento</div>
+              <p>Marina & Lucas<br>Espaço Quintal</p>
+            </div>
+          </div>
+          <div class="ig-footer">
+            <div class="ig-caption"><strong>gj_eventos.sp</strong> Cada detalhe pensado com carinho. Esse casamento ficou exatamente como eles sonharam. ✨</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--warm-400);margin-top:8px;">1080 × 1350px — Playfair + DM Sans</p>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="app-card">
+        <div class="app-label">WhatsApp Comercial</div>
+        <div class="wa-demo">
+          <div class="wa-header">
+            <div class="wa-avatar">GJ</div>
+            <div class="wa-header-info">
+              <div class="wa-name">GJ Eventos</div>
+              <div class="wa-status">online</div>
+            </div>
+          </div>
+          <div class="wa-body">
+            <div class="wa-bubble received">
+              <strong>Oi, Maria!</strong> Tudo bem? Recebi sua mensagem sobre o chá da Luisa. Que lindo! 🌸
+              <div class="wa-time">14:23 ✓✓</div>
+            </div>
+            <div class="wa-bubble received">
+              Vamos marcar pra conversar essa semana? Tenho umas ideias lindas que acho que você vai amar.
+              <div class="wa-time">14:24 ✓✓</div>
+            </div>
+            <div class="wa-bubble received">
+              Ah, e pode me mandar o espaço que você tá pensando? Assim já imagino como ficaria 💚
+              <div class="wa-time">14:24 ✓✓</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--warm-400);margin-top:8px;">Tom: próxima + profissional, nunca fria</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <svg class="footer-logo" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="44" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="38" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="44" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="70" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="rgba(255,255,255,0.85)">GJ</text>
+        <rect x="250" y="34" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="44" width="32" height="3" rx="1.5" fill="#2EB8A6"/>
+        <rect x="250" y="54" width="26" height="3" rx="1.5" fill="#2EB8A6"/>
+        <text x="160" y="98" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="rgba(255,255,255,0.4)">EVENTOS</text>
+        <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <p class="footer-tagline">"Cada celebração merece ser linda."</p>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">GJ Eventos — Brandbook v1.0 — Elaborado por REIS [IA] — Abril 2026</div>
+      <div class="footer-contacts">
+        <div class="footer-contact">Instagram: <span>@gj_eventos.sp</span></div>
+        <div class="footer-contact">Local: <span>Zona Sul, São Paulo</span></div>
+        <div class="footer-contact">Desde: <span>2005</span></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Copy hex on swatch click
+  document.querySelectorAll('.color-swatch, .color-card').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => {
+      const hex = el.style.background || el.querySelector('.color-card-swatch')?.style.background;
+      if (hex && hex.startsWith('#')) {
+        navigator.clipboard?.writeText(hex).catch(() => {});
+      }
+    });
+  });
+</script>
+</body>
+</html>

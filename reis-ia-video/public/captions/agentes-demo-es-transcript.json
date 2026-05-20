@@ -1,0 +1,1434 @@
+{
+  "language": "es",
+  "duration": 0,
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 3.78,
+      "text": " Esto es lo que pasa cuando usas IA sin saber lo que estás haciendo.",
+      "tokens": [
+        50364,
+        20880,
+        785,
+        450,
+        631,
+        20260,
+        7767,
+        505,
+        296,
+        286,
+        32,
+        3343,
+        12489,
+        450,
+        631,
+        24389,
+        20509,
+        13,
+        50595
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Esto",
+          "start": 0.0,
+          "end": 0.28,
+          "probability": 0.907053530216217
+        },
+        {
+          "word": " es",
+          "start": 0.28,
+          "end": 0.4,
+          "probability": 0.9969072937965393
+        },
+        {
+          "word": " lo",
+          "start": 0.4,
+          "end": 0.5,
+          "probability": 0.9966731071472168
+        },
+        {
+          "word": " que",
+          "start": 0.5,
+          "end": 0.62,
+          "probability": 0.9985690116882324
+        },
+        {
+          "word": " pasa",
+          "start": 0.62,
+          "end": 0.92,
+          "probability": 0.9982355833053589
+        },
+        {
+          "word": " cuando",
+          "start": 0.92,
+          "end": 1.28,
+          "probability": 0.9946803450584412
+        },
+        {
+          "word": " usas",
+          "start": 1.28,
+          "end": 1.76,
+          "probability": 0.9652970135211945
+        },
+        {
+          "word": " IA",
+          "start": 1.76,
+          "end": 2.04,
+          "probability": 0.5105771571397781
+        },
+        {
+          "word": " sin",
+          "start": 2.04,
+          "end": 2.42,
+          "probability": 0.8923435807228088
+        },
+        {
+          "word": " saber",
+          "start": 2.42,
+          "end": 2.76,
+          "probability": 0.9978944659233093
+        },
+        {
+          "word": " lo",
+          "start": 2.76,
+          "end": 2.98,
+          "probability": 0.9913371801376343
+        },
+        {
+          "word": " que",
+          "start": 2.98,
+          "end": 3.12,
+          "probability": 0.9960851669311523
+        },
+        {
+          "word": " estás",
+          "start": 3.12,
+          "end": 3.32,
+          "probability": 0.9589725136756897
+        },
+        {
+          "word": " haciendo.",
+          "start": 3.32,
+          "end": 3.78,
+          "probability": 0.993349015712738
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 4.52,
+      "end": 8.16,
+      "text": " 41 agentes, cada uno entrenado para una sola cosa,",
+      "tokens": [
+        50595,
+        18173,
+        623,
+        9240,
+        11,
+        8411,
+        8526,
+        45069,
+        1573,
+        1690,
+        2002,
+        34162,
+        10163,
+        11,
+        50795
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " 41",
+          "start": 4.52,
+          "end": 5.04,
+          "probability": 0.9058107137680054
+        },
+        {
+          "word": " agentes,",
+          "start": 5.04,
+          "end": 5.68,
+          "probability": 0.9658470451831818
+        },
+        {
+          "word": " cada",
+          "start": 6.18,
+          "end": 6.36,
+          "probability": 0.9975920915603638
+        },
+        {
+          "word": " uno",
+          "start": 6.36,
+          "end": 6.6,
+          "probability": 0.9938017725944519
+        },
+        {
+          "word": " entrenado",
+          "start": 6.6,
+          "end": 7.04,
+          "probability": 0.9887294769287109
+        },
+        {
+          "word": " para",
+          "start": 7.04,
+          "end": 7.26,
+          "probability": 0.9930272698402405
+        },
+        {
+          "word": " una",
+          "start": 7.26,
+          "end": 7.52,
+          "probability": 0.9958086013793945
+        },
+        {
+          "word": " sola",
+          "start": 7.52,
+          "end": 7.74,
+          "probability": 0.9977703094482422
+        },
+        {
+          "word": " cosa,",
+          "start": 7.74,
+          "end": 8.16,
+          "probability": 0.982245922088623
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 8.66,
+      "end": 10.2,
+      "text": " ya instalados en Cloud Code.",
+      "tokens": [
+        50795,
+        2478,
+        34059,
+        4181,
+        465,
+        8061,
+        15549,
+        13,
+        50903
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " ya",
+          "start": 8.66,
+          "end": 8.8,
+          "probability": 0.9918718338012695
+        },
+        {
+          "word": " instalados",
+          "start": 8.8,
+          "end": 9.38,
+          "probability": 0.9951246976852417
+        },
+        {
+          "word": " en",
+          "start": 9.38,
+          "end": 9.62,
+          "probability": 0.9221757650375366
+        },
+        {
+          "word": " Cloud",
+          "start": 9.62,
+          "end": 9.86,
+          "probability": 0.5573177337646484
+        },
+        {
+          "word": " Code.",
+          "start": 9.86,
+          "end": 10.2,
+          "probability": 0.4129545986652374
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 10.84,
+      "end": 12.56,
+      "text": " Necesitas un sitio profesional?",
+      "tokens": [
+        50903,
+        1734,
+        887,
+        14182,
+        517,
+        40621,
+        42882,
+        30,
+        51041
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Necesitas",
+          "start": 10.84,
+          "end": 11.28,
+          "probability": 0.9628991484642029
+        },
+        {
+          "word": " un",
+          "start": 11.28,
+          "end": 11.58,
+          "probability": 0.9981520771980286
+        },
+        {
+          "word": " sitio",
+          "start": 11.58,
+          "end": 11.94,
+          "probability": 0.9986566305160522
+        },
+        {
+          "word": " profesional?",
+          "start": 11.94,
+          "end": 12.56,
+          "probability": 0.9857026934623718
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 13.56,
+      "end": 14.86,
+      "text": " Copi que venda de verdad?",
+      "tokens": [
+        51041,
+        11579,
+        72,
+        631,
+        371,
+        7639,
+        368,
+        13692,
+        30,
+        51149
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Copi",
+          "start": 13.56,
+          "end": 13.9,
+          "probability": 0.2532883286476135
+        },
+        {
+          "word": " que",
+          "start": 13.9,
+          "end": 14.04,
+          "probability": 0.4753967821598053
+        },
+        {
+          "word": " venda",
+          "start": 14.04,
+          "end": 14.4,
+          "probability": 0.9686443209648132
+        },
+        {
+          "word": " de",
+          "start": 14.4,
+          "end": 14.54,
+          "probability": 0.8000011444091797
+        },
+        {
+          "word": " verdad?",
+          "start": 14.54,
+          "end": 14.86,
+          "probability": 0.9986703395843506
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 15.68,
+      "end": 17.66,
+      "text": " Campaña de anuncios del Cero al aire?",
+      "tokens": [
+        51149,
+        9189,
+        64,
+        12150,
+        368,
+        39350,
+        329,
+        1103,
+        383,
+        2032,
+        419,
+        42885,
+        30,
+        51283
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Campaña",
+          "start": 15.68,
+          "end": 16.1,
+          "probability": 0.7859059572219849
+        },
+        {
+          "word": " de",
+          "start": 16.1,
+          "end": 16.24,
+          "probability": 0.9985752105712891
+        },
+        {
+          "word": " anuncios",
+          "start": 16.24,
+          "end": 16.74,
+          "probability": 0.8806810081005096
+        },
+        {
+          "word": " del",
+          "start": 16.74,
+          "end": 16.94,
+          "probability": 0.9969080090522766
+        },
+        {
+          "word": " Cero",
+          "start": 16.94,
+          "end": 17.28,
+          "probability": 0.5575926005840302
+        },
+        {
+          "word": " al",
+          "start": 17.28,
+          "end": 17.42,
+          "probability": 0.7467923164367676
+        },
+        {
+          "word": " aire?",
+          "start": 17.42,
+          "end": 17.66,
+          "probability": 0.8423942923545837
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "seek": 0,
+      "start": 18.36,
+      "end": 21.22,
+      "text": " Analisis de competidores y estrategia de posicionamiento?",
+      "tokens": [
+        51283,
+        16128,
+        28436,
+        368,
+        2850,
+        38835,
+        288,
+        35680,
+        2968,
+        654,
+        368,
+        1366,
+        18899,
+        16971,
+        30,
+        51453
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Analisis",
+          "start": 18.36,
+          "end": 18.78,
+          "probability": 0.7662530839443207
+        },
+        {
+          "word": " de",
+          "start": 18.78,
+          "end": 18.94,
+          "probability": 0.9986086487770081
+        },
+        {
+          "word": " competidores",
+          "start": 18.94,
+          "end": 19.52,
+          "probability": 0.9809874594211578
+        },
+        {
+          "word": " y",
+          "start": 19.52,
+          "end": 19.78,
+          "probability": 0.9945921301841736
+        },
+        {
+          "word": " estrategia",
+          "start": 19.78,
+          "end": 20.36,
+          "probability": 0.9780352512995402
+        },
+        {
+          "word": " de",
+          "start": 20.36,
+          "end": 20.48,
+          "probability": 0.9992477893829346
+        },
+        {
+          "word": " posicionamiento?",
+          "start": 20.48,
+          "end": 21.22,
+          "probability": 0.8125166793664297
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seek": 0,
+      "start": 21.78,
+      "end": 23.58,
+      "text": " Una app o software desde Cero?",
+      "tokens": [
+        51453,
+        15491,
+        724,
+        277,
+        4722,
+        10188,
+        383,
+        2032,
+        30,
+        51573
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Una",
+          "start": 21.78,
+          "end": 21.98,
+          "probability": 0.9689834713935852
+        },
+        {
+          "word": " app",
+          "start": 21.98,
+          "end": 22.28,
+          "probability": 0.8137438893318176
+        },
+        {
+          "word": " o",
+          "start": 22.28,
+          "end": 22.54,
+          "probability": 0.9911472201347351
+        },
+        {
+          "word": " software",
+          "start": 22.54,
+          "end": 22.92,
+          "probability": 0.9822608828544617
+        },
+        {
+          "word": " desde",
+          "start": 22.92,
+          "end": 23.22,
+          "probability": 0.6544526815414429
+        },
+        {
+          "word": " Cero?",
+          "start": 23.22,
+          "end": 23.58,
+          "probability": 0.8340436816215515
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "seek": 0,
+      "start": 24.08,
+      "end": 26.78,
+      "text": " Social, diseño, video, branding.",
+      "tokens": [
+        51573,
+        9909,
+        11,
+        3814,
+        7716,
+        11,
+        960,
+        11,
+        27279,
+        13,
+        51745
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.22496311353600543,
+      "compression_ratio": 1.4603174603174602,
+      "no_speech_prob": 0.033079613000154495,
+      "words": [
+        {
+          "word": " Social,",
+          "start": 24.08,
+          "end": 24.56,
+          "probability": 0.915297269821167
+        },
+        {
+          "word": " diseño,",
+          "start": 25.08,
+          "end": 25.4,
+          "probability": 0.9829233884811401
+        },
+        {
+          "word": " video,",
+          "start": 25.78,
+          "end": 25.98,
+          "probability": 0.7574386596679688
+        },
+        {
+          "word": " branding.",
+          "start": 26.52,
+          "end": 26.78,
+          "probability": 0.9943022727966309
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "seek": 2678,
+      "start": 26.78,
+      "end": 29.34,
+      "text": " Tu pides, ellos ejecutan.",
+      "tokens": [
+        50364,
+        7836,
+        280,
+        1875,
+        11,
+        16353,
+        39564,
+        6672,
+        282,
+        13,
+        50508
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.4346388325546727,
+      "compression_ratio": 1.2549019607843137,
+      "no_speech_prob": 0.011065369471907616,
+      "words": [
+        {
+          "word": " Tu",
+          "start": 26.78,
+          "end": 27.74,
+          "probability": 0.11606752872467041
+        },
+        {
+          "word": " pides,",
+          "start": 27.74,
+          "end": 28.1,
+          "probability": 0.9308399260044098
+        },
+        {
+          "word": " ellos",
+          "start": 28.46,
+          "end": 28.68,
+          "probability": 0.9633243083953857
+        },
+        {
+          "word": " ejecutan.",
+          "start": 28.68,
+          "end": 29.34,
+          "probability": 0.9931088089942932
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "seek": 2678,
+      "start": 30.060000000000002,
+      "end": 34.84,
+      "text": " 41 agentes, probados en más de 60 mil dólares de proyectos reales,",
+      "tokens": [
+        50508,
+        18173,
+        623,
+        9240,
+        11,
+        1239,
+        4181,
+        465,
+        3573,
+        368,
+        4060,
+        1962,
+        32596,
+        368,
+        23832,
+        329,
+        957,
+        279,
+        11,
+        50760
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.4346388325546727,
+      "compression_ratio": 1.2549019607843137,
+      "no_speech_prob": 0.011065369471907616,
+      "words": [
+        {
+          "word": " 41",
+          "start": 30.060000000000002,
+          "end": 30.78,
+          "probability": 0.8809040784835815
+        },
+        {
+          "word": " agentes,",
+          "start": 30.78,
+          "end": 31.4,
+          "probability": 0.9410795569419861
+        },
+        {
+          "word": " probados",
+          "start": 31.8,
+          "end": 32.12,
+          "probability": 0.8694686591625214
+        },
+        {
+          "word": " en",
+          "start": 32.12,
+          "end": 32.32,
+          "probability": 0.9977115392684937
+        },
+        {
+          "word": " más",
+          "start": 32.32,
+          "end": 32.48,
+          "probability": 0.9946592450141907
+        },
+        {
+          "word": " de",
+          "start": 32.48,
+          "end": 32.64,
+          "probability": 0.9972186088562012
+        },
+        {
+          "word": " 60",
+          "start": 32.64,
+          "end": 32.9,
+          "probability": 0.8861632943153381
+        },
+        {
+          "word": " mil",
+          "start": 32.9,
+          "end": 33.32,
+          "probability": 0.605565071105957
+        },
+        {
+          "word": " dólares",
+          "start": 33.32,
+          "end": 33.6,
+          "probability": 0.9809811115264893
+        },
+        {
+          "word": " de",
+          "start": 33.6,
+          "end": 33.8,
+          "probability": 0.9952095150947571
+        },
+        {
+          "word": " proyectos",
+          "start": 33.8,
+          "end": 34.3,
+          "probability": 0.9926563501358032
+        },
+        {
+          "word": " reales,",
+          "start": 34.3,
+          "end": 34.84,
+          "probability": 0.9916462004184723
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "seek": 2678,
+      "start": 35.2,
+      "end": 35.9,
+      "text": " por 9 dólares.",
+      "tokens": [
+        50760,
+        1515,
+        1722,
+        32596,
+        13,
+        50828
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.4346388325546727,
+      "compression_ratio": 1.2549019607843137,
+      "no_speech_prob": 0.011065369471907616,
+      "words": [
+        {
+          "word": " por",
+          "start": 35.2,
+          "end": 35.3,
+          "probability": 0.9951804876327515
+        },
+        {
+          "word": " 9",
+          "start": 35.3,
+          "end": 35.5,
+          "probability": 0.8204582333564758
+        },
+        {
+          "word": " dólares.",
+          "start": 35.5,
+          "end": 35.9,
+          "probability": 0.9871802926063538
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "seek": 2678,
+      "start": 36.48,
+      "end": 38.22,
+      "text": " Pago único, sin mensualidad.",
+      "tokens": [
+        50828,
+        430,
+        6442,
+        26113,
+        11,
+        3343,
+        10923,
+        901,
+        4580,
+        13,
+        50948
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.4346388325546727,
+      "compression_ratio": 1.2549019607843137,
+      "no_speech_prob": 0.011065369471907616,
+      "words": [
+        {
+          "word": " Pago",
+          "start": 36.48,
+          "end": 36.7,
+          "probability": 0.9573512077331543
+        },
+        {
+          "word": " único,",
+          "start": 36.7,
+          "end": 37.08,
+          "probability": 0.9366384744644165
+        },
+        {
+          "word": " sin",
+          "start": 37.4,
+          "end": 37.58,
+          "probability": 0.9948347806930542
+        },
+        {
+          "word": " mensualidad.",
+          "start": 37.58,
+          "end": 38.22,
+          "probability": 0.985296905040741
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "seek": 2678,
+      "start": 39.22,
+      "end": 41.36,
+      "text": " 5 minutos para instalar en Cloud Code.",
+      "tokens": [
+        50948,
+        1025,
+        19421,
+        1690,
+        1058,
+        12031,
+        465,
+        8061,
+        15549,
+        13,
+        51100
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.4346388325546727,
+      "compression_ratio": 1.2549019607843137,
+      "no_speech_prob": 0.011065369471907616,
+      "words": [
+        {
+          "word": " 5",
+          "start": 39.22,
+          "end": 39.62,
+          "probability": 0.632190465927124
+        },
+        {
+          "word": " minutos",
+          "start": 39.62,
+          "end": 39.92,
+          "probability": 0.9812883138656616
+        },
+        {
+          "word": " para",
+          "start": 39.92,
+          "end": 40.26,
+          "probability": 0.9942432045936584
+        },
+        {
+          "word": " instalar",
+          "start": 40.26,
+          "end": 40.62,
+          "probability": 0.9353567957878113
+        },
+        {
+          "word": " en",
+          "start": 40.62,
+          "end": 40.78,
+          "probability": 0.8017153739929199
+        },
+        {
+          "word": " Cloud",
+          "start": 40.78,
+          "end": 40.98,
+          "probability": 0.4970995783805847
+        },
+        {
+          "word": " Code.",
+          "start": 40.98,
+          "end": 41.36,
+          "probability": 0.7480255365371704
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "seek": 2678,
+      "start": 41.96,
+      "end": 42.64,
+      "text": " Empieza soy.",
+      "tokens": [
+        51100,
+        8599,
+        35597,
+        8812,
+        13,
+        51160
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.4346388325546727,
+      "compression_ratio": 1.2549019607843137,
+      "no_speech_prob": 0.011065369471907616,
+      "words": [
+        {
+          "word": " Empieza",
+          "start": 41.96,
+          "end": 42.36,
+          "probability": 0.53620645403862
+        },
+        {
+          "word": " soy.",
+          "start": 42.36,
+          "end": 42.64,
+          "probability": 0.43927162885665894
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": "Esto",
+      "start": 0.0,
+      "end": 0.28
+    },
+    {
+      "word": "es",
+      "start": 0.28,
+      "end": 0.4
+    },
+    {
+      "word": "lo",
+      "start": 0.4,
+      "end": 0.5
+    },
+    {
+      "word": "que",
+      "start": 0.5,
+      "end": 0.62
+    },
+    {
+      "word": "pasa",
+      "start": 0.62,
+      "end": 0.92
+    },
+    {
+      "word": "cuando",
+      "start": 0.92,
+      "end": 1.28
+    },
+    {
+      "word": "usas",
+      "start": 1.28,
+      "end": 1.76
+    },
+    {
+      "word": "IA",
+      "start": 1.76,
+      "end": 2.04
+    },
+    {
+      "word": "sin",
+      "start": 2.04,
+      "end": 2.42
+    },
+    {
+      "word": "saber",
+      "start": 2.42,
+      "end": 2.76
+    },
+    {
+      "word": "lo",
+      "start": 2.76,
+      "end": 2.98
+    },
+    {
+      "word": "que",
+      "start": 2.98,
+      "end": 3.12
+    },
+    {
+      "word": "estás",
+      "start": 3.12,
+      "end": 3.32
+    },
+    {
+      "word": "haciendo.",
+      "start": 3.32,
+      "end": 3.78
+    },
+    {
+      "word": "41",
+      "start": 4.52,
+      "end": 5.04
+    },
+    {
+      "word": "agentes,",
+      "start": 5.04,
+      "end": 5.68
+    },
+    {
+      "word": "cada",
+      "start": 6.18,
+      "end": 6.36
+    },
+    {
+      "word": "uno",
+      "start": 6.36,
+      "end": 6.6
+    },
+    {
+      "word": "entrenado",
+      "start": 6.6,
+      "end": 7.04
+    },
+    {
+      "word": "para",
+      "start": 7.04,
+      "end": 7.26
+    },
+    {
+      "word": "una",
+      "start": 7.26,
+      "end": 7.52
+    },
+    {
+      "word": "sola",
+      "start": 7.52,
+      "end": 7.74
+    },
+    {
+      "word": "cosa,",
+      "start": 7.74,
+      "end": 8.16
+    },
+    {
+      "word": "ya",
+      "start": 8.66,
+      "end": 8.8
+    },
+    {
+      "word": "instalados",
+      "start": 8.8,
+      "end": 9.38
+    },
+    {
+      "word": "en",
+      "start": 9.38,
+      "end": 9.62
+    },
+    {
+      "word": "Cloud",
+      "start": 9.62,
+      "end": 9.86
+    },
+    {
+      "word": "Code.",
+      "start": 9.86,
+      "end": 10.2
+    },
+    {
+      "word": "Necesitas",
+      "start": 10.84,
+      "end": 11.28
+    },
+    {
+      "word": "un",
+      "start": 11.28,
+      "end": 11.58
+    },
+    {
+      "word": "sitio",
+      "start": 11.58,
+      "end": 11.94
+    },
+    {
+      "word": "profesional?",
+      "start": 11.94,
+      "end": 12.56
+    },
+    {
+      "word": "Copi",
+      "start": 13.56,
+      "end": 13.9
+    },
+    {
+      "word": "que",
+      "start": 13.9,
+      "end": 14.04
+    },
+    {
+      "word": "venda",
+      "start": 14.04,
+      "end": 14.4
+    },
+    {
+      "word": "de",
+      "start": 14.4,
+      "end": 14.54
+    },
+    {
+      "word": "verdad?",
+      "start": 14.54,
+      "end": 14.86
+    },
+    {
+      "word": "Campaña",
+      "start": 15.68,
+      "end": 16.1
+    },
+    {
+      "word": "de",
+      "start": 16.1,
+      "end": 16.24
+    },
+    {
+      "word": "anuncios",
+      "start": 16.24,
+      "end": 16.74
+    },
+    {
+      "word": "del",
+      "start": 16.74,
+      "end": 16.94
+    },
+    {
+      "word": "Cero",
+      "start": 16.94,
+      "end": 17.28
+    },
+    {
+      "word": "al",
+      "start": 17.28,
+      "end": 17.42
+    },
+    {
+      "word": "aire?",
+      "start": 17.42,
+      "end": 17.66
+    },
+    {
+      "word": "Analisis",
+      "start": 18.36,
+      "end": 18.78
+    },
+    {
+      "word": "de",
+      "start": 18.78,
+      "end": 18.94
+    },
+    {
+      "word": "competidores",
+      "start": 18.94,
+      "end": 19.52
+    },
+    {
+      "word": "y",
+      "start": 19.52,
+      "end": 19.78
+    },
+    {
+      "word": "estrategia",
+      "start": 19.78,
+      "end": 20.36
+    },
+    {
+      "word": "de",
+      "start": 20.36,
+      "end": 20.48
+    },
+    {
+      "word": "posicionamiento?",
+      "start": 20.48,
+      "end": 21.22
+    },
+    {
+      "word": "Una",
+      "start": 21.78,
+      "end": 21.98
+    },
+    {
+      "word": "app",
+      "start": 21.98,
+      "end": 22.28
+    },
+    {
+      "word": "o",
+      "start": 22.28,
+      "end": 22.54
+    },
+    {
+      "word": "software",
+      "start": 22.54,
+      "end": 22.92
+    },
+    {
+      "word": "desde",
+      "start": 22.92,
+      "end": 23.22
+    },
+    {
+      "word": "Cero?",
+      "start": 23.22,
+      "end": 23.58
+    },
+    {
+      "word": "Social,",
+      "start": 24.08,
+      "end": 24.56
+    },
+    {
+      "word": "diseño,",
+      "start": 25.08,
+      "end": 25.4
+    },
+    {
+      "word": "video,",
+      "start": 25.78,
+      "end": 25.98
+    },
+    {
+      "word": "branding.",
+      "start": 26.52,
+      "end": 26.78
+    },
+    {
+      "word": "Tu",
+      "start": 26.78,
+      "end": 27.74
+    },
+    {
+      "word": "pides,",
+      "start": 27.74,
+      "end": 28.1
+    },
+    {
+      "word": "ellos",
+      "start": 28.46,
+      "end": 28.68
+    },
+    {
+      "word": "ejecutan.",
+      "start": 28.68,
+      "end": 29.34
+    },
+    {
+      "word": "41",
+      "start": 30.06,
+      "end": 30.78
+    },
+    {
+      "word": "agentes,",
+      "start": 30.78,
+      "end": 31.4
+    },
+    {
+      "word": "probados",
+      "start": 31.8,
+      "end": 32.12
+    },
+    {
+      "word": "en",
+      "start": 32.12,
+      "end": 32.32
+    },
+    {
+      "word": "más",
+      "start": 32.32,
+      "end": 32.48
+    },
+    {
+      "word": "de",
+      "start": 32.48,
+      "end": 32.64
+    },
+    {
+      "word": "60",
+      "start": 32.64,
+      "end": 32.9
+    },
+    {
+      "word": "mil",
+      "start": 32.9,
+      "end": 33.32
+    },
+    {
+      "word": "dólares",
+      "start": 33.32,
+      "end": 33.6
+    },
+    {
+      "word": "de",
+      "start": 33.6,
+      "end": 33.8
+    },
+    {
+      "word": "proyectos",
+      "start": 33.8,
+      "end": 34.3
+    },
+    {
+      "word": "reales,",
+      "start": 34.3,
+      "end": 34.84
+    },
+    {
+      "word": "por",
+      "start": 35.2,
+      "end": 35.3
+    },
+    {
+      "word": "9",
+      "start": 35.3,
+      "end": 35.5
+    },
+    {
+      "word": "dólares.",
+      "start": 35.5,
+      "end": 35.9
+    },
+    {
+      "word": "Pago",
+      "start": 36.48,
+      "end": 36.7
+    },
+    {
+      "word": "único,",
+      "start": 36.7,
+      "end": 37.08
+    },
+    {
+      "word": "sin",
+      "start": 37.4,
+      "end": 37.58
+    },
+    {
+      "word": "mensualidad.",
+      "start": 37.58,
+      "end": 38.22
+    },
+    {
+      "word": "5",
+      "start": 39.22,
+      "end": 39.62
+    },
+    {
+      "word": "minutos",
+      "start": 39.62,
+      "end": 39.92
+    },
+    {
+      "word": "para",
+      "start": 39.92,
+      "end": 40.26
+    },
+    {
+      "word": "instalar",
+      "start": 40.26,
+      "end": 40.62
+    },
+    {
+      "word": "en",
+      "start": 40.62,
+      "end": 40.78
+    },
+    {
+      "word": "Cloud",
+      "start": 40.78,
+      "end": 40.98
+    },
+    {
+      "word": "Code.",
+      "start": 40.98,
+      "end": 41.36
+    },
+    {
+      "word": "Empieza",
+      "start": 41.96,
+      "end": 42.36
+    },
+    {
+      "word": "soy.",
+      "start": 42.36,
+      "end": 42.64
+    }
+  ]
+}

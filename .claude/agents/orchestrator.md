@@ -110,7 +110,7 @@ Before ANY file modification in any phase or stage:
 
 ---
 
-## Agent Registry (updated 2026-04-22 — 45 agents)
+## Agent Registry (updated 2026-05-04 — 45 agents)
 
 **IMPORTANT**: `CLAUDE.md` at project root is the canonical source of truth for the agent table, workflow chains, and stack state. Read it before any planning session. The registry below is a quick reference grouped by pipeline — always cross-check against CLAUDE.md for the latest.
 
@@ -118,11 +118,11 @@ Before ANY file modification in any phase or stage:
 
 | # | Agent | Model | Role |
 |---|---|---|---|
-| 1 | `cmo-strategist` | opus | Marketing strategy, positioning, offers, funnels, Copy Squad director |
+| 1 | `cmo-strategist` | opus | Marketing strategy, positioning, offers, funnels, Copy Squad director. **UPGRADED May 2026**: NAR, Objection Tree, KLT, LEOA frameworks |
 | 2 | `chief-strategy-advisor` | opus | **Board Advisor (Option A)** — pressure-tests macro decisions only. NOT in day-to-day pipeline |
 | 3 | `market-research-analyst` | sonnet | Market analysis, competitor research, ICP discovery |
-| 4 | `offer-architect` | opus | Grand Slam Offer design (Hormozi): dream outcome, value stack, guarantee, pricing |
-| 5 | `funnel-architect` | opus | End-to-end funnels (Brunson + DigitalMarketer + Hormozi) |
+| 4 | `offer-architect` | opus | Grand Slam Offer design (Hormozi): dream outcome, value stack, guarantee, pricing. **UPGRADED May 2026**: HT models (DFY/DWY/DIY/AR/SHT) + FL offers |
+| 5 | `funnel-architect` | opus | End-to-end funnels (Brunson + DigitalMarketer + Hormozi). **UPGRADED May 2026**: FL funnels + 5 HT funnels + Jay Abraham rules |
 | 6 | `direct-response-copywriter` | sonnet | Persuasive copy execution — Hormozi framework |
 | 7 | `humanizer` | sonnet | Eliminates AI patterns, injects PT-BR executive voice |
 | 8 | `reviewer` | sonnet | Quality gate (PASS/BLOCK/EXIT) — 3 rule sets + 7 vetoes |
@@ -133,7 +133,7 @@ Before ANY file modification in any phase or stage:
 
 | # | Agent | Model | Role |
 |---|---|---|---|
-| 9 | `social-media-director` (file `social-media-team.md`) | opus | Orchestrates the 4 content specialists below |
+| 9 | `social-media-director` (file `social-media-team.md`) | opus | Orchestrates the 4 content specialists below. **UPGRADED May 2026**: Raiz/Nutella content system + KLT mapping |
 | 10 | `hook-specialist` | sonnet | 10+ hook variations per script (4-parts framework, platform-specific timing) |
 | 11 | `reels-scriptwriter` | sonnet | Reels/Shorts/TikTok scripts with shot list + recording brief |
 | 12 | `linkedin-strategist` | sonnet | LinkedIn B2B executive content (posts, carousels, newsletters) |
@@ -198,7 +198,7 @@ Before ANY file modification in any phase or stage:
 
 | # | Agent | Model | Role |
 |---|---|---|---|
-| 40 | `traffic-manager` | sonnet | **NEW (Stack 4)** — Operational media buyer. Campaign CRUD, audience config, budget distribution, creative upload via meta-ads MCP. ALL campaigns created PAUSED |
+| 40 | `traffic-manager` | sonnet | **NEW (Stack 4), UPGRADED May 2026** — Operational media buyer + Sobral principles (HSR metric, kill/scale thresholds, ABO/CBO testing protocol). Campaign CRUD via meta-ads MCP. ALL campaigns PAUSED |
 | 41 | `ads-analyst` | sonnet | **NEW (Stack 4)** — Performance analyst. Reports, breakdowns, diagnostics, health scoring, alerting. Uses meta-ads MCP + claude-ads plugin |
 | 42 | `creative-strategist` | sonnet | **NEW (Stack 4)** — Ad creative strategy. Competitive creative analysis, briefing Copy Squad for ads, funnel stage mapping (TOFU/MOFU/BOFU), creative rotation |
 
@@ -243,10 +243,13 @@ Before ANY file modification in any phase or stage:
 | Creative brief for ads | `creative-strategist` → `direct-response-copywriter` + `hook-specialist` + `designer-agent` |
 | Ad account audit | `ads-analyst` (/ads audit skill — 250+ checks, health scoring) |
 | Macro strategy review | `chief-strategy-advisor` | Used sparingly, not pipeline-default |
+| Launch (any model) | `launch-strategist` (selects from 5 models: Semente/Classico/Turbo/LCP/Hybrid) | cmo-strategist, offer-architect, funnel-architect, traffic-manager |
+| HT sales session prep | `cmo-strategist` → session prep using ia-para-vendas-playbook.md | offer-architect (DISC/Schwartz analysis) |
+| Content calendar | `social-media-director` (Raiz/Nutella system) → specialists | hook-specialist, reels-scriptwriter, linkedin-strategist, carousel-designer-writer |
 
 ---
 
-## Current System State (as of 2026-04-22)
+## Current System State (as of 2026-05-04)
 
 ### Phase Status
 
@@ -261,6 +264,7 @@ Before ANY file modification in any phase or stage:
 | **Stack 3 — Video Editing (agents + recipe)** | ✅ COMPLETE (commit 30d1450) | 3 agents + OSS recipe. Scaffold Python in `scripts/video-pipeline/` (14 files, unstaged) |
 | **Stack 4 — Meta Ads Squad** | ✅ COMPLETE (2026-04-22) | 3 agents (traffic-manager, ads-analyst, creative-strategist) + meta-ads MCP (32 tools) + claude-ads plugin (250+ checks) + ads-safety.md. 4 ad accounts connected |
 | **Stack 1 — Competitive Intelligence** | 🔴 BLOCKED | Meta Ad Library API only returns political ads in 2026. Requires decision: paid provider / Playwright scraping / re-scope |
+| **Knowledge Expansion (10 courses)** | ✅ COMPLETE (2026-05-04) | 96 files analyzed (FL, FHT, FSS, Sobral, Baldan, Tabari, Insider, Puglia). 6 knowledge files + 3 rules + 6 agent upgrades. Launch-strategist now supports 5 models. Pending: sales-closer-coach agent, /lancamento skill |
 
 ### Key Resources
 
@@ -269,6 +273,15 @@ Before ANY file modification in any phase or stage:
 | Rules (MANDATORY for Copy Squad) | `.claude/rules/brand-voice.md`, `hormozi-framework.md`, `humanization-rules.md` | Loaded by cmo-strategist, copywriter, humanizer, reviewer, all content specialists |
 | Brand audit checklist | `.claude/rules/brand-audit-checklist.md` | Loaded by reviewer + designer-agent for Phase 10 brand audits |
 | Ads safety rules | `.claude/rules/ads-safety.md` | Loaded by traffic-manager, ads-analyst, creative-strategist. PAUSED-by-default, budget limits, no deletes |
+| Launch methodology rules | `.claude/rules/launch-methodology.md` | **NEW May 2026** — 5 launch models, mandatory elements, quality gates, KPIs. Loaded by launch-strategist, cmo-strategist, traffic-manager |
+| HT sales rules | `.claude/rules/high-ticket-sales.md` | **NEW May 2026** — Session protocol, offer rules, funnel selection, follow-up cadence, KPIs. Loaded by offer-architect, funnel-architect, copywriter |
+| Content production rules | `.claude/rules/content-production.md` | **NEW May 2026** — Raiz/Nutella system, KLT framework, editorial lines, Hormozi angle integration. Loaded by social-media-director + 4 specialists |
+| FL framework | `brain/strategy/formula-lancamento-framework.md` | **NEW May 2026** — Erico Rocha FL complete (Semente, Classico, NAR, Objection Tree, LEOA, Raiz/Nutella) |
+| HT sales system | `brain/strategy/high-ticket-sales-system.md` | **NEW May 2026** — FHT + Full Sales System (DFY/DWY/DIY, 5 funnels, 18 triggers, KLT, prospecting) |
+| Content Raiz/Nutella | `brain/strategy/conteudo-raiz-nutella-system.md` | **NEW May 2026** — Content production system, 5 topic techniques, editorial calendar |
+| Sobral traffic | `brain/strategy/sobral-trafego-principios.md` | **NEW May 2026** — Traffic principles, HSR, testing protocol, scale rules (vertical/horizontal) |
+| AI for sales | `brain/strategy/ia-para-vendas-playbook.md` | **NEW May 2026** — Puglia method: DISC, Schwartz levels, pre/post-session AI analysis |
+| Baldan LCP | `brain/strategy/lancamento-pago-baldan.md` | **NEW May 2026** — William Baldan 2-day intensive paid launch model |
 | Voice profiles | `.claude/voice-profiles/moroni-personal.md`, `reis-ia-company.md`, `builders-community.md` | Copy Squad agents select based on task context |
 | Design library | `brain/design-library/` — `references/`, `patterns/SEED.md`, `hero-prompts/`, `iterations/` | Design pipeline shared asset |
 | Video pipeline recipe | `brain/context/video-pipeline-oss-recipe.md` | Full OSS stack for video editing |

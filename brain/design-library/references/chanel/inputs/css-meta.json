@@ -1,0 +1,15 @@
+{
+  "external": [
+    "https://fonts.chanel.com/main.css",
+    "https://fonts.chanel.com/xjf7bmk.css",
+    "https://www.chanel.com/fashion-web/microfront/26_HOMEMODE/style.css?bd=MjAyNi0wNS0wN1QwOToyODoyNi40MzJa",
+    "https://www.chanel.com/OBZhMOmMUf/mEyS/TH5mju/Xk5t/Fxg-WWlW/TS/ExJiJRWmJY"
+  ],
+  "preload": [
+    "https://www.chanel.com/_next/static/css/c14641a0412e0a1a.css"
+  ],
+  "inline_style_blocks": 29,
+  "inline_style_attrs": 73,
+  "imports_resolved": 0,
+  "failed": []
+}

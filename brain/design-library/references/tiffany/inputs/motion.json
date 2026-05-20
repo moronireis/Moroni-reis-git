@@ -1,0 +1,76 @@
+{
+  "durations": [
+    {
+      "value": "5s",
+      "count": 91
+    },
+    {
+      "value": "3s",
+      "count": 28
+    },
+    {
+      "value": "25s",
+      "count": 10
+    },
+    {
+      "value": "0s",
+      "count": 10
+    },
+    {
+      "value": "2s",
+      "count": 8
+    },
+    {
+      "value": "15s",
+      "count": 4
+    },
+    {
+      "value": "45s",
+      "count": 4
+    },
+    {
+      "value": "1s",
+      "count": 3
+    },
+    {
+      "value": "6s",
+      "count": 3
+    },
+    {
+      "value": "75s",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "linear",
+      "count": 30
+    },
+    {
+      "value": "cubic-bezier(.485,.155,.24,1.245)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.485,.155,.515,.845)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.76,-.245,.24,1.245)",
+      "count": 2
+    }
+  ],
+  "keyframes": [
+    "spin",
+    "blink",
+    "edd-icon-spin",
+    "edd-spinning",
+    "fa-spin",
+    "button-underline-sweep",
+    "button-underline",
+    "shake-7",
+    "spin-cw-1turn",
+    "wiggle-7deg",
+    "chapter-title-gradient-loop",
+    "sustainability-chapter-footer-aurora"
+  ]
+}

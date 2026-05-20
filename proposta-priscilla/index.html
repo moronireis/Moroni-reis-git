@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta de Assessoria — Priscilla & Paulo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F4F3EE;--cream-light:#FAFAF7;--cream-dark:#E8E6DF;
+  --rose:#DBA99F;--rose-dark:#C49189;--rose-deeper:#A87068;
+  --blush:#FFCBC1;--blush-light:#FFF5F3;
+  --taupe:#9C958F;--taupe-dark:#6b635d;
+  --navy:#1B2A4A;--dusty-blue:#7B9EC2;
+  --lemon:#E8C840;--lemon-soft:rgba(232,200,64,.12);
+  --olive:#6B7B5E;--olive-soft:rgba(107,123,94,.10);
+  --text:#1a1a1a;--text-s:#6b635d;--text-m:#9C958F;
+  --white:#fff;
+  --serif:"Cormorant Garamond",serif;
+  --sans:"Source Sans 3",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-out:cubic-bezier(0,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a.link-rose{color:var(--rose-dark);border-bottom:1px solid rgba(196,145,137,.3);transition:all .3s var(--ease)}
+a.link-rose:hover{color:var(--rose-deeper);border-color:var(--rose-deeper)}
+img{max-width:100%;display:block}
+
+/* ========== SLIDE SYSTEM ========== */
+.slide{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:4rem 2rem}
+.slide-inner{max-width:1000px;width:100%;position:relative;z-index:2}
+.slide--cream{background:var(--cream)}
+.slide--blush{background:var(--blush-light)}
+.slide--white{background:var(--white)}
+.slide--dark{background:var(--navy);color:var(--cream-light)}
+.slide--dark .sn{color:var(--rose)}
+.slide--olive{background:#f5f6f2}
+
+/* ========== TYPOGRAPHY ========== */
+.sn{font-family:var(--serif);font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-dark);display:block;margin-bottom:1rem}
+.headline{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5.5vw,4.5rem);line-height:1.05;letter-spacing:-.02em}
+.headline em{font-style:italic;color:var(--rose-dark)}
+.slide--dark .headline em{color:var(--rose)}
+.subhead{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;letter-spacing:-.01em}
+.subhead em{font-style:italic;color:var(--rose-dark)}
+.body-text{font-weight:300;font-size:1rem;line-height:1.85;color:var(--text-s);max-width:580px}
+.slide--dark .body-text{color:rgba(250,250,247,.6)}
+.body-text.center{margin:0 auto;text-align:center}
+.text-center{text-align:center}
+.hairline{width:60px;height:1px;background:var(--rose);opacity:.5;margin:1.5rem 0}
+.hairline.center{margin:1.5rem auto}
+
+/* ========== BIO ========== */
+.bio-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:center}
+@media(max-width:768px){.bio-layout{grid-template-columns:1fr;gap:2rem}}
+.bio-photo{aspect-ratio:3/4;background:linear-gradient(145deg,var(--blush-light),var(--cream-dark));border:1px solid var(--cream-dark);border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bio-photo span{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);border:1px dashed var(--cream-dark);padding:.6rem 1.2rem;text-align:center;line-height:1.5}
+.bio-highlight{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--rose-dark);line-height:1.5;padding:1rem 0 1rem 1.5rem;border-left:2px solid var(--rose);margin:1.5rem 0}
+.bio-stats{display:flex;gap:2.5rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--cream-dark);flex-wrap:wrap}
+.bio-stat-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--text);display:block}
+.bio-stat-label{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-top:.1rem}
+.bio-links{display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap}
+.bio-link{font-size:.85rem;font-weight:500;color:var(--rose-dark);border:1px solid rgba(196,145,137,.3);padding:.4rem 1rem;border-radius:2px;transition:all .3s var(--ease)}
+.bio-link:hover{background:var(--rose-dark);color:var(--white);border-color:var(--rose-dark)}
+
+/* ========== CARDS ========== */
+.cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.cards-row.cols-2{grid-template-columns:1fr 1fr}
+@media(max-width:768px){.cards-row,.cards-row.cols-2{grid-template-columns:1fr;gap:1rem}}
+.card{background:var(--white);border:1px solid var(--cream-dark);padding:2rem;border-radius:2px;transition:all .4s var(--ease)}
+.card:hover{box-shadow:0 6px 20px rgba(155,149,143,.15);transform:translateY(-2px)}
+.slide--dark .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+.card-label{font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--rose-dark);margin-bottom:.6rem}
+.slide--dark .card-label{color:var(--rose)}
+.card-title{font-family:var(--serif);font-size:1.3rem;font-weight:400;line-height:1.2;margin-bottom:.5rem}
+.card-title em{font-style:italic;color:var(--rose-dark)}
+.card-body{font-size:.85rem;font-weight:300;line-height:1.75;color:var(--text-s)}
+
+/* ========== PHOTO GRIDS ========== */
+.photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:2rem}
+.photo-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:2rem}
+.photo-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:2rem}
+.photo-grid-masonry{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:3px;margin-top:2rem}
+@media(max-width:768px){.photo-grid-3,.photo-grid-4{grid-template-columns:repeat(2,1fr)}.photo-grid-masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}}
+.photo-cell{overflow:hidden;position:relative;background:var(--cream-dark)}
+.photo-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+.photo-cell:hover img{transform:scale(1.04)}
+.photo-cell.tall{grid-row:span 2}
+.photo-cell-caption{position:absolute;bottom:0;left:0;right:0;padding:.6rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.5));color:rgba(255,255,255,.85);font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+
+/* ========== PALETTE ========== */
+.palette-row{display:flex;gap:0;margin-top:2rem;border-radius:2px;overflow:hidden;height:100px}
+.palette-swatch{flex:1;display:flex;align-items:flex-end;padding:.8rem}
+.palette-swatch span{font-size:.55rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* ========== SERVICE LIST ========== */
+.service-list{margin-top:2rem}
+.service-item{display:grid;grid-template-columns:50px 1fr;gap:1rem;padding:1.5rem 0;border-bottom:1px solid var(--cream-dark);align-items:start}
+.service-item:last-child{border-bottom:none}
+.service-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--rose);opacity:.5;line-height:1}
+.service-title{font-family:var(--serif);font-size:1.15rem;font-weight:500;margin-bottom:.3rem}
+.service-body{font-size:.85rem;font-weight:300;line-height:1.75;color:var(--text-s)}
+
+/* ========== VENUE CARDS ========== */
+.venue-card{background:var(--white);border:1px solid var(--cream-dark);border-radius:2px;overflow:hidden;transition:all .4s var(--ease)}
+.venue-card:hover{box-shadow:0 6px 20px rgba(155,149,143,.15);transform:translateY(-2px)}
+.venue-card-photos{display:grid;grid-template-columns:1.2fr 1fr;gap:2px}
+.venue-card-photos .main{aspect-ratio:4/3;overflow:hidden}
+.venue-card-photos .side{display:grid;grid-template-rows:1fr 1fr;gap:2px}
+.venue-card-photos .side div{overflow:hidden}
+.venue-card-photos img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
+.venue-card:hover .venue-card-photos img{transform:scale(1.03)}
+.venue-card-info{padding:1.5rem 2rem}
+.venue-card-name{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:.4rem}
+.venue-card-name em{font-style:italic;color:var(--rose-dark)}
+.venue-card-meta{display:flex;gap:1.5rem;font-size:.7rem;font-weight:500;letter-spacing:.06em;color:var(--taupe);margin-bottom:.6rem;flex-wrap:wrap}
+.venue-card-desc{font-size:.85rem;font-weight:300;line-height:1.75;color:var(--text-s)}
+
+/* ========== TIMELINE ========== */
+.steps{margin-top:2rem}
+.step{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(250,250,247,.1)}
+.step:last-child{border-bottom:none}
+.step-label{font-family:var(--serif);font-size:.95rem;color:var(--rose);padding-top:.1rem}
+.step-title{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--cream-light);margin-bottom:.3rem}
+.step-body{font-size:.85rem;font-weight:300;line-height:1.7;color:rgba(250,250,247,.55)}
+@media(max-width:768px){.step{grid-template-columns:1fr;gap:.4rem}}
+
+/* ========== CTA ========== */
+.cta-btn{display:inline-block;font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--rose);border-bottom:1px solid var(--rose);padding-bottom:.4em;transition:all .4s var(--ease)}
+.cta-btn:hover{color:var(--cream-light);border-color:var(--cream-light)}
+.contact-row{display:flex;justify-content:center;gap:3rem;margin-top:2.5rem;flex-wrap:wrap}
+.c-label{font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.35);display:block}
+.c-val{font-size:.85rem;color:rgba(250,250,247,.7);display:block;margin-top:.15rem}
+
+/* ========== FOOTER ========== */
+footer{background:var(--navy);padding:1.5rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+footer p{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.3)}
+footer em{font-family:var(--serif);font-style:italic;color:var(--rose);text-transform:none;letter-spacing:0}
+
+/* ========== NAV DOTS ========== */
+.nav-dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:.6rem}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(156,149,143,.3);border:none;cursor:pointer;transition:all .3s var(--ease);padding:0}
+.nav-dot.active{background:var(--rose-dark);transform:scale(1.3)}
+@media(max-width:768px){.nav-dots{right:.8rem;gap:.5rem}.nav-dot{width:6px;height:6px}}
+
+/* ========== SCROLL PROGRESS ========== */
+#progress{position:fixed;top:0;left:0;width:100%;height:2px;z-index:200;pointer-events:none}
+#progress .bar{width:100%;height:100%;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .15s linear}
+
+/* ========== ANIMATIONS ========== */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:.1s}.fade-up.d2{transition-delay:.2s}.fade-up.d3{transition-delay:.3s}.fade-up.d4{transition-delay:.4s}
+
+/* ========== QUOTE ========== */
+.pull-quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.8vw,1.8rem);line-height:1.45;text-align:center;max-width:650px;margin:0 auto;position:relative;padding:2rem 0}
+.pull-quote .attr{display:block;font-family:var(--sans);font-style:normal;font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-top:1.2rem}
+
+/* ========== REFERENCE IMAGE ========== */
+.ref-image{border-radius:2px;overflow:hidden;border:1px solid var(--cream-dark)}
+.ref-image img{width:100%;height:100%;object-fit:cover}
+</style>
+</head>
+<body>
+
+<div id="progress"><div class="bar"></div></div>
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1 — CAPA -->
+<!-- ============================================================ -->
+<section class="slide slide--blush" data-slide="Capa">
+<div class="slide-inner text-center">
+  <div class="sn fade-up">Proposta de Assessoria de Casamento</div>
+  <h1 class="headline fade-up d1">Priscilla <em>&</em> Paulo</h1>
+  <div class="hairline center fade-up d2"></div>
+  <p class="body-text center fade-up d3">Glamour, romantismo e a sofisticação de um verão europeu — uma celebração exclusiva e clássica.</p>
+  <div style="display:flex;justify-content:center;gap:3rem;margin-top:3rem;flex-wrap:wrap" class="fade-up d4">
+    <div style="text-align:center"><span style="font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe)">Assessora</span><br><span style="font-family:var(--serif);font-size:1.1rem">Giovanna Paola</span></div>
+    <div style="text-align:center"><span style="font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe)">Convidados</span><br><span style="font-family:var(--serif);font-size:1.1rem">~40 pessoas</span></div>
+    <div style="text-align:center"><span style="font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe)">Previsão</span><br><span style="font-family:var(--serif);font-size:1.1rem">Julho 2026</span></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2 — SOBRE A GIOVANNA -->
+<!-- ============================================================ -->
+<section class="slide slide--cream" data-slide="Giovanna">
+<div class="slide-inner">
+  <div class="bio-layout">
+    <div class="bio-photo fade-up">
+      <img src="photos/giovanna-paola.jpeg" alt="Giovanna Paola — Assessora de Casamentos" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+    </div>
+    <div>
+      <div class="sn fade-up">Quem sou eu</div>
+      <h2 class="subhead fade-up d1">Giovanna <em>Paola</em></h2>
+      <div class="hairline fade-up d2"></div>
+      <p class="body-text fade-up d2" style="margin-bottom:.8rem">Giovanna Paola organiza eventos desde antes de saber que isso tinha nome. Nas festas da família, era ela quem decidia onde cada pessoa sentava, que horas o bolo entrava e por que a decoração precisava combinar com a toalha. Tinha 12 anos.</p>
+      <p class="body-text fade-up d3" style="margin-bottom:.8rem">Aos 20, casou — e se apaixonou pelo processo. Em 9 anos, construiu a Noiva S.A.: uma empresa reconhecida no mercado que não apenas coordena casamentos, mas forma profissionais da área. Assessoria, mentoria e formação — um ecossistema completo para o mercado de casamentos.</p>
+      <div class="bio-highlight fade-up d3">"Técnica como uma engenheira e acolhedora como uma amiga."</div>
+      <p class="body-text fade-up d3" style="margin-bottom:.8rem">Giovanna conhece o mercado de casamentos por três ângulos que quase ninguém tem ao mesmo tempo: sabe o que a noiva sente (porque foi uma), sabe o que o fornecedor precisa (porque trabalha com eles todo dia) e sabe o que a assessora iniciante enfrenta (porque começou do zero e construiu tudo).</p>
+      <div class="bio-stats fade-up d4">
+        <div><span class="bio-stat-num">9</span><span class="bio-stat-label">Anos de mercado</span></div>
+        <div><span class="bio-stat-num">500+</span><span class="bio-stat-label">Casamentos realizados</span></div>
+        <div><span class="bio-stat-num">300+</span><span class="bio-stat-label">Fornecedores catalogados</span></div>
+      </div>
+      <div class="bio-links fade-up d4">
+        <a href="https://instagram.com/_giovanna.paola" target="_blank" class="bio-link">@_giovanna.paola</a>
+        <a href="https://instagram.com/noiva.sa" target="_blank" class="bio-link">@noiva.sa</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3 — MÉTODO -->
+<!-- ============================================================ -->
+<section class="slide slide--white" data-slide="Método">
+<div class="slide-inner">
+  <div class="text-center" style="margin-bottom:1rem">
+    <div class="sn fade-up">Como trabalhamos</div>
+    <h2 class="subhead fade-up d1">Transformamos projetos em <em>realidade</em></h2>
+    <p class="body-text center fade-up d2" style="margin-top:.6rem">Entendemos o seu sonho e materializamos cada detalhe. Da concepção à execução, com método, técnica e a tranquilidade de quem já fez isso mais de 500 vezes.</p>
+  </div>
+  <div class="cards-row fade-up d3">
+    <div class="card">
+      <div class="card-label">Planejamento</div>
+      <div class="card-title">Organização <em>estratégica</em></div>
+      <div class="card-body">Cronograma detalhado, orçamento controlado, checklists personalizados. Cada decisão é mapeada para que nada fique para a última hora.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Curadoria</div>
+      <div class="card-title">Fornecedores <em>certos</em></div>
+      <div class="card-body">Mais de 300 fornecedores avaliados e testados. Cada indicação é baseada em experiência real e alinhamento com o estilo do casal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Execução</div>
+      <div class="card-title">Dia D <em>impecável</em></div>
+      <div class="card-body">Coordenação completa no dia do evento. Equipe própria, timeline minuto a minuto. Você só precisa sorrir.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4 — VISÃO ESTÉTICA -->
+<!-- ============================================================ -->
+<section class="slide slide--cream" data-slide="Visão">
+<div class="slide-inner">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+    <div>
+      <div class="sn fade-up">Visão do casamento</div>
+      <h2 class="subhead fade-up d1">Verão na <em>Toscana</em></h2>
+      <div class="hairline fade-up d2"></div>
+      <p class="body-text fade-up d2" style="margin-bottom:1rem">Um casamento intimista para ~40 pessoas com alma toscana. Mesa comunitária comprida, limões sicilianos na decoração, azul e branco como base e toques de verde oliva e dourado.</p>
+      <p class="body-text fade-up d3">A estética é de um verão europeu — elegante, clássica, com uma leveza sofisticada. A Priscilla sai do casamento e vai direto curtir a Europa. O evento precisa ter essa energia: como um jantar ao ar livre numa villa italiana.</p>
+    </div>
+    <div class="fade-up d3" style="display:flex;flex-direction:column;gap:1.5rem">
+      <div class="card" style="margin:0">
+        <div class="card-label">Cerimônia</div>
+        <div class="card-title">Ao ar livre, sob a luz dourada do <em>fim de tarde</em></div>
+        <div class="card-body">Arco de flores brancas, corredor entre jardins, e a arquitetura do espaço como moldura natural. Intimista, cinematográfica.</div>
+      </div>
+      <div class="card" style="margin:0">
+        <div class="card-label">Recepção</div>
+        <div class="card-title">Jantar sob as estrelas numa <em>villa italiana</em></div>
+        <div class="card-body">Velas, iluminação quente, cristais e a mesa comunitária como protagonista. Cada convidado sente que entrou num filme.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-row fade-up d4" style="margin-top:2.5rem">
+    <div class="palette-swatch" style="background:#1B2A4A"><span style="color:rgba(255,255,255,.7)">Navy</span></div>
+    <div class="palette-swatch" style="background:#7B9EC2"><span style="color:#fff">Dusty Blue</span></div>
+    <div class="palette-swatch" style="background:#FAFAF7;border:1px solid #E8E6DF"><span style="color:#9C958F">Cream</span></div>
+    <div class="palette-swatch" style="background:#E8C840"><span style="color:#fff">Limão Siciliano</span></div>
+    <div class="palette-swatch" style="background:#6B7B5E"><span style="color:#fff">Verde Oliva</span></div>
+    <div class="palette-swatch" style="background:#C4A265"><span style="color:#fff">Dourado</span></div>
+  </div>
+
+  <div class="cards-row cols-2 fade-up" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-label">Mesa</div>
+      <div class="card-title">Mesa comunitária <em>comprida</em> — estilo jantar toscano</div>
+      <div class="card-body">Uma única mesa longa onde todos compartilham a experiência. Limões sicilianos como peça central, toile de jouy azul, guardanapos monogramados e velas como iluminação ambiente.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Convidados</div>
+      <div class="card-title">Paleta <em>clara</em> para todos os convidados</div>
+      <div class="card-body">Dress code em tons de areia e neutros. A única cor vibrante é a da decoração — o contraste entre os convidados em tons claros e a mesa florida cria o efeito visual perfeito.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5 — MESA POSTA & RECEPÇÃO -->
+<!-- ============================================================ -->
+<section class="slide slide--white" data-slide="Mesa" style="padding:3rem 2rem">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:1.5rem">
+    <div class="sn fade-up">Mesa posta & recepção</div>
+    <h2 class="subhead fade-up d1">Cada lugar à mesa é uma <em>obra de arte</em></h2>
+    <p class="body-text center fade-up d2" style="margin-top:.6rem">Porcelana pintada à mão, cristais azuis, guardanapos de linho bordados com monograma. Limões sicilianos como peça central — a Toscana traduzida em cada detalhe da mesa comunitária.</p>
+  </div>
+  <div class="photo-grid-masonry fade-up d3">
+    <div class="photo-cell tall"><img src="photos/pinterest/mesa-blue-white-monograma.jpg" alt="Mesa blue & white com monograma" loading="lazy"><div class="photo-cell-caption">Mesa & monograma</div></div>
+    <div class="photo-cell"><img src="photos/pinterest/dior-blue-floral.jpg" alt="Arranjo floral azul" loading="lazy"><div class="photo-cell-caption">Detalhes florais</div></div>
+    <div class="photo-cell"><img src="photos/pinterest/selo-cera-convite.jpg" alt="Selo de cera" loading="lazy"><div class="photo-cell-caption">Selo de cera</div></div>
+    <div class="photo-cell tall"><img src="photos/pinterest/gift-box-blue-white.jpg" alt="Gift packaging" loading="lazy"><div class="photo-cell-caption">Gift packaging</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6 — GASTRONOMIA -->
+<!-- ============================================================ -->
+<section class="slide slide--cream" data-slide="Gastronomia" style="padding:3rem 2rem">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:1.5rem">
+    <div class="sn fade-up">Gastronomia</div>
+    <h2 class="subhead fade-up d1">Sabores da <em>Toscana</em> em cada prato</h2>
+    <p class="body-text center fade-up d2" style="margin-top:.6rem">Uma experiência gastronômica que honra a inspiração italiana do casamento. Ingredientes frescos, preparações artesanais e apresentação impecável. Qualidade excepcional, respeito pela sazonalidade e surpresa sem exagero.</p>
+  </div>
+  <div class="cards-row fade-up d3" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="card">
+      <div class="card-label">Entrada</div>
+      <div class="card-title">Pêssegos grelhados com <em>burrata</em> e prosciutto</div>
+      <div class="card-body">Massas feitas à mão. Azeites aromatizados com ervas do jardim. Cada prato conta uma história de simplicidade sofisticada.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Torre de Macarons</div>
+      <div class="card-title">Degradê em azul com <em>folha de ouro</em></div>
+      <div class="card-body">Do navy profundo ao branco creme. Uma peça central que encanta antes mesmo do primeiro sabor.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Bolo clássico</div>
+      <div class="card-title">Cobertura branca <em>impecável</em> com detalhes delicados</div>
+      <div class="card-body">Bolo clássico em andares com acabamento liso em branco. Flores naturais sutis e detalhes em dourado. Elegância atemporal que traduz a sofisticação do casamento.</div>
+    </div>
+  </div>
+  <div class="photo-grid-2 fade-up d4" style="margin-top:1.5rem">
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/pinterest/macaron-tower.jpg" alt="Torre de macarons" loading="lazy"><div class="photo-cell-caption">Torre de macarons</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/pinterest/gift-box-blue-white.jpg" alt="Detalhes em azul e branco" loading="lazy"><div class="photo-cell-caption">Detalhes</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9 — PAPELARIA & LEMBRANCINHAS -->
+<!-- ============================================================ -->
+<section class="slide slide--white" data-slide="Papelaria" style="padding:3rem 2rem">
+<div class="slide-inner" style="max-width:1200px">
+  <div style="max-width:700px;margin:0 auto">
+    <div class="text-center">
+      <div class="sn fade-up">Papelaria & convites</div>
+      <h2 class="subhead fade-up d1">Cada peça gráfica traduz a <em>identidade</em> do casamento</h2>
+      <p class="body-text center fade-up d2" style="margin-top:.6rem">Selo de cera dourado com monograma artesanal. Caixas em Toile de Jouy com fitas de cetim navy. O requinte de quem não deixa nenhum detalhe ao acaso.</p>
+    </div>
+    <div class="photo-grid-2 fade-up d3" style="margin-top:1.5rem;gap:3px">
+      <div class="photo-cell" style="aspect-ratio:1"><img src="photos/pinterest/selo-cera-convite.jpg" alt="Selo de cera" loading="lazy"><div class="photo-cell-caption">Selo de cera</div></div>
+      <div class="photo-cell" style="aspect-ratio:1"><img src="photos/pinterest/gift-box-blue-white.jpg" alt="Gift box Toile de Jouy" loading="lazy"><div class="photo-cell-caption">Gift box</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10 — REFERÊNCIAS: FOTOGRAFIA -->
+<!-- ============================================================ -->
+<section class="slide slide--dark" data-slide="Fotografia" style="padding:2.5rem 2rem">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:1.5rem">
+    <div class="sn fade-up">Direção fotográfica</div>
+    <h2 class="subhead fade-up d1" style="color:var(--cream-light)">Cinematográfica. <em>Editorial.</em> Atemporal.</h2>
+  </div>
+  <div class="photo-grid-4 fade-up d2">
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/pinterest/beijo-veu-cinematico.jpg" alt="Beijo cinematográfico com véu" loading="lazy"><div class="photo-cell-caption">Véu & cinema</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/pinterest/aliancas-bw.jpg" alt="Alianças em preto e branco" loading="lazy"><div class="photo-cell-caption">Detalhes P&B</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/pinterest/retrato-feminino-bw.jpg" alt="Retrato feminino" loading="lazy"><div class="photo-cell-caption">Retrato editorial</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/pinterest/relogio-detalhe-bw.jpg" alt="Relógio detalhe" loading="lazy"><div class="photo-cell-caption">Acessórios</div></div>
+  </div>
+  <div class="photo-grid-2 fade-up d3" style="margin-top:3px">
+    <div class="photo-cell" style="aspect-ratio:4/3"><img src="photos/pinterest/casal-editorial-jardim.jpg" alt="Casal editorial no jardim" loading="lazy"><div class="photo-cell-caption">Ensaio pré-casamento</div></div>
+    <div class="photo-cell" style="aspect-ratio:4/3"><img src="photos/pinterest/vestido-sapatos-detalhe.jpg" alt="Vestido e sapatos" loading="lazy"><div class="photo-cell-caption">Detalhes da noiva</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE — REFERÊNCIAS DE CASAMENTO (PINTEREST) -->
+<!-- ============================================================ -->
+<section class="slide slide--white" data-slide="Referências" style="padding:2.5rem 2rem;min-height:auto">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:1.5rem">
+    <div class="sn fade-up">Inspiração Priscilla & Paulo</div>
+    <h2 class="subhead fade-up d1">Referências de <em>casamento</em></h2>
+    <p class="body-text center fade-up d2" style="margin-top:.6rem">Imagens selecionadas do painel de referências da Priscilla — a curadoria que guia cada decisão estética.</p>
+  </div>
+  <div class="photo-grid-masonry fade-up d3" style="grid-auto-rows:220px">
+    <div class="photo-cell tall"><img src="photos/referencias-novas/10-recepcao-villa-italiana-velas.jpg" alt="Recepção em villa italiana com velas" loading="lazy"><div class="photo-cell-caption">Villa italiana</div></div>
+    <div class="photo-cell"><img src="photos/referencias-novas/06-mesa-longa-flores-azul-branco-bali.jpg" alt="Mesa longa com flores azul e branco" loading="lazy"><div class="photo-cell-caption">Mesa comunitária</div></div>
+    <div class="photo-cell"><img src="photos/referencias-novas/07-mesa-flores-amarelas-toscana.jpg" alt="Mesa com flores amarelas toscana" loading="lazy"><div class="photo-cell-caption">Mesa toscana</div></div>
+    <div class="photo-cell"><img src="photos/referencias-novas/05-poster-botanico-limoes-roma.jpg" alt="Poster botânico com limões" loading="lazy"><div class="photo-cell-caption">Limões sicilianos</div></div>
+    <div class="photo-cell tall"><img src="photos/referencias-novas/08-arco-cerimonia-flores-brancas.jpg" alt="Arco de cerimônia com flores brancas" loading="lazy"><div class="photo-cell-caption">Cerimônia</div></div>
+    <div class="photo-cell"><img src="photos/referencias-novas/01-guardanapos-azul-branco-toile.jpg" alt="Guardanapos toile azul e branco" loading="lazy"><div class="photo-cell-caption">Guardanapos toile</div></div>
+  </div>
+  <div class="photo-grid-4 fade-up d4" style="margin-top:3px">
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/referencias-novas/09-bolo-tres-andares-minimalista.jpg" alt="Bolo três andares branco" loading="lazy"><div class="photo-cell-caption">Bolo clássico</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/referencias-novas/14-cena-toscana-vinho-uvas.jpg" alt="Cena toscana com vinho" loading="lazy"><div class="photo-cell-caption">Vibe toscana</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/referencias-novas/15-casal-noivos-campo.jpg" alt="Casal de noivos no campo" loading="lazy"><div class="photo-cell-caption">O casal</div></div>
+    <div class="photo-cell" style="aspect-ratio:3/4"><img src="photos/referencias-novas/02-terno-bege-noivo.jpg" alt="Terno bege noivo" loading="lazy"><div class="photo-cell-caption">Traje do noivo</div></div>
+  </div>
+  <div class="photo-grid-3 fade-up" style="margin-top:3px">
+    <div class="photo-cell" style="aspect-ratio:4/3"><img src="photos/referencias-novas/13-tabua-queijos-frutas.jpg" alt="Tábua de queijos e frutas" loading="lazy"><div class="photo-cell-caption">Aperitivos</div></div>
+    <div class="photo-cell" style="aspect-ratio:4/3"><img src="photos/referencias-novas/03-prato-save-the-date-azul.jpg" alt="Prato save the date azul" loading="lazy"><div class="photo-cell-caption">Save the date</div></div>
+    <div class="photo-cell" style="aspect-ratio:4/3"><img src="photos/referencias-novas/04-caixa-presente-azul-branco.jpg" alt="Caixa presente azul e branco" loading="lazy"><div class="photo-cell-caption">Presentes</div></div>
+  </div>
+  <div class="photo-grid-2 fade-up" style="margin-top:3px">
+    <div class="photo-cell" style="aspect-ratio:16/9"><img src="photos/referencias-novas/11-aperitivo-brie-damasco.jpg" alt="Aperitivo brie com damasco" loading="lazy"><div class="photo-cell-caption">Gastronomia</div></div>
+    <div class="photo-cell" style="aspect-ratio:16/9"><img src="photos/referencias-novas/12-ovos-parmesao-kale.jpg" alt="Ovos com parmesão" loading="lazy"><div class="photo-cell-caption">Pratos artesanais</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10 — LOCAIS SUGERIDOS -->
+<!-- ============================================================ -->
+<section class="slide slide--olive" data-slide="Locais" style="padding:3rem 2rem;min-height:auto">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:2rem">
+    <div class="sn fade-up">Locais sugeridos</div>
+    <h2 class="subhead fade-up d1">Espaços para o <em>grande dia</em></h2>
+  </div>
+
+  <div class="venue-card fade-up d2" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/venue/venue-exterior-01.jpg" alt="Ville La Rochelle" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/venue/wedding-setup-03.jpg" alt="Cerimônia" loading="lazy"></div>
+        <div><img src="photos/venue/wedding-reception-05.jpg" alt="Recepção" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Ville La <em>Rochelle</em></div>
+      <div class="venue-card-meta"><span>Jarinu, SP</span><span>Até 250 convidados</span><span>Normandia francesa</span></div>
+      <div class="venue-card-desc">Propriedade dos anos 60 restaurada em 2019 com charme europeu. Terraço Monet, salão La Rochelle, 5 quartos + 2 suítes, heliporto, SPA e Porsche exclusivo para fotos.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/venue-vilarica/01-exterior-fazenda.jpg" alt="Fazenda Vila Rica" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/venue-vilarica/02-cerimonia-jardim.jpg" alt="Jardim" loading="lazy"></div>
+        <div><img src="photos/venue-vilarica/03-recepcao-salao.jpg" alt="Salão" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Fazenda Vila <em>Rica</em></div>
+      <div class="venue-card-meta"><span>Itatiba, SP</span><span>Até 650 convidados</span><span>Colonial 1860</span></div>
+      <div class="venue-card-desc">Fazenda histórica de café. Casarão colonial restaurado com 1.000m² de área coberta, pé-direito de 7m. Jardim externo ladeado por palmeiras e pinheiros.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/venue-santabarbara/01-vista-geral-fazenda.jpg" alt="Fazenda Santa Barbara" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/venue-santabarbara/02-cerimonia-jardim.jpg" alt="Jardim" loading="lazy"></div>
+        <div><img src="photos/venue-santabarbara/03-salao-festas.jpg" alt="Salão" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Fazenda Santa <em>Barbara</em></div>
+      <div class="venue-card-meta"><span>Itatiba, SP</span><span>350 a 700 convidados</span><span>Fazenda séc. XIX</span></div>
+      <div class="venue-card-desc">Menos de 50 min de SP, sem estrada de terra. Salão de 700m² sem colunas, 7 locais para cerimônia — jardim, capela, piscina, flamboyant. Pet-friendly.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/venue-capeladobosque/01-vista-fazenda.jpeg" alt="Capela do Bosque" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/venue-capeladobosque/02-capela-bosque.jpeg" alt="Capela" loading="lazy"></div>
+        <div><img src="photos/venue-capeladobosque/03-cerimonia-jardim.jpeg" alt="Jardim" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Fazenda Capela do <em>Bosque</em></div>
+      <div class="venue-card-meta"><span>Porto Feliz, SP</span><span>80 a 500 convidados</span><span>Capela na floresta</span></div>
+      <div class="venue-card-desc">Inaugurada em 2021. Capela no meio da floresta como marca registrada. SPA, piscina aquecida, 11 suítes e espaço exclusivo para noivos.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11 — BUFFET -->
+<!-- ============================================================ -->
+<section class="slide slide--white" data-slide="Buffet" style="padding:3rem 2rem;min-height:auto">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:2rem">
+    <div class="sn fade-up">Gastronomia</div>
+    <h2 class="subhead fade-up d1">Buffet & <em>eventos</em></h2>
+  </div>
+
+  <div class="venue-card fade-up d2">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/fornecedores/charlo-eventos/charlo-casamento-01.jpg" alt="Charlo" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/fornecedores/charlo-eventos/charlo-buffet-02.jpg" alt="Charlo buffet" loading="lazy"></div>
+        <div><img src="photos/fornecedores/charlo-eventos/charlo-sobremesa-03.jpg" alt="Charlo sobremesa" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Charlo <em>Eventos</em></div>
+      <div class="venue-card-meta"><span>Pinheiros + Itaim, SP</span><span>40+ anos de tradição</span><span>@charlo.eventos</span></div>
+      <div class="venue-card-desc">Referência em eventos de luxo em São Paulo. Gastronomia sofisticada com influências de SP, Paris e NY. Mais de 4 décadas de excelência.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12 — FOTOGRAFIA -->
+<!-- ============================================================ -->
+<section class="slide slide--cream" data-slide="Foto" style="padding:3rem 2rem;min-height:auto">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:2rem">
+    <div class="sn fade-up">Fotografia</div>
+    <h2 class="subhead fade-up d1">Registro <em>cinematográfico</em></h2>
+  </div>
+
+  <div class="venue-card fade-up d2" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/fornecedores/rodolfosantos/rodolfo-casamento-01.jpeg" alt="Rodolfo Santos" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/fornecedores/rodolfosantos/rodolfo-casamento-02.jpg" alt="Rodolfo 2" loading="lazy"></div>
+        <div><img src="photos/fornecedores/rodolfosantos/rodolfo-casamento-03.jpg" alt="Rodolfo 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Rodolfo Santos <em>Fotografia</em></div>
+      <div class="venue-card-meta"><span>São Paulo, SP</span><span>Desde 2005 · 211K seguidores</span><span>@rodolfosantosfotografo</span></div>
+      <div class="venue-card-desc">Fotógrafo artístico com técnicas de cinema e fotojornalismo. Especialista em destination weddings na Europa e EUA. Retratos espontâneos e atemporais.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/vestidos-megazap/wedding-1.jpg" alt="Megazap" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/vestidos-megazap/wedding-2.jpg" alt="Megazap 2" loading="lazy"></div>
+        <div><img src="photos/vestidos-megazap/wedding-3.jpg" alt="Megazap 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Estúdio <em>Megazap</em></div>
+      <div class="venue-card-meta"><span>Juiz de Fora, MG</span><span>600+ casamentos</span><span>@estudiomegazap</span></div>
+      <div class="venue-card-desc">Paola Vidal e Roberto Vallim — fine art e fotografia criativa. Reconhecidos entre os melhores do Brasil. Atendimento nacional e internacional.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13 — DECORAÇÃO -->
+<!-- ============================================================ -->
+<section class="slide slide--white" data-slide="Decoração" style="padding:3rem 2rem;min-height:auto">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:2rem">
+    <div class="sn fade-up">Decoração & flores</div>
+    <h2 class="subhead fade-up d1">Arte floral & <em>cenografia</em></h2>
+  </div>
+
+  <div class="venue-card fade-up d2" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/fornecedores/eminiflower/eminiflower-decoracao-01.webp" alt="Emini Flower" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/fornecedores/eminiflower/eminiflower-decoracao-02.webp" alt="Emini 2" loading="lazy"></div>
+        <div><img src="photos/fornecedores/eminiflower/eminiflower-decoracao-03.webp" alt="Emini 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Emini <em>Flower</em></div>
+      <div class="venue-card-meta"><span>São Paulo, SP</span><span>10+ anos</span><span>@eminiflower</span></div>
+      <div class="venue-card-desc">Decoração floral para casamentos e eventos com foco em sensibilidade e criatividade em cada detalhe.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/fornecedores/andrepedrotti/pedrotti-casamento-01.jpg" alt="Andre Pedrotti" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/fornecedores/andrepedrotti/pedrotti-casamento-02.jpg" alt="Pedrotti 2" loading="lazy"></div>
+        <div><img src="photos/fornecedores/andrepedrotti/pedrotti-casamento-03.jpg" alt="Pedrotti 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Andre Pedrotti <em>Flores</em></div>
+      <div class="venue-card-meta"><span>São Paulo, SP</span><span>149K seguidores</span><span>@andrepedrotti</span></div>
+      <div class="venue-card-desc">Artista floral para eventos de alto padrão. Trabalhos em Casa Petra, Rosewood SP. Lustres, candelabros e iluminação cênica.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/fornecedores/bellaflor/bellaflor-decoracao-01.jpg" alt="Bella Flor" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/fornecedores/bellaflor/bellaflor-decoracao-02.jpg" alt="Bella Flor 2" loading="lazy"></div>
+        <div><img src="photos/fornecedores/bellaflor/bellaflor-decoracao-03.jpg" alt="Bella Flor 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Bella Flor <em>Decorações</em></div>
+      <div class="venue-card-meta"><span>Itatiba, SP</span><span>Desde 2008 · 5.0 estrelas</span><span>@bellaflor_decoracoes</span></div>
+      <div class="venue-card-desc">Especialidade em casamentos no campo. Da criação do buquê à decoração completa. Atende SP capital e interior. 100% de recomendação.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14 — VESTIDOS -->
+<!-- ============================================================ -->
+<section class="slide slide--cream" data-slide="Vestidos" style="padding:3rem 2rem;min-height:auto">
+<div class="slide-inner" style="max-width:1200px">
+  <div class="text-center" style="margin-bottom:2rem">
+    <div class="sn fade-up">Vestido da noiva</div>
+    <h2 class="subhead fade-up d1">Ateliês <em>sugeridos</em></h2>
+  </div>
+
+  <div class="venue-card fade-up d2" style="margin-bottom:1.5rem">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/vestidos-lamodelista/galeria-1.jpg" alt="La Modelista" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/vestidos-lamodelista/galeria-2.jpg" alt="La Modelista 2" loading="lazy"></div>
+        <div><img src="photos/vestidos-lamodelista/galeria-3.jpg" alt="La Modelista 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">La Modelista <em>Noivas</em></div>
+      <div class="venue-card-meta"><span>Botafogo, Rio de Janeiro</span><span>16+ anos</span><span>@lamodelistanoivas</span></div>
+      <div class="venue-card-desc">Curadoria exclusiva de vestidos internacionais. Coleções 2026: Iconic Bride, Bloom, Fun Chic & Modern. Consultoria personalizada com hora marcada.</div>
+    </div>
+  </div>
+
+  <div class="venue-card fade-up">
+    <div class="venue-card-photos">
+      <div class="main"><img src="photos/fornecedores/rosaclara/rosaclara-couture-01.webp" alt="Rosa Clará" loading="lazy"></div>
+      <div class="side">
+        <div><img src="photos/fornecedores/rosaclara/rosaclara-classico-02.webp" alt="Rosa Clará 2" loading="lazy"></div>
+        <div><img src="photos/fornecedores/rosaclara/rosaclara-boheme-03.webp" alt="Rosa Clará 3" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="venue-card-info">
+      <div class="venue-card-name">Rosa <em>Clará</em> São Paulo</div>
+      <div class="venue-card-meta"><span>Jardim Paulista, SP</span><span>Desde 1995</span><span>@rosaclarasp</span></div>
+      <div class="venue-card-desc">Boutique exclusiva da grife espanhola no Brasil. Coleções: Couture, Bohème, Soft, Gatsby e Cocktail. Consultoras especializadas.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15 — SERVIÇOS -->
+<!-- ============================================================ -->
+<section class="slide slide--blush" data-slide="Serviços">
+<div class="slide-inner">
+  <div class="text-center" style="margin-bottom:2rem">
+    <div class="sn fade-up">O que está incluso</div>
+    <h2 class="subhead fade-up d1">Assessoria <em>completa</em></h2>
+    <p class="body-text center fade-up d2" style="margin-top:.6rem">Do primeiro rascunho até o último convidado ir embora. Cada etapa coberta para que você viva o processo com tranquilidade.</p>
+  </div>
+  <div class="service-list fade-up d3">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div><div class="service-title">Planejamento Completo</div><div class="service-body">Cronograma personalizado, definição de orçamento, pesquisa e curadoria de fornecedores, negociações, acompanhamento de contratos, gestão de prazos e entregas.</div></div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div><div class="service-title">Curadoria de Fornecedores</div><div class="service-body">Indicação de fornecedores testados e avaliados por experiência própria. Acompanhamento de reuniões, análise de orçamentos, apoio na decisão.</div></div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div><div class="service-title">Design & Identidade Visual</div><div class="service-body">Criação da identidade visual do casamento: paleta de cores, monograma, conceito estético. Direcionamento de papelaria, decoração, mesa e pontos de contato visuais.</div></div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <div><div class="service-title">Cerimonial & Coordenação do Dia D</div><div class="service-body">Timeline minuto a minuto. Coordenação de toda a equipe. Gestão de imprevistos. Equipe própria de apoio. Você não precisa resolver nada — só curtir.</div></div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <div><div class="service-title">Acompanhamento Pós-Evento</div><div class="service-body">Follow-up com fornecedores (fotos, vídeo, álbum), gestão de devoluções e pendências. O cuidado continua até tudo estar resolvido.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16 — PRÓXIMOS PASSOS + CTA -->
+<!-- ============================================================ -->
+<section class="slide slide--dark" data-slide="Contato">
+<div class="slide-inner text-center">
+  <h2 class="headline fade-up d1" style="color:var(--cream-light);font-size:clamp(2rem,4.5vw,3.5rem)">Vamos criar algo <em>inesquecível</em> juntos?</h2>
+  <div class="hairline center fade-up d2"></div>
+  <div style="margin-top:3rem" class="fade-up d3">
+    <a href="https://instagram.com/_giovanna.paola" target="_blank" class="cta-btn">Vamos conversar</a>
+    <div class="contact-row">
+      <div><span class="c-label">Instagram</span><span class="c-val"><a href="https://instagram.com/_giovanna.paola" target="_blank" style="color:rgba(250,250,247,.7)">@_giovanna.paola</a></span></div>
+      <div><span class="c-label">Empresa</span><span class="c-val"><a href="https://instagram.com/noiva.sa" target="_blank" style="color:rgba(250,250,247,.7)">@noiva.sa</a></span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+<p>Giovanna <em>Paola</em> &middot; Assessoria de Casamentos &middot; Fundadora da <em>Noiva S.A.</em></p>
+</footer>
+
+<script>
+const bar=document.querySelector('#progress .bar');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.transform=`scaleX(${s/h})`;
+},{passive:true});
+
+const slides=document.querySelectorAll('.slide');
+const dotsContainer=document.getElementById('navDots');
+slides.forEach((slide,i)=>{
+  const dot=document.createElement('button');
+  dot.className='nav-dot';
+  dot.title=slide.dataset.slide||`Slide ${i+1}`;
+  dot.addEventListener('click',()=>slide.scrollIntoView({behavior:'smooth'}));
+  dotsContainer.appendChild(dot);
+});
+const dots=dotsContainer.querySelectorAll('.nav-dot');
+
+const slideObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx=[...slides].indexOf(e.target);
+      dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+    }
+  });
+},{threshold:.3});
+slides.forEach(s=>slideObserver.observe(s));
+
+const fadeObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fadeObserver.observe(el));
+</script>
+</body>
+</html>

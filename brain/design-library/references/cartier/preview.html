@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cartier — DESIGN.md Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cartier-black: #000000;
+    --cartier-white: #FFFFFF;
+    --cartier-red: #A5182A;
+    --cartier-burgundy: #6B0F1A;
+    --cartier-gold: #B8860B;
+    --cartier-rose-gold: #B76E79;
+    --warm-white: #FAF7F2;
+    --cream: #F5F0E8;
+    --light-gray: #E5E5E5;
+    --medium-gray: #999999;
+    --charcoal: #333333;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--warm-white); color: var(--charcoal); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--light-gray); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; letter-spacing: 0.08em; margin-bottom: 48px; }
+  .meta { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 8px; }
+  h1.brand { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; text-align: center; padding: 120px 0 40px; color: var(--charcoal); }
+  .subtitle { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); text-align: center; margin-bottom: 120px; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+  .swatch { background: var(--cartier-white); }
+  .swatch-color { height: 90px; }
+  .swatch-info { padding: 12px; }
+  .swatch-name { font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--charcoal); }
+  .swatch-value { font-size: 11px; color: var(--medium-gray); margin-top: 4px; font-family: monospace; }
+  .type-specimen { margin-bottom: 48px; }
+  .type-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 8px; }
+  .type-hero { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.1; color: var(--charcoal); }
+  .type-display { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; letter-spacing: 0.08em; line-height: 1.1; color: var(--charcoal); }
+  .type-h1 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; letter-spacing: 0.08em; line-height: 1.1; }
+  .type-h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; letter-spacing: 0.05em; line-height: 1.2; }
+  .type-body { font-size: 14px; font-weight: 400; line-height: 1.5; max-width: 600px; letter-spacing: 0.02em; }
+  .type-nav { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .type-caption { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-gray); }
+  .spacing-row { display: flex; align-items: center; margin-bottom: 12px; }
+  .spacing-block { background: var(--cartier-red); height: 16px; opacity: 0.7; }
+  .spacing-label { font-size: 11px; color: var(--medium-gray); width: 60px; font-family: monospace; }
+  .spacing-value { font-size: 11px; color: var(--medium-gray); margin-left: 12px; font-family: monospace; }
+  .btn-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
+  .btn-primary { background: var(--cartier-red); color: var(--cartier-white); border: none; padding: 0 28px; height: 44px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.35s ease; font-family: 'Inter', sans-serif; }
+  .btn-primary:hover { background: var(--cartier-burgundy); }
+  .btn-secondary { background: var(--cartier-white); color: var(--charcoal); border: 1px solid var(--charcoal); padding: 0 28px; height: 44px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.35s ease; font-family: 'Inter', sans-serif; }
+  .btn-secondary:hover { background: var(--charcoal); color: var(--cartier-white); }
+  .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: var(--cartier-white); }
+  .card-image { background: #F8F8F8; aspect-ratio: 1/1; transition: transform 0.5s ease; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .card-image-inner { width: 60%; height: 60%; background: var(--light-gray); border-radius: 50%; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .card:hover .card-image-inner { transform: scale(1.05); }
+  .card-body { padding: 16px; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.02em; }
+  .card-price { font-size: 12px; color: var(--medium-gray); margin-top: 4px; }
+  .card-link { font-size: 11px; color: var(--cartier-red); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; display: inline-block; transition: color 0.35s ease; }
+  .card-link:hover { color: var(--cartier-burgundy); }
+  .motion-demo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .motion-box { background: var(--cartier-red); height: 80px; }
+  .motion-box:nth-child(1) { transition: transform 0.2s ease; }
+  .motion-box:nth-child(2) { transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .motion-box:nth-child(3) { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-box:nth-child(4) { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-box:hover { transform: translateY(-8px); }
+  .motion-label { font-size: 11px; color: var(--medium-gray); margin-top: 8px; text-align: center; font-family: monospace; }
+  .dark-section { background: var(--cartier-black); color: var(--warm-white); }
+  .dark-section .section-title { color: var(--warm-white); }
+  .confidence-badge { display: inline-block; padding: 4px 12px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(165,24,42,0.1); color: var(--cartier-red); border: 1px solid var(--cartier-red); }
+  .editorial-split { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: center; margin-top: 48px; }
+  .editorial-image { background: var(--cream); aspect-ratio: 4/5; }
+  .editorial-text .type-h2 { margin-bottom: 16px; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <p class="meta" style="padding-top:48px;">Design System Preview</p>
+    <h1 class="brand">Cartier</h1>
+    <p class="subtitle">Research-Based Extraction &mdash; May 2026 <span class="confidence-badge">Medium Confidence</span></p>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Color Palette</h2>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-value">#000000</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFFFFF; border:1px solid #E5E5E5;"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-value">#FFFFFF</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#A5182A;"></div><div class="swatch-info"><div class="swatch-name">Cartier Red</div><div class="swatch-value">#A5182A</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6B0F1A;"></div><div class="swatch-info"><div class="swatch-name">Burgundy</div><div class="swatch-value">#6B0F1A</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B8860B;"></div><div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-value">#B8860B</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B76E79;"></div><div class="swatch-info"><div class="swatch-name">Rose Gold</div><div class="swatch-value">#B76E79</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FAF7F2;"></div><div class="swatch-info"><div class="swatch-name">Warm White</div><div class="swatch-value">#FAF7F2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F5F0E8;"></div><div class="swatch-info"><div class="swatch-name">Cream</div><div class="swatch-value">#F5F0E8</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E5E5E5;"></div><div class="swatch-info"><div class="swatch-name">Light Gray</div><div class="swatch-value">#E5E5E5</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#999999;"></div><div class="swatch-info"><div class="swatch-name">Medium Gray</div><div class="swatch-value">#999999</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#333333;"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-value">#333333</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Typography</h2>
+      <div class="type-specimen"><div class="type-label">Hero &mdash; 64px / 300 / 0.2em</div><div class="type-hero">Cartier</div></div>
+      <div class="type-specimen"><div class="type-label">Display &mdash; 44px / 300 / 0.08em</div><div class="type-display">L'Art de Cartier</div></div>
+      <div class="type-specimen"><div class="type-label">H1 &mdash; 34px / 400 / 0.08em</div><div class="type-h1">High Jewelry Collection</div></div>
+      <div class="type-specimen"><div class="type-label">H2 &mdash; 26px / 400 / 0.05em</div><div class="type-h2">Santos de Cartier</div></div>
+      <div class="type-specimen"><div class="type-label">Body &mdash; 14px / 400 / 1.5</div><div class="type-body">Founded in Paris in 1847, Cartier has remained at the forefront of the art of jewelry and watchmaking. The Maison is synonymous with a unique blend of savoir-faire and timelessness, creating objects of desire that transcend eras.</div></div>
+      <div class="type-specimen"><div class="type-label">Navigation &mdash; 13px / 500 / 0.08em</div><div class="type-nav">Jewelry &nbsp;&nbsp; Watches &nbsp;&nbsp; Engagement &nbsp;&nbsp; Fragrance &nbsp;&nbsp; Art de Vivre</div></div>
+      <div class="type-specimen"><div class="type-label">Caption &mdash; 11px / 500 / 0.08em</div><div class="type-caption">Ref. CRN6036017 &mdash; 18K White Gold, Diamonds</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Spacing Scale</h2>
+      <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-block" style="width:4px;"></div><span class="spacing-value">4px</span></div>
+      <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-block" style="width:8px;"></div><span class="spacing-value">8px</span></div>
+      <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-block" style="width:16px;"></div><span class="spacing-value">16px</span></div>
+      <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-block" style="width:24px;"></div><span class="spacing-value">24px</span></div>
+      <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-block" style="width:32px;"></div><span class="spacing-value">32px</span></div>
+      <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-block" style="width:48px;"></div><span class="spacing-value">48px</span></div>
+      <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-block" style="width:64px;"></div><span class="spacing-value">64px</span></div>
+      <div class="spacing-row"><span class="spacing-label">4xl</span><div class="spacing-block" style="width:80px;"></div><span class="spacing-value">80px</span></div>
+      <div class="spacing-row"><span class="spacing-label">5xl</span><div class="spacing-block" style="width:120px;"></div><span class="spacing-value">120px</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Components</h2>
+      <p class="meta">Buttons</p>
+      <div class="btn-row">
+        <button class="btn-primary">Add to Bag</button>
+        <button class="btn-secondary">Discover</button>
+        <button class="btn-primary">Book an Appointment</button>
+      </div>
+      <p class="meta" style="margin-top:64px;">Product Cards</p>
+      <div class="card-grid" style="margin-top:24px;">
+        <div class="card"><div class="card-image"><div class="card-image-inner"></div></div><div class="card-body"><div class="card-title">Love Bracelet</div><div class="card-price">$7,100</div><a href="#" class="card-link">Discover</a></div></div>
+        <div class="card"><div class="card-image"><div class="card-image-inner"></div></div><div class="card-body"><div class="card-title">Tank Fran&ccedil;aise</div><div class="card-price">$10,200</div><a href="#" class="card-link">Discover</a></div></div>
+        <div class="card"><div class="card-image"><div class="card-image-inner"></div></div><div class="card-body"><div class="card-title">Juste un Clou Ring</div><div class="card-price">$3,500</div><a href="#" class="card-link">Discover</a></div></div>
+        <div class="card"><div class="card-image"><div class="card-image-inner"></div></div><div class="card-body"><div class="card-title">Panth&egrave;re Necklace</div><div class="card-price">$57,000</div><a href="#" class="card-link">Discover</a></div></div>
+      </div>
+
+      <p class="meta" style="margin-top:64px;">Editorial Split (60/40)</p>
+      <div class="editorial-split">
+        <div class="editorial-image"></div>
+        <div class="editorial-text">
+          <div class="type-h2">The Panth&egrave;re de Cartier</div>
+          <div class="type-body" style="margin-top:16px;">Since 1914, the panther has been the emblem of the Maison. Bold, free, and powerful, she prowls across Cartier's most iconic creations.</div>
+          <a href="#" class="card-link" style="margin-top:24px;">Explore the Collection</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Motion</h2>
+      <p class="meta">Hover to see easing curves</p>
+      <div class="motion-demo" style="margin-top:32px;">
+        <div><div class="motion-box"></div><div class="motion-label">0.2s fast</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.35s default</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.5s smooth</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.7s reveal</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section dark-section">
+    <div class="container">
+      <h2 class="section-title">Dark Mode</h2>
+      <div class="type-specimen"><div class="type-label" style="color:#999;">Display &mdash; Serif / 300</div><div class="type-display" style="color:#FAF7F2;">Maison Cartier</div></div>
+      <div class="btn-row" style="margin-top:32px;">
+        <button style="background:transparent; color:#FAF7F2; border:1px solid #FAF7F2; padding:0 28px; height:44px; font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif;">Explore</button>
+        <button style="background:var(--cartier-red); color:#fff; border:none; padding:0 28px; height:44px; font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif;">Book an Appointment</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:48px 0; text-align:center;">
+    <p class="meta">Extracted 2026-05-14 &mdash; Research-Based (cartier.com blocks automated fetching)</p>
+  </div>
+</body>
+</html>

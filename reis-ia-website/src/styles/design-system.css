@@ -63,13 +63,13 @@
   --border-strong: rgba(255, 255, 255, 0.20);
   --border-accent: rgba(74, 144, 255, 0.30);
 
-  /* ---- SHADOWS ---- */
-  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-default: 0 4px 16px rgba(0, 0, 0, 0.25);
-  --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.4);
-  --shadow-dramatic: 0 16px 70px rgba(0, 0, 0, 0.5);
-  --shadow-blue-glow: 0 0 50px rgba(74, 144, 255, 0.12);
-  --shadow-blue-glow-sm: 0 0 30px rgba(74, 144, 255, 0.08);
+  /* ---- SHADOWS (blue-tinted, Stripe-inspired) ---- */
+  --shadow-subtle: 0 1px 2px rgba(10, 15, 40, 0.30);
+  --shadow-default: 0 4px 16px rgba(10, 15, 40, 0.25), 0 1px 3px rgba(0, 0, 0, 0.10);
+  --shadow-elevated: 0 8px 30px rgba(10, 15, 40, 0.40), 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-dramatic: 0 16px 70px rgba(10, 15, 40, 0.50), 0 4px 20px rgba(0, 0, 0, 0.20);
+  --shadow-blue-glow: 0 0 50px rgba(74, 144, 255, 0.15), 0 0 100px rgba(74, 144, 255, 0.05);
+  --shadow-blue-glow-sm: 0 0 30px rgba(74, 144, 255, 0.10);
 
   /* ---- SIGNAL COLORS ---- */
   --color-error: #EF4444;
@@ -216,11 +216,12 @@
   --moroni-soft-rgb: 106, 173, 255;
 }
 
-/* ---- FONT RENDERING ---- */
+/* ---- FONT RENDERING (Linear-inspired OpenType) ---- */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "cv01", "ss03", "liga";
   isolation: isolate;
 }
 

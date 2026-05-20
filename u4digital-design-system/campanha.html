@@ -1,0 +1,1733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>u4digital — Plano de Campanha Meta Ads</title>
+  <meta name="description" content="Plano operacional de Meta Ads — u4digital. Uso interno." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="components.css" />
+
+  <style>
+    /* ─── Layout ─────────────────────────────────────────────── */
+    .doc-layout { display: flex; min-height: 100vh; }
+
+    /* ─── Sidebar ────────────────────────────────────────────── */
+    .doc-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-bg-sunken);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-8) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .doc-sidebar__brand {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    .doc-sidebar__brand .accent { color: var(--color-accent); }
+
+    .doc-sidebar__meta {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      line-height: var(--leading-relaxed);
+    }
+
+    .doc-sidebar__section-label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-sidebar__links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .doc-sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+      line-height: var(--leading-snug);
+    }
+
+    .doc-sidebar__link:hover {
+      color: var(--color-text-primary);
+      background: var(--color-hover);
+    }
+
+    .doc-sidebar__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-border-strong);
+      flex-shrink: 0;
+      margin-right: var(--space-1);
+    }
+
+    /* ─── Main ───────────────────────────────────────────────── */
+    .doc-main { flex: 1; min-width: 0; }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    .doc-hero {
+      padding: var(--space-16) var(--space-16) var(--space-14);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-sunken);
+    }
+
+    .doc-hero__wordmark {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-8);
+      display: block;
+    }
+
+    .doc-hero__wordmark .accent { color: var(--color-accent); }
+
+    .doc-hero__eyebrow {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__title {
+      font-size: var(--font-4xl);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__subtitle {
+      font-size: var(--font-lg);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-light);
+      margin-bottom: var(--space-6);
+    }
+
+    .doc-hero__badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+    /* ─── Sections ───────────────────────────────────────────── */
+    .doc-section {
+      padding: var(--space-16) var(--space-16);
+      border-bottom: 1px solid var(--color-border-muted);
+      scroll-margin-top: var(--space-6);
+    }
+
+    .doc-section:last-of-type { border-bottom: none; }
+
+    .doc-section-header { margin-bottom: var(--space-10); }
+
+    .doc-section-number {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-section-title {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+    }
+
+    .doc-section-desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      line-height: var(--leading-relaxed);
+      max-width: 640px;
+    }
+
+    /* ─── Sub-section title ──────────────────────────────────── */
+    .subsection-title {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-8);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .subsection-title:first-child { margin-top: 0; }
+
+    /* ─── Ad card ────────────────────────────────────────────── */
+    .ad-card {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-5);
+    }
+
+    .ad-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    .ad-card__id {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: var(--color-accent-muted);
+      border: 1px solid var(--color-accent-border);
+      border-radius: var(--radius-sm);
+      padding: 2px var(--space-2);
+    }
+
+    .ad-card__name {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .ad-card__body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 900px) {
+      .ad-card__body { grid-template-columns: 1fr; }
+    }
+
+    .ad-card__field { display: flex; flex-direction: column; gap: var(--space-1); }
+
+    .ad-card__label {
+      font-size: var(--font-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .ad-card__value {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .ad-card__value--mono {
+      font-family: var(--font-mono);
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+      word-break: break-all;
+    }
+
+    .ad-card__copy {
+      margin-top: var(--space-4);
+      grid-column: 1 / -1;
+      background: var(--color-bg-sunken);
+      border: 1px solid var(--color-border-muted);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      white-space: pre-line;
+    }
+
+    /* ─── Campaign overview card ─────────────────────────────── */
+    .camp-card {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+
+    .camp-card__title {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-5);
+    }
+
+    .camp-card__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 767px) {
+      .camp-card__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── Phase cards ────────────────────────────────────────── */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      margin-bottom: var(--space-8);
+    }
+
+    @media (max-width: 900px) {
+      .phase-grid { grid-template-columns: 1fr; }
+    }
+
+    .phase-card {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .phase-card--active { border-color: var(--color-accent-border); }
+
+    .phase-card__label {
+      font-size: var(--font-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .phase-card__amount {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .phase-card__amount--accent { color: var(--color-accent); }
+
+    .phase-card__title {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .phase-card__criteria {
+      font-size: var(--font-xs);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      border-top: 1px solid var(--color-border-muted);
+      padding-top: var(--space-3);
+    }
+
+    .phase-card__criteria strong {
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-medium);
+    }
+
+    /* ─── Checklist ──────────────────────────────────────────── */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .checklist__phase-label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-1);
+    }
+
+    .checklist__phase-label:first-child { margin-top: 0; }
+
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .checklist__box {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .checklist__num {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-accent);
+      min-width: 2rem;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+
+    /* ─── Field label/value rows ─────────────────────────────── */
+    .field-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .field-row__label {
+      font-size: var(--font-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .field-row__value {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ─── Two col ─────────────────────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 767px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ─── KPI table badges ───────────────────────────────────── */
+    .kpi-ruim { color: #f87171; }
+    .kpi-aceitavel { color: var(--color-text-muted); }
+    .kpi-bom { color: #60a5fa; }
+    .kpi-excelente { color: #34d399; font-weight: var(--font-weight-medium); }
+
+    /* ─── Alert ──────────────────────────────────────────────── */
+    .alert-warning {
+      background: rgba(251, 191, 36, 0.06);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--font-sm);
+      color: #fbbf24;
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-6);
+    }
+
+    .alert-warning strong { font-weight: var(--font-weight-semibold); }
+
+    /* ─── Scenario cards ─────────────────────────────────────── */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      margin-bottom: var(--space-6);
+    }
+
+    @media (max-width: 767px) {
+      .scenario-grid { grid-template-columns: 1fr; }
+    }
+
+    .scenario-card {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+    }
+
+    .scenario-card__tag {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+
+    .scenario-card__title {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .scenario-card__body {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    .tag-a { color: #34d399; }
+    .tag-b { color: #60a5fa; }
+    .tag-c { color: #fbbf24; }
+    .tag-d { color: #f87171; }
+
+    .scenario-card--a { border-color: rgba(52, 211, 153, 0.2); }
+    .scenario-card--b { border-color: rgba(96, 165, 250, 0.2); }
+    .scenario-card--c { border-color: rgba(251, 191, 36, 0.2); }
+    .scenario-card--d { border-color: rgba(248, 113, 113, 0.2); }
+  </style>
+</head>
+
+<body>
+<div class="doc-layout">
+
+  <!-- ─── Sidebar ─────────────────────────────────────────── -->
+  <aside class="doc-sidebar">
+    <div>
+      <a href="index.html" class="doc-sidebar__brand">u4<span class="accent">digital</span></a>
+      <p class="doc-sidebar__meta">Plano de Campanha<br>Meta Ads — Maio 2026<br>Uso interno</p>
+    </div>
+
+    <nav>
+      <p class="doc-sidebar__section-label">Navegacao</p>
+      <div class="doc-sidebar__links">
+        <a href="#pixel" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Pixel &amp; Tracking</a>
+        <a href="#campanhas" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Estrutura de Campanha</a>
+        <a href="#audiencia" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Audiência</a>
+        <a href="#budget" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Budget &amp; Fases</a>
+        <a href="#otimizacao" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Regras de Otimização</a>
+        <a href="#criativos" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Mapeamento de Criativos</a>
+        <a href="#checklist" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Checklist de Execução</a>
+        <a href="#cenarios" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Cenários Decisórios</a>
+      </div>
+    </nav>
+
+    <nav>
+      <p class="doc-sidebar__section-label">Documentos</p>
+      <div class="doc-sidebar__links">
+        <a href="index.html" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Design System</a>
+        <a href="estrategia.html" class="doc-sidebar__link"><span class="doc-sidebar__dot"></span>Estratégia</a>
+        <a href="campanha.html" class="doc-sidebar__link" style="color:var(--color-accent);background:var(--color-accent-muted);"><span class="doc-sidebar__dot"></span>Campanha</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ─── Main ─────────────────────────────────────────────── -->
+  <main class="doc-main">
+
+    <!-- Hero -->
+    <header class="doc-hero">
+      <span class="doc-hero__wordmark">u4<span class="accent">digital</span></span>
+      <p class="doc-hero__eyebrow">Plano Operacional</p>
+      <h1 class="doc-hero__title">Plano de Campanha — Meta Ads</h1>
+      <p class="doc-hero__subtitle">u4digital — Assessoria de IA para Negócios Digitais</p>
+      <div class="doc-hero__badges">
+        <span class="badge badge--outline">2 campanhas</span>
+        <span class="badge badge--outline">10 anúncios</span>
+        <span class="badge badge--accent">R$200 teste</span>
+        <span class="badge badge--outline">Maio 2026</span>
+        <span class="badge badge--outline">act_1497187178472890</span>
+      </div>
+    </header>
+
+    <!-- Safety warning -->
+    <div style="padding: var(--space-6) var(--space-16) 0;">
+      <div class="alert-warning">
+        <strong>Aviso de segurança:</strong> Todas as campanhas serão criadas PAUSADAS. Nenhuma campanha será ativada sem aprovação explícita do Moroni. Nenhum budget acima de R$100/dia será configurado sem aprovação.
+      </div>
+    </div>
+
+    <!-- ─── Seção 1: Pixel & Tracking ──────────────────────── -->
+    <section class="doc-section" id="pixel">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 01</p>
+        <h2 class="doc-section-title">Pixel &amp; Tracking</h2>
+        <p class="doc-section-desc">Instalação do Meta Pixel, configuração dos 4 eventos e estrutura de UTMs por campanha.</p>
+      </div>
+
+      <h3 class="subsection-title">1.1 — Meta Pixel</h3>
+
+      <div class="two-col" style="margin-bottom:var(--space-6)">
+        <div class="card">
+          <p class="card__label">Nome do pixel</p>
+          <p class="card__value" style="font-family:var(--font-mono)">u4digital-raio-x</p>
+        </div>
+        <div class="card">
+          <p class="card__label">Conta de anúncios</p>
+          <p class="card__value" style="font-family:var(--font-mono)">act_1497187178472890</p>
+        </div>
+      </div>
+
+      <h4 style="font-size:var(--font-sm);font-weight:var(--font-weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-4);">Eventos a configurar</h4>
+
+      <div class="table-wrapper" style="margin-bottom:var(--space-8)">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Trigger</th>
+              <th>Prioridade</th>
+              <th>Método</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>PageView</code></td>
+              <td>Carregamento de qualquer página do site</td>
+              <td><span class="badge badge--accent" style="font-size:0.6rem;">P0</span></td>
+              <td>Automático com pixel base</td>
+            </tr>
+            <tr>
+              <td><code>ViewContent</code></td>
+              <td>Carregamento da página /raio-x</td>
+              <td><span class="badge badge--accent" style="font-size:0.6rem;">P0</span></td>
+              <td>Automático (PageView na página)</td>
+            </tr>
+            <tr>
+              <td><code>Lead</code></td>
+              <td>Envio do formulário / clique no CTA de agendamento</td>
+              <td><span class="badge badge--accent" style="font-size:0.6rem;">P0</span></td>
+              <td>Evento customizado no submit</td>
+            </tr>
+            <tr>
+              <td><code>Schedule</code></td>
+              <td>Confirmação de agendamento no Cal.com</td>
+              <td><span class="badge badge--outline" style="font-size:0.6rem;">P1</span></td>
+              <td>Custom event via thank-you page ou redirect</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="font-size:var(--font-sm);font-weight:var(--font-weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-3);">Código de instalação do pixel</h4>
+      <p style="font-size:var(--font-xs);color:var(--color-text-muted);margin-bottom:var(--space-3);">Inserir no <code>&lt;head&gt;</code> de todas as páginas de u4digital.com.br:</p>
+
+      <div class="code-block" style="margin-bottom:var(--space-6)"><pre><code>&lt;!-- Meta Pixel Code --&gt;
+&lt;script&gt;
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'PIXEL_ID_AQUI');
+fbq('track', 'PageView');
+&lt;/script&gt;
+&lt;noscript&gt;&lt;img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&amp;ev=PageView&amp;noscript=1"
+/&gt;&lt;/noscript&gt;
+&lt;!-- End Meta Pixel Code --&gt;</code></pre></div>
+
+      <h4 style="font-size:var(--font-sm);font-weight:var(--font-weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-3);">Evento Lead (no submit do formulário ou clique do CTA)</h4>
+      <div class="code-block" style="margin-bottom:var(--space-6)"><pre><code>// Disparar quando o usuário clica em "Agendar Raio-X" ou submete formulário
+fbq('track', 'Lead', {
+  content_name: 'Raio-X Digital',
+  content_category: 'Diagnóstico Gratuito',
+  value: 0,
+  currency: 'BRL'
+});</code></pre></div>
+
+      <h4 style="font-size:var(--font-sm);font-weight:var(--font-weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-3);">Evento Schedule (na página de confirmação do Cal.com)</h4>
+      <div class="code-block" style="margin-bottom:var(--space-8)"><pre><code>// Disparar na thank-you page após agendamento confirmado
+fbq('track', 'Schedule', {
+  content_name: 'Agendamento Raio-X',
+  value: 0,
+  currency: 'BRL'
+});</code></pre></div>
+
+      <h3 class="subsection-title">1.2 — Estrutura de UTMs</h3>
+      <p style="font-size:var(--font-sm);color:var(--color-text-muted);margin-bottom:var(--space-4);line-height:var(--leading-relaxed);">Padrão: <code>?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=[CAMPANHA]&amp;utm_content=[CRIATIVO]&amp;utm_term=[ANGULO]</code></p>
+
+      <div class="table-wrapper" style="margin-bottom:var(--space-6)">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Campanha</th>
+              <th>utm_campaign</th>
+              <th>utm_content</th>
+              <th>utm_term</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Camp. 1 — Vídeo Cold</td>
+              <td><code>u4d-video-cold-mai26</code></td>
+              <td><code>video_1</code> a <code>video_7</code></td>
+              <td><code>custo-time / tempo-ops / concorrente</code></td>
+            </tr>
+            <tr>
+              <td>Camp. 2 — Static Cold</td>
+              <td><code>u4d-static-cold-mai26</code></td>
+              <td><code>static_1</code> a <code>static_18</code></td>
+              <td><code>custo-comp / urgencia / chatgpt</code></td>
+            </tr>
+            <tr>
+              <td>Camp. 3 — Vídeo Vertical</td>
+              <td><code>u4d-vertical-cold-mai26</code></td>
+              <td><code>vert_1</code> a <code>vert_7</code></td>
+              <td><code>custo-time / tempo-ops</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="font-size:var(--font-sm);font-weight:var(--font-weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-3);">URL final de exemplo</h4>
+      <div class="code-block"><pre><code>https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-video-cold-mai26&amp;utm_content=video_1&amp;utm_term=custo-time</code></pre></div>
+    </section>
+
+    <!-- ─── Seção 2: Estrutura de Campanha ──────────────────── -->
+    <section class="doc-section" id="campanhas">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 02</p>
+        <h2 class="doc-section-title">Estrutura de Campanha</h2>
+        <p class="doc-section-desc">2 campanhas, 2 ad sets, 10 anúncios. Budget total: R$200. Todas criadas PAUSADAS.</p>
+      </div>
+
+      <!-- Visão geral -->
+      <h3 class="subsection-title">2.1 — Visão Geral</h3>
+
+      <div class="camp-card">
+        <p class="camp-card__title">CAMPANHA 1: u4digital | Leads | Infoprodutores BR | Video Landscape — 2026-05</p>
+        <div class="camp-card__grid">
+          <div class="field-row"><span class="field-row__label">Objetivo</span><span class="field-row__value">LEAD_GENERATION (Instant Form)</span></div>
+          <div class="field-row"><span class="field-row__label">Budget</span><span class="field-row__value">R$35/dia</span></div>
+          <div class="field-row"><span class="field-row__label">Status inicial</span><span class="field-row__value"><span class="badge badge--outline" style="font-size:0.6rem;color:#fbbf24;border-color:rgba(251,191,36,0.3)">PAUSED</span></span></div>
+          <div class="field-row"><span class="field-row__label">Otimização</span><span class="field-row__value">Leads (maximize volume)</span></div>
+          <div class="field-row"><span class="field-row__label">Bidding</span><span class="field-row__value">Lowest Cost</span></div>
+          <div class="field-row"><span class="field-row__label">Special Ad Cat.</span><span class="field-row__value">None</span></div>
+        </div>
+      </div>
+
+      <div class="camp-card">
+        <p class="camp-card__title">CAMPANHA 2: u4digital | Leads | Infoprodutores BR | Static Feed+Stories — 2026-05</p>
+        <div class="camp-card__grid">
+          <div class="field-row"><span class="field-row__label">Objetivo</span><span class="field-row__value">LEAD_GENERATION (Instant Form)</span></div>
+          <div class="field-row"><span class="field-row__label">Budget</span><span class="field-row__value">R$25/dia</span></div>
+          <div class="field-row"><span class="field-row__label">Status inicial</span><span class="field-row__value"><span class="badge badge--outline" style="font-size:0.6rem;color:#fbbf24;border-color:rgba(251,191,36,0.3)">PAUSED</span></span></div>
+          <div class="field-row"><span class="field-row__label">Otimização</span><span class="field-row__value">Leads (maximize volume)</span></div>
+          <div class="field-row"><span class="field-row__label">Bidding</span><span class="field-row__value">Lowest Cost</span></div>
+          <div class="field-row"><span class="field-row__label">Special Ad Cat.</span><span class="field-row__value">None</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:var(--space-8)">
+        <p class="card__label">Por que 2 campanhas e não 3</p>
+        <p class="card__value" style="margin-top:var(--space-2)">Com R$200, dividir em 3 campanhas deixa cada uma com ~R$67 — insuficiente para o Meta sair da fase de aprendizado. Duas campanhas (vídeo vs. estático) testam o formato mais impactante com dados suficientes. O teste de rosto/ângulo acontece DENTRO de cada campanha via anúncios diferentes.</p>
+      </div>
+
+      <!-- Ad Set 1A -->
+      <h3 class="subsection-title">Ad Set 1A — Infoprodutores + Ferramentas Digitais</h3>
+      <div class="camp-card" style="margin-bottom:var(--space-8)">
+        <p class="camp-card__title" style="font-size:var(--font-sm)">u4d | AS | Infoprodutores+Tools | 27-48 | BR — 2026-05</p>
+        <div class="camp-card__grid">
+          <div class="field-row"><span class="field-row__label">Localização</span><span class="field-row__value">Brasil (país inteiro)</span></div>
+          <div class="field-row"><span class="field-row__label">Idade</span><span class="field-row__value">27-48</span></div>
+          <div class="field-row"><span class="field-row__label">Gênero</span><span class="field-row__value">All</span></div>
+          <div class="field-row"><span class="field-row__label">Idioma</span><span class="field-row__value">Português</span></div>
+          <div class="field-row"><span class="field-row__label">Placements</span><span class="field-row__value">Automatic (Advantage+ Placements)</span></div>
+          <div class="field-row"><span class="field-row__label">Optimization Event</span><span class="field-row__value">Lead</span></div>
+          <div class="field-row" style="grid-column:1/-1"><span class="field-row__label">Detailed Targeting</span><span class="field-row__value">Hotmart OR Kiwify OR "Lançamento digital" OR "Marketing digital" OR ActiveCampaign OR RD Station</span></div>
+        </div>
+      </div>
+
+      <!-- Anúncios Campanha 1 -->
+      <h3 class="subsection-title">Anúncios — Campanha 1 (Vídeo)</h3>
+
+      <!-- Ad 1A-V1 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">1A-V1</span>
+          <span class="ad-card__name">u4d | Ad | Video1 | Custo-Time | Moroni — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">video_1_legendado.mp4 (34.5 MB, 1280x720, ~1:29)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Quanto seu time custa de verdade?</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Raio-X Digital gratuito — 35 min. Veja o agente ao vivo.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-video-cold-mai26&amp;utm_content=video_1&amp;utm_term=custo-time</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">Você fatura R$40K. Depois do time, das ferramentas, dos freelancers — sobra quanto?
+
+Fiz esse cálculo com dezenas de experts nos últimos meses. O número que aparece quase sempre surpreende.
+
+Na u4digital, a gente mapeia o custo operacional real e identifica o que pode virar agente de IA — treinado na sua voz, rodando sem parar, custando a fração de um salário CLT.
+
+Diagnóstico gratuito. 35 minutos. Você vê o agente funcionando ao vivo no contexto do seu negócio.</div>
+        </div>
+      </div>
+
+      <!-- Ad 1A-V2 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">1A-V2</span>
+          <span class="ad-card__name">u4d | Ad | Video2 | Tempo-Ops | Tiago — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">video_2_legendado.mp4 (32.6 MB, 1280x720, ~1:16)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Seu negócio funciona sem você?</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Diagnóstico gratuito — veja o agente ao vivo em 35 min.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-video-cold-mai26&amp;utm_content=video_2&amp;utm_term=tempo-ops</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">Se eu parar uma semana, tudo desanda.
+
+Já ouvi isso de experts faturando R$70K/mês. É o sinal mais claro de que o negócio ainda não tem estrutura — tem você no centro de tudo.
+
+Na u4digital, identificamos quais processos do seu negócio podem rodar com agente de IA. Não automação genérica — agente treinado com o seu vocabulário, seu método, suas objeções.
+
+35 minutos de diagnóstico. Sem pitch. Sem contrato. Você vê funcionando ao vivo.</div>
+        </div>
+      </div>
+
+      <!-- Ad 1A-V3 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">1A-V3</span>
+          <span class="ad-card__name">u4d | Ad | Video3 | Dependencia — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">video_3_legendado.mp4 (35.3 MB, 1280x720, ~1:26)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Se 1 pessoa sair, o negócio trava?</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Agentes de IA sob medida para experts digitais. Raio-X gratuito.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-video-cold-mai26&amp;utm_content=video_3&amp;utm_term=dependencia</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">70% dos experts que faturam R$30K+ dependem de 1-2 pessoas-chave no time. Se o editor pede demissão, o próximo lançamento atrasa 3 semanas.
+
+Você não tem um sistema. Tem um castelo de cartas.
+
+A u4digital constrói agentes de IA que operam com a sua voz, no seu processo — sem férias, sem rotatividade, sem dias ruins.
+
+Diagnóstico gratuito de 35 minutos. Você vê o mapa e decide.</div>
+        </div>
+      </div>
+
+      <!-- Ad 1A-V4 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">1A-V4</span>
+          <span class="ad-card__name">u4d | Ad | Video4 | Concorrente — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">video_4_legendado.mp4 (37.5 MB, 1280x720, ~1:08)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Seu concorrente já automatizou. E você?</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Assessoria de IA para experts digitais. Diagnóstico gratuito.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-video-cold-mai26&amp;utm_content=video_4&amp;utm_term=concorrente</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">Seu concorrente opera com 2 pessoas + 5 agentes de IA. Lança mais rápido, produz mais conteúdo, responde mais rápido e gasta metade.
+
+Todo mês que passa, a distância aumenta.
+
+A u4digital constrói agentes sob medida para experts digitais que faturam R$10K+/mês — com a sua voz, no seu processo, por uma fração do custo do time.
+
+Raio-X Digital gratuito. 35 minutos.</div>
+        </div>
+      </div>
+
+      <!-- Ad 1A-V5 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">1A-V5</span>
+          <span class="ad-card__name">u4d | Ad | Video5 | Margem — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">video_5_legendado.mp4 (17.4 MB, 1280x720, ~1:15)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">R$18K de time por mês. Há uma alternativa.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Assessoria de IA para experts digitais que faturam R$10K+/mês.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-video-cold-mai26&amp;utm_content=video_5&amp;utm_term=margem</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">Expert digital que fatura R$50K/mês:
+
+Gasta R$18-25K em time por mês.
+Perde 3 semanas quando 1 pessoa sai.
+Trabalha 55h+/semana no operacional.
+
+A u4digital constrói agentes de IA treinados com a sua voz que eliminam esse custo — sem você precisar aprender nada.
+
+Raio-X Digital gratuito. Veja exatamente o que pode ser automatizado no seu negócio.</div>
+        </div>
+      </div>
+
+      <!-- Ad Set 2A -->
+      <h3 class="subsection-title">Ad Set 2A — Infoprodutores + Ferramentas Digitais (Static)</h3>
+      <div class="camp-card" style="margin-bottom:var(--space-8)">
+        <p class="camp-card__title" style="font-size:var(--font-sm)">u4d | AS | Infoprodutores+Tools | 27-48 | BR — Static — 2026-05</p>
+        <div class="camp-card__grid">
+          <div class="field-row"><span class="field-row__label">Localização</span><span class="field-row__value">Brasil (país inteiro)</span></div>
+          <div class="field-row"><span class="field-row__label">Idade</span><span class="field-row__value">27-48</span></div>
+          <div class="field-row"><span class="field-row__label">Gênero</span><span class="field-row__value">All</span></div>
+          <div class="field-row"><span class="field-row__label">Idioma</span><span class="field-row__value">Português</span></div>
+          <div class="field-row"><span class="field-row__label">Placements</span><span class="field-row__value">Automatic (Advantage+ Placements)</span></div>
+          <div class="field-row"><span class="field-row__label">Optimization Event</span><span class="field-row__value">Lead</span></div>
+          <div class="field-row" style="grid-column:1/-1"><span class="field-row__label">Detailed Targeting</span><span class="field-row__value">Hotmart OR Kiwify OR "Lançamento digital" OR "Marketing digital" OR ActiveCampaign OR RD Station</span></div>
+        </div>
+      </div>
+
+      <!-- Anúncios Campanha 2 -->
+      <h3 class="subsection-title">Anúncios — Campanha 2 (Static)</h3>
+
+      <!-- Ad 2A-S1 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">2A-S1</span>
+          <span class="ad-card__name">u4d | Ad | Static2 | Custo-Comp | Feed — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">2.png (1080x1080 — Feed)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Time vs. agente: R$14K ou R$2,8K?</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Raio-X Digital gratuito — 35 min, sem compromisso.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-static-cold-mai26&amp;utm_content=static_2&amp;utm_term=custo-comp</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">SDR com encargos: R$3.700/mês.
+Copywriter freelancer: R$2.500/mês.
+CS de atendimento: R$2.800/mês.
+Gestor de tráfego: R$3.000/mês.
+Ferramentas de suporte: R$2.000/mês.
+
+Total: R$14.000/mês.
+
+Agentes de IA cobrindo as mesmas funções — treinados na sua voz, operando 24h — custam uma fração disso.
+
+O Raio-X Digital mapeia onde estão esses custos no seu negócio em 35 minutos. Gratuito.</div>
+        </div>
+      </div>
+
+      <!-- Ad 2A-S2 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">2A-S2</span>
+          <span class="ad-card__name">u4d | Ad | Static4 | Urgencia | Feed — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">4.png (1080x1080 — Feed)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">CPL subiu 33% em 18 meses.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Veja onde IA corta custo no seu negócio — grátis.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-static-cold-mai26&amp;utm_content=static_4&amp;utm_term=urgencia</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">CPL subiu 21% em 2025. Mais 12% em 2026.
+
+O mesmo resultado que você tinha 18 meses atrás hoje exige 33% mais investimento em tráfego.
+
+Quem está sobrevivendo a isso não cortou despesa — redesenhou o custo operacional. Agentes de IA bem treinados produzem mais com menos. Não é sobre tecnologia. É sobre margem.
+
+Diagnóstico gratuito de 35 minutos.</div>
+        </div>
+      </div>
+
+      <!-- Ad 2A-S3 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">2A-S3</span>
+          <span class="ad-card__name">u4d | Ad | Static6 | ChatGPT | Feed — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">6.png (1080x1080 — Feed)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">ChatGPT não é agente de IA.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Diagnóstico gratuito. Você vê o agente no seu contexto.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-static-cold-mai26&amp;utm_content=static_6&amp;utm_term=chatgpt</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">"Já uso ChatGPT."
+
+Bom. Mas o que você está usando é uma ferramenta genérica que não sabe quem é seu cliente, qual é sua oferta, ou como você fala.
+
+Agente de IA treinado na sua voz aprende suas transcrições de vendas, seus emails, seus scripts. Quando responde um lead, usa seus exemplos, suas perguntas, seu nível de detalhe.
+
+70% das implementações de IA falham porque pararam no ChatGPT.
+
+Raio-X Digital gratuito — veja a diferença ao vivo em 35 minutos.</div>
+        </div>
+      </div>
+
+      <!-- Ad 2A-S4 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">2A-S4</span>
+          <span class="ad-card__name">u4d | Ad | Static1 | Custo-Time | Stories — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">1.png (1080x1920 — Stories/Reels)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Seu negócio custa quanto por mês em time?</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Diagnóstico gratuito para experts digitais que faturam R$10K+/mês.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-static-cold-mai26&amp;utm_content=static_1&amp;utm_term=custo-time</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">Você soma quanto gasta de time por mês?
+
+Editor. Designer. Social media. Gestor de tráfego. Copy. Suporte.
+
+Agora divide pelo lucro líquido do último lançamento.
+
+A u4digital constrói agentes de IA treinados com a sua voz, no seu processo — que cobrem boa parte do que esse time faz, por uma fração do custo.
+
+Diagnóstico gratuito. 35 minutos.</div>
+        </div>
+      </div>
+
+      <!-- Ad 2A-S5 -->
+      <div class="ad-card">
+        <div class="ad-card__header">
+          <span class="ad-card__id">2A-S5</span>
+          <span class="ad-card__name">u4d | Ad | Static3 | CPL | Stories — 2026-05</span>
+        </div>
+        <div class="ad-card__body">
+          <div class="ad-card__field">
+            <span class="ad-card__label">Criativo</span>
+            <span class="ad-card__value">3.png (1080x1920 — Stories/Reels)</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Headline</span>
+            <span class="ad-card__value">Seu CPL sobe. O do seu concorrente não.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">Description</span>
+            <span class="ad-card__value">Assessoria de IA para experts digitais. Diagnóstico gratuito.</span>
+          </div>
+          <div class="ad-card__field">
+            <span class="ad-card__label">CTA Button</span>
+            <span class="ad-card__value">LEARN_MORE</span>
+          </div>
+          <div class="ad-card__field" style="grid-column:1/-1">
+            <span class="ad-card__label">URL</span>
+            <span class="ad-card__value ad-card__value--mono">https://u4digital.com.br/raio-x?utm_source=meta&amp;utm_medium=paid&amp;utm_campaign=u4d-static-cold-mai26&amp;utm_content=static_3&amp;utm_term=cpl-subindo</span>
+          </div>
+          <div class="ad-card__copy" style="grid-column:1/-1">O mesmo resultado que você tinha em 2024 hoje exige 33% mais em investimento de mídia.
+
+Mais criativo. Mais teste. Mais time pra operar.
+
+Enquanto o topo do mercado resolve isso com agentes — que produzem, qualificam, atendem e monitoram por uma fração do custo — a maior parte dos experts continua contratando pessoa pra resolver problema que já tem solução.
+
+Raio-X Digital — 35 min, gratuito.</div>
+        </div>
+      </div>
+
+      <!-- Instant Form -->
+      <h3 class="subsection-title">2.4 — Meta Instant Form</h3>
+      <div class="camp-card">
+        <p class="camp-card__title" style="font-size:var(--font-sm)">u4digital — Raio-X Digital &nbsp;·&nbsp; Tipo: More Volume</p>
+        <div class="camp-card__grid" style="margin-bottom:var(--space-5)">
+          <div class="field-row" style="grid-column:1/-1"><span class="field-row__label">Campos auto-preenchidos</span><span class="field-row__value">Nome completo · Email · Telefone (WhatsApp)</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+          <div class="card">
+            <p class="card__label">Pergunta 1 (obrigatória)</p>
+            <p class="card__value" style="margin-top:var(--space-2)">Qual é o seu faturamento mensal atual?<br><span style="color:var(--color-text-muted);font-size:var(--font-xs)">Abaixo de R$10K · R$10K-R$30K · R$30K-R$80K · Acima de R$80K</span></p>
+          </div>
+          <div class="card">
+            <p class="card__label">Pergunta 2 (obrigatória)</p>
+            <p class="card__value" style="margin-top:var(--space-2)">Quantas pessoas tem no seu time hoje?<br><span style="color:var(--color-text-muted);font-size:var(--font-xs)">Trabalho sozinho · 1-3 pessoas · 4-8 pessoas · 9+ pessoas</span></p>
+          </div>
+          <div class="card">
+            <p class="card__label">Pergunta 3 (opcional — texto livre)</p>
+            <p class="card__value" style="margin-top:var(--space-2)">Qual área da sua operação mais consome tempo?<br><span style="color:var(--color-text-muted);font-size:var(--font-xs)">Ex: atendimento, produção de conteúdo, gestão de tráfego...</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Seção 3: Audiência ───────────────────────────────── -->
+    <section class="doc-section" id="audiencia">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 03</p>
+        <h2 class="doc-section-title">Audiência</h2>
+        <p class="doc-section-desc">Audiência fria principal, audiências custom e lookalike, exclusões.</p>
+      </div>
+
+      <h3 class="subsection-title">3.1 — Audiência Fria Principal: "Infoprodutores BR"</h3>
+
+      <div class="table-wrapper" style="margin-bottom:var(--space-8)">
+        <table class="table">
+          <thead><tr><th>Parâmetro</th><th>Configuração</th></tr></thead>
+          <tbody>
+            <tr><td>Localização</td><td>Brasil (inteiro)</td></tr>
+            <tr><td>Idade</td><td>27-48</td></tr>
+            <tr><td>Gênero</td><td>Todos</td></tr>
+            <tr><td>Idioma</td><td>Português</td></tr>
+            <tr><td>Interesses (OR)</td><td>Hotmart, Kiwify, "Lançamento digital", "Marketing digital", ActiveCampaign, RD Station</td></tr>
+            <tr><td>Tamanho estimado</td><td>2M-6M</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">Interesses Alternativos — Fase 2+</h3>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-8)">
+        <div class="card"><p class="card__label">Grupo B — Tráfego Pago</p><p class="card__value" style="margin-top:var(--space-2)">Pedro Sobral · "Gestão de tráfego" · Facebook Ads · Google Ads</p></div>
+        <div class="card"><p class="card__label">Grupo C — IA e Automação</p><p class="card__value" style="margin-top:var(--space-2)">ChatGPT · OpenAI · "Inteligência artificial" · Make (Integromat) · Zapier</p></div>
+        <div class="card"><p class="card__label">Grupo D — Educação Digital</p><p class="card__value" style="margin-top:var(--space-2)">Erico Rocha · "Infoprodutos" · Copywriting · "Email marketing"</p></div>
+      </div>
+
+      <h3 class="subsection-title">3.2 — Audiências Custom (criar quando)</h3>
+      <div class="table-wrapper" style="margin-bottom:var(--space-8)">
+        <table class="table">
+          <thead><tr><th>Audiência</th><th>Quando criar</th><th>Requisito mínimo</th></tr></thead>
+          <tbody>
+            <tr><td>Visitantes do site (30 dias)</td><td>Após instalar pixel e ter 1.000+ visitas</td><td>Pixel ativo</td></tr>
+            <tr><td>Video viewers 50%+ (14 dias)</td><td>Após 7 dias de campanha ativa</td><td>Campanhas rodando</td></tr>
+            <tr><td>Interações Instagram (30 dias)</td><td>Quando conectar Instagram Business</td><td>Conta vinculada</td></tr>
+            <tr><td>Lead form openers (não completaram)</td><td>Após 20+ aberturas de formulário</td><td>Campanha rodando</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">3.3 — Audiências Lookalike (quando criar)</h3>
+      <div class="table-wrapper" style="margin-bottom:var(--space-6)">
+        <table class="table">
+          <thead><tr><th>Tipo</th><th>Quando</th><th>Tamanho</th></tr></thead>
+          <tbody>
+            <tr><td>LAL 1% de Leads</td><td>Após 50 leads captados</td><td>1% BR</td></tr>
+            <tr><td>LAL 1% de Agendamentos</td><td>Após 20 agendamentos</td><td>1% BR</td></tr>
+            <tr><td>LAL 1% de Clientes</td><td>Após 3 clientes fechados (upload CSV)</td><td>1% BR</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-warning">
+        <strong>Atenção:</strong> Não criar lookalike antes de ter a base mínima. Com 0 dados, qualquer LAL será aleatório.
+      </div>
+
+      <h3 class="subsection-title">3.4 — Exclusões</h3>
+      <p style="font-size:var(--font-sm);color:var(--color-text-muted);line-height:var(--leading-relaxed);">Na fase de teste, não excluir ninguém — a audiência já é restrita o suficiente pelos interesses. Na fase de escala: excluir leads já captados, clientes ativos, menores de 27 anos e quem já agendou.</p>
+    </section>
+
+    <!-- ─── Seção 4: Budget & Fases ─────────────────────────── -->
+    <section class="doc-section" id="budget">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 04</p>
+        <h2 class="doc-section-title">Budget &amp; Fases</h2>
+        <p class="doc-section-desc">3 fases com critérios de entrada claros. Fase 1 ativa com aprovação de Moroni.</p>
+      </div>
+
+      <div class="phase-grid">
+        <div class="phase-card phase-card--active">
+          <p class="phase-card__label">Fase 1 — Atual</p>
+          <p class="phase-card__amount phase-card__amount--accent">R$200</p>
+          <p class="phase-card__title">Teste — Dias 1-7</p>
+          <div class="phase-card__criteria">
+            <strong>Camp. 1 (Vídeo):</strong> R$35/dia × 3 dias = R$105<br>
+            <strong>Camp. 2 (Static):</strong> R$25/dia × 3 dias = R$75<br>
+            <strong>Reserva:</strong> R$20 (reforço do vencedor no dia 4)<br><br>
+            Dias 1-3: rodar sem tocar. Dia 4: alocar reserva no melhor performer. Dias 5-7: leitura final.
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <p class="phase-card__label">Fase 2</p>
+          <p class="phase-card__amount">R$500-1K</p>
+          <p class="phase-card__title">Validação</p>
+          <div class="phase-card__criteria">
+            <strong>GO SE:</strong> CPL médio &lt; R$25 com 5+ leads · CTR &gt; 1% em 3+ anúncios · pelo menos 1 agendamento confirmado.<br><br>
+            Manter 3-4 melhores. Pausar piores. Aumentar budget do vencedor em 30%. Testar audiência alternativa.
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <p class="phase-card__label">Fase 3</p>
+          <p class="phase-card__amount">R$2K+/mês</p>
+          <p class="phase-card__title">Escala</p>
+          <div class="phase-card__criteria">
+            <strong>GO SE:</strong> CPL &lt; R$20 sustentável por 7+ dias · 3 Raio-X realizados · 1 venda fechada · ROI positivo confirmado.<br><br>
+            Escalar até R$100/dia. Criar LAL 1%. Abrir campanhas de remarketing.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Seção 5: Otimização ─────────────────────────────── -->
+    <section class="doc-section" id="otimizacao">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 05</p>
+        <h2 class="doc-section-title">Regras de Otimização</h2>
+        <p class="doc-section-desc">Kill rules, scale rules e benchmarks de KPI para as 3 fases.</p>
+      </div>
+
+      <div class="two-col" style="margin-bottom:var(--space-8)">
+        <div>
+          <h3 class="subsection-title" style="margin-top:0">5.1 — Kill Rules (quando pausar)</h3>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead><tr><th>Condição</th><th>Ação</th></tr></thead>
+              <tbody>
+                <tr><td>Anúncio gastou R$30 sem nenhum lead</td><td style="color:#f87171;font-weight:500">PAUSAR imediatamente</td></tr>
+                <tr><td>CTR (link) &lt; 0,5% após R$15 de spend</td><td style="color:#f87171;font-weight:500">PAUSAR e trocar criativo</td></tr>
+                <tr><td>CTR &lt; 0,3% após R$10</td><td style="color:#f87171;font-weight:500">PAUSAR — criativo ignorado</td></tr>
+                <tr><td>CPL &gt; R$50 após R$50 de spend</td><td style="color:#f87171;font-weight:500">PAUSAR e testar variação</td></tr>
+                <tr><td>Não pausar nada antes de R$15 de gasto</td><td style="color:var(--color-text-muted)">Dados insuficientes</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="subsection-title" style="margin-top:0">5.2 — Scale Rules (quando aumentar)</h3>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead><tr><th>Condição</th><th>Ação</th></tr></thead>
+              <tbody>
+                <tr><td>CPL &lt; R$15 com 5+ leads</td><td style="color:#34d399;font-weight:500">Adicionar R$20 reserva</td></tr>
+                <tr><td>CPL &lt; R$10 sustentável por 3 dias</td><td style="color:#34d399;font-weight:500">Escalar para R$50/dia (+30%)</td></tr>
+                <tr><td>3 anúncios com CPL &lt; R$20</td><td style="color:#34d399;font-weight:500">Novo Ad Set — audiência alternativa</td></tr>
+                <tr><td colspan="2" style="color:var(--color-text-disabled);font-size:var(--font-xs)">NUNCA aumentar budget &gt;30% de uma vez — proteger fase de aprendizado</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">5.4 — KPI Benchmarks</h3>
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Métrica</th>
+              <th class="kpi-ruim">Ruim</th>
+              <th class="kpi-aceitavel">Aceitável</th>
+              <th class="kpi-bom">Bom</th>
+              <th class="kpi-excelente">Excelente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CPL</td>
+              <td class="kpi-ruim">&gt; R$50</td>
+              <td class="kpi-aceitavel">R$25-50</td>
+              <td class="kpi-bom">R$15-25</td>
+              <td class="kpi-excelente">&lt; R$15</td>
+            </tr>
+            <tr>
+              <td>CTR (link)</td>
+              <td class="kpi-ruim">&lt; 0.5%</td>
+              <td class="kpi-aceitavel">0.5-1%</td>
+              <td class="kpi-bom">1-2%</td>
+              <td class="kpi-excelente">&gt; 2%</td>
+            </tr>
+            <tr>
+              <td>CPC</td>
+              <td class="kpi-ruim">&gt; R$5</td>
+              <td class="kpi-aceitavel">R$3-5</td>
+              <td class="kpi-bom">R$1.50-3</td>
+              <td class="kpi-excelente">&lt; R$1.50</td>
+            </tr>
+            <tr>
+              <td>CPM</td>
+              <td class="kpi-ruim">&gt; R$60</td>
+              <td class="kpi-aceitavel">R$40-60</td>
+              <td class="kpi-bom">R$25-40</td>
+              <td class="kpi-excelente">&lt; R$25</td>
+            </tr>
+            <tr>
+              <td>Video hold 3s</td>
+              <td class="kpi-ruim">&lt; 30%</td>
+              <td class="kpi-aceitavel">30-40%</td>
+              <td class="kpi-bom">40-55%</td>
+              <td class="kpi-excelente">&gt; 55%</td>
+            </tr>
+            <tr>
+              <td>Video hold 50%</td>
+              <td class="kpi-ruim">&lt; 15%</td>
+              <td class="kpi-aceitavel">15-25%</td>
+              <td class="kpi-bom">25-35%</td>
+              <td class="kpi-excelente">&gt; 35%</td>
+            </tr>
+            <tr>
+              <td>Form completion rate</td>
+              <td class="kpi-ruim">&lt; 40%</td>
+              <td class="kpi-aceitavel">40-60%</td>
+              <td class="kpi-bom">60-75%</td>
+              <td class="kpi-excelente">&gt; 75%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Seção 6: Criativos ──────────────────────────────── -->
+    <section class="doc-section" id="criativos">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 06</p>
+        <h2 class="doc-section-title">Mapeamento de Criativos</h2>
+        <p class="doc-section-desc">30 peças mapeadas: 5 vídeos landscape, 7 vídeos verticais, 18 estáticos. Fase 1 usa 10 peças.</p>
+      </div>
+
+      <h3 class="subsection-title">6.1 — Vídeos Legendados (Landscape 1280x720) — Fase 1</h3>
+      <div class="table-wrapper" style="margin-bottom:var(--space-8)">
+        <table class="table">
+          <thead>
+            <tr><th>#</th><th>Arquivo</th><th>Tamanho</th><th>Duração</th><th>Campanha</th><th>Ângulo</th><th>Headline</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td><code>video_1_legendado.mp4</code></td><td>34.5 MB</td><td>~1:29</td><td>Camp 1 Vídeo / AS 1A</td><td>Custo-Time</td><td>Quanto seu time custa de verdade?</td></tr>
+            <tr><td>2</td><td><code>video_2_legendado.mp4</code></td><td>32.6 MB</td><td>~1:16</td><td>Camp 1 Vídeo / AS 1A</td><td>Tempo-Ops</td><td>Seu negócio funciona sem você?</td></tr>
+            <tr><td>3</td><td><code>video_3_legendado.mp4</code></td><td>35.3 MB</td><td>~1:26</td><td>Camp 1 Vídeo / AS 1A</td><td>Dependência</td><td>Se 1 pessoa sair, o negócio trava?</td></tr>
+            <tr><td>4</td><td><code>video_4_legendado.mp4</code></td><td>37.5 MB</td><td>~1:08</td><td>Camp 1 Vídeo / AS 1A</td><td>Concorrente</td><td>Seu concorrente já automatizou. E você?</td></tr>
+            <tr><td>5</td><td><code>video_5_legendado.mp4</code></td><td>17.4 MB</td><td>~1:15</td><td>Camp 1 Vídeo / AS 1A</td><td>Margem</td><td>R$18K de time por mês. Há uma alternativa.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">6.2 — Estáticos Feed (1080x1080) — Fase 1</h3>
+      <div class="table-wrapper" style="margin-bottom:var(--space-8)">
+        <table class="table">
+          <thead>
+            <tr><th>Arquivo</th><th>Formato</th><th>Campanha</th><th>Ângulo</th><th>Headline</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>2.png</code></td><td>1080x1080</td><td>Camp 2 Static / AS 2A</td><td>Custo-Comp</td><td>Time vs. agente: R$14K ou R$2,8K?</td></tr>
+            <tr><td><code>4.png</code></td><td>1080x1080</td><td>Camp 2 Static / AS 2A</td><td>Urgência</td><td>CPL subiu 33% em 18 meses.</td></tr>
+            <tr><td><code>6.png</code></td><td>1080x1080</td><td>Camp 2 Static / AS 2A</td><td>ChatGPT</td><td>ChatGPT não é agente de IA.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">6.3 — Estáticos Stories (1080x1920) — Fase 1</h3>
+      <div class="table-wrapper" style="margin-bottom:var(--space-8)">
+        <table class="table">
+          <thead>
+            <tr><th>Arquivo</th><th>Formato</th><th>Campanha</th><th>Ângulo</th><th>Headline</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>1.png</code></td><td>1080x1920</td><td>Camp 2 Static / AS 2A</td><td>Custo-Time</td><td>Seu negócio custa quanto por mês em time?</td></tr>
+            <tr><td><code>3.png</code></td><td>1080x1920</td><td>Camp 2 Static / AS 2A</td><td>CPL</td><td>Seu CPL sobe. O do seu concorrente não.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">6.4 — Criativos em Reserva (Fase 2)</h3>
+
+      <div class="two-col">
+        <div>
+          <h4 style="font-size:var(--font-xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--color-text-disabled);margin-bottom:var(--space-3);">Vídeos Verticais (WhatsApp/Stories/Reels)</h4>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead><tr><th>#</th><th>Arquivo</th><th>Tamanho</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-05 at 15.36.11.mp4</td><td>14 MB</td></tr>
+                <tr><td>2</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-14 at 11.09.56.mp4</td><td>12 MB</td></tr>
+                <tr><td>3</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-14 at 14.24.05.mp4</td><td>21 MB</td></tr>
+                <tr><td>4</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-14 at 14.24.12.mp4</td><td>18 MB</td></tr>
+                <tr><td>5</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-15 at 14.43.38.mp4</td><td>16 MB</td></tr>
+                <tr><td>6</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-15 at 14.43.38 (1).mp4</td><td>20 MB</td></tr>
+                <tr><td>7</td><td style="font-size:var(--font-xs)">WhatsApp Video 2026-05-15 at 15.42.38.mp4</td><td>17 MB</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size:var(--font-xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--color-text-disabled);margin-bottom:var(--space-3);">Estáticos em Reserva</h4>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead><tr><th>Arquivo</th><th>Formato</th><th>Uso planejado</th></tr></thead>
+              <tbody>
+                <tr><td><code>5.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>7.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>8.png</code></td><td>1080x1080</td><td>Fase 2 — Feed</td></tr>
+                <tr><td><code>9.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>10.png</code></td><td>1080x1080</td><td>Fase 2 — Feed</td></tr>
+                <tr><td><code>11.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>12.png</code></td><td>1080x1080</td><td>Fase 2 — Feed</td></tr>
+                <tr><td><code>13.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>14.png</code></td><td>1080x1080</td><td>Fase 2 — Feed</td></tr>
+                <tr><td><code>15.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>16.png</code></td><td>1080x1080</td><td>Fase 2 — Feed</td></tr>
+                <tr><td><code>17.png</code></td><td>1080x1920</td><td>Fase 2 — Stories</td></tr>
+                <tr><td><code>18.png</code></td><td>1080x1080</td><td>Fase 2 — Feed</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Seção 7: Checklist ──────────────────────────────── -->
+    <section class="doc-section" id="checklist">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 07</p>
+        <h2 class="doc-section-title">Checklist de Execução</h2>
+        <p class="doc-section-desc">Ordem exata de operações quando o token estiver disponível. Todas as campanhas criadas PAUSADAS.</p>
+      </div>
+
+      <div class="checklist">
+        <p class="checklist__phase-label">Fase 0 — Pré-Requisitos (antes de tocar no Meta)</p>
+
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.1</span>
+          <span>Confirmar que https://u4digital.com.br/raio-x está no ar e funcional</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.2</span>
+          <span>Instalar Meta Pixel no site (código na Seção 1.1)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.3</span>
+          <span>Testar disparo de evento PageView (usar Meta Pixel Helper extensão Chrome)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.4</span>
+          <span>Configurar evento Lead no CTA/formulário da LP</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.5</span>
+          <span>Testar evento Lead com Pixel Helper</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.6</span>
+          <span>Configurar Cal.com link na LP (se aplicável)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.7</span>
+          <span>Preparar planilha Google Sheets para CRM manual (nome, WhatsApp, faturamento, status)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">0.8</span>
+          <span>Confirmar acesso à conta act_1497187178472890 com token válido</span>
+        </div>
+
+        <p class="checklist__phase-label">Fase 1 — Criação na Plataforma (tudo PAUSADO)</p>
+
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.1</span>
+          <span>Criar Pixel (se não existir) — anotar PIXEL_ID</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.2</span>
+          <span>Criar Meta Instant Form "u4digital — Raio-X Digital" com as 3 perguntas (Seção 2.4)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.3</span>
+          <span>Upload de criativos para a biblioteca: video_1 a video_5, 1.png, 2.png, 3.png, 4.png, 6.png</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.4</span>
+          <span>Criar Campanha 1: <code>u4digital | Leads | Infoprodutores BR | Video Landscape — 2026-05</code> (PAUSED)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.5</span>
+          <span>Criar Ad Set 1A com targeting conforme Seção 2.2 (PAUSED)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.6</span>
+          <span>Criar 5 anúncios de vídeo (Ad 1A-V1 a 1A-V5) com copy conforme Seção 2.2 (PAUSED)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.7</span>
+          <span>Criar Campanha 2: <code>u4digital | Leads | Infoprodutores BR | Static Feed+Stories — 2026-05</code> (PAUSED)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.8</span>
+          <span>Criar Ad Set 2A com targeting conforme Seção 2.3 (PAUSED)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.9</span>
+          <span>Criar 5 anúncios estáticos (Ad 2A-S1 a 2A-S5) com copy conforme Seção 2.3 (PAUSED)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">1.10</span>
+          <span>Revisar TODOS os anúncios no Gerenciador — conferir URLs, copy, criativos, targeting</span>
+        </div>
+
+        <p class="checklist__phase-label">Fase 2 — Review e Ativação</p>
+
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">2.1</span>
+          <span>Moroni revisa todas as campanhas no Gerenciador de Anúncios</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">2.2</span>
+          <span>Moroni confirma: "PODE ATIVAR"</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">2.3</span>
+          <span>Ativar Campanha 1 (Vídeo)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">2.4</span>
+          <span>Ativar Campanha 2 (Static)</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">2.5</span>
+          <span>Confirmar nas primeiras 6h que TODOS os anúncios estão com status "Active" e recebendo impressões</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">2.6</span>
+          <span>Se algum anúncio rejeitado pelo Meta — corrigir e resubmeter</span>
+        </div>
+
+        <p class="checklist__phase-label">Fase 3 — Monitoramento (Dias 1-7)</p>
+
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">3.1</span>
+          <span>Dia 1: Checklist — todos os anúncios com impressões? Spend distribuído?</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">3.2</span>
+          <span>Dia 2: CTR geral &gt; 0.5%? Alguma anomalia?</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">3.3</span>
+          <span>Dia 3: Primeiro corte de dados. Ranking por CTR e CPL (se houver leads).</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">3.4</span>
+          <span>Dia 4: Alocar R$20 de reserva no melhor performer. Aplicar kill rules se necessário.</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">3.5</span>
+          <span>Dias 5-7: Leitura final. Ranking dos 10 anúncios. Definir GO/NO-GO para Fase 2 de budget.</span>
+        </div>
+        <div class="checklist__item">
+          <div class="checklist__box"></div>
+          <span class="checklist__num">3.6</span>
+          <span>Relatório completo para Moroni: CPL, CTR, leads, agendamentos, custo total.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Seção 8: Cenários ───────────────────────────────── -->
+    <section class="doc-section" id="cenarios">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 08</p>
+        <h2 class="doc-section-title">Cenários Decisórios Pós-Teste</h2>
+        <p class="doc-section-desc">4 cenários com ação imediata e projeção para cada resultado.</p>
+      </div>
+
+      <div class="scenario-grid">
+        <div class="scenario-card scenario-card--a">
+          <p class="scenario-card__tag tag-a">Cenário A</p>
+          <p class="scenario-card__title">CPL &lt; R$15 — Excelente</p>
+          <p class="scenario-card__body">13-25 leads projetados.<br><br><strong style="color:var(--color-text-secondary)">Imediato:</strong> Escalar para R$50/dia com os 3 melhores anúncios.<br><strong style="color:var(--color-text-secondary)">Em 7 dias:</strong> Adicionar vídeos verticais, testar audiência LAL 1%.<br><strong style="color:var(--color-text-secondary)">Projeção (R$1.500/mês):</strong> 100-150 leads, 20-30 agendamentos, 6-10 vendas.</p>
+        </div>
+
+        <div class="scenario-card scenario-card--b">
+          <p class="scenario-card__tag tag-b">Cenário B</p>
+          <p class="scenario-card__title">CPL R$15-25 — Bom</p>
+          <p class="scenario-card__body">8-13 leads projetados.<br><br><strong style="color:var(--color-text-secondary)">Imediato:</strong> Manter os 4 melhores, pausar os 6 piores.<br><strong style="color:var(--color-text-secondary)">Em 7 dias:</strong> Testar variações de hook, manter audiência.<br><strong style="color:var(--color-text-secondary)">Projeção:</strong> Viável para escala com otimização.</p>
+        </div>
+
+        <div class="scenario-card scenario-card--c">
+          <p class="scenario-card__tag tag-c">Cenário C</p>
+          <p class="scenario-card__title">CPL R$25-50 — Aceitável</p>
+          <p class="scenario-card__body">4-8 leads projetados.<br><br><strong style="color:var(--color-text-secondary)">Ação:</strong> Pausar 70% dos anúncios. Manter os 2-3 com melhor CTR.<br><strong style="color:var(--color-text-secondary)">Iterar:</strong> Mudar copy principal, testar novo ângulo.<br><strong style="color:var(--color-text-secondary)">Rodar mais R$200</strong> com variações antes de escalar.</p>
+        </div>
+
+        <div class="scenario-card scenario-card--d">
+          <p class="scenario-card__tag tag-d">Cenário D</p>
+          <p class="scenario-card__title">CPL &gt; R$50 ou Zero Leads — Problema</p>
+          <p class="scenario-card__body">0-4 leads.<br><br><strong style="color:var(--color-text-secondary)">Diagnóstico:</strong> LP está convertendo? Criativos estão sendo vistos (verificar impressões e CTR)? Audiência está errada (verificar CPM — se alto, audiência pequena demais)?<br><br><strong style="color:#f87171">Ação: PARAR.</strong> Rever oferta, LP, ou audiência antes de gastar mais.</p>
+        </div>
+      </div>
+
+      <!-- Safety Checklist Final -->
+      <h3 class="subsection-title">Safety Checklist Final</h3>
+      <p style="font-size:var(--font-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)">Antes de cada operação write (criar, alterar, pausar), verificar:</p>
+      <div class="checklist">
+        <div class="checklist__item"><div class="checklist__box"></div><span>Conta correta: act_1497187178472890 (u4digital) — NAO confundir com Moroni Reis, Noiva SA, Agente Lucrativo, ou Leo Soares</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Moroni autorizou esta ação específica</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Budget dentro dos limites aprovados (máx R$35/dia por campanha)</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Campanha será criada PAUSED</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Nenhuma alteração de budget &gt;30% em uma única mudança</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Nenhuma campanha, ad set ou ad será DELETADO — apenas pausado</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Nenhum token, credential ou access key exposto em logs ou arquivos</span></div>
+        <div class="checklist__item"><div class="checklist__box"></div><span>Nenhuma alteração em campanhas de outras contas</span></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

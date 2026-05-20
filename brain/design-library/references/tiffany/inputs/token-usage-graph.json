@@ -1,0 +1,382 @@
+[
+  {
+    "name": "--search-phase-duration",
+    "declarations": 2,
+    "references": 16
+  },
+  {
+    "name": "--search-phase-delay",
+    "declarations": 2,
+    "references": 13
+  },
+  {
+    "name": "--intro-chapter-count",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--intro-chapter-gap",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--timeline-dash-length",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--black",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--cyan-bluish-gray",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--white",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--pale-pink",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-red",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--luminous-vivid-orange",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--luminous-vivid-amber",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--light-green-cyan",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-green-cyan",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--pale-cyan-blue",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-cyan-blue",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-purple",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--timeline-dot-offset",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--intro-hover-gradient-x",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--intro-hover-gradient-opacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--timeline-progress",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--timeline-dash-gap",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp-block-synced-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--normal",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--huge",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--luminous-vivid-orange-to-vivid-red",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--cool-to-warm-spectrum",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--blush-light-purple",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--blush-bordeaux",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--luminous-dusk",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--pale-ocean",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--electric-grass",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--midnight",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--small",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--medium",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--large",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--x-large",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp-admin--admin-bar--height",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--edd-blocks-light-grey",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--intro-chapter-hover-gap",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--intro-chapter-hover-width",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--timeline-track-width",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-block-synced-color--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-bound-block-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-editor-canvas-background",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-10",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-10--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-20",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-20--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-border-width-focus",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin--admin-bar--position-offset",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--square",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--4-3",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--3-4",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--3-2",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--2-3",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--16-9",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--9-16",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--20",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--30",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--40",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--50",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--60",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--70",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--80",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--natural",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--deep",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--sharp",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--outlined",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--crisp",
+    "declarations": 1,
+    "references": 0
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "family": "Manrope",
+    "weight": "200 800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "manrope-variable.979226b2ae453f5b.woff2"
+    ],
+    "src_formats": [
+      "woff2-variations"
+    ],
+    "source_css_url": "https://www.hermes.com/us/en/hermes.ef2936e76bedc435.css",
+    "raw": "@font-face{font-family:Manrope;src:url(manrope-variable.979226b2ae453f5b.woff2) format(\"woff2-variations\");font-display:swap;font-weight:200 800;font-style:normal}"
+  },
+  {
+    "family": "EBGaramond",
+    "weight": "400 800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "ebgaramond-variable.d911286646b35f6b.woff2"
+    ],
+    "src_formats": [
+      "woff2-variations"
+    ],
+    "source_css_url": "https://www.hermes.com/us/en/hermes.ef2936e76bedc435.css",
+    "raw": "@font-face{font-family:EBGaramond;src:url(ebgaramond-variable.d911286646b35f6b.woff2) format(\"woff2-variations\");font-display:swap;font-weight:400 800;font-style:normal}"
+  },
+  {
+    "family": "EBGaramond",
+    "weight": "400 800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "ebgaramond-italic-variable.4afabfdc9f850a3f.woff2"
+    ],
+    "src_formats": [
+      "woff2-variations"
+    ],
+    "source_css_url": "https://www.hermes.com/us/en/hermes.ef2936e76bedc435.css",
+    "raw": "@font-face{font-family:EBGaramond;src:url(ebgaramond-italic-variable.4afabfdc9f850a3f.woff2) format(\"woff2-variations\");font-display:swap;font-weight:400 800;font-style:italic}"
+  },
+  {
+    "family": "Overpass Mono",
+    "weight": "300 700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "overpassmono-variable.b199300661b9b0b7.woff2"
+    ],
+    "src_formats": [
+      "woff2-variations"
+    ],
+    "source_css_url": "https://www.hermes.com/us/en/hermes.ef2936e76bedc435.css",
+    "raw": "@font-face{font-family:Overpass Mono;src:url(overpassmono-variable.b199300661b9b0b7.woff2) format(\"woff2-variations\");font-display:swap;font-weight:300 700;font-style:normal;ascent-override:100%}"
+  }
+]

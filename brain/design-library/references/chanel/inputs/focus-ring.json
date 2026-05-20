@@ -1,0 +1,6 @@
+{
+  "detected": true,
+  "outline": ".125rem solid var(--color-primary-variant,#1d1d1d)",
+  "outline_offset": "-2px",
+  "box_shadow": "0 0 0 2px #fff,0 0 0 4px #000"
+}

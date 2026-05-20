@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrigado — Moroni &amp; Daphine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wine: #2D0A0F;
+      --wine-deep: #1A0508;
+      --white: #FFFFFF;
+      --white-m: rgba(255,255,255,0.82);
+      --white-d: rgba(255,255,255,0.40);
+      --gold: #D4AF37;
+      --gold-b: rgba(212,175,55,0.30);
+      --fd: 'Fraunces', Georgia, serif;
+      --fu: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: var(--wine);
+      color: var(--white);
+      font-family: var(--fu);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Main container */
+    .main {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      padding: clamp(56px, 8vh, 96px) 24px clamp(40px, 6vh, 64px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Grain */
+    .main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.06'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      opacity: 0.5;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* Ornament */
+    .orn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .orn__line { width: 28px; height: 1px; background: var(--gold); opacity: 0.3; }
+    .orn__dot { width: 4px; height: 4px; border: 1px solid var(--gold); opacity: 0.4; transform: rotate(45deg); }
+
+    /* Title */
+    .title {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: clamp(36px, 6vw, 52px);
+      font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+
+    /* Message */
+    .msg {
+      font-family: var(--fu);
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--white-m);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .sub {
+      font-family: var(--fu);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white-d);
+    }
+
+    /* Divider */
+    .div-gold {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.35;
+      margin: 28px auto;
+    }
+
+    /* Copy */
+    .copy {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: clamp(14px, 1.5vw, 16px);
+      font-variation-settings: "opsz" 48, "SOFT" 20, "WONK" 0;
+      font-style: italic;
+      color: var(--white-m);
+      line-height: 1.75;
+      max-width: 460px;
+      margin: 0 auto 10px;
+    }
+
+    .copy-sm {
+      font-family: var(--fu);
+      font-size: 12px;
+      color: var(--white-d);
+      line-height: 1.65;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 180px;
+      max-width: 240px;
+      border: 1px solid var(--gold-b);
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color 0.6s;
+    }
+    .card:hover { border-color: rgba(212,175,55,0.55); }
+
+    .card__t {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: 16px;
+      font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 0;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .card__b {
+      font-family: var(--fu);
+      font-size: 11px;
+      color: var(--white-d);
+      line-height: 1.5;
+    }
+
+    .qr {
+      width: 88px;
+      height: 88px;
+      border: 1px solid var(--gold-b);
+      margin: 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr span {
+      font-family: var(--fu);
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.2;
+    }
+
+    .pix-key {
+      font-family: var(--fu);
+      font-size: 10px;
+      opacity: 0.3;
+      margin-top: 4px;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      border: 1px solid var(--gold-b);
+      font-family: var(--fu);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: all 0.5s;
+    }
+    .cta:hover { background: var(--gold); color: var(--wine-deep); }
+
+    /* Footer */
+    .footer {
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid rgba(212,175,55,0.06);
+    }
+    .footer a {
+      font-family: var(--fu);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--white-d);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+    .footer a:hover { opacity: 0.9; }
+
+    @media (max-width: 480px) {
+      .cards { flex-direction: column; align-items: center; }
+      .card { min-width: 0; width: 100%; max-width: 280px; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="Obrigado — Moroni & Daphine">
+  <meta property="og:description" content="Recebemos seu cadastro. Obrigado por fazer parte deste momento.">
+  <meta property="og:image" content="https://moroniedaphine.vercel.app/assets/og-image.jpg">
+  <meta property="og:url" content="https://moroniedaphine.vercel.app/obrigado">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<div class="main">
+  <div class="inner">
+    <div class="orn">
+      <span class="orn__line"></span>
+      <span class="orn__dot"></span>
+      <span class="orn__line"></span>
+    </div>
+
+    <h1 class="title">Obrigado!</h1>
+    <p class="msg" id="msg">Recebemos seu cadastro!</p>
+    <p class="sub">Você será notificado quando seu convite estiver pronto</p>
+
+    <div class="div-gold"></div>
+
+    <p class="copy">A preparação para o casamento requer muito esforço — tanto espiritual quanto material. Se desejar nos abençoar nesse novo começo, ficaremos muito gratos.</p>
+    <p class="copy-sm">Toda contribuição será usada para mobiliar nosso primeiro lar.</p>
+
+    <div class="cards">
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:var(--gold);opacity:.4;margin-bottom:12px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <h3 class="card__t">PIX</h3>
+        <p class="card__b">Qualquer valor nos ajuda</p>
+        <a href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" rel="noopener" style="display:block;width:88px;margin:10px auto;">
+          <img src="assets/qrcode-pix.png" alt="QR Code PIX" style="width:100%;height:auto;">
+        </a>
+        <p style="font-family:var(--fu);font-size:10px;color:var(--white-m);margin-top:6px;">Chave: <strong>(11) 96334-1710</strong></p>
+        <a href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" rel="noopener" style="display:block;font-family:var(--fu);font-size:9px;color:var(--gold);opacity:.5;margin-top:6px;transition:opacity .3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.5'">Link direto →</a>
+        <a href="https://link.mercadopago.com.br/daphineemoroni" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;padding:6px 16px;border:1px solid var(--gold-b);font-family:var(--fu);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);opacity:.5;transition:all .3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.5'">Cartão</a>
+      </div>
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:var(--gold);opacity:.4;margin-bottom:12px;"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+        <h3 class="card__t">Presentes</h3>
+        <p class="card__b">Algo especial para nosso lar</p>
+        <a href="/presentes" class="cta">Ver Lista</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <a href="/">← Voltar ao site</a>
+  <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(212,175,55,.08);">
+    <p style="font-family:var(--fu);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--white-d);opacity:.4;margin-bottom:6px;">Fale Conosco · Qualquer Suporte</p>
+    <a href="https://wa.me/5511963341710" target="_blank" rel="noopener" style="font-family:var(--fu);font-size:12px;color:var(--gold);opacity:.6;transition:opacity .3s;letter-spacing:.04em;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.6'">(11) 96334-1710</a>
+  </div>
+</footer>
+
+<script>
+  var n = new URLSearchParams(window.location.search).get('nome');
+  if (n && n.trim()) {
+    document.getElementById('msg').textContent = n.trim() + ', recebemos seu cadastro!';
+  }
+</script>
+</body>
+</html>

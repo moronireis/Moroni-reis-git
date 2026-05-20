@@ -1,0 +1,47 @@
+{
+  "primary": "linear-gradient(180deg,#fff 0,#fff 60%,#81d8d0)",
+  "secondary": "radial-gradient(66.35% 100% at 50% 0,#81d8d0 0,hsla(0,0%,100%,0) 100%)",
+  "total_unique": 31,
+  "top": [
+    {
+      "value": "linear-gradient(180deg,#fff 0,#fff 60%,#81d8d0)",
+      "count": 3
+    },
+    {
+      "value": "radial-gradient(66.35% 100% at 50% 0,#81d8d0 0,hsla(0,0%,100%,0) 100%)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(270deg,#f4f4f4 50%,#81d8d0 0)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,hsla(0,0%,96%,.8),rgba(129,216,208,.45),hsla(0,0%,96%,.8))",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(219.06deg,hsla(0,0%,100%,0) 34.62%,#bbe7e3 83.91%,#81d8d0 133.2%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(124.09deg,#fff 62.91%,#bbe7e3 89.08%,#81d8d0 127.85%)",
+      "count": 1
+    },
+    {
+      "value": "radial-gradient(circle at var(--intro-hover-gradient-x) 50%,rgba(129,216,208,.58) 0,rgba(187,231,227,.35) 48%,hsla(0,0%,96%,0) 78%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg,#002b49,#81d8d0 50%,#002b49)",
+      "count": 1
+    },
+    {
+      "value": "radial-gradient(ellipse 75% 60% at 28% 88%,rgba(129,216,208,.52) 0,transparent 58%)",
+      "count": 1
+    },
+    {
+      "value": "radial-gradient(ellipse 70% 55% at 78% 82%,rgba(187,231,227,.58) 0,transparent 55%)",
+      "count": 1
+    }
+  ]
+}

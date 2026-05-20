@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<!--
+  SOURCE: https://blissandbone.com
+  CAPTURED: 2026-05-01
+  METHOD: WebFetch (rendered HTML extraction) + CDN asset analysis
+  NOTE: This is a reconstructed source document from WebFetch analysis.
+  The site runs on a custom platform (not Shopify/WordPress).
+  CDN: cdn.blissandbone.com/_images/cache/
+  File size: ~85KB of extracted markup and asset references
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Wedding Websites &amp; Invitations | Bliss &amp; Bone</title>
+  <meta name="description" content="Modern, elevated wedding websites, online invitations, and printed stationery. The Impression Starts Now.">
+  <link rel="icon" href="/_images/Bliss-and-Bone-Logo-SM.svg">
+
+  <!-- BRAND IDENTITY ASSETS -->
+  <!-- Primary Logo: /_images/Bliss-and-Bone-Logo.svg -->
+  <!-- Small Logo: /_images/Bliss-and-Bone-Logo-SM.svg -->
+  <!-- Sister brands: Carats-and-Cake-Logo.svg, Cherry-Logo.svg -->
+
+  <!--
+    INFERRED TYPOGRAPHY (from visual analysis of rendered templates):
+    - Primary Serif: High-contrast display serif — candidates: Canela, Freight Display, Cormorant Garamond
+    - Secondary Script: Calligraphic script — candidates: Great Vibes, Alex Brush, Lovers Quarrel
+    - Tertiary Sans: Light geometric sans — candidates: Futura, Jost, Raleway
+    - System fonts for UI: likely Inter or system-ui for body copy
+    The typography system is characterized by extreme weight contrast within display headings
+    (thin hairlines vs thick strokes) — hallmark of high-end editorial serifs.
+  -->
+
+  <!--
+    INFERRED CSS (from visual + structural analysis):
+    The site uses a custom CSS architecture, not a utility framework.
+    No Tailwind, Bootstrap, or major CSS framework signatures detected.
+  -->
+
+  <style>
+    /* =========================================================
+       BLISS & BONE — INFERRED DESIGN TOKENS
+       Extracted from visual analysis of 14 CDN images + site structure
+       ========================================================= */
+
+    :root {
+      /* COLOR PALETTE — Light / Neutral base (primary site chrome) */
+      --color-white:         #FFFFFF;
+      --color-ivory:         #F7F4EE;  /* warm off-white, primary bg */
+      --color-cream:         #EDE9E0;  /* card backgrounds, paper stock */
+      --color-linen:         #E5DED4;  /* parchment, envelope tone */
+      --color-sand:          #D4C9B8;  /* warm neutral border/divider */
+      --color-stone:         #B5A898;  /* muted warm grey */
+      --color-taupe:         #9C8B7A;  /* body text on light bg */
+      --color-mocha:         #7A6B5D;  /* secondary text, captions */
+      --color-bark:          #5C4D3C;  /* dark accent on light */
+      --color-charcoal:      #2C2822;  /* near-black for headings */
+      --color-black:         #1A1713;  /* deep warm black */
+
+      /* COLOR PALETTE — Dark mode templates (seen in Amber & Elgin design) */
+      --color-dark-bg:       #1E1E1E;  /* near-black canvas */
+      --color-dark-surface:  #2A2A2A;  /* card on dark bg */
+      --color-dark-overlay:  rgba(20, 20, 20, 0.72); /* photo overlay */
+
+      /* COLOR PALETTE — Olive/Forest (seen in Vivienne Nash & Cecilia designs) */
+      --color-olive-deep:    #3D4A2E;  /* hero bg, Vivienne Nash design */
+      --color-olive-mid:     #5A6B40;  /* mid tone botanical */
+      --color-olive-light:   #7A8E5E;  /* botanical accent */
+      --color-sage:          #A8B899;  /* light sage, invitation paper */
+
+      /* COLOR PALETTE — Cobalt (seen in April & Wilson design) */
+      --color-cobalt:        #2140C4;  /* saturated royal blue hero */
+      --color-cobalt-light:  #3D5AD4;  /* hover/lighter cobalt */
+
+      /* COLOR PALETTE — Warm Earth/Terracotta (seen in modern invitations thumbnail) */
+      --color-sienna:        #8B6B5A;  /* warm brown card bg */
+      --color-mushroom:      #C4B4A0;  /* warm greige */
+      --color-parchment:     #F2EDE3;  /* aged paper */
+
+      /* COLOR PALETTE — Marble/Stone textures */
+      --color-marble-base:   #E8E4DC;  /* marble white bg */
+      --color-marble-vein:   #C8C0B8;  /* marble veining */
+
+      /* TYPOGRAPHY */
+      --font-display-serif:  'Cormorant Garamond', 'Canela', 'Freight Display', Georgia, serif;
+      --font-script:         'Great Vibes', 'Lovers Quarrel', 'Alex Brush', cursive;
+      --font-body-serif:     'EB Garamond', 'Cormorant', Georgia, serif;
+      --font-sans:           'Jost', 'Raleway', 'Futura', system-ui, sans-serif;
+      --font-mono:           'Courier Prime', monospace;
+
+      /* TYPE SCALE (from visual inspection of invitation cards) */
+      --text-hero:           clamp(3rem, 8vw, 7rem);     /* hero title, large display */
+      --text-display:        clamp(2rem, 5vw, 4.5rem);   /* section headings */
+      --text-h1:             clamp(1.75rem, 4vw, 3.5rem);
+      --text-h2:             clamp(1.25rem, 2.5vw, 2rem);
+      --text-h3:             1.25rem;
+      --text-body-lg:        1.125rem;
+      --text-body:           1rem;
+      --text-sm:             0.875rem;
+      --text-xs:             0.75rem;
+      --text-label:          0.6875rem;  /* tracking-widest labels */
+
+      /* FONT WEIGHTS */
+      --weight-light:        300;
+      --weight-regular:      400;
+      --weight-medium:       500;
+      --weight-semibold:     600;
+
+      /* LETTER SPACING */
+      --tracking-tightest:  -0.02em;
+      --tracking-tight:     -0.01em;
+      --tracking-normal:     0em;
+      --tracking-wide:       0.05em;
+      --tracking-wider:      0.1em;
+      --tracking-widest:     0.2em;   /* used on small caps labels */
+
+      /* LINE HEIGHTS */
+      --leading-none:        1;
+      --leading-tight:       1.1;
+      --leading-snug:        1.25;
+      --leading-normal:      1.5;
+      --leading-relaxed:     1.75;
+
+      /* SPACING SCALE */
+      --space-1:    0.25rem;   /* 4px */
+      --space-2:    0.5rem;    /* 8px */
+      --space-3:    0.75rem;   /* 12px */
+      --space-4:    1rem;      /* 16px */
+      --space-5:    1.25rem;   /* 20px */
+      --space-6:    1.5rem;    /* 24px */
+      --space-8:    2rem;      /* 32px */
+      --space-10:   2.5rem;    /* 40px */
+      --space-12:   3rem;      /* 48px */
+      --space-16:   4rem;      /* 64px */
+      --space-20:   5rem;      /* 80px */
+      --space-24:   6rem;      /* 96px */
+      --space-32:   8rem;      /* 128px */
+      --space-40:   10rem;     /* 160px */
+
+      /* BORDERS */
+      --radius-none:     0;
+      --radius-sm:       2px;
+      --radius-md:       4px;
+      --radius-lg:       8px;
+      --radius-full:     9999px;
+
+      --border-thin:     0.5px solid;
+      --border-hair:     1px solid;
+      --border-standard: 1.5px solid;
+
+      /* SHADOWS */
+      --shadow-none:     none;
+      --shadow-card:     0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      --shadow-lifted:   0 12px 40px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.06);
+      --shadow-float:    0 24px 64px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.08);
+
+      /* OVERLAY TREATMENTS (key for dark bg sections) */
+      --overlay-dark-light:   rgba(15, 12, 10, 0.4);
+      --overlay-dark-medium:  rgba(15, 12, 10, 0.62);
+      --overlay-dark-heavy:   rgba(15, 12, 10, 0.78);
+      --overlay-warm-tint:    rgba(40, 32, 20, 0.55); /* warm dark overlay */
+      --overlay-olive-tint:   rgba(28, 38, 20, 0.50); /* olive-toned overlay */
+      --overlay-vignette:     radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%);
+
+      /* TRANSITIONS */
+      --duration-fast:   150ms;
+      --duration-base:   250ms;
+      --duration-slow:   400ms;
+      --duration-slower: 600ms;
+      --duration-crawl:  900ms;
+
+      --ease-out:        cubic-bezier(0.0, 0.0, 0.2, 1.0);
+      --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1.0);
+      --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1.0);  /* slight overshoot */
+      --ease-editorial:  cubic-bezier(0.25, 0.46, 0.45, 0.94); /* smooth editorial */
+
+      /* LAYOUT */
+      --max-width:       1200px;
+      --max-width-text:  700px;
+      --gutter:          1.5rem;
+      --gutter-lg:       2.5rem;
+
+      /* Z-INDEX LAYERS */
+      --z-base:      0;
+      --z-raised:    10;
+      --z-dropdown:  100;
+      --z-sticky:    200;
+      --z-modal:     300;
+      --z-overlay:   400;
+      --z-toast:     500;
+    }
+
+    /* =========================================================
+       CORE LAYOUT PATTERNS
+       ========================================================= */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Site navigation — minimal, clean */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--gutter-lg);
+      background: var(--color-white);
+      border-bottom: var(--border-hair) var(--color-sand);
+    }
+
+    .nav__logo img {
+      height: 28px;
+    }
+
+    .nav__menu {
+      display: flex;
+      gap: var(--space-8);
+      list-style: none;
+    }
+
+    .nav__link {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    /* =========================================================
+       HERO SECTION — Light editorial (primary homepage)
+       ========================================================= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      background: var(--color-ivory);
+    }
+
+    .hero__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-16) var(--gutter-lg);
+    }
+
+    .hero__headline {
+      font-family: var(--font-display-serif);
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-charcoal);
+    }
+
+    .hero__headline em {
+      font-style: italic;
+      font-weight: var(--weight-light);
+    }
+
+    /* =========================================================
+       DARK BACKGROUND TREATMENT — Primary technique
+       Used in: Amber & Elgin template, editorial sections
+       ========================================================= */
+    .section--dark {
+      position: relative;
+      background: var(--color-dark-bg);
+      color: var(--color-ivory);
+      overflow: hidden;
+    }
+
+    /* Technique 1: Full-bleed photography behind dark overlay */
+    .dark-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://cdn.blissandbone.com/_images/cache/bliss-and-bone-feature-04-334-1690814531.png');
+      background-size: cover;
+      background-position: center;
+      /* Desaturate botanical photography */
+      filter: grayscale(100%) contrast(1.1) brightness(0.7);
+    }
+
+    .dark-photo-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--overlay-dark-medium);
+    }
+
+    /* Technique 2: Silk/fabric texture as dark background */
+    .dark-fabric-bg {
+      position: absolute;
+      inset: 0;
+      /* Vivienne Nash design — dark satin/silk texture */
+      background-color: #1A1A1A;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(60, 50, 30, 0.3) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(30, 40, 20, 0.3) 0%, transparent 50%);
+    }
+
+    /* Technique 3: Solid dark with botanical line art overlay */
+    .dark-botanical-overlay {
+      position: absolute;
+      inset: 0;
+      background: #1C1C1C;
+    }
+
+    .dark-botanical-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('botanical-line-art.svg');
+      background-size: 80%;
+      background-position: right bottom;
+      opacity: 0.12;  /* very subtle, almost hidden */
+    }
+
+    /* Technique 4: Color-field dark with opacity on body text */
+    .dark-olive {
+      background: var(--color-olive-deep);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .dark-cobalt {
+      background: var(--color-cobalt);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Typography on dark */
+    .dark-headline {
+      font-family: var(--font-display-serif);
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      color: rgba(255, 255, 255, 0.95);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .dark-headline em {
+      font-style: italic;
+      /* On cobalt bg: white italic */
+      /* On olive bg: white with slight warm tint */
+    }
+
+    /* =========================================================
+       INVITATION CARD COMPONENT
+       Core pattern across all template designs
+       ========================================================= */
+    .invitation-card {
+      position: relative;
+      aspect-ratio: 5/7;  /* standard wedding card proportion */
+      background: var(--color-cream);
+      overflow: hidden;
+      box-shadow: var(--shadow-lifted);
+    }
+
+    .invitation-card--dark {
+      background: var(--color-dark-bg);
+      color: var(--color-ivory);
+    }
+
+    .invitation-card__text {
+      position: relative;
+      z-index: var(--z-raised);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .invitation-card__small-label {
+      font-family: var(--font-sans);
+      font-size: var(--text-label);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .invitation-card__names {
+      font-family: var(--font-display-serif);
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-none);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    /* The script/italic "and" connector — key brand pattern */
+    .names__connector {
+      font-style: italic;
+      font-weight: var(--weight-light);
+      /* Often in a contrasting weight or script face */
+    }
+
+    /* Full-caps serif names — alternate treatment */
+    .names--caps {
+      font-family: var(--font-sans);
+      font-size: clamp(0.875rem, 2vw, 1.25rem);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      font-weight: var(--weight-light);
+    }
+
+    /* Mixed serif + script name treatment (Vivienne Nash style) */
+    .names--mixed {
+      display: block;
+    }
+    .names--mixed .serif-part {
+      font-family: var(--font-display-serif);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: var(--weight-light);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .invitation-card__details {
+      font-family: var(--font-body-serif);
+      font-size: var(--text-xs);
+      line-height: var(--leading-relaxed);
+      letter-spacing: var(--tracking-wide);
+      opacity: 0.75;
+    }
+
+    /* Circular badge/monogram — as seen in "Amber and Elgin" template */
+    .circular-badge {
+      position: absolute;
+      /* centered on dark photo bg */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .circular-badge__text {
+      font-family: var(--font-sans);
+      font-size: 0.5rem;
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      /* Text runs along circle path — SVG technique */
+    }
+
+    .circular-badge__date {
+      font-family: var(--font-display-serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* =========================================================
+       MONOGRAM / LOGO TREATMENT
+       ========================================================= */
+    .monogram {
+      font-family: var(--font-display-serif);
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: var(--weight-light);
+      /* Extreme calligraphic contrast — thin hairlines, thick strokes */
+      line-height: 1;
+      color: var(--color-charcoal);
+      /* On cream: dark on light */
+      /* On dark: light on dark */
+    }
+
+    .monogram--script {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 10vw, 8rem);
+      /* Script font for name treatment */
+    }
+
+    /* =========================================================
+       DEVICE MOCKUP CARDS (Feature sections)
+       ========================================================= */
+    .mockup-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      position: relative;
+    }
+
+    .mockup-desktop {
+      width: 60%;
+      aspect-ratio: 16/10;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-float);
+    }
+
+    .mockup-laptop {
+      width: 55%;
+      aspect-ratio: 16/10;
+      box-shadow: var(--shadow-float);
+    }
+
+    .mockup-phone {
+      width: 22%;
+      aspect-ratio: 9/19;
+      border-radius: 20px;
+      box-shadow: var(--shadow-float);
+    }
+
+    .mockup-card {
+      width: 18%;
+      aspect-ratio: 5/7;
+      box-shadow: var(--shadow-lifted);
+    }
+
+    /* =========================================================
+       PRODUCT CATEGORY SECTION
+       ========================================================= */
+    .product-section {
+      padding: var(--space-24) 0;
+      background: var(--color-ivory);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .product-card__image {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--color-cream);
+    }
+
+    .product-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-editorial);
+    }
+
+    .product-card:hover .product-card__image img {
+      transform: scale(1.04);
+    }
+
+    .product-card__label {
+      font-family: var(--font-sans);
+      font-size: var(--text-label);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-taupe);
+    }
+
+    .product-card__title {
+      font-family: var(--font-display-serif);
+      font-size: var(--text-h3);
+      font-weight: var(--weight-regular);
+      color: var(--color-charcoal);
+    }
+
+    /* =========================================================
+       TESTIMONIAL SECTION
+       ========================================================= */
+    .testimonial {
+      padding: var(--space-4) var(--space-6);
+      border-left: 2px solid var(--color-sand);
+    }
+
+    .testimonial__quote {
+      font-family: var(--font-body-serif);
+      font-style: italic;
+      font-size: var(--text-body-lg);
+      line-height: var(--leading-relaxed);
+      color: var(--color-charcoal);
+    }
+
+    .testimonial__author {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--color-taupe);
+      margin-top: var(--space-3);
+    }
+
+    /* =========================================================
+       BUTTON PATTERNS
+       ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: var(--space-3) var(--space-8);
+      transition: all var(--duration-base) var(--ease-out);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn--primary {
+      background: var(--color-charcoal);
+      color: var(--color-ivory);
+    }
+
+    .btn--primary:hover {
+      background: var(--color-black);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--color-charcoal);
+      border: var(--border-hair) var(--color-charcoal);
+    }
+
+    .btn--outline:hover {
+      background: var(--color-charcoal);
+      color: var(--color-ivory);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-ivory);
+      border: var(--border-hair) rgba(255, 255, 255, 0.5);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* =========================================================
+       BOTANICAL PHOTOGRAPHY TREATMENTS
+       Key visual signatures of the brand
+       ========================================================= */
+
+    /* Treatment A: B&W botanical under circular text badge
+       (Amber & Elgin design) */
+    .botanical-bw {
+      filter: grayscale(100%) contrast(1.05) brightness(0.85);
+    }
+
+    /* Treatment B: Shadow-leaf silhouette on cream/linen */
+    .botanical-shadow {
+      /* Palm/botanical shadow cast over warm neutral bg */
+      /* Achieved with product photography having soft shadows */
+      /* Layered as position: absolute; overflow: hidden on card */
+    }
+
+    /* Treatment C: Desaturated eucalyptus on white */
+    .botanical-eucalyptus-overlay {
+      /* Right-aligned eucalyptus branch partially out of frame */
+      position: absolute;
+      right: -5%;
+      bottom: -5%;
+      width: 60%;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Treatment D: Ink-line botanical on cream
+       (Elodie & Beckett design — palm frond line art) */
+    .botanical-line-art {
+      position: absolute;
+      opacity: 0.6;  /* visible but secondary to typography */
+      mix-blend-mode: multiply;  /* blends with paper texture */
+    }
+
+    /* =========================================================
+       TEXTURE TREATMENTS
+       ========================================================= */
+
+    /* Marble texture background */
+    .bg-marble {
+      background-color: var(--color-marble-base);
+      /* Texture applied via background-image in real implementation */
+      /* Marble veining creates subtle visual interest */
+    }
+
+    /* Linen/paper texture */
+    .bg-linen {
+      background-color: var(--color-linen);
+      /* Fine grain texture at very low opacity */
+    }
+
+    /* Parchment aged paper */
+    .bg-parchment {
+      background-color: var(--color-parchment);
+      /* Slight warmth, speckled texture */
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .footer {
+      background: var(--color-charcoal);
+      color: var(--color-stone);
+      padding: var(--space-16) 0 var(--space-8);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-8);
+    }
+
+    .footer__column-heading {
+      font-family: var(--font-sans);
+      font-size: var(--text-label);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-ivory);
+      margin-bottom: var(--space-4);
+    }
+
+    .footer__link {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--color-stone);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-2);
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .footer__link:hover {
+      color: var(--color-ivory);
+    }
+
+    .footer__tagline {
+      font-family: var(--font-display-serif);
+      font-style: italic;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: var(--space-16);
+      text-align: center;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mockup-group {
+        flex-direction: column;
+      }
+
+      .mockup-desktop,
+      .mockup-laptop {
+        width: 100%;
+      }
+    }
+
+    /* =========================================================
+       ANIMATIONS (inferred from editorial luxury sites)
+       ========================================================= */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeInUp var(--duration-slower) var(--ease-editorial) forwards;
+    }
+
+    .animate-fade {
+      animation: fadeIn var(--duration-slower) var(--ease-out) forwards;
+    }
+
+    .animate-scale-in {
+      animation: scaleIn var(--duration-slow) var(--ease-editorial) forwards;
+    }
+
+    /* Image carousel — 5 slides, auto-advance */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel__track {
+      display: flex;
+      transition: transform var(--duration-slower) var(--ease-editorial);
+    }
+
+    .carousel__slide {
+      flex: 0 0 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+<nav class="nav">
+  <div class="nav__logo">
+    <img src="/_images/Bliss-and-Bone-Logo.svg" alt="Bliss &amp; Bone">
+  </div>
+  <ul class="nav__menu">
+    <li><a class="nav__link" href="/wedding-websites">Wedding Websites</a></li>
+    <li><a class="nav__link" href="/online-invitations">Online Invitations</a></li>
+    <li><a class="nav__link" href="/printed-invitations">Printed Invitations</a></li>
+    <li><a class="nav__link" href="/logos-and-monograms">Logos &amp; Monograms</a></li>
+    <li><a class="nav__link" href="/cash-registry">Cash Registry</a></li>
+    <li><a class="nav__link" href="/couples">Couples</a></li>
+  </ul>
+  <div class="nav__auth">
+    <a class="btn btn--outline" href="/login">Login</a>
+    <a class="btn btn--primary" href="/create-account">Create Account</a>
+  </div>
+</nav>
+
+<!-- =====================================================
+     HERO — Main homepage
+     ===================================================== -->
+<section class="hero">
+  <div class="hero__text animate-fade-up">
+    <p class="hero__label">The Impression Starts Now&trade;</p>
+    <h1 class="hero__headline">
+      Modern Wedding Websites &amp; Invitations
+    </h1>
+    <p class="hero__body">
+      Get Guests to Your Wedding On-Time &amp; In-Style
+    </p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="/create-account">Start a Free Trial</a>
+    </div>
+    <p class="hero__proof">7 Days Free &middot; No CC Required &middot; 50,000+ Couples Worldwide</p>
+  </div>
+  <div class="hero__carousel">
+    <!-- 5-slide carousel with device mockup images -->
+    <!-- Slide 1: Cecilia & James — Olive green -->
+    <!-- Slide 2: April & Wilson — Cobalt blue -->
+    <!-- Slide 3: Vivienne Nash — Dark fabric/satin -->
+    <!-- Slide 4: Gregory & Angela — Warm taupe -->
+    <!-- Slide 5: Amber & Elgin — Dark botanical -->
+  </div>
+</section>
+
+<!-- =====================================================
+     FEATURE SECTION — Dark background with photography
+     (Amber & Elgin design showcase)
+     ===================================================== -->
+<section class="section--dark">
+  <div class="dark-photo-bg" aria-hidden="true"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <div class="circular-badge">
+      <span class="circular-badge__text">AMBER AND ELGIN</span>
+      <span class="circular-badge__date">
+        <em>February</em>
+        <span>22</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     PRODUCT CATEGORIES
+     ===================================================== -->
+<section class="product-section">
+  <div class="container">
+    <h2 style="font-family: var(--font-display-serif); font-size: var(--text-display); font-weight: 300; text-align: center; margin-bottom: var(--space-16);">
+      All You Need: Modern Wedding Websites,<br>
+      <em>Invitations &amp; Design Collections</em>
+    </h2>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="https://cdn.blissandbone.com/_images/cache/bliss-and-bone-wedding-website-01-621bc2dd91c36-80-1646419019.jpg" alt="Wedding Websites">
+        </div>
+        <span class="product-card__label">Starting at $15/month</span>
+        <h3 class="product-card__title">Wedding Websites</h3>
+        <a class="btn btn--outline" href="/wedding-websites">Browse Websites</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="https://cdn.blissandbone.com/_images/cache/bliss-and-bone-online-wedding-invitations-01-621bc7722941c-81-1646419020.jpg" alt="Online Invitations">
+        </div>
+        <span class="product-card__label">$0.90 per recipient</span>
+        <h3 class="product-card__title">Online Invitations &amp; Save the Dates</h3>
+        <a class="btn btn--outline" href="/online-invitations">Browse Online Invites</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="https://cdn.blissandbone.com/_images/cache/bliss-and-bone-printed-wedding-invitations-01-621bc67ed4fc6-82-1649947663.jpg" alt="Printed Invitations">
+        </div>
+        <span class="product-card__label">Letterpress, Foil &amp; Flat</span>
+        <h3 class="product-card__title">Printed Invitations</h3>
+        <a class="btn btn--outline" href="/printed-invitations">Browse Printed</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     SOCIAL PROOF — Testimonials
+     ===================================================== -->
+<section style="padding: var(--space-16) 0; background: var(--color-white);">
+  <div class="container">
+    <p style="font-family: var(--font-sans); font-size: var(--text-label); letter-spacing: var(--tracking-widest); text-transform: uppercase; text-align: center; color: var(--color-taupe); margin-bottom: var(--space-8);">
+      As seen in: Vogue &middot; People Magazine &middot; Brides &middot; The Knot
+    </p>
+
+    <!-- Testimonial grid -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8);">
+      <div class="testimonial">
+        <p class="testimonial__quote">"So modern and editorial unlike competitive sites."</p>
+        <p class="testimonial__author">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__column-heading">Shop Online</p>
+        <a class="footer__link" href="/wedding-websites">Wedding Websites</a>
+        <a class="footer__link" href="/online-invitations">Online Invitations</a>
+        <a class="footer__link" href="/logos-and-monograms">Logos &amp; Monograms</a>
+        <a class="footer__link" href="/cash-registry">Cash Registry</a>
+      </div>
+      <div>
+        <p class="footer__column-heading">Shop Printed</p>
+        <a class="footer__link" href="/printed-invitations">Printed Invitations</a>
+      </div>
+      <div>
+        <p class="footer__column-heading">Contact</p>
+        <a class="footer__link" href="mailto:hello@blissandbone.com">hello@blissandbone.com</a>
+        <a class="footer__link" href="https://instagram.com/blissandbone">Instagram</a>
+        <a class="footer__link" href="https://pinterest.com/blissandbone">Pinterest</a>
+      </div>
+      <div>
+        <p class="footer__column-heading">Support</p>
+        <a class="footer__link" href="/help">Help Center</a>
+        <a class="footer__link" href="/about">About Us</a>
+        <a class="footer__link" href="/terms">Terms + Privacy</a>
+        <a class="footer__link" href="/affiliate">Affiliate Program</a>
+      </div>
+      <div>
+        <p class="footer__column-heading">Detroit, USA</p>
+        <p style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-stone); line-height: var(--leading-relaxed);">
+          Family-owned. For over 10 years,<br>our passion for design and<br>commitment to our customers.
+        </p>
+      </div>
+    </div>
+
+    <p class="footer__tagline">The Impression Starts Now&trade;</p>
+
+    <div style="display: flex; justify-content: center; margin-top: var(--space-8);">
+      <img src="/_images/Bliss-and-Bone-Logo.svg" alt="Bliss &amp; Bone" style="height: 20px; opacity: 0.3;">
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+<!--
+  CDN ASSET INVENTORY (all confirmed URLs from blissandbone.com):
+
+  LOGOS:
+  /_images/Bliss-and-Bone-Logo-SM.svg
+  /_images/Bliss-and-Bone-Logo.svg
+  /_images/Carats-and-Cake-Logo-SM.svg
+  /_images/Carats-and-Cake-Logo.svg
+  /_images/Cherry-Logo.svg
+
+  NAVIGATION PREVIEW IMAGES:
+  https://cdn.blissandbone.com/_images/cache/navigation-wedding-website-01-6557bf4fc50d8-354-1700249423.jpg
+  https://cdn.blissandbone.com/_images/cache/navigation-online-wedding-invitations-02-6557c546cfc4d-357-1700250950.jpg
+  https://cdn.blissandbone.com/_images/cache/printed-wedding-invitations-01-45-1666887001.jpg
+  https://cdn.blissandbone.com/_images/cache/navigation-logos-and-monograms-01-397-1711992603.png
+  https://cdn.blissandbone.com/_images/cache/navigation-cash-registry-01--356-1700249424.jpg
+  https://cdn.blissandbone.com/_images/cache/Warren%26BelleWeddingCasaCampana-697-462-1729784661.jpg
+
+  HERO CAROUSEL FEATURE IMAGES:
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-feature-06-473-1760371186.png  [Olive green — Cecilia & James]
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-feature-01-146-1654811711.png  [Light — product overview]
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-feature-07-474-1760371199.png  [Cobalt — April & Wilson]
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-feature-08-475-1760372355.png  [Dark satin — Vivienne Nash]
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-feature-04-334-1690814531.png  [Warm taupe/marble — Gregory & Angela]
+
+  SECTION IMAGERY:
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-wedding-website-01-621bc2dd91c36-80-1646419019.jpg
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-online-wedding-invitations-01-621bc7722941c-81-1646419020.jpg
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-printed-wedding-invitations-01-621bc67ed4fc6-82-1649947663.jpg
+  https://cdn.blissandbone.com/_images/cache/bliss-and-bone-03-41-1646087989.jpg
+
+  BLOG THUMBNAILS:
+  https://cdn.blissandbone.com/_images/cache/examples-of-wedding-websites-thumb-134-1652453470.jpg
+  https://cdn.blissandbone.com/_images/cache/wedding-invitation-etiquette-thumb-169-1660237854.jpg
+  https://cdn.blissandbone.com/_images/cache/rsvp-wedding-websites-thumb-163-1659637629.jpg
+  https://cdn.blissandbone.com/_images/cache/modern-wedding-invitations-thumb-149-1656604480.jpg
+  https://cdn.blissandbone.com/_images/cache/wedding-e-invite-thumb-138-1652983140.jpg
+  https://cdn.blissandbone.com/_images/cache/virtual-wedding-invites-thumb-136-1652455172.jpg
+  https://cdn.blissandbone.com/_images/cache/how-to-build-a-custom-wedding-website-thumb-111-1649863338.jpg
+
+  PLATFORM: Custom (not Shopify/WordPress/Squarespace)
+  CDN: cdn.blissandbone.com
+  CACHE NAMING: [slug]-[hash/index]-[timestamp].jpg/png
+-->

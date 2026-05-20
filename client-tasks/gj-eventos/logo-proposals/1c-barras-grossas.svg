@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GJ Eventos — Variation 1C: Barras Mais Grossas (2 bars, 5px height) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+  <!-- Left decorative bars — 2 bold bars -->
+  <rect x="42" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+  <rect x="42" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+
+  <!-- GJ Letterforms — both in currentColor -->
+  <text x="160" y="70" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="600" letter-spacing="8" fill="currentColor">GJ</text>
+
+  <!-- Right decorative bars — 2 bold bars -->
+  <rect x="248" y="38" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+  <rect x="248" y="52" width="30" height="5" rx="2.5" fill="#2EB8A6"/>
+
+  <!-- EVENTOS subtitle -->
+  <text x="160" y="98" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+
+  <!-- Thin accent line -->
+  <line x1="112" y1="112" x2="208" y2="112" stroke="#2EB8A6" stroke-width="1" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,373 @@
+[
+  {
+    "selector": ":root",
+    "name": "--blue",
+    "value": "#007bff",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--indigo",
+    "value": "#6610f2",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--purple",
+    "value": "#6f42c1",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--pink",
+    "value": "#e83e8c",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--red",
+    "value": "#dc3545",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--orange",
+    "value": "#fd7e14",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--yellow",
+    "value": "#ffc107",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--green",
+    "value": "#28a745",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--teal",
+    "value": "#20c997",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--cyan",
+    "value": "#17a2b8",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--white",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--gray",
+    "value": "#6c757d",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--gray-dark",
+    "value": "#343a40",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--primary",
+    "value": "#007bff",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--secondary",
+    "value": "#6c757d",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--success",
+    "value": "#28a745",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--info",
+    "value": "#17a2b8",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--warning",
+    "value": "#ffc107",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--danger",
+    "value": "#dc3545",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--light",
+    "value": "#f8f9fa",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--dark",
+    "value": "#343a40",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--breakpoint-xs",
+    "value": "0",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--breakpoint-sm",
+    "value": "768px",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--breakpoint-md",
+    "value": "1024px",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--breakpoint-lg",
+    "value": "1200px",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--breakpoint-xl",
+    "value": "2100px",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-family-sans-serif",
+    "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-family-monospace",
+    "value": "SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--primary",
+    "value": "before{-webkit-animation:animation-underline-end .6s cubic-bezier(.4,0,.4,1)",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--primary",
+    "value": "hover:before{-webkit-animation:animation-underline .6s cubic-bezier(.4,0,.4,1)",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--primary--menu",
+    "value": ":before{-webkit-transition:opacity cubic-bezier(.9,0,.9,1) .6s",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--headerHeight",
+    "value": "7.3rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--headerHeight",
+    "value": "9.4rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".cc-header--fixed :root",
+    "name": "--headerHeight",
+    "value": "7.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--fixed",
+    "value": "root{--headerHeight:9.3rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--menuActionHeight",
+    "value": "6.6rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--large",
+    "value": "after,.cc-image__mask--large:before{width:3.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--large",
+    "value": "after,.cc-image__mask--large:before{width:11.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:2100px)",
+    "name": "--large",
+    "value": "after,.cc-image__mask--large:before{width:22.4rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--medium",
+    "value": "after,.cc-image__mask--medium:before{width:3.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--medium",
+    "value": "after,.cc-image__mask--medium:before{width:21.6rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:2100px)",
+    "name": "--medium",
+    "value": "after,.cc-image__mask--medium:before{width:21.6rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--small",
+    "value": "after,.cc-image__mask--small:before{width:3.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--small",
+    "value": "after,.cc-image__mask--small:before{width:32rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:2100px)",
+    "name": "--small",
+    "value": "after,.cc-image__mask--small:before{width:32rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--xsmall",
+    "value": "after,.cc-image__mask--xsmall:before{width:16.6rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--xsmall",
+    "value": "after,.cc-image__mask--xsmall:before{width:42.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:2100px)",
+    "name": "--xsmall",
+    "value": "after,.cc-image__mask--xsmall:before{width:42.2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--mobile",
+    "value": "not(.cc-image__video--fullscreen){display:none!important",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--desktop",
+    "value": "not(.cc-image__video--fullscreen){display:block!important",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--windowHeight",
+    "value": "100vh",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--footerHeight",
+    "value": "5.15rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "@media (min-width:1200px)",
+    "name": "--footerHeight",
+    "value": "3.43rem",
+    "is_alias": false,
+    "line": 2
+  }
+]

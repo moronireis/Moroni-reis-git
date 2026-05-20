@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>V1 — Cream Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .canvas {
+    width: 1080px;
+    height: 1920px;
+    background: url('./photos/casal-castelo-noite.jpg') center 25% / cover no-repeat;
+    background-color: #0A0806;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Soft vignette — reinforce dark edges for text zones */
+  .canvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(8, 6, 4, 0.6) 0%,
+        rgba(8, 6, 4, 0.1) 30%,
+        transparent 45%,
+        transparent 55%,
+        rgba(8, 6, 4, 0.2) 70%,
+        rgba(8, 6, 4, 0.7) 100%
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .canvas > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ═══════ MÊS DAS NOIVAS ═══════ */
+  .badge {
+    margin-top: 90px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 76px;
+    font-weight: 400;
+    color: #D4AF61;
+    text-shadow: 0 0 40px rgba(212, 175, 97, 0.4), 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .badge-line {
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 97, 0.6), transparent);
+    margin-top: 12px;
+  }
+
+  /* ═══════ HEADLINE ═══════ */
+  .headline {
+    margin-top: 32px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 120px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 0.88;
+    padding: 0 50px;
+    text-shadow: 0 3px 30px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .headline .ampersand {
+    color: #D4AF61;
+    font-size: 100px;
+  }
+
+  .headline .year {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 30px;
+    text-shadow: none;
+  }
+
+  .headline .year-number {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: #FFFFFF;
+    margin-top: 8px;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.25), 0 2px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ═══════ SPACER — let the photo breathe ═══════ */
+  .photo-spacer {
+    flex: 1;
+    min-height: 280px;
+  }
+
+  /* ═══════ INFO BLOCK — bottom area ═══════ */
+  .info-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px 80px 0;
+    background: linear-gradient(180deg, transparent, rgba(8, 6, 4, 0.85) 30%);
+  }
+
+  /* Prices */
+  .prices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 740px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid rgba(212, 175, 97, 0.2);
+    padding-bottom: 14px;
+  }
+
+  .price-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 66px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
+  }
+
+  .price-value .currency {
+    font-size: 32px;
+    font-weight: 400;
+    color: #D4AF61;
+    margin-right: 4px;
+  }
+
+  /* Included */
+  .included {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .included-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #D4AF61;
+    margin-bottom: 6px;
+  }
+
+  .included-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .included-item .dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #D4AF61;
+    border-radius: 50%;
+    margin: 0 14px;
+    vertical-align: middle;
+  }
+
+  /* Churrasco */
+  .churrasco {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .churrasco-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 58px;
+    color: #D4AF61;
+    text-shadow: 0 0 20px rgba(212, 175, 97, 0.25);
+  }
+
+  .churrasco-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .events-note {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: rgba(212, 175, 97, 0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══════ FOOTER ═══════ */
+  .footer {
+    margin-top: 36px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .divider-small {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .divider-small-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(212, 175, 97, 0.3);
+  }
+
+  .divider-small-dot {
+    width: 5px;
+    height: 5px;
+    background: #D4AF61;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .cta-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 44px;
+    color: #D4AF61;
+    margin-bottom: 14px;
+  }
+
+  .cta-phone {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0.1em;
+    padding: 14px 48px;
+    border: 1px solid rgba(212, 175, 97, 0.35);
+    background: rgba(212, 175, 97, 0.08);
+    margin-bottom: 28px;
+  }
+
+  .conditions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .condition {
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.04em;
+  }
+
+  .condition strong {
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .brand-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(212, 175, 97, 0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="badge">Mês das Noivas</div>
+  <div class="badge-line"></div>
+
+  <div class="headline">
+    Casamentos<br><span class="ampersand">&</span> Debutantes
+    <span class="year">Para eventos realizados em</span>
+    <span class="year-number">2026</span>
+  </div>
+
+  <!-- Photo breathes here — castle silhouette visible -->
+  <div class="photo-spacer"></div>
+
+  <!-- Info anchored to bottom with gradient fade -->
+  <div class="info-block">
+    <div class="prices">
+      <div class="price-row">
+        <span class="price-label">Sexta e Domingo</span>
+        <span class="price-value"><span class="currency">R$</span>25.990</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Sábado</span>
+        <span class="price-value"><span class="currency">R$</span>27.990</span>
+      </div>
+    </div>
+
+    <div class="included">
+      <span class="included-title">Tudo incluso</span>
+      <div class="included-item">
+        Espaço <span class="dot"></span> Gastronomia <span class="dot"></span> DJ
+      </div>
+      <div class="included-item">
+        Som <span class="dot"></span> Iluminação <span class="dot"></span> Gerador
+      </div>
+      <div class="included-item">
+        Suítes <span class="dot"></span> Segurança <span class="dot"></span> Cortesias
+      </div>
+    </div>
+
+    <div class="churrasco">
+      <span class="churrasco-title">Churrasco à Gaúcha</span>
+      <span class="churrasco-sub">Rodízio servido à mesa</span>
+    </div>
+
+    <div class="footer">
+      <div class="divider-small">
+        <div class="divider-small-line"></div>
+        <div class="divider-small-dot"></div>
+        <div class="divider-small-line"></div>
+      </div>
+      <div class="conditions">
+        <span class="condition">Condição para <strong>100 pessoas</strong></span>
+        <span class="condition">Eventos até <strong>novembro de 2026</strong></span>
+      </div>
+      <span class="cta-text">Agende sua visita</span>
+      <span class="cta-phone">(11) 9 5590-6035</span>
+      <div class="brand-name">Castelo dos Lagos</div>
+      <div class="brand-sub">Ribeirão Pires · SP</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -14,7 +14,7 @@ You work in sibling relationship with the offer-architect: offer-architect defin
 
 ## Core Frameworks
 
-Load and internalize these three frameworks. They are complementary, not redundant.
+Load and internalize these frameworks. They are complementary, not redundant.
 
 ### 1. Value Ladder (Russell Brunson)
 Bait → Frontend → Middle → Backend. Every REIS [IA] customer should have a defined next step upward, forever.
@@ -24,6 +24,24 @@ Aware → Engage → Subscribe → Convert → Excite → Ascend → Advocate �
 
 ### 3. Hormozi Offer Stacking
 Leverage `.claude/rules/hormozi-framework.md` — specifically the Value Equation and WHO×WHEN matrix — to decide which offer appears at which journey step.
+
+### 4. FL Launch Funnels (May 2026 Expansion)
+Load `brain/strategy/formula-lancamento-framework.md` for these launch-specific funnels:
+- **Semente Funnel**: CLI (14d) → AI (3d) → Webinario → Carrinho (5d)
+- **Classico Funnel**: CLI → AL (14-28d) → PL with 3 CPLs (7d) → L (7d)
+- **Content-to-Launch Pipeline**: Raiz/Nutella → Audience → CLI → Event → Sale
+
+### 5. HT Sales Funnels (May 2026 Expansion)
+Load `brain/strategy/high-ticket-sales-system.md` for these HT-specific funnels:
+- **Free Bait Funnel**: Free content/webinar → application → qualified leads → session
+- **Paid Bait Funnel**: Low-ticket product → buyer list → session invitation
+- **Application Funnel**: Content → application page → qualifying questions → session
+- **Social Selling Funnel**: Organic content → DM conversations → session booking
+- **Weekly Class Funnel**: Weekly content → email list → warming → session invitation
+
+### Key Scale Rule:
+VMC (Average Customer Value) must be > CPA. If VMC < CPA → fix funnel first, do not scale.
+Jay Abraham 3 Golden Rules: Increase clients, increase frequency, increase ticket value.
 
 ---
 

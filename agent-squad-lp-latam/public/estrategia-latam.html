@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGENTES [IA] — Estrategia LATAM 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-2: #070709;
+      --bg-card: #0E0E11;
+      --bg-card-2: #151518;
+      --blue: #4A90FF;
+      --blue-hover: #6AADFF;
+      --blue-muted: #3570CC;
+      --blue-bright: #8DC4FF;
+      --blue-glow: rgba(74,144,255,0.12);
+      --green: #22C55E;
+      --green-muted: rgba(34,197,94,0.15);
+      --red: #EF4444;
+      --red-muted: rgba(239,68,68,0.15);
+      --yellow: #FACC15;
+      --yellow-muted: rgba(250,204,21,0.15);
+      --orange: #F97316;
+      --orange-muted: rgba(249,115,22,0.15);
+      --text: #FFFFFF;
+      --text-dim: rgba(255,255,255,0.72);
+      --text-muted: rgba(255,255,255,0.42);
+      --border: rgba(255,255,255,0.07);
+      --border-v: rgba(255,255,255,0.12);
+      --radius: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* --- NAV --- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 12px 24px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-weight: 300;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+    .nav-brand span { color: var(--blue); }
+    .nav-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      overflow-x: auto;
+      max-width: 60%;
+    }
+    .nav-links a {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--blue);
+      background: var(--blue-glow);
+    }
+
+    /* --- LAYOUT --- */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* --- HERO --- */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(74,144,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(74,144,255,0.25);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .hero h1 .accent { color: var(--blue); }
+    .hero .subtitle {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat .num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--blue);
+      display: block;
+    }
+    .hero-stat .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- SECTIONS --- */
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .section-header {
+      margin-bottom: 48px;
+    }
+    .section-num {
+      font-size: 11px;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-dim);
+      max-width: 700px;
+      line-height: 1.7;
+    }
+
+    /* --- CARDS --- */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      transition: border-color 0.3s;
+    }
+    .card:hover {
+      border-color: var(--border-v);
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .card-desc {
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* --- GRID --- */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (min-width: 901px) and (max-width: 1100px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* --- TABLE --- */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 24px;
+    }
+    .data-table thead th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-v);
+      font-weight: 500;
+    }
+    .data-table tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+      vertical-align: top;
+    }
+    .data-table tbody tr:hover td {
+      background: rgba(74,144,255,0.03);
+    }
+    .data-table .highlight {
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+    }
+
+    /* --- PERSONA --- */
+    .persona-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+    .persona-header {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .persona-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-muted));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .persona-name {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .persona-role {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .persona-body {
+      padding: 24px 28px;
+    }
+    .persona-section {
+      margin-bottom: 20px;
+    }
+    .persona-section:last-child { margin-bottom: 0; }
+    .persona-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .persona-body ul {
+      list-style: none;
+      padding: 0;
+    }
+    .persona-body li {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 3px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .persona-body li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.5;
+    }
+
+    /* --- TAGS / BADGES --- */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .tag-blue { background: var(--blue-glow); color: var(--blue); }
+    .tag-green { background: var(--green-muted); color: var(--green); }
+    .tag-yellow { background: var(--yellow-muted); color: var(--yellow); }
+    .tag-red { background: var(--red-muted); color: var(--red); }
+    .tag-orange { background: var(--orange-muted); color: var(--orange); }
+
+    /* --- PRIORITY BAR --- */
+    .priority-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border);
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .priority-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--blue);
+    }
+
+    /* --- KPI CARD --- */
+    .kpi {
+      text-align: center;
+      padding: 28px 16px;
+    }
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: -0.02em;
+    }
+    .kpi-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- TIMELINE --- */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), rgba(74,144,255,0.15));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid var(--bg);
+    }
+    .timeline-phase {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .timeline-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .timeline-tasks {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* --- FUNNEL --- */
+    .funnel-step {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .funnel-step:last-child { border-bottom: none; }
+    .funnel-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--blue-glow);
+      border: 1px solid rgba(74,144,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .funnel-content { flex: 1; }
+    .funnel-label {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .funnel-detail {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* --- HOOK CARD --- */
+    .hook-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .hook-num {
+      font-size: 11px;
+      color: var(--blue);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .hook-text {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .hook-angle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* --- CALLOUT --- */
+    .callout {
+      border-left: 3px solid var(--blue);
+      padding: 20px 24px;
+      background: var(--bg-card);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      margin: 24px 0;
+    }
+    .callout-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .callout-text {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* --- RISK --- */
+    .risk-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .risk-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: start;
+    }
+    .risk-severity {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+    .risk-high { background: var(--red); }
+    .risk-medium { background: var(--yellow); }
+    .risk-low { background: var(--green); }
+    .risk-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .risk-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .risk-mitigation {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+      max-width: 200px;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .footer-brand {
+      font-weight: 300;
+      color: var(--text);
+    }
+    .footer-brand span { color: var(--blue); }
+
+    /* --- METRIC INLINE --- */
+    .metric-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* --- PROSE --- */
+    .prose {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .prose p { margin-bottom: 16px; }
+    .prose strong { color: var(--text); font-weight: 600; }
+    .prose em { color: var(--blue-bright); font-style: normal; }
+
+    /* --- SCROLL ANCHOR OFFSET --- */
+    [id] {
+      scroll-margin-top: 72px;
+    }
+
+    /* --- COMPETITIVE TABLE SPECIAL --- */
+    .comp-name { font-weight: 600; color: var(--text); }
+    .comp-gap { color: var(--green); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">AGENTES <span>[IA]</span></div>
+  <ul class="nav-links">
+    <li><a href="#executive">Resumen</a></li>
+    <li><a href="#market">Mercado</a></li>
+    <li><a href="#icp">ICP</a></li>
+    <li><a href="#competitive">Competencia</a></li>
+    <li><a href="#pricing">Precios</a></li>
+    <li><a href="#channels">Canales</a></li>
+    <li><a href="#creative">Creativos</a></li>
+    <li><a href="#funnel">Funnel</a></li>
+    <li><a href="#countries">Paises</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#risks">Riesgos</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <span class="nav-meta">Estrategia LATAM 2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Documento Estrategico &mdash; Interno</div>
+    <h1>Estrategia de Lanzamiento<br/><span class="accent">LATAM 2026</span></h1>
+    <p class="subtitle">Plan de expansion para AGENTES [IA] en Mexico, Colombia, Argentina, Chile y Peru. Investigacion de mercado, ICP, pricing, canales, creativos y roadmap de 90 dias.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">$29.5B</span>
+        <span class="label">Mercado IA LATAM 2025</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">62%</span>
+        <span class="label">Adopcion IA empresas</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">5</span>
+        <span class="label">Paises objetivo</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">37%</span>
+        <span class="label">CAGR IA LATAM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 01. EXECUTIVE SUMMARY -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="executive">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01 &mdash; Resumen Ejecutivo</span>
+      <h2 class="section-title">La oportunidad: US$29.5B en IA, sin producto de agentes accesible para emprendedores hispanohablantes</h2>
+    </div>
+
+    <div class="prose" style="max-width: 800px;">
+      <p>El mercado de inteligencia artificial en America Latina fue valuado en <strong>US$29.55 mil millones en 2025</strong> y crece a un CAGR del <strong>37.07%</strong> hacia 2034 (MarketDataForecast). El 62% de las organizaciones en la region ya estan en fases de adopcion sistematica o piloto de IA &mdash; un salto de 23 puntos porcentuales respecto al 39% de 2024 (CEPAL/ILIA 2025).</p>
+
+      <p>Sin embargo, la mayoria de esta adopcion se concentra en <strong>herramientas end-user generativas</strong> (ChatGPT, Gemini) con un 78% de uso regional. La adopcion de <em>agentes especializados, integraciones y plataformas de produccion</em> es significativamente menor que el promedio global. Existe una brecha masiva entre "usar ChatGPT" y "tener un equipo de agentes de IA produciendo copy, diseno, estrategia y trafico".</p>
+
+      <p><strong>AGENTES [IA] ocupa ese hueco.</strong> 40+ agentes especializados para Claude Code, organizados en 7 squads de produccion (Copy, Branding, Estrategia, Diseno, Contenido, Trafico, Video) &mdash; probados en US$60K+ de proyectos reales. No es otro "pack de prompts". Es una agencia de IA lista para usar.</p>
+
+      <p>El timing es optimo por tres razones:</p>
+    </div>
+
+    <div class="grid-3" style="margin-top: 32px;">
+      <div class="card">
+        <div class="card-title">1. Ventana de mercado abierta</div>
+        <div class="card-desc">No existe competidor directo vendiendo un sistema de agentes orquestados para Claude Code en espanol. PromptBase tiene 270K+ prompts, pero son individuales y en ingles. Hotmart tiene cursos de IA, pero no un <em>producto funcional</em> de agentes.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">2. Infraestructura de pago lista</div>
+        <div class="card-desc">Hotmart ya acepta OXXO (Mexico), PSE y Nequi (Colombia), cupones de pago (Argentina), y tarjetas de credito en toda la region. Hotmart maneja conversion de moneda automaticamente. No hay friccion de checkout.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">3. Costos de adquisicion bajos</div>
+        <div class="card-desc">Meta Ads CPC en Mexico: US$1.90, Colombia: US$1.80, Chile: US$2.00, Argentina: US$2.10 (AdAmigo 2026). Esto es 2-4x mas barato que mercados anglosajones. El low-ticket se paga con conversion standard.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
+      <div class="callout-title">Tesis central</div>
+      <div class="callout-text">Un producto de US$19 (pago unico) posicionado como "tu equipo de marketing de IA" &mdash; no como "prompts" ni "curso" &mdash; captura un segmento desatendido de emprendedores hispanohablantes que ya usan IA pero no saben como hacerla producir resultados de negocio reales. El precio esta calibrado para ser impulse-buy en toda la region.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 02. MARKET ANALYSIS -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="market">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02 &mdash; Analisis de Mercado</span>
+      <h2 class="section-title">Cinco mercados, US$22B en gasto publicitario digital, 62% de empresas adoptando IA</h2>
+    </div>
+
+    <!-- COUNTRY DATA TABLE -->
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Pais</th>
+            <th>Poblacion</th>
+            <th>Penetracion Internet</th>
+            <th>Gasto Ad Digital (2025)</th>
+            <th>Adopcion IA empresas</th>
+            <th>E-Commerce (2025)</th>
+            <th>Crecimiento E-Comm YoY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Mexico</td>
+            <td>130M</td>
+            <td>~78%</td>
+            <td class="highlight">US$11.9B</td>
+            <td>65%</td>
+            <td>US$38B</td>
+            <td>+21%</td>
+          </tr>
+          <tr>
+            <td class="highlight">Colombia</td>
+            <td>52M</td>
+            <td>~76%</td>
+            <td>US$2.77B</td>
+            <td>~60%</td>
+            <td>US$12B</td>
+            <td>+18%</td>
+          </tr>
+          <tr>
+            <td class="highlight">Argentina</td>
+            <td>46M</td>
+            <td>~92%</td>
+            <td>US$2.5B*</td>
+            <td>66%</td>
+            <td>US$15B</td>
+            <td>+25%</td>
+          </tr>
+          <tr>
+            <td class="highlight">Chile</td>
+            <td>19M</td>
+            <td>~93%</td>
+            <td>US$2.24B</td>
+            <td>~62%</td>
+            <td>US$9B</td>
+            <td>+16%</td>
+          </tr>
+          <tr>
+            <td class="highlight">Peru</td>
+            <td>34M</td>
+            <td>~73%</td>
+            <td>US$2.55B</td>
+            <td>~55%</td>
+            <td>US$8B</td>
+            <td>+19%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">Fuentes: CEPAL ILIA 2025, MarketDataForecast, Statista, eMarketer, ResearchAndMarkets. *Argentina estimado con ajuste inflacion USD.</p>
+
+    <!-- AI ADOPTION -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px;">Adopcion de IA en la region: el dato clave</h3>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title" style="color: var(--blue); font-size: 36px; font-weight: 800;">78%</div>
+          <div class="card-desc">de las soluciones de IA adoptadas en LATAM son <strong>generativas end-user</strong> (ChatGPT, Gemini). Esto supera el promedio global de 74% (CEPAL 2025). La region consume IA, pero la usa superficialmente.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--blue); font-size: 36px; font-weight: 800;">14%</div>
+          <div class="card-desc">de las empresas logra <strong>personalizacion avanzada en tiempo real</strong> con IA. El 70% segmenta con datos propios pero no los activa (IAB/NTT Data 2026). La brecha "tengo IA" vs "produzco con IA" es enorme.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY INSIGHT -->
+    <div class="callout" style="margin-top: 32px;">
+      <div class="callout-title">Insight de mercado</div>
+      <div class="callout-text">97% de las organizaciones en LATAM planean aumentar su presupuesto de IA en los proximos 12 meses, con un crecimiento promedio de 14% (IDC 2025). <strong>El dinero esta fluyendo hacia IA, pero no hay productos accesibles que conviertan esa intencion en produccion real.</strong> AGENTES [IA] es la respuesta a US$19.</div>
+    </div>
+
+    <!-- INFOPRODUCTS MARKET -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">Mercado de infoproductos: contexto relevante</h3>
+      <div class="prose">
+        <p>Hotmart reporta que <strong>2/3 de los creadores latinoamericanos</strong> venden productos digitales a otros paises y obtienen 135% mas ingresos cuando venden internacionalmente. La plataforma ya tiene presencia nativa en Mexico, Colombia y toda la region hispanohablante.</p>
+        <p>El ecosistema de "skills" y agentes de IA esta explotando: hay <strong>4,200+ skills y 770+ MCP servers</strong> en el ecosistema Claude Code, con sitios como claudecodeagents.com y aitmpl.com vendiendo 600+ agentes. Sin embargo, estos productos estan en ingles, orientados a desarrolladores, y sin orquestacion estrategica. <em>Ninguno esta posicionado para el emprendedor hispanohablante no-tecnico.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 03. ICP DEFINITION -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="icp">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03 &mdash; Definicion de ICP</span>
+      <h2 class="section-title">Tres personas, un dolor comun: "Se que la IA puede hacer mas, pero no se como"</h2>
+    </div>
+
+    <div class="grid-3" style="gap: 24px;">
+
+      <!-- PERSONA 1 -->
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">RA</div>
+          <div>
+            <div class="persona-name">Roberto Alvarez</div>
+            <div class="persona-role">Dueno de agencia / Emprendedor digital, Mexico</div>
+          </div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-section">
+            <div class="persona-label">Demografia</div>
+            <ul>
+              <li>32-45 anos, masculino, CDMX o Guadalajara</li>
+              <li>Agencia de marketing digital, 3-10 empleados</li>
+              <li>Ingresos US$5K-25K/mes</li>
+              <li>Usa ChatGPT diario, sigue a gurus de marketing en YT/IG</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Dolor principal</div>
+            <ul>
+              <li>No puede contratar un equipo completo (copywriter, disenador, estratega)</li>
+              <li>Hace todo el: copy, ads, landing pages, branding</li>
+              <li>ChatGPT le da respuestas genericas, no produccion real</li>
+              <li>Ve que la IA "deberia" poder reemplazar a 5 personas, pero no sabe como</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Deseo</div>
+            <ul>
+              <li>Producir como una agencia de 20 personas siendo 2</li>
+              <li>Entregar mas rapido a sus clientes</li>
+              <li>Cobrar mas por incluir "IA" en su servicio</li>
+              <li>Dejar de ser el cuello de botella de su negocio</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Objeciones</div>
+            <ul>
+              <li>"US$19? Debe ser muy basico..."</li>
+              <li>"No se usar Claude Code"</li>
+              <li>"Ya tengo ChatGPT Plus, para que necesito otro?"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONA 2 -->
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">CM</div>
+          <div>
+            <div class="persona-name">Camila Montoya</div>
+            <div class="persona-role">Creadora de infoproductos, Colombia / Argentina</div>
+          </div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-section">
+            <div class="persona-label">Demografia</div>
+            <ul>
+              <li>28-40 anos, femenino, Bogota / Buenos Aires</li>
+              <li>Vende cursos online en Hotmart, 500-5K alumnos</li>
+              <li>Ingresos US$3K-15K/mes</li>
+              <li>Activa en Instagram, usa Canva y ChatGPT</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Dolor principal</div>
+            <ul>
+              <li>Gasta 80% del tiempo en contenido, no en producto</li>
+              <li>Paga US$500-2K/mes en freelancers (copy, diseno, video)</li>
+              <li>Sus landing pages convierten mal porque las hace ella</li>
+              <li>Quiere lanzar mas productos pero no tiene equipo</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Deseo</div>
+            <ul>
+              <li>Automatizar la produccion de contenido (Reels, carousels, emails)</li>
+              <li>Tener copy profesional sin pagar copywriter</li>
+              <li>Escalar lanzamientos sin escalar equipo</li>
+              <li>Sentirse "al dia" con IA como ventaja competitiva</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Objeciones</div>
+            <ul>
+              <li>"No soy tecnica, suena complicado"</li>
+              <li>"Ya tengo un prompt de copy que funciona"</li>
+              <li>"Claude Code? Eso no es para programadores?"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONA 3 -->
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">DS</div>
+          <div>
+            <div class="persona-name">Diego Sanchez</div>
+            <div class="persona-role">Director de Marketing, empresa mediana LATAM</div>
+          </div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-section">
+            <div class="persona-label">Demografia</div>
+            <ul>
+              <li>35-50 anos, masculino, Santiago / Lima / CDMX</li>
+              <li>Empresa de 50-300 empleados, sector servicios o tech</li>
+              <li>Equipo de marketing de 3-8 personas</li>
+              <li>Presupuesto anual de marketing US$100K-500K</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Dolor principal</div>
+            <ul>
+              <li>El board le pide "implementar IA" sin definir que</li>
+              <li>Gasto en herramientas de IA que nadie usa (Jasper, Copy.ai)</li>
+              <li>45% preocupado por data privacy (ley de datos MX/CO)</li>
+              <li>Su equipo usa IA de forma fragmentada, sin proceso</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Deseo</div>
+            <ul>
+              <li>Un sistema de IA con roles claros que su equipo pueda adoptar</li>
+              <li>Mostrar al board que "implemento IA" con resultados</li>
+              <li>Reducir dependencia de agencias externas</li>
+              <li>Framework replicable, no prompts sueltos</li>
+            </ul>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Objeciones</div>
+            <ul>
+              <li>"US$19 es muy barato para ser serio"</li>
+              <li>"Necesito soporte enterprise y SLA"</li>
+              <li>"Como garantizo compliance de datos?"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
+      <div class="callout-title">Patron transversal</div>
+      <div class="callout-text">Los tres perfiles comparten el mismo estado: <strong>usan IA (78% adopcion generativa) pero no producen con IA</strong>. Estan atrapados en la fase de "pedirle cosas a ChatGPT" sin un sistema de produccion real. AGENTES [IA] es el puente de "usuario de IA" a "operador de IA".</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 04. COMPETITIVE LANDSCAPE -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="competitive">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04 &mdash; Panorama Competitivo</span>
+      <h2 class="section-title">Mucho ruido de IA, cero productos de agentes orquestados en espanol</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Competidor</th>
+            <th>Tipo</th>
+            <th>Idioma</th>
+            <th>Precio</th>
+            <th>Target</th>
+            <th>Debilidad vs AGENTES [IA]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="comp-name">PromptBase</td>
+            <td>Marketplace de prompts</td>
+            <td>Ingles</td>
+            <td>US$2-10/prompt</td>
+            <td>Developers, creadores</td>
+            <td class="comp-gap">Prompts individuales, sin orquestacion, sin espanol</td>
+          </tr>
+          <tr>
+            <td class="comp-name">ClaudeCodeAgents.com</td>
+            <td>Pack agentes Claude Code</td>
+            <td>Ingles</td>
+            <td>~US$49+</td>
+            <td>Developers</td>
+            <td class="comp-gap">100% tecnico, sin espanol, sin enfoque negocio</td>
+          </tr>
+          <tr>
+            <td class="comp-name">AITMPL.com</td>
+            <td>600+ agentes Claude Code</td>
+            <td>Ingles</td>
+            <td>Varios</td>
+            <td>DevOps, security, data</td>
+            <td class="comp-gap">Orientado a desarrollo, no marketing/copy/branding</td>
+          </tr>
+          <tr>
+            <td class="comp-name">Cursos IA en Hotmart</td>
+            <td>Educacion</td>
+            <td>Espanol</td>
+            <td>US$27-197</td>
+            <td>Emprendedores</td>
+            <td class="comp-gap">Ensena teoria, no entrega herramienta funcional</td>
+          </tr>
+          <tr>
+            <td class="comp-name">Jasper / Copy.ai</td>
+            <td>SaaS de copy IA</td>
+            <td>Ingles (multi)</td>
+            <td>US$49-125/mes</td>
+            <td>Marketing teams</td>
+            <td class="comp-gap">Suscripcion mensual cara, copy generico, sin branding/estrategia</td>
+          </tr>
+          <tr>
+            <td class="comp-name">ChatGPT Plus</td>
+            <td>IA general</td>
+            <td>Multi</td>
+            <td>US$20/mes</td>
+            <td>General</td>
+            <td class="comp-gap">Herramienta general, sin especializacion, sin workflow</td>
+          </tr>
+          <tr>
+            <td class="comp-name">Packs de prompts en Hotmart (ES)</td>
+            <td>Prompts sueltos</td>
+            <td>Espanol</td>
+            <td>US$7-27</td>
+            <td>Emprendedores</td>
+            <td class="comp-gap">Prompts genericos sin sistema, sin especializacion por rol</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-2" style="margin-top: 32px;">
+      <div class="card" style="border-color: rgba(34,197,94,0.3);">
+        <div class="card-title" style="color: var(--green);">Gap principal identificado</div>
+        <div class="card-desc"><strong>No existe un producto de agentes de IA especializados en marketing/copy/branding, en espanol, con orquestacion de squads, a precio low-ticket.</strong> Los cursos ensena pero no entregan. Los SaaS cobran suscripcion mensual. Los marketplaces de prompts venden piezas sueltas en ingles. AGENTES [IA] es la unica solucion completa.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Posicionamiento diferenciado</div>
+        <div class="card-desc">AGENTES [IA] no compite con cursos ("no ensenamos IA, te damos el equipo"), no compite con SaaS ("pago unico, no suscripcion"), no compite con prompts ("son agentes con roles, reglas y pipelines, no frases sueltas"). <strong>Categoria propia: "Tu equipo de IA listo para producir".</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 05. PRICING STRATEGY -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05 &mdash; Estrategia de Precios</span>
+      <h2 class="section-title">US$19 pago unico: el sweet spot entre impulse-buy y valor percibido</h2>
+    </div>
+
+    <div class="grid-3" style="margin-bottom: 32px;">
+      <div class="card kpi">
+        <div class="kpi-value">US$19</div>
+        <div class="kpi-label">Precio principal LATAM</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value">US$37</div>
+        <div class="kpi-label">Con Order Bump</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value">US$97</div>
+        <div class="kpi-label">Upsell (implementacion)</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Justificacion</th>
+            <th>Margen estimado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag tag-blue">Core</span></td>
+            <td><strong>AGENTES [IA] Pack Completo</strong> &mdash; 40+ agentes, 7 squads, CLAUDE.md, reglas</td>
+            <td class="highlight">US$19</td>
+            <td>Impulse-buy en toda LATAM. 68% de mexicanos no tiene banco &mdash; OXXO acepta. Debajo del umbral psicologico de US$20. 2x el precio BR (R$47 ~ US$9) justificado por "version espanol".</td>
+            <td>~US$15 neto (Hotmart 9.9% + fees)</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-green">Order Bump</span></td>
+            <td><strong>Kit de Implementacion Rapida</strong> &mdash; 5 video tutoriales (15 min c/u) + prompts de activacion por squad</td>
+            <td class="highlight">+US$18</td>
+            <td>Resuelve objecion "no se usar Claude Code". Sube ticket promedio 95%. Videos en espanol, grabados en < 2 dias. Margen 100% (solo tiempo).</td>
+            <td>~US$16 neto</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-orange">Upsell</span></td>
+            <td><strong>Sesion de Implementacion 1:1</strong> &mdash; 60 min call para configurar los agentes en el negocio del comprador</td>
+            <td class="highlight">US$97</td>
+            <td>Para Persona 3 (Diego, corporativo). Justifica precio como "consultoria". Entrega via Cal.com. Solo para quienes compran core.</td>
+            <td>~US$88 neto (solo tiempo)</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-yellow">Backend</span></td>
+            <td><strong>Mentoria AGENTES [IA] PRO</strong> &mdash; Grupo cerrado, implementacion guiada, templates actualizados</td>
+            <td class="highlight">US$297/trim</td>
+            <td>Monetizacion real. Solo se ofrece post-compra via email sequence (dia 7). Margenes de 80%+. Escala con comunidad.</td>
+            <td>~US$250 neto</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="callout-title">Matematica del precio</div>
+      <div class="callout-text">Con CPC promedio de US$1.90 (Mexico) y conversion de landing page de 3% (conservador para low-ticket): <strong>CPA = ~US$63</strong> (1.90/0.03). Con ticket promedio de US$25 (mezcla core + 30% bump take rate): <strong>necesitamos ROAS frontend de 0.4x</strong>. La rentabilidad viene del backend (upsell + mentoria). Esto es un modelo de adquisicion, no de margen &mdash; clasico low-ticket funnel.</div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Comparativa de precio con el mercado</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Producto comparable</th>
+              <th>Precio</th>
+              <th>Modelo</th>
+              <th>Percepcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pack de prompts Hotmart (ES)</td>
+              <td>US$7-27</td>
+              <td>Pago unico</td>
+              <td>"Barato, probablemente basico"</td>
+            </tr>
+            <tr>
+              <td>Curso de IA para marketing</td>
+              <td>US$47-197</td>
+              <td>Pago unico</td>
+              <td>"Inversion educativa"</td>
+            </tr>
+            <tr>
+              <td>Jasper AI</td>
+              <td>US$49/mes</td>
+              <td>Suscripcion</td>
+              <td>"Herramienta cara de copy"</td>
+            </tr>
+            <tr>
+              <td style="color: var(--blue); font-weight: 600;">AGENTES [IA]</td>
+              <td style="color: var(--blue); font-weight: 600;">US$19</td>
+              <td>Pago unico</td>
+              <td>"Equipo completo de IA por menos que una cena"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 06. CHANNEL STRATEGY -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="channels">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">06 &mdash; Estrategia de Canales</span>
+      <h2 class="section-title">Meta Ads como motor principal, YouTube como acelerador organico</h2>
+    </div>
+
+    <!-- AD COSTS TABLE -->
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Pais</th>
+            <th>CPC (Meta)</th>
+            <th>CPM (Meta)</th>
+            <th>Mejor Q para lanzar</th>
+            <th>Plataforma dominante</th>
+            <th>Formato recomendado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Mexico</td>
+            <td>US$1.90</td>
+            <td>US$3.92</td>
+            <td><span class="tag tag-green">Q2 2026</span></td>
+            <td>Instagram > Facebook</td>
+            <td>Reels 30s + carousel</td>
+          </tr>
+          <tr>
+            <td class="highlight">Colombia</td>
+            <td>US$1.80</td>
+            <td>US$2.00</td>
+            <td><span class="tag tag-green">Q2 2026</span></td>
+            <td>Instagram > Facebook</td>
+            <td>Reels 30s + static</td>
+          </tr>
+          <tr>
+            <td class="highlight">Argentina</td>
+            <td>US$2.10</td>
+            <td>US$2.63*</td>
+            <td><span class="tag tag-yellow">Q3 2026</span></td>
+            <td>Instagram > Facebook</td>
+            <td>Reels 15-30s</td>
+          </tr>
+          <tr>
+            <td class="highlight">Chile</td>
+            <td>US$2.00</td>
+            <td>US$2.44</td>
+            <td><span class="tag tag-yellow">Q3 2026</span></td>
+            <td>Instagram = Facebook</td>
+            <td>Carousel + Reels</td>
+          </tr>
+          <tr>
+            <td class="highlight">Peru</td>
+            <td>US$1.70*</td>
+            <td>US$1.80*</td>
+            <td><span class="tag tag-green">Q2 2026</span></td>
+            <td>Facebook > Instagram</td>
+            <td>Video 30-60s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">Fuentes: AdAmigo.ai 2026, Lebesgue 2026, Adligator 2026. *Estimaciones interpoladas de datos regionales.</p>
+
+    <div class="grid-2" style="margin-top: 32px;">
+      <div class="card">
+        <div class="card-title">Meta Ads &mdash; Canal principal (80% budget)</div>
+        <div class="card-desc" style="margin-bottom: 16px;">
+          <strong>Targeting por interes:</strong> Hotmart, infoproductos, marketing digital, emprendimiento, ChatGPT, inteligencia artificial, Canva, copywriting.
+        </div>
+        <div class="card-desc" style="margin-bottom: 16px;">
+          <strong>Lookalike:</strong> Semilla de compradores Brasil (R$47 product). Lookalike 1-3% en MX, CO, AR.
+        </div>
+        <div class="card-desc" style="margin-bottom: 16px;">
+          <strong>Retargeting:</strong> Visitantes LP (7d, 14d), video viewers (50%, 75%, 95%).
+        </div>
+        <div class="card-desc">
+          <strong>Placements:</strong> Instagram Reels, Instagram Feed, Facebook Feed, Stories. NO Audience Network (baja calidad para low-ticket).
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">YouTube &mdash; Organico + Paid (20% budget)</div>
+        <div class="card-desc" style="margin-bottom: 16px;">
+          <strong>Organico:</strong> Demo videos mostrando los agentes en accion. "Asi genero una landing page completa con IA en 10 minutos" &mdash; formato screen recording + face cam.
+        </div>
+        <div class="card-desc" style="margin-bottom: 16px;">
+          <strong>Paid:</strong> YouTube Shorts ads (repurpose de Reels). Pre-roll skippable de 30s en videos de marketing digital / IA.
+        </div>
+        <div class="card-desc">
+          <strong>Por que YouTube:</strong> Alto trust en LATAM para productos digitales. Los compradores buscan "como usar IA para marketing" antes de comprar. El demo visual cierra la venta.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 07. CREATIVE STRATEGY -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="creative">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">07 &mdash; Estrategia Creativa</span>
+      <h2 class="section-title">5 angulos de hook en espanol, formatos nativos por plataforma</h2>
+    </div>
+
+    <div style="display: grid; gap: 16px; margin-bottom: 40px;">
+      <!-- HOOK 1 -->
+      <div class="hook-card">
+        <div class="hook-num">HOOK 01 &mdash; More Good (resultado financiero)</div>
+        <div class="hook-text">"Deje de pagar US$3,000 al mes en freelancers. Ahora tengo 40 agentes de IA que hacen copy, diseno, estrategia y branding &mdash; por US$19. Pago unico."</div>
+        <div class="hook-angle">Formato: Reel 30s face-to-camera + screen grab del dashboard de agentes. Persona target: Roberto (agencia MX).</div>
+      </div>
+      <!-- HOOK 2 -->
+      <div class="hook-card">
+        <div class="hook-num">HOOK 02 &mdash; Less Bad (dolor de inaccion)</div>
+        <div class="hook-text">"Cada mes que sigues haciendo todo manual, tu competencia ya tiene IA produciendo por ellos. No es cuestion de si van a automatizar &mdash; es cuestion de si tu lo haces primero."</div>
+        <div class="hook-angle">Formato: Carousel 5 slides (slide 1 = hook, slide 5 = CTA). Persona target: Camila (infoproductora CO/AR).</div>
+      </div>
+      <!-- HOOK 3 -->
+      <div class="hook-card">
+        <div class="hook-num">HOOK 03 &mdash; Status (como te ven)</div>
+        <div class="hook-text">"Mi equipo me pregunto como contrate a 40 personas nuevas en un fin de semana. No contrate a nadie &mdash; instale AGENTES [IA]. Ahora produzco 10x y mi board cree que soy genio."</div>
+        <div class="hook-angle">Formato: Reel 15s con zoom dramatico + texto overlay. Persona target: Diego (director corporativo).</div>
+      </div>
+      <!-- HOOK 4 -->
+      <div class="hook-card">
+        <div class="hook-num">HOOK 04 &mdash; Demo / Prueba social</div>
+        <div class="hook-text">"Voy a crear una campana de Meta Ads completa en vivo &mdash; copy, audiencia, creativos, landing page &mdash; usando solo mis agentes de IA. Cronometro corriendo."</div>
+        <div class="hook-angle">Formato: Video largo 3-5 min (YouTube) cortado en clips de 30-60s para Reels. Alto engagement por factor "en vivo". Todos los perfiles.</div>
+      </div>
+      <!-- HOOK 5 -->
+      <div class="hook-card">
+        <div class="hook-num">HOOK 05 &mdash; Contraste / Categoria</div>
+        <div class="hook-text">"Esto NO es un curso de IA. No es un pack de prompts. Son 40 agentes especializados que trabajan juntos como un equipo real &mdash; copywriter, disenador, estratega, director de arte. Tu solo diriges."</div>
+        <div class="hook-angle">Formato: Static con tipografia bold (fondo negro, texto blanco, "NO" en rojo, "40 agentes" en azul). Todos los perfiles, especialmente escepticos.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Formatos recomendados por plataforma</h3>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title">Instagram Reels</div>
+        <div class="card-desc">
+          15-30 segundos. Face-to-camera + screen recording overlay. Subtitulos quemados (80% ven sin audio). Primer frame = hook visual fuerte. CTA: "Link en bio" o "Comenta IA".<br/><br/>
+          <strong>Volumen:</strong> 3-5 variaciones por semana.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Carousel (IG/FB)</div>
+        <div class="card-desc">
+          10 slides. Slide 1 = hook, Slides 2-8 = beneficios por squad, Slide 9 = prueba social/numeros, Slide 10 = CTA con precio. Fondo negro, tipografia Inter, acento azul #4A90FF.<br/><br/>
+          <strong>Volumen:</strong> 2 por semana.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">YouTube (organico + paid)</div>
+        <div class="card-desc">
+          Demo completo 5-10 min mostrando agentes en accion real. Cortar en clips de 30-60s para Shorts/Reels. Thumbnail: fondo oscuro, cara + texto "40 AGENTES por US$19".<br/><br/>
+          <strong>Volumen:</strong> 1 largo + 3-5 shorts por semana.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 08. FUNNEL ARCHITECTURE -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="funnel">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">08 &mdash; Arquitectura del Funnel</span>
+      <h2 class="section-title">Trafico directo a LP de venta con checkout integrado</h2>
+    </div>
+
+    <div class="card" style="padding: 40px; max-width: 740px;">
+      <div class="funnel-step">
+        <div class="funnel-num">1</div>
+        <div class="funnel-content">
+          <div class="funnel-label">Trafico (Meta Ads + YouTube)</div>
+          <div class="funnel-detail">Reels, carousels, Shorts apuntando directo a LP. Sin lead magnet, sin webinar. Low-ticket = compra por impulso. Pixel de Meta + conversion API activos.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">2</div>
+        <div class="funnel-content">
+          <div class="funnel-label">Landing Page (agent-squad-lp-latam)</div>
+          <div class="funnel-detail">Pagina unica de venta en espanol. Hero con demo GIF, squads expandibles, pricing con ancla de comparacion (US$3K/mes freelancers vs US$19 pago unico). Social proof de proyectos reales. CTA a Hotmart checkout.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">3</div>
+        <div class="funnel-content">
+          <div class="funnel-label">Checkout (Hotmart)</div>
+          <div class="funnel-detail">Hotmart checkout con metodos locales habilitados: OXXO (MX), PSE + Nequi (CO), cupon de pago (AR), tarjetas de credito (todas). <strong>Order bump:</strong> Kit de Implementacion Rapida (+US$18) con take rate esperado de 30%.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">4</div>
+        <div class="funnel-content">
+          <div class="funnel-label">Entrega inmediata (Hotmart)</div>
+          <div class="funnel-detail">Acceso instantaneo via Hotmart Club. Contenido: ZIP con todos los agentes + CLAUDE.md + reglas + README de instalacion en espanol. Video de bienvenida (2 min) explicando como instalar en Claude Code.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">5</div>
+        <div class="funnel-content">
+          <div class="funnel-label">Upsell Page (post-compra)</div>
+          <div class="funnel-detail">Pagina de upsell inmediata despues de checkout: Sesion 1:1 de implementacion (US$97). Timer de urgencia real (24h). Solo aparece una vez. Conversion esperada: 5-8%.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">6</div>
+        <div class="funnel-content">
+          <div class="funnel-label">Email Sequence (7 dias)</div>
+          <div class="funnel-detail">
+            Dia 0: Bienvenida + link de acceso<br>
+            Dia 1: "Activa tu primer squad en 5 minutos" (tutorial)<br>
+            Dia 3: Case study / demo de un resultado real<br>
+            Dia 5: "Los 3 errores que matan tu productividad con IA"<br>
+            Dia 7: Oferta backend &mdash; Mentoria PRO (US$297/trim)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="callout-title">Metricas objetivo del funnel</div>
+      <div class="callout-text">
+        CTR ads: 1.5-2.5% | LP conversion: 2.5-4% | Order bump rate: 25-35% | Upsell conversion: 5-8% | Email open rate: 40%+ (dia 0-3) | Backend conversion (dia 7): 3-5%
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 09. COUNTRY PRIORITIZATION -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="countries">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">09 &mdash; Priorizacion de Paises</span>
+      <h2 class="section-title">Mexico primero, Colombia segundo, Argentina como wildcard</h2>
+    </div>
+
+    <div style="display: grid; gap: 24px;">
+
+      <!-- #1 MEXICO -->
+      <div class="card" style="border-left: 3px solid var(--green);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="tag tag-green">#1 PRIORIDAD</span>
+            <span style="font-size: 22px; font-weight: 700; margin-left: 12px;">Mexico</span>
+          </div>
+          <div style="font-size: 13px; color: var(--text-muted);">Score: 92/100</div>
+        </div>
+        <div class="priority-bar"><div class="priority-fill" style="width: 92%; background: var(--green);"></div></div>
+        <div class="prose" style="margin-top: 16px; font-size: 14px;">
+          <p><strong>Por que primero:</strong> Mayor mercado de gasto publicitario digital (US$11.9B), 130M de poblacion, ecosistema emprendedor robusto. CPM accesible (US$3.92). Hotmart acepta OXXO &mdash; critico porque 68% de mexicanos no tiene cuenta bancaria. 65% de empresas en adopcion de IA. Concentracion de infoproductores y agencias digitales en CDMX, Guadalajara, Monterrey.</p>
+          <p><strong>Riesgo:</strong> CPM mas alto de la region (US$3.92 vs US$2.00 en CO). Mayor competencia de contenido en espanol.</p>
+        </div>
+      </div>
+
+      <!-- #2 COLOMBIA -->
+      <div class="card" style="border-left: 3px solid var(--blue);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="tag tag-blue">#2 PRIORIDAD</span>
+            <span style="font-size: 22px; font-weight: 700; margin-left: 12px;">Colombia</span>
+          </div>
+          <div style="font-size: 13px; color: var(--text-muted);">Score: 85/100</div>
+        </div>
+        <div class="priority-bar"><div class="priority-fill" style="width: 85%;"></div></div>
+        <div class="prose" style="margin-top: 16px; font-size: 14px;">
+          <p><strong>Por que segundo:</strong> CPM mas bajo de la region (US$2.00) y CPC de US$1.80 &mdash; mejor eficiencia de adquisicion. Ecosistema digital creciente con US$2.77B en gasto digital. Pagos via Nequi (wallet digital popular), PSE y Efecty. Bogota y Medellin son hubs de emprendimiento digital reconocidos. Fuerte cultura de infoproductos en Hotmart.</p>
+          <p><strong>Riesgo:</strong> Regulaciones estrictas de datos transfronterizos. Mercado mas pequeno que Mexico (52M vs 130M).</p>
+        </div>
+      </div>
+
+      <!-- #3 ARGENTINA -->
+      <div class="card" style="border-left: 3px solid var(--yellow);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="tag tag-yellow">#3 WILDCARD</span>
+            <span style="font-size: 22px; font-weight: 700; margin-left: 12px;">Argentina</span>
+          </div>
+          <div style="font-size: 13px; color: var(--text-muted);">Score: 78/100</div>
+        </div>
+        <div class="priority-bar"><div class="priority-fill" style="width: 78%; background: var(--yellow);"></div></div>
+        <div class="prose" style="margin-top: 16px; font-size: 14px;">
+          <p><strong>Por que wildcard:</strong> Altisima adopcion de IA (66%, segunda en la region). Penetracion de internet del 92%. Audiencia tech-savvy y acostumbrada a comprar en dolares. Fuerte comunidad de infoproductores y creadores digitales. E-commerce creciendo 25% YoY &mdash; el mas rapido de la region.</p>
+          <p><strong>Riesgo:</strong> Volatilidad cambiaria extrema (ARS). CPC mas alto (US$2.10). Pagos internacionales complicados por controles de cambio. Producto en USD puede parecer caro en moneda local.</p>
+        </div>
+      </div>
+
+      <!-- #4 CHILE -->
+      <div class="card" style="border-left: 3px solid var(--text-muted);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="tag tag-blue">#4 FASE 2</span>
+            <span style="font-size: 22px; font-weight: 700; margin-left: 12px;">Chile</span>
+          </div>
+          <div style="font-size: 13px; color: var(--text-muted);">Score: 72/100</div>
+        </div>
+        <div class="priority-bar"><div class="priority-fill" style="width: 72%; opacity: 0.6;"></div></div>
+        <div class="prose" style="margin-top: 16px; font-size: 14px;">
+          <p><strong>Fase 2 (mes 2-3):</strong> Penetracion de internet mas alta (93%). Mercado maduro, alto poder adquisitivo. US$2.24B en gasto digital. Pero mercado mas pequeno (19M habitantes). Entrar cuando los creativos de MX/CO ya esten validados &mdash; reutilizar ganadores.</p>
+        </div>
+      </div>
+
+      <!-- #5 PERU -->
+      <div class="card" style="border-left: 3px solid var(--text-muted);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="tag tag-blue">#5 FASE 2</span>
+            <span style="font-size: 22px; font-weight: 700; margin-left: 12px;">Peru</span>
+          </div>
+          <div style="font-size: 13px; color: var(--text-muted);">Score: 68/100</div>
+        </div>
+        <div class="priority-bar"><div class="priority-fill" style="width: 68%; opacity: 0.6;"></div></div>
+        <div class="prose" style="margin-top: 16px; font-size: 14px;">
+          <p><strong>Fase 2 (mes 2-3):</strong> CPM potencialmente mas bajo de la region (~US$1.80). Presupuesto de IA creciendo 15% (el mas alto junto a Brasil). US$2.55B en gasto digital. Peru es el quinto mercado digital mas grande de LATAM. Entrar como extension natural despues de validar MX+CO.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="callout-title">Estrategia de entrada</div>
+      <div class="callout-text"><strong>Semana 1-2:</strong> Mexico solo (validar creativos, LP, checkout). <strong>Semana 3-4:</strong> Agregar Colombia (duplicar campanas ganadoras de MX). <strong>Mes 2:</strong> Agregar Argentina como test. <strong>Mes 3:</strong> Expandir a Chile + Peru con los creativos ganadores.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 10. BUDGET & PROJECTIONS -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="budget">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">10 &mdash; Budget y Proyecciones</span>
+      <h2 class="section-title">US$50/dia para empezar, escalando a US$150/dia en 90 dias</h2>
+    </div>
+
+    <div class="grid-4" style="margin-bottom: 32px;">
+      <div class="card kpi">
+        <div class="kpi-value">US$50</div>
+        <div class="kpi-label">Gasto diario inicial</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value">US$150</div>
+        <div class="kpi-label">Gasto diario mes 3</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value">US$4,500</div>
+        <div class="kpi-label">Budget total 90 dias</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value">~320</div>
+        <div class="kpi-label">Ventas proyectadas 90d</div>
+      </div>
+    </div>
+
+    <!-- PROJECTIONS TABLE -->
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metrica</th>
+            <th>Mes 1 (MX solo)</th>
+            <th>Mes 2 (MX+CO+AR)</th>
+            <th>Mes 3 (todos)</th>
+            <th>Total 90 dias</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gasto diario</td>
+            <td>US$50</td>
+            <td>US$100</td>
+            <td>US$150</td>
+            <td class="highlight">US$9,000</td>
+          </tr>
+          <tr>
+            <td>Gasto mensual</td>
+            <td>US$1,500</td>
+            <td>US$3,000</td>
+            <td>US$4,500</td>
+            <td class="highlight">US$9,000</td>
+          </tr>
+          <tr>
+            <td>CPC promedio</td>
+            <td>US$1.90</td>
+            <td>US$1.85</td>
+            <td>US$1.88</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Clicks totales</td>
+            <td>~789</td>
+            <td>~1,622</td>
+            <td>~2,394</td>
+            <td class="highlight">~4,805</td>
+          </tr>
+          <tr>
+            <td>LP conversion rate</td>
+            <td>2.5%</td>
+            <td>3.0%</td>
+            <td>3.5%</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Ventas core (US$19)</td>
+            <td>~20</td>
+            <td>~49</td>
+            <td>~84</td>
+            <td class="highlight">~153</td>
+          </tr>
+          <tr>
+            <td>Order bump (30% take)</td>
+            <td>~6</td>
+            <td>~15</td>
+            <td>~25</td>
+            <td class="highlight">~46</td>
+          </tr>
+          <tr>
+            <td>Upsell 1:1 (6% take)</td>
+            <td>~1</td>
+            <td>~3</td>
+            <td>~5</td>
+            <td class="highlight">~9</td>
+          </tr>
+          <tr>
+            <td>Revenue core</td>
+            <td>US$380</td>
+            <td>US$931</td>
+            <td>US$1,596</td>
+            <td class="highlight">US$2,907</td>
+          </tr>
+          <tr>
+            <td>Revenue bump</td>
+            <td>US$108</td>
+            <td>US$270</td>
+            <td>US$450</td>
+            <td class="highlight">US$828</td>
+          </tr>
+          <tr>
+            <td>Revenue upsell</td>
+            <td>US$97</td>
+            <td>US$291</td>
+            <td>US$485</td>
+            <td class="highlight">US$873</td>
+          </tr>
+          <tr>
+            <td><strong>Revenue total</strong></td>
+            <td><strong>US$585</strong></td>
+            <td><strong>US$1,492</strong></td>
+            <td><strong>US$2,531</strong></td>
+            <td class="highlight" style="font-size: 18px;"><strong>US$4,608</strong></td>
+          </tr>
+          <tr>
+            <td><strong>ROAS frontend</strong></td>
+            <td>0.39x</td>
+            <td>0.50x</td>
+            <td>0.56x</td>
+            <td class="highlight"><strong>0.51x</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="callout-title">Nota sobre ROAS</div>
+      <div class="callout-text">El ROAS frontend de 0.51x es <strong>esperado y correcto para un modelo low-ticket</strong>. La rentabilidad viene del backend: si solo 5% de los 153 compradores convierte a Mentoria PRO (US$297/trim), eso agrega US$2,277 en revenue recurrente. <strong>Revenue total estimado incluyendo backend (90 dias): US$6,885.</strong> Despues del mes 3, los costos de adquisicion se mantienen pero el backend sigue compounding.</div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Escenarios de sensibilidad</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Escenario</th>
+              <th>LP Conv Rate</th>
+              <th>Ventas 90d</th>
+              <th>Revenue 90d</th>
+              <th>ROAS frontend</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-red">Pesimista</span></td>
+              <td>1.5%</td>
+              <td>~72</td>
+              <td>US$2,160</td>
+              <td>0.24x</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-yellow">Conservador</span></td>
+              <td>3.0%</td>
+              <td>~144</td>
+              <td>US$4,320</td>
+              <td>0.48x</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-green">Optimista</span></td>
+              <td>5.0%</td>
+              <td>~240</td>
+              <td>US$7,200</td>
+              <td>0.80x</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 11. RISK FACTORS -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="risks">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">11 &mdash; Factores de Riesgo</span>
+      <h2 class="section-title">8 riesgos identificados con mitigacion</h2>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-item">
+        <div class="risk-severity risk-high"></div>
+        <div>
+          <div class="risk-title">Volatilidad cambiaria (Argentina)</div>
+          <div class="risk-desc">El peso argentino pierde valor constantemente. Un producto en USD puede parecer caro o cambiar de percepcion en semanas. El ARS/USD puede variar 20-30% en un trimestre.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Precio fijo en USD via Hotmart. Argentina como mercado #3, no principal. Monitorear CPA en USD.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-high"></div>
+        <div>
+          <div class="risk-title">Friccion de pago sin tarjeta</div>
+          <div class="risk-desc">68% de mexicanos no tiene cuenta bancaria. OXXO tiene ciclo de pago de 24-48h (genera cupon, paga en tienda). Abandono alto entre "generar cupon" y "pagar".</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Hotmart ya maneja OXXO nativamente. Email automatico recordando pagar el cupon. Optimizar para tarjeta como default.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-medium"></div>
+        <div>
+          <div class="risk-title">Barrera tecnica: "Claude Code es para developers"</div>
+          <div class="risk-desc">El ICP no es tecnico. Claude Code requiere terminal/linea de comandos. La percepcion de "herramienta de programadores" puede frenar conversion.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Order Bump de implementacion. Video tutorial de 5 min en LP. Hook "si puedes escribir un email, puedes usar esto".</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-medium"></div>
+        <div>
+          <div class="risk-title">Percepcion de precio "demasiado barato"</div>
+          <div class="risk-desc">Persona 3 (corporativo) puede percibir US$19 como "no serio". Compromete credibilidad enterprise.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Upsell de US$97 (1:1 session). Enfoque en Persona 1 y 2 para ads. Persona 3 capturada via contenido organico/LinkedIn.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-medium"></div>
+        <div>
+          <div class="risk-title">Saturacion de "cursos de IA" en Hotmart</div>
+          <div class="risk-desc">Hotmart esta lleno de cursos genericos de "como usar ChatGPT". AGENTES [IA] puede ser confundido con otro curso generico de IA.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Posicionamiento explicito: "NO es un curso. Son agentes que trabajan por ti." Demos en vivo diferenciando visualmente.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-medium"></div>
+        <div>
+          <div class="risk-title">Regulaciones de datos transfronterizos (Colombia)</div>
+          <div class="risk-desc">Colombia regula transferencias de datos personales. 45% de lideres mexicanos preocupados por proteccion de datos. Puede generar friccion corporativa.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Los agentes son archivos de texto, no procesan datos del usuario. Aclarar en FAQ que no hay cloud ni almacenamiento externo.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-low"></div>
+        <div>
+          <div class="risk-title">Copia rapida por competidores</div>
+          <div class="risk-desc">Al ser archivos de texto, el producto es replicable. Un competidor podria crear su propia version en semanas.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> First-mover advantage. Branding fuerte. Backend (mentoria) crea switching cost. Actualizaciones constantes.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-severity risk-low"></div>
+        <div>
+          <div class="risk-title">Dependencia de Anthropic/Claude</div>
+          <div class="risk-desc">Si Claude Code cambia su arquitectura de agentes o pricing, el producto se vuelve obsoleto.</div>
+        </div>
+        <div class="risk-mitigation"><strong>Mitigacion:</strong> Bajo riesgo a 12 meses. Anthropic esta apostando fuerte a agentes. Migrar a alternativas si es necesario.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 12. 90-DAY ROADMAP -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="section" id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">12 &mdash; Roadmap 90 Dias</span>
+      <h2 class="section-title">De cero a 5 paises en 3 meses</h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- PHASE 0 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Fase 0 &mdash; Preparacion (Semana 1-2)</div>
+        <div class="timeline-title">Setup de infraestructura</div>
+        <div class="timeline-desc">
+          Configurar producto en Hotmart con todos los metodos de pago LATAM habilitados. Adaptar LP a espanol neutro (ni mexicano ni argentino, sino espanol LATAM universal). Traducir/adaptar CLAUDE.md y README de instalacion. Crear video de bienvenida en espanol (2 min). Configurar Pixel de Meta + CAPI en LP. Crear cuenta de ads con geo MX+CO+AR.
+        </div>
+        <div class="timeline-tasks">
+          <span class="tag tag-blue">Hotmart setup</span>
+          <span class="tag tag-blue">LP espanol</span>
+          <span class="tag tag-blue">Video welcome</span>
+          <span class="tag tag-blue">Pixel + CAPI</span>
+          <span class="tag tag-blue">Order bump</span>
+        </div>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Fase 1 &mdash; Validacion Mexico (Semana 3-4)</div>
+        <div class="timeline-title">Lanzar ads en Mexico, validar funnel completo</div>
+        <div class="timeline-desc">
+          Lanzar 5 creativos (2 Reels, 2 carousels, 1 static) con los 5 hooks definidos. US$50/dia, campana de conversion (purchases). 3 ad sets: intereses broad, intereses narrow (Hotmart+ChatGPT), lookalike BR. Medir CPC, CTR, LP conv rate, checkout completion rate. Matar creativos con CPC > US$3.00 en 48h. Escalar ganadores 20% cada 3 dias.
+        </div>
+        <div class="timeline-tasks">
+          <span class="tag tag-green">5 creativos</span>
+          <span class="tag tag-green">US$50/dia</span>
+          <span class="tag tag-green">3 ad sets</span>
+          <span class="tag tag-green">Kill/scale rules</span>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Fase 2 &mdash; Expansion Colombia + Argentina (Semana 5-8)</div>
+        <div class="timeline-title">Duplicar campanas ganadoras, agregar 2 mercados</div>
+        <div class="timeline-desc">
+          Tomar los 2-3 creativos ganadores de MX y duplicarlos para CO y AR. Ajustar targeting por pais (intereses locales). Subir budget a US$100/dia (MX: $50, CO: $30, AR: $20). Producir 5 nuevos creativos basados en learnings del mes 1. Lanzar primera secuencia de email post-compra. Medir order bump take rate y optimizar copy del bump si < 25%.
+        </div>
+        <div class="timeline-tasks">
+          <span class="tag tag-yellow">Duplicar winners</span>
+          <span class="tag tag-yellow">US$100/dia</span>
+          <span class="tag tag-yellow">5 creativos nuevos</span>
+          <span class="tag tag-yellow">Email sequence</span>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Fase 3 &mdash; Escalamiento + Chile + Peru (Semana 9-12)</div>
+        <div class="timeline-title">5 paises activos, backend activado, escalar lo que funciona</div>
+        <div class="timeline-desc">
+          Agregar Chile y Peru con creativos ganadores. Subir budget a US$150/dia (MX: $60, CO: $35, AR: $25, CL: $15, PE: $15). Activar upsell de mentoria PRO via email (dia 7). Producir contenido organico en YouTube (1 video largo + 3 shorts/semana). Evaluar ROAS total (frontend + backend) y decidir: escalar o pivotar. Meta: 320+ ventas totales en 90 dias.
+        </div>
+        <div class="timeline-tasks">
+          <span class="tag tag-orange">5 paises</span>
+          <span class="tag tag-orange">US$150/dia</span>
+          <span class="tag tag-orange">Mentoria PRO launch</span>
+          <span class="tag tag-orange">YouTube organico</span>
+          <span class="tag tag-orange">ROAS review</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DECISION GATES -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Decision gates</h3>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title" style="color: var(--green);">GO (escalar)</div>
+          <div class="card-desc">LP conversion > 2.5% AND CPC < US$2.50 AND order bump > 20%. Subir budget 30% cada semana. Agregar nuevo pais.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--yellow);">HOLD (optimizar)</div>
+          <div class="card-desc">LP conversion 1.5-2.5% OR CPC US$2.50-3.50. Parar nuevos paises. A/B test de LP (headline, hero, pricing display). Nuevos creativos.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--red);">KILL (pivotar)</div>
+          <div class="card-desc">LP conversion < 1.5% despues de 500 clicks. Parar ads. Revisar: precio incorrecto? ICP incorrecto? LP no convierte? Producto mal posicionado?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">
+      <span class="footer-brand">AGENTES <span>[IA]</span></span> &mdash; Estrategia LATAM 2026
+      <br/>Documento interno. Datos de mercado actualizados a abril 2026.
+      <br/>Fuentes: CEPAL ILIA 2025, MarketDataForecast, AdAmigo.ai, Lebesgue, Statista, eMarketer, Hotmart Help Center, IDC LATAM.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

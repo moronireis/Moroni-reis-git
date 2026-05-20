@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caixinha de Perguntas — Noiva S.A.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blush: #FFCBC1;
+      --rose: #DBA99F;
+      --rose-dark: #C49189;
+      --cream: #F4F3EE;
+      --cream-light: #FAFAF7;
+      --taupe: #9C958F;
+      --taupe-dark: #6b635d;
+      --black: #1a1a1a;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream-light);
+      color: var(--black);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .header {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      border-bottom: 1px solid var(--rose);
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--black);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      color: var(--taupe);
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(219, 169, 159, 0.3);
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--rose);
+      line-height: 1;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--taupe);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .question-card {
+      background: var(--white);
+      border: 1px solid rgba(219, 169, 159, 0.2);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .question-card:hover {
+      border-color: var(--rose);
+      box-shadow: 0 2px 12px rgba(219, 169, 159, 0.12);
+    }
+
+    .question-index {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--rose-dark);
+      min-width: 1.8rem;
+      text-align: center;
+      padding-top: 0.1rem;
+    }
+
+    .question-text {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    .question-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--taupe);
+      background: var(--cream);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(219, 169, 159, 0.3);
+      color: var(--taupe);
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .instructions {
+      background: var(--white);
+      border: 1px solid var(--rose);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .instructions h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      color: var(--black);
+    }
+
+    .instructions p {
+      font-size: 0.85rem;
+      color: var(--taupe-dark);
+      line-height: 1.7;
+    }
+
+    .instructions ul {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .instructions ul li {
+      font-size: 0.85rem;
+      color: var(--taupe-dark);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .instructions ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose);
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 3rem 1.5rem 2rem; }
+      .container { padding: 2rem 1.5rem 4rem; }
+      .question-card { padding: 1rem 1.2rem; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Caixinha de Perguntas</h1>
+    <p>40 perguntas para Stories da Noiva S.A. — organizadas por objetivo de conteudo</p>
+  </header>
+
+  <main class="container">
+
+    <div class="instructions">
+      <h3>Como usar</h3>
+      <p>Cada pergunta foi escrita para soar como se uma seguidora real tivesse mandado na caixinha. Giovanna responde em video (Stories), gerando conexao e autoridade.</p>
+      <ul>
+        <li>Coloque a pergunta na caixinha do Instagram Stories</li>
+        <li>Grave a resposta em video (30s a 1min)</li>
+        <li>Use 2-3 perguntas por dia em dias de caixinha</li>
+        <li>Alterne entre atracao e nutrição conforme o momento do funil</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 1: ATTRACTION -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <div>
+          <div class="section-title">Atracao</div>
+          <div class="section-subtitle">Topo de funil — curiosidade, descoberta, alcance</div>
+        </div>
+      </div>
+
+      <div class="questions-grid">
+        <div class="question-card">
+          <span class="question-index">01</span>
+          <div>
+            <div class="question-text">Quanto custa um casamento pra 150 pessoas hoje em dia?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">02</span>
+          <div>
+            <div class="question-text">Qual o primeiro passo depois de noivar? To perdida</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">03</span>
+          <div>
+            <div class="question-text">Verdade que assessora so serve pra casamento caro?</div>
+            <span class="question-tag">mito</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">04</span>
+          <div>
+            <div class="question-text">Gi, como voce comecou nesse mercado?</div>
+            <span class="question-tag">bastidor</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">05</span>
+          <div>
+            <div class="question-text">Noivei tem 2 meses e ainda nao fiz nada. To atrasada?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">06</span>
+          <div>
+            <div class="question-text">Qual a maior furada que noiva comete na hora de contratar fornecedor?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">07</span>
+          <div>
+            <div class="question-text">Da pra casar bonito com orcamento apertado?</div>
+            <span class="question-tag">mito</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">08</span>
+          <div>
+            <div class="question-text">Voce ja teve algum imprevisto grave no dia do casamento?</div>
+            <span class="question-tag">bastidor</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">09</span>
+          <div>
+            <div class="question-text">O que uma assessora faz que eu nao consigo fazer sozinha?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">10</span>
+          <div>
+            <div class="question-text">Casamento de dia ou de noite? Qual sai mais em conta?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">11</span>
+          <div>
+            <div class="question-text">Buffet ou finger food? To na duvida do formato</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">12</span>
+          <div>
+            <div class="question-text">Qual epoca do ano e mais barata pra casar?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">13</span>
+          <div>
+            <div class="question-text">Gi, o que voce faria diferente no seu proprio casamento?</div>
+            <span class="question-tag">bastidor</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">14</span>
+          <div>
+            <div class="question-text">Meu noivo nao quer se envolver no planejamento. Normal?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">15</span>
+          <div>
+            <div class="question-text">O que e mais importante: local, decoracao ou comida?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">16</span>
+          <div>
+            <div class="question-text">Voce indica fazer lista de presentes ou vaquinha?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">17</span>
+          <div>
+            <div class="question-text">Quantos fornecedores em media um casamento precisa?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">18</span>
+          <div>
+            <div class="question-text">Mini wedding vale a pena ou e modinha?</div>
+            <span class="question-tag">mito</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">19</span>
+          <div>
+            <div class="question-text">Qual a tendencia de casamento que voce mais gosta em 2026?</div>
+            <span class="question-tag">bastidor</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">20</span>
+          <div>
+            <div class="question-text">Gi, como saber se um fornecedor e confiavel antes de fechar?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: NURTURING -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <div>
+          <div class="section-title">Nutricao</div>
+          <div class="section-subtitle">Meio e fundo de funil — confianca, autoridade, decisao</div>
+        </div>
+      </div>
+
+      <div class="questions-grid">
+        <div class="question-card">
+          <span class="question-index">01</span>
+          <div>
+            <div class="question-text">Gi, qual a diferenca entre os pacotes da Noiva S.A.?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">02</span>
+          <div>
+            <div class="question-text">Voce atende casamento fora da sua cidade?</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">03</span>
+          <div>
+            <div class="question-text">Como funciona o processo do comeco ao dia do casamento com voces?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">04</span>
+          <div>
+            <div class="question-text">Ja aconteceu de uma noiva se arrepender de nao ter contratado antes?</div>
+            <span class="question-tag">prova social</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">05</span>
+          <div>
+            <div class="question-text">Voce acompanha no dia do evento? Como funciona isso?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">06</span>
+          <div>
+            <div class="question-text">Meu casamento e daqui 8 meses. Ainda da tempo de contratar assessoria?</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">07</span>
+          <div>
+            <div class="question-text">Qual a diferenca entre assessoria e cerimonial? To confusa</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">08</span>
+          <div>
+            <div class="question-text">Voce ajuda a negociar com fornecedor ou so indica?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">09</span>
+          <div>
+            <div class="question-text">Uma noiva sua ja saiu do orcamento? O que voce fez?</div>
+            <span class="question-tag">prova social</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">10</span>
+          <div>
+            <div class="question-text">Gi, voce consegue montar um cronograma mesmo eu ja tendo fechado alguns fornecedores?</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">11</span>
+          <div>
+            <div class="question-text">Qual feedback voce mais ouve das noivas depois do casamento?</div>
+            <span class="question-tag">prova social</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">12</span>
+          <div>
+            <div class="question-text">Tenho medo de gastar com assessoria e no fim nao valer. Como sei que vale?</div>
+            <span class="question-tag">objecao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">13</span>
+          <div>
+            <div class="question-text">Voce faz reuniao antes de fechar? Quero conhecer melhor o trabalho</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">14</span>
+          <div>
+            <div class="question-text">Quantos casamentos voce ja fez ao todo?</div>
+            <span class="question-tag">prova social</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">15</span>
+          <div>
+            <div class="question-text">Gi, como e a comunicacao com voces durante o planejamento? Whatsapp? Reuniao?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">16</span>
+          <div>
+            <div class="question-text">Minha sogra quer opinar em tudo. Voce ajuda a lidar com isso?</div>
+            <span class="question-tag">metodo</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">17</span>
+          <div>
+            <div class="question-text">Voce aceita pagamento parcelado?</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">18</span>
+          <div>
+            <div class="question-text">Qual o melhor momento pra contratar assessoria? Logo depois de noivar?</div>
+            <span class="question-tag">educacao</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">19</span>
+          <div>
+            <div class="question-text">Voces tem algum material ou checklist que eu possa ver antes de decidir?</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+        <div class="question-card">
+          <span class="question-index">20</span>
+          <div>
+            <div class="question-text">O que acontece se eu precisar mudar a data do casamento? Voces se adaptam?</div>
+            <span class="question-tag">operacional</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Noiva S.A. — Sociedade do Amor | Maio 2026
+  </footer>
+
+</body>
+</html>

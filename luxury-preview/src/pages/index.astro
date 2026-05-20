@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    href: '/brands',
+    label: '01',
+    title: 'Brand DNA Gallery',
+    meta: '12 brands analyzed',
+    description: 'Color palettes, typography systems, motion timing, and quality scores for twelve luxury houses — from Chanel to Aman.',
+  },
+  {
+    href: '/patterns',
+    label: '02',
+    title: 'Patterns & Motion',
+    meta: '21 patterns',
+    description: 'Distilled reusable techniques: clip-path curtains, scroll-driven reveals, editorial type animations, and cinematic transitions.',
+  },
+  {
+    href: '/grammar',
+    label: '03',
+    title: 'Luxury Grammar',
+    meta: '8 universal rules',
+    description: 'The eight patterns that appear across 80%+ of luxury digital presences — and their absence signals non-luxury.',
+  },
+  {
+    href: '/mood-reports',
+    label: '04',
+    title: 'Mood Reports',
+    meta: '85+ references',
+    description: 'Curated aesthetic directions from Awwwards, FWA, Typewolf, and Land-book. Annotated by intent, not technology.',
+  },
+  {
+    href: '/filhas-de-eva',
+    label: '05',
+    title: 'Filhas de Eva',
+    meta: 'Case study',
+    description: 'Luxury image consultancy case study: how the grammar applies to a Portuguese-language premium brand.',
+  },
+  {
+    href: '/comparison',
+    label: '06',
+    title: 'Comparison Lab',
+    meta: 'Side-by-side',
+    description: 'Place any two brands side by side to compare color, typography, motion timing, and component decisions.',
+  },
+];
+---
+
+<BaseLayout title="Luxury Design Library">
+
+  <!-- Hero -->
+  <section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden;">
+
+    <!-- Background texture — subtle noise grain -->
+    <div style="
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(74,144,255,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 80% at 20% 70%, rgba(255,255,255,0.015) 0%, transparent 60%);
+      pointer-events: none;
+    "></div>
+
+    <!-- Vertical rule (architectural element) -->
+    <div style="
+      position: absolute; left: 64px; top: 0; bottom: 0;
+      width: 1px; background: var(--border-default);
+      opacity: 0.5;
+    "></div>
+
+    <div class="container-luxury" style="padding-bottom: var(--section-pad); position: relative; z-index: 1;">
+
+      <!-- Section label -->
+      <div class="section-label animate-fade-up" style="margin-bottom: 48px; padding-left: 24px; border-left: 1px solid var(--accent);">
+        REIS [IA] — Design Intelligence
+      </div>
+
+      <!-- Main headline -->
+      <h1 class="hero-headline animate-fade-up animate-delay-1" style="max-width: 1100px; margin: 0 0 48px;">
+        Luxury Design<br>Library
+      </h1>
+
+      <!-- Stats row -->
+      <div class="animate-fade-up animate-delay-2" style="display: flex; gap: 64px; margin-bottom: 64px;">
+        {[
+          { value: '12', label: 'Brands Analyzed' },
+          { value: '21', label: 'Patterns Distilled' },
+          { value: '85+', label: 'References Curated' },
+          { value: '6', label: 'Verticals Covered' },
+        ].map((stat) => (
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 48px; font-weight: 400; line-height: 1; color: var(--text-primary); margin-bottom: 8px;">{stat.value}</div>
+            <div class="section-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="animate-fade-up animate-delay-3" style="display: flex; gap: 16px; align-items: center;">
+        <a href="/brands" class="btn-luxury-filled btn-luxury">Explore Brand DNA</a>
+        <a href="/grammar" class="btn-luxury">View Grammar Rules</a>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div style="
+      position: absolute; bottom: 40px; right: 64px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    ">
+      <span class="section-label">Scroll</span>
+      <div style="width: 1px; height: 48px; background: var(--border-default);"></div>
+    </div>
+
+  </section>
+
+  <!-- Full-bleed divider -->
+  <div class="divider-luxury"></div>
+
+  <!-- Navigation Cards Grid -->
+  <section class="section-luxury">
+    <div class="container-luxury">
+
+      <!-- Section header -->
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 80px;">
+        <h2 style="font-family: var(--font-serif); font-size: clamp(36px, 5vw, 64px); font-weight: 400; color: var(--text-primary); margin: 0;">
+          Six Sections
+        </h2>
+        <span class="section-label">Library Index</span>
+      </div>
+
+      <!-- 2×3 grid -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-default);">
+        {sections.map((section, i) => (
+          <a
+            href={section.href}
+            style="
+              background: var(--surface-1);
+              padding: 48px;
+              text-decoration: none;
+              display: flex; flex-direction: column; justify-content: space-between;
+              min-height: 320px;
+              transition: background var(--transition-base), border-color var(--transition-base);
+              position: relative;
+              outline: 1px solid transparent;
+            "
+            onmouseenter="this.style.background='var(--surface-2)'; this.style.outline='1px solid var(--accent)'"
+            onmouseleave="this.style.background='var(--surface-1)'; this.style.outline='1px solid transparent'"
+          >
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px;">
+                <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--accent);">{section.label}</span>
+                <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--text-tertiary); text-transform: uppercase;">{section.meta}</span>
+              </div>
+              <h3 style="font-family: var(--font-serif); font-size: 28px; font-weight: 400; color: var(--text-primary); margin: 0 0 20px; line-height: 1.2;">{section.title}</h3>
+              <p style="font-family: var(--font-sans); font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); margin: 0;">{section.description}</p>
+            </div>
+            <!-- Arrow indicator -->
+            <div style="margin-top: 40px;">
+              <svg width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="6" x2="20" y2="6" stroke="#4A90FF" stroke-width="1"/>
+                <path d="M16 1L22 6L16 11" stroke="#4A90FF" stroke-width="1" fill="none"/>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Full-bleed divider -->
+  <div class="divider-luxury"></div>
+
+  <!-- Brand preview strip (12 brand names in horizontal scroll) -->
+  <section style="padding: 80px 0; overflow: hidden;">
+    <div style="display: flex; gap: 0; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+      {['CHANEL', 'HERMÈS', 'TIFFANY', 'DIOR', 'CARTIER', 'LOUIS VUITTON', 'BOTTEGA VENETA', 'BRUNELLO CUCINELLI', 'AESOP', 'DIPTYQUE', 'ROLLS-ROYCE', 'AMAN', 'CHANEL', 'HERMÈS', 'TIFFANY', 'DIOR'].map((name) => (
+        <div style="
+          flex-shrink: 0;
+          padding: 32px 48px;
+          border-right: 1px solid var(--border-default);
+          font-family: var(--font-mono);
+          font-size: 11px;
+          letter-spacing: 0.15em;
+          color: var(--text-tertiary);
+          white-space: nowrap;
+          text-transform: uppercase;
+        ">{name}</div>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>

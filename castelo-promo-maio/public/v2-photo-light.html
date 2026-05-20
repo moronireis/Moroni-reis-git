@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>Castelo dos Lagos — Promoção 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+  }
+
+  .canvas {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ═══ PHOTO — full bleed, native 9:16, no compression ═══ */
+  .bg-photo {
+    position: absolute;
+    inset: 0;
+    background: url('photos/castelo-aereo-drone.jpg') center top / cover no-repeat;
+  }
+
+  /* Overlay: clear top for text, clear middle for castle, cream bottom for info */
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.08) 12%,
+      rgba(255,255,255,0.0) 24%,
+      rgba(255,255,255,0.0) 32%,
+      rgba(255,255,255,0.0) 48%,
+      rgba(255,255,255,0.20) 56%,
+      rgba(255,255,255,0.60) 64%,
+      rgba(255,255,255,0.82) 72%,
+      rgba(255,255,255,0.90) 80%,
+      rgba(255,255,255,0.88) 100%
+    );
+  }
+
+  /* ═══ CONTENT ═══ */
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /*
+     2 COLORS ONLY:
+     #1E2E24 — primary text
+     #C9A96E — gold accent
+  */
+
+  /* ── TOP BLOCK: headline over light overlay ── */
+  .top-block {
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.2);
+  }
+
+  .brand-loc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.2em;
+    margin-top: 2px;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+  }
+
+  .hero-title {
+    margin-top: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 92px;
+    color: #fff;
+    line-height: 1.1;
+    text-shadow: 0 3px 20px rgba(0,0,0,0.5), 0 0 50px rgba(0,0,0,0.2);
+  }
+
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #C9A96E;
+    margin-top: 8px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 130px;
+    font-weight: 600;
+    color: #C9A96E;
+    line-height: 0.85;
+    letter-spacing: 0.03em;
+    text-shadow: 0 3px 20px rgba(0,0,0,0.35);
+  }
+
+  /* ── PHOTO BREATHES — castle visible here ── */
+  .photo-space {
+    flex: 1;
+    min-height: 40px;
+  }
+
+  /* ── BOTTOM BLOCK: info over cream overlay ── */
+  .bottom-block {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+
+  .divider {
+    width: 260px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+    margin-bottom: 24px;
+  }
+
+  .mes-noivas {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: italic;
+    color: #C9A96E;
+    margin-bottom: 6px;
+  }
+
+  .churrasco {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: #1E2E24;
+  }
+
+  .churrasco-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(30,46,36,0.5);
+    margin-bottom: 24px;
+  }
+
+  /* Prices */
+  .prices {
+    display: flex;
+    width: 760px;
+    border-top: 1px solid rgba(201,169,110,0.25);
+    border-bottom: 1px solid rgba(201,169,110,0.25);
+    padding: 24px 0;
+    margin-bottom: 20px;
+  }
+
+  .price-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .price-card:first-child::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 8%; height: 84%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(201,169,110,0.3), transparent);
+  }
+
+  .price-day {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(30,46,36,0.5);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .price-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: #1E2E24;
+    line-height: 1;
+  }
+
+  .price-val .rs {
+    font-size: 28px;
+    font-weight: 400;
+    color: #C9A96E;
+  }
+
+  /* Included */
+  .included-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #C9A96E;
+    margin-bottom: 8px;
+  }
+
+  .included-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(30,46,36,0.5);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* CTA */
+  .cta-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(30,46,36,0.6);
+    margin-bottom: 10px;
+  }
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1E2E24;
+    padding: 18px 44px;
+    color: #F4EFE6;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .wa-icon {
+    width: 26px; height: 26px;
+    fill: #25D366;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- Photo full-bleed — native 9:16, zero compression -->
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="content">
+
+    <!-- TOP: headline over light overlay -->
+    <div class="top-block">
+      <div class="brand-name">Castelo dos Lagos</div>
+      <div class="brand-loc">Ribeirão Pires · São Paulo</div>
+      <div class="hero-title">Casamentos & Debutantes</div>
+      <div class="subtitle">Para eventos realizados em</div>
+      <div class="year">2026</div>
+    </div>
+
+    <!-- Castle visible here -->
+    <div class="photo-space"></div>
+
+    <!-- BOTTOM: info over cream overlay -->
+    <div class="bottom-block">
+      <div class="divider"></div>
+      <div class="mes-noivas">Mês das Noivas</div>
+      <div class="churrasco">Churrasco à Gaúcha</div>
+      <div class="churrasco-sub">Espeto corrido servido na mesa</div>
+
+      <div class="prices">
+        <div class="price-card">
+          <span class="price-day">Sexta e Domingo</span>
+          <span class="price-val"><span class="rs">R$</span>25.990</span>
+        </div>
+        <div class="price-card">
+          <span class="price-day">Sábado</span>
+          <span class="price-val"><span class="rs">R$</span>27.990</span>
+        </div>
+      </div>
+
+      <div class="included-label">Tudo incluso</div>
+      <div class="included-text">
+        Espaço · DJ · Som e Iluminação · Gerador<br>
+        Suítes · Segurança · Cortesias Premium
+      </div>
+
+      <span class="cta-label">Agende sua visita</span>
+      <div class="cta-btn">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        (11) 9 5590-6035
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

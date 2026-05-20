@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160">
+  <!-- Variation 3: Barras Integradas — horizontal bars built into the G and J letterforms -->
+
+  <g transform="translate(160, 50)">
+    <!-- G with integrated bars -->
+    <!-- G vertical stroke -->
+    <path d="M -44,-24 L -44,24" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <!-- G top horizontal (bar 1) -->
+    <path d="M -44,-24 L -8,-24" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <!-- G bottom horizontal (bar 2) -->
+    <path d="M -44,24 L -8,24" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <!-- G middle crossbar (bar 3) — teal accent -->
+    <path d="M -28,0 L -8,0" stroke="#3CBCB4" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Decorative extension bars from G — teal -->
+    <path d="M -52,-24 L -58,-24" stroke="#3CBCB4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M -52,0 L -62,0" stroke="#3CBCB4" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+    <path d="M -52,24 L -58,24" stroke="#3CBCB4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- J with integrated bars -->
+    <!-- J vertical stroke -->
+    <path d="M 20,-24 L 20,14" stroke="#3CBCB4" stroke-width="5" stroke-linecap="round"/>
+    <!-- J hook -->
+    <path d="M 20,14 A 16,16 0 0,1 4,30 L -2,30" stroke="#3CBCB4" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <!-- J top serifs/bars — dark -->
+    <path d="M 8,-24 L 32,-24" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Decorative extension bars from J — teal -->
+    <path d="M 40,-24 L 46,-24" stroke="#3CBCB4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 28,0 L 46,0" stroke="#3CBCB4" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+    <path d="M 36,24 L 46,24" stroke="#3CBCB4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  </g>
+
+  <!-- EVENTOS subtitle -->
+  <text x="160" y="114" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+</svg>

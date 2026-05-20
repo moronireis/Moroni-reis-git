@@ -1,0 +1,47 @@
+{
+  "primary": "radial-gradient(circle, #ffffff, #ffffff)",
+  "secondary": "linear-gradient(180deg, #00000000, #0000004D)",
+  "total_unique": 25,
+  "top": [
+    {
+      "value": "radial-gradient(circle, #ffffff, #ffffff)",
+      "count": 9
+    },
+    {
+      "value": "linear-gradient(180deg, #00000000, #0000004D)",
+      "count": 5
+    },
+    {
+      "value": "radial-gradient(var(--color-background,#fff),var(--color-primary,#000))",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(90deg,#fff0 0,var(--color-background,#fff) 62.74%)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(270deg,#fff0 0,var(--color-background,#fff) 62.74%)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(0deg,#0009,#0000)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(90deg,var(--color-background,#fff) 20.37%,#0000 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg,#0000 0,var(--color-background,#fff) 79.63%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(0deg,#000000b3,#000000b3)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,#fff,#0000001a)",
+      "count": 1
+    }
+  ]
+}

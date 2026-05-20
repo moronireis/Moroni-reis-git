@@ -1,0 +1,36 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import TaskManager from '../components/TaskManager.tsx';
+import { createServerClient } from '../lib/supabase-server';
+
+export const prerender = false;
+
+const profile = Astro.locals.profile;
+const isAdmin = profile?.role === 'admin';
+const supabase = createServerClient();
+
+// Fetch tasks based on role
+let query = supabase
+  .from('task_manager')
+  .select('*')
+  .order('position', { ascending: true })
+  .order('created_at', { ascending: false });
+
+if (!isAdmin) {
+  // Clients see only their assigned or created tasks
+  query = query.or(`assigned_to.eq.${profile?.id},created_by.eq.${profile?.id}`);
+}
+
+const { data: tasks } = await query;
+---
+
+<AppLayout title="Tarefas" activeSection="tarefas">
+  <TaskManager
+    client:load
+    initialTasks={tasks || []}
+    isAdmin={isAdmin}
+    userId={profile?.id || ''}
+    supabaseUrl={import.meta.env.PUBLIC_SUPABASE_URL}
+    supabaseAnonKey={import.meta.env.PUBLIC_SUPABASE_ANON_KEY}
+  />
+</AppLayout>

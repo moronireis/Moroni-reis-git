@@ -1,0 +1,620 @@
+---
+name: "CHANEL"
+colors:
+  primary: "#000000"      # from --color-primary (brand identity: CHANEL's iconic black)
+  secondary: "#1d1d1d"    # from --color-primary-variant
+  tertiary: "#333333"     # from --color-secondary
+  neutral: "#767676"      # from --color-secondary-light
+  surface: "#ffffff"      # from --color-background
+  text: "#1d1d1d"         # from --color-primary-variant (main body text)
+  text-muted: "#767676"   # from --color-secondary-light
+  border: "#d8d8d8"       # from --color-tertiary-medium
+  error: "#cd0000"        # from --color-error
+  success: "#00d03a"      # inferred from #00d03a found in tokens-detected
+  surface-variant: "#f9f9f9"       # from --color-background-variant
+  tertiary-light: "#ececec"        # from --color-tertiary-light
+  tertiary-extra-light: "#f1f1f1"  # from --color-tertiary-extra-light
+  tertiary-strong: "#b6b6b6"      # from --color-tertiary-strong
+  disabled: "#949494"              # from --color-primary-disable
+  body-element: "#454545"          # from --color-new-body-element
+typography:
+  display-hero:
+    fontFamily: "abchanel-2022, sans-serif"         # from @font-face abchanel-2022
+    fontSize: "3.625rem"                             # from 3.625rem size in tokens-detected
+    fontWeight: 200                                  # from @font-face weight 200 (ExtraLight)
+    lineHeight: "1.15"                               # inferred from display sizing conventions
+    letterSpacing: "0em"                             # inferred from display heading pattern
+    features: ""
+  display-large:
+    fontFamily: "abchanel-2022, sans-serif"         # from @font-face abchanel-2022
+    fontSize: "2.75rem"                              # from 2.75rem size in tokens-detected
+    fontWeight: 200                                  # from @font-face weight 200
+    lineHeight: "1.15"                               # inferred from display proportion
+    letterSpacing: "0em"                             # inferred from display heading pattern
+    features: ""
+  section-heading:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "2rem"                                 # from 2rem size in tokens-detected
+    fontWeight: 300                                  # from @font-face weight 300
+    lineHeight: "2.25rem"                            # inferred from section heading proportions
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-default pattern
+    features: ""
+  subheading-large:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "1.5rem"                               # from 1.5rem size in tokens-detected
+    fontWeight: 300                                  # from @font-face weight 300
+    lineHeight: "1.875rem"                           # inferred from heading proportions
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-default
+    features: ""
+  subheading:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "1.125rem"                             # from --font-size-chapo
+    fontWeight: 300                                  # from --font-weight-chapo
+    lineHeight: "1.6875rem"                          # from --line-height-chapo
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-chapo
+    features: ""
+  body-large:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "1rem"                                 # from --font-size-lead-paragraph
+    fontWeight: 300                                  # from --font-weight-lead-paragraph
+    lineHeight: "1.4375rem"                          # from --line-height-lead-paragraph
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-lead-paragraph
+    features: ""
+  body:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.875rem"                             # from --font-size-body-default
+    fontWeight: 300                                  # from --font-weight-body-default
+    lineHeight: "1.125rem"                           # from --line-height-body-default
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-default
+    features: ""
+  body-strong:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.875rem"                             # from --font-size-body-default-strong
+    fontWeight: 400                                  # from --font-weight-body-default-strong
+    lineHeight: "1.125rem"                           # from --line-height-body-default-strong
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-default-strong
+    features: ""
+  body-spaced:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.875rem"                             # from --font-size-body-spaced
+    fontWeight: 300                                  # from --font-weight-body-spaced
+    lineHeight: "1.4375rem"                          # from --line-height-body-spaced
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-spaced
+    features: ""
+  button:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.875rem"                             # from component-properties button font-size most_common
+    fontWeight: 600                                  # from component-properties button font-weight most_common
+    lineHeight: "1.125rem"                           # inferred from body-default line-height
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-default
+    features: ""
+  link:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.875rem"                             # from body-default pattern
+    fontWeight: 600                                  # from component-properties button font-weight
+    lineHeight: "1.125rem"                           # from --line-height-body-default
+    letterSpacing: "0.00625rem"                      # from --letter-spacing-body-default
+    features: ""
+  caption:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.75rem"                              # from --font-size-text-small
+    fontWeight: 300                                  # from --font-weight-text-small
+    lineHeight: "1rem"                               # from --line-height-text-small
+    letterSpacing: "0rem"                            # from --letter-spacing-text-small
+    features: ""
+  micro:
+    fontFamily: "abchanel-corpo, sans-serif"        # from @font-face abchanel-corpo
+    fontSize: "0.6875rem"                            # from --font-size-text-xsmall
+    fontWeight: 300                                  # from --font-weight-text-xsmall
+    lineHeight: "0.9375rem"                          # from --line-height-text-xsmall
+    letterSpacing: "0rem"                            # from --letter-spacing-text-xsmall
+    features: ""
+  editorial-display:
+    fontFamily: "awconqueror-prodido, serif"        # from @font-face awconqueror-prodido (Didot serif)
+    fontSize: "2.5rem"                               # from 2.5rem size in tokens-detected
+    fontWeight: 400                                  # from @font-face weight 400
+    lineHeight: "1.15"                               # inferred from display proportion
+    letterSpacing: "0em"                             # inferred from serif display convention
+    features: ""
+  h1:
+    fontFamily: "abchanel-2022, sans-serif"
+    fontSize: "3.625rem"
+    fontWeight: 200
+    lineHeight: "1.15"
+    letterSpacing: "0em"
+    features: ""
+  h2:
+    fontFamily: "abchanel-2022, sans-serif"
+    fontSize: "2.75rem"
+    fontWeight: 200
+    lineHeight: "1.15"
+    letterSpacing: "0em"
+    features: ""
+  h3:
+    fontFamily: "abchanel-corpo, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 300
+    lineHeight: "2.25rem"
+    letterSpacing: "0.00625rem"
+    features: ""
+  h4:
+    fontFamily: "abchanel-corpo, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 300
+    lineHeight: "1.875rem"
+    letterSpacing: "0.00625rem"
+    features: ""
+  body-lg:
+    fontFamily: "abchanel-corpo, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 300
+    lineHeight: "1.4375rem"
+    letterSpacing: "0.00625rem"
+    features: ""
+  body-md:
+    fontFamily: "abchanel-corpo, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 300
+    lineHeight: "1.125rem"
+    letterSpacing: "0.00625rem"
+    features: ""
+  body-sm:
+    fontFamily: "abchanel-corpo, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 300
+    lineHeight: "1rem"
+    letterSpacing: "0rem"
+    features: ""
+  label:
+    fontFamily: "abchanel-corpo, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 300
+    lineHeight: "0.9375rem"
+    letterSpacing: "0rem"
+    features: ""
+  mono:
+    fontFamily: "monospace"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: "1.125rem"
+    letterSpacing: "0em"
+    features: ""
+rounded:
+  none: "0px"        # from component-properties button border-radius most_common
+  sm: "4px"          # from .25rem found in button border-radius
+  md: "6px"          # from .375rem found in radii tokens
+  lg: "12px"         # from .75rem found in radii tokens
+  full: "9999px"     # inferred from 50% / 100% circular elements
+spacing:
+  xs: "5px"          # from .3125rem spacing token
+  sm: "9px"          # from .5625rem spacing token
+  md: "16px"         # from 1rem spacing token
+  lg: "27px"         # from 1.6875rem spacing token
+  xl: "45px"         # from 2.8125rem spacing token
+preview_tokens:
+  button_primary_bg: "#000000"          # from --color-primary (black CTA)
+  button_primary_text: "#f9f9f9"        # from --chat-primary-button-text
+  button_primary_border: "#000000"      # from --color-primary
+  button_secondary_bg: "#f9f9f9"        # from --color-background-variant
+  button_secondary_text: "#1d1d1d"      # from --color-primary-variant
+  button_secondary_border: "#1d1d1d"    # from --color-primary-variant
+  button_tertiary_text: "#1d1d1d"       # from --color-primary-variant (underline link style)
+  surface_bg: "#ffffff"                 # from --color-background
+  card_bg: "#f9f9f9"                    # from component-properties card bg most_common
+  text: "#1d1d1d"                       # from --color-primary-variant
+  text_muted: "#767676"                 # from --color-secondary-light
+  border: "#d8d8d8"                     # from --color-tertiary-medium
+  accent: "#000000"                     # brand accent = black (CHANEL identity)
+  button_radius: "0px"                  # from component-properties button border-radius most_common = 0
+  card_radius: "0px"                    # inferred from card — no radius declared
+  input_radius: "0px"                   # from component-properties input border-radius most_common = 0
+components:
+  button-primary:
+    bg: "#000000"
+    text: "#f9f9f9"
+    border: "#000000"
+    radius: "0px"
+    padding: "16px 18px"
+    font: "14px abchanel-corpo weight 600"
+    hover_bg: "#1d1d1d"
+  button-primary-hover:
+    bg: "#1d1d1d"
+    text: "#f9f9f9"
+  button-secondary:
+    bg: "#f9f9f9"
+    text: "#1d1d1d"
+    border: "#1d1d1d"
+    radius: "0px"
+    padding: "16px 18px"
+    font: "14px abchanel-corpo weight 600"
+    hover_bg: "#f1f1f1"
+  button-ghost:
+    bg: "transparent"
+    text: "#1d1d1d"
+    border: "transparent"
+    radius: "0px"
+    padding: "0px"
+  card:
+    bg: "#f9f9f9"
+    border: "transparent"
+    radius: "0px"
+    shadow: "none"
+    padding: "27px"
+  input-text:
+    bg: "transparent"
+    text: "#1d1d1d"
+    border: "#d8d8d8"
+    radius: "0px"
+    padding: "0px 0px 3px"
+    focus_border: "#1d1d1d"
+  badge-default:
+    bg: "#f9f9f9"
+    text: "#1d1d1d"
+    border: "#ececec"
+    radius: "0px"
+    padding: "5px 9px"
+    font: "11px abchanel-corpo weight 600"
+  nav-header:
+    bg: "#ffffff"
+    text: "#000000"
+    border_bottom: "#ececec"
+    backdrop_filter: "none"
+    height: "auto"
+---
+
+## 1. Visual Theme & Atmosphere
+
+CHANEL's digital presence is an exercise in disciplined restraint. The palette is nearly achromatic — a tightly controlled spectrum from pure black through a series of calibrated grays to white — with absolutely no chromatic accent color. Where most luxury brands might reach for gold or deep navy to signal opulence, CHANEL leans on the absence of color itself. Black is the brand. The interplay of `#000000`, `#1d1d1d`, and `#ffffff` creates all the hierarchy the system needs, letting product photography carry every ounce of chromatic intensity.
+
+The type system is built on two proprietary families: **abchanel-2022** for display-scale headlines (weight 200, an ethereal extra-light that gives headings a whispered authority) and **abchanel-corpo** for all body and UI text (weights 200 through 600, with the default resting at 300). A serif counterpoint, **AWConqueror Pro Didot**, appears in editorial fashion contexts — a modern Didot that bridges the house's print heritage with its digital expression. The result is a typographic palette that feels curated rather than constructed: lightweight, airy, and unmistakably haute couture.
+
+Surfaces are deliberately flat. Shadows are functionally absent — the system explicitly declares `box-shadow: none` across most components. Depth comes from border contrast and the subtle step between `#ffffff` surfaces and `#f9f9f9` variant backgrounds. This is a conscious design choice: the brand trusts its photography and negative space to create visual interest, not layered elevation or glassmorphism.
+
+Every corner is sharp. Buttons have `border-radius: 0`. Cards have no rounding. Inputs are borderless lines, not contained fields. This is the single most distinctive visual choice — the refusal to round anything. In a web ecosystem drowning in 8px radius and pill shapes, CHANEL's zero-radius posture is a statement of identity as powerful as any color.
+
+**Key Characteristics:**
+- Pure black-and-white palette with zero chromatic accent — photography provides all color
+- Weight 200 (extra-light) for display headings; weight 300 (light) as the body default
+- Sharp zero-radius corners on every interactive element — buttons, cards, inputs
+- Flat design with no elevation or box-shadow — depth via surface-color steps only
+- Two proprietary sans-serif families (abchanel-2022, abchanel-corpo) plus Didot serif for editorial
+- Extreme typographic lightness: most text lives at weight 300, with 600 reserved for interactive elements
+- Generous whitespace proportions driven by percentage-based grid margins
+- Understated text-decoration underline transitions (0.2s ease) as the primary hover signal
+- Photography-first: the UI withdraws to let imagery command attention
+- Multi-script support (Arabic, Thai, Vietnamese, Korean, Japanese, Chinese) with dedicated font families
+
+## 2. Color Palette & Roles
+
+### Primary
+
+- **CHANEL Black** (`#000000`): `--color-primary`. The brand identity color — logo, navigation text, primary CTA backgrounds, and immersive section fills. Used sparingly but definitively.
+
+### Brand & Dark
+
+- **Near Black** (`#1d1d1d`): `--color-primary-variant`. The most-used text color across the system (105 references). Slightly softer than pure black for extended reading, while remaining nearly indistinguishable in small contexts.
+- **Dark Gray** (`#333333`): `--color-secondary`. Used for secondary text hierarchies and body copy in specific contexts.
+
+### Interactive
+
+- **Black CTA** (`#000000`): Primary button background. Hover transitions to `#1d1d1d` or `#f1f1f1` depending on button variant.
+- **Disabled Gray** (`#949494`): `--color-primary-disable`. Applied to disabled buttons, inputs, and inactive interactive states.
+- **Underline Transition**: Interactive text elements use `text-decoration-color` transitions at 0.2s ease — no background-color shifts on links.
+
+### Neutral Scale
+
+- **Near Black** (`#1d1d1d`): Primary text and headings — `--color-primary-variant`
+- **Body Element** (`#454545`): `--color-new-body-element`. Secondary body text in product contexts.
+- **Muted Gray** (`#767676`): `--color-secondary-light`. Labels, captions, placeholder text, timestamps.
+- **Mid Gray** (`#949494`): `--color-primary-disable`. Disabled state text.
+- **Strong Gray** (`#b6b6b6`): `--color-tertiary-strong`. Subtle decorative borders.
+
+### Surface & Borders
+
+- **Pure White** (`#ffffff`): `--color-background`. Default page background.
+- **Warm White** (`#f9f9f9`): `--color-background-variant`. Card backgrounds, alternate sections, secondary surfaces.
+- **Extra Light Gray** (`#f1f1f1`): `--color-tertiary-extra-light`. Hover state backgrounds.
+- **Light Gray** (`#ececec`): `--color-tertiary-light`. Thin separators, subtle dividers.
+- **Medium Gray** (`#d8d8d8`): `--color-tertiary-medium`. Default borders on inputs and structural lines.
+
+### Error
+
+- **CHANEL Red** (`#cd0000`): `--color-error`. Validation errors, mandatory field indicators, destructive actions.
+
+### Color Philosophy
+
+The achromatic palette is not a limitation — it is the brand's most recognizable design decision. By removing color entirely from the UI layer, CHANEL creates a gallery-like environment where product photography becomes the sole source of vibrancy. The gray scale is uncommonly fine-grained (7+ distinct values from `#1d1d1d` to `#f9f9f9`), enabling nuanced hierarchy without ever introducing hue. The only non-gray in the system is the error red `#cd0000`, and even that is a deep, restrained crimson rather than a bright alert. This is a system that treats color the way a black-and-white photographer treats light: every tonal value is deliberate, every step intentional.
+
+## 3. Typography Rules
+
+### Font Family
+
+**Primary Display**: `abchanel-2022` — a proprietary geometric sans-serif used exclusively for hero headings and large display text. Available in weights 200 (ExtraLight), 300 (Light), 400 (Regular), and 600 (SemiBold), with italic variants. The brand's typographic fingerprint at scale.
+
+**Primary Body**: `abchanel-corpo` — a proprietary sans-serif for all body copy, navigation, buttons, labels, and UI elements. Available in weights 200, 300, 400, and 600. The workhorse of the system — every piece of functional text uses this face.
+
+**Editorial Serif**: `awconqueror-prodido` (AWConqueror Pro Didot) — a modern Didot serif used in fashion editorial contexts. Available in weights 400, 600, 700, and 800. Bridges print couture heritage with digital editorial.
+
+**UI Complement**: `futura-pt` — Futura PT appears as a supplementary sans-serif for specific UI contexts. Weights 400 and 700 with italic variants.
+
+**Arabic**: Cairo, Tajawal — dedicated Arabic-script families for RTL markets.
+**Thai**: Prompt — Thai-script family, weights 300–600.
+**Localized Corpo**: `abchanel-corpo-turkey`, `abchanel-corpo-vietnam` — localized versions for Turkish and Vietnamese character coverage.
+
+No monospace font is declared in the system.
+
+### Hierarchy
+
+| Role | Font | Size | Weight | Line Height | Letter Spacing | Features | Notes |
+|------|------|------|--------|-------------|----------------|----------|-------|
+| display-hero | abchanel-2022 | 3.625rem | 200 | 1.15 | 0em | — | Hero sections only |
+| display-large | abchanel-2022 | 2.75rem | 200 | 1.15 | 0em | — | Secondary display |
+| editorial-display | awconqueror-prodido | 2.5rem | 400 | 1.15 | 0em | — | Fashion editorial |
+| section-heading | abchanel-corpo | 2rem | 300 | 2.25rem | 0.00625rem | — | Section titles |
+| subheading-large | abchanel-corpo | 1.5rem | 300 | 1.875rem | 0.00625rem | — | Category headings |
+| subheading (chapo) | abchanel-corpo | 1.125rem | 300 | 1.6875rem | 0.00625rem | — | Intro paragraphs |
+| body-large (lead) | abchanel-corpo | 1rem | 300 | 1.4375rem | 0.00625rem | — | Lead paragraphs |
+| body | abchanel-corpo | 0.875rem | 300 | 1.125rem | 0.00625rem | — | Default body text |
+| body-strong | abchanel-corpo | 0.875rem | 400 | 1.125rem | 0.00625rem | — | Emphasis body text |
+| button | abchanel-corpo | 0.875rem | 600 | 1.125rem | 0.00625rem | — | CTA labels, nav items |
+| caption | abchanel-corpo | 0.75rem | 300 | 1rem | 0rem | — | Small text, labels |
+| micro | abchanel-corpo | 0.6875rem | 300 | 0.9375rem | 0rem | — | Fine print, badges |
+
+### Principles
+
+- Weight 200 (ExtraLight) is reserved exclusively for `abchanel-2022` display headings — it is the brand's typographic signature and must never appear in body text.
+- Weight 300 (Light) is the default for all body text in `abchanel-corpo` — this unusual lightness creates the distinctive CHANEL airiness.
+- Weight 600 (SemiBold) is the functional weight — buttons, navigation links, and interactive labels use it to create contrast against the 300-weight body without reaching for Bold (700).
+- Letter-spacing is near-zero (`0.00625rem` ≈ 0.1px) across most roles — the system does not use tracking as a hierarchy tool.
+- The `abchanel-2022` / `abchanel-corpo` split is intentional: display faces use a different optical design than body faces, similar to how print typography distinguishes display cuts from text cuts.
+- The serif `awconqueror-prodido` (Didot) appears only in fashion editorial contexts and should never be used for UI elements, navigation, or functional text.
+
+## 4. Components
+
+### Buttons
+
+**Primary Black** (`button-primary`)
+- Background: `#000000`
+- Text: `#f9f9f9`
+- Border: `#000000`
+- Padding: 16px 18px (`1rem 1.125rem`)
+- Radius: 0px — sharp square corners
+- Font: 14px abchanel-corpo weight 600
+- Hover: `#1d1d1d` background (subtle lightening)
+- Disabled: `#f9f9f9` background, `#949494` text
+- Use: Primary CTA ("Add to bag", "Book appointment")
+
+**Secondary Light** (`button-secondary`)
+- Background: `#f9f9f9`
+- Text: `#1d1d1d`
+- Border: `#1d1d1d` (1px solid)
+- Padding: 16px 18px
+- Radius: 0px
+- Font: 14px abchanel-corpo weight 600
+- Hover: `#f1f1f1` background
+- Use: Secondary actions ("View details", "See more")
+
+**Ghost / Underline** (`button-ghost`)
+- Background: transparent
+- Text: `#1d1d1d`
+- Border: transparent (uses text-decoration underline instead)
+- Padding: 0px
+- Radius: 0px
+- Transition: `text-decoration-color 0.2s ease`
+- Use: Inline actions, text links styled as buttons
+
+The system uses a single button philosophy. There is no pill button, no gradient button, no outlined button with rounded corners. Emphasis is conveyed entirely by placement and the black-vs-light background distinction.
+
+### Cards & Containers
+
+**Product Card** (`card`)
+- Background: `#f9f9f9` (or `#ffffff` for featured)
+- Border: none (transparent)
+- Radius: 0px — sharp corners
+- Shadow: none
+- Padding: 27px (`1.6875rem`)
+- Text: `#1d1d1d` for titles (`--color-primary-variant`), `#454545` for descriptions (`--color-new-body-element`)
+- Use: Product tiles, collection showcases, category cards
+
+Cards in this system are intentionally borderless and shadowless. Product photography fills the card and the surrounding whitespace creates implicit boundaries.
+
+### Inputs & Forms
+
+**Text Input** (`input-text`)
+- Background: transparent
+- Text: `#1d1d1d` (entered value)
+- Label: `#767676` (`--color-secondary-light`) — floating label pattern
+- Border: bottom-only `#d8d8d8` line (`--color-tertiary-medium`)
+- Radius: 0px
+- Padding: 0px 0px 3px (bottom-border inputs)
+- Focus: border-color transitions to `#1d1d1d`
+- Error: `#cd0000` text and border (`--color-error`)
+- Disabled: `#949494` text, `not-allowed` cursor
+- Use: Forms, search fields, checkout inputs
+
+Inputs use a minimalist bottom-border-only pattern — no contained box, no background fill. The floating label transforms position on focus using `translateY` with 0.3s transitions.
+
+### Badges / Tags / Pills
+
+**Default Badge** (`badge-default`)
+- Background: `#f9f9f9`
+- Text: `#1d1d1d`
+- Border: `#ececec`
+- Radius: 0px
+- Padding: 5px 9px
+- Font: 11px abchanel-corpo weight 600
+- Use: Product tags, size indicators, filter chips
+
+### Navigation
+
+**Header Navigation** (`nav-header`)
+- Background: `#ffffff` (opaque, no blur)
+- Text: `#000000` (`--cc-header-logo-color`)
+- Border Bottom: `#ececec`
+- Height: fluid (not fixed pixel height)
+- Logo color: `#000000` (toggles to `#ffffff` on immersive/dark hero sections)
+- Behavior: Supports immersive mode (`--cc-header-position: fixed`, `--cc-header-opacity: 0` until hover/scroll), shrink-at-top, and transparent overlay on hero sections
+- Use: Global navigation bar with category mega-menu
+
+The header has three distinct states: default (white, opaque), immersive (transparent overlay on hero imagery, appearing on hover), and high-contrast (inverted black background with white text).
+
+### Decorative Elements
+
+- **Underline transitions**: The primary interactive feedback is `text-decoration-color` transitioning from transparent to visible at `0.2s ease`. This replaces background-color hover states for most text-based interactions.
+- **No dashed borders**: The system does not use dashed or dotted borders in any context.
+- **Opacity transitions**: Content reveal animations use opacity transitions at `0.54s cubic-bezier(0.25, 0.1, 0.25, 1)` — a gentle, luxury-paced easing.
+- **Modal backdrop**: `rgba(29, 29, 29, 0.6)` — dark backdrop matching `--color-primary-variant` rather than pure black, with `0.8` in high-contrast mode.
+
+## 5. Layout Principles
+
+### Spacing System
+
+Base unit is not a strict mathematical progression. The system uses a custom scale rooted in `rem` values:
+- 0.3125rem (5px), 0.5625rem (9px), 0.875rem (14px), 1rem (16px), 1.125rem (18px), 1.6875rem (27px), 2.25rem (36px), 2.8125rem (45px), 3.375rem (54px), 6.75rem (108px)
+
+This is a non-standard scale that avoids the typical 4px or 8px base. Values like 27px and 45px suggest a base-9 or base-18 system with deliberate intermediary steps.
+
+### Grid & Container
+
+The grid system is declared through CSS custom properties and adapts across 9 breakpoints:
+- Mobile (≤320px): 6 columns, 5.625% margins, 16px gap
+- Mobile (321px+): 6 columns, 5.333% margins, 19px gap
+- Mobile (376px+): 6 columns, 5.5% margins, 18px gap
+- Tablet (601px+): 12 columns, 8.095% margins, 16px gap
+- Tablet (841px+): 12 columns, 8.021% margins, 19px gap
+- Desktop (961px+): 12 columns, 7.917% margins, 22px gap
+- Large (1201px+): 12 columns, 8.056% margins, 28px gap
+- XL (1441px+): 12 columns, 8.188% margins, 30px gap
+- XXL (1601px+): 12 columns, 8.1875rem fixed margins
+
+No max-width constraint is declared — the grid uses percentage-based margins to scale with viewport width, with a fixed margin (131px) kicking in at 1601px+.
+
+### Whitespace Philosophy
+
+CHANEL uses whitespace as its primary luxury signal. Section padding values of 45px (2.8125rem), 54px (3.375rem), and even 108px (6.75rem) create immense breathing room between content blocks. This is not empty space — it is the visual equivalent of silence in a luxury boutique. The percentage-based grid margins (consistently ~8% on desktop) ensure the content never feels edge-to-edge, maintaining the sense of curated restraint regardless of screen size.
+
+### Border Radius Scale
+
+- **0px** — Default for all interactive elements (buttons, inputs, cards). The dominant radius.
+- **4px (.25rem)** — Appears on minor UI elements only.
+- **6px (.375rem)** — Minor surface rounding (rare).
+- **12px (.75rem)** — Chat/overlay-specific contexts, search input.
+- **50% / 100%** — Circular elements only (color swatches, radio buttons, avatar placeholders).
+
+The system intentionally avoids the 8px–16px range where most modern design systems live. This is a deliberate brand decision.
+
+## 6. Depth & Elevation
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (default) | No shadow, no elevation | All standard surfaces, cards, buttons |
+| Ambient | `0 1px 7px 0 rgba(0,0,0,0.08)` | Rare — select floating panels |
+| Standard | `0 0 18px rgba(0,0,0,0.1)` | Tooltips, dropdowns |
+| Elevated | `0 5px 15px 0 rgba(0,0,0,0.08)` | Slide-out panels |
+| Focus Ring | `0 0 0 2px #fff, 0 0 0 4px #000` | Focus-visible accessibility ring |
+
+### Shadow Philosophy
+
+The system is intentionally low-elevation. CHANEL explicitly resets `box-shadow: none !important` on most button and interactive selectors, overriding any inherited shadows. Depth is communicated almost exclusively through surface-color contrast — the one-step shift from `#ffffff` to `#f9f9f9` does the work that shadows would do in other systems. When shadows do appear (tooltips, overlays), they are achromatic and subtle (`rgba(0,0,0,0.08–0.1)`), never tinted. This reinforces the gallery-wall aesthetic: nothing projects forward, everything exists on a single plane.
+
+## 7. Do's and Don'ts
+
+### Do's
+
+- ✅ Use `abchanel-2022` at weight 200 (ExtraLight) for hero display headings — this is the brand's typographic signature
+- ✅ Use weight 300 (Light) for body text in `abchanel-corpo` — the default lightness is intentional
+- ✅ Use weight 600 (SemiBold) for buttons and navigation labels — the only "bold" weight in active UI
+- ✅ Keep all interactive elements at `border-radius: 0` — sharp corners are CHANEL's strongest geometric signal
+- ✅ Use the `#ffffff` → `#f9f9f9` surface step to create visual hierarchy between sections
+- ✅ Let product photography carry all chromatic intensity — the UI must remain achromatic
+- ✅ Use `text-decoration-color` transitions at `0.2s ease` for link/button hover states
+- ✅ Apply the double-ring focus pattern (`0 0 0 2px #fff, 0 0 0 4px #000`) for accessibility
+- ✅ Use `awconqueror-prodido` (Didot) for fashion editorial display moments
+- ✅ Maintain generous section spacing (45px–108px) to preserve the luxury silence
+
+### Don'ts
+
+- ❌ Don't round buttons, cards, or inputs — `border-radius: 0` is the CHANEL geometry rule, not a default to override
+- ❌ Don't use any chromatic accent color (blue, purple, teal) for CTAs — CHANEL buttons are black or light gray, never colored
+- ❌ Don't use `abchanel-2022` below weight 300 for body text — it is designed for display scale only
+- ❌ Don't use weight 700 (Bold) or 800 (ExtraBold) for headings — CHANEL headings are light (200–300), never heavy
+- ❌ Don't add box-shadows to cards or buttons — the system explicitly resets them with `!important`
+- ❌ Don't add backdrop-blur or glassmorphism effects — the visual language relies on solid, opaque surfaces
+- ❌ Don't use `futura-pt` for customer-facing text — it is a supplementary face for specific internal or legacy contexts
+- ❌ Don't introduce pill shapes (`border-radius: 9999px`) for buttons or badges — zero-radius is absolute
+- ❌ Don't use letter-spacing as a hierarchy tool — the system uses near-zero tracking (`0.00625rem`) uniformly
+- ❌ Don't apply gradient backgrounds or gradient text effects — the palette is strictly flat achromatic
+- ❌ Don't use font-weight 600 for body text — it is reserved for interactive elements (buttons, links, labels)
+
+## 8. Responsive Behavior
+
+### Breakpoints
+
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| Mobile S | ≤320px | 6-column grid, 5.625% margins, 16px gap |
+| Mobile | 321px+ | 6-column grid, 5.333% margins, 19px gap |
+| Mobile L | 376px+ | 6-column grid, 5.5% margins, 18px gap |
+| Tablet | 601px+ | 12-column grid, 8.095% margins, bottom nav hidden |
+| Tablet L | 841px+ | 12-column grid, 8.021% margins, 19px gap |
+| Desktop | 961px+ | 12-column grid, 7.917% margins, 22px gap |
+| Large | 1201px+ | 12-column grid, 8.056% margins, 28px gap |
+| XL | 1441px+ | 12-column grid, 8.188% margins, 30px gap |
+| XXL | 1601px+ | 12-column grid, 131px fixed margins |
+
+### Touch Targets
+
+Minimum button padding of `0 1.5625rem` (0 25px) on touch devices. Checkbox and radio targets are scaled with `--input-coef: 0.875` on mobile. Focus outlines use `0.5625rem` (9px) offset for comfortable tap targets.
+
+### Collapsing Strategy
+
+- Grid collapses from 12 columns to 6 below 601px
+- Bottom navigation bar appears on mobile (`3.5rem` height), hidden on tablet+
+- Header transitions from horizontal mega-menu to mobile slide-out panel
+- Typography font sizes adjust per-language — Arabic, Thai, and Asian scripts receive slightly larger body sizes for readability
+- Product grid shifts from multi-column to single-column on small viewports
+- Immersive header mode (transparent overlay) remains consistent across breakpoints
+
+### Image Behavior
+
+Product and editorial images are aspect-ratio-controlled via CSS custom properties (`--aspect-ratio-desktop`, `--aspect-ratio-mobile`). The system uses responsive `srcset` with Chanel's CDN for image delivery. Hero images fill full viewport width with percentage-based containment.
+
+## 9. Agent Prompt Guide
+
+### Quick Color Reference
+
+- Brand Identity: CHANEL Black (`#000000`)
+- Primary Text: Near Black (`#1d1d1d`)
+- Secondary Text: Dark Gray (`#333333`)
+- Muted Text: Gray (`#767676`)
+- Disabled: Mid Gray (`#949494`)
+- Background: Pure White (`#ffffff`)
+- Card Surface: Warm White (`#f9f9f9`)
+- Border: Medium Gray (`#d8d8d8`)
+- Subtle Divider: Light Gray (`#ececec`)
+- Hover Surface: Extra Light (`#f1f1f1`)
+- Error: Deep Red (`#cd0000`)
+- CTA Button: Black (`#000000`) with off-white text (`#f9f9f9`)
+
+### Example Component Prompts
+
+> "Create a hero section on white `#ffffff` background. Headline at 58px (3.625rem) abchanel-2022 weight 200, line-height 1.15, color `#1d1d1d`. Subtitle at 18px (1.125rem) abchanel-corpo weight 300, line-height 1.6875rem, color `#767676`. Black CTA button (`#000000` background, `#f9f9f9` text, 0px border-radius, 16px 18px padding, abchanel-corpo weight 600 at 14px). Below the button, a text link in `#1d1d1d` weight 600 with underline transition on hover."
+
+> "Create a product card on `#f9f9f9` background. No border, no shadow, no border-radius. Product image fills full card width with 4:5 aspect ratio. Product name at 14px abchanel-corpo weight 600 color `#1d1d1d`. Product description at 14px weight 300 color `#454545`. Price at 14px weight 400 color `#1d1d1d`. All spacing uses 27px (1.6875rem) vertical rhythm."
+
+> "Create a navigation bar on `#ffffff` background. Logo in `#000000`. Navigation links at 14px abchanel-corpo weight 600, color `#1d1d1d`, with `text-decoration-color` transitioning from transparent to `#1d1d1d` at 0.2s ease on hover. Bottom border `1px solid #ececec`. No backdrop-filter, no shadow."
+
+> "Create a form input with bottom-border-only pattern. No background, no surrounding box. Border-bottom `1px solid #d8d8d8`, transitioning to `#1d1d1d` on focus. Floating label at 12px abchanel-corpo weight 300, color `#767676`, translating up on focus. Input text at 14px weight 300 color `#1d1d1d`. Error state: label and border in `#cd0000`. No border-radius."
+
+> "Create a dark brand section with `#000000` background. Heading at 44px (2.75rem) abchanel-2022 weight 200 color `#ffffff`. Body text at 14px abchanel-corpo weight 300 color `#f9f9f9`. CTA button inverted: `#ffffff` background, `#000000` text, 0px radius, weight 600."
+
+### Iteration Guide
+
+1. Always use `abchanel-corpo` for body and UI text, `abchanel-2022` for display headings only — mixing them at the wrong scale breaks the brand's optical design
+2. Weight 300 is the body default, not weight 400 — the lightness is CHANEL's signature; using 400 for body text makes it look generic
+3. All interactive elements are `border-radius: 0` — this is absolute and non-negotiable; rounded corners immediately destroy the CHANEL aesthetic
+4. The color `#f9f9f9` is the secondary surface — use it for card backgrounds and alternating sections against the `#ffffff` primary surface
+5. Hover states use either `#f1f1f1` background shift or `text-decoration-color` transition — never both simultaneously
+6. Button text color is `#f9f9f9` (not pure white `#ffffff`) on black buttons — this micro-distinction creates warmth
+7. Focus accessibility uses the double-ring pattern: `box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000` — always implement this for keyboard navigation
+8. Section spacing should be generous: 45px minimum between content blocks, 54px+ between major sections — CHANEL's whitespace is a brand asset, not wasted space

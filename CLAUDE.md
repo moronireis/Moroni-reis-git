@@ -47,6 +47,8 @@ Full business context: `brain/context/business-profile.md`
 | ads-analyst | Performance analyst. Reports, breakdowns, diagnostics, health scoring, alerting. Uses meta-ads MCP + claude-ads plugin. | sonnet |
 | creative-strategist | Ad creative strategy. Competitive creative analysis, briefing Copy Squad for ads, funnel stage mapping, creative rotation. Bridge between strategy and traffic. | sonnet |
 | launch-strategist | Paid launch architect (Lancamento Pago Turbo). Plans full launch: event format, ticket pricing, creative portfolio (post-Andromeda), landing page/checkout copy, 6-phase traffic scaling, metrics analysis. Ticket funds traffic (ROAS >= 1.0), product sale = pure profit. | opus |
+| typography-specialist | **Protocolo Luxo only.** Deep typography: High-Low pairing, variable fonts, kinetic type, OpenType audit, micro-typography. Between art-director and designer-agent. | sonnet |
+| luxury-brand-analyst | **Protocolo Luxo only.** Decodes luxury brand visual grammar by vertical. Produces DNA Reports in `brain/design-library/luxury/dna/`. Feeds art-director and visual-qa-agent. | sonnet |
 
 ### Phase A — Agency Technical Foundation (2026-04-14)
 
@@ -120,14 +122,68 @@ cmo-strategist (campaign brief + objectives + ICP + budget)
 
 Stack 5 adds 1 agent (`launch-strategist`, opus) that orchestrates paid launches — a low-ticket event model where ticket sales fund traffic (ROAS >= 1.0) and the main product sold at event end = pure profit (~35% net margin). Based on Leonardo Tabari's "Lancamento Pago Turbo" methodology (10 lesson transcriptions + strategic prompt).
 
-**Knowledge base** (3 files in `brain/strategy/`):
-- `low-ticket-launch-playbook.md` — complete model: revenue stack, funnel architecture, 6 scaling phases, metrics, optimization protocol
+**Knowledge base** (3 original + 6 new files in `brain/strategy/`):
+- `low-ticket-launch-playbook.md` — complete Tabari Turbo model: revenue stack, funnel architecture, 6 scaling phases, metrics, optimization protocol
 - `andromeda-creative-portfolio.md` — post-Andromeda creative portfolio strategy (10 ad types, format mix, validation protocol)
 - `event-structures.md` — Workshop (1-day) vs Challenge/Week (7-day) templates with lesson plans, engagement systems, pitch strategy
+- `formula-lancamento-framework.md` — Erico Rocha FL complete: Semente + Classico + Ciclos Evolutivos + NAR + Objection Tree + Raiz/Nutella + Metodo LEOA
+- `lancamento-pago-baldan.md` — William Baldan LCP 2-Day Intensive model
+- `high-ticket-sales-system.md` — FHT + Full Sales System: session scripts, 5 HT funnels, DFY/DWY/DIY ladder, 18 mental triggers, KLT framework
+- `conteudo-raiz-nutella-system.md` — Content production system: Raiz (30min+) → Nutella (short-form derived), 5 topic techniques, editorial lines
+- `sobral-trafego-principios.md` — Sobral traffic principles: campaign structure, HSR metric, testing protocol, scale rules
+- `ia-para-vendas-playbook.md` — Puglia AI for sales: DISC profiling, Schwartz levels, pre/post-session AI analysis, 57% close rate method
 
-**Activation**: On-demand when Moroni initiates a paid launch for any REIS [IA] product, client, or partner campaign. Not part of day-to-day pipeline.
+**Rules** (3 new in `.claude/rules/`):
+- `launch-methodology.md` — 5 launch models, mandatory elements, quality gates, KPI benchmarks
+- `high-ticket-sales.md` — HT session protocol, offer rules, funnel selection, follow-up rules, KPI targets
+- `content-production.md` — Raiz/Nutella rules, KLT integration, editorial lines, Hormozi angle requirements
 
-**Integration**: `launch-strategist` sits between `cmo-strategist` (who provides the brief) and the execution agents (creative-strategist, traffic-manager, ads-analyst, Copy Squad). It's the architect; they're the builders.
+**Activation**: On-demand when Moroni initiates a launch (any of 5 models) for any REIS [IA] product, client, or partner campaign. Not part of day-to-day pipeline.
+
+**Integration**: `launch-strategist` now supports 5 launch models (Semente, Classico, Turbo, LCP, Hybrid) and sits between `cmo-strategist` (who provides the brief) and the execution agents. The knowledge base is consumed by 8 agents: launch-strategist, cmo-strategist, funnel-architect, offer-architect, social-media-director, traffic-manager, creative-strategist, direct-response-copywriter.
+
+### Protocolo Luxo — Luxury Design Overlay (2026-05-18)
+
+A conditional overlay that activates luxury-specific agents, rules, and knowledge WITHOUT modifying the standard design pipeline. The existing design stack (art-director, designer-agent, vfx-motion-designer, visual-research-scout, visual-qa-agent, design-system-extractor, brand-site-builder, logo-brand-mark-designer) remains 100% unchanged.
+
+**Activation**: Moroni says "Protocolo Luxo" or tags a project as luxury. Deactivation: implicit when project work concludes.
+
+**New Agents (luxury-only):**
+- `typography-specialist` (sonnet) — Deep typography: High-Low pairing (display serif + text sans + mono metadata), variable font exploitation, kinetic type specs, OpenType feature audit, micro-typography enforcement. Sits between art-director (type intent) and designer-agent (component specs).
+- `luxury-brand-analyst` (sonnet) — Decodes luxury brand visual grammar by vertical (fashion, automotive, jewelry, hospitality, fragrance). Produces DNA Reports in `brain/design-library/luxury/dna/`. Feeds art-director and visual-qa-agent with luxury intelligence.
+
+**New Rule:**
+- `.claude/rules/luxury-design-grammar.md` — 8 universal luxury patterns, motion rules (min 0.4s, ease-out, no bounce), typography rules (High-Low system), component rules (zero border-radius CTAs), luxury vs SaaS diagnostic checklist. Loaded conditionally when protocol is active.
+
+**New Knowledge Base:**
+- `brain/design-library/luxury/luxury-principles.md` — Central principles document: restraint, codes, confidence, the luxury spectrum (temperature/density/motion/voice), vertical-specific grammar, reference harvest priority list
+- `brain/design-library/luxury/dna/` — DNA Reports per vertical (produced by luxury-brand-analyst)
+- `brain/design-library/luxury/harvest-plan.md` — Prioritized list of luxury brands to extract, sources to monitor, type foundries
+
+**Luxury Pipeline (overlays the standard design pipeline):**
+
+```
+[STANDARD PIPELINE — unchanged]
+  art-director → designer-agent → vfx-motion-designer → visual-qa-agent
+
+[LUXURY OVERLAY — activated by Protocolo Luxo]
+  luxury-brand-analyst (DNA report) + visual-research-scout (luxury mood report)
+    ↓ both feed ↓
+  art-director (reads luxury-principles.md + DNA report + luxury-design-grammar.md)
+    ↓
+  typography-specialist (full type system with High-Low pairing)
+    ↓
+  designer-agent (reads luxury-design-grammar.md for component rules)
+  vfx-motion-designer (reads luxury-design-grammar.md for motion rules)
+    ↓
+  visual-qa-agent (reads DNA report + luxury-design-grammar.md for Luxury Calibration verdict)
+```
+
+**Key Principle:** The overlay ADDS luxury-specific intelligence to existing agents via knowledge files and rules. It does NOT replace or modify any existing agent definition. The 2 new agents (typography-specialist, luxury-brand-analyst) are additive specialists that only exist within the luxury context.
+
+**Existing references (already extracted):** Chanel, Hermes, Tiffany, Dior, Cartier, Louis Vuitton (in `brain/design-library/references/`)
+
+**Priority harvest queue:** Bottega Veneta, Aesop, Diptyque, Rolls-Royce, Aman Resorts, Brunello Cucinelli
 
 ### Token Optimization
 

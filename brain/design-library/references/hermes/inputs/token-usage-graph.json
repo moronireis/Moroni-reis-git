@@ -1,0 +1,197 @@
+[
+  {
+    "name": "--scroll-y",
+    "declarations": 0,
+    "references": 37
+  },
+  {
+    "name": "--font-size-body-m",
+    "declarations": 5,
+    "references": 23
+  },
+  {
+    "name": "--font-secondary",
+    "declarations": 5,
+    "references": 18
+  },
+  {
+    "name": "--font-primary",
+    "declarations": 5,
+    "references": 18
+  },
+  {
+    "name": "--font-weight-400",
+    "declarations": 1,
+    "references": 15
+  },
+  {
+    "name": "--font-size-body-default",
+    "declarations": 5,
+    "references": 10
+  },
+  {
+    "name": "--font-weight-300",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--font-edito",
+    "declarations": 5,
+    "references": 9
+  },
+  {
+    "name": "--font-size-body-xl",
+    "declarations": 5,
+    "references": 9
+  },
+  {
+    "name": "--font-weight-500",
+    "declarations": 1,
+    "references": 9
+  },
+  {
+    "name": "--font-size-body-l",
+    "declarations": 5,
+    "references": 8
+  },
+  {
+    "name": "--font-size-heading-s",
+    "declarations": 5,
+    "references": 5
+  },
+  {
+    "name": "--font-size-body-s",
+    "declarations": 5,
+    "references": 5
+  },
+  {
+    "name": "--font-size-heading-m",
+    "declarations": 5,
+    "references": 4
+  },
+  {
+    "name": "--font-size-heading-xxl",
+    "declarations": 5,
+    "references": 3
+  },
+  {
+    "name": "--header-height-mobile",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--header-height-desktop",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--font-size-heading-xl",
+    "declarations": 5,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-700",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--header-height-desktop-with-menu",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--header-menu-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--category-max-height",
+    "declarations": 11,
+    "references": 1
+  },
+  {
+    "name": "--category-min-height",
+    "declarations": 11,
+    "references": 1
+  },
+  {
+    "name": "--focus-offset",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--header-menu-top",
+    "declarations": 47,
+    "references": 0
+  },
+  {
+    "name": "--font-size-heading-l",
+    "declarations": 5,
+    "references": 0
+  },
+  {
+    "name": "--font-size-heading-default",
+    "declarations": 5,
+    "references": 0
+  },
+  {
+    "name": "--font-size-heading-xs",
+    "declarations": 5,
+    "references": 0
+  },
+  {
+    "name": "--font-size-body-xs",
+    "declarations": 5,
+    "references": 0
+  },
+  {
+    "name": "--font-filosofia",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-akkurat",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-jungle-love",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-brides-de-gala",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-mors-a-jouet",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-weight-100",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-weight-200",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-weight-600",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-weight-800",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--header-height-desktop-with-skip-links",
+    "declarations": 1,
+    "references": 0
+  }
+]

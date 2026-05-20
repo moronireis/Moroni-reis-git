@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An&aacute;lise Interna | Man Go Up - u4digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08080c;
+    --bg-card: #0e0e16;
+    --bg-card-alt: #12121c;
+    --border: #1a1a2a;
+    --border-accent: #282844;
+    --text: #e0e0ec;
+    --text-sec: #8888a4;
+    --text-muted: #555570;
+    --blue: #4A6CF7;
+    --blue-dim: rgba(74,108,247,0.10);
+    --green: #2d8a4e;
+    --green-dim: rgba(45,138,78,0.10);
+    --red: #c44040;
+    --red-dim: rgba(196,64,64,0.08);
+    --amber: #c49a30;
+    --amber-dim: rgba(196,154,48,0.08);
+    --purple: #7a6abf;
+    --purple-dim: rgba(122,106,191,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 60px 40px 100px; }
+
+  header { padding: 40px 0 48px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+  header .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); background: var(--red-dim); padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; }
+  header h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 12px; }
+  header p { font-size: 15px; color: var(--text-sec); max-width: 600px; }
+  header .meta { display: flex; gap: 20px; margin-top: 20px; font-size: 12px; color: var(--text-muted); }
+
+  h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 8px; padding-top: 40px; border-top: 1px solid var(--border); }
+  h2 .num { color: var(--blue); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; display: block; margin-bottom: 6px; }
+  h3 { font-size: 17px; font-weight: 600; margin: 28px 0 8px; color: var(--text); }
+  p, li { font-size: 14px; color: var(--text-sec); }
+  p { margin-bottom: 12px; max-width: 750px; }
+  ul, ol { padding-left: 20px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; line-height: 1.6; }
+  strong { color: var(--text); font-weight: 600; }
+  em.warn { color: var(--amber); font-style: normal; font-weight: 500; }
+  em.risk { color: var(--red); font-style: normal; font-weight: 500; }
+  em.good { color: var(--green); font-style: normal; font-weight: 500; }
+  em.blue { color: var(--blue); font-style: normal; font-weight: 500; }
+
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 20px 0; }
+  .card.green { border-color: rgba(45,138,78,0.25); background: linear-gradient(135deg, var(--green-dim), transparent); }
+  .card.red { border-color: rgba(196,64,64,0.2); background: linear-gradient(135deg, var(--red-dim), transparent); }
+  .card.amber { border-color: rgba(196,154,48,0.2); background: linear-gradient(135deg, var(--amber-dim), transparent); }
+  .card.blue { border-color: rgba(74,108,247,0.2); background: linear-gradient(135deg, var(--blue-dim), transparent); }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  th { text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-card); border-bottom: 1px solid var(--border); }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-sec); }
+  tr:hover td { background: var(--bg-card); }
+  td:first-child { color: var(--text); font-weight: 500; }
+  .val { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); }
+  .val.green { color: var(--green); }
+  .val.red { color: var(--red); }
+  .val.amber { color: var(--amber); }
+  .val.blue { color: var(--blue); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .mini-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .mini-card .label { font-size: 11px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+  .mini-card .value { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  .toc { margin: 24px 0 40px; }
+  .toc a { display: block; font-size: 14px; color: var(--blue); text-decoration: none; padding: 6px 0; }
+  .toc a:hover { text-decoration: underline; }
+
+  .verdict { font-size: 18px; font-weight: 700; margin: 12px 0; }
+
+  @media (max-width: 768px) {
+    .container { padding: 40px 20px 80px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    header h1 { font-size: 28px; }
+    h2 { font-size: 20px; }
+  }
+  @media print {
+    body { background: #fff; color: #111; }
+    .card { border: 1px solid #ddd; background: #f9f9f9; }
+    td, th { border-color: #ddd; }
+    em.warn, em.risk, em.good, em.blue { color: #111; font-weight: 700; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="tag">Documento interno &mdash; n&atilde;o compartilhar com cliente</div>
+  <h1>An&aacute;lise Interna: Man Go Up</h1>
+  <p>Custos reais, precifica&ccedil;&atilde;o, riscos e oportunidades para o projeto de reativa&ccedil;&atilde;o de base da cl&iacute;nica Man Go Up (Dr. &Aacute;ureo Felipe).</p>
+  <div class="meta">
+    <span>u4digital</span>
+    <span>4 de maio de 2026</span>
+    <span>Equipe: Tiago Donicht, Moroni Reis</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;">Conte&uacute;do</strong>
+  <a href="#resumo">1. Resumo da call (28/abril)</a>
+  <a href="#custos">2. Custos reais do projeto</a>
+  <a href="#precificacao">3. Precifica&ccedil;&atilde;o (proposta enviada)</a>
+  <a href="#cenarios">4. Cen&aacute;rios de margem</a>
+  <a href="#riscos">5. Riscos e mitiga&ccedil;&otilde;es</a>
+  <a href="#aberturas">6. Oportunidades</a>
+  <a href="#decisoes">7. Decis&otilde;es pendentes</a>
+</nav>
+
+<!-- ============================================ -->
+<h2 id="resumo"><span class="num">01</span>Resumo da call (28/abril)</h2>
+
+<p><strong>Participantes:</strong> Douglas Lopes (consultor do Dr. &Aacute;ureo Felipe), Tiago Donicht (u4digital), Moroni Reis.</p>
+<p><strong>Cliente final:</strong> Dr. &Aacute;ureo Felipe &mdash; cl&iacute;nica Man Go Up (sa&uacute;de masculina: testosterona, tadalafila, &aacute;cido hialur&ocirc;nico, est&eacute;tica masculina). Santa Maria/RS.</p>
+<p><strong>Intermedi&aacute;rio:</strong> Douglas Lopes &mdash; consultor de gest&atilde;o para &aacute;rea da sa&uacute;de. Toma decis&otilde;es operacionais, mas Dr. &Aacute;ureo Felipe precisa aprovar investimentos.</p>
+
+<h3>Situa&ccedil;&atilde;o atual</h3>
+<ul>
+  <li><strong>uHunter ativo h&aacute; 3 meses</strong> (R$ 349/m&ecirc;s) &mdash; cobertura p&oacute;s-turno (19h&ndash;9h) + fins de semana</li>
+  <li><strong>Resultado:</strong> 1 agendamento em 3 meses</li>
+  <li><strong>Diagn&oacute;stico:</strong> IA &eacute; reativa. Procedimentos n&atilde;o s&atilde;o de urg&ecirc;ncia &rarr; pacientes n&atilde;o procuram de madrugada</li>
+  <li><strong>Base de pacientes:</strong> ~20 mil cadastros (CSV com nome + telefone)</li>
+  <li><strong>Or&ccedil;amento dispon&iacute;vel:</strong> ~R$ 300-400/m&ecirc;s al&eacute;m do uHunter j&aacute; pago</li>
+  <li><strong>Investimento principal:</strong> Todo caixa est&aacute; no Andro Up (APP de sa&uacute;de masculina, $9.99/m&ecirc;s, lan&ccedil;amento em maio)</li>
+</ul>
+
+<h3>O que Douglas pediu explicitamente</h3>
+<div class="card amber">
+  <p style="margin: 0;"><strong>Reativa&ccedil;&atilde;o de base.</strong> Usar o or&ccedil;amento j&aacute; existente (~R$ 349 do uHunter ou pouco mais) para disparar para a base de 20 mil pacientes inativos e gerar consultas. N&atilde;o quer Google Ads, n&atilde;o quer SEO, n&atilde;o quer tr&aacute;fego pago. Quer resultado r&aacute;pido, barato e mensur&aacute;vel.</p>
+</div>
+
+<h3>Perfil do decisor (Dr. &Aacute;ureo Felipe)</h3>
+<div class="card red">
+  <p style="margin: 0;"><strong>Em modo de corte de custos.</strong> Trocou gerenciadores de cl&iacute;nica (de R$1.800/m&ecirc;s para R$190/m&ecirc;s). Est&aacute; chorando R$349/m&ecirc;s do uHunter que n&atilde;o deu resultado. Todo investimento est&aacute; concentrado no Andro Up. <em class="risk">Probabilidade de aprovar acima de R$2.000: baixa sem resultado comprovado primeiro.</em></p>
+</div>
+
+<h3>Frase-chave do Moroni (p&oacute;s-call)</h3>
+<div class="card">
+  <p style="margin: 0; font-style: italic; color: var(--text);">&ldquo;O cara est&aacute; chorando por R$500 do rob&ocirc;. Est&aacute; querendo trabalhar R$400 pra Google e reativa&ccedil;&atilde;o. Vai dormir &mdash; a&iacute; voc&ecirc; vai ter mais dor de cabe&ccedil;a do que solu&ccedil;&atilde;o.&rdquo;</p>
+</div>
+
+<!-- ============================================ -->
+<h2 id="custos"><span class="num">02</span>Custos reais do projeto</h2>
+
+<h3>Custos de implementa&ccedil;&atilde;o (one-time)</h3>
+<table>
+  <thead><tr><th>Item</th><th>Horas est.</th><th>Custo interno</th><th>Obs.</th></tr></thead>
+  <tbody>
+    <tr><td>Setup Business Manager + verifica&ccedil;&atilde;o</td><td class="val">2-3h</td><td class="val">R$ 100</td><td>Se j&aacute; tiver BM, &eacute; quase zero</td></tr>
+    <tr><td>Provisionamento Twilio + n&uacute;mero WABA</td><td class="val">3-5h</td><td class="val">R$ 150-200</td><td>Custo do n&uacute;mero (~$1/m&ecirc;s) + tempo de config</td></tr>
+    <tr><td>Cria&ccedil;&atilde;o da copy + aprova&ccedil;&atilde;o template Meta</td><td class="val">3-4h</td><td class="val">R$ 50</td><td>Tempo nosso + 2-3 dias de aprova&ccedil;&atilde;o Meta</td></tr>
+    <tr><td>Limpeza/valida&ccedil;&atilde;o da base (700 contatos)</td><td class="val">2-3h</td><td class="val">R$ 50</td><td>Script de limpeza + valida&ccedil;&atilde;o WhatsApp</td></tr>
+    <tr><td>Configura&ccedil;&atilde;o agente de atendimento</td><td class="val">4-6h</td><td class="val">R$ 100-200</td><td>Reutilizar infra uHunter com prompts novos</td></tr>
+    <tr><td>Dashboard de m&eacute;tricas</td><td class="val">4-6h</td><td class="val">R$ 100</td><td>Planilha/Supabase simples, nada custom</td></tr>
+    <tr><td>CRM b&aacute;sico (leads interessados)</td><td class="val">2-3h</td><td class="val">R$ 50</td><td>Pode ser Sheets ou Supabase</td></tr>
+    <tr style="background: var(--bg-card);"><td><strong>Total implementa&ccedil;&atilde;o</strong></td><td class="val blue"><strong>20-30h</strong></td><td class="val blue"><strong>R$ 600-850</strong></td><td>Pior caso R$ 850</td></tr>
+  </tbody>
+</table>
+
+<h3>Custos por disparo (vari&aacute;vel)</h3>
+<table>
+  <thead><tr><th>Item</th><th>Custo unit&aacute;rio</th><th>700 msgs</th><th>Obs.</th></tr></thead>
+  <tbody>
+    <tr><td>Twilio WhatsApp (template msg)</td><td class="val">~R$ 0,25-0,40</td><td class="val">R$ 175-280</td><td>Varia por categoria do template (marketing vs utility)</td></tr>
+    <tr><td>Infra/hosting (Supabase/Vercel)</td><td class="val">~R$ 0,01</td><td class="val">R$ 7</td><td>Desprez&iacute;vel</td></tr>
+    <tr><td>IA para atendimento (se responder)</td><td class="val">~R$ 0,02-0,05</td><td class="val">~R$ 15-35</td><td>S&oacute; cobra quando paciente responde (~20%)</td></tr>
+    <tr style="background: var(--bg-card);"><td><strong>Total por lote de 700</strong></td><td class="val">&mdash;</td><td class="val amber"><strong>R$ 200-320</strong></td><td>Custo real</td></tr>
+  </tbody>
+</table>
+
+<div class="card green">
+  <h3 style="margin-top: 0;">Resumo de custo real total (primeiro m&ecirc;s)</h3>
+  <p style="margin: 0;">Implementa&ccedil;&atilde;o: <strong>R$ 600-850</strong> + Primeiro lote 700 msgs: <strong>R$ 200-320</strong> = <strong>Total: R$ 800-1.170</strong><br><br>
+  A partir do segundo lote: apenas <strong>R$ 200-320</strong> por 700 disparos.</p>
+</div>
+
+<!-- ============================================ -->
+<h2 id="precificacao"><span class="num">03</span>Precifica&ccedil;&atilde;o (proposta enviada)</h2>
+
+<p>Valores apresentados na proposta ao cliente:</p>
+
+<div class="grid-2">
+  <div class="mini-card">
+    <div class="label">Implementa&ccedil;&atilde;o</div>
+    <div class="value" style="color: var(--blue);">R$ 1.497</div>
+    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">pagamento &uacute;nico</div>
+  </div>
+  <div class="mini-card">
+    <div class="label">Por mensagem</div>
+    <div class="value" style="color: var(--green);">R$ 0,65</div>
+    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">700 msgs = R$ 455</div>
+  </div>
+</div>
+
+<p><strong>Total cobrado no primeiro m&ecirc;s:</strong> R$ 1.952 (implementa&ccedil;&atilde;o + primeiro lote)</p>
+<p><strong>Meses seguintes:</strong> R$ 455/lote de 700 (sem mensalidade fixa)</p>
+
+<h3>Margem real</h3>
+<div class="grid-2">
+  <div class="card green">
+    <h3 style="margin-top: 0; color: var(--green);">Implementa&ccedil;&atilde;o</h3>
+    <p><strong>Cobrado:</strong> R$ 1.497</p>
+    <p><strong>Custo:</strong> R$ 600-850</p>
+    <p style="margin: 0;"><strong>Margem:</strong> <em class="good">R$ 647-897 (43-60%)</em></p>
+  </div>
+  <div class="card green">
+    <h3 style="margin-top: 0; color: var(--green);">Por lote de 700 msgs</h3>
+    <p><strong>Cobrado:</strong> R$ 455</p>
+    <p><strong>Custo:</strong> R$ 200-320</p>
+    <p style="margin: 0;"><strong>Margem:</strong> <em class="good">R$ 135-255 (30-56%)</em></p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2 id="cenarios"><span class="num">04</span>Cen&aacute;rios de margem</h2>
+
+<table>
+  <thead><tr><th>Cen&aacute;rio</th><th>Implementa&ccedil;&atilde;o</th><th>Lotes/m&ecirc;s</th><th>Receita mensal</th><th>Custo mensal</th><th>Lucro mensal</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Pessimista (1 lote/m&ecirc;s)</td>
+      <td class="val green">+R$ 647</td>
+      <td class="val">1</td>
+      <td class="val">R$ 455</td>
+      <td class="val">R$ 320</td>
+      <td class="val green">+R$ 135</td>
+    </tr>
+    <tr>
+      <td>Base (2 lotes/m&ecirc;s)</td>
+      <td class="val green">+R$ 647</td>
+      <td class="val">2</td>
+      <td class="val">R$ 910</td>
+      <td class="val">R$ 640</td>
+      <td class="val green">+R$ 270</td>
+    </tr>
+    <tr>
+      <td>Otimista (4 lotes/m&ecirc;s)</td>
+      <td class="val green">+R$ 897</td>
+      <td class="val">4</td>
+      <td class="val">R$ 1.820</td>
+      <td class="val">R$ 1.000</td>
+      <td class="val green">+R$ 820</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Proje&ccedil;&atilde;o: se virar produto para cl&iacute;nicas</h3>
+<div class="grid-3">
+  <div class="mini-card">
+    <div class="label">5 cl&iacute;nicas</div>
+    <div class="value" style="color: var(--green);">R$ 7.485</div>
+    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">implementa&ccedil;&atilde;o</div>
+  </div>
+  <div class="mini-card">
+    <div class="label">5 cl&iacute;nicas</div>
+    <div class="value" style="color: var(--green);">R$ 2.275</div>
+    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">recorr&ecirc;ncia/m&ecirc;s</div>
+  </div>
+  <div class="mini-card">
+    <div class="label">Margem recorrente</div>
+    <div class="value" style="color: var(--green);">~55%</div>
+    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">custo cai com escala</div>
+  </div>
+</div>
+<p>O custo marginal por cl&iacute;nica adicional &eacute; basicamente s&oacute; o Twilio (R$200-320/lote). Setup reutiliza toda a infra. <strong>A oportunidade real n&atilde;o &eacute; o Dr. &Aacute;ureo Felipe &mdash; &eacute; o modelo replicado para dezenas de cl&iacute;nicas.</strong></p>
+
+<!-- ============================================ -->
+<h2 id="riscos"><span class="num">05</span>Riscos e mitiga&ccedil;&otilde;es</h2>
+
+<table>
+  <thead><tr><th>Risco</th><th>Probabilidade</th><th>Impacto</th><th>Mitiga&ccedil;&atilde;o</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><em class="risk">Dr. &Aacute;ureo Felipe n&atilde;o aprova R$ 1.952</em></td>
+      <td class="val red">Alta</td>
+      <td class="val amber">M&eacute;dio</td>
+      <td>Douglas est&aacute; intermediando. Oferecer parcelamento (2x de R$ 976) ou reduzir implementa&ccedil;&atilde;o para R$ 997 com lote menor (400 msgs).</td>
+    </tr>
+    <tr>
+      <td><em class="risk">Base de 20 mil est&aacute; desatualizada</em></td>
+      <td class="val amber">M&eacute;dia</td>
+      <td class="val amber">M&eacute;dio</td>
+      <td>Muitos n&uacute;meros podem estar inativos (pacientes mudaram, faleceram, trocaram n&uacute;mero). Taxa de entrega real pode ser 60-70% em vez de 85%. Precificar por disparo (n&atilde;o por entrega) protege nossa margem.</td>
+    </tr>
+    <tr>
+      <td><em class="risk">Template WhatsApp rejeitado pela Meta</em></td>
+      <td class="val" style="color: var(--green);">Baixa</td>
+      <td class="val amber">M&eacute;dio</td>
+      <td>Temos experi&ecirc;ncia com aprova&ccedil;&atilde;o de templates. Evitar linguagem de sa&uacute;de direta (Meta restringe). Posicionar como "retorno ao m&eacute;dico" e n&atilde;o como "promo&ccedil;&atilde;o de procedimento".</td>
+    </tr>
+    <tr>
+      <td><em class="risk">Baixa taxa de resposta (&lt;5%)</em></td>
+      <td class="val amber">M&eacute;dia</td>
+      <td class="val red">Alto</td>
+      <td>Se a taxa for muito baixa, o Dr. &Aacute;ureo Felipe n&atilde;o continua. Mitiga&ccedil;&atilde;o: come&ccedil;ar com pacientes mais recentes (maior probabilidade de engajamento). Segmentar por &uacute;ltima visita.</td>
+    </tr>
+    <tr>
+      <td><em class="risk">Paciente reclama de spam</em></td>
+      <td class="val amber">M&eacute;dia</td>
+      <td class="val amber">M&eacute;dio</td>
+      <td>Usar tom de "retorno m&eacute;dico" e n&atilde;o de marketing. Incluir opt-out f&aacute;cil. Respeitar LGPD (consentimento impl&iacute;cito por rela&ccedil;&atilde;o pr&eacute;via).</td>
+    </tr>
+    <tr>
+      <td><em class="risk">Cliente vira problema (baixo ticket, alta demanda)</em></td>
+      <td class="val red">Alta</td>
+      <td class="val amber">M&eacute;dio</td>
+      <td><strong>Maior risco real.</strong> Douglas j&aacute; demonstra perfil exigente + Dr. &Aacute;ureo Felipe em modo corte. Definir escopo MUITO claro. Sem suporte ilimitado. Documentar tudo.</td>
+    </tr>
+    <tr>
+      <td><em class="risk">Ban do n&uacute;mero WhatsApp por denúncias</em></td>
+      <td class="val" style="color: var(--green);">Baixa</td>
+      <td class="val red">Alto</td>
+      <td>Disparar em lotes pequenos (100-200/dia, n&atilde;o 700 de uma vez). Monitorar taxa de report. Se subir acima de 2%, pausar imediatamente.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card red">
+  <h3 style="margin-top: 0;">Risco cr&iacute;tico: cliente low-ticket com expectativa high-touch</h3>
+  <p style="margin: 0;">Este &eacute; o tipo de cliente que paga R$ 1.500 mas espera atendimento de quem paga R$ 15.000. Douglas liga, manda &aacute;udio, pede reuni&atilde;o, quer relat&oacute;rio. <strong>Se n&atilde;o definir limites claros desde o in&iacute;cio, o custo de aten&ccedil;&atilde;o vai comer toda a margem.</strong><br><br>Mitiga&ccedil;&atilde;o: escopo escrito com bullet points exatos do que est&aacute; e do que N&Atilde;O est&aacute; incluso. Sem reuni&otilde;es al&eacute;m da onboarding. Suporte por texto. Relat&oacute;rio autom&aacute;tico (dashboard), n&atilde;o manual.</p>
+</div>
+
+<!-- ============================================ -->
+<h2 id="aberturas"><span class="num">06</span>Oportunidades</h2>
+
+<h3>Oportunidade 1: Modelo de reativa&ccedil;&atilde;o para cl&iacute;nicas (produto)</h3>
+<div class="card green">
+  <p style="margin: 0;">Douglas mesmo falou na call: <em>&ldquo;Quantos m&eacute;dicos n&atilde;o fazem reativa&ccedil;&atilde;o? A secret&aacute;ria trabalha muito e n&atilde;o tem tempo.&rdquo;</em> Ele &eacute; consultor para a &aacute;rea da sa&uacute;de e pode abrir portas.<br><br>
+  <strong>O Dr. &Aacute;ureo Felipe &eacute; o piloto. O produto &eacute; &ldquo;Reativa&ccedil;&atilde;o de Base para Cl&iacute;nicas&rdquo;.</strong> Se funcionar, vendemos para dezenas de cl&iacute;nicas a R$ 2.500-3.500 implementa&ccedil;&atilde;o + R$ 0.80/disparo (com margem de 60%+).</p>
+</div>
+
+<h3>Oportunidade 2: Nayane (lead quente)</h3>
+<p>Tiago mencionou que a Nayane (esposo m&eacute;dico, ela faz marketing) ficou <strong>"super interessada nessa quest&atilde;o de reativa&ccedil;&atilde;o de base"</strong>. J&aacute; &eacute; um segundo cliente em potencial antes mesmo de ter resultado com o primeiro.</p>
+
+<h3>Oportunidade 3: Parceria com Andro Up</h3>
+<p>Douglas ofereceu 10% de comiss&atilde;o sobre vendas do APP ($9.99/m&ecirc;s = ~R$ 53/m&ecirc;s por assinante). Se vendermos 100 assinaturas via nosso sistema de disparo, s&atilde;o R$ 530/m&ecirc;s recorrentes para n&oacute;s sem custo adicional. <em class="warn">Avaliar se vale a complexidade ou se &eacute; distra&ccedil;&atilde;o.</em></p>
+
+<h3>Oportunidade 4: Upsell futuro</h3>
+<ul>
+  <li><strong>Google Ads / SEO:</strong> Se reativa&ccedil;&atilde;o funcionar e Dr. &Aacute;ureo Felipe ver ROI, a resist&ecirc;ncia a tr&aacute;fego pago diminui. Segundo produto natural.</li>
+  <li><strong>Chatbot 24h completo:</strong> Evolu&ccedil;&atilde;o do uHunter para atender novos pacientes (n&atilde;o s&oacute; base reativada).</li>
+  <li><strong>Recorr&ecirc;ncia de disparos:</strong> Se funcionar, o Dr. &Aacute;ureo Felipe vai querer disparar todo m&ecirc;s para fatias diferentes da base. 20 mil / 700 = 28 meses de disparos poss&iacute;veis.</li>
+</ul>
+
+<!-- ============================================ -->
+<h2 id="decisoes"><span class="num">07</span>Decis&otilde;es pendentes</h2>
+
+<table>
+  <thead><tr><th>#</th><th>Decis&atilde;o</th><th>Respons&aacute;vel</th><th>Prazo</th></tr></thead>
+  <tbody>
+    <tr><td class="val blue">1</td><td><strong>Confirmar se vale a pena</strong> &mdash; risco de cliente problem&aacute;tico vs. oportunidade de case/produto</td><td>Tiago + Moroni</td><td>Esta semana</td></tr>
+    <tr><td class="val blue">2</td><td><strong>Enviar proposta ao Douglas?</strong> Ou esperar reuni&atilde;o com Dr. &Aacute;ureo Felipe na pr&oacute;xima semana?</td><td>Tiago</td><td>Esta semana</td></tr>
+    <tr><td class="val blue">3</td><td><strong>Ter plano B de pre&ccedil;o</strong> se Dr. &Aacute;ureo Felipe rejeitar R$ 1.497: oferecer R$ 997 + lote reduzido (400 msgs)?</td><td>Equipe</td><td>Antes da reuni&atilde;o</td></tr>
+    <tr><td class="val blue">4</td><td><strong>Definir limites de suporte</strong> &mdash; quantas reuni&otilde;es, por quanto tempo, que canal</td><td>Tiago</td><td>Antes de fechar</td></tr>
+    <tr><td class="val blue">5</td><td><strong>Contatar Nayane</strong> &mdash; segundo lead de reativa&ccedil;&atilde;o. Passar perfil para Douglas ou abordar diretamente?</td><td>Tiago</td><td>Pr&oacute;xima semana</td></tr>
+    <tr><td class="val blue">6</td><td><strong>Parceria Andro Up:</strong> entrar na comiss&atilde;o de 10% ou focar s&oacute; na reativa&ccedil;&atilde;o?</td><td>Equipe</td><td>Ap&oacute;s primeiro lote</td></tr>
+    <tr><td class="val blue">7</td><td><strong>Douglas mencionou enviar CSV</strong> &mdash; cobrar isso como pr&oacute;ximo passo para manter momentum</td><td>Tiago</td><td>Imediato</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<div class="card blue">
+  <h3 style="margin-top: 0;">Veredicto interno</h3>
+  <p class="verdict" style="color: var(--amber);">Cliente de risco m&eacute;dio, oportunidade de case alta</p>
+  <p>O Dr. &Aacute;ureo Felipe individualmente n&atilde;o &eacute; um cliente de alta margem. Mas o modelo &ldquo;Reativa&ccedil;&atilde;o de Base para Cl&iacute;nicas&rdquo; &eacute; um <em class="blue">produto escal&aacute;vel</em> com custo marginal quase zero por cliente adicional.</p>
+  <p><strong>Recomenda&ccedil;&atilde;o:</strong> Fechar como piloto com pre&ccedil;o da proposta (R$ 1.497 + R$ 0,65/msg). Se Dr. &Aacute;ureo Felipe recusar, ter plano B a R$ 997. Executar r&aacute;pido, documentar m&eacute;tricas, e usar como case para vender o modelo a R$ 2.500-3.500 para as pr&oacute;ximas cl&iacute;nicas (Nayane j&aacute; &eacute; lead quente).</p>
+  <p style="margin: 0;"><strong>Pr&oacute;ximo passo concreto:</strong> Tiago envia proposta ao Douglas via link &rarr; Douglas agenda reuni&atilde;o com Dr. &Aacute;ureo Felipe semana que vem &rarr; Se aprovar, pedir CSV imediatamente &rarr; Setup em 7 dias.</p>
+</div>
+
+</div>
+</body>
+</html>

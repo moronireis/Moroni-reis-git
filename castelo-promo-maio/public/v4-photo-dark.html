@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>V4 — Foto Dramática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .canvas {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background photo */
+  .bg-photo {
+    position: absolute;
+    inset: 0;
+    background: url('photos/casal-castelo-frente.jpeg') center 60% / cover no-repeat;
+  }
+
+  /* Dark overlay — heavy at top for text, light at bottom so photo couple is visible */
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(14,14,12,0.95) 0%,
+      rgba(14,14,12,0.85) 15%,
+      rgba(14,14,12,0.55) 40%,
+      rgba(14,14,12,0.20) 60%,
+      rgba(14,14,12,0.10) 75%,
+      rgba(14,14,12,0.30) 100%
+    );
+  }
+
+  /* Content */
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Top badge — MÊS DAS NOIVAS prominent */
+  .promo-ribbon {
+    margin-top: 72px;
+    background: #C9A96E;
+    padding: 22px 72px;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #0E0E0C;
+  }
+
+  /* Brand */
+  .brand {
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: #F4EFE6;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .brand-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(201,169,110,0.8);
+    letter-spacing: 0.25em;
+    margin-top: 6px;
+  }
+
+  /* Top content block — right after brand */
+  .top-block {
+    width: 100%;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  /* Spacer — photo breathes here */
+  .photo-spacer {
+    flex: 1;
+    min-height: 200px;
+  }
+
+  /* Bottom — CTA only */
+  .bottom-block {
+    width: 100%;
+    padding: 0 80px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Event type — handwritten script font */
+  .event-type {
+    font-family: 'Great Vibes', cursive;
+    font-size: 72px;
+    font-weight: 400;
+    color: #C9A96E;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  /* "para eventos realizados em" label */
+  .event-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(244,239,230,0.55);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .event-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 600;
+    color: #F4EFE6;
+    line-height: 1;
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Price cards */
+  .price-grid {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 44px;
+  }
+
+  .price-card {
+    flex: 1;
+    border: 1px solid rgba(201,169,110,0.45);
+    padding: 40px 52px 44px;
+    text-align: center;
+    background: rgba(14,14,12,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    min-width: 400px;
+    position: relative;
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+  }
+
+  .card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #C9A96E;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 78px;
+    font-weight: 600;
+    color: #F4EFE6;
+    line-height: 1;
+  }
+
+  .card-price .rs {
+    font-size: 30px;
+    font-weight: 300;
+    color: rgba(201,169,110,0.7);
+    vertical-align: super;
+    margin-right: 4px;
+  }
+
+  .card-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(244,239,230,0.45);
+    margin-top: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Churrasco highlight */
+  .churrasco-highlight {
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    color: #C9A96E;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  /* Included */
+  .included-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(244,239,230,0.6);
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+  }
+
+  /* Condition */
+  .condition {
+    margin-top: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+  }
+
+  /* CTA */
+  .cta-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid #C9A96E;
+    padding: 20px 48px;
+  }
+
+  .cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: italic;
+    color: #C9A96E;
+  }
+
+  .cta-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(201,169,110,0.4);
+  }
+
+  .cta-phone {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #F4EFE6;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="content">
+
+    <div class="promo-ribbon">Mês das Noivas</div>
+
+    <div class="brand">
+      <div class="brand-name">Castelo dos Lagos</div>
+      <div class="brand-tagline">Ribeirão Pires · São Paulo</div>
+    </div>
+
+    <div class="top-block">
+
+      <div class="event-type">Casamentos & Debutantes</div>
+      <div class="event-label">para eventos realizados em</div>
+      <div class="event-year">2026</div>
+
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="card-label">Sexta e Domingo</div>
+          <div class="card-price"><span class="rs">R$</span>25.990</div>
+          <div class="card-detail">pacote completo</div>
+        </div>
+        <div class="price-card">
+          <div class="card-label">Sábado</div>
+          <div class="card-price"><span class="rs">R$</span>27.990</div>
+          <div class="card-detail">pacote completo</div>
+        </div>
+      </div>
+
+      <div class="churrasco-highlight">com Churrasco à Gaúcha</div>
+
+      <div class="included-line">
+        Espaço completo · DJ, Som e Iluminação · Gerador · Suítes · Segurança
+      </div>
+
+      <div class="condition">Eventos até novembro de 2026</div>
+
+    </div>
+
+    <div class="photo-spacer"></div>
+
+    <div class="bottom-block">
+      <div class="cta-bar">
+        <span class="cta-text">Agende sua visita</span>
+        <div class="cta-divider"></div>
+        <span class="cta-phone">(11) 9 5590-6035</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

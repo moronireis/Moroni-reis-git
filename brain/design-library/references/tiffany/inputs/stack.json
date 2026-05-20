@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Cloudflare",
+    "kind": "cdn",
+    "evidence": "Cloudflare server header / cf-ray",
+    "confidence": "high"
+  },
+  {
+    "name": "WordPress",
+    "kind": "cms",
+    "evidence": "wp-content / wp-includes paths",
+    "confidence": "high"
+  },
+  {
+    "name": "Google Analytics / GTM",
+    "kind": "analytics",
+    "evidence": "gtag or googletagmanager",
+    "confidence": "high"
+  }
+]

@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AGENTES [IA] — Tu Equipo Completo de IA</title>
+<meta name="description" content="El sistema multi-agente detrás del ecosistema REIS [IA]. 40+ agentes especializados organizados en 10 squads." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --l1:#0A0A0A;
+    --l2:#111113;
+    --l3:#1A1A1A;
+    --l4:#242427;
+    --line:rgba(255,255,255,0.08);
+    --line-strong:rgba(255,255,255,0.14);
+    --text:#FFFFFF;
+    --text-dim:rgba(255,255,255,0.62);
+    --text-mute:rgba(255,255,255,0.38);
+    --blue:#4A90FF;
+    --blue-hover:#6AADFF;
+    --blue-muted:#3570CC;
+    --blue-bright:#8DC4FF;
+    --radius:14px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.55}
+  body{
+    background:
+      radial-gradient(1400px 700px at 50% -100px, rgba(74,144,255,0.11), transparent 55%),
+      radial-gradient(700px 400px at 85% 400px, rgba(74,144,255,0.05), transparent 60%),
+      radial-gradient(600px 400px at 10% 700px, rgba(74,144,255,0.04), transparent 60%),
+      var(--bg);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* Film grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* Architectural grid lines — very subtle */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size:80px 80px;
+  }
+
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    background:rgba(0,0,0,0.65);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-weight:300;font-size:17px;letter-spacing:0.02em}
+  .brand .ia{color:var(--blue)}
+  .nav-meta{font-size:12px;color:var(--text-mute);letter-spacing:0.14em;text-transform:uppercase}
+  .nav-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-right:8px;box-shadow:0 0 8px var(--blue);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--blue)}50%{opacity:0.5;box-shadow:0 0 16px var(--blue)}}
+
+  /* ===================== HERO ===================== */
+  header.hero{
+    padding:140px 0 100px;
+    position:relative;
+    text-align:center;
+  }
+  .hero-glow{
+    position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:900px;height:500px;
+    background:radial-gradient(ellipse at 50% 0%, rgba(74,144,255,0.16), transparent 65%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--blue);
+    padding:8px 16px;border:1px solid rgba(74,144,255,0.28);border-radius:100px;
+    background:rgba(74,144,255,0.07);
+    margin-bottom:36px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue);animation:pulse 2.2s ease-in-out infinite}
+
+  .hero-wordmark{
+    font-weight:200;
+    font-size:clamp(64px,10vw,130px);
+    line-height:1;
+    letter-spacing:-0.04em;
+    margin-bottom:28px;
+  }
+  .hero-wordmark .ia{color:var(--blue)}
+
+  h1.hero-headline{
+    font-weight:300;
+    font-size:clamp(32px,5vw,68px);
+    line-height:1.05;
+    letter-spacing:-0.025em;
+    max-width:820px;
+    margin:0 auto 20px;
+  }
+  h1.hero-headline .accent{color:var(--blue)}
+
+  .hero-sub{
+    max-width:600px;
+    margin:0 auto 60px;
+    color:var(--text-dim);
+    font-size:18px;
+    line-height:1.65;
+    font-weight:400;
+  }
+
+  /* Stat ticker strip */
+  .stat-strip{
+    display:flex;align-items:center;justify-content:center;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:100px;
+    overflow:hidden;
+    max-width:780px;
+    margin:0 auto;
+    background:var(--l1);
+  }
+  .stat-item{
+    flex:1;
+    padding:20px 24px;
+    text-align:center;
+    border-right:1px solid var(--line);
+    position:relative;
+  }
+  .stat-item:last-child{border-right:none}
+  .stat-item .sn{
+    font-size:clamp(22px,3vw,36px);
+    font-weight:200;
+    letter-spacing:-0.03em;
+    color:var(--text);
+    line-height:1;
+  }
+  .stat-item .sn .su{color:var(--blue)}
+  .stat-item .sl{
+    margin-top:5px;
+    font-size:9px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--text-mute);
+  }
+  @media(max-width:640px){.stat-strip{flex-wrap:wrap;border-radius:var(--radius)}.stat-item{flex:50%;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.stat-item:nth-child(2){border-right:none}.stat-item:nth-child(3){border-bottom:none}.stat-item:last-child{border-right:none;border-bottom:none}}
+
+  /* ===================== CAPABILITIES GRID ===================== */
+  section.capabilities{
+    padding:120px 0 100px;
+    position:relative;
+  }
+  .section-label{
+    display:flex;align-items:center;gap:16px;margin-bottom:20px;
+  }
+  .section-label::before{content:"";flex:0 0 32px;height:1px;background:var(--blue)}
+  .section-label span{
+    font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--blue);
+  }
+  .section-title{
+    font-weight:300;
+    font-size:clamp(28px,4.5vw,54px);
+    line-height:1.08;
+    letter-spacing:-0.02em;
+    margin-bottom:14px;
+    max-width:700px;
+  }
+  .section-sub{
+    color:var(--text-dim);
+    font-size:16px;
+    max-width:540px;
+    margin-bottom:64px;
+  }
+
+  .cap-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+  }
+  @media(max-width:980px){.cap-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
+
+  .cap-card{
+    background:var(--l1);
+    padding:36px 28px 32px;
+    position:relative;
+    overflow:hidden;
+    transition:background .45s var(--ease);
+    cursor:default;
+  }
+  .cap-card::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(260px 200px at 0% 0%, rgba(74,144,255,0.10), transparent 65%);
+    opacity:0;transition:opacity .5s var(--ease);pointer-events:none;
+  }
+  .cap-card:hover{background:var(--l2)}
+  .cap-card:hover::after{opacity:1}
+
+  .cap-icon{
+    width:52px;height:52px;
+    border:1px solid rgba(74,144,255,0.22);
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(74,144,255,0.06);
+    margin-bottom:24px;
+    transition:border-color .45s var(--ease),background .45s var(--ease);
+  }
+  .cap-card:hover .cap-icon{border-color:rgba(74,144,255,0.5);background:rgba(74,144,255,0.12)}
+  .cap-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
+  .cap-label{
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:-0.005em;
+    margin-bottom:8px;
+    color:var(--text);
+  }
+  .cap-desc{
+    font-size:12.5px;
+    color:var(--text-dim);
+    line-height:1.55;
+  }
+
+  /* ===================== NUMBERS STRIP ===================== */
+  section.numbers{
+    padding:80px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .numbers-bg{
+    position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(800px 300px at 50% 50%, rgba(74,144,255,0.06), transparent 65%);
+  }
+  .numbers-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    position:relative;z-index:1;
+  }
+  @media(max-width:640px){.numbers-inner{grid-template-columns:repeat(2,1fr)}}
+  .num-cell{
+    background:var(--l1);
+    padding:48px 32px;
+    text-align:center;
+  }
+  .num-big{
+    font-size:clamp(48px,6vw,80px);
+    font-weight:200;
+    letter-spacing:-0.04em;
+    line-height:1;
+    color:var(--text);
+    margin-bottom:10px;
+  }
+  .num-big .nu{color:var(--blue)}
+  .num-label{
+    font-size:10px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--text-mute);
+    line-height:1.5;
+  }
+
+  /* ===================== SQUAD SECTIONS — DASHBOARD STYLE ===================== */
+  section.squads{padding:100px 0 60px}
+  .section-head{margin-bottom:48px;max-width:680px}
+  .section-head .kicker{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mute);margin-bottom:14px}
+  .section-head h2{font-weight:300;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.015em}
+  .section-head p{margin-top:16px;color:var(--text-dim);font-size:16px;max-width:560px}
+
+  /* Dashboard chrome wrapper */
+  .dashboard-chrome{
+    border:1px solid rgba(255,255,255,0.10);
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--l1);
+    box-shadow:0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset;
+  }
+  .dashboard-titlebar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;
+    background:rgba(255,255,255,0.03);
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    gap:16px;
+  }
+  .titlebar-dots{display:flex;align-items:center;gap:7px;flex-shrink:0}
+  .titlebar-dots span{
+    width:12px;height:12px;border-radius:50%;display:block;
+  }
+  .dot-red{background:#ff5f57}
+  .dot-yellow{background:#febc2e}
+  .dot-green{background:#28c840}
+  .titlebar-label{
+    font-size:12px;font-weight:500;color:var(--text-mute);
+    letter-spacing:0.06em;display:flex;align-items:center;gap:10px;
+    flex:1;
+  }
+  .titlebar-label .tl-sep{color:rgba(255,255,255,0.2)}
+  .titlebar-status{
+    display:flex;align-items:center;gap:7px;
+    font-size:11px;letter-spacing:0.1em;color:rgba(34,197,94,0.85);
+    flex-shrink:0;
+  }
+  .titlebar-status::before{
+    content:"";width:7px;height:7px;border-radius:50%;background:#22c55e;
+    box-shadow:0 0 8px rgba(34,197,94,0.7);
+    animation:pulse-green 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-green{
+    0%,100%{box-shadow:0 0 6px rgba(34,197,94,0.6)}
+    50%{box-shadow:0 0 14px rgba(34,197,94,0.9)}
+  }
+  .dashboard-body{padding:28px 24px}
+
+  .squad{margin-bottom:40px;position:relative}
+  .squad:last-child{margin-bottom:0}
+  .squad-head{
+    display:flex;align-items:center;gap:14px;
+    padding-bottom:14px;margin-bottom:14px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .squad-title{display:flex;align-items:center;gap:12px}
+  .squad-num{
+    font-family:'Inter',monospace;font-size:10px;font-weight:500;color:rgba(74,144,255,0.7);
+    padding:3px 8px;border:1px solid rgba(74,144,255,0.2);border-radius:4px;
+    letter-spacing:0.1em;flex-shrink:0;
+  }
+  .squad-title h3{font-weight:500;font-size:13px;letter-spacing:0.02em;color:var(--text-dim)}
+  .squad-agent-count{
+    margin-left:auto;font-size:10px;color:var(--text-mute);
+    letter-spacing:0.1em;flex-shrink:0;
+  }
+
+  /* ===================== COMPACT DASHBOARD GRID ===================== */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+  }
+  @media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:420px){.grid{grid-template-columns:1fr}}
+
+  /* ===================== COMPACT TEAM MEMBER CARD ===================== */
+  .card{
+    position:relative;
+    background:#0a0a0a;
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:10px;
+    padding:12px 12px 12px 14px;
+    transition:border-color .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease),transform .35s var(--ease);
+    cursor:default;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:11px;
+    min-height:72px;
+    overflow:hidden;
+  }
+  .card:hover{
+    border-color:rgba(74,144,255,0.45);
+    background:#0d1117;
+    transform:translateY(-2px);
+    box-shadow:0 8px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(74,144,255,0.12);
+  }
+
+  /* Status dot top-right */
+  .card-status{
+    position:absolute;top:9px;right:10px;
+    width:7px;height:7px;border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 6px rgba(34,197,94,0.6);
+    animation:pulse-green 2.4s ease-in-out infinite;
+    flex-shrink:0;
+  }
+
+  /* Avatar circle — compact */
+  .avatar{
+    width:44px;height:44px;
+    border-radius:50%;
+    flex-shrink:0;
+    position:relative;
+    transition:box-shadow .35s var(--ease);
+    box-shadow:0 0 0 1.5px rgba(74,144,255,0.3);
+  }
+  .card:hover .avatar{
+    box-shadow:0 0 0 2px rgba(74,144,255,0.65);
+  }
+  .avatar svg{width:100%;height:100%;display:block;border-radius:50%}
+  .agent-avatar-face{
+    width:44px;height:44px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#0d0d0f;
+    overflow:hidden;
+  }
+  .agent-avatar-face svg{
+    width:86%;height:86%;
+    display:block;
+  }
+
+  /* Squad badge — bottom-right of avatar */
+  .avatar-badge{
+    position:absolute;
+    bottom:-2px;right:-2px;
+    width:18px;height:18px;
+    border-radius:50%;
+    background:var(--blue);
+    border:1.5px solid #0a0a0a;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    z-index:2;
+  }
+  .avatar-badge svg{
+    width:10px;height:10px;
+    stroke:#fff;fill:none;
+    stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+    display:block;
+  }
+  .avatar-badge.badge-solid svg{
+    fill:#fff;stroke:none;
+  }
+
+  /* Text block */
+  .card-text{
+    flex:1;min-width:0;
+    display:flex;flex-direction:column;gap:3px;
+    padding-right:14px;/* space for status dot */
+  }
+
+  /* Name */
+  .card-name{
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:-0.005em;
+    color:var(--text);
+    line-height:1.2;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  /* Role tag */
+  .card-role{
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    color:rgba(74,144,255,0.75);
+    font-weight:400;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  /* CTA */
+  section.cta{
+    padding:120px 0 140px;
+    text-align:center;
+  }
+  .cta-inner{
+    max-width:720px;margin:0 auto;
+    padding:80px 40px;
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg, var(--l1), var(--bg));
+    position:relative;overflow:hidden;
+  }
+  .cta-inner::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(600px 300px at 50% 0%, rgba(74,144,255,0.10), transparent 60%);
+  }
+  .cta-inner h2{font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-0.015em;position:relative}
+  .cta-inner p{margin-top:18px;color:var(--text-dim);font-size:16px;position:relative}
+  .btns{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:100px;font-size:14px;font-weight:500;letter-spacing:0.01em;
+    transition:all .4s var(--ease);border:1px solid transparent;
+  }
+  .btn-primary{background:var(--blue);color:#000}
+  .btn-primary:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 12px 32px rgba(74,144,255,0.3)}
+  .btn-ghost{border-color:var(--line-strong);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+  .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--text-mute);font-size:12px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .foot-inner .slogan{letter-spacing:0.14em;text-transform:uppercase}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-up{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal-up.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal,.reveal-up{opacity:1;transform:none;transition:none}}
+
+  /* Stagger children */
+  .stagger > *{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .stagger.in > *{opacity:1;transform:none}
+  .stagger.in > *:nth-child(1){transition-delay:.05s}
+  .stagger.in > *:nth-child(2){transition-delay:.12s}
+  .stagger.in > *:nth-child(3){transition-delay:.19s}
+  .stagger.in > *:nth-child(4){transition-delay:.26s}
+  .stagger.in > *:nth-child(5){transition-delay:.33s}
+  .stagger.in > *:nth-child(6){transition-delay:.40s}
+  .stagger.in > *:nth-child(7){transition-delay:.47s}
+  .stagger.in > *:nth-child(8){transition-delay:.54s}
+  .stagger.in > *:nth-child(9){transition-delay:.61s}
+  .stagger.in > *:nth-child(10){transition-delay:.68s}
+  .stagger.in > *:nth-child(11){transition-delay:.75s}
+  .stagger.in > *:nth-child(12){transition-delay:.82s}
+  @media(prefers-reduced-motion:reduce){.stagger>*{opacity:1;transform:none}}
+
+  /* Background hourglass watermark */
+  .watermark{position:fixed;right:-80px;bottom:-80px;width:480px;height:480px;opacity:0.022;pointer-events:none;z-index:0}
+  .watermark svg{width:100%;height:100%;stroke:#fff;fill:none;stroke-width:1}
+
+  /* Counter animation */
+  @keyframes countUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .counted{animation:countUp .6s var(--ease) both}
+</style>
+</head>
+<body>
+
+<div class="watermark" aria-hidden="true">
+  <svg viewBox="0 0 200 200"><path d="M40 30 L160 30 L60 170 L140 170 L40 30 Z M40 30 L140 170 M160 30 L60 170"/></svg>
+</div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand">REIS <span class="ia">[IA]</span></div>
+    <div class="nav-meta"><span class="nav-dot"></span>Multi-Agent System — LIVE</div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal">Sistema multi-agente en operación</div>
+
+    <div class="hero-wordmark reveal">REIS <span class="ia">[IA]</span></div>
+
+    <h1 class="hero-headline reveal">
+      40+ agentes.<br/><span class="accent">Un solo equipo.</span>
+    </h1>
+
+    <p class="hero-sub reveal">
+      Lo que antes requería una agencia completa ahora opera 24/7 — investigación, estrategia, copy, diseño, ingeniería, video y deploy. Coordinados por un único orquestador.
+    </p>
+
+    <div class="stat-strip reveal">
+      <div class="stat-item">
+        <div class="sn" id="stat-agents">40<span class="su">+</span></div>
+        <div class="sl">Agentes Activos</div>
+      </div>
+      <div class="stat-item">
+        <div class="sn" id="stat-squads">10<span class="su">.</span></div>
+        <div class="sl">Squads</div>
+      </div>
+      <div class="stat-item">
+        <div class="sn">3<span class="su">.</span></div>
+        <div class="sl">Modelos Claude</div>
+      </div>
+      <div class="stat-item">
+        <div class="sn"><span class="su">&#x221E;</span></div>
+        <div class="sl">Output / 24h</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     CAPABILITIES GRID — "LO QUE CONSTRUYEN"
+     ============================================================ -->
+<section class="capabilities">
+  <div class="wrap">
+    <div class="section-label reveal">
+      <span>Lo Que Construyen</span>
+    </div>
+    <h2 class="section-title reveal">
+      Una agencia completa.<br/>Operando en código.
+    </h2>
+    <p class="section-sub reveal">
+      Doce dominios de entrega. Cada uno con agentes especializados, gates de calidad y pipelines definidos. Cero generalismo.
+    </p>
+
+    <div class="cap-grid stagger reveal-up">
+      <!-- 1 Web -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 8h18M7 3v5M17 3v5"/><path d="M7 17l-2 4M17 17l2 4M9 21h6"/></svg>
+        </div>
+        <div class="cap-label">Páginas Web</div>
+        <div class="cap-desc">Landing pages, sales pages y sitios institucionales con performance y conversión</div>
+      </div>
+      <!-- 2 Design -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="17" r="3"/><path d="M10.5 9.5l1.5 4.5M13.5 9.5L12 14"/></svg>
+        </div>
+        <div class="cap-label">Diseño &amp; Branding</div>
+        <div class="cap-desc">Identidad visual, design systems y brandbooks completos en SVG geométrico</div>
+      </div>
+      <!-- 3 Copy -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16L17 6l3 3-10 10H7v-3z"/><path d="M14 9l3 3"/></svg>
+        </div>
+        <div class="cap-label">Copy &amp; Ventas</div>
+        <div class="cap-desc">Sales letters, VSLs, emails y scripts que convierten con el framework Hormozi</div>
+      </div>
+      <!-- 4 Apps -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><circle cx="16" cy="15" r="1"/></svg>
+        </div>
+        <div class="cap-label">Apps &amp; Software</div>
+        <div class="cap-desc">Plataformas, dashboards, herramientas internas y MVPs en Astro + React</div>
+      </div>
+      <!-- 5 Tráfico -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 17l4-8 4 5 3-3 4 6"/><path d="M21 7l-3 3-3-3"/></svg>
+        </div>
+        <div class="cap-label">Tráfico &amp; Medios</div>
+        <div class="cap-desc">Creativos, embudos, campañas y optimización orientada a ROI</div>
+      </div>
+      <!-- 6 Social -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 10.5l6-3M9 13.5l6 3"/></svg>
+        </div>
+        <div class="cap-label">Contenido Social</div>
+        <div class="cap-desc">Reels, carruseles, posts y guiones virales adaptados por plataforma</div>
+      </div>
+      <!-- 7 Video -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="1"/><path d="M17 9l4-3v12l-4-3"/><path d="M7 9v6M10 9v6"/></svg>
+        </div>
+        <div class="cap-label">Edición de Video</div>
+        <div class="cap-desc">Cortes virales, subtítulos ASS, B-roll semántico y thumbnails — 100% OSS</div>
+      </div>
+      <!-- 8 Estrategia -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/><path d="M3 7l9 4 9-4M12 13v8"/></svg>
+        </div>
+        <div class="cap-label">Estrategia &amp; Ofertas</div>
+        <div class="cap-desc">Grand Slam Offers Hormozi, embudos B2B y posicionamiento de mercado</div>
+      </div>
+      <!-- 9 Educación -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3l10 5-10 5-10-5 10-5z"/><path d="M6 10v5c3 3 9 3 12 0v-5"/><path d="M12 13v5"/></svg>
+        </div>
+        <div class="cap-label">Educación</div>
+        <div class="cap-desc">Cursos, clases listas para grabar, slides y materiales pedagógicos en 1080p</div>
+      </div>
+      <!-- 10 Automatización -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 12h8"/><path d="M6 10V7a2 2 0 012-2h8a2 2 0 012 2v3"/><path d="M6 14v3a2 2 0 002 2h8a2 2 0 002-2v-3"/></svg>
+        </div>
+        <div class="cap-label">Automatización &amp; Integración</div>
+        <div class="cap-desc">APIs, webhooks, servidores MCP, OAuth y pipelines de automatización de punta a punta</div>
+      </div>
+      <!-- 11 Datos -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v4c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 9v4c0 1.7 3.6 3 8 3s8-1.3 8-3V9"/><path d="M4 13v4c0 1.7 3.6 3 8 3s8-1.3 8-3v-4"/></svg>
+        </div>
+        <div class="cap-label">Datos &amp; Analytics</div>
+        <div class="cap-desc">Supabase schemas, migrations, RLS, dashboards y reportes de performance</div>
+      </div>
+      <!-- 12 Investigación -->
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/><path d="M8 11h6M11 8v6"/></svg>
+        </div>
+        <div class="cap-label">Investigación &amp; Inteligencia</div>
+        <div class="cap-desc">Market research, descubrimiento de ICP, análisis competitivo y voice-of-customer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BIG NUMBERS STRIP — "RESULTADOS"
+     ============================================================ -->
+<section class="numbers">
+  <div class="numbers-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="numbers-inner stagger reveal-up">
+      <div class="num-cell">
+        <div class="num-big"><span class="nu" id="num-agents">40</span></div>
+        <div class="num-label">Agentes<br/>Activos</div>
+      </div>
+      <div class="num-cell">
+        <div class="num-big"><span class="nu" id="num-squads">10</span></div>
+        <div class="num-label">Squads<br/>Especializados</div>
+      </div>
+      <div class="num-cell">
+        <div class="num-big"><span style="color:var(--text)">24</span><span class="nu">/7</span></div>
+        <div class="num-label">Operación<br/>Continua</div>
+      </div>
+      <div class="num-cell">
+        <div class="num-big"><span class="nu">100</span><span style="color:var(--text);font-size:0.5em;vertical-align:middle">%</span></div>
+        <div class="num-label">OSS +<br/>Claude</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TEAM SECTIONS
+     ============================================================ -->
+<section class="squads">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Conoce al Equipo</div>
+      <h2>Diez squads. Especialistas en todo.</h2>
+      <p>Cada integrante tiene una función clara, entregables definidos y criterios de calidad. Juntos operan como una agencia completa — sin parar.</p>
+    </div>
+
+    <div class="dashboard-chrome reveal">
+      <div class="dashboard-titlebar">
+        <div class="titlebar-dots">
+          <span class="dot-red"></span>
+          <span class="dot-yellow"></span>
+          <span class="dot-green"></span>
+        </div>
+        <div class="titlebar-label">
+          Equipo de Agentes <span class="tl-sep">·</span> <span id="db-agent-count">40</span> activos <span class="tl-sep">·</span> REIS [IA] Internal
+        </div>
+        <div class="titlebar-status">online</div>
+      </div>
+      <div class="dashboard-body">
+        <div id="squads-root"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <h2>¿Quieres un sistema así<br/>operando en tu empresa?</h2>
+      <p>El mismo framework que construye REIS [IA] puede implementarse en tu negocio.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#">Agendar una llamada
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#">Aplicar al programa Builder</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="brand">REIS <span class="ia" style="color:var(--blue)">[IA]</span></div>
+    <div class="slogan">El Tiempo es Rey</div>
+    <div>&copy; 2026 REIS [IA]</div>
+  </div>
+</footer>
+
+<script>
+// ===== SQUAD BADGE ICONS =====
+// One minimal SVG per squad category
+const SQUAD_BADGES = [
+  // 01 — Comando / Orquestración → star (4-point minimal)
+  `<svg viewBox="0 0 10 10"><polygon points="5,1 6.2,3.8 9,3.8 6.9,5.7 7.6,8.5 5,7 2.4,8.5 3.1,5.7 1,3.8 3.8,3.8"/></svg>`,
+  // 02 — Estrategia & Inteligencia → target / crosshair
+  `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5"/><circle cx="5" cy="5" r="1.2"/><line x1="5" y1="1" x2="5" y2="1.5"/><line x1="5" y1="8.5" x2="5" y2="9"/><line x1="1" y1="5" x2="1.5" y2="5"/><line x1="8.5" y1="5" x2="9" y2="5"/></svg>`,
+  // 03 — Copy Squad → pen nib
+  `<svg viewBox="0 0 10 10"><path d="M2 8L5 1.5 8 8"/><path d="M3.5 5.5h3"/><line x1="5" y1="8" x2="5" y2="9"/></svg>`,
+  // 04 — Equipo de Marca → diamond
+  `<svg viewBox="0 0 10 10"><polygon points="5,1 9,5 5,9 1,5"/></svg>`,
+  // 05 — Diseño & Dirección → compass
+  `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4"/><line x1="5" y1="1" x2="5" y2="2"/><line x1="5" y1="8" x2="5" y2="9"/><line x1="1" y1="5" x2="2" y2="5"/><line x1="8" y1="5" x2="9" y2="5"/><circle cx="5" cy="5" r="1"/></svg>`,
+  // 06 — Equipo Técnico → code brackets
+  `<svg viewBox="0 0 10 10"><polyline points="3.5,2 1,5 3.5,8"/><polyline points="6.5,2 9,5 6.5,8"/></svg>`,
+  // 07 — Contenido & Social Media → play button
+  `<svg viewBox="0 0 10 10"><polygon points="2.5,1.5 8.5,5 2.5,8.5"/></svg>`,
+  // 08 — Edición de Video → film strip
+  `<svg viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="6" rx="1"/><line x1="1" y1="4" x2="9" y2="4"/><line x1="1" y1="6" x2="9" y2="6"/><line x1="3" y1="2" x2="3" y2="8"/></svg>`,
+  // 09 — Equipo Educativo → open book
+  `<svg viewBox="0 0 10 10"><path d="M5 2.5C3.5 1.5 1 2 1 2v6.5c0 0 2.5-.5 4 .5 1.5-1 4-.5 4-.5V2s-2.5-.5-4 .5z"/><line x1="5" y1="2.5" x2="5" y2="9"/></svg>`,
+  // 10 — Operaciones → gear / cog
+  `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="1.6"/><path d="M5 1v1.2M5 7.8V9M9 5H7.8M2.2 5H1M7.8 2.2l-.85.85M3.05 6.95l-.85.85M7.8 7.8l-.85-.85M3.05 3.05l-.85-.85"/></svg>`,
+];
+
+// ===== FACE GENERATOR — Procedural inline SVG minimal faces =====
+
+// Simple deterministic hash: string → unsigned integer
+function hashStr(s) {
+  let h = 2166136261; // FNV-1a 32-bit offset basis
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = (h * 16777619) >>> 0; // FNV prime, keep unsigned 32-bit
+  }
+  return h;
+}
+
+function makeFace(seed) {
+  const h = hashStr(seed);
+
+  // ── feature pickers ────────────────────────────────────────────────
+  // Head shapes: 0=tight(rx8), 1=medium(rx14), 2=chunky(rx20) — all square
+  const headV  = h % 3;
+  // Accessory (10 options, 40% = none → option 9)
+  const accRaw = (h >>> 2) % 10;
+  const accV   = accRaw <= 8 ? accRaw % 9 : 9;
+  // Is this a glasses-type accessory? (forces eyes to dots)
+  const isGlassesType = accV === 0 || accV === 1 || accV === 2;
+  // Eyes: 0=dots, 1=vert-lines, 2=horiz-lines, 3=arcs, 4=crosses
+  const eyeV   = isGlassesType ? 0 : (h >>> 5) % 5;
+  // Mouth: 0=line, 1=smile, 2=frown, 3=circle, 4=dash
+  const mouthV = (h >>> 8) % 5;
+  // Accent (50% chance): 0=eyebrow-line, 1=nose-dot, 2=nose-line, 3=none
+  const hasAccent = ((h >>> 11) % 2) === 1;
+  const accentV   = (h >>> 13) % 4;
+
+  // ── viewBox 120×120, square head ~90×90 centred at 60,60 ──────────
+  const cx = 60, cy = 60;
+  const hx = 15, hy = 15, hw = 90, hh = 90;
+
+  // HEAD
+  let headSvg = '';
+  if (headV === 0) {
+    headSvg = `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="8" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  } else if (headV === 1) {
+    headSvg = `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="14" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  } else {
+    headSvg = `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="20" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  }
+
+  // EYE positions
+  const lx = 43, rx = 77, ey = 52;
+
+  let eyeSvg = '';
+  if (eyeV === 0 || isGlassesType) {
+    const r = isGlassesType ? 1.8 : 2.5;
+    eyeSvg = `<circle cx="${lx}" cy="${ey}" r="${r}" fill="#ffffff"/>
+              <circle cx="${rx}" cy="${ey}" r="${r}" fill="#ffffff"/>`;
+  } else if (eyeV === 1) {
+    eyeSvg = `<line x1="${lx}" y1="${ey-4}" x2="${lx}" y2="${ey+4}" stroke="#ffffff" stroke-width="2.5"/>
+              <line x1="${rx}" y1="${ey-4}" x2="${rx}" y2="${ey+4}" stroke="#ffffff" stroke-width="2.5"/>`;
+  } else if (eyeV === 2) {
+    eyeSvg = `<line x1="${lx-4}" y1="${ey}" x2="${lx+4}" y2="${ey}" stroke="#ffffff" stroke-width="2.5"/>
+              <line x1="${rx-4}" y1="${ey}" x2="${rx+4}" y2="${ey}" stroke="#ffffff" stroke-width="2.5"/>`;
+  } else if (eyeV === 3) {
+    eyeSvg = `<path d="M${lx-5},${ey+2} Q${lx},${ey-5} ${lx+5},${ey+2}" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+              <path d="M${rx-5},${ey+2} Q${rx},${ey-5} ${rx+5},${ey+2}" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  } else {
+    eyeSvg = `<line x1="${lx-4}" y1="${ey-4}" x2="${lx+4}" y2="${ey+4}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${lx+4}" y1="${ey-4}" x2="${lx-4}" y2="${ey+4}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${rx-4}" y1="${ey-4}" x2="${rx+4}" y2="${ey+4}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${rx+4}" y1="${ey-4}" x2="${rx-4}" y2="${ey+4}" stroke="#ffffff" stroke-width="2"/>`;
+  }
+
+  // MOUTH
+  const my = 80;
+  let mouthSvg = '';
+  if (mouthV === 0) {
+    mouthSvg = `<line x1="50" y1="${my}" x2="70" y2="${my}" stroke="#ffffff" stroke-width="2.5"/>`;
+  } else if (mouthV === 1) {
+    mouthSvg = `<path d="M50,${my-2} Q60,${my+8} 70,${my-2}" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  } else if (mouthV === 2) {
+    mouthSvg = `<path d="M50,${my+4} Q60,${my-5} 70,${my+4}" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  } else if (mouthV === 3) {
+    mouthSvg = `<circle cx="${cx}" cy="${my}" r="4" stroke="#ffffff" stroke-width="2.5" fill="none"/>`;
+  } else {
+    mouthSvg = `<line x1="55" y1="${my}" x2="65" y2="${my}" stroke="#ffffff" stroke-width="2.5"/>`;
+  }
+
+  // ACCENT
+  let accentSvg = '';
+  if (hasAccent) {
+    if (accentV === 0) {
+      accentSvg = `<line x1="${lx-6}" y1="${ey-11}" x2="${lx+6}" y2="${ey-13}" stroke="#ffffff" stroke-width="1.8"/>
+                   <line x1="${rx-6}" y1="${ey-13}" x2="${rx+6}" y2="${ey-11}" stroke="#ffffff" stroke-width="1.8"/>`;
+    } else if (accentV === 1) {
+      accentSvg = `<circle cx="${cx}" cy="66" r="2" fill="#ffffff" opacity="0.7"/>`;
+    } else if (accentV === 2) {
+      accentSvg = `<line x1="${cx}" y1="61" x2="${cx}" y2="70" stroke="#ffffff" stroke-width="1.8" opacity="0.7"/>`;
+    }
+  }
+
+  // ACCESSORIES
+  let accSvg = '';
+  const gl = lx, gr = rx, gy = ey;
+  const gSize = 8;
+
+  if (accV === 0) {
+    accSvg = `<circle cx="${gl}" cy="${gy}" r="${gSize}" stroke="#ffffff" stroke-width="2" fill="none"/>
+              <circle cx="${gr}" cy="${gy}" r="${gSize}" stroke="#ffffff" stroke-width="2" fill="none"/>
+              <line x1="${gl+gSize}" y1="${gy}" x2="${gr-gSize}" y2="${gy}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${gl-gSize}" y1="${gy}" x2="${gl-gSize-6}" y2="${gy+3}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${gr+gSize}" y1="${gy}" x2="${gr+gSize+6}" y2="${gy+3}" stroke="#ffffff" stroke-width="2"/>`;
+  } else if (accV === 1) {
+    accSvg = `<rect x="${gl-gSize}" y="${gy-gSize+1}" width="${gSize*2}" height="${gSize*2-2}" rx="3" stroke="#ffffff" stroke-width="2" fill="none"/>
+              <rect x="${gr-gSize}" y="${gy-gSize+1}" width="${gSize*2}" height="${gSize*2-2}" rx="3" stroke="#ffffff" stroke-width="2" fill="none"/>
+              <line x1="${gl+gSize}" y1="${gy}" x2="${gr-gSize}" y2="${gy}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${gl-gSize}" y1="${gy}" x2="${gl-gSize-5}" y2="${gy+3}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${gr+gSize}" y1="${gy}" x2="${gr+gSize+5}" y2="${gy+3}" stroke="#ffffff" stroke-width="2"/>`;
+  } else if (accV === 2) {
+    accSvg = `<rect x="${gl-gSize}" y="${gy-5}" width="${gSize*2}" height="10" rx="3" fill="#ffffff"/>
+              <rect x="${gr-gSize}" y="${gy-5}" width="${gSize*2}" height="10" rx="3" fill="#ffffff"/>
+              <line x1="${gl+gSize}" y1="${gy}" x2="${gr-gSize}" y2="${gy}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${gl-gSize}" y1="${gy}" x2="${gl-gSize-5}" y2="${gy+2}" stroke="#ffffff" stroke-width="2"/>
+              <line x1="${gr+gSize}" y1="${gy}" x2="${gr+gSize+5}" y2="${gy+2}" stroke="#ffffff" stroke-width="2"/>`;
+  } else if (accV === 3) {
+    const arcY = hy - 4;
+    accSvg = `<path d="M${hx+10},${cy-5} A${cx-hx-10},${cy-hy+9} 0 0,1 ${hx+hw-10},${cy-5}" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+              <circle cx="${hx+6}" cy="${cy-5}" r="5" stroke="#ffffff" stroke-width="2" fill="none"/>`;
+  } else if (accV === 4) {
+    const capY = hy - 6;
+    accSvg = `<line x1="${hx-4}" y1="${capY}" x2="${hx+hw+4}" y2="${capY}" stroke="#ffffff" stroke-width="2.5"/>
+              <line x1="${hx+12}" y1="${capY}" x2="${hx+12}" y2="${hy}" stroke="#ffffff" stroke-width="2"/>`;
+  } else if (accV === 5) {
+    const antBaseX = cx + 8;
+    const antBaseY = hy;
+    accSvg = `<line x1="${antBaseX}" y1="${antBaseY}" x2="${antBaseX-4}" y2="${antBaseY-18}" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="${antBaseX-4}" cy="${antBaseY-21}" r="3" stroke="#ffffff" stroke-width="2" fill="none"/>`;
+  } else if (accV === 6) {
+    accSvg = `<circle cx="${gr}" cy="${gy}" r="${gSize}" stroke="#ffffff" stroke-width="2" fill="none"/>
+              <line x1="${gr+gSize*0.7}" y1="${gy+gSize*0.7}" x2="${gr+gSize+4}" y2="${gy+gSize+8}" stroke="#ffffff" stroke-width="1.8"/>`;
+  } else if (accV === 7) {
+    const by = my + 8;
+    accSvg = `<path d="M48,${by} Q60,${by+12} 72,${by}" stroke="#ffffff" stroke-width="2" fill="none"/>`;
+  } else if (accV === 8) {
+    const msy = my - 8;
+    accSvg = `<path d="M${cx-12},${msy} Q${cx-5},${msy+7} ${cx},${msy+2}" stroke="#ffffff" stroke-width="2" fill="none"/>
+              <path d="M${cx},${msy+2} Q${cx+5},${msy+7} ${cx+12},${msy}" stroke="#ffffff" stroke-width="2" fill="none"/>`;
+  }
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" stroke-linecap="round" stroke-linejoin="round">
+    ${headSvg}
+    ${eyeSvg}
+    ${mouthSvg}
+    ${accentSvg}
+    ${accSvg}
+  </svg>`;
+}
+
+function makeAvatar(handle, altText, squadIndex) {
+  const faceSvg = makeFace(handle);
+  const badgeSvg = SQUAD_BADGES[squadIndex] || SQUAD_BADGES[0];
+  return `
+    <div class="avatar" aria-label="${altText}" role="img">
+      <div class="agent-avatar-face">${faceSvg}</div>
+      <div class="avatar-badge">${badgeSvg}</div>
+    </div>
+  `;
+}
+
+// ===== AGENT DATA — SPANISH (MX) =====
+const SQUADS = [
+  {
+    n:"01", name:"El Comando", desc:"Planea, delega y asegura que el trabajo de todos está alineado.",
+    agents:[
+      {handle:"orchestrator", friendlyName:"El Maestro", role:"Líder de todo el equipo", desc:"Coordina al equipo completo, decide quién hace qué y garantiza que todo salga a tiempo."},
+      {handle:"task-router", friendlyName:"El Despachador", role:"Optimiza costos del equipo", desc:"Decide qué integrante del equipo es más rápido y económico para cada tarea — y distribuye el trabajo de la forma correcta."},
+      {handle:"chief-strategy-advisor", friendlyName:"El Consejero", role:"Advisor estratégico", desc:"Se sienta en la mesa de las decisiones grandes y avisa cuando algo puede salir mal antes de que suceda."},
+    ]
+  },
+  {
+    n:"02", name:"Estrategia e Inteligencia", desc:"Investigan el mercado, arman la estrategia y construyen las ofertas antes de que se escriba cualquier copy.",
+    agents:[
+      {handle:"market-research-analyst", friendlyName:"El Analista de Mercado", role:"Investiga mercado y clientes", desc:"Descubre lo que el mercado quiere, quiénes son los competidores y lo que los clientes realmente sienten — antes de cualquier decisión."},
+      {handle:"cmo-strategist", friendlyName:"La Estratega", role:"Define posicionamiento y plan", desc:"Arma el plan de cómo la empresa va a crecer, dónde va a competir y qué mensaje va a llegar al cliente correcto."},
+      {handle:"offer-architect", friendlyName:"El Arquitecto de Ofertas", role:"Crea ofertas irresistibles", desc:"Arma ofertas que hacen que el cliente sienta que sería un error decir que no — garantías, bonos y precio que tiene sentido."},
+      {handle:"funnel-architect", friendlyName:"El Arquitecto de Embudos", role:"Diseña el camino de compra", desc:"Diseña el camino que recorre el cliente desde el primer contacto hasta el pago — sin dejar a nadie en el camino."},
+    ]
+  },
+  {
+    n:"03", name:"Squad de Copy", desc:"De la palabra correcta al texto que vende. Pipeline de cinco revisiones antes de llegar al cliente.",
+    agents:[
+      {handle:"direct-response-copywriter", friendlyName:"El Copywriter", role:"Escribe textos que venden", desc:"Escribe los textos que hacen que las personas se detengan, lean y hagan clic — desde página de ventas hasta guión de video."},
+      {handle:"humanizer", friendlyName:"El Humanizador", role:"Hace el texto sonar humano", desc:"Toma cualquier texto y lo transforma para que parezca escrito por una persona de verdad, no por un robot."},
+      {handle:"reviewer", friendlyName:"El Revisor", role:"Calidad antes de publicar", desc:"Lee todo al final y solo aprueba cuando el texto está al nivel correcto. Si no, lo regresa para ajustar."},
+    ]
+  },
+  {
+    n:"04", name:"Equipo de Marca", desc:"Construyen la identidad de la empresa desde la base hasta la voz de cada comunicación.",
+    agents:[
+      {handle:"company-brand-strategist", friendlyName:"El Estratega de Marca", role:"Posiciona la empresa en el mercado", desc:"Define lo que la empresa representa, cómo se diferencia y por qué las personas la van a recordar."},
+      {handle:"personal-brand-strategist", friendlyName:"El Estratega Personal", role:"Construye la marca del fundador", desc:"Transforma quién eres — tu historia, valores y visión — en una marca personal que atrae oportunidades."},
+      {handle:"movement-brand-strategist", friendlyName:"El Estratega de Movimiento", role:"Crea comunidad alrededor de la marca", desc:"Transforma clientes en fans que defienden la marca porque creen en la causa, no solo en el producto."},
+      {handle:"product-brand-strategist", friendlyName:"El Estratega de Producto", role:"Posiciona y nombra productos", desc:"Piensa en el nombre, el empaque y cómo el producto va a ser percibido antes de ser lanzado."},
+    ]
+  },
+  {
+    n:"05", name:"Diseño y Dirección Creativa", desc:"Del primer boceto al frame final. Cada decisión visual pasa por aquí.",
+    agents:[
+      {handle:"designer-agent", friendlyName:"El Diseñador", role:"Crea identidad visual y pantallas", desc:"Define cómo se ve todo — colores, tipografías, componentes — y garantiza que el visual está alineado con la marca."},
+      {handle:"creative-director", friendlyName:"El Director Creativo", role:"Visión creativa general del equipo", desc:"Define el estilo visual de todo el equipo y garantiza que nada parezca amateur o fuera del estándar."},
+      {handle:"cinematic-art-director", friendlyName:"El Director de Arte", role:"Crea visuales cinematográficos", desc:"Decide cómo se van a ver los videos e imágenes más grandes — iluminación, encuadre, sensación de cine."},
+      {handle:"design-system-extractor", friendlyName:"El Extractor de Diseño", role:"Investiga referencias visuales", desc:"Visita los mejores sitios del mundo y trae lo más premium para inspirar al equipo."},
+      {handle:"logo-brand-mark-designer", friendlyName:"El Diseñador de Logo", role:"Crea logos y símbolos de marca", desc:"Dibuja el símbolo que va a representar a la empresa — simple, geométrico y que funciona en cualquier tamaño."},
+      {handle:"vfx-motion-designer", friendlyName:"El Motion Designer", role:"Anima elementos visuales", desc:"Hace que los elementos de la pantalla se muevan de forma atractiva — transiciones, animaciones y efectos que impresionan."},
+    ]
+  },
+  {
+    n:"06", name:"Equipo Técnico", desc:"Construyen, prueban y ponen todo en línea. La base que mantiene todo funcionando.",
+    agents:[
+      {handle:"dev-agent", friendlyName:"El Desarrollador", role:"Construye páginas y plataformas", desc:"Construye los sitios, plataformas y herramientas que el equipo usa — del diseño al código, sin perder calidad."},
+      {handle:"integration-engineer", friendlyName:"El Ingeniero de Integraciones", role:"Conecta sistemas y herramientas", desc:"Hace que sistemas distintos se comuniquen entre sí — como conectar WhatsApp con el CRM sin hacerlo a mano."},
+      {handle:"data-engineer", friendlyName:"El Ingeniero de Datos", role:"Organiza dónde viven los datos", desc:"Organiza dónde se guarda toda la información de la empresa y garantiza que esté segura, rápida y bien estructurada."},
+      {handle:"qa-agent", friendlyName:"El Tester", role:"Garantiza que nada esté roto", desc:"Prueba todo antes de salir al aire. Si algo está mal, bloquea la entrega hasta que esté corregido."},
+      {handle:"devops-agent", friendlyName:"El DevOps", role:"Pone todo en línea", desc:"Publica las actualizaciones en el sitio, gestiona contraseñas y servidores, y garantiza que nada se caiga."},
+    ]
+  },
+  {
+    n:"07", name:"Contenido y Social Media", desc:"Crean el contenido que aparece en el feed — hooks, guiones, posts y carruseles.",
+    agents:[
+      {handle:"social-media-director", friendlyName:"El Director de Social Media", role:"Comanda el equipo de contenido", desc:"Define la agenda del equipo de contenido, revisa lo que se publica y garantiza que todo esté alineado con la estrategia."},
+      {handle:"hook-specialist", friendlyName:"El Cazador de Hooks", role:"Inventa el inicio que engancha", desc:"Inventa los primeros 3 segundos del video o el título del post que hace que la persona deje de hacer scroll."},
+      {handle:"reels-scriptwriter", friendlyName:"El Guionista de Reels", role:"Escribe guiones para cámara", desc:"Escribe lo que vas a decir frente a la cámara — palabra por palabra — para que el video fluya natural y genere engagement."},
+      {handle:"linkedin-strategist", friendlyName:"El Estratega de LinkedIn", role:"Contenido profesional B2B", desc:"Crea posts y artículos en LinkedIn que te posicionan como referente y atraen socios y clientes de alto nivel."},
+      {handle:"carousel-designer-writer", friendlyName:"El Creador de Carruseles", role:"Arma carruseles que enseñan", desc:"Escribe las diapositivas del carrusel y entrega el guión visual al diseñador — todo listo para publicar."},
+    ]
+  },
+  {
+    n:"08", name:"Edición de Video", desc:"Post-producción completa. Del video en bruto al corte listo para publicar.",
+    agents:[
+      {handle:"video-editor-director", friendlyName:"El Director de Video", role:"Planea el corte y la edición", desc:"Toma un video grabado y decide exactamente los cortes, los subtítulos, las imágenes de apoyo y el thumbnail para hacerlo viral."},
+      {handle:"clip-cutter", friendlyName:"El Editor de Cortes", role:"Selecciona los mejores momentos", desc:"Lee la transcripción del video e identifica qué fragmentos tienen más potencial para volverse clip viral — con ranking de relevancia."},
+      {handle:"caption-broll-operator", friendlyName:"El Operador de Subtítulos", role:"Crea subtítulos e imágenes de apoyo", desc:"Crea los subtítulos estilizados del video e indica qué imágenes de apoyo usar en cada momento del audio."},
+    ]
+  },
+  {
+    n:"09", name:"Equipo Educativo", desc:"Crean los cursos y clases del ecosistema — del currículo al slide final.",
+    agents:[
+      {handle:"education-director", friendlyName:"El Director de Enseñanza", role:"Estratega pedagógico", desc:"Define qué se va a enseñar, en qué orden y cómo — para que el alumno salga de la clase sabiendo más de lo que entró."},
+      {handle:"roteirista-aulas", friendlyName:"El Guionista de Clases", role:"Escribe guiones de clase", desc:"Transforma el contenido en un guión listo para grabar — con inicio que engancha, desarrollo que enseña y cierre que motiva."},
+      {handle:"educational-designer", friendlyName:"La Diseñadora Educativa", role:"Crea visuales de las clases", desc:"Crea los slides, diagramas y mapas mentales que aparecen en pantalla durante la clase — bonitos, claros y didácticos."},
+    ]
+  },
+  {
+    n:"10", name:"Operaciones", desc:"Ejecutan tareas operativas, configuran herramientas y mantienen todo organizado.",
+    agents:[
+      {handle:"executor-agent", friendlyName:"El Operador de Plataformas", role:"Configura herramientas externas", desc:"Configura y conecta todas las plataformas que el equipo usa — herramientas de email, CRM, agendamiento y similares."},
+      {handle:"execution", friendlyName:"El Ejecutor", role:"Organiza archivos y carpetas", desc:"Cuida la organización de los archivos y carpetas del proyecto — todo en el lugar correcto, bien nombrado."},
+      {handle:"analysis-agent", friendlyName:"El Analista", role:"Resume y evalúa contexto", desc:"Lee documentos largos y entrega un resumen de lo que importa — para que el equipo decida sin tener que leer todo."},
+      {handle:"brand-site-builder", friendlyName:"El Constructor de Brandbook", role:"Documenta el sistema de marca", desc:"Toma todas las decisiones de marca y las organiza en un sitio interactivo que cualquier persona del equipo puede consultar."},
+      {handle:"sdr-agent", friendlyName:"El SDR", role:"Prospecta nuevos clientes", desc:"Investiga y aborda a potenciales clientes con el mensaje correcto — para traer personas calificadas a la conversación."},
+    ]
+  }
+];
+
+// ===== RENDER TEAM CARDS — COMPACT DASHBOARD STYLE =====
+const root = document.getElementById("squads-root");
+
+SQUADS.forEach((sq, squadIndex) => {
+  const section = document.createElement("div");
+  section.className = "squad";
+
+  const cards = sq.agents.map(a => {
+    const avatarBlock = makeAvatar(a.handle, a.friendlyName, squadIndex);
+    return `
+    <article class="card" title="${a.desc}">
+      <div class="card-status" aria-label="activo"></div>
+      ${avatarBlock}
+      <div class="card-text">
+        <h4 class="card-name">${a.friendlyName}</h4>
+        <div class="card-role">${a.role}</div>
+      </div>
+    </article>
+  `;
+  }).join("");
+
+  section.innerHTML = `
+    <div class="squad-head">
+      <div class="squad-title">
+        <div class="squad-num">${sq.n}</div>
+        <h3>${sq.name}</h3>
+      </div>
+      <div class="squad-agent-count">${sq.agents.length} integrante${sq.agents.length !== 1 ? 's' : ''}</div>
+    </div>
+    <div class="grid">${cards}</div>
+  `;
+  root.appendChild(section);
+});
+
+// Count update
+const totalAgents = SQUADS.reduce((s,sq)=>s+sq.agents.length,0);
+const agentEl = document.getElementById("stat-agents");
+const agentEl2 = document.getElementById("num-agents");
+const squadEl = document.getElementById("stat-squads");
+const squadEl2 = document.getElementById("num-squads");
+const dbCount = document.getElementById("db-agent-count");
+if(agentEl) agentEl.innerHTML = totalAgents + '<span class="su">+</span>';
+if(agentEl2) agentEl2.textContent = totalAgents;
+if(squadEl) squadEl.innerHTML = SQUADS.length + '<span class="su">.</span>';
+if(squadEl2) squadEl2.textContent = SQUADS.length;
+if(dbCount) dbCount.textContent = totalAgents;
+
+// ===== SCROLL REVEAL =====
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll(".reveal, .reveal-up, .stagger").forEach(el => io.observe(el));
+
+
+// ===== ANIMATED NUMBER COUNTER =====
+function animateCount(el, target, duration) {
+  if (!el) return;
+  let start = 0;
+  const step = timestamp => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(ease * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+
+const numObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(document.getElementById("num-agents"), totalAgents, 1200);
+      animateCount(document.getElementById("num-squads"), SQUADS.length, 1000);
+      numObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const numSection = document.querySelector("section.numbers");
+if (numSection) numObserver.observe(numSection);
+</script>
+</body>
+</html>

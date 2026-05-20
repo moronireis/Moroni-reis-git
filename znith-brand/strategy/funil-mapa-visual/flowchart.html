@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH — Flowchart Interativo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0e1a;--bg2:#111627;--bg3:#1a1f35;
+  --border:rgba(255,255,255,0.06);
+  --text:#e2e8f0;--text2:#8892a4;
+  --gold:#f0b442;--gold-dim:rgba(240,180,66,0.10);
+  --blue:#4a9eff;--green:#34d399;--red:#f87171;
+  --orange:#fb923c;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow:hidden;height:100vh;width:100vw;cursor:grab;}
+body.grabbing{cursor:grabbing;}
+
+.toolbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,14,26,0.94);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 20px;height:52px;
+}
+.tb-left{display:flex;align-items:center;gap:14px;}
+.tb-logo{font-weight:700;font-size:0.85rem;letter-spacing:0.08em;color:var(--gold);}
+.tb-sep{width:1px;height:20px;background:var(--border);}
+.tb-title{font-size:0.78rem;color:var(--text2);}
+.tb-right{display:flex;align-items:center;gap:8px;}
+.btn{
+  font-size:0.7rem;font-weight:500;color:var(--text2);
+  background:var(--bg2);border:1px solid var(--border);
+  padding:6px 14px;border-radius:6px;cursor:pointer;transition:all 0.2s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:4px;
+}
+.btn:hover{border-color:var(--gold);color:var(--gold);}
+.btn.active{background:var(--gold-dim);color:var(--gold);border-color:rgba(240,180,66,0.3);}
+.zoom-d{font-size:0.7rem;color:var(--text2);min-width:40px;text-align:center;}
+
+.canvas-wrap{position:absolute;top:52px;left:0;right:0;bottom:0;overflow:hidden;}
+.canvas-wrap::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.canvas{position:absolute;transform-origin:0 0;will-change:transform;}
+
+/* ── SVG ── */
+svg.conns{position:absolute;top:0;left:0;pointer-events:none;z-index:1;}
+.cpath{fill:none;stroke-width:2.5;stroke-linecap:round;}
+.cpath.f1{stroke:var(--blue);opacity:0.45;}
+.cpath.f2{stroke:var(--orange);opacity:0.45;}
+.cpath.cross{stroke:var(--purple);opacity:0.4;stroke-dasharray:8 5;}
+.cpath.upsell{stroke:var(--gold);opacity:0.4;stroke-dasharray:10 5;}
+.cpath:hover{opacity:0.9;stroke-width:3.5;}
+.clbl{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  fill:#fff;paint-order:stroke;stroke:var(--bg);stroke-width:4px;
+  pointer-events:none;
+}
+.crate{fill:var(--green);}
+.cvol{fill:var(--text2);}
+
+/* ── NODES ── */
+.nd{
+  position:absolute;z-index:2;
+  border-radius:14px;padding:16px 18px;
+  min-width:200px;max-width:230px;
+  transition:box-shadow 0.25s,border-color 0.25s,transform 0.15s;
+  cursor:default;border:1.5px solid var(--border);background:var(--bg2);
+}
+.nd:hover{border-color:rgba(255,255,255,0.15);box-shadow:0 8px 36px rgba(0,0,0,0.5);transform:translateY(-2px);z-index:10;}
+.nd-icon{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;margin-bottom:10px;
+  letter-spacing:-0.02em;
+}
+.nd-tag{font-size:0.56rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text2);margin-bottom:3px;}
+.nd-name{font-size:0.84rem;font-weight:600;line-height:1.25;margin-bottom:4px;}
+.nd-desc{font-size:0.68rem;color:var(--text2);line-height:1.45;margin-bottom:8px;}
+.nd-pills{display:flex;flex-wrap:wrap;gap:4px;}
+.pill{
+  font-size:0.58rem;font-weight:500;padding:2px 8px;border-radius:4px;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:var(--text2);
+}
+.pill-c{color:var(--green);border-color:rgba(52,211,153,0.2);}
+.pill-v{color:var(--cyan);border-color:rgba(34,211,238,0.2);}
+.pill-r{color:var(--gold);border-color:rgba(240,180,66,0.2);}
+.pill-p{color:var(--blue);border-color:rgba(74,158,255,0.2);}
+
+/* Colored left-borders */
+.nd-traffic{border-left:3px solid var(--blue);}
+.nd-traffic .nd-icon{background:rgba(74,158,255,0.12);color:var(--blue);}
+.nd-landing{border-left:3px solid var(--cyan);}
+.nd-landing .nd-icon{background:rgba(34,211,238,0.12);color:var(--cyan);}
+.nd-quiz{border-left:3px solid var(--orange);}
+.nd-quiz .nd-icon{background:rgba(251,146,60,0.12);color:var(--orange);}
+.nd-profile{border-left:3px solid var(--purple);}
+.nd-profile .nd-icon{background:rgba(167,139,250,0.12);color:var(--purple);}
+.nd-email{border-left:3px solid var(--pink);}
+.nd-email .nd-icon{background:rgba(244,114,182,0.12);color:var(--pink);}
+.nd-call{border-left:3px solid var(--green);}
+.nd-call .nd-icon{background:rgba(52,211,153,0.12);color:var(--green);}
+.nd-sale{border-left:3px solid var(--gold);}
+.nd-sale .nd-icon{background:var(--gold-dim);color:var(--gold);}
+.nd-upsell{border-left:3px solid var(--gold);background:rgba(240,180,66,0.03);}
+.nd-upsell .nd-icon{background:var(--gold-dim);color:var(--gold);}
+.nd-redirect{border-left:3px solid var(--red);}
+.nd-redirect .nd-icon{background:rgba(248,113,113,0.12);color:var(--red);}
+.nd-nurture{border-left:3px solid var(--text2);}
+.nd-nurture .nd-icon{background:rgba(136,146,164,0.12);color:var(--text2);}
+
+/* ── ZONE LABELS ── */
+.zone{
+  position:absolute;z-index:0;border-radius:16px;pointer-events:none;
+}
+.zone-title{
+  position:absolute;font-size:0.62rem;font-weight:700;letter-spacing:0.16em;
+  text-transform:uppercase;padding:6px 16px;border-radius:6px;
+}
+.z1{background:rgba(74,158,255,0.03);border:1px solid rgba(74,158,255,0.06);}
+.z1 .zone-title{background:rgba(74,158,255,0.08);color:var(--blue);border:1px solid rgba(74,158,255,0.12);top:-14px;left:20px;}
+.z2{background:rgba(251,146,60,0.03);border:1px solid rgba(251,146,60,0.06);}
+.z2 .zone-title{background:rgba(251,146,60,0.08);color:var(--orange);border:1px solid rgba(251,146,60,0.12);top:-14px;left:20px;}
+
+/* ── LEGEND ── */
+.legend{
+  position:fixed;bottom:16px;left:16px;z-index:50;
+  background:rgba(10,14,26,0.94);backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:10px;
+  padding:12px 16px;font-size:0.62rem;display:flex;gap:14px;flex-wrap:wrap;
+}
+.leg{display:flex;align-items:center;gap:5px;color:var(--text2);}
+.leg-l{width:18px;height:2.5px;border-radius:2px;}
+.leg-l.solid-b{background:var(--blue);}
+.leg-l.solid-o{background:var(--orange);}
+.leg-l.dash-p{background:repeating-linear-gradient(90deg,var(--purple) 0 6px,transparent 6px 10px);}
+.leg-l.dash-g{background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 12px);}
+
+/* ── TOOLTIP ── */
+.tip{
+  position:fixed;z-index:200;background:var(--bg3);border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;padding:14px 16px;max-width:300px;pointer-events:none;
+  box-shadow:0 12px 40px rgba(0,0,0,0.5);opacity:0;transition:opacity 0.2s;
+}
+.tip.show{opacity:1;}
+.tip h4{font-size:0.8rem;font-weight:600;margin-bottom:4px;color:var(--gold);}
+.tip p{font-size:0.72rem;color:var(--text2);line-height:1.5;}
+
+@media(max-width:768px){.legend{display:none;}.tb-title{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="tb-left">
+    <span class="tb-logo">ZNITH</span><span class="tb-sep"></span>
+    <span class="tb-title">Flowchart &mdash; Jornada Completa do Lead</span>
+  </div>
+  <div class="tb-right">
+    <a href="index.html" class="btn">&larr; Blocos</a>
+    <span class="tb-sep"></span>
+    <button class="btn" onclick="fit()">Fit</button>
+    <button class="btn" onclick="zm(-0.1)">-</button>
+    <span class="zoom-d" id="zd">100%</span>
+    <button class="btn" onclick="zm(0.1)">+</button>
+    <span class="tb-sep"></span>
+    <button class="btn" id="bf1" onclick="hl('f1')">Funil 1</button>
+    <button class="btn" id="bf2" onclick="hl('f2')">Funil 2</button>
+    <button class="btn active" id="ba" onclick="hl('all')">Todos</button>
+  </div>
+</div>
+
+<div class="canvas-wrap" id="cw">
+  <div class="canvas" id="cv">
+    <svg class="conns" id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<div class="legend">
+  <div class="leg"><div class="leg-l solid-b"></div>Funil 1 (Mestre)</div>
+  <div class="leg"><div class="leg-l solid-o"></div>Funil 2 (IA)</div>
+  <div class="leg"><div class="leg-l dash-p"></div>Cross-funnel</div>
+  <div class="leg"><div class="leg-l dash-g"></div>Upsell</div>
+</div>
+
+<script>
+// ═══════════════════════════ DATA ═══════════════════════════
+// Layout: generous spacing. Cols ~360px apart. F1 top, F2 bottom.
+const N=[
+  // ── F1 TRAFFIC (Col 0, x:60) ──
+  {id:'f1_li',x:60,y:180,t:'traffic',f:'f1',tag:'TOF',nm:'LinkedIn Organico',ic:'in',
+   ds:'3 posts/semana da Leilaine. Motor primario meses 1-3.',
+   pills:[{t:'50-80K imp/mes',c:'v'}],
+   tip:'Posts em 3 formatos: autopsia comercial, observacao de mercado, narrativa pessoal. Crescimento qualificado: diretores comerciais e CEOs B2B.'},
+  {id:'f1_gg',x:60,y:340,t:'traffic',f:'f1',tag:'TOF',nm:'Google Search',ic:'G',
+   ds:'Paid a partir do mes 3. Keywords de construcao civil.',
+   pills:[{t:'R$4-8 CPC',c:'r'},{t:'500-800 cl/mes',c:'v'}],
+   tip:'"consultoria comercial construcao civil", "CRM vidracaria", "processo comercial serralheria". Bottom-funnel intent.'},
+  {id:'f1_ref',x:60,y:500,t:'traffic',f:'f1',tag:'TOF',nm:'Referrals / Indicacao',ic:'R',
+   ds:'Programa Indicador ZNITH (privado). Maior qualidade.',
+   pills:[{t:'2-4 qualif/mes',c:'v'}],
+   tip:'Meta: 1 indicacao qualificada por cliente por ano. Referral entra com prioridade maxima — pula parte do nurture.'},
+
+  // ── F1 LANDING (Col 1, x:380) ──
+  {id:'f1_lp',x:380,y:300,t:'landing',f:'f1',tag:'TOF — CAPTURA',nm:'Landing /raio-x',ic:'LP',
+   ds:'"Quanto sua operacao esta custando em receita invisivel?"',
+   pills:[{t:'Conv 35-45%',c:'c'},{t:'/raio-x',c:'p'}],
+   tip:'Agitacao: 3 sintomas reconheciveis. Credenciais Leilaine. Single CTA: iniciar quiz. Captura: email, empresa, faturamento, cargo.'},
+
+  // ── F1 QUIZ (Col 2, x:700) ──
+  {id:'f1_qz',x:700,y:300,t:'quiz',f:'f1',tag:'DIAGNOSTICO',nm:'Raio-X Comercial',ic:'?',
+   ds:'15-20 perguntas. Scoring automatico. 6 minutos.',
+   pills:[{t:'Conclusao >60%',c:'c'},{t:'Qualif 25-30%',c:'c'}],
+   tip:'CRM, follow-up, funil, cadencia, dependencia do dono, uso de IA. Resultado: 4 perfis + PDF com 3 maiores gargalos identificados.'},
+
+  // ── F1 PROFILES (Col 3, x:1040) — fanned vertically ──
+  {id:'f1_caos',x:1040,y:100,t:'redirect',f:'f1',tag:'PERFIL 0-40',nm:'Operacao em Caos',ic:'!',
+   ds:'~30% dos leads. Nurture longo prazo + Formacao.',
+   pills:[{t:'NAO qualificado',c:'v'}],
+   tip:'Entra na Carta da Leilaine (mensal). Pode amadurecer e refazer Raio-X em 6-12 meses.'},
+  {id:'f1_mov',x:1040,y:280,t:'call',f:'f1',tag:'QUALIFICADO 41-65',nm:'Operacao em Movimento',ic:'M',
+   ds:'~25%. Candidato classico. Convite Leitura.',
+   pills:[{t:'R$25-45K',c:'r'}],
+   tip:'Cresce com desgaste, sem direcao. Score medio = proposta padrao Expansao.'},
+  {id:'f1_mat',x:1040,y:440,t:'call',f:'f1',tag:'QUALIFICADO 66-85',nm:'Operacao em Maturacao',ic:'A',
+   ds:'~15%. Convite Leitura premium.',
+   pills:[{t:'R$45-120K',c:'r'}],
+   tip:'Tem base mas falta arquitetura. Ticket mais alto. Proposta customizada.'},
+  {id:'f1_gov',x:1040,y:600,t:'nurture',f:'f1',tag:'PERFIL 86-100',nm:'Operacao em Governo',ic:'G',
+   ds:'~5%. Nao e prospect. Canal de parceria.',
+   pills:[{t:'Parceiro',c:'v'}],
+   tip:'Operacao ja estruturada. Referral ou co-criacao de conteudo.'},
+
+  // ── F1 NURTURE (Col 4, x:1380) ──
+  {id:'f1_seqB',x:1380,y:100,t:'email',f:'f1',tag:'NURTURE',nm:'Seq. B: Carta da Leilaine',ic:'@',
+   ds:'Newsletter mensal. Posiciona, nao vende.',
+   pills:[{t:'Mensal',c:'v'}],
+   tip:'Reflexao longa da Leilaine. Cada edicao convida suavemente a refazer Raio-X. + WhatsApp check-in trimestral.'},
+  {id:'f1_seqA',x:1380,y:340,t:'email',f:'f1',tag:'MOF — NURTURE',nm:'Seq. A: Arquitetura Invisivel',ic:'@',
+   ds:'7 emails em 21 dias. Revela pontos cegos.',
+   pills:[{t:'7 emails',c:'v'},{t:'Open >45%',c:'c'}],
+   tip:'D0: Receita invisivel. D3: Cemiterio de ferramentas. D7: Historia Leilaine. D10: Nicho. D14: Case. D17: Objecao tempo. D21: CTA Leitura.'},
+
+  // ── F1 LEITURA (Col 5, x:1720) ──
+  {id:'f1_leit',x:1720,y:340,t:'call',f:'f1',tag:'MOF/BOF — CONVERSA',nm:'Leitura Estrategica',ic:'L',
+   ds:'45 min com Leilaine. Valor ANTES da venda.',
+   pills:[{t:'Show-up 80-90%',c:'c'},{t:'Avanco 70-80%',c:'c'},{t:'/agendar',c:'p'}],
+   tip:'10 min contexto / 20 min leitura ao vivo (2-3 gargalos) / 10 min Expansao / 5 min proximo passo. NAO apresenta preco OS.'},
+
+  // ── F1 PROPOSTA (Col 6, x:2060) ──
+  {id:'f1_prop',x:2060,y:280,t:'sale',f:'f1',tag:'BOF — PROPOSTA',nm:'Proposta Expansao',ic:'$',
+   ds:'Documento visual premium. Entregue em 48h.',
+   pills:[{t:'Conv 45-60%',c:'c'},{t:'Avg R$35K',c:'r'},{t:'<14 dias',c:'v'}],
+   tip:'Cenario (prova que ouviu) + entregaveis + 8 semanas + value stack R$81K + investimento R$35K + Garantia.'},
+  {id:'f1_seqC',x:2060,y:480,t:'email',f:'f1',tag:'FOLLOW-UP',nm:'Seq. C: Post-Leitura',ic:'@',
+   ds:'4 emails em 45 dias se nao fechar.',
+   pills:[{t:'45 dias',c:'v'}],
+   tip:'D3: Recap gargalos. D14: Case relevante. D30: "Quanto custou?" D45: Soft close ou release.'},
+
+  // ── F1 CONTRATO (Col 7, x:2420) ──
+  {id:'f1_ctr',x:2420,y:280,t:'sale',f:'f1',tag:'BOF — CONTRATO',nm:'Consulting Expansao',ic:'C',
+   ds:'8 semanas. Diagnostico + arquitetura + roadmap.',
+   pills:[{t:'6-8/mes',c:'c'},{t:'R$252-336K/mes',c:'r'}],
+   tip:'Sem 1: Kick-off. Sem 2-3: Diagnostico. Sem 4-5: Desenho. Sem 6-7: Plano. Sem 8: Caderno + Caminhos. Max 4 paralelos.'},
+
+  // ── F1 UPSELLS (Col 8, x:2780) ──
+  {id:'f1_os',x:2780,y:140,t:'upsell',f:'f1',tag:'UPSELL — 40-55%',nm:'ZNITH.AI OS',ic:'OS',
+   ds:'Implantacao completa. R$50-150K setup.',
+   pills:[{t:'R$50-150K',c:'r'},{t:'+R$5-15K/mes',c:'r'}],
+   tip:'ZNITH implanta o que foi desenhado na Expansao. 4-6 meses. Decisao natural na semana 8.'},
+  {id:'f1_rc',x:2780,y:320,t:'upsell',f:'f1',tag:'UPSELL — 15-20%',nm:'RCaaS (Governanca)',ic:'RC',
+   ds:'Acompanhamento recorrente. R$5-15K/mes.',
+   pills:[{t:'MRR R$80K',c:'r'}],
+   tip:'Cliente implanta internamente. ZNITH acompanha via governanca mensal.'},
+  {id:'f1_int',x:2780,y:490,t:'nurture',f:'f1',tag:'POS — 25-35%',nm:'Execucao Interna',ic:'EI',
+   ds:'Sozinho + nurture "Arq. Viva". Voltam em 6-12m.',
+   pills:[{t:'Bimestral',c:'v'}],
+   tip:'ZNITH libera com dignidade. Nurture "Arquitetura Viva" bimestral. Muitos retornam para OS ou RCaaS.'},
+
+  // ════════════ FUNNEL 2 (y starts at ~820) ════════════
+
+  // ── F2 TRAFFIC (Col 0, x:60) ──
+  {id:'f2_meta',x:60,y:880,t:'traffic',f:'f2',tag:'TOF',nm:'Meta Ads',ic:'M',
+   ds:'Motor primario F2. Mes 3+. R$3-5K/mes.',
+   pills:[{t:'1-2K cl/mes',c:'v'},{t:'R$2-5 CPC',c:'r'}],
+   tip:'Construcao civil + donos buscando IA. Mobile-first targeting. Orcamento: R$3-5K/mes.'},
+  {id:'f2_gg',x:60,y:1060,t:'traffic',f:'f2',tag:'TOF',nm:'Google Search IA',ic:'G',
+   ds:'"agente IA para empresa", "automacao comercial IA".',
+   pills:[{t:'500-1K cl/mes',c:'v'},{t:'R$3-7 CPC',c:'r'}],
+   tip:'Intent de fundo de funil. Complementa Meta Ads.'},
+
+  // ── F2 LANDING (Col 1, x:380) ──
+  {id:'f2_lp',x:380,y:950,t:'landing',f:'f2',tag:'TOF — CAPTURA',nm:'Landing /implementar-ia',ic:'LP',
+   ds:'"Implementar IA sem automatizar o caos."',
+   pills:[{t:'Conv 25-35%',c:'c'},{t:'/implementar-ia',c:'p'}],
+   tip:'Narrativa honesta. Quiz acima do fold. Pagina curta — mobile-first.'},
+
+  // ── F2 QUIZ (Col 2, x:700) ──
+  {id:'f2_qz',x:700,y:950,t:'quiz',f:'f2',tag:'QUALIFICACAO',nm:'Quiz Maturidade IA',ic:'?',
+   ds:'5-7 perguntas. 3 minutos. Score 0-9.',
+   pills:[{t:'Conclusao 70-80%',c:'c'}],
+   tip:'Playbook? CRM ativo? Processo? Faturamento? Time? Motivo IA? Urgencia? Score 3 primeiras = filtro critico.'},
+
+  // ── F2 ROUTING (Col 3, x:1040) ──
+  {id:'f2_qual',x:1040,y:840,t:'call',f:'f2',tag:'QUALIF — SCORE 7-9',nm:'Rota IA (Tem Processo)',ic:'AI',
+   ds:'20-25% dos leads. Pronto pra ZNITH.AI Agent.',
+   pills:[{t:'/qualificado',c:'p'}],
+   tip:'"Sua empresa ja tem base. Hora de acelerar." Sales page ZNITH.AI Agent.'},
+  {id:'f2_redir',x:1040,y:1060,t:'redirect',f:'f2',tag:'REDIR — SCORE 0-6',nm:'Rota Funil 1 (Sem Processo)',ic:'F1',
+   ds:'50% dos leads. "IA sem direcao so acelera o caos."',
+   pills:[{t:'/arq-primeiro',c:'p'}],
+   tip:'Educacao sem rejeicao. Explica por que processo vem antes de IA. CTA: Raio-X Comercial.'},
+
+  // ── F2 SEQUENCES (Col 4, x:1380) ──
+  {id:'f2_seqD',x:1380,y:840,t:'email',f:'f2',tag:'MOF',nm:'Seq. D: IA Com Direcao',ic:'@',
+   ds:'5 emails em 14 dias para qualificados IA.',
+   pills:[{t:'14 dias',c:'v'}],
+   tip:'D0: Resultados. D2: Como agents funcionam. D5: Case vidracaria. D9: Concorrente. D14: CTA call.'},
+  {id:'f2_seqE',x:1380,y:1060,t:'email',f:'f2',tag:'MOF',nm:'Seq. E: Processo Primeiro',ic:'@',
+   ds:'5 emails em 21 dias. Bridge pro Funil 1.',
+   pills:[{t:'21 dias',c:'v'}],
+   tip:'D0: Verdade AI readiness. D3: Custo do caos. D7: Case. D14: CTA Raio-X. D21: Carta da Leilaine.'},
+
+  // ── F2 CONVERSION (Col 5, x:1720) ──
+  {id:'f2_agent',x:1720,y:840,t:'sale',f:'f2',tag:'BOF — CONVERSAO',nm:'ZNITH.AI Agent',ic:'$',
+   ds:'R$785/mes + setup. Agente IA comercial.',
+   pills:[{t:'12/mes',c:'c'},{t:'R$144K/mes',c:'r'}],
+   tip:'Qualificacao, agendamento, follow-up automatizados. Durante uso, gaps de processo revelam-se → cross-sell para Consulting.'},
+
+  // ── WHATSAPP (shared, between funnels) ──
+  {id:'wpp',x:1380,y:660,t:'landing',f:'shared',tag:'PARALELO',nm:'WhatsApp (Evolution API)',ic:'W',
+   ds:'Shadow track em todos os funis.',
+   pills:[{t:'D0 + D3 + D8 + D14',c:'v'}],
+   tip:'Welcome apos quiz. Follow-up D3 se email nao abriu. Insight nicho D8. D14+: handoff para humano.'},
+];
+
+const C=[
+  // F1: Traffic → Landing
+  {a:'f1_li',b:'f1_lp',t:'f1'},{a:'f1_gg',b:'f1_lp',t:'f1'},{a:'f1_ref',b:'f1_lp',t:'f1'},
+  // F1: Landing → Quiz
+  {a:'f1_lp',b:'f1_qz',t:'f1',lb:'35-45%',rt:1},
+  // F1: Quiz → Profiles
+  {a:'f1_qz',b:'f1_caos',t:'f1',lb:'30%'},{a:'f1_qz',b:'f1_mov',t:'f1',lb:'25%',rt:1},
+  {a:'f1_qz',b:'f1_mat',t:'f1',lb:'15%',rt:1},{a:'f1_qz',b:'f1_gov',t:'f1',lb:'5%'},
+  // Profiles → Sequences
+  {a:'f1_caos',b:'f1_seqB',t:'f1'},{a:'f1_mov',b:'f1_seqA',t:'f1'},{a:'f1_mat',b:'f1_seqA',t:'f1'},
+  // Seq A → Leitura
+  {a:'f1_seqA',b:'f1_leit',t:'f1',lb:'25-35%',rt:1},
+  // Leitura → Proposta
+  {a:'f1_leit',b:'f1_prop',t:'f1',lb:'70-80%',rt:1},
+  // Leitura → Seq C (nao fechou)
+  {a:'f1_leit',b:'f1_seqC',t:'f1',lb:'nao fechou'},
+  // Proposta → Contrato
+  {a:'f1_prop',b:'f1_ctr',t:'f1',lb:'45-60%',rt:1},
+  // Contrato → Upsells
+  {a:'f1_ctr',b:'f1_os',t:'upsell',lb:'40-55%',rt:1},
+  {a:'f1_ctr',b:'f1_rc',t:'upsell',lb:'15-20%'},
+  {a:'f1_ctr',b:'f1_int',t:'upsell',lb:'25-35%'},
+
+  // F2: Traffic → Landing
+  {a:'f2_meta',b:'f2_lp',t:'f2'},{a:'f2_gg',b:'f2_lp',t:'f2'},
+  // F2: Landing → Quiz
+  {a:'f2_lp',b:'f2_qz',t:'f2',lb:'25-35%',rt:1},
+  // F2: Quiz → Routing
+  {a:'f2_qz',b:'f2_qual',t:'f2',lb:'20-25%'},{a:'f2_qz',b:'f2_redir',t:'f2',lb:'50%'},
+  // Routing → Sequences
+  {a:'f2_qual',b:'f2_seqD',t:'f2'},{a:'f2_redir',b:'f2_seqE',t:'f2'},
+  // Seq → Conversion
+  {a:'f2_seqD',b:'f2_agent',t:'f2',lb:'Book call'},
+
+  // CROSS-FUNNEL
+  {a:'f2_seqE',b:'f1_lp',t:'cross',lb:'Bridge → Raio-X'},
+  {a:'f2_agent',b:'f1_leit',t:'cross',lb:'Gaps → Consulting'},
+
+  // WhatsApp shadow
+  {a:'f1_seqA',b:'wpp',t:'cross'},{a:'f2_seqD',b:'wpp',t:'cross'},
+];
+
+// ═══════════════════════════ PAN/ZOOM ═══════════════════════════
+let sc=0.62,px=60,py=40,pan=false,sx,sy;
+const cv=document.getElementById('cv'),cw=document.getElementById('cw');
+
+function tr(){cv.style.transform=`translate(${px}px,${py}px) scale(${sc})`;document.getElementById('zd').textContent=Math.round(sc*100)+'%';}
+cw.addEventListener('mousedown',e=>{if(e.target.closest('.nd'))return;pan=true;sx=e.clientX-px;sy=e.clientY-py;document.body.classList.add('grabbing');});
+window.addEventListener('mousemove',e=>{if(!pan)return;px=e.clientX-sx;py=e.clientY-sy;tr();});
+window.addEventListener('mouseup',()=>{pan=false;document.body.classList.remove('grabbing');});
+cw.addEventListener('wheel',e=>{
+  e.preventDefault();const r=cw.getBoundingClientRect();
+  const mx=e.clientX-r.left,my=e.clientY-r.top;
+  const wx=(mx-px)/sc,wy=(my-py)/sc;
+  sc=Math.max(0.15,Math.min(2,sc+(e.deltaY>0?-0.06:0.06)));
+  px=mx-wx*sc;py=my-wy*sc;tr();
+},{passive:false});
+// Touch
+let ltd=0;
+cw.addEventListener('touchstart',e=>{
+  if(e.touches.length===1){pan=true;sx=e.touches[0].clientX-px;sy=e.touches[0].clientY-py;}
+  else if(e.touches.length===2){pan=false;ltd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
+},{passive:false});
+cw.addEventListener('touchmove',e=>{
+  e.preventDefault();
+  if(e.touches.length===1&&pan){px=e.touches[0].clientX-sx;py=e.touches[0].clientY-sy;tr();}
+  else if(e.touches.length===2){
+    const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    const cx=(e.touches[0].clientX+e.touches[1].clientX)/2;
+    const cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
+    const r=cw.getBoundingClientRect(),mx=cx-r.left,my=cy-r.top;
+    const wx=(mx-px)/sc,wy=(my-py)/sc;
+    sc=Math.max(0.15,Math.min(2,sc*(d/ltd)));px=mx-wx*sc;py=my-wy*sc;ltd=d;tr();
+  }
+},{passive:false});
+cw.addEventListener('touchend',()=>{pan=false;});
+function zm(d){sc=Math.max(0.15,Math.min(2,sc+d));tr();}
+function fit(){
+  const r=cw.getBoundingClientRect();sc=Math.min(r.width/3200,r.height/1300)*0.88;
+  px=(r.width-3200*sc)/2;py=(r.height-1300*sc)/2+20;tr();
+}
+
+// ═══════════════════════════ RENDER ZONES ═══════════════════════════
+function addZone(x,y,w,h,cls,title){
+  const z=document.createElement('div');z.className='zone '+cls;
+  z.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;`;
+  z.innerHTML=`<span class="zone-title">${title}</span>`;
+  cv.appendChild(z);
+}
+addZone(30,50,2970,620,'z1','FUNIL 1 — MESTRE (CONSULTING EXPANSAO)');
+addZone(30,790,1920,380,'z2','FUNIL 2 — IMPLEMENTAR IA (VOLUME)');
+
+// ═══════════════════════════ RENDER NODES ═══════════════════════════
+const els={};
+N.forEach(n=>{
+  const e=document.createElement('div');
+  e.className=`nd nd-${n.t}`;e.dataset.id=n.id;e.dataset.f=n.f||'shared';
+  e.style.left=n.x+'px';e.style.top=n.y+'px';
+  const pc=c=>({c:'pill-c',v:'pill-v',r:'pill-r',p:'pill-p'}[c]||'');
+  e.innerHTML=`<div class="nd-icon">${n.ic}</div><div class="nd-tag">${n.tag}</div><div class="nd-name">${n.nm}</div><div class="nd-desc">${n.ds}</div><div class="nd-pills">${n.pills.map(p=>`<span class="pill ${pc(p.c)}">${p.t}</span>`).join('')}</div>`;
+  e.addEventListener('mouseenter',ev=>{
+    const t=document.getElementById('tip');
+    t.innerHTML=`<h4>${n.nm}</h4><p>${n.tip||n.ds}</p>`;t.classList.add('show');
+  });
+  e.addEventListener('mousemove',ev=>{
+    const t=document.getElementById('tip');
+    t.style.left=Math.min(ev.clientX+14,innerWidth-320)+'px';
+    t.style.top=Math.min(ev.clientY+14,innerHeight-160)+'px';
+  });
+  e.addEventListener('mouseleave',()=>{document.getElementById('tip').classList.remove('show');});
+  cv.appendChild(e);els[n.id]=e;
+});
+
+// ═══════════════════════════ RENDER SVG ═══════════════════════════
+const svg=document.getElementById('svg');
+svg.setAttribute('width','3200');svg.setAttribute('height','1300');
+
+function edge(id,side){
+  const e=els[id];if(!e)return{x:0,y:0};
+  const x=parseInt(e.style.left),y=parseInt(e.style.top),w=e.offsetWidth||210,h=e.offsetHeight||110;
+  if(side==='r')return{x:x+w,y:y+h/2};
+  if(side==='l')return{x,y:y+h/2};
+  if(side==='b')return{x:x+w/2,y:y+h};
+  if(side==='t')return{x:x+w/2,y};
+  return{x:x+w/2,y:y+h/2};
+}
+
+function draw(){
+  svg.innerHTML='';
+  // Arrow markers
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+  const colors={f1:'#4a9eff',f2:'#fb923c',cross:'#a78bfa',upsell:'#f0b442'};
+  Object.entries(colors).forEach(([k,c])=>{
+    const m=document.createElementNS('http://www.w3.org/2000/svg','marker');
+    m.setAttribute('id','a-'+k);m.setAttribute('markerWidth','10');m.setAttribute('markerHeight','7');
+    m.setAttribute('refX','10');m.setAttribute('refY','3.5');m.setAttribute('orient','auto');
+    const p=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    p.setAttribute('points','0 0, 10 3.5, 0 7');p.setAttribute('fill',c);p.setAttribute('opacity','0.55');
+    m.appendChild(p);defs.appendChild(m);
+  });
+  svg.appendChild(defs);
+
+  C.forEach(c=>{
+    const an=N.find(n=>n.id===c.a),bn=N.find(n=>n.id===c.b);
+    if(!an||!bn)return;
+
+    // Determine edge sides based on relative position
+    let fromSide='r',toSide='l';
+    if(bn.x<an.x-50){
+      // Going backwards (cross-funnel back to earlier stage)
+      if(bn.y<an.y-100){fromSide='t';toSide='b';}
+      else{fromSide='l';toSide='r';}
+    }else if(Math.abs(bn.x-an.x)<100){
+      // Same column — vertical
+      if(bn.y>an.y){fromSide='b';toSide='t';}
+      else{fromSide='t';toSide='b';}
+    }
+
+    const f=edge(c.a,fromSide),t=edge(c.b,toSide);
+    const dx=t.x-f.x,dy=t.y-f.y;
+
+    // Build bezier path
+    let d;
+    if(fromSide==='r'&&toSide==='l'){
+      const cp=Math.max(Math.abs(dx)*0.35,60);
+      d=`M${f.x},${f.y} C${f.x+cp},${f.y} ${t.x-cp},${t.y} ${t.x},${t.y}`;
+    }else if(fromSide==='b'&&toSide==='t'){
+      const cp=Math.max(Math.abs(dy)*0.4,40);
+      d=`M${f.x},${f.y} C${f.x},${f.y+cp} ${t.x},${t.y-cp} ${t.x},${t.y}`;
+    }else if(fromSide==='t'&&toSide==='b'){
+      // Going up — need to route around
+      const midY=Math.min(f.y,t.y)-80;
+      d=`M${f.x},${f.y} C${f.x},${midY} ${t.x},${midY} ${t.x},${t.y}`;
+    }else if(fromSide==='l'&&toSide==='r'){
+      // Going back left
+      const midX=Math.min(f.x,t.x)-60;
+      d=`M${f.x},${f.y} C${midX},${f.y} ${midX},${t.y} ${t.x},${t.y}`;
+    }else{
+      d=`M${f.x},${f.y} L${t.x},${t.y}`;
+    }
+
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',d);path.setAttribute('class','cpath '+c.t);
+    path.setAttribute('marker-end',`url(#a-${c.t})`);
+    path.dataset.f=c.t==='cross'||c.t==='upsell'?'shared':c.t;
+    svg.appendChild(path);
+
+    // Label
+    if(c.lb){
+      const mx=(f.x+t.x)/2,my=(f.y+t.y)/2-10;
+      const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+      txt.setAttribute('x',mx);txt.setAttribute('y',my);txt.setAttribute('text-anchor','middle');
+      txt.setAttribute('class','clbl'+(c.rt?' crate':''));
+      txt.textContent=c.lb;svg.appendChild(txt);
+    }
+  });
+}
+
+requestAnimationFrame(()=>{requestAnimationFrame(()=>{draw();fit();});});
+window.addEventListener('resize',fit);
+
+// ═══════════════════════════ FILTER ═══════════════════════════
+function hl(f){
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(f==='f1'?'bf1':f==='f2'?'bf2':'ba').classList.add('active');
+  document.querySelectorAll('.nd').forEach(e=>{
+    const nf=e.dataset.f;
+    e.style.opacity=(f==='all'||nf===f||nf==='shared')?'1':'0.12';
+    e.style.filter=(f==='all'||nf===f||nf==='shared')?'none':'grayscale(1)';
+  });
+  document.querySelectorAll('.cpath').forEach(e=>{
+    const cf=e.dataset.f;
+    e.style.opacity=(f==='all'||cf===f||cf==='shared')?'':'0.04';
+  });
+}
+</script>
+</body>
+</html>

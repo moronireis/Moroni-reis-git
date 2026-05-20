@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dior — DESIGN.md Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;700&family=Helvetica+Neue:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --dior-black: #000000;
+    --dior-white: #FFFFFF;
+    --dior-gray: #757575;
+    --dior-light-gray: #E8E8E8;
+    --dior-warm-gray: #F5F5F0;
+    --dior-gold: #C4A35A;
+    --dior-navy: #1A1A2E;
+    --dior-bg-secondary: #F7F7F7;
+    --dior-bg-warm: #FAF8F5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--dior-white); color: var(--dior-black); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 96px 0; border-bottom: 1px solid var(--dior-light-gray); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 48px; }
+  .meta { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dior-gray); margin-bottom: 8px; }
+  h1.brand { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 16px; text-align: center; padding: 120px 0 60px; }
+  .subtitle { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dior-gray); text-align: center; margin-bottom: 120px; }
+  /* Color Swatches */
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 24px; }
+  .swatch { border: 1px solid var(--dior-light-gray); }
+  .swatch-color { height: 100px; }
+  .swatch-info { padding: 12px; }
+  .swatch-name { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+  .swatch-value { font-size: 11px; color: var(--dior-gray); margin-top: 4px; font-family: monospace; }
+  /* Typography */
+  .type-specimen { margin-bottom: 48px; }
+  .type-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dior-gray); margin-bottom: 8px; }
+  .type-hero { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; line-height: 1.1; }
+  .type-display { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.1; }
+  .type-h1 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; letter-spacing: 0.1em; line-height: 1.1; }
+  .type-h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.05em; line-height: 1.2; }
+  .type-body { font-size: 15px; font-weight: 400; line-height: 1.5; max-width: 600px; }
+  .type-caption { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dior-gray); }
+  .type-nav { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
+  /* Spacing */
+  .spacing-row { display: flex; align-items: center; margin-bottom: 12px; }
+  .spacing-block { background: var(--dior-black); height: 16px; }
+  .spacing-label { font-size: 11px; color: var(--dior-gray); width: 80px; font-family: monospace; }
+  .spacing-value { font-size: 11px; color: var(--dior-gray); margin-left: 12px; font-family: monospace; }
+  /* Buttons */
+  .btn-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
+  .btn-primary { background: var(--dior-black); color: var(--dior-white); border: none; padding: 0 32px; height: 48px; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+  .btn-primary:hover { background: #333; }
+  .btn-secondary { background: var(--dior-white); color: var(--dior-black); border: 1px solid var(--dior-black); padding: 0 32px; height: 48px; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+  .btn-secondary:hover { background: var(--dior-black); color: var(--dior-white); }
+  /* Cards */
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { }
+  .card-image { background: var(--dior-bg-secondary); aspect-ratio: 3/4; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
+  .card:hover .card-image { transform: scale(1.02); }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 400; margin-top: 16px; }
+  .card-price { font-size: 13px; color: var(--dior-gray); margin-top: 4px; letter-spacing: 0.05em; }
+  /* Motion */
+  .motion-demo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .motion-box { background: var(--dior-black); height: 80px; }
+  .motion-box:nth-child(1) { transition: transform 0.3s ease; }
+  .motion-box:nth-child(2) { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-box:nth-child(3) { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-box:nth-child(4) { transition: transform 1.0s cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .motion-box:hover { transform: translateY(-8px); }
+  .motion-label { font-size: 11px; color: var(--dior-gray); margin-top: 8px; text-align: center; font-family: monospace; }
+  /* Dark Section */
+  .dark-section { background: var(--dior-black); color: var(--dior-white); }
+  .dark-section .section-title { color: var(--dior-white); }
+  .dark-section .type-caption { color: #999; }
+  .dark-section .meta { color: #999; }
+  .confidence-badge { display: inline-block; padding: 4px 12px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: #C4A35A22; color: var(--dior-gold); border: 1px solid var(--dior-gold); }
+</style>
+</head>
+<body>
+  <div class="container">
+    <p class="meta" style="padding-top:48px;">Design System Preview</p>
+    <h1 class="brand">Dior</h1>
+    <p class="subtitle">Research-Based Extraction &mdash; May 2026 <span class="confidence-badge">Medium Confidence</span></p>
+  </div>
+
+  <!-- Colors -->
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Color Palette</h2>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">Dior Black</div><div class="swatch-value">#000000</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFFFFF; border-bottom:1px solid #E8E8E8;"></div><div class="swatch-info"><div class="swatch-name">Dior White</div><div class="swatch-value">#FFFFFF</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#757575;"></div><div class="swatch-info"><div class="swatch-name">Dior Gray</div><div class="swatch-value">#757575</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E8E8E8;"></div><div class="swatch-info"><div class="swatch-name">Light Gray</div><div class="swatch-value">#E8E8E8</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F5F5F0;"></div><div class="swatch-info"><div class="swatch-name">Warm Gray</div><div class="swatch-value">#F5F5F0</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F7F7F7;"></div><div class="swatch-info"><div class="swatch-name">BG Secondary</div><div class="swatch-value">#F7F7F7</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#C4A35A;"></div><div class="swatch-info"><div class="swatch-name">Dior Gold</div><div class="swatch-value">#C4A35A</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1A1A2E;"></div><div class="swatch-info"><div class="swatch-name">Dior Navy</div><div class="swatch-value">#1A1A2E</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Typography</h2>
+      <div class="type-specimen"><div class="type-label">Hero &mdash; 72px / 300 / 0.3em</div><div class="type-hero">Dior</div></div>
+      <div class="type-specimen"><div class="type-label">Display &mdash; 48px / 300 / 0.1em</div><div class="type-display">Haute Couture</div></div>
+      <div class="type-specimen"><div class="type-label">H1 &mdash; 36px / 400 / 0.1em</div><div class="type-h1">The Art of Elegance</div></div>
+      <div class="type-specimen"><div class="type-label">H2 &mdash; 28px / 400 / 0.05em</div><div class="type-h2">Collection Printemps-&Eacute;t&eacute;</div></div>
+      <div class="type-specimen"><div class="type-label">Body &mdash; 15px / 400 / 1.5</div><div class="type-body">Founded in 1946 by Christian Dior, the House of Dior has defined elegance and beauty for the modern woman. Each creation carries the vision of a founder who transformed fashion into an art of living.</div></div>
+      <div class="type-specimen"><div class="type-label">Navigation &mdash; 12px / 500 / 0.15em</div><div class="type-nav">Ready-to-Wear &nbsp;&nbsp; Bags &nbsp;&nbsp; Shoes &nbsp;&nbsp; Accessories &nbsp;&nbsp; Jewelry</div></div>
+      <div class="type-specimen"><div class="type-label">Caption &mdash; 11px / 400 / 0.1em</div><div class="type-caption">Ref. M0455CBAA_M900 &mdash; Available in boutiques</div></div>
+    </div>
+  </div>
+
+  <!-- Spacing -->
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Spacing Scale</h2>
+      <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-block" style="width:4px;"></div><span class="spacing-value">4px</span></div>
+      <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-block" style="width:8px;"></div><span class="spacing-value">8px</span></div>
+      <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-block" style="width:16px;"></div><span class="spacing-value">16px</span></div>
+      <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-block" style="width:24px;"></div><span class="spacing-value">24px</span></div>
+      <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-block" style="width:32px;"></div><span class="spacing-value">32px</span></div>
+      <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-block" style="width:48px;"></div><span class="spacing-value">48px</span></div>
+      <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-block" style="width:64px;"></div><span class="spacing-value">64px</span></div>
+      <div class="spacing-row"><span class="spacing-label">4xl</span><div class="spacing-block" style="width:96px;"></div><span class="spacing-value">96px</span></div>
+      <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-block" style="width:160px;"></div><span class="spacing-value">160px</span></div>
+    </div>
+  </div>
+
+  <!-- Components -->
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Components</h2>
+      <p class="meta">Buttons</p>
+      <div class="btn-row">
+        <button class="btn-primary">Add to Bag</button>
+        <button class="btn-secondary">Discover</button>
+        <button class="btn-primary">Book an Appointment</button>
+      </div>
+      <p class="meta" style="margin-top:64px;">Product Cards</p>
+      <div class="card-grid" style="margin-top:24px;">
+        <div class="card"><div class="card-image"></div><div class="card-title">Lady Dior Bag</div><div class="card-price">$5,500</div></div>
+        <div class="card"><div class="card-image"></div><div class="card-title">J'Adore Eau de Parfum</div><div class="card-price">$160</div></div>
+        <div class="card"><div class="card-image"></div><div class="card-title">Dior Tribales Earrings</div><div class="card-price">$590</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Motion -->
+  <div class="section">
+    <div class="container">
+      <h2 class="section-title">Motion</h2>
+      <p class="meta">Hover to see easing curves</p>
+      <div class="motion-demo" style="margin-top:32px;">
+        <div><div class="motion-box"></div><div class="motion-label">0.3s ease</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.6s dramatic</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">0.8s dramatic</div></div>
+        <div><div class="motion-box"></div><div class="motion-label">1.0s default</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark Section Demo -->
+  <div class="section dark-section">
+    <div class="container">
+      <h2 class="section-title">Dark Mode</h2>
+      <div class="type-specimen"><div class="type-label" style="color:#999;">Display &mdash; Serif / 300 / Wide Tracking</div><div class="type-display" style="color:#fff;">Savoir-Faire</div></div>
+      <div class="type-specimen"><div class="meta">The Dior dark section uses pure black backgrounds with white typography. Gold accents appear only in heritage contexts.</div></div>
+      <div class="btn-row">
+        <button style="background:transparent; color:#fff; border:1px solid #fff; padding:0 32px; height:48px; font-size:12px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer;">Explore the Collection</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:48px 0; text-align:center;">
+    <p class="meta">Extracted 2026-05-14 &mdash; Research-Based (dior.com blocks automated fetching)</p>
+  </div>
+</body>
+</html>

@@ -13,3 +13,4 @@ Created 2026-04-14 as part of Phase A foundation.
 
 ## Project
 - [project_znith_funnels.md](project_znith_funnels.md) — ZNITH dual-funnel: Master Consulting (Raio-X→Leitura→Expansao→OS) + AI Hype (qualify→route). Construcao civil niche.
+- [project-u4digital-funnel.md](project-u4digital-funnel.md) — u4digital application funnel: ads→LP→pre-qual→Raio-X Digital→proposal. R$200 test, 3 faces, WhatsApp-first.

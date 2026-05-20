@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Next.js",
+    "kind": "framework",
+    "evidence": "_next/static/ paths in HTML",
+    "confidence": "high"
+  },
+  {
+    "name": "React",
+    "kind": "framework",
+    "evidence": "react markers",
+    "confidence": "medium",
+    "suppressed_by": "Next.js"
+  }
+]

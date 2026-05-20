@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { brands, type BrandEntry } from '../../data/brands';
+
+export function getStaticPaths() {
+  return brands.map((brand) => ({
+    params: { slug: brand.slug },
+    props: { brand },
+  }));
+}
+
+interface Props {
+  brand: BrandEntry;
+}
+
+const { brand } = Astro.props;
+
+// Resolve preview path for iframe
+const previewBase = `/previews/${brand.slug}/preview.html`;
+---
+
+<BaseLayout title={brand.name}>
+
+  <!-- Hero -->
+  <section style="padding-top: 160px; padding-bottom: 80px;">
+    <div class="container-luxury">
+
+      <!-- Breadcrumb -->
+      <div class="animate-fade-up" style="margin-bottom: 48px;">
+        <a href="/brands" style="text-decoration: none;">
+          <span class="section-label" style="transition: color var(--transition-base);">Brand DNA</span>
+        </a>
+        <span class="section-label" style="margin: 0 12px;">/</span>
+        <span class="section-label" style="color: var(--accent);">{brand.name}</span>
+      </div>
+
+      <!-- Name + Grade -->
+      <div class="animate-fade-up animate-delay-1" style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 40px;">
+        <h1 class="hero-headline-upright" style="margin: 0; font-size: clamp(64px, 10vw, 128px);">
+          {brand.name}
+        </h1>
+        <div style="text-align: right;">
+          <span class={`grade-badge grade-${brand.grade.toLowerCase()}`} style="font-size: 14px; padding: 8px 16px;">
+            Grade {brand.grade}
+          </span>
+          <div class="section-label" style="margin-top: 12px;">
+            {brand.vertical}
+          </div>
+          {brand.hasFullExtraction && (
+            <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;">
+              Full Extraction
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Signature style -->
+      <p class="animate-fade-up animate-delay-2" style="font-family: var(--font-sans); font-size: 18px; font-weight: 300; color: var(--text-secondary); max-width: 800px; line-height: 1.8; margin: 0;">
+        {brand.signatureStyle}
+      </p>
+
+    </div>
+  </section>
+
+  <div class="divider-luxury"></div>
+
+  <!-- Color Palette -->
+  <section class="section-luxury-sm">
+    <div class="container-luxury">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px;">
+        <h2 style="font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--text-primary); margin: 0;">
+          Color Palette
+        </h2>
+        <span class="section-label">Tokens</span>
+      </div>
+
+      <!-- Large palette display -->
+      <div style="display: flex; gap: 0; height: 120px; margin-bottom: 32px; border: 1px solid var(--border-default);">
+        {brand.palette.map((hex) => (
+          <div style={`flex: 1; background: ${hex}; position: relative;`}>
+          </div>
+        ))}
+      </div>
+
+      <!-- Hex values -->
+      <div style="display: flex; gap: 0;">
+        {brand.palette.map((hex) => (
+          <div style="flex: 1; text-align: center;">
+            <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; color: var(--text-secondary);">
+              {hex}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accent highlight -->
+      <div style="margin-top: 48px; display: flex; align-items: center; gap: 24px;">
+        <div style={`width: 48px; height: 48px; background: ${brand.accentColor}; border: 1px solid var(--border-default);`}></div>
+        <div>
+          <div class="section-label" style="margin-bottom: 4px;">Signature Accent</div>
+          <span style="font-family: var(--font-mono); font-size: 14px; color: var(--text-primary);">{brand.accentColor}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-luxury"></div>
+
+  <!-- Typography -->
+  <section class="section-luxury-sm">
+    <div class="container-luxury">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px;">
+        <h2 style="font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--text-primary); margin: 0;">
+          Typography
+        </h2>
+        <span class="section-label">Type System</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-default);">
+        <!-- Display font -->
+        <div style="background: var(--surface-1); padding: 48px;">
+          <div class="section-label" style="margin-bottom: 24px;">Display</div>
+          <div style="font-family: var(--font-serif); font-size: 48px; font-weight: 400; color: var(--text-primary); line-height: 1.1; margin-bottom: 16px;">
+            Aa
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
+            {brand.displayFont}
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 8px;">
+            Hero: {brand.metrics.heroFontSize}
+          </div>
+        </div>
+
+        <!-- Body font -->
+        <div style="background: var(--surface-1); padding: 48px;">
+          <div class="section-label" style="margin-bottom: 24px;">Body</div>
+          <div style="font-family: var(--font-sans); font-size: 48px; font-weight: 400; color: var(--text-primary); line-height: 1.1; margin-bottom: 16px;">
+            Aa
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary);">
+            {brand.bodyFont}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-luxury"></div>
+
+  <!-- Metrics -->
+  <section class="section-luxury-sm">
+    <div class="container-luxury">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px;">
+        <h2 style="font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--text-primary); margin: 0;">
+          Key Metrics
+        </h2>
+        <span class="section-label">Component DNA</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-default);">
+        {[
+          { label: 'Button Radius', value: brand.metrics.buttonRadius },
+          { label: 'Card Radius', value: brand.metrics.cardRadius },
+          { label: 'Transition', value: brand.metrics.defaultTransitionDuration },
+          { label: 'Hero Font Size', value: brand.metrics.heroFontSize },
+        ].map((metric) => (
+          <div style="background: var(--surface-1); padding: 40px; text-align: center;">
+            <div style="font-family: var(--font-serif); font-size: 32px; font-weight: 400; color: var(--text-primary); margin-bottom: 12px;">
+              {metric.value}
+            </div>
+            <div class="section-label">{metric.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview iframe (if exists) -->
+  {brand.hasPreview && (
+    <>
+      <div class="divider-luxury"></div>
+      <section class="section-luxury-sm">
+        <div class="container-luxury">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px;">
+            <h2 style="font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--text-primary); margin: 0;">
+              Design Preview
+            </h2>
+            <span class="section-label">Extracted DESIGN.md</span>
+          </div>
+
+          <div style="border: 1px solid var(--border-default); position: relative;">
+            <!-- Preview header bar -->
+            <div style="
+              padding: 12px 24px;
+              background: var(--surface-2);
+              border-bottom: 1px solid var(--border-default);
+              display: flex; align-items: center; justify-content: space-between;
+            ">
+              <span class="section-label">{brand.name} — preview.html</span>
+              <a
+                href={previewBase}
+                target="_blank"
+                rel="noopener"
+                style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; text-decoration: none;"
+              >
+                Open Full
+              </a>
+            </div>
+            <iframe
+              src={previewBase}
+              class="brand-iframe"
+              loading="lazy"
+              title={`${brand.name} design preview`}
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <!-- Back link -->
+  <div class="divider-luxury"></div>
+  <section style="padding: 64px 0;">
+    <div class="container-luxury">
+      <a href="/brands" class="btn-luxury">
+        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+          <line x1="0" y1="6" x2="16" y2="6" stroke="currentColor" stroke-width="1"/>
+          <path d="M12 1L18 6L12 11" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+        Back to Gallery
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

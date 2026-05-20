@@ -60,24 +60,24 @@
   /* Heading defaults using design system tokens */
   h1 {
     font-size: var(--text-h1);
-    line-height: 1.08;
-    letter-spacing: -0.025em;
-    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 600;
     color: var(--text-primary);
     text-wrap: balance;
   }
   h2 {
     font-size: var(--text-h2);
-    line-height: 1.10;
-    letter-spacing: -0.02em;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
     font-weight: 600;
     color: var(--text-primary);
     text-wrap: balance;
   }
   h3 {
     font-size: var(--text-h3);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
     font-weight: 600;
     color: var(--text-primary);
     text-wrap: balance;
@@ -370,18 +370,23 @@
   background-color: var(--surface-2);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
-  transition: border-color var(--duration-normal) var(--ease-base),
-              background-color var(--duration-normal) var(--ease-base);
+  transition: border-color var(--duration-normal) var(--ease-out),
+              background-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
 }
 .card-interactive:hover {
   background-color: var(--surface-3);
   border-color: var(--border-visible);
+  box-shadow: var(--shadow-default);
+  transform: translateY(-2px);
 }
 
 /* Featured card hover with blue glow */
 .card-featured:hover {
   border-color: var(--border-accent);
   box-shadow: var(--shadow-blue-glow);
+  transform: translateY(-3px);
   transition: all var(--duration-moderate) var(--ease-card);
 }
 
@@ -441,8 +446,8 @@
 .btn-primary:hover {
   background-color: var(--accent-blue-hover);
   color: white;
-  box-shadow: var(--shadow-blue-glow-sm);
-  transform: translateY(-1px);
+  box-shadow: var(--shadow-blue-glow-sm), 0 4px 12px rgba(74, 144, 255, 0.20);
+  transform: translateY(-2px);
 }
 .btn-primary:active {
   background-color: var(--accent-blue-muted);
@@ -507,13 +512,17 @@
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
   padding: 24px;
-  transition: border-color 200ms var(--ease-base),
-              background-color 200ms var(--ease-base);
+  transition: border-color var(--duration-normal) var(--ease-out),
+              background-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
 }
 
 .kpi-card:hover {
   border-color: var(--border-visible);
   background: var(--surface-3);
+  box-shadow: var(--shadow-default);
+  transform: translateY(-2px);
 }
 
 .kpi-card__label {

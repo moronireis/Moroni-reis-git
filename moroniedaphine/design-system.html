@@ -1,0 +1,2298 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moroni &amp; Daphine — Design System Preview</title>
+  <meta name="description" content="Design system preview — Moroni & Daphine wedding. 12.06.2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       TOKENS
+    ===================================================== */
+    :root {
+      /* Color tokens — HSL base system (Avelã White pattern) */
+      --burgundy-hsl:   345,55%,11%;
+      --gold-hsl:       43,59%,52%;
+
+      --burgundy:       #2D0A0F;
+      --burgundy-deep:  #1A0508;
+      --burgundy-mid:   #4A1019;
+      --burgundy-hover: rgba(45,10,15,0.90);
+      --burgundy-tint:  #F7F0F1;
+      --parchment:      #FAF8F6;  /* Warm near-white — Minted pattern */
+      --white:          #FFFFFF;
+      --white-muted:    rgba(255,255,255,0.82);
+      --white-dim:      rgba(255,255,255,0.45);
+      --gold:           #D4AF37;
+      --gold-light:     #E8CB6B;
+      --gold-muted:     rgba(212,175,55,0.50);
+      --gold-border:    rgba(212,175,55,0.30);
+      --gold-glow:      rgba(212,175,55,0.10);
+      --text-on-light:  #2D0A0F;
+      --text-sub:       rgba(45,10,15,0.55);
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-ui:      'Inter', system-ui, sans-serif;
+
+      --sp-1:4px;  --sp-2:8px;   --sp-3:16px;  --sp-4:24px;
+      --sp-5:32px; --sp-6:48px;  --sp-7:64px;  --sp-8:96px;
+      --sp-9:128px; --sp-10:160px;
+
+      --max-w: 1120px;
+      --ease:      cubic-bezier(0.25,0.46,0.45,0.94);
+      --ease-out:  cubic-bezier(0.16,1,0.3,1);
+      --ease-dramatic: cubic-bezier(0.22,1,0.36,1);
+
+      /* Shadow system — Bliss & Bone pattern (no harsh shadows) */
+      --shadow-card:  0 4px 20px rgba(45,10,15,0.06);
+      --shadow-lift:  0 12px 40px rgba(45,10,15,0.10), 0 4px 12px rgba(45,10,15,0.04);
+      --shadow-float: 0 32px 80px rgba(45,10,15,0.14), 0 4px 16px rgba(45,10,15,0.06);
+    }
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { font-size:16px; scroll-behavior:smooth; }
+    body {
+      font-family: var(--font-ui);
+      font-weight: 300;
+      background: var(--parchment);
+      color: var(--burgundy);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img { display:block; max-width:100%; }
+    a { color:inherit; text-decoration:none; }
+    button { border:none; cursor:pointer; font-family:inherit; }
+
+    /* =====================================================
+       ELEGANT ICONS — Thin-line geometric, wedding-themed
+    ===================================================== */
+    .icon { display:inline-block; vertical-align:middle; }
+    .icon--sm { width:16px; height:16px; }
+    .icon--md { width:24px; height:24px; }
+    .icon--lg { width:32px; height:32px; }
+    .icon--xl { width:48px; height:48px; }
+
+    /* Elegant section separator */
+    .sec-sep {
+      display:flex; align-items:center; justify-content:center;
+      padding:var(--sp-5) 0; gap:var(--sp-4);
+    }
+    .sec-sep__line {
+      width:80px; height:1px;
+      background:linear-gradient(90deg, transparent, currentColor, transparent);
+      opacity:.15;
+    }
+    .sec-sep__dot {
+      width:4px; height:4px; border:1px solid currentColor; opacity:.25;
+      transform:rotate(45deg);
+    }
+
+    /* Elegant quote block */
+    .quote-block {
+      text-align:center; padding:var(--sp-7) var(--sp-5);
+      position:relative;
+    }
+    .quote-block__mark {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(48px,6vw,80px); line-height:1;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;
+      font-style:italic; opacity:.12; display:block;
+      margin-bottom:var(--sp-3);
+    }
+    .quote-block__text {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(18px,2.2vw,26px); line-height:1.5;
+      font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;
+      font-style:italic; opacity:.75;
+      max-width:600px; margin:0 auto;
+    }
+    .quote-block__attr {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.18em; opacity:.35;
+      margin-top:var(--sp-4); display:block;
+    }
+
+    /* Stat/number display */
+    .stat-row {
+      display:flex; justify-content:center; gap:var(--sp-8);
+      flex-wrap:wrap; margin:var(--sp-6) 0;
+    }
+    .stat { text-align:center; min-width:120px; }
+    .stat__number {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(36px,4vw,56px); line-height:1;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+      display:block; margin-bottom:var(--sp-2);
+    }
+    .stat__label {
+      font-family:var(--font-ui); font-size:9px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.20em; opacity:.45;
+    }
+
+    /* Feature list — checkmark style */
+    .feature-list {
+      list-style:none; margin:var(--sp-5) 0;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:var(--sp-3);
+    }
+    .feature-list li {
+      font-family:var(--font-ui); font-size:13px; font-weight:300;
+      line-height:1.65; padding-left:var(--sp-4); position:relative;
+      opacity:.7;
+    }
+    .feature-list li::before {
+      content:''; position:absolute; left:0; top:7px;
+      width:12px; height:6px;
+      border-left:1px solid var(--gold); border-bottom:1px solid var(--gold);
+      transform:rotate(-45deg); opacity:.5;
+    }
+
+    /* Material showcase */
+    .material-panels {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:2px; margin:var(--sp-6) 0;
+    }
+    .material-panel {
+      min-height:180px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:var(--sp-2);
+      padding:var(--sp-5); position:relative; overflow:hidden;
+      transition:transform 600ms var(--ease);
+    }
+    .material-panel:hover { transform:scale(1.02); }
+    .material-panel__name {
+      font-family:var(--font-ui); font-size:9px;
+      letter-spacing:.18em; text-transform:uppercase;
+      position:relative; z-index:1;
+    }
+    .material-panel__hex {
+      font-family:var(--font-ui); font-size:10px;
+      letter-spacing:.06em; opacity:.5;
+      position:relative; z-index:1;
+    }
+
+    /* =====================================================
+       SKIP LINK
+    ===================================================== */
+    .skip {
+      position:absolute; top:-100px; left:var(--sp-4);
+      background:var(--burgundy); color:var(--white);
+      padding:var(--sp-2) var(--sp-4);
+      font-family:var(--font-ui); font-size:11px;
+      text-transform:uppercase; letter-spacing:.12em; z-index:10000;
+    }
+    .skip:focus { top:var(--sp-4); }
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      height:68px; display:flex; align-items:center; justify-content:space-between;
+      padding:0 max(32px,5vw);
+      transition: background 700ms var(--ease), backdrop-filter 700ms var(--ease),
+                  box-shadow 700ms var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(45,10,15,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(212,175,55,0.12);
+    }
+    .nav__mark {
+      font-family:var(--font-display); font-weight:300; font-size:15px; letter-spacing:.06em;
+      font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;
+      color:var(--white);
+    }
+    .nav__mark i { font-style:italic; opacity:.65; padding:0 .14em; }
+    .nav__links { display:flex; gap:var(--sp-5); list-style:none; }
+    .nav__link {
+      font-family:var(--font-ui); font-size:11px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.12em; color:var(--white);
+      position:relative; cursor:pointer; padding:4px 0;
+      transition: opacity 400ms var(--ease);
+    }
+    .nav__link::after {
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:1px; background:var(--gold);
+      transition:width 400ms var(--ease);
+    }
+    /* Inactive dimming — Avelã White / Bottega Veneta pattern */
+    .nav__links:hover .nav__link { opacity:.4; transition:opacity 400ms var(--ease); }
+    .nav__links:hover .nav__link:hover { opacity:1; }
+    .nav__link:hover::after, .nav__link.active::after { width:100%; }
+    @media (max-width:768px) { .nav__links { display:none; } }
+
+    /* =====================================================
+       LAYOUT PRIMITIVES
+    ===================================================== */
+    .wrap { width:100%; max-width:var(--max-w); margin:0 auto; padding:0 max(32px,5vw); }
+    .sec { padding:var(--sp-9) 0; }
+    @media (max-width:768px) { .sec { padding:var(--sp-8) 0; } }
+
+    .sec--burg  { background:var(--burgundy); color:var(--white); position:relative; }
+    /* Grain on dark sections — material surface, not flat hex (Bliss & Bone pattern) */
+    .sec--burg::before {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light; opacity:.4;
+    }
+    .sec--burg > .wrap { position:relative; z-index:1; }
+    .sec--white { background:var(--parchment); color:var(--burgundy); position:relative; }
+    .sec--tint  { background:var(--burgundy-tint); color:var(--burgundy); position:relative; }
+
+    /* Grain on light sections */
+    .sec--white::before, .sec--tint::before {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply; opacity:.35;
+    }
+    .sec--white > .wrap, .sec--tint > .wrap { position:relative; z-index:1; }
+
+    /* =====================================================
+       SECTION HEADER
+    ===================================================== */
+    .sec-label {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.18em; opacity:.45;
+      margin-bottom:var(--sp-4); display:block;
+    }
+    .sec-title {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(26px,3.2vw,44px); line-height:1.15; letter-spacing:.02em;
+      font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;
+      margin-bottom:var(--sp-4);
+    }
+    .sec-desc {
+      font-family:var(--font-ui); font-size:14px; font-weight:400; line-height:1.7;
+      opacity:.6; max-width:540px;
+    }
+    .sec-header { margin-bottom:var(--sp-7); }
+
+    /* =====================================================
+       DIVIDERS & ORNAMENTS
+    ===================================================== */
+    .div-gold {
+      display:block; width:60px; height:1px; background:var(--gold);
+      margin:var(--sp-5) auto; opacity:.65;
+    }
+    .ornament {
+      display:flex; align-items:center; justify-content:center;
+      gap:var(--sp-3); margin:var(--sp-5) 0;
+    }
+    .ornament__line { width:60px; height:1px; background:currentColor; opacity:.2; }
+    .ornament__diamond {
+      width:6px; height:6px; border:1px solid currentColor; opacity:.3;
+      transform:rotate(45deg); flex-shrink:0;
+    }
+    .ornament--gold .ornament__line { background:var(--gold); opacity:.4; }
+    .ornament--gold .ornament__diamond { border-color:var(--gold); opacity:.5; }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    .hero {
+      min-height:100vh;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; text-align:center;
+      padding:var(--sp-9) max(32px,5vw) var(--sp-7);
+      background:var(--burgundy);
+      position:relative; overflow:hidden;
+    }
+
+    /* Layer 1 — Rich wine radial gradients (depth + color richness) */
+    .hero__gradient {
+      position:absolute; inset:0; pointer-events:none; z-index:0;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 40%, rgba(74,16,25,0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 85% 15%, rgba(45,10,15,0.25) 0%, transparent 45%),
+        radial-gradient(ellipse 45% 55% at 10% 80%, rgba(45,10,15,0.22) 0%, transparent 45%),
+        radial-gradient(ellipse 30% 30% at 50% 50%, rgba(74,16,25,0.12) 0%, transparent 50%);
+    }
+
+    /* Layer 2 — Edge vignette (darkens corners, focuses center) */
+    .hero__vignette {
+      position:absolute; inset:0; pointer-events:none; z-index:0;
+      background:radial-gradient(ellipse 65% 60% at 50% 48%, transparent 35%, rgba(13,3,5,0.70) 100%);
+    }
+
+    /* Layer 3 — Film grain (material texture, not digital) */
+    .hero__grain {
+      position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light; opacity:.6;
+    }
+
+    /* Layer 4 — Top-down warm light wash */
+    .hero__light {
+      position:absolute; inset:0; pointer-events:none; z-index:0;
+      background:linear-gradient(170deg, rgba(74,16,25,0.18) 0%, transparent 35%, rgba(13,3,5,0.22) 100%);
+    }
+
+    .hero__border {
+      position:absolute; inset:20px;
+      border:1px solid var(--gold-border);
+      pointer-events:none; z-index:1;
+    }
+    .hero__border::before,
+    .hero__border::after {
+      content:''; position:absolute;
+      width:24px; height:24px;
+      border-color:var(--gold); border-style:solid;
+    }
+    .hero__border::before { top:-1px; left:-1px; border-width:1px 0 0 1px; }
+    .hero__border::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+
+    .hero__corner-tr, .hero__corner-bl {
+      position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid;
+      pointer-events:none; z-index:1;
+    }
+    .hero__corner-tr { top:19px; right:19px; border-width:1px 1px 0 0; }
+    .hero__corner-bl { bottom:19px; left:19px; border-width:0 0 1px 1px; }
+
+    .hero__frame {
+      position:relative; z-index:2;
+      padding:clamp(40px,6vw,80px) clamp(32px,7vw,100px);
+      border:1px solid rgba(212,175,55,0.22);
+    }
+    .hero__frame::before, .hero__frame::after {
+      content:''; position:absolute;
+      width:20px; height:20px;
+      border-color:var(--gold); border-style:solid;
+    }
+    .hero__frame::before { top:-1px; left:-1px; border-width:1px 0 0 1px; }
+    .hero__frame::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+
+    .hero__label {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.22em;
+      color:var(--gold);
+      opacity:0; animation:fadeIn 600ms var(--ease) 200ms forwards;
+    }
+    .hero__ornament {
+      display:flex; align-items:center; justify-content:center;
+      gap:var(--sp-3); margin:var(--sp-4) 0;
+      opacity:0; animation:fadeIn 600ms var(--ease) 400ms forwards;
+    }
+    .hero__ornament-line { width:40px; height:1px; background:var(--gold); opacity:.3; }
+    .hero__ornament-diamond {
+      width:5px; height:5px; border:1px solid var(--gold); opacity:.4;
+      transform:rotate(45deg);
+    }
+    .hero__names {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(36px,5.5vw,80px); line-height:1.1;
+      letter-spacing:-.01em; color:var(--white);
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;
+      opacity:0; animation:fadeIn 700ms var(--ease) 600ms forwards;
+    }
+    .hero__names i {
+      font-style:italic; color:var(--white); opacity:.65; padding:0 .08em;
+    }
+    .hero__divider {
+      display:block; width:0; height:1px;
+      background:var(--gold); opacity:.6;
+      margin:var(--sp-5) auto;
+      animation:growWidth 700ms var(--ease-out) 800ms forwards;
+    }
+    .hero__date {
+      font-family:var(--font-ui); font-size:11px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.28em; color:var(--white-muted);
+      opacity:0; animation:fadeIn 600ms var(--ease) 1000ms forwards;
+    }
+    .hero__location {
+      font-family:var(--font-ui); font-size:10px; font-weight:300;
+      letter-spacing:.18em; color:var(--white-dim);
+      margin-top:var(--sp-2);
+      opacity:0; animation:fadeIn 600ms var(--ease) 1200ms forwards;
+    }
+
+    .hero__scroll {
+      position:absolute; bottom:var(--sp-5); left:50%; transform:translateX(-50%);
+      z-index:2; display:flex; flex-direction:column; align-items:center; gap:var(--sp-2);
+      opacity:0; animation:fadeIn 800ms var(--ease) 1600ms forwards;
+    }
+    .hero__scroll span {
+      font-family:var(--font-ui); font-size:9px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.20em; color:var(--white-dim);
+    }
+    .hero__scroll-line {
+      width:1px; height:40px; background:var(--gold); opacity:.4;
+      animation:scrollPulse 2.4s var(--ease) infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%,100% { transform:scaleY(1); opacity:.4; }
+      50%     { transform:scaleY(0.5); opacity:.15; }
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes growWidth { from{width:0} to{width:120px} }
+    @keyframes drawIn {
+      from { stroke-dashoffset:200; }
+      to   { stroke-dashoffset:0; }
+    }
+    @keyframes shimmer {
+      0%   { background-position:-200% center; }
+      100% { background-position:200% center; }
+    }
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50%     { transform:translateY(-6px); }
+    }
+    @keyframes breathe {
+      0%,100% { opacity:.15; }
+      50%     { opacity:.35; }
+    }
+
+    /* =====================================================
+       SECTION 1 — ELEMENTOS FLORAIS & DECORATIVOS
+    ===================================================== */
+    .elements-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:var(--sp-5); margin-top:var(--sp-7);
+    }
+    @media (max-width:640px) {
+      .elements-grid { grid-template-columns:1fr; gap:var(--sp-4); }
+    }
+    .element-card {
+      display:flex; flex-direction:column; align-items:center;
+      text-align:center; padding:var(--sp-6) var(--sp-4);
+      border:1px solid rgba(45,10,15,0.08);
+      transition:border-color 600ms var(--ease), box-shadow 600ms var(--ease),
+                 transform 600ms var(--ease);
+      position:relative; overflow:hidden;
+    }
+    .element-card::after {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(circle at 50% 0%, rgba(212,175,55,0.03) 0%, transparent 60%);
+      opacity:0; transition:opacity 600ms var(--ease);
+    }
+    .element-card:hover {
+      border-color:rgba(45,10,15,0.18);
+      box-shadow:var(--shadow-card);
+      transform:translateY(-2px);
+    }
+    /* Inactive dimming on grid */
+    .elements-grid:hover .element-card { opacity:.5; transition:opacity 400ms var(--ease), border-color 600ms var(--ease), box-shadow 600ms var(--ease), transform 600ms var(--ease); }
+    .elements-grid:hover .element-card:hover { opacity:1; }
+    .element-card:hover::after { opacity:1; }
+    .element-card__icon {
+      width:100px; height:100px;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:var(--sp-5); position:relative; z-index:1;
+    }
+    .element-card__icon svg { width:100%; height:100%; }
+    .element-card__name {
+      font-family:var(--font-display); font-weight:300;
+      font-size:22px; letter-spacing:.04em;
+      font-variation-settings:"opsz" 48,"SOFT" 30,"WONK" 0;
+      color:var(--burgundy); margin-bottom:var(--sp-2);
+      position:relative; z-index:1;
+    }
+    .element-card__role {
+      font-family:var(--font-ui); font-size:11px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.14em;
+      color:var(--text-sub); margin-bottom:var(--sp-3);
+      position:relative; z-index:1;
+    }
+    .element-card__desc {
+      font-family:var(--font-ui); font-size:13px; line-height:1.65;
+      color:var(--text-sub); position:relative; z-index:1;
+    }
+
+    /* Divider demos */
+    .divider-showcase {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:var(--sp-4); margin-top:var(--sp-6);
+    }
+    .divider-demo {
+      padding:var(--sp-5); border:1px solid rgba(45,10,15,0.06);
+      display:flex; flex-direction:column; align-items:center;
+      justify-content:center; min-height:120px; gap:var(--sp-3);
+      transition:border-color 600ms var(--ease);
+    }
+    .divider-demo:hover { border-color:rgba(45,10,15,0.15); }
+    .divider-demo__label {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.14em; opacity:.35;
+    }
+
+    /* Corner frame */
+    .corner-frame {
+      position:relative; padding:var(--sp-6);
+      border:1px solid rgba(45,10,15,0.08);
+    }
+    .corner-frame::before, .corner-frame::after {
+      content:''; position:absolute;
+      width:20px; height:20px;
+      border-color:var(--gold-border); border-style:solid;
+    }
+    .corner-frame::before { top:-1px; left:-1px; border-width:1px 0 0 1px; }
+    .corner-frame::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+
+    /* =====================================================
+       SECTION 2 — CORES
+    ===================================================== */
+    .colors-group { margin-bottom:var(--sp-6); }
+    .colors-group__label {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.16em;
+      opacity:.45; margin-bottom:var(--sp-3); display:block;
+    }
+    .colors-row { display:flex; gap:var(--sp-2); flex-wrap:wrap; }
+    .swatch {
+      display:flex; flex-direction:column; align-items:flex-start;
+      gap:var(--sp-2); min-width:80px;
+      transition:transform 600ms var(--ease);
+    }
+    .swatch:hover { transform:translateY(-2px); }
+    .swatch__block { width:80px; height:56px; transition:box-shadow 600ms var(--ease); }
+    .swatch:hover .swatch__block { box-shadow:0 4px 16px rgba(45,10,15,0.12); }
+    .swatch__hex {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      letter-spacing:.05em; opacity:.55;
+    }
+    .swatch__name {
+      font-family:var(--font-ui); font-size:11px; font-weight:400; opacity:.75;
+    }
+    .swatch--prohibited .swatch__block { position:relative; overflow:hidden; }
+    .swatch--prohibited .swatch__block::after {
+      content:''; position:absolute; inset:0;
+      background:repeating-linear-gradient(
+        45deg,transparent,transparent 4px,rgba(45,10,15,0.3) 4px,rgba(45,10,15,0.3) 5px
+      );
+    }
+
+    /* Gradient showcase */
+    .gradient-showcase { margin-top:var(--sp-6); }
+    .gradient-bar-wrap { position:relative; margin-bottom:var(--sp-2); }
+    .gradient-bar {
+      width:100%; height:72px;
+      background:linear-gradient(90deg,
+        #0D0305 0%, #1A0508 15%, #2D0A0F 35%, #4A1019 55%,
+        #6E1525 75%, #8C1F30 90%, #A5283A 100%
+      );
+      position:relative;
+    }
+    .gradient-bar::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(0,0,0,0.05) 100%);
+    }
+    .gradient-stops {
+      display:flex; justify-content:space-between;
+      padding:var(--sp-2) 0;
+    }
+    .gradient-stop {
+      display:flex; flex-direction:column; align-items:center; gap:2px;
+    }
+    .gradient-stop__tick {
+      width:1px; height:8px; background:rgba(45,10,15,0.2);
+    }
+    .gradient-stop__hex {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.04em; opacity:.4;
+    }
+    .gradient-stop__name {
+      font-family:var(--font-ui); font-size:8px; letter-spacing:.08em;
+      text-transform:uppercase; opacity:.3;
+    }
+    /* Animated shimmer on hover */
+    .gradient-bar-wrap:hover .gradient-bar::before {
+      content:''; position:absolute; inset:0; z-index:1;
+      background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+      background-size:200% 100%;
+      animation:shimmer 2s var(--ease) infinite;
+    }
+
+    /* =====================================================
+       SECTION 3 — TIPOGRAFIA
+    ===================================================== */
+    .type-scale { margin-top:var(--sp-6); }
+    .type-row {
+      display:flex; align-items:baseline; gap:var(--sp-5);
+      padding:var(--sp-4) 0;
+      border-bottom:1px solid rgba(45,10,15,0.08);
+      transition:background 600ms var(--ease);
+    }
+    .type-row:hover { background:rgba(45,10,15,0.02); }
+    .type-row__meta {
+      min-width:140px; flex-shrink:0;
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.10em; opacity:.4;
+      text-transform:uppercase;
+    }
+    .type-row__sample { flex:1; }
+
+    .opsz-cards {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:var(--sp-4); margin-top:var(--sp-6); margin-bottom:var(--sp-7);
+    }
+    .opsz-card {
+      padding:var(--sp-5); border:1px solid rgba(45,10,15,0.10);
+      background:rgba(255,255,255,0.6);
+      transition:border-color 600ms var(--ease), transform 600ms var(--ease),
+                 box-shadow 600ms var(--ease);
+    }
+    .opsz-card:hover {
+      border-color:rgba(45,10,15,0.20);
+      transform:translateY(-2px);
+      box-shadow:var(--shadow-card);
+    }
+    .opsz-card__label {
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.14em;
+      text-transform:uppercase; opacity:.4; margin-bottom:var(--sp-3);
+    }
+    .opsz-card__sample {
+      font-family:var(--font-display); font-weight:300; letter-spacing:.04em; line-height:1.2;
+    }
+    .opsz-card__values {
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.06em;
+      opacity:.4; margin-top:var(--sp-3);
+    }
+
+    .ampersand-demo {
+      margin-top:var(--sp-7); padding:var(--sp-6); background:var(--burgundy);
+      display:flex; align-items:center; justify-content:center; gap:var(--sp-3);
+      position:relative; overflow:hidden;
+    }
+    .ampersand-demo::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(circle at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 60%);
+    }
+    .amp-name {
+      font-family:var(--font-display); font-weight:300; font-size:clamp(20px,2.5vw,32px);
+      letter-spacing:.05em;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;
+      color:var(--white); position:relative;
+    }
+    .amp-symbol {
+      font-family:var(--font-display); font-weight:300; font-style:italic;
+      font-size:clamp(20px,2.5vw,32px); color:var(--white); opacity:.6;
+      padding:0 .12em; position:relative;
+    }
+
+    /* =====================================================
+       SECTION 4 — COMPONENTES
+    ===================================================== */
+    .btn-group { display:flex; gap:var(--sp-3); flex-wrap:wrap; align-items:center; margin-bottom:var(--sp-5); }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 32px;
+      font-family:var(--font-ui); font-size:11px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.14em;
+      cursor:pointer; transition:all 600ms var(--ease);
+      position:relative; overflow:hidden;
+    }
+    .btn::before {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform:translateX(-100%);
+      transition:transform 600ms var(--ease);
+    }
+    .btn:hover::before { transform:translateX(100%); }
+    .btn--primary {
+      background:var(--burgundy); color:var(--white); border:1px solid var(--burgundy);
+    }
+    .btn--primary:hover { background:var(--burgundy-deep); border-color:var(--burgundy-deep); }
+    .btn--ghost {
+      background:transparent; color:var(--burgundy); border:1px solid rgba(45,10,15,0.35);
+    }
+    .btn--ghost:hover { background:var(--burgundy); color:var(--white); border-color:var(--burgundy); }
+    .btn--gold {
+      background:transparent; color:var(--gold); border:1px solid rgba(212,175,55,0.4);
+    }
+    .btn--gold:hover { background:var(--gold); color:var(--burgundy); border-color:var(--gold); }
+
+    .cards-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:var(--sp-4); margin-top:var(--sp-5);
+    }
+    .card {
+      padding:var(--sp-5); border:1px solid rgba(45,10,15,0.12);
+      transition:border-color 600ms var(--ease), transform 600ms var(--ease),
+                 box-shadow 600ms var(--ease);
+    }
+    .card:hover {
+      border-color:rgba(45,10,15,0.25);
+      transform:translateY(-3px);
+      box-shadow:var(--shadow-lift);
+    }
+    .cards-grid:hover .card { opacity:.5; transition:opacity 400ms var(--ease), border-color 600ms var(--ease), transform 600ms var(--ease), box-shadow 600ms var(--ease); }
+    .cards-grid:hover .card:hover { opacity:1; }
+    .card--dark {
+      background:var(--burgundy); color:var(--white);
+      border-color:rgba(212,175,55,0.25);
+      position:relative; overflow:hidden;
+    }
+    .card--dark::before {
+      content:''; position:absolute; top:0; right:0; width:120px; height:120px;
+      background:radial-gradient(circle at 100% 0%, rgba(212,175,55,0.08) 0%, transparent 70%);
+    }
+    .card--dark:hover { border-color:rgba(212,175,55,0.55); transform:translateY(-3px); }
+    .card__label {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.14em; opacity:.4; margin-bottom:var(--sp-3);
+    }
+    .card__title {
+      font-family:var(--font-display); font-weight:300; font-size:20px;
+      letter-spacing:.03em; line-height:1.2; margin-bottom:var(--sp-3);
+      font-variation-settings:"opsz" 48,"SOFT" 30,"WONK" 0;
+    }
+    .card__body {
+      font-family:var(--font-ui); font-size:13px; line-height:1.65; opacity:.6;
+    }
+
+    .form-demo { margin-top:var(--sp-5); max-width:480px; }
+    .field { margin-bottom:var(--sp-5); position:relative; }
+    .field__label {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.14em; opacity:.45;
+      display:block; margin-bottom:var(--sp-2);
+    }
+    .field__input {
+      width:100%; background:transparent;
+      border:none; border-bottom:1px solid rgba(45,10,15,0.25);
+      padding:var(--sp-2) 0;
+      font-family:var(--font-display); font-weight:300; font-size:16px;
+      color:var(--burgundy);
+      font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;
+      outline:none; transition:border-color 400ms var(--ease);
+    }
+    .field__input:focus { border-color:var(--burgundy); }
+    .field__input::placeholder { opacity:.3; }
+    /* Focus line animation */
+    .field__line {
+      position:absolute; bottom:0; left:50%; width:0; height:1px;
+      background:var(--gold); transition:width 600ms var(--ease-out), left 600ms var(--ease-out);
+    }
+    .field__input:focus ~ .field__line { width:100%; left:0; }
+
+    .timeline { margin-top:var(--sp-5); }
+    .timeline-item {
+      display:grid; grid-template-columns:80px 1fr;
+      gap:var(--sp-4); padding:var(--sp-4) 0;
+      border-bottom:1px solid rgba(212,175,55,0.15);
+      align-items:start;
+      transition:background 600ms var(--ease);
+    }
+    .timeline-item:hover { background:rgba(212,175,55,0.03); }
+    .timeline-item:last-child { border-bottom:none; }
+    .timeline-item__time {
+      font-family:var(--font-ui); font-size:12px; letter-spacing:.08em;
+      color:var(--gold); opacity:.85; padding-top:2px;
+    }
+    .timeline-item__event {
+      font-family:var(--font-display); font-weight:300; font-size:16px;
+      letter-spacing:.03em; color:var(--white);
+      font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;
+    }
+    .timeline-item__detail {
+      font-family:var(--font-ui); font-size:11px; color:var(--white-dim); margin-top:4px;
+    }
+
+    .gallery-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-2); margin-top:var(--sp-4);
+    }
+    .gallery-cell {
+      aspect-ratio:1; background:rgba(45,10,15,0.04);
+      border:1px solid rgba(45,10,15,0.08);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-ui); font-size:10px;
+      letter-spacing:.12em; text-transform:uppercase;
+      color:var(--burgundy); opacity:.5;
+      transition:all 400ms var(--ease);
+    }
+    .gallery-cell:hover {
+      opacity:1; background:rgba(45,10,15,0.06);
+      transform:scale(1.02);
+    }
+    .gallery-cell--wide { grid-column:span 2; aspect-ratio:2/1; }
+
+    .comp-sub {
+      font-family:var(--font-ui); font-size:10px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.16em; opacity:.4;
+      margin-top:var(--sp-7); margin-bottom:var(--sp-4); display:block;
+    }
+
+    /* =====================================================
+       SECTION 5 — COUNTDOWN
+    ===================================================== */
+    .countdown-wrap { text-align:center; padding:var(--sp-7) 0; position:relative; }
+    .countdown-title {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(20px,2.5vw,32px); letter-spacing:.08em;
+      font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;
+      margin-bottom:var(--sp-5);
+    }
+    .countdown-grid {
+      display:flex; gap:clamp(var(--sp-5),5vw,var(--sp-8));
+      justify-content:center; align-items:flex-end;
+      margin:var(--sp-6) 0;
+    }
+    .countdown-unit { text-align:center; }
+    .countdown-num {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(52px,7vw,96px); line-height:1;
+      letter-spacing:-.01em;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;
+      color:var(--white); display:block;
+      transition:color 600ms var(--ease);
+    }
+    .countdown-label {
+      font-family:var(--font-ui); font-size:9px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.20em;
+      color:var(--white-dim); margin-top:var(--sp-2); display:block;
+    }
+    .countdown-sep {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(40px,5vw,72px); color:var(--gold);
+      opacity:.3; line-height:1; align-self:flex-start; padding-top:.1em;
+      animation:breathe 3s var(--ease) infinite;
+    }
+    .countdown-date {
+      font-family:var(--font-ui); font-size:11px; font-weight:400;
+      text-transform:uppercase; letter-spacing:.24em; color:var(--white-dim);
+    }
+
+    /* =====================================================
+       SECTION 6 — MOCKUP CONVITE
+    ===================================================== */
+    .mockup-stage {
+      display:flex; flex-direction:column; align-items:center;
+      padding:var(--sp-8) 0;
+    }
+    .mockup-card {
+      position:relative; width:100%; max-width:480px;
+      background:var(--burgundy);
+      border:1px solid var(--gold-border);
+      padding:clamp(48px,7vw,72px) clamp(36px,6vw,64px);
+      text-align:center;
+      box-shadow:var(--shadow-float);
+      transform:perspective(1200px) rotateX(2deg) rotateY(-1deg);
+      overflow:hidden;
+      transition:transform 800ms var(--ease), box-shadow 800ms var(--ease);
+    }
+    .mockup-card:hover {
+      transform:perspective(1200px) rotateX(0deg) rotateY(0deg);
+      box-shadow:0 40px 100px rgba(45,10,15,0.18), 0 8px 24px rgba(45,10,15,0.08);
+    }
+    /* Subtle light sweep */
+    .mockup-card::after {
+      content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+      background:linear-gradient(45deg, transparent 40%, rgba(212,175,55,0.04) 50%, transparent 60%);
+      transform:rotate(0deg); transition:transform 1.5s var(--ease);
+      pointer-events:none;
+    }
+    .mockup-card:hover::after { transform:rotate(180deg); }
+
+    .mockup-card__corner {
+      position:absolute; pointer-events:none; z-index:1;
+      width:32px; height:32px;
+      border-color:var(--gold); border-style:solid; opacity:.35;
+    }
+    .mockup-card__corner--tl { top:16px; left:16px; border-width:1px 0 0 1px; }
+    .mockup-card__corner--tr { top:16px; right:16px; border-width:1px 1px 0 0; }
+    .mockup-card__corner--bl { bottom:16px; left:16px; border-width:0 0 1px 1px; }
+    .mockup-card__corner--br { bottom:16px; right:16px; border-width:0 1px 1px 0; }
+
+    /* Botanical corners on mockup */
+    .mockup-card__botanical {
+      position:absolute; pointer-events:none; z-index:1;
+      width:80px; height:80px; opacity:.18;
+    }
+    .mockup-card__botanical--tl { top:8px; left:8px; }
+    .mockup-card__botanical--br { bottom:8px; right:8px; transform:rotate(180deg); }
+
+    .mockup-card__inner {
+      position:relative; z-index:2;
+      border:1px solid rgba(212,175,55,0.18);
+      padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px);
+    }
+    .mockup-card__inner::before, .mockup-card__inner::after {
+      content:''; position:absolute;
+      width:16px; height:16px;
+      border-color:var(--gold); border-style:solid;
+    }
+    .mockup-card__inner::before { top:-1px; left:-1px; border-width:1px 0 0 1px; }
+    .mockup-card__inner::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+
+    .mockup__label {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.20em;
+      text-transform:uppercase; color:var(--gold); opacity:.7;
+      margin-bottom:var(--sp-4); display:block;
+    }
+    .mockup__ornament {
+      display:flex; align-items:center; justify-content:center;
+      gap:8px; margin-bottom:var(--sp-3);
+    }
+    .mockup__ornament-line { width:24px; height:1px; background:var(--gold); opacity:.35; }
+    .mockup__ornament-diamond {
+      width:4px; height:4px; border:1px solid var(--gold); opacity:.45;
+      transform:rotate(45deg);
+    }
+    .mockup__names {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(22px,3.5vw,36px); letter-spacing:.05em;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;
+      color:var(--white); line-height:1.2; margin-bottom:var(--sp-3);
+    }
+    .mockup__names i { font-style:italic; color:var(--white); opacity:.65; }
+    .mockup__divider {
+      display:block; width:40px; height:1px;
+      background:var(--gold); opacity:.5; margin:var(--sp-4) auto;
+    }
+    .mockup__date {
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--white-muted);
+      margin-bottom:var(--sp-2); display:block;
+    }
+    .mockup__venue {
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--white-dim);
+    }
+    .mockup-caption {
+      font-family:var(--font-ui); font-size:11px; letter-spacing:.14em;
+      text-transform:uppercase; opacity:.35; text-align:center; margin-top:var(--sp-5);
+    }
+
+    /* =====================================================
+       SECTION 6b — MONOGRAM & DARK TREATMENTS (Bliss & Bone)
+    ===================================================== */
+    /* Circular monogram badge */
+    .monogram-badge {
+      width:160px; height:160px;
+      border:1px solid rgba(255,255,255,0.35);
+      border-radius:50%;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:var(--sp-1); margin:0 auto;
+      transition:border-color 800ms var(--ease), transform 800ms var(--ease);
+    }
+    .monogram-badge:hover {
+      border-color:rgba(255,255,255,0.55);
+      transform:scale(1.03);
+    }
+    .monogram-badge__initials {
+      font-family:var(--font-display); font-weight:300;
+      font-size:36px; letter-spacing:.08em;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;
+      color:var(--white);
+    }
+    .monogram-badge__initials i {
+      font-style:italic; opacity:.6; padding:0 .06em;
+      font-size:28px;
+    }
+    .monogram-badge__date {
+      font-family:var(--font-ui); font-size:8px;
+      letter-spacing:.22em; text-transform:uppercase;
+      color:var(--white-dim);
+    }
+
+    /* Invitation card 5:7 */
+    .inv-card {
+      aspect-ratio:5/7; max-width:340px; width:100%;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center; position:relative;
+      padding:var(--sp-6); gap:var(--sp-3);
+      box-shadow:var(--shadow-lift);
+      transition:transform 600ms var(--ease), box-shadow 600ms var(--ease);
+    }
+    .inv-card:hover {
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-float);
+    }
+    .inv-card--light {
+      background:var(--burgundy-tint); color:var(--burgundy);
+      border:1px solid rgba(45,10,15,0.08);
+    }
+    .inv-card--dark {
+      background:var(--burgundy); color:var(--white);
+      border:1px solid var(--gold-border);
+    }
+    /* Dark fabric texture (Bliss & Bone — Vivienne Nash) */
+    .inv-card--dark::before {
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(107,35,40,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(58,16,21,0.2) 0%, transparent 50%);
+      pointer-events:none;
+    }
+    .inv-card__label {
+      font-family:var(--font-ui); font-size:9px;
+      letter-spacing:.20em; text-transform:uppercase;
+      opacity:.5; position:relative;
+    }
+    .inv-card__names {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(20px,3vw,32px); letter-spacing:-.01em;
+      line-height:1.15;
+      font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;
+      position:relative;
+    }
+    .inv-card__names i { font-style:italic; opacity:.6; }
+    .inv-card__divider {
+      width:32px; height:1px; opacity:.3; position:relative;
+    }
+    .inv-card--light .inv-card__divider { background:var(--burgundy); }
+    .inv-card--dark .inv-card__divider { background:var(--gold); }
+    .inv-card__detail {
+      font-family:var(--font-ui); font-size:10px;
+      letter-spacing:.16em; text-transform:uppercase;
+      opacity:.5; position:relative;
+    }
+
+    /* Card variants grid */
+    .inv-cards-row {
+      display:flex; gap:var(--sp-6); justify-content:center;
+      align-items:flex-start; flex-wrap:wrap;
+      margin-top:var(--sp-7);
+    }
+
+    /* Dark treatment showcase */
+    .dark-treatments {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:var(--sp-4); margin-top:var(--sp-6);
+    }
+    .dark-treat {
+      padding:var(--sp-7) var(--sp-5);
+      text-align:center; position:relative; overflow:hidden;
+      min-height:200px;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:var(--sp-3);
+    }
+    /* Fabric gradient */
+    .dark-treat--fabric {
+      background:var(--burgundy-deep);
+    }
+    .dark-treat--fabric::before {
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse at 25% 40%, rgba(107,35,40,0.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 60%, rgba(58,16,21,0.25) 0%, transparent 50%);
+    }
+    /* Warm overlay */
+    .dark-treat--warm {
+      background:var(--burgundy);
+    }
+    .dark-treat--warm::before {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(138,48,53,0.15) 0%, transparent 40%, rgba(26,8,9,0.2) 100%);
+    }
+    /* Vignette */
+    .dark-treat--vignette {
+      background:var(--burgundy);
+    }
+    .dark-treat--vignette::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse 65% 60% at 50% 50%, transparent 30%, rgba(26,8,9,0.5) 100%);
+    }
+    .dark-treat__label {
+      font-family:var(--font-ui); font-size:9px;
+      letter-spacing:.18em; text-transform:uppercase;
+      color:var(--gold); opacity:.6; position:relative;
+    }
+    .dark-treat__sample {
+      font-family:var(--font-display); font-weight:300;
+      font-size:clamp(18px,2.2vw,28px); letter-spacing:-.01em;
+      font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;
+      color:var(--white); position:relative;
+    }
+
+    /* =====================================================
+       SECTION 7 — MOTION
+    ===================================================== */
+    .motion-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:var(--sp-3); margin-top:var(--sp-6);
+    }
+    .motion-card {
+      padding:var(--sp-5); border:1px solid rgba(212,175,55,0.18);
+      transition:border-color 600ms var(--ease), transform 600ms var(--ease);
+    }
+    .motion-card:hover {
+      border-color:rgba(212,175,55,0.35);
+      transform:translateY(-2px);
+    }
+    .motion-grid:hover .motion-card { opacity:.4; transition:opacity 400ms var(--ease), border-color 600ms var(--ease), transform 600ms var(--ease); }
+    .motion-grid:hover .motion-card:hover { opacity:1; }
+    .motion-grid:hover .motion-card--prohibited { opacity:.25; }
+    .motion-card__label {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.18em;
+      text-transform:uppercase; color:var(--gold); opacity:.65;
+      margin-bottom:var(--sp-3); display:block;
+    }
+    .motion-card__value {
+      font-family:var(--font-ui); font-size:12px; letter-spacing:.04em;
+      color:var(--white); margin-bottom:var(--sp-2); font-variant-numeric:tabular-nums;
+    }
+    .motion-card__note {
+      font-family:var(--font-ui); font-size:11px; line-height:1.55; color:var(--white-dim);
+    }
+    .motion-card--prohibited { border-color:rgba(255,255,255,0.06); opacity:.5; }
+    .motion-card--prohibited .motion-card__label { color:rgba(255,255,255,0.35); }
+
+    /* Interactive motion demos */
+    .motion-demos {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:var(--sp-4); margin-top:var(--sp-6);
+    }
+    .motion-demo {
+      padding:var(--sp-6) var(--sp-4); border:1px solid rgba(212,175,55,0.12);
+      display:flex; flex-direction:column; align-items:center;
+      justify-content:center; min-height:140px; gap:var(--sp-4);
+      cursor:pointer; transition:border-color 600ms var(--ease);
+      overflow:hidden; position:relative;
+    }
+    .motion-demo:hover { border-color:rgba(212,175,55,0.35); }
+    .motion-demo__label {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--white-dim);
+    }
+    /* Hairline expand */
+    .demo-hairline { width:0; height:1px; background:var(--gold); transition:width 800ms var(--ease-out); }
+    .motion-demo:hover .demo-hairline { width:80%; }
+    /* Diamond spin */
+    .demo-diamond {
+      width:10px; height:10px; border:1px solid var(--gold); opacity:.5;
+      transform:rotate(45deg); transition:transform 800ms var(--ease), opacity 800ms var(--ease);
+    }
+    .motion-demo:hover .demo-diamond { transform:rotate(225deg); opacity:1; }
+    /* Opacity dissolve */
+    .demo-dissolve {
+      font-family:var(--font-display); font-weight:300; font-size:20px;
+      font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;
+      color:var(--white); opacity:.15;
+      transition:opacity 800ms var(--ease);
+      letter-spacing:.06em;
+    }
+    .motion-demo:hover .demo-dissolve { opacity:1; }
+    /* Scale card */
+    .demo-scale-box {
+      width:48px; height:32px; border:1px solid var(--gold-border);
+      transition:transform 800ms var(--ease-dramatic), border-color 800ms var(--ease);
+    }
+    .motion-demo:hover .demo-scale-box { transform:scale(1.2); border-color:var(--gold); }
+    /* Stagger dots */
+    .demo-dots { display:flex; gap:6px; }
+    .demo-dot {
+      width:6px; height:6px; background:var(--gold); opacity:.2;
+      transition:opacity 600ms var(--ease);
+    }
+    .motion-demo:hover .demo-dot { opacity:1; }
+    .motion-demo:hover .demo-dot:nth-child(1) { transition-delay:0ms; }
+    .motion-demo:hover .demo-dot:nth-child(2) { transition-delay:100ms; }
+    .motion-demo:hover .demo-dot:nth-child(3) { transition-delay:200ms; }
+    .motion-demo:hover .demo-dot:nth-child(4) { transition-delay:300ms; }
+    .motion-demo:hover .demo-dot:nth-child(5) { transition-delay:400ms; }
+    /* Gradient sweep */
+    .demo-sweep {
+      width:80%; height:2px; position:relative; overflow:hidden;
+    }
+    .demo-sweep::after {
+      content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      transition:left 1s var(--ease-out);
+    }
+    .motion-demo:hover .demo-sweep::after { left:100%; }
+
+    .stagger-table { width:100%; border-collapse:collapse; margin-top:var(--sp-5); }
+    .stagger-table th {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--gold); opacity:.6;
+      text-align:left; padding:var(--sp-2) var(--sp-3) var(--sp-2) 0;
+      border-bottom:1px solid rgba(212,175,55,0.18);
+    }
+    .stagger-table td {
+      font-family:var(--font-ui); font-size:12px; color:var(--white-muted);
+      padding:var(--sp-3) var(--sp-3) var(--sp-3) 0;
+      border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top;
+    }
+    .stagger-table td:first-child { opacity:.55; font-size:11px; }
+
+    /* =====================================================
+       SECTION 8 — RITMO
+    ===================================================== */
+    .rhythm-table { width:100%; border-collapse:collapse; margin-top:var(--sp-5); }
+    .rhythm-table th {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.16em;
+      text-transform:uppercase; opacity:.4;
+      text-align:left; padding:var(--sp-2) var(--sp-4) var(--sp-2) 0;
+      border-bottom:1px solid rgba(45,10,15,0.12);
+    }
+    .rhythm-table td {
+      font-family:var(--font-ui); font-size:12px;
+      padding:var(--sp-3) var(--sp-4) var(--sp-3) 0;
+      border-bottom:1px solid rgba(45,10,15,0.06); vertical-align:middle;
+    }
+    .rhythm-swatch {
+      display:inline-block; width:28px; height:28px;
+      border:1px solid rgba(45,10,15,0.15); vertical-align:middle;
+      margin-right:var(--sp-2);
+    }
+
+    /* =====================================================
+       SECTION 9 — SPACING
+    ===================================================== */
+    .spacing-scale { display:flex; flex-direction:column; gap:var(--sp-3); margin-top:var(--sp-5); }
+    .spacing-row { display:flex; align-items:center; gap:var(--sp-4); }
+    .spacing-row__label {
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.10em;
+      text-transform:uppercase; opacity:.45; min-width:60px;
+    }
+    .spacing-row__bar {
+      height:24px; background:var(--burgundy); opacity:.15;
+      transition:opacity 600ms var(--ease);
+    }
+    .spacing-row:hover .spacing-row__bar { opacity:.3; }
+    .spacing-row__value {
+      font-family:var(--font-ui); font-size:11px; opacity:.5; font-variant-numeric:tabular-nums;
+    }
+
+    /* =====================================================
+       SECTION 10 — CSS TOKENS
+    ===================================================== */
+    .token-pre {
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(212,175,55,0.15);
+      padding:var(--sp-5); overflow-x:auto;
+      font-family:'Courier New', Courier, monospace;
+      font-size:12px; line-height:1.8; color:var(--white-muted); tab-size:2;
+    }
+    .token-pre .prop { color:var(--gold); opacity:.85; }
+    .token-pre .val  { color:var(--white); }
+    .token-pre .cmt  { color:rgba(255,255,255,0.28); }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    .footer {
+      background:var(--burgundy-deep);
+      padding:var(--sp-7) max(32px,5vw);
+      text-align:center;
+      border-top:1px solid rgba(212,175,55,0.12);
+      position:relative; overflow:hidden;
+    }
+    .footer::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:200px; height:1px;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity:.3;
+    }
+    .footer__mark {
+      font-family:var(--font-display); font-weight:300;
+      font-size:24px; letter-spacing:.12em;
+      font-variation-settings:"opsz" 72,"SOFT" 40,"WONK" 0;
+      color:var(--white);
+    }
+    .footer__mark i { font-style:italic; color:var(--white); opacity:.5; padding:0 .14em; }
+    .footer__divider { display:block; width:40px; height:1px; background:var(--gold); opacity:.3; margin:var(--sp-4) auto; }
+    .footer__date {
+      font-family:var(--font-ui); font-size:10px; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--white-dim); margin-bottom:var(--sp-2);
+    }
+    .footer__note {
+      font-family:var(--font-ui); font-size:9px; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--white-dim); opacity:.4;
+    }
+
+    /* =====================================================
+       REVEAL ANIMATION — staggered
+    ===================================================== */
+    .reveal {
+      opacity:0; transform:translateY(20px);
+      transition:opacity 800ms var(--ease), transform 800ms var(--ease);
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* Stagger children */
+    .reveal.visible .stagger > * {
+      opacity:0; animation:staggerIn 600ms var(--ease) forwards;
+    }
+    .reveal.visible .stagger > *:nth-child(1) { animation-delay:0ms; }
+    .reveal.visible .stagger > *:nth-child(2) { animation-delay:80ms; }
+    .reveal.visible .stagger > *:nth-child(3) { animation-delay:160ms; }
+    .reveal.visible .stagger > *:nth-child(4) { animation-delay:240ms; }
+    .reveal.visible .stagger > *:nth-child(5) { animation-delay:320ms; }
+    .reveal.visible .stagger > *:nth-child(6) { animation-delay:400ms; }
+    @keyframes staggerIn { from{opacity:0} to{opacity:1} }
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after {
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+      }
+      .hero__label,.hero__ornament,.hero__names,
+      .hero__divider,.hero__date,.hero__location,
+      .hero__scroll,
+      .reveal { opacity:1 !important; }
+      .hero__gradient,.hero__vignette,.hero__grain,.hero__light { display:block !important; }
+      .hero__divider { width:120px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Pular para o conteudo</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav" role="navigation" aria-label="Principal">
+  <span class="nav__mark">M<i>&</i>D</span>
+  <ul class="nav__links">
+    <li><a class="nav__link" href="#elementos">Elementos</a></li>
+    <li><a class="nav__link" href="#cores">Cores</a></li>
+    <li><a class="nav__link" href="#tipografia">Tipografia</a></li>
+    <li><a class="nav__link" href="#componentes">Componentes</a></li>
+    <li><a class="nav__link" href="#motion">Motion</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Cabecalho" id="main">
+  <!-- Background layers — luxury depth system (Bliss & Bone / Avelã White pattern) -->
+  <div class="hero__gradient" aria-hidden="true"></div>
+  <div class="hero__vignette" aria-hidden="true"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="hero__light" aria-hidden="true"></div>
+
+  <div class="hero__border" aria-hidden="true"></div>
+  <div class="hero__corner-tr" aria-hidden="true"></div>
+  <div class="hero__corner-bl" aria-hidden="true"></div>
+
+  <div class="hero__frame">
+    <p class="hero__label">Design System Preview</p>
+    <div class="hero__ornament" aria-hidden="true">
+      <span class="hero__ornament-line"></span>
+      <span class="hero__ornament-diamond"></span>
+      <span class="hero__ornament-line"></span>
+    </div>
+    <h1 class="hero__names">
+      Moroni Reis<i>&</i>Daphine Oliveira
+    </h1>
+    <span class="hero__divider" aria-hidden="true"></span>
+    <p class="hero__date">12 de Junho de 2026</p>
+    <p class="hero__location">Sao Paulo, Brasil</p>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Explorar</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<!-- QUOTE — Romantic anchor -->
+<section class="sec sec--white reveal">
+  <div class="wrap">
+    <div class="quote-block">
+      <span class="quote-block__mark">"</span>
+      <p class="quote-block__text">O amor nao se mede pelo tempo que dura, mas pela intensidade com que acontece</p>
+      <span class="quote-block__attr">M<i>&amp;</i>D &middot; 12.06.2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1 — ELEMENTOS FLORAIS & DECORATIVOS -->
+<section class="sec sec--tint reveal" id="elementos" aria-labelledby="elem-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">01 — Identidade Visual</span>
+      <h2 class="sec-title" id="elem-title">Vocabulario Visual</h2>
+      <p class="sec-desc">Elementos botanicos estilizados e ornamentos geometricos. Rosas, tulipas e copos-de-leite em tracos finos — refinamento sem exagero.</p>
+    </div>
+
+    <div class="elements-grid stagger">
+      <!-- Rosa -->
+      <div class="element-card">
+        <div class="element-card__icon">
+          <svg viewBox="0 0 100 100" style="color:var(--burgundy);opacity:.45;" fill="none" stroke="currentColor" stroke-width="0.8">
+            <circle cx="50" cy="42" r="18" stroke-width="0.6" opacity=".5"/>
+            <path d="M50 60 Q48 72 50 82" stroke-linecap="round" opacity=".4"/>
+            <path d="M50 65 Q40 60 34 55" stroke-linecap="round" opacity=".3"/>
+            <path d="M50 68 Q60 62 66 57" stroke-linecap="round" opacity=".3"/>
+            <path d="M42 34 Q38 28 40 22 Q44 28 42 34Z" opacity=".35"/>
+            <path d="M58 34 Q62 28 60 22 Q56 28 58 34Z" opacity=".35"/>
+            <path d="M50 30 Q48 24 50 18 Q52 24 50 30Z" opacity=".3"/>
+          </svg>
+        </div>
+        <h3 class="element-card__name">Rosa</h3>
+        <span class="element-card__role">Paixao &amp; Romance</span>
+        <p class="element-card__desc">Presente no bouquet e nas mesas. Tracos finos em opacidade sutil — nunca dominante, sempre como acento.</p>
+      </div>
+
+      <!-- Tulipa -->
+      <div class="element-card">
+        <div class="element-card__icon">
+          <svg viewBox="0 0 100 100" style="color:var(--burgundy);opacity:.45;" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M50 85 Q48 65 50 45 Q51 32 50 20" stroke-linecap="round" opacity=".45"/>
+            <path d="M49 60 Q38 52 34 42 Q42 48 49 60Z" opacity=".3"/>
+            <path d="M51 52 Q62 44 66 36 Q58 46 51 52Z" opacity=".3"/>
+            <path d="M43 20 Q41 10 50 4 Q59 10 57 20" stroke-width="0.6" opacity=".4"/>
+            <path d="M45 18 Q50 8 55 18" opacity=".3"/>
+          </svg>
+        </div>
+        <h3 class="element-card__name">Tulipa</h3>
+        <span class="element-card__role">Elegancia &amp; Renovacao</span>
+        <p class="element-card__desc">Nos arranjos do altar e entradas. A silhueta classica da tulipa em linha unica, sem preenchimento.</p>
+      </div>
+
+      <!-- Copo-de-leite -->
+      <div class="element-card">
+        <div class="element-card__icon">
+          <svg viewBox="0 0 100 100" style="color:var(--burgundy);opacity:.45;" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M54 88 Q52 70 48 53 Q45 40 48 26" stroke-linecap="round" opacity=".45"/>
+            <path d="M48 58 Q30 50 25 36 Q36 40 48 58Z" opacity=".3"/>
+            <path d="M40 26 Q35 16 42 8 Q50 3 57 10 Q61 17 56 26 Q50 22 40 26Z" stroke-width="0.6" opacity=".4"/>
+            <path d="M48 22 Q49 14 50 10" stroke-linecap="round" opacity=".35"/>
+          </svg>
+        </div>
+        <h3 class="element-card__name">Copo-de-leite</h3>
+        <span class="element-card__role">Pureza &amp; Sofisticacao</span>
+        <p class="element-card__desc">Nos buques das madrinhas. Spathe e spadix em geometria limpa — refinamento sem ostentacao.</p>
+      </div>
+    </div>
+
+    <!-- Divider showcase -->
+    <div style="margin-top:var(--sp-8);">
+      <span class="sec-label">Catalogo de Divisores &amp; Ornamentos</span>
+    </div>
+    <div class="divider-showcase stagger">
+      <div class="divider-demo">
+        <span class="divider-demo__label">Gold Hairline</span>
+        <span style="display:block;width:60px;height:1px;background:var(--gold);opacity:.65;"></span>
+      </div>
+      <div class="divider-demo">
+        <span class="divider-demo__label">Ornamento Losango</span>
+        <div class="ornament" style="margin:0;">
+          <span class="ornament__line"></span>
+          <span class="ornament__diamond"></span>
+          <span class="ornament__line"></span>
+        </div>
+      </div>
+      <div class="divider-demo">
+        <span class="divider-demo__label">Diamond Divider</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="display:block;width:30px;height:1px;background:var(--burgundy);opacity:.15;"></span>
+          <span style="display:block;width:5px;height:5px;border:1px solid var(--burgundy);opacity:.3;transform:rotate(45deg);"></span>
+          <span style="display:block;width:30px;height:1px;background:var(--burgundy);opacity:.15;"></span>
+        </div>
+      </div>
+      <div class="divider-demo">
+        <span class="divider-demo__label">Corner Frame</span>
+        <div style="width:40px;height:40px;position:relative;">
+          <svg viewBox="0 0 40 40" style="width:100%;height:100%;fill:none;stroke:var(--burgundy);stroke-width:0.8;opacity:.35;">
+            <path d="M2 14 L2 2 L14 2"/>
+            <path d="M26 38 L38 38 L38 26"/>
+          </svg>
+        </div>
+      </div>
+      <div class="divider-demo">
+        <span class="divider-demo__label">Gold Ornamento</span>
+        <div class="ornament ornament--gold" style="margin:0;">
+          <span class="ornament__line"></span>
+          <span class="ornament__diamond"></span>
+          <span class="ornament__line"></span>
+        </div>
+      </div>
+      <div class="divider-demo">
+        <span class="divider-demo__label">Double Line</span>
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:center;width:100%;">
+          <span style="display:block;width:80px;height:1px;background:var(--burgundy);opacity:.15;"></span>
+          <span style="display:block;width:50px;height:1px;background:var(--burgundy);opacity:.10;"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corner frame demo -->
+    <div style="margin-top:var(--sp-7);"><span class="sec-label">Moldura com Botanicos</span></div>
+    <div class="corner-frame" style="margin-top:var(--sp-4);text-align:center;position:relative;overflow:hidden;">
+      <p style="font-family:var(--font-display);font-weight:300;font-size:clamp(18px,2.5vw,28px);font-variation-settings:'opsz' 72,'SOFT' 30,'WONK' 0;letter-spacing:.04em;color:var(--burgundy);margin-bottom:var(--sp-3);position:relative;">Exemplo de Moldura</p>
+      <div class="ornament" style="margin:var(--sp-3) 0;position:relative;">
+        <span class="ornament__line"></span>
+        <span class="ornament__diamond"></span>
+        <span class="ornament__line"></span>
+      </div>
+      <p style="font-family:var(--font-ui);font-size:13px;line-height:1.65;color:var(--text-sub);max-width:400px;margin:0 auto;position:relative;">Cantoneiras L com tracos botanicos discretos nos cantos. A linguagem de convites classicos em formato digital.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — CORES -->
+<section class="sec sec--white reveal" id="cores" aria-labelledby="cores-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">02 — Sistema de Cor</span>
+      <h2 class="sec-title" id="cores-title">Paleta Cromatica</h2>
+      <p class="sec-desc">Hierarquia de cor em quatro camadas: fundacao, derivativos, estado proibido e gradiente de marca.</p>
+    </div>
+
+    <div class="colors-group">
+      <span class="colors-group__label">Paleta Fundacao</span>
+      <div class="colors-row stagger">
+        <div class="swatch">
+          <div class="swatch__block" style="background:#3D0C10;" title="Burgundy"></div>
+          <span class="swatch__name">Burgundy</span>
+          <span class="swatch__hex">#3D0C10</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:#2B070A;" title="Burgundy Deep"></div>
+          <span class="swatch__name">Deep</span>
+          <span class="swatch__hex">#2B070A</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:#D4AF37;" title="Gold"></div>
+          <span class="swatch__name">Gold</span>
+          <span class="swatch__hex">#D4AF37</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:#FFFFFF;border:1px solid #eee;" title="White"></div>
+          <span class="swatch__name">White</span>
+          <span class="swatch__hex">#FFFFFF</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:#F7F2F2;" title="Tint"></div>
+          <span class="swatch__name">Tint</span>
+          <span class="swatch__hex">#F7F2F2</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:#FAF8F6;" title="Parchment"></div>
+          <span class="swatch__name">Parchment</span>
+          <span class="swatch__hex">#FAF8F6</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="colors-group">
+      <span class="colors-group__label">Derivativos (Opacidade)</span>
+      <div class="colors-row">
+        <div class="swatch">
+          <div class="swatch__block" style="background:rgba(212,175,55,0.50);"></div>
+          <span class="swatch__name">Gold 50%</span>
+          <span class="swatch__hex">rgba(212,175,55,.50)</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:rgba(212,175,55,0.30);"></div>
+          <span class="swatch__name">Gold Border</span>
+          <span class="swatch__hex">rgba(212,175,55,.30)</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:rgba(45,10,15,0.85);"></div>
+          <span class="swatch__name">Burg Hover</span>
+          <span class="swatch__hex">rgba(45,10,15,.85)</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:rgba(255,255,255,0.82);border:1px solid #eee;"></div>
+          <span class="swatch__name">White Muted</span>
+          <span class="swatch__hex">rgba(255,255,255,.82)</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch__block" style="background:rgba(255,255,255,0.45);border:1px solid #eee;"></div>
+          <span class="swatch__name">White Dim</span>
+          <span class="swatch__hex">rgba(255,255,255,.45)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="colors-group">
+      <span class="colors-group__label">Proibido</span>
+      <div class="colors-row">
+        <div class="swatch swatch--prohibited">
+          <div class="swatch__block" style="background:#FF69B4;"></div>
+          <span class="swatch__name">Rosa Pastel</span>
+        </div>
+        <div class="swatch swatch--prohibited">
+          <div class="swatch__block" style="background:#FFA500;"></div>
+          <span class="swatch__name">Laranja</span>
+        </div>
+        <div class="swatch swatch--prohibited">
+          <div class="swatch__block" style="background:#90EE90;"></div>
+          <span class="swatch__name">Verde Claro</span>
+        </div>
+        <div class="swatch swatch--prohibited">
+          <div class="swatch__block" style="background:#87CEEB;"></div>
+          <span class="swatch__name">Azul Ceu</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Improved gradient -->
+    <div class="gradient-showcase">
+      <span class="colors-group__label">Gradiente de Marca</span>
+      <div class="gradient-bar-wrap">
+        <div class="gradient-bar" role="img" aria-label="Gradiente da paleta"></div>
+      </div>
+      <div class="gradient-stops">
+        <div class="gradient-stop">
+          <span class="gradient-stop__tick"></span>
+          <span class="gradient-stop__hex">#0D0305</span>
+          <span class="gradient-stop__name">Darkest</span>
+        </div>
+        <div class="gradient-stop">
+          <span class="gradient-stop__tick"></span>
+          <span class="gradient-stop__hex">#1A0508</span>
+          <span class="gradient-stop__name">Shadow</span>
+        </div>
+        <div class="gradient-stop">
+          <span class="gradient-stop__tick"></span>
+          <span class="gradient-stop__hex">#2D0A0F</span>
+          <span class="gradient-stop__name">Deep</span>
+        </div>
+        <div class="gradient-stop">
+          <span class="gradient-stop__tick"></span>
+          <span class="gradient-stop__hex">#4A1019</span>
+          <span class="gradient-stop__name">Burgundy</span>
+        </div>
+        <div class="gradient-stop">
+          <span class="gradient-stop__tick"></span>
+          <span class="gradient-stop__hex">#6E1525</span>
+          <span class="gradient-stop__name">Mid</span>
+        </div>
+        <div class="gradient-stop">
+          <span class="gradient-stop__tick"></span>
+          <span class="gradient-stop__hex">#8C1F30</span>
+          <span class="gradient-stop__name">Light</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIAIS — Material palette showcase -->
+<section class="sec sec--burg reveal" style="padding:var(--sp-8) 0;">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label" style="color:var(--gold);opacity:.6;">02b — Materiais</span>
+      <h2 class="sec-title">Superficies &amp; Texturas</h2>
+      <p class="sec-desc" style="color:var(--white-muted);">Cada superficie carrega intencao. Do veludo escuro do convite a textura de pergaminho do RSVP.</p>
+    </div>
+    <div class="material-panels">
+      <div class="material-panel" style="background:var(--burgundy-deep);color:var(--white);">
+        <span class="material-panel__name" style="color:var(--gold);opacity:.6;">Veludo Noturno</span>
+        <span class="material-panel__hex" style="color:var(--white-dim);">#1A0508</span>
+      </div>
+      <div class="material-panel" style="background:var(--burgundy);color:var(--white);">
+        <span class="material-panel__name" style="color:var(--gold);opacity:.6;">Vinho Principal</span>
+        <span class="material-panel__hex" style="color:var(--white-dim);">#2D0A0F</span>
+      </div>
+      <div class="material-panel" style="background:var(--burgundy-mid);color:var(--white);">
+        <span class="material-panel__name" style="color:var(--gold);opacity:.6;">Vinho Medio</span>
+        <span class="material-panel__hex" style="color:var(--white-dim);">#4A1019</span>
+      </div>
+      <div class="material-panel" style="background:var(--burgundy-tint);color:var(--burgundy);">
+        <span class="material-panel__name">Pergaminho Rosa</span>
+        <span class="material-panel__hex">#F7F0F1</span>
+      </div>
+      <div class="material-panel" style="background:var(--parchment);color:var(--burgundy);">
+        <span class="material-panel__name">Pergaminho Quente</span>
+        <span class="material-panel__hex">#FAF8F6</span>
+      </div>
+      <div class="material-panel" style="background:var(--gold);color:var(--burgundy-deep);">
+        <span class="material-panel__name">Folha Dourada</span>
+        <span class="material-panel__hex">#D4AF37</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — TIPOGRAFIA -->
+<section class="sec sec--tint reveal" id="tipografia" aria-labelledby="tipo-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">03 — Tipografia</span>
+      <h2 class="sec-title" id="tipo-title">Sistema Tipografico</h2>
+      <p class="sec-desc">Fraunces variavel para display e Inter para UI. Eixos opsz, SOFT e WONK controlam carater e peso optico.</p>
+    </div>
+
+    <div class="opsz-cards stagger">
+      <div class="opsz-card">
+        <p class="opsz-card__label">Convite — opsz 144</p>
+        <p class="opsz-card__sample" style="font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 1;font-size:36px;font-weight:300;letter-spacing:.04em;color:var(--burgundy);">Moroni</p>
+        <p class="opsz-card__values">opsz 144 &middot; SOFT 50 &middot; WONK 1 &middot; wght 300</p>
+      </div>
+      <div class="opsz-card">
+        <p class="opsz-card__label">Titulos — opsz 72</p>
+        <p class="opsz-card__sample" style="font-variation-settings:'opsz' 72,'SOFT' 30,'WONK' 0;font-size:36px;font-weight:300;letter-spacing:.03em;color:var(--burgundy);">Daphine</p>
+        <p class="opsz-card__values">opsz 72 &middot; SOFT 30 &middot; WONK 0 &middot; wght 300</p>
+      </div>
+      <div class="opsz-card">
+        <p class="opsz-card__label">Corpo — opsz 48</p>
+        <p class="opsz-card__sample" style="font-variation-settings:'opsz' 48,'SOFT' 20,'WONK' 0;font-size:36px;font-weight:300;letter-spacing:.02em;color:var(--burgundy);">Sao Paulo</p>
+        <p class="opsz-card__values">opsz 48 &middot; SOFT 20 &middot; WONK 0 &middot; wght 300</p>
+      </div>
+      <div class="opsz-card">
+        <p class="opsz-card__label">Italico — Decorativo</p>
+        <p class="opsz-card__sample" style="font-style:italic;font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 1;font-size:36px;font-weight:300;letter-spacing:.04em;color:var(--burgundy);">&amp;</p>
+        <p class="opsz-card__values">Italico &middot; opsz 144 &middot; SOFT 50 &middot; WONK 1</p>
+      </div>
+    </div>
+
+    <div class="type-scale">
+      <div class="type-row">
+        <p class="type-row__meta">Display / H1<br>opsz 144, 300</p>
+        <p class="type-row__sample" style="font-family:'Fraunces',serif;font-weight:300;font-size:clamp(36px,5vw,72px);font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 1;letter-spacing:.03em;color:var(--burgundy);line-height:1.1;">Moroni &amp; Daphine</p>
+      </div>
+      <div class="type-row">
+        <p class="type-row__meta">H2 Secao<br>opsz 72, 300</p>
+        <p class="type-row__sample" style="font-family:'Fraunces',serif;font-weight:300;font-size:clamp(24px,3.5vw,44px);font-variation-settings:'opsz' 72,'SOFT' 30,'WONK' 0;letter-spacing:.04em;color:var(--burgundy);line-height:1.15;">Vocabulario Visual</p>
+      </div>
+      <div class="type-row">
+        <p class="type-row__meta">H3 Componente<br>opsz 48, 300</p>
+        <p class="type-row__sample" style="font-family:'Fraunces',serif;font-weight:300;font-size:clamp(18px,2.2vw,28px);font-variation-settings:'opsz' 48,'SOFT' 20,'WONK' 0;letter-spacing:.04em;color:var(--burgundy);line-height:1.2;">Rosa, Tulipa, Copo-de-leite</p>
+      </div>
+      <div class="type-row">
+        <p class="type-row__meta">Corpo / Inter 300<br>14px, 1.7</p>
+        <p class="type-row__sample" style="font-family:'Inter',sans-serif;font-weight:300;font-size:14px;line-height:1.7;color:rgba(45,10,15,0.7);">Elementos botanicos estilizados que compoem a identidade visual do casamento. Tracos finos, opacidade controlada.</p>
+      </div>
+      <div class="type-row">
+        <p class="type-row__meta">Label / Inter 400<br>10px, UC, .18em</p>
+        <p class="type-row__sample" style="font-family:'Inter',sans-serif;font-weight:400;font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:rgba(45,10,15,0.4);">01 — Identidade Visual &nbsp;&middot;&nbsp; Sao Paulo &nbsp;&middot;&nbsp; 12.06.2026</p>
+      </div>
+    </div>
+
+    <div class="ampersand-demo" aria-label="Tratamento do ampersand">
+      <span class="amp-name">Moroni Reis</span>
+      <span class="amp-symbol">&amp;</span>
+      <span class="amp-name">Daphine Oliveira</span>
+    </div>
+    <p style="font-family:var(--font-ui);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.35;text-align:center;margin-top:var(--sp-3);">Ampersand em Fraunces italico &middot; opsz 144 &middot; SOFT 50 &middot; WONK 1 &middot; opacity .70</p>
+  </div>
+</section>
+
+<!-- SECTION 4 — COMPONENTES -->
+<section class="sec sec--white reveal" id="componentes" aria-labelledby="comp-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">04 — Componentes</span>
+      <h2 class="sec-title" id="comp-title">Biblioteca de Componentes</h2>
+      <p class="sec-desc">Botoes, cards, formularios, timeline e galeria — todos derivados dos tokens de cor e tipografia.</p>
+    </div>
+
+    <span class="comp-sub">Botoes</span>
+    <div class="btn-group">
+      <button class="btn btn--primary" type="button">Confirmar Presenca</button>
+      <button class="btn btn--ghost" type="button">Ver Detalhes</button>
+    </div>
+    <div style="padding:var(--sp-5);background:var(--burgundy);display:inline-flex;gap:var(--sp-3);flex-wrap:wrap;">
+      <button class="btn btn--gold" type="button">Dress Code</button>
+      <button class="btn" style="background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:14px 32px;font-family:var(--font-ui);font-size:11px;text-transform:uppercase;letter-spacing:.14em;" type="button">Manual do Convidado</button>
+    </div>
+
+    <span class="comp-sub">Cards</span>
+    <div class="cards-grid stagger">
+      <div class="card">
+        <span class="card__label">Informacao</span>
+        <h3 class="card__title">Local da Cerimonia</h3>
+        <p class="card__body">Detalhes do local, horario de chegada e orientacoes para os convidados durante a cerimonia.</p>
+      </div>
+      <div class="card">
+        <span class="card__label">Recepcao</span>
+        <h3 class="card__title">Jantar &amp; Festa</h3>
+        <p class="card__body">Menu, programacao da noite e informacoes sobre estacionamento e transporte.</p>
+      </div>
+      <div class="card card--dark">
+        <span class="card__label" style="color:var(--gold);opacity:.65;">Destaque</span>
+        <h3 class="card__title">Dress Code</h3>
+        <p class="card__body">Traje Passeio Completo. Paleta sugerida: tons terrosos, champanhe, navy.</p>
+      </div>
+    </div>
+
+    <span class="comp-sub">Formulario — Estilo Sublinha</span>
+    <form class="form-demo" aria-label="Exemplo de formulario">
+      <div class="field">
+        <label class="field__label" for="name-demo">Nome completo</label>
+        <input class="field__input" type="text" id="name-demo" placeholder="Moroni Reis" autocomplete="off">
+        <span class="field__line"></span>
+      </div>
+      <div class="field">
+        <label class="field__label" for="guests-demo">Numero de convidados</label>
+        <input class="field__input" type="number" id="guests-demo" placeholder="2" autocomplete="off">
+        <span class="field__line"></span>
+      </div>
+      <div class="btn-group" style="margin-top:var(--sp-4);">
+        <button class="btn btn--primary" type="submit">Confirmar</button>
+      </div>
+    </form>
+
+    <span class="comp-sub">Timeline — Programacao</span>
+    <div class="timeline" style="background:var(--burgundy);padding:var(--sp-5);">
+      <div class="timeline-item">
+        <span class="timeline-item__time">20:30</span>
+        <div>
+          <p class="timeline-item__event">Recepcao dos Convidados</p>
+          <p class="timeline-item__detail">Boas-vindas no Castelo dos Lagos</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-item__time">21:00</span>
+        <div>
+          <p class="timeline-item__event">Cerimonia</p>
+          <p class="timeline-item__detail">Salao principal — duracao estimada 40 min</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-item__time">22:00</span>
+        <div>
+          <p class="timeline-item__event">Jantar &amp; Celebracao</p>
+          <p class="timeline-item__detail">Salao de festas — open bar + menu elaborado</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="comp-sub">Grade de Galeria</span>
+    <div class="gallery-grid">
+      <div class="gallery-cell gallery-cell--wide">Foto Destaque</div>
+      <div class="gallery-cell">Foto 2</div>
+      <div class="gallery-cell">Foto 3</div>
+      <div class="gallery-cell">Foto 4</div>
+      <div class="gallery-cell">Foto 5</div>
+      <div class="gallery-cell">Foto 6</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS — Wedding numbers -->
+<section class="sec sec--tint reveal">
+  <div class="wrap">
+    <div class="sec-header" style="text-align:center;">
+      <span class="sec-label" style="display:block;text-align:center;">A Celebracao em Numeros</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat__number">12</span>
+        <span class="stat__label">Junho 2026</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">20h30</span>
+        <span class="stat__label">Cerimonia</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">1</span>
+        <span class="stat__label">Dia Inesquecivel</span>
+      </div>
+    </div>
+
+    <div class="sec-sep" aria-hidden="true" style="color:var(--burgundy);">
+      <span class="sec-sep__line"></span>
+      <span class="sec-sep__dot"></span>
+      <span class="sec-sep__line"></span>
+    </div>
+
+    <div style="max-width:700px;margin:0 auto;">
+      <p style="font-family:var(--font-display);font-weight:300;font-size:clamp(18px,2vw,24px);font-variation-settings:'opsz' 72,'SOFT' 30,'WONK' 0;text-align:center;color:var(--burgundy);opacity:.7;line-height:1.5;margin-bottom:var(--sp-5);">O design system garante consistencia em cada ponto de contato</p>
+      <ul class="feature-list">
+        <li>Convites impressos e digitais</li>
+        <li>Manual dos padrinhos</li>
+        <li>Save the Date</li>
+        <li>Website do casamento</li>
+        <li>Menu e programacao</li>
+        <li>Sinalizacao do evento</li>
+        <li>RSVP digital</li>
+        <li>Dress Code guide</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — COUNTDOWN -->
+<section class="sec sec--burg reveal" id="countdown" aria-labelledby="cd-title">
+  <div class="wrap">
+    <div class="countdown-wrap">
+      <p class="countdown-title" id="cd-title">Faltam</p>
+      <span class="div-gold"></span>
+      <div class="countdown-grid" aria-live="polite" aria-atomic="true">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-label">dias</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">&middot;</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-label">horas</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">&middot;</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-mins">--</span>
+          <span class="countdown-label">minutos</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">&middot;</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-secs">--</span>
+          <span class="countdown-label">segundos</span>
+        </div>
+      </div>
+      <div class="ornament ornament--gold" style="margin:var(--sp-4) auto;" aria-hidden="true">
+        <span class="ornament__line"></span>
+        <span class="ornament__diamond"></span>
+        <span class="ornament__line"></span>
+      </div>
+      <p class="countdown-date">12 de junho de 2026 &middot; 20h30 &middot; Sao Paulo</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — MOCKUP CONVITE -->
+<section class="sec sec--tint reveal" id="mockup" aria-labelledby="mockup-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">05 — Aplicacao</span>
+      <h2 class="sec-title" id="mockup-title">Mockup — Convite</h2>
+      <p class="sec-desc">O design system em acao: cantoneiras douradas, botanicos sutis nos cantos, tipografia Fraunces no centro.</p>
+    </div>
+
+    <div class="mockup-stage">
+      <article class="mockup-card" aria-label="Pre-visualizacao do convite">
+        <span class="mockup-card__corner mockup-card__corner--tl" aria-hidden="true"></span>
+        <span class="mockup-card__corner mockup-card__corner--tr" aria-hidden="true"></span>
+        <span class="mockup-card__corner mockup-card__corner--bl" aria-hidden="true"></span>
+        <span class="mockup-card__corner mockup-card__corner--br" aria-hidden="true"></span>
+
+        <div class="mockup-card__inner">
+          <span class="mockup__label">Convite de Casamento</span>
+          <div class="mockup__ornament" aria-hidden="true">
+            <span class="mockup__ornament-line"></span>
+            <span class="mockup__ornament-diamond"></span>
+            <span class="mockup__ornament-line"></span>
+          </div>
+          <p class="mockup__names">
+            Moroni Reis<i>&amp;</i><br>Daphine Oliveira
+          </p>
+          <span class="mockup__divider" aria-hidden="true"></span>
+          <span class="mockup__date">12 . 06 . 2026 &nbsp;&middot;&nbsp; 20h30</span>
+          <span class="mockup__venue">Sao Paulo, Brasil</span>
+        </div>
+      </article>
+      <p class="mockup-caption">Mockup de convite — Design System aplicado</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6b — MONOGRAMA & TRATAMENTOS ESCUROS -->
+<section class="sec sec--burg reveal" aria-labelledby="mono-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">05b — Monograma &amp; Superficies</span>
+      <h2 class="sec-title" id="mono-title">Tratamentos Premium</h2>
+      <p class="sec-desc" style="color:var(--white-muted);">Monograma circular, card 5:7, e tres tecnicas de fundo escuro — textura de tecido, luz quente, e vinheta. Inspirado em Bliss &amp; Bone e Avela White.</p>
+    </div>
+
+    <!-- Monogram badge -->
+    <div style="text-align:center;margin-bottom:var(--sp-8);">
+      <span class="sec-label" style="color:var(--gold);opacity:.5;">Selo Monograma</span>
+      <div style="margin-top:var(--sp-4);">
+        <div class="monogram-badge">
+          <span class="monogram-badge__initials">M<i>&amp;</i>D</span>
+          <span class="monogram-badge__date">12 . 06 . 2026</span>
+        </div>
+      </div>
+      <p style="font-family:var(--font-ui);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--white-dim);margin-top:var(--sp-4);">160px &middot; border 1px white 35% &middot; Fraunces opsz 144</p>
+    </div>
+
+    <!-- Invitation card variants -->
+    <span class="sec-label" style="color:var(--gold);opacity:.5;">Cards 5:7 — Variantes</span>
+    <div class="inv-cards-row">
+      <div class="inv-card inv-card--light">
+        <span class="inv-card__label">Convite</span>
+        <p class="inv-card__names">Moroni<i>&amp;</i><br>Daphine</p>
+        <span class="inv-card__divider"></span>
+        <span class="inv-card__detail">12 Junho 2026</span>
+        <span class="inv-card__detail" style="opacity:.35;">Sao Paulo</span>
+      </div>
+      <div class="inv-card inv-card--dark">
+        <span class="inv-card__label" style="color:var(--gold);">Convite</span>
+        <p class="inv-card__names">Moroni<i>&amp;</i><br>Daphine</p>
+        <span class="inv-card__divider"></span>
+        <span class="inv-card__detail">12 Junho 2026</span>
+        <span class="inv-card__detail" style="opacity:.35;">Sao Paulo</span>
+      </div>
+    </div>
+
+    <!-- Dark surface treatments -->
+    <div style="margin-top:var(--sp-9);">
+      <span class="sec-label" style="color:var(--gold);opacity:.5;">Tratamentos de Superficie Escura</span>
+    </div>
+    <div class="dark-treatments">
+      <div class="dark-treat dark-treat--fabric">
+        <span class="dark-treat__label">Silk / Tecido</span>
+        <p class="dark-treat__sample">Radial gradient duplo</p>
+        <p style="font-family:var(--font-ui);font-size:10px;color:var(--white-dim);position:relative;">Simula textura de seda com dois radiais sobrepostos</p>
+      </div>
+      <div class="dark-treat dark-treat--warm">
+        <span class="dark-treat__label">Luz Quente</span>
+        <p class="dark-treat__sample">Linear gradient diagonal</p>
+        <p style="font-family:var(--font-ui);font-size:10px;color:var(--white-dim);position:relative;">Luz incidente simulada com gradiente a 135 graus</p>
+      </div>
+      <div class="dark-treat dark-treat--vignette">
+        <span class="dark-treat__label">Vinheta</span>
+        <p class="dark-treat__sample">Radial edge darkening</p>
+        <p style="font-family:var(--font-ui);font-size:10px;color:var(--white-dim);position:relative;">Bordas escurecem, centro iluminado — tecnica cinematografica</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 — MOTION -->
+<section class="sec sec--burg reveal" id="motion" aria-labelledby="motion-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">06 — Linguagem de Movimento</span>
+      <h2 class="sec-title" id="motion-title">Motion Design</h2>
+      <p class="sec-desc" style="color:var(--white-muted);">Principios de animacao e demonstracoes interativas. Passe o mouse nos cards abaixo.</p>
+    </div>
+
+    <div class="motion-grid stagger">
+      <div class="motion-card">
+        <span class="motion-card__label">Easing Principal</span>
+        <p class="motion-card__value">cubic-bezier(0.25, 0.46, 0.45, 0.94)</p>
+        <p class="motion-card__note">Inspiracao Armani: entrada elegante, saida limpa.</p>
+      </div>
+      <div class="motion-card">
+        <span class="motion-card__label">Easing Reveal</span>
+        <p class="motion-card__value">cubic-bezier(0.16, 1, 0.3, 1)</p>
+        <p class="motion-card__note">Revelacoes de largura e expansoes de conteudo.</p>
+      </div>
+      <div class="motion-card">
+        <span class="motion-card__label">Duracao Minima</span>
+        <p class="motion-card__value">600ms</p>
+        <p class="motion-card__note">Premium requer tempo para respirar.</p>
+      </div>
+      <div class="motion-card">
+        <span class="motion-card__label">Parallax Max</span>
+        <p class="motion-card__value">0.15x</p>
+        <p class="motion-card__note">Parallax sutil. Acima de 0.15x enjoa.</p>
+      </div>
+      <div class="motion-card">
+        <span class="motion-card__label">Reveal</span>
+        <p class="motion-card__value">opacity dissolve</p>
+        <p class="motion-card__note">Puro fade — sem translateY. Contencao.</p>
+      </div>
+      <div class="motion-card motion-card--prohibited">
+        <span class="motion-card__label">Proibido</span>
+        <p class="motion-card__value">spring / bounce / elastic</p>
+        <p class="motion-card__note">Easing que "salte" esta banido.</p>
+      </div>
+    </div>
+
+    <!-- Interactive demos -->
+    <div style="margin-top:var(--sp-7);"><span class="sec-label" style="color:var(--gold);opacity:.5;">Demonstracoes Interativas — Hover</span></div>
+    <div class="motion-demos">
+      <div class="motion-demo">
+        <span class="demo-hairline"></span>
+        <span class="motion-demo__label">Hairline Expand</span>
+      </div>
+      <div class="motion-demo">
+        <span class="demo-diamond"></span>
+        <span class="motion-demo__label">Diamond Rotate</span>
+      </div>
+      <div class="motion-demo">
+        <span class="demo-dissolve">M &amp; D</span>
+        <span class="motion-demo__label">Opacity Dissolve</span>
+      </div>
+      <div class="motion-demo">
+        <span class="demo-scale-box"></span>
+        <span class="motion-demo__label">Scale Transform</span>
+      </div>
+      <div class="motion-demo">
+        <div class="demo-dots">
+          <span class="demo-dot"></span><span class="demo-dot"></span>
+          <span class="demo-dot"></span><span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+        </div>
+        <span class="motion-demo__label">Stagger Sequence</span>
+      </div>
+      <div class="motion-demo">
+        <div class="demo-sweep"></div>
+        <span class="motion-demo__label">Gradient Sweep</span>
+      </div>
+    </div>
+
+    <div style="width:100%;height:1px;background:var(--white);opacity:.06;margin:var(--sp-7) 0;" aria-hidden="true"></div>
+
+    <span class="sec-label" style="display:block;">Sequencia Stagger do Hero</span>
+    <table class="stagger-table">
+      <thead><tr><th>Delay</th><th>Elemento</th><th>Propriedade</th><th>Duracao</th></tr></thead>
+      <tbody>
+        <tr><td>200ms</td><td>Label</td><td>opacity 0&rarr;1</td><td>600ms</td></tr>
+        <tr><td>400ms</td><td>Ornamento</td><td>opacity 0&rarr;1</td><td>600ms</td></tr>
+        <tr><td>600ms</td><td>Nomes (H1)</td><td>opacity 0&rarr;1</td><td>700ms</td></tr>
+        <tr><td>800ms</td><td>Hairline dourada</td><td>width 0&rarr;120px</td><td>700ms</td></tr>
+        <tr><td>1000ms</td><td>Data</td><td>opacity 0&rarr;1</td><td>600ms</td></tr>
+        <tr><td>1200ms</td><td>Local</td><td>opacity 0&rarr;1</td><td>600ms</td></tr>
+        <tr><td>1600ms</td><td>Botanicos + Scroll</td><td>opacity 0&rarr;1</td><td>1000ms</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 8 — RITMO -->
+<section class="sec sec--white reveal" aria-labelledby="ritmo-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">07 — Ritmo de Secoes</span>
+      <h2 class="sec-title" id="ritmo-title">Sequencia de Fundos</h2>
+      <p class="sec-desc">Alternancia entre secoes escuras e claras para ritmo visual.</p>
+    </div>
+    <table class="rhythm-table">
+      <thead><tr><th>Secao</th><th>Fundo</th><th>Texto</th><th>Destaque</th><th>Classe</th></tr></thead>
+      <tbody>
+        <tr><td>Hero</td><td><span class="rhythm-swatch" style="background:#3D0C10;"></span>#3D0C10</td><td>White</td><td>Gold</td><td><code>sec--burg</code></td></tr>
+        <tr><td>Elementos</td><td><span class="rhythm-swatch" style="background:#F7F2F2;border:1px solid #ddd;"></span>#F7F2F2</td><td>Burgundy</td><td>Gold border</td><td><code>sec--tint</code></td></tr>
+        <tr><td>Cores</td><td><span class="rhythm-swatch" style="background:#FAF8F6;border:1px solid #ddd;"></span>#FFFFFF</td><td>Burgundy</td><td>Gold accent</td><td><code>sec--white</code></td></tr>
+        <tr><td>Tipografia</td><td><span class="rhythm-swatch" style="background:#F7F2F2;border:1px solid #ddd;"></span>#F7F2F2</td><td>Burgundy</td><td>Gold accent</td><td><code>sec--tint</code></td></tr>
+        <tr><td>Componentes</td><td><span class="rhythm-swatch" style="background:#FAF8F6;border:1px solid #ddd;"></span>#FFFFFF</td><td>Burgundy</td><td>---</td><td><code>sec--white</code></td></tr>
+        <tr><td>Countdown</td><td><span class="rhythm-swatch" style="background:#3D0C10;"></span>#3D0C10</td><td>White</td><td>Gold</td><td><code>sec--burg</code></td></tr>
+        <tr><td>Mockup</td><td><span class="rhythm-swatch" style="background:#F7F2F2;border:1px solid #ddd;"></span>#F7F2F2</td><td>Burgundy</td><td>---</td><td><code>sec--tint</code></td></tr>
+        <tr><td>Motion</td><td><span class="rhythm-swatch" style="background:#3D0C10;"></span>#3D0C10</td><td>White</td><td>Gold</td><td><code>sec--burg</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 9 — SPACING -->
+<section class="sec sec--tint reveal" aria-labelledby="spacing-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">08 — Espacamento</span>
+      <h2 class="sec-title" id="spacing-title">Escala de Spacing</h2>
+      <p class="sec-desc">10 niveis baseados em multiplos de 4px.</p>
+    </div>
+    <div class="spacing-scale">
+      <div class="spacing-row"><span class="spacing-row__label">sp-1</span><div class="spacing-row__bar" style="width:4px;"></div><span class="spacing-row__value">4px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-2</span><div class="spacing-row__bar" style="width:8px;"></div><span class="spacing-row__value">8px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-3</span><div class="spacing-row__bar" style="width:16px;"></div><span class="spacing-row__value">16px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-4</span><div class="spacing-row__bar" style="width:24px;"></div><span class="spacing-row__value">24px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-5</span><div class="spacing-row__bar" style="width:32px;"></div><span class="spacing-row__value">32px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-6</span><div class="spacing-row__bar" style="width:48px;"></div><span class="spacing-row__value">48px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-7</span><div class="spacing-row__bar" style="width:64px;"></div><span class="spacing-row__value">64px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-8</span><div class="spacing-row__bar" style="width:96px;"></div><span class="spacing-row__value">96px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-9</span><div class="spacing-row__bar" style="width:128px;"></div><span class="spacing-row__value">128px</span></div>
+      <div class="spacing-row"><span class="spacing-row__label">sp-10</span><div class="spacing-row__bar" style="width:160px;"></div><span class="spacing-row__value">160px</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 — CSS TOKENS -->
+<section class="sec sec--burg reveal" aria-labelledby="tokens-title">
+  <div class="wrap">
+    <div class="sec-header">
+      <span class="sec-label">09 — Custom Properties</span>
+      <h2 class="sec-title" id="tokens-title">CSS Tokens</h2>
+      <p class="sec-desc" style="color:var(--white-muted);">Referencia completa das variaveis CSS.</p>
+    </div>
+    <pre class="token-pre" role="region" aria-label="CSS Custom Properties"><span class="cmt">/* -- COLOR TOKENS -- */</span>
+<span class="cmt">:root {</span>
+  <span class="cmt">  /* HSL base (Avela White pattern) */</span>
+  <span class="prop">--burgundy-hsl</span><span class="cmt">:</span>  <span class="val">350, 67%, 14%</span><span class="cmt">;</span>
+  <span class="prop">--gold-hsl</span><span class="cmt">:</span>      <span class="val">43, 59%, 52%</span><span class="cmt">;</span>
+
+  <span class="cmt">  /* Hex tokens */</span>
+  <span class="prop">--burgundy</span><span class="cmt">:</span>       <span class="val">#3D0C10</span><span class="cmt">;</span>
+  <span class="prop">--burgundy-deep</span><span class="cmt">:</span>  <span class="val">#2B070A</span><span class="cmt">;</span>
+  <span class="prop">--burgundy-mid</span><span class="cmt">:</span>   <span class="val">#5C1A1F</span><span class="cmt">;</span>
+  <span class="prop">--burgundy-tint</span><span class="cmt">:</span>  <span class="val">#F7F2F2</span><span class="cmt">;</span>
+  <span class="prop">--parchment</span><span class="cmt">:</span>      <span class="val">#FAF8F6</span><span class="cmt">;</span>  <span class="cmt">/* warm near-white */</span>
+  <span class="prop">--gold</span><span class="cmt">:</span>           <span class="val">#D4AF37</span><span class="cmt">;</span>
+  <span class="prop">--gold-border</span><span class="cmt">:</span>    <span class="val">rgba(212,175,55,0.30)</span><span class="cmt">;</span>
+
+  <span class="cmt">  /* TYPOGRAPHY */</span>
+  <span class="prop">--font-display</span><span class="cmt">:</span>   <span class="val">'Fraunces', Georgia, serif</span><span class="cmt">;</span>
+  <span class="prop">--font-ui</span><span class="cmt">:</span>        <span class="val">'Inter', system-ui, sans-serif</span><span class="cmt">;</span>
+
+  <span class="cmt">  /* SPACING */</span>
+  <span class="prop">--sp-1</span><span class="cmt">:</span><span class="val">4px</span><span class="cmt">;</span>  <span class="prop">--sp-2</span><span class="cmt">:</span><span class="val">8px</span><span class="cmt">;</span>  <span class="prop">--sp-3</span><span class="cmt">:</span><span class="val">16px</span><span class="cmt">;</span>  <span class="prop">--sp-4</span><span class="cmt">:</span><span class="val">24px</span><span class="cmt">;</span>
+  <span class="prop">--sp-5</span><span class="cmt">:</span><span class="val">32px</span><span class="cmt">;</span> <span class="prop">--sp-6</span><span class="cmt">:</span><span class="val">48px</span><span class="cmt">;</span> <span class="prop">--sp-7</span><span class="cmt">:</span><span class="val">64px</span><span class="cmt">;</span> <span class="prop">--sp-8</span><span class="cmt">:</span><span class="val">96px</span><span class="cmt">;</span>
+
+  <span class="cmt">  /* EASING */</span>
+  <span class="prop">--ease</span><span class="cmt">:</span>          <span class="val">cubic-bezier(0.25, 0.46, 0.45, 0.94)</span><span class="cmt">;</span>
+  <span class="prop">--ease-out</span><span class="cmt">:</span>      <span class="val">cubic-bezier(0.16, 1, 0.3, 1)</span><span class="cmt">;</span>
+  <span class="prop">--ease-dramatic</span><span class="cmt">:</span> <span class="val">cubic-bezier(0.22, 1, 0.36, 1)</span><span class="cmt">;</span>
+
+  <span class="cmt">  /* SHADOWS (Bliss &amp; Bone system) */</span>
+  <span class="prop">--shadow-card</span><span class="cmt">:</span>   <span class="val">0 4px 20px rgba(45,10,15,0.06)</span><span class="cmt">;</span>
+  <span class="prop">--shadow-lift</span><span class="cmt">:</span>   <span class="val">0 12px 40px rgba(45,10,15,0.10)</span><span class="cmt">;</span>
+  <span class="prop">--shadow-float</span><span class="cmt">:</span>  <span class="val">0 32px 80px rgba(45,10,15,0.14)</span><span class="cmt">;</span>
+<span class="cmt">}</span></pre>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="footer__mark">M<i>&amp;</i>D</p>
+  <span class="footer__divider" aria-hidden="true"></span>
+  <p class="footer__date">12 . 06 . 2026</p>
+  <p class="footer__note">Design System — Moroni &amp; Daphine &middot; Confidencial</p>
+</footer>
+
+<script>
+  /* NAV — scroll state */
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  function updateNav() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+
+  /* NAV ACTIVE LINKS */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__link');
+  const sectionObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.getAttribute('id');
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => sectionObs.observe(s));
+
+  /* SECTION REVEALS + BOTANICALS */
+  const revealEls = document.querySelectorAll('.reveal, .botanical');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* COUNTDOWN */
+  const TARGET = new Date('2026-06-12T20:30:00-03:00').getTime();
+  const cdD = document.getElementById('cd-days');
+  const cdH = document.getElementById('cd-hours');
+  const cdM = document.getElementById('cd-mins');
+  const cdS = document.getElementById('cd-secs');
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function tick() {
+    const d = TARGET - Date.now();
+    if (d <= 0) { cdD.textContent=cdH.textContent=cdM.textContent=cdS.textContent='00'; return; }
+    cdD.textContent = pad(Math.floor(d/864e5));
+    cdH.textContent = pad(Math.floor(d%864e5/36e5));
+    cdM.textContent = pad(Math.floor(d%36e5/6e4));
+    cdS.textContent = pad(Math.floor(d%6e4/1e3));
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* PARALLAX — subtle hero border movement */
+  const heroBorder = document.querySelector('.hero__border');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight) {
+      const offset = window.scrollY * 0.15;
+      heroBorder.style.transform = 'translateY(' + offset + 'px)';
+    }
+  }, { passive: true });
+
+</script>
+
+</body>
+</html>

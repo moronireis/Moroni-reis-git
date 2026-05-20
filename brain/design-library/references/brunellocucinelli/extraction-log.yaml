@@ -1,0 +1,1155 @@
+url: https://www.brunellocucinelli.com
+extracted_at: 2026-05-18T22:53:45.469Z
+sources:
+  external_css_files: 0
+  preload_css_files: 1
+  imports_resolved: 0
+  inline_style_blocks: 22
+  inline_style_attrs: 0
+  failed_fetches: 0
+detection:
+  css_vars_total: 53
+  css_vars_primitive: 53
+  css_vars_alias: 0
+  font_faces: 10
+  unique_tokens_in_graph: 40
+tokens:
+  colors:
+    primary:
+      value: "#262626"
+      source: css_declaration
+      confidence: medium
+      origin: body color declaration — brand's signature warm near-black (used 73×
+        across CSS)
+    secondary:
+      value: "#8d8277"
+      source: css_declaration
+      confidence: medium
+      origin: .slick-active button::before background — warm taupe accent
+    tertiary:
+      value: "#71685f"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — darker taupe, earthy tone in brand palette
+    neutral:
+      value: "#939494"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — mid-gray for secondary UI
+    surface:
+      value: "#ffffff"
+      source: css_declaration
+      confidence: medium
+      origin: body background-color
+    text:
+      value: "#262626"
+      source: css_declaration
+      confidence: medium
+      origin: body{color:#262626}
+    text-muted:
+      value: "#7a7a7b"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — lighter text for captions/metadata
+    border:
+      value: "#f2f2f2"
+      source: css_declaration
+      confidence: medium
+      origin: .cc-footer border-top and .cc-formGroup border declarations
+    error:
+      value: "#dc3545"
+      source: css_var
+      confidence: high
+      origin: --danger
+    success:
+      value: "#28a745"
+      source: css_var
+      confidence: high
+      origin: --success
+    warm-white:
+      value: "#f1f0ef"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — warm off-white surface
+    parchment:
+      value: "#f5f5f5"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — light background surface
+    cashmere-gray:
+      value: "#989898"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — mid neutral
+    dark-taupe:
+      value: "#495057"
+      source: css_declaration
+      confidence: medium
+      origin: hex inventory — deep neutral for contrast
+  typography:
+    display-hero:
+      properties:
+        fontFamily:
+          value: IvyPresto
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 7rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.size
+        fontWeight:
+          value: "300"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: 11rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from luxury serif convention — no explicit tracking
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    display-large:
+      properties:
+        fontFamily:
+          value: IvyPresto
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 5rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.size
+        fontWeight:
+          value: "300"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: 6.4rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from luxury serif convention
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    section-heading:
+      properties:
+        fontFamily:
+          value: IvyPresto
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 4rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.size
+        fontWeight:
+          value: "300"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: 5rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from luxury serif convention
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    subheading-large:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 2.2rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.size
+        fontWeight:
+          value: "300"
+          source: css_declaration
+          confidence: medium
+          origin: .cc-pressRoom heading pattern
+        lineHeight:
+          value: 3.4rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    subheading:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 1.8rem
+          source: css_declaration
+          confidence: medium
+          origin: .cc-pressRoom__table heading — font-size:1.8rem
+        fontWeight:
+          value: "300"
+          source: css_declaration
+          confidence: medium
+          origin: .cc-pressRoom__table heading — font-weight:300
+        lineHeight:
+          value: 2.8rem
+          source: css_declaration
+          confidence: medium
+          origin: .cc-pressRoom__table heading — line-height:2.8rem
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    body-large:
+      properties:
+        fontFamily:
+          value: TTLivretText
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 1.8rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.size
+        fontWeight:
+          value: "300"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: 2.8rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    body:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: css_declaration
+          confidence: medium
+          origin: body{font-family:"GTEesti"}
+        fontSize:
+          value: 1.6rem
+          source: css_declaration
+          confidence: medium
+          origin: body{font-size:1.6rem}
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body{font-weight:400}
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body{line-height:1.5}
+        letterSpacing:
+          value: 0em
+          source: css_declaration
+          confidence: medium
+          origin: .tooltip letter-spacing:normal
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body{font-feature-settings:"lnum"}
+    body-small:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 1.4rem
+          source: css_declaration
+          confidence: medium
+          origin: .cc-btn--primary--menu font-size:1.4rem
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: .cc-btn--primary--menu font-weight:400
+        lineHeight:
+          value: 2.1rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    button:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: css_declaration
+          confidence: medium
+          origin: body font-family inheritance
+        fontSize:
+          value: 1.4rem
+          source: css_declaration
+          confidence: medium
+          origin: component-properties.json button font-size most_common
+        fontWeight:
+          value: "300"
+          source: css_declaration
+          confidence: medium
+          origin: component-properties.json button font-weight most_common
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from body line-height inheritance
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    link:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: css_declaration
+          confidence: medium
+          origin: body font-family inheritance
+        fontSize:
+          value: 1.4rem
+          source: css_declaration
+          confidence: medium
+          origin: .cc-btn--primary--menu font-size
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: button.variants.link font-weight most_common
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from body line-height inheritance
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    caption:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 1.2rem
+          source: css_declaration
+          confidence: medium
+          origin: .cc-formGroup language select font-size:1.2rem
+        fontWeight:
+          value: "300"
+          source: css_declaration
+          confidence: medium
+          origin: GTEesti light weight usage pattern
+        lineHeight:
+          value: 1.4rem
+          source: css_declaration
+          confidence: medium
+          origin: .cc-headerSearch__close button line-height:1.4rem
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    micro:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 1rem
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected.json typography.size
+        fontWeight:
+          value: "400"
+          source: inferred
+          confidence: low
+          origin: inferred from body base weight
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from body line-height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no explicit declaration
+        features:
+          value: "'lnum'"
+          source: css_declaration
+          confidence: medium
+          origin: body font-feature-settings
+    h1:
+      properties:
+        fontFamily:
+          value: IvyPresto
+          source: other
+          confidence: medium
+          origin: alias for display-hero
+        fontSize:
+          value: 7rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "300"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 11rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    h2:
+      properties:
+        fontFamily:
+          value: IvyPresto
+          source: other
+          confidence: medium
+          origin: alias for display-large
+        fontSize:
+          value: 5rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "300"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 6.4rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    h3:
+      properties:
+        fontFamily:
+          value: IvyPresto
+          source: other
+          confidence: medium
+          origin: alias for section-heading
+        fontSize:
+          value: 4rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "300"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 5rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    h4:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: other
+          confidence: medium
+          origin: alias for subheading-large
+        fontSize:
+          value: 2.2rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "300"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 3.4rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    body-lg:
+      properties:
+        fontFamily:
+          value: TTLivretText
+          source: other
+          confidence: medium
+          origin: alias for body-large
+        fontSize:
+          value: 1.8rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "300"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 2.8rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    body-md:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: other
+          confidence: medium
+          origin: alias for body
+        fontSize:
+          value: 1.6rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "400"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: "1.5"
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    body-sm:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: other
+          confidence: medium
+          origin: alias for body-small
+        fontSize:
+          value: 1.4rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "400"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 2.1rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    label:
+      properties:
+        fontFamily:
+          value: GTEesti
+          source: other
+          confidence: medium
+          origin: alias for caption
+        fontSize:
+          value: 1.2rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "300"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: 1.4rem
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+    mono:
+      properties:
+        fontFamily:
+          value: SFMono-Regular, Menlo, Monaco, Consolas, monospace
+          source: css_var
+          confidence: high
+          origin: --font-family-monospace
+        fontSize:
+          value: 1.4rem
+          source: unknown
+          confidence: low
+          origin: null
+        fontWeight:
+          value: "400"
+          source: unknown
+          confidence: low
+          origin: null
+        lineHeight:
+          value: "1.5"
+          source: unknown
+          confidence: low
+          origin: null
+        letterSpacing:
+          value: 0em
+          source: unknown
+          confidence: low
+          origin: null
+        features:
+          value: "'lnum'"
+          source: unknown
+          confidence: low
+          origin: null
+  rounded:
+    none:
+      value: 0px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties.json button border-radius most_common
+    sm:
+      value: 3px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json radii — .2rem = 3.2px ≈ 3px
+    md:
+      value: 4px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json radii — .25rem = 4px
+    lg:
+      value: 6px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json radii — .4rem = 6.4px ≈ 6px
+    full:
+      value: 9999px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json radii — 50% functionally equivalent
+  spacing:
+    xs:
+      value: 4px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json spacing — 3px/5px cluster ≈ 4px
+    sm:
+      value: 8px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json spacing — .5rem = 8px
+    md:
+      value: 16px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json spacing — 1rem = 16px
+    lg:
+      value: 24px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json spacing — 1.5rem = 24px
+    xl:
+      value: 48px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected.json spacing — 3rem = 48px
+confidence_summary:
+  high: 16
+  medium: 74
+  low: 60
+lint:
+  ran: true
+  exit_code: 0
+  errors_count: 0
+  warnings_count: 50
+  errors: []
+  warnings:
+    - &a1
+      severity: warning
+      path: components.button-primary.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a2
+      severity: warning
+      path: components.button-primary.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a3
+      severity: warning
+      path: components.button-primary.border
+      message: "'border' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a4
+      severity: warning
+      path: components.button-primary.radius
+      message: "'radius' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a5
+      severity: warning
+      path: components.button-primary.font
+      message: "'font' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a6
+      severity: warning
+      path: components.button-primary.hover_bg
+      message: "'hover_bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a7
+      severity: warning
+      path: components.button-primary-hover.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a8
+      severity: warning
+      path: components.button-primary-hover.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a9
+      severity: warning
+      path: components.button-primary-white.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a10
+      severity: warning
+      path: components.button-primary-white.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a11
+      severity: warning
+      path: components.button-primary-white.border
+      message: "'border' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a12
+      severity: warning
+      path: components.button-primary-white.radius
+      message: "'radius' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a13
+      severity: warning
+      path: components.button-primary-white.font
+      message: "'font' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a14
+      severity: warning
+      path: components.button-primary-white.hover_bg
+      message: "'hover_bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a15
+      severity: warning
+      path: components.button-ghost.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a16
+      severity: warning
+      path: components.button-ghost.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a17
+      severity: warning
+      path: components.button-ghost.border
+      message: "'border' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a18
+      severity: warning
+      path: components.button-ghost.radius
+      message: "'radius' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a19
+      severity: warning
+      path: components.card.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a20
+      severity: warning
+      path: components.card.border
+      message: "'border' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a21
+      severity: warning
+      path: components.card.radius
+      message: "'radius' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a22
+      severity: warning
+      path: components.card.shadow
+      message: "'shadow' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a23
+      severity: warning
+      path: components.input-text.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a24
+      severity: warning
+      path: components.input-text.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a25
+      severity: warning
+      path: components.input-text.border
+      message: "'border' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a26
+      severity: warning
+      path: components.input-text.radius
+      message: "'radius' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a27
+      severity: warning
+      path: components.input-text.focus_border
+      message: "'focus_border' is not a recognized component sub-token. Valid
+        sub-tokens: backgroundColor, textColor, typography, rounded, padding,
+        size, height, width."
+    - &a28
+      severity: warning
+      path: components.badge-default.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a29
+      severity: warning
+      path: components.badge-default.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a30
+      severity: warning
+      path: components.badge-default.border
+      message: "'border' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a31
+      severity: warning
+      path: components.badge-default.radius
+      message: "'radius' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a32
+      severity: warning
+      path: components.badge-default.font
+      message: "'font' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a33
+      severity: warning
+      path: components.nav-header.bg
+      message: "'bg' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a34
+      severity: warning
+      path: components.nav-header.text
+      message: "'text' is not a recognized component sub-token. Valid sub-tokens:
+        backgroundColor, textColor, typography, rounded, padding, size, height,
+        width."
+    - &a35
+      severity: warning
+      path: components.nav-header.border_bottom
+      message: "'border_bottom' is not a recognized component sub-token. Valid
+        sub-tokens: backgroundColor, textColor, typography, rounded, padding,
+        size, height, width."
+    - &a36
+      severity: warning
+      path: components.nav-header.backdrop_filter
+      message: "'backdrop_filter' is not a recognized component sub-token. Valid
+        sub-tokens: backgroundColor, textColor, typography, rounded, padding,
+        size, height, width."
+    - &a37
+      severity: warning
+      path: colors.primary
+      message: "'primary' is defined but never referenced by any component."
+    - &a38
+      severity: warning
+      path: colors.secondary
+      message: "'secondary' is defined but never referenced by any component."
+    - &a39
+      severity: warning
+      path: colors.tertiary
+      message: "'tertiary' is defined but never referenced by any component."
+    - &a40
+      severity: warning
+      path: colors.neutral
+      message: "'neutral' is defined but never referenced by any component."
+    - &a41
+      severity: warning
+      path: colors.surface
+      message: "'surface' is defined but never referenced by any component."
+    - &a42
+      severity: warning
+      path: colors.text
+      message: "'text' is defined but never referenced by any component."
+    - &a43
+      severity: warning
+      path: colors.text-muted
+      message: "'text-muted' is defined but never referenced by any component."
+    - &a44
+      severity: warning
+      path: colors.border
+      message: "'border' is defined but never referenced by any component."
+    - &a45
+      severity: warning
+      path: colors.error
+      message: "'error' is defined but never referenced by any component."
+    - &a46
+      severity: warning
+      path: colors.success
+      message: "'success' is defined but never referenced by any component."
+    - &a47
+      severity: warning
+      path: colors.warm-white
+      message: "'warm-white' is defined but never referenced by any component."
+    - &a48
+      severity: warning
+      path: colors.parchment
+      message: "'parchment' is defined but never referenced by any component."
+    - &a49
+      severity: warning
+      path: colors.cashmere-gray
+      message: "'cashmere-gray' is defined but never referenced by any component."
+    - &a50
+      severity: warning
+      path: colors.dark-taupe
+      message: "'dark-taupe' is defined but never referenced by any component."
+  raw:
+    findings:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - severity: info
+        message: Design system defines 14 colors, 21 typography scales, 5 rounding
+          levels, 5 spacing tokens, 8 components.
+    summary:
+      errors: 0
+      warnings: 50
+      infos: 1

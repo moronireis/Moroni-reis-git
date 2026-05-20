@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH — Amostras de Copy e Criativos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#070b16;--bg2:#0d1225;--bg3:#131a30;--bg4:#1a2240;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#e8ecf2;--text2:#7e8a9e;--text3:#556;--gold:#f0b442;--gold-d:rgba(240,180,66,0.10);--blue:#4a9eff;--green:#34d399;--red:#f87171;--orange:#fb923c;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;}
+a{color:var(--gold);text-decoration:none;}a:hover{text-decoration:underline;}
+
+.hero{text-align:center;padding:56px 24px 44px;border-bottom:1px solid var(--border);position:relative;}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);color:var(--gold);letter-spacing:0.06em;margin-bottom:8px;}
+.hero p{font-size:0.88rem;color:var(--text2);max-width:700px;margin:0 auto 14px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.76rem;color:var(--text2);border:1px solid var(--border);padding:5px 14px;border-radius:6px;transition:all 0.2s;}
+.back-link:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(7,11,22,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav::-webkit-scrollbar{display:none;}
+.nav a{flex-shrink:0;font-size:0.68rem;font-weight:500;color:var(--text2);padding:5px 12px;border:1px solid var(--border);border-radius:6px;transition:all 0.2s;white-space:nowrap;}
+.nav a:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+section{padding:52px 0;}section+section{border-top:1px solid var(--border);}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--gold);margin-bottom:6px;}
+.ssub{font-size:0.8rem;color:var(--text2);margin-bottom:32px;max-width:640px;}
+
+.pill{display:inline-block;font-size:0.58rem;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:4px;letter-spacing:0.04em;}
+.pill-niche{background:rgba(74,158,255,0.1);color:var(--blue);border:1px solid rgba(74,158,255,0.2);}
+.pill-broad{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.pill-video{background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.2);}
+.pill-img{background:rgba(251,146,60,0.1);color:var(--orange);border:1px solid rgba(251,146,60,0.2);}
+.pill-carousel{background:rgba(244,114,182,0.1);color:var(--pink);border:1px solid rgba(244,114,182,0.2);}
+.pill-mg{background:rgba(52,211,153,0.08);color:var(--green);border:1px solid rgba(52,211,153,0.15);}
+.pill-lb{background:rgba(248,113,113,0.08);color:var(--red);border:1px solid rgba(248,113,113,0.15);}
+.pill-st{background:rgba(167,139,250,0.08);color:var(--purple);border:1px solid rgba(167,139,250,0.15);}
+.pill-rs{background:rgba(251,146,60,0.08);color:var(--orange);border:1px solid rgba(251,146,60,0.15);}
+
+.insight{background:var(--gold-d);border:1px solid rgba(240,180,66,0.15);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:0.78rem;color:var(--gold);line-height:1.5;}
+.insight strong{color:#fff;}
+
+/* ── AD MOCK ── */
+.ad-mock{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:0;margin-bottom:20px;overflow:hidden;transition:border-color 0.2s;}
+.ad-mock:hover{border-color:var(--border2);}
+.ad-header{display:flex;align-items:center;gap:10px;padding:14px 18px 10px;border-bottom:1px solid var(--border);}
+.ad-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#091022,#1a2240);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:var(--gold);}
+.ad-meta{flex:1;}
+.ad-meta .ad-name{font-size:0.78rem;font-weight:600;}
+.ad-meta .ad-sponsor{font-size:0.62rem;color:var(--text2);}
+.ad-pills{padding:0 18px 8px;display:flex;flex-wrap:wrap;gap:4px;}
+.ad-body{padding:14px 18px;}
+.ad-primary{font-size:0.82rem;line-height:1.55;margin-bottom:12px;white-space:pre-line;}
+.ad-primary .hook{font-weight:700;color:var(--text);font-size:0.88rem;}
+.ad-primary .body-text{color:var(--text2);}
+.ad-visual{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 18px;text-align:center;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ad-visual .vis-text{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--text);line-height:1.25;max-width:400px;margin-bottom:8px;}
+.ad-visual .vis-sub{font-size:0.78rem;color:var(--text2);max-width:360px;}
+.ad-visual .vis-badge{display:inline-block;margin-top:10px;background:var(--gold);color:var(--bg);font-size:0.65rem;font-weight:700;padding:4px 12px;border-radius:4px;letter-spacing:0.06em;}
+.ad-cta-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--border);}
+.ad-cta-bar .ad-headline{font-size:0.78rem;font-weight:600;flex:1;}
+.ad-cta-bar .ad-desc{font-size:0.68rem;color:var(--text2);}
+.ad-cta-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-size:0.72rem;font-weight:600;padding:6px 16px;border-radius:6px;white-space:nowrap;}
+
+/* ── HEADLINE SAMPLES ── */
+.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;}
+.hl-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;border-left:3px solid var(--gold);}
+.hl-card .hl-label{font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:6px;}
+.hl-card .hl-text{font-family:'Cinzel',serif;font-size:1rem;line-height:1.3;color:var(--text);margin-bottom:6px;}
+.hl-card .hl-sub{font-size:0.76rem;color:var(--text2);line-height:1.5;}
+.hl-card.niche{border-left-color:var(--blue);}
+.hl-card.broad{border-left-color:var(--green);}
+
+/* ── CAROUSEL MOCK ── */
+.carousel-mock{display:flex;gap:10px;overflow-x:auto;padding:8px 0 16px;-webkit-overflow-scrolling:touch;}
+.carousel-mock::-webkit-scrollbar{height:4px;}
+.carousel-mock::-webkit-scrollbar-thumb{background:rgba(240,180,66,0.2);border-radius:2px;}
+.cslide{flex-shrink:0;width:260px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;justify-content:center;min-height:260px;}
+.cslide .slide-num{font-size:0.58rem;font-weight:700;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;}
+.cslide .slide-title{font-family:'Cinzel',serif;font-size:1rem;line-height:1.25;margin-bottom:6px;}
+.cslide .slide-body{font-size:0.74rem;color:var(--text2);line-height:1.5;}
+.cslide.cta-slide{background:var(--gold-d);border-color:rgba(240,180,66,0.2);}
+.cslide.cta-slide .slide-title{color:var(--gold);}
+
+/* ── COPY BLOCK ── */
+.copy-block{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.copy-block h3{font-size:0.9rem;font-weight:700;margin-bottom:4px;}
+.copy-block .copy-label{font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.copy-block .copy-text{font-size:0.82rem;line-height:1.65;color:var(--text);white-space:pre-line;}
+.copy-block .copy-text .highlight{color:var(--gold);font-weight:600;}
+
+/* ── EMAIL MOCK ── */
+.email-mock{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.email-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:2px;}
+.email-header .email-from{font-size:0.72rem;color:var(--gold);}
+.email-header .email-subject{font-size:0.88rem;font-weight:700;}
+.email-body{padding:18px;font-size:0.8rem;line-height:1.65;color:var(--text2);white-space:pre-line;}
+.email-body strong{color:var(--text);}
+.email-cta{display:inline-block;background:var(--gold);color:var(--bg);font-size:0.78rem;font-weight:700;padding:10px 24px;border-radius:6px;margin:12px 0;text-decoration:none;}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;}
+
+.footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border);font-size:0.66rem;color:var(--text3);}
+
+@media(max-width:768px){
+  section{padding:36px 0;}.grid2{grid-template-columns:1fr;}
+  .hl-grid{grid-template-columns:1fr;}
+  .cslide{width:220px;min-height:220px;}
+  .ad-visual .vis-text{font-size:1.05rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Amostras de Copy e Criativos</h1>
+  <p>Copy pronta para usar. Hooks, headlines, textos de anúncio, carrosséis, emails e CTAs — versão nichada (vidraçaria/serralheria) e versão ampla (construção civil).</p>
+  <a href="index.html" class="back-link">&larr; Voltar ao Mapa de Funis</a>
+</div>
+
+<nav class="nav">
+  <a href="#estrategia">Estratégia Nicho vs. Broad</a>
+  <a href="#hooks">Hooks (3 Segundos)</a>
+  <a href="#ads-feed">Anúncios Feed</a>
+  <a href="#carrossel">Carrosséis</a>
+  <a href="#headlines">Headlines LP</a>
+  <a href="#ctas">CTAs</a>
+  <a href="#emails">Emails</a>
+  <a href="#whatsapp">WhatsApp</a>
+</nav>
+
+<div class="container">
+
+<!-- ══════ ESTRATÉGIA ══════ -->
+<section id="estrategia">
+  <h2 class="stitle">Estratégia: Nicho → Amplo</h2>
+  <p class="ssub">Entrar nichado no hook, acolher amplo na página. Testar os dois em paralelo.</p>
+
+  <div class="grid2">
+    <div class="copy-block" style="border-left:3px solid var(--blue);">
+      <div class="copy-label">Abordagem Nichada</div>
+      <h3>Hook específico por subsetor</h3>
+      <p class="copy-text" style="color:var(--text2);">O anúncio fala direto com vidraceiro OU serralheiro OU marceneiro. Cada criativo menciona o nome do setor. Converte 2-3x mais porque o dono para no scroll pensando "estão falando comigo".
+
+Testar adsets separados: vidraçaria / serralheria / marmoraria / elétrica.</p>
+    </div>
+    <div class="copy-block" style="border-left:3px solid var(--green);">
+      <div class="copy-label">Abordagem Ampla</div>
+      <h3>Hook por dor universal da construção civil</h3>
+      <p class="copy-text" style="color:var(--text2);">O anúncio fala de "empresa de construção civil" ou "prestador de serviço de obra". A dor é a mesma: orçamento perdido, dono-gargalo, falta de processo. Mercado endereçável 10x maior.
+
+Landing page acolhe todos: "vidraçarias, serralherias, marmorarias, elétricas, climatização e empresas de serviço da construção civil."</p>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Recomendação:</strong> Rodar os dois em paralelo. 70% do budget em nichado (validação rápida), 30% em broad (teste de volume). Se o broad converter a CPL aceitável, escalar. O funil é o mesmo — só muda o hook do criativo.</div>
+</section>
+
+<!-- ══════ HOOKS ══════ -->
+<section id="hooks">
+  <h2 class="stitle">Hooks — Os 3 Primeiros Segundos</h2>
+  <p class="ssub">O hook decide se o dono para de rolar ou ignora. Cada hook abre com a dor na linguagem deles.</p>
+
+  <h3 style="font-size:0.88rem;margin:0 0 14px;"><span class="pill pill-niche">Nichado</span> Vidraçaria / Serralheria</h3>
+
+  <div class="grid2">
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-lb">Less Bad</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"Você mandou 40 orçamentos esse mês. Sabe quantos morreram sem resposta?"</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-lb">Less Bad</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"35% dos orçamentos da sua vidraçaria morreram essa semana. Sem follow-up."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-lb">Less Bad</span> <span class="pill pill-img">Imagem</span></div>
+      <p class="copy-text"><span class="highlight">"Aquele orçamento de R$15 mil que você mandou quinta? Seu concorrente já fechou."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-mg">More Good</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"Uma serralheria em Caxias do Sul foi de R$80K pra R$220K por mês. Mudou uma coisa."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-st">Status</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"Seu concorrente está respondendo lead em 5 minutos. Você ainda nem viu a mensagem."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-rs">Risco Social</span> <span class="pill pill-img">Imagem</span></div>
+      <p class="copy-text"><span class="highlight">"Você abriu sua vidraçaria pra ter liberdade. Hoje trabalha 14h e não tira férias."</span></p>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.88rem;margin:28px 0 14px;"><span class="pill pill-broad">Amplo</span> Construção Civil / Serviços de Obra</h3>
+
+  <div class="grid2">
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-lb">Less Bad</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"Você manda orçamento, o cliente some, e você não faz ideia de por quê."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-lb">Less Bad</span> <span class="pill pill-img">Imagem</span></div>
+      <p class="copy-text"><span class="highlight">"80% das empresas de obra no Brasil não sabem quanto perdem por mês em orçamento sem resposta."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-mg">More Good</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"E se você soubesse exatamente quanto sua empresa perde em receita invisível? Em 6 minutos você descobre."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-rs">Risco Social</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"Sua empresa de obra fatura bem. Mas no fim do mês, cadê o dinheiro?"</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-st">Status</span> <span class="pill pill-img">Imagem</span></div>
+      <p class="copy-text"><span class="highlight">"Empresas de construção civil que estruturaram o comercial crescem 40% mais. As que não estruturaram, ficam no mesmo lugar."</span></p>
+    </div>
+    <div class="copy-block">
+      <div class="copy-label"><span class="pill pill-lb">Less Bad</span> <span class="pill pill-video">Vídeo</span></div>
+      <p class="copy-text"><span class="highlight">"Se você tirar 2 semanas de férias, o que acontece com as vendas da sua empresa? Se a resposta é 'param', assiste esse vídeo."</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ANÚNCIOS FEED ══════ -->
+<section id="ads-feed">
+  <h2 class="stitle">Anúncios Completos (Feed)</h2>
+  <p class="ssub">Mockups de anúncios prontos para produzir. Texto primário + visual + headline + CTA.</p>
+
+  <div class="grid2">
+
+    <!-- AD 1: Nichado - Video -->
+    <div class="ad-mock">
+      <div class="ad-header">
+        <div class="ad-avatar">Z</div>
+        <div class="ad-meta"><div class="ad-name">ZNITH</div><div class="ad-sponsor">Patrocinado</div></div>
+      </div>
+      <div class="ad-pills"><span class="pill pill-niche">Nichado</span><span class="pill pill-video">Vídeo 30s</span><span class="pill pill-lb">Less Bad</span></div>
+      <div class="ad-body">
+        <div class="ad-primary"><span class="hook">Você mandou 40 orçamentos esse mês.
+Sabe quantos morreram sem resposta?</span>
+
+<span class="body-text">Na maioria das vidraçarias, mais de 35% dos orçamentos somem sem nenhum follow-up. Ninguém liga. Ninguém manda WhatsApp. O cliente fecha com o concorrente que respondeu primeiro.
+
+Isso tem um nome: receita invisível. É dinheiro que sua empresa perde todo mês — e você nem sabe quanto.
+
+O Raio-X Comercial ZNITH calcula esse número em 6 minutos. Gratuito.</span></div>
+      </div>
+      <div class="ad-visual">
+        <div class="vis-text">R$756.000/ano</div>
+        <div class="vis-sub">Quanto uma vidraçaria de médio porte perde em receita invisível</div>
+        <div class="vis-badge">RAIO-X GRATUITO — 6 MINUTOS</div>
+      </div>
+      <div class="ad-cta-bar">
+        <div><div class="ad-headline">Descubra sua receita invisível</div><div class="ad-desc">znith.ai &bull; Diagnóstico comercial gratuito</div></div>
+        <div class="ad-cta-btn">Saiba Mais</div>
+      </div>
+    </div>
+
+    <!-- AD 2: Broad - Imagem -->
+    <div class="ad-mock">
+      <div class="ad-header">
+        <div class="ad-avatar">Z</div>
+        <div class="ad-meta"><div class="ad-name">ZNITH</div><div class="ad-sponsor">Patrocinado</div></div>
+      </div>
+      <div class="ad-pills"><span class="pill pill-broad">Amplo</span><span class="pill pill-img">Imagem</span><span class="pill pill-rs">Risco Social</span></div>
+      <div class="ad-body">
+        <div class="ad-primary"><span class="hook">Sua empresa de obra fatura bem.
+Mas no fim do mês, cadê o dinheiro?</span>
+
+<span class="body-text">Você manda orçamento e reza pro cliente voltar. Seu vendedor improvisa cada atendimento. Se você tira férias, a empresa para.
+
+Isso não é falta de cliente. É falta de arquitetura comercial.
+
+Em 6 minutos, o Raio-X Comercial mostra exatamente onde sua operação está vazando dinheiro. Gratuito. Sem compromisso.</span></div>
+      </div>
+      <div class="ad-visual">
+        <div class="vis-text">Onde está o dinheiro que sua empresa não vê?</div>
+        <div class="vis-sub">Diagnóstico comercial gratuito para empresas de construção civil</div>
+        <div class="vis-badge">FAZER MEU RAIO-X</div>
+      </div>
+      <div class="ad-cta-bar">
+        <div><div class="ad-headline">Raio-X Comercial gratuito</div><div class="ad-desc">znith.ai &bull; 15 perguntas, resultado imediato</div></div>
+        <div class="ad-cta-btn">Saiba Mais</div>
+      </div>
+    </div>
+
+    <!-- AD 3: Nichado - Case -->
+    <div class="ad-mock">
+      <div class="ad-header">
+        <div class="ad-avatar">Z</div>
+        <div class="ad-meta"><div class="ad-name">ZNITH</div><div class="ad-sponsor">Patrocinado</div></div>
+      </div>
+      <div class="ad-pills"><span class="pill pill-niche">Nichado</span><span class="pill pill-video">Vídeo 45s</span><span class="pill pill-mg">More Good</span></div>
+      <div class="ad-body">
+        <div class="ad-primary"><span class="hook">Uma serralheria em BH estava perdendo 35% dos orçamentos. Em 60 dias, mudou completamente.</span>
+
+<span class="body-text">O dono trabalhava 14 horas por dia. Não tinha processo. Follow-up era "quando lembrava". O CRM era o WhatsApp.
+
+Em 8 semanas de arquitetura comercial, estruturamos: cadência de follow-up, pipeline no CRM, playbook pro vendedor. 12 propostas que estavam "mortas" foram recuperadas.
+
+Quer ver onde tá o dinheiro que você tá perdendo?</span></div>
+      </div>
+      <div class="ad-visual">
+        <div class="vis-text">12 propostas recuperadas em 60 dias</div>
+        <div class="vis-sub">Serralheria &bull; Belo Horizonte &bull; Case real</div>
+        <div class="vis-badge">FAZER MEU RAIO-X GRATUITO</div>
+      </div>
+      <div class="ad-cta-bar">
+        <div><div class="ad-headline">Quanto você está perdendo?</div><div class="ad-desc">znith.ai &bull; Descubra em 6 minutos</div></div>
+        <div class="ad-cta-btn">Saiba Mais</div>
+      </div>
+    </div>
+
+    <!-- AD 4: Broad - Férias -->
+    <div class="ad-mock">
+      <div class="ad-header">
+        <div class="ad-avatar">Z</div>
+        <div class="ad-meta"><div class="ad-name">ZNITH</div><div class="ad-sponsor">Patrocinado</div></div>
+      </div>
+      <div class="ad-pills"><span class="pill pill-broad">Amplo</span><span class="pill pill-video">Vídeo 30s</span><span class="pill pill-lb">Less Bad</span></div>
+      <div class="ad-body">
+        <div class="ad-primary"><span class="hook">Se você tirar 2 semanas de férias, o que acontece com as vendas?</span>
+
+<span class="body-text">Se a resposta é "param" — o problema não é a equipe. É a ausência de processo.
+
+Sua empresa depende de você pra vender. Pra orçar. Pra fechar. Pra cobrar. Isso não é ter uma empresa. É ser refém do próprio negócio.
+
+O Raio-X Comercial mostra exatamente quais processos estão travados na sua cabeça — e quanto isso custa por mês.</span></div>
+      </div>
+      <div class="ad-visual">
+        <div class="vis-text">Sua empresa funciona sem você?</div>
+        <div class="vis-sub">15 perguntas. 6 minutos. O diagnóstico mais honesto que já fizeram da sua operação.</div>
+        <div class="vis-badge">DIAGNÓSTICO GRATUITO</div>
+      </div>
+      <div class="ad-cta-bar">
+        <div><div class="ad-headline">Fazer o Raio-X Comercial</div><div class="ad-desc">znith.ai &bull; Gratuito, resultado imediato</div></div>
+        <div class="ad-cta-btn">Saiba Mais</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ CARROSSÉIS ══════ -->
+<section id="carrossel">
+  <h2 class="stitle">Carrosséis</h2>
+  <p class="ssub">Formato de alto engajamento. Cada slide = 1 dor reconhecível. Último slide = CTA.</p>
+
+  <h3 style="font-size:0.85rem;margin:0 0 10px;"><span class="pill pill-niche">Nichado</span> "5 Gargalos da Sua Vidraçaria"</h3>
+  <div class="carousel-mock">
+    <div class="cslide"><div class="slide-num">SLIDE 1 — CAPA</div><div class="slide-title">5 gargalos que toda vidraçaria enfrenta (e não sabe)</div><div class="slide-body">Arrasta pra ver se você se reconhece em algum.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 2</div><div class="slide-title">O dono que vende e instala ao mesmo tempo</div><div class="slide-body">Você mede, orça, fecha, acompanha a obra e ainda cobra. Se ficar doente, a empresa para.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 3</div><div class="slide-title">Follow-up que não existe</div><div class="slide-body">Mandou o orçamento? Esperou o cliente voltar? Ele não voltou. Seu concorrente ligou antes.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 4</div><div class="slide-title">"CRM? A gente usa WhatsApp e caderno"</div><div class="slide-body">Informação do cliente na cabeça de uma pessoa. Se essa pessoa sai, leva a carteira inteira.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 5</div><div class="slide-title">Receita que oscila sem ninguém saber por quê</div><div class="slide-body">Mês bom, mês ruim. Nenhuma previsibilidade. O faturamento acontece — não é planejado.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 6</div><div class="slide-title">Vendedor que sai e abre concorrência</div><div class="slide-body">Sem processo documentado, sem playbook. O vendedor bom leva tudo: conhecimento, contatos, clientes.</div></div>
+    <div class="cslide cta-slide"><div class="slide-num">SLIDE 7 — CTA</div><div class="slide-title">O Raio-X Comercial mostra exatamente onde você está perdendo dinheiro.</div><div class="slide-body">Gratuito. 6 minutos. Resultado imediato com os 3 maiores gargalos da sua operação. Clica no link.</div></div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:20px 0 10px;"><span class="pill pill-broad">Amplo</span> "O Que Separa Empresas de Obra Que Crescem das Que Só Sobrevivem"</h3>
+  <div class="carousel-mock">
+    <div class="cslide"><div class="slide-num">SLIDE 1 — CAPA</div><div class="slide-title">O que separa empresas de obra que crescem das que só sobrevivem</div><div class="slide-body">Não é mais cliente. Não é preço. Arrasta.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 2</div><div class="slide-title">As que crescem sabem quanto perdem</div><div class="slide-body">Sabem quantos orçamentos foram enviados, quantos voltaram, e quanto cada orçamento perdido custou.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 3</div><div class="slide-title">As que crescem têm processo, não improviso</div><div class="slide-body">Se o dono tira férias, o comercial continua. Existe playbook, cadência e pipeline — não só WhatsApp.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 4</div><div class="slide-title">As que crescem fazem follow-up como ritual</div><div class="slide-body">Não "quando lembra". Dia 1, dia 3, dia 7. Automático. O cliente que ia sumir volta.</div></div>
+    <div class="cslide"><div class="slide-num">SLIDE 5</div><div class="slide-title">As que crescem sabem de onde vem o lucro</div><div class="slide-body">Não confundem faturamento com lucro. Sabem o custo de cada obra e quanto sobra de verdade.</div></div>
+    <div class="cslide cta-slide"><div class="slide-num">SLIDE 6 — CTA</div><div class="slide-title">Em qual grupo a sua empresa está?</div><div class="slide-body">O Raio-X Comercial ZNITH mostra em 6 minutos. Gratuito. Resultado imediato. Link na bio.</div></div>
+  </div>
+</section>
+
+<!-- ══════ HEADLINES LP ══════ -->
+<section id="headlines">
+  <h2 class="stitle">Headlines de Landing Page</h2>
+  <p class="ssub">Opções para teste A/B. Versão nichada e ampla. A sub-headline é sempre a mesma: "15 perguntas. 6 minutos. Resultado imediato."</p>
+
+  <h3 style="font-size:0.85rem;margin:0 0 12px;"><span class="pill pill-niche">Nichado</span> LP /raio-x (Vidraçaria/Serralheria)</h3>
+  <div class="hl-grid">
+    <div class="hl-card niche">
+      <div class="hl-label">Opção A — Receita Invisível</div>
+      <div class="hl-text">Quanto da receita da sua vidraçaria está escapando sem você ver?</div>
+      <div class="hl-sub">15 perguntas. 6 minutos. Um relatório com os 3 maiores gargalos da sua operação comercial — grátis.</div>
+    </div>
+    <div class="hl-card niche">
+      <div class="hl-label">Opção B — Dono-Gargalo</div>
+      <div class="hl-text">Sua serralheria depende de você pra tudo. Descubra quanto isso custa.</div>
+      <div class="hl-sub">O Raio-X Comercial mostra onde sua operação trava — e o que fazer primeiro. Gratuito.</div>
+    </div>
+    <div class="hl-card niche">
+      <div class="hl-label">Opção C — Follow-up</div>
+      <div class="hl-text">Sua vidraçaria manda orçamento e reza pro cliente voltar?</div>
+      <div class="hl-sub">Descubra em 6 minutos quanto você perde por mês em orçamento sem follow-up.</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:28px 0 12px;"><span class="pill pill-broad">Amplo</span> LP /raio-x (Construção Civil)</h3>
+  <div class="hl-grid">
+    <div class="hl-card broad">
+      <div class="hl-label">Opção A — Universal</div>
+      <div class="hl-text">Quanto da receita da sua empresa está escapando sem você ver?</div>
+      <div class="hl-sub">Diagnóstico comercial gratuito para vidraçarias, serralherias, marmorarias, elétricas e empresas de serviço da construção civil.</div>
+    </div>
+    <div class="hl-card broad">
+      <div class="hl-label">Opção B — Provocação</div>
+      <div class="hl-text">Sua empresa de obra fatura. Mas você sabe quanto sobra de verdade?</div>
+      <div class="hl-sub">15 perguntas. 6 minutos. O diagnóstico mais honesto que já fizeram da sua operação comercial.</div>
+    </div>
+    <div class="hl-card broad">
+      <div class="hl-label">Opção C — Férias</div>
+      <div class="hl-text">Se você tirar férias, sua empresa para de vender?</div>
+      <div class="hl-sub">Descubra onde sua operação comercial depende demais de você — e quanto isso custa por mês.</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:28px 0 12px;">Pre-headlines (acima da headline principal)</h3>
+  <div class="grid2">
+    <div class="copy-block"><div class="copy-label">Nichado</div><p class="copy-text" style="color:var(--gold);font-size:0.85rem;">"Diagnóstico comercial gratuito para vidraçarias e serralherias"</p></div>
+    <div class="copy-block"><div class="copy-label">Amplo</div><p class="copy-text" style="color:var(--gold);font-size:0.85rem;">"Diagnóstico comercial gratuito para empresas de construção civil"</p></div>
+  </div>
+</section>
+
+<!-- ══════ CTAS ══════ -->
+<section id="ctas">
+  <h2 class="stitle">CTAs — Botões e Chamadas para Ação</h2>
+  <p class="ssub">Variações para testar em LPs, anúncios e emails. Linguagem do setor, não jargão de marketing.</p>
+
+  <h3 style="font-size:0.85rem;margin:0 0 12px;">Botões Principais (Landing Page)</h3>
+  <div class="grid2">
+    <div class="copy-block"><div class="copy-label">CTA Primário</div><p class="copy-text"><span class="highlight">Fazer Meu Raio-X Comercial →</span>
+<span style="color:var(--text2);font-size:0.74rem;">Subtexto: "Gratuito. Resultado em 6 minutos."</span></p></div>
+    <div class="copy-block"><div class="copy-label">Variação A</div><p class="copy-text"><span class="highlight">Descobrir Minha Receita Invisível →</span>
+<span style="color:var(--text2);font-size:0.74rem;">Subtexto: "15 perguntas. Sem compromisso."</span></p></div>
+    <div class="copy-block"><div class="copy-label">Variação B</div><p class="copy-text"><span class="highlight">Ver Onde Minha Empresa Está Perdendo →</span>
+<span style="color:var(--text2);font-size:0.74rem;">Subtexto: "Diagnóstico gratuito e confidencial."</span></p></div>
+    <div class="copy-block"><div class="copy-label">Variação C</div><p class="copy-text"><span class="highlight">Começar o Diagnóstico Gratuito →</span>
+<span style="color:var(--text2);font-size:0.74rem;">Subtexto: "Resultado imediato com plano de ação."</span></p></div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:24px 0 12px;">CTAs por Perfil de Resultado</h3>
+  <div class="grid2">
+    <div class="copy-block" style="border-left:3px solid var(--orange);">
+      <div class="copy-label">Movimento (41-65)</div>
+      <p class="copy-text"><span class="highlight">Agendar Leitura Estratégica com Leilaine →</span>
+<span style="color:var(--text2);font-size:0.74rem;">"45 minutos. Gratuito. Sem compromisso de contratação."</span></p>
+    </div>
+    <div class="copy-block" style="border-left:3px solid var(--green);">
+      <div class="copy-label">Maturação (66-85)</div>
+      <p class="copy-text"><span class="highlight">Agendar Leitura Estratégica Prioritária →</span>
+<span style="color:var(--text2);font-size:0.74rem;">"Sua operação se qualifica. Vagas limitadas este mês."</span></p>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.85rem;margin:24px 0 12px;">CTAs de Anúncio (headline + description)</h3>
+  <div class="grid2">
+    <div class="copy-block"><div class="copy-label">Opção 1</div><p class="copy-text"><span class="highlight">Descubra sua receita invisível</span>
+<span style="color:var(--text2);">znith.ai &bull; Diagnóstico comercial gratuito</span></p></div>
+    <div class="copy-block"><div class="copy-label">Opção 2</div><p class="copy-text"><span class="highlight">Quanto você perde por mês sem saber?</span>
+<span style="color:var(--text2);">znith.ai &bull; Raio-X Comercial em 6 minutos</span></p></div>
+    <div class="copy-block"><div class="copy-label">Opção 3</div><p class="copy-text"><span class="highlight">Sua operação tem receita invisível</span>
+<span style="color:var(--text2);">znith.ai &bull; Descubra quanto em 6 minutos</span></p></div>
+    <div class="copy-block"><div class="copy-label">Opção 4</div><p class="copy-text"><span class="highlight">O diagnóstico que ninguém fez da sua empresa</span>
+<span style="color:var(--text2);">znith.ai &bull; 15 perguntas. Resultado imediato.</span></p></div>
+  </div>
+</section>
+
+<!-- ══════ EMAILS ══════ -->
+<section id="emails">
+  <h2 class="stitle">Emails — Sequência "A Arquitetura Invisível"</h2>
+  <p class="ssub">Amostra dos 3 primeiros emails da sequência de nurture para leads qualificados (Movimento/Maturação).</p>
+
+  <div class="email-mock">
+    <div class="email-header">
+      <div class="email-from">De: Leilaine Campioto &lt;leilaine@znith.ai&gt;</div>
+      <div class="email-subject">Seu Raio-X está pronto — e tem um número que você precisa ver</div>
+    </div>
+    <div class="email-body"><strong>[Nome]</strong>, tudo bem?
+
+Seu Raio-X Comercial ficou pronto. O relatório completo está em anexo.
+
+Mas antes de abrir, quero que você preste atenção em um número: a <strong>receita invisível</strong>.
+
+É o dinheiro que sua empresa perde todo mês por falta de processo — orçamento sem follow-up, cliente antigo sem contato, lead que sumiu. Não é falta de cliente. É falta de arquitetura.
+
+No seu caso, estimamos que esse número fica entre <strong>R$[X] e R$[Y] por ano</strong>.
+
+Abre o PDF. Página 2. Olha o número. Depois me diz se faz sentido conversar.
+
+<a class="email-cta">Baixar Meu Relatório Completo</a>
+
+Leilaine Campioto
+ZNITH — Arquitetura Comercial com Direção</div>
+  </div>
+
+  <div class="email-mock">
+    <div class="email-header">
+      <div class="email-from">De: Leilaine Campioto &lt;leilaine@znith.ai&gt;</div>
+      <div class="email-subject">O cemitério de ferramentas (e por que seu CRM não te salvou)</div>
+    </div>
+    <div class="email-body"><strong>[Nome]</strong>,
+
+Sabe aquele CRM que você comprou e nunca usou direito? Ou a planilha que ia organizar tudo? Ou o treinamento de vendas que virou PDF esquecido?
+
+Você não é o único. A maioria das empresas que me procura já tentou "mais ferramenta" pelo menos 2 vezes. Não funcionou. E não é porque a ferramenta era ruim.
+
+<strong>É porque ferramenta sem arquitetura é decoração.</strong>
+
+Colocar CRM numa operação sem processo definido é como colocar GPS num carro sem volante. O GPS sabe pra onde ir. Mas quem dirige?
+
+A primeira coisa que faço quando entro numa empresa é: esquecer as ferramentas. Antes de decidir o que usar, a gente precisa saber como funciona. Depois — e só depois — a ferramenta certa entra no lugar certo.
+
+No seu Raio-X, os gargalos que apareceram são exatamente disso: problemas de <strong>processo</strong>, não de ferramenta.
+
+Se quiser que eu olhe a sua operação de perto, a Leitura Estratégica é o próximo passo. 45 minutos. Sem custo. Sem compromisso.
+
+<a class="email-cta">Agendar Leitura Estratégica</a>
+
+Leilaine</div>
+  </div>
+
+  <div class="email-mock">
+    <div class="email-header">
+      <div class="email-from">De: Leilaine Campioto &lt;leilaine@znith.ai&gt;</div>
+      <div class="email-subject">O que R$500 milhões em vendas me ensinaram sobre processo comercial</div>
+    </div>
+    <div class="email-body"><strong>[Nome]</strong>,
+
+Nos últimos 20 anos eu participei da estruturação comercial de empresas que, somadas, movimentaram mais de R$500 milhões em vendas. Ajudei uma a ir de R$20 milhões pra R$80 milhões por ano.
+
+Sabe o que todas tinham em comum antes de estruturar?
+
+<strong>O dono era o processo.</strong>
+
+Ele sabia vender. Ele sabia fechar. Ele sabia cobrar. E por isso achava que o problema era "a equipe não faz o que eu faço".
+
+O problema nunca foi a equipe. O problema era que o que ele fazia não estava documentado, treinado e sistematizado. Estava na cabeça dele. E o que está na cabeça de uma pessoa não é processo — é dependência.
+
+Quando a gente tira o processo da cabeça do dono e coloca num sistema, duas coisas acontecem:
+1. A equipe começa a funcionar
+2. O dono começa a respirar
+
+Se isso faz sentido pra você, a Leitura Estratégica é onde a gente começa.
+
+<a class="email-cta">Agendar Minha Leitura</a>
+
+Leilaine Campioto
+20+ anos | R$500M+ em vendas estruturadas</div>
+  </div>
+</section>
+
+<!-- ══════ WHATSAPP ══════ -->
+<section id="whatsapp">
+  <h2 class="stitle">WhatsApp — Templates de Mensagem</h2>
+  <p class="ssub">Mensagens automáticas (Evolution API) e templates para follow-up manual. Curtas, diretas, tom de conversa.</p>
+
+  <div class="grid2">
+
+    <div class="copy-block" style="border-left:3px solid var(--green);">
+      <div class="copy-label">Boas-vindas pós Raio-X (Automático — D0)</div>
+      <p class="copy-text">Oi <span class="highlight">[Nome]</span>! Aqui é da ZNITH. 👋
+
+Vi que você completou o Raio-X Comercial. Seu perfil deu <span class="highlight">[Operação em Movimento]</span>.
+
+O relatório com os 3 maiores gargalos está no seu email. Se não chegou, me avisa aqui que reenvio.
+
+Qualquer dúvida sobre o resultado, responde aqui.</p>
+    </div>
+
+    <div class="copy-block" style="border-left:3px solid var(--orange);">
+      <div class="copy-label">Follow-up D+3 (Automático)</div>
+      <p class="copy-text"><span class="highlight">[Nome]</span>, tudo bem?
+
+Você viu o relatório do Raio-X? Queria saber se o número da receita invisível fez sentido pra sua realidade.
+
+Se quiser, posso te explicar rapidinho o que aqueles gargalos significam na prática pro seu negócio.</p>
+    </div>
+
+    <div class="copy-block" style="border-left:3px solid var(--blue);">
+      <div class="copy-label">Convite Leitura (Semi-automático — D+7)</div>
+      <p class="copy-text"><span class="highlight">[Nome]</span>, última mensagem sobre o Raio-X.
+
+Pelo seu perfil, faz sentido uma conversa mais profunda. A Leitura Estratégica são 45 minutos com a Leilaine — ela olha sua operação ao vivo e identifica os 2-3 gargalos que mais custam dinheiro.
+
+Sem custo. Sem compromisso de contratação.
+
+Se tiver interesse, é só clicar aqui: <span class="highlight">[link /agendar]</span>
+
+Se não for o momento, tudo bem. Boa sorte com a operação! 🤝</p>
+    </div>
+
+    <div class="copy-block" style="border-left:3px solid var(--purple);">
+      <div class="copy-label">Abandon — Não completou o quiz (D+1)</div>
+      <p class="copy-text"><span class="highlight">[Nome]</span>, vi que você começou o Raio-X Comercial mas não terminou.
+
+Faltam só <span class="highlight">[X]</span> perguntas pro resultado. Leva mais uns 3 minutos.
+
+Quer retomar de onde parou? <span class="highlight">[link retomada]</span></p>
+    </div>
+
+    <div class="copy-block" style="border-left:3px solid var(--gold);">
+      <div class="copy-label">Confirmação Leitura (Automático)</div>
+      <p class="copy-text">Leitura Estratégica confirmada! ✅
+
+📅 <span class="highlight">[Data]</span> às <span class="highlight">[Hora]</span>
+👤 Com a Leilaine Campioto
+⏱️ 45 minutos
+📍 Link da reunião: <span class="highlight">[link]</span>
+
+Em 45 minutos, você vai ver sua operação comercial de um jeito que ninguém te mostrou antes.
+
+Até lá!</p>
+    </div>
+
+    <div class="copy-block" style="border-left:3px solid var(--cyan);">
+      <div class="copy-label">Lembrete 24h antes (Automático)</div>
+      <p class="copy-text"><span class="highlight">[Nome]</span>, lembrete: amanhã às <span class="highlight">[Hora]</span> tem a Leitura Estratégica com a Leilaine.
+
+Link: <span class="highlight">[link]</span>
+
+Dica: tenha em mente quantos orçamentos você enviou no último mês e quantos voltaram. Vai ser útil na conversa.</p>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<div class="footer">ZNITH — Amostras de copy produzidas por Reis IA Agency &bull; Maio 2026 &bull; Documento de trabalho</div>
+
+</body>
+</html>

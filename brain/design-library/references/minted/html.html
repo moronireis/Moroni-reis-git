@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<!--
+  MINTED.COM — WEDDING INVITATIONS PAGE
+  Source: https://www.minted.com/wedding-invitations
+  Harvested: 2026-05-02
+  Method: WebFetch (rendered page content + URL extraction)
+  Note: WebFetch returns the page post-render. Raw JS bundles and CSS files are
+  served from assets.minted.com CDN (see stack-detected.md for bundle URLs).
+  This reconstruction preserves all harvested class names, data URLs,
+  product structures, and content hierarchy as faithfully as possible.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitations | Elegant &amp; Customizable | Minted</title>
+  <meta name="description" content="Elegant and customizable wedding invitations from independent artists. Free recipient addressing. Up to 10 free samples. Starting at $2.00 per card." />
+
+  <!-- Minted loads CSS via hashed bundles from assets.minted.com CDN -->
+  <!-- Example bundle pattern: assets.minted.com/static/css/[hash].chunk.css -->
+
+  <!-- Logo assets from CDN -->
+  <!-- https://cdn3.minted.com/files/content/header/minted_wedding_logo_desktop_v2.svg -->
+  <!-- https://cdn3.minted.com/files/content/header/minted_logo_desktop_v2.svg -->
+
+  <!-- Cloudinary image transforms used throughout:
+    Base URL: https://assets.minted.com/image/upload/
+    Transforms:
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero          (standard portrait hero)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Detail         (detail view)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Rounded-Corners  (rounded card)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Mini-Scallop     (scallop edge)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Arch              (arch shape)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Waved-Frame       (wave frame)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Classic-Oval      (classic oval)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Landscape-A7_Hero                  (landscape)
+      c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Square-6x6_Hero-letterpress        (square letterpress)
+      q_95 added for letterpress and foil variants (higher quality threshold)
+    Thumbnail transform: dpr_2.0,q_auto,w_112
+  -->
+
+  <style>
+    /* ===================================================
+       RECONSTRUCTED MINTED DESIGN SYSTEM
+       Based on: visual analysis + class extraction
+       Date: 2026-05-02
+    =================================================== */
+
+    /* --- RESET & BASE --- */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #FAFAF8; /* Minted warm off-white — not pure white */
+      color: #2B2B2B;            /* Near-black for primary text */
+      font-family: "Freight Text Pro", Georgia, "Times New Roman", serif;
+      /* Minted uses Freight Text Pro as body serif — confirmed via visual analysis */
+      /* Secondary sans-serif stack for UI elements: */
+      /* font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    }
+
+    /* --- PROMOTIONAL BANNER --- */
+    .promo-banner {
+      background-color: #F2EDE8; /* Warm cream */
+      color: #2B2B2B;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid #E5DDD5;
+    }
+
+    .promo-banner a {
+      color: #2B2B2B;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .promo-carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .promo-carousel__arrow {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      opacity: 0.6;
+    }
+
+    /* --- MAIN NAVIGATION --- */
+    .site-header {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #E8E4DF;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-header__inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-header__logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-nav__item {
+      position: relative;
+    }
+
+    .site-nav__link {
+      display: block;
+      padding: 22px 14px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #2B2B2B;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .site-nav__link:hover { color: #8C7B6E; }
+
+    .site-header__utilities {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-utility {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #2B2B2B;
+      padding: 4px 8px;
+      text-decoration: none;
+    }
+
+    /* --- WEDDING SUB-NAV --- */
+    .wedding-subnav {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #E8E4DF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      padding: 0 24px;
+      height: 44px;
+      overflow-x: auto;
+    }
+
+    .wedding-subnav__link {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      color: #5C5040;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .wedding-subnav__link:hover,
+    .wedding-subnav__link.active {
+      color: #2B2B2B;
+      border-bottom-color: #2B2B2B;
+    }
+
+    /* --- BREADCRUMB --- */
+    .breadcrumb {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      color: #8C7B6E;
+    }
+
+    .breadcrumb a {
+      color: #8C7B6E;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .breadcrumb__separator { color: #C4B8AA; }
+
+    .breadcrumb__current { color: #2B2B2B; }
+
+    /* --- PAGE LAYOUT --- */
+    .page-layout {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* --- FILTER SIDEBAR --- */
+    .filter-sidebar {
+      position: sticky;
+      top: 108px;
+      padding: 0;
+    }
+
+    .filter-sidebar__title {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2B2B2B;
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E8E4DF;
+    }
+
+    .filter-group {
+      border-bottom: 1px solid #E8E4DF;
+      padding: 0;
+    }
+
+    .filter-group__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .filter-group__label {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #2B2B2B;
+      letter-spacing: 0.02em;
+    }
+
+    .filter-group__toggle {
+      font-size: 16px;
+      color: #8C7B6E;
+      line-height: 1;
+    }
+
+    .filter-group__options {
+      padding: 0 0 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .filter-option input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      border: 1px solid #C4B8AA;
+      border-radius: 2px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .filter-option input[type="checkbox"]:checked {
+      background-color: #2B2B2B;
+      border-color: #2B2B2B;
+    }
+
+    .filter-option__label {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #5C5040;
+    }
+
+    /* --- MAIN CONTENT AREA --- */
+    .main-content { min-width: 0; }
+
+    /* --- CATEGORY SCROLL STRIP --- */
+    .category-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      margin-bottom: 8px;
+      scrollbar-width: none;
+    }
+
+    .category-strip::-webkit-scrollbar { display: none; }
+
+    .category-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      width: 72px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .category-chip__image {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .category-chip__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .category-chip:hover .category-chip__image,
+    .category-chip.active .category-chip__image {
+      border-color: #2B2B2B;
+    }
+
+    .category-chip__label {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: #5C5040;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* Category chip images from CDN:
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/56bf4428-e296-11f0-b4f3-97b9d8bf6108.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/64266131-e296-11f0-a578-774a9940e67f.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/6df9f692-e296-11f0-881a-f3091eeb6f93.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/7d16204c-e296-11f0-ab88-55a7cb399d14.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/b25727f6-e804-11f0-b190-537911f931d4.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/af844d92-e804-11f0-97ab-fb35ac12ca17.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/ab866e59-e804-11f0-9040-63545d44f181.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/a89e7e2f-e804-11f0-b106-43bac589a3a3.jpg
+      https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/9d334ab3-e804-11f0-8332-c7170fc96ddb.jpg
+    -->
+
+    /* --- RESULTS TOOLBAR --- */
+    .results-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 16px;
+      border-bottom: 1px solid #E8E4DF;
+      margin-bottom: 24px;
+    }
+
+    .results-count {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #5C5040;
+    }
+
+    .sort-select {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #2B2B2B;
+      border: 1px solid #C4B8AA;
+      background: #FFFFFF;
+      padding: 6px 28px 6px 10px;
+      border-radius: 2px;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    /* --- PRODUCT GRID --- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 16px;
+      align-items: start;
+    }
+
+    /* Responsive: 3 cols at 1200px, 2 cols at 768px */
+    @media (max-width: 1200px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+      }
+      .filter-sidebar { display: none; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- PRODUCT CARD --- */
+    .product-card {
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-card__image-container {
+      position: relative;
+      width: 100%;
+      /* Aspect ratio ~4:5 for portrait A7 */
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background-color: #F0EBE5;
+    }
+
+    /* Hero image (primary) */
+    .product-card__image--primary {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Detail image (secondary) — revealed on hover */
+    .product-card__image--detail {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Thumbnail strip — 2-3 small images below main */
+    .product-card__thumbnails {
+      display: flex;
+      gap: 3px;
+      margin-top: 3px;
+    }
+
+    .product-card__thumbnail {
+      flex: 1;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      background-color: #F0EBE5;
+      cursor: pointer;
+    }
+
+    .product-card__thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s;
+    }
+
+    .product-card__thumbnail:hover img { opacity: 0.85; }
+
+    /* Hover state: reveal detail image */
+    .product-card:hover .product-card__image--primary { opacity: 0; }
+    .product-card:hover .product-card__image--detail { opacity: 1; }
+
+    /* Hover state: show quick-view button */
+    .product-card:hover .product-card__quick-view { opacity: 1; }
+
+    /* --- PRODUCT CARD BADGES --- */
+    .badge-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px;
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 7px;
+      border-radius: 2px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .badge--new-collection {
+      background-color: #2B2B2B;
+      color: #FFFFFF;
+    }
+
+    .badge--letterpress {
+      background-color: rgba(255,255,255,0.90);
+      color: #2B2B2B;
+      border: 1px solid #E8E4DF;
+    }
+
+    /* badge images from CDN:
+       https://cdn3.minted.com/files/content/minted_ui/letterpress_texture_icon.png
+       https://cdn3.minted.com/files/content/minted_ui/realfoil_gold.png
+       https://cdn3.minted.com/files/content/minted_ui/realfoil_silver.png
+    */
+
+    .badge--foil-gold {
+      background-color: rgba(255,255,255,0.90);
+      color: #8B6914;
+      border: 1px solid #D4AF37;
+    }
+
+    .badge--foil-silver {
+      background-color: rgba(255,255,255,0.90);
+      color: #5A5A5A;
+      border: 1px solid #C0C0C0;
+    }
+
+    /* Favorite button (heart) */
+    .product-card__favorite {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.85);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 2;
+    }
+
+    .product-card:hover .product-card__favorite { opacity: 1; }
+
+    .product-card__quick-view {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #FFFFFF;
+      color: #2B2B2B;
+      border: 1px solid #2B2B2B;
+      padding: 7px 16px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 3;
+      cursor: pointer;
+    }
+
+    .product-card__quick-view:hover { background-color: #2B2B2B; color: #FFFFFF; }
+
+    /* --- PRODUCT CARD META --- */
+    .product-card__meta {
+      padding: 10px 0 0;
+    }
+
+    .product-card__name {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic;
+      color: #2B2B2B;
+      margin: 0 0 2px;
+      line-height: 1.3;
+    }
+
+    .product-card__artist {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      color: #8C7B6E;
+      margin: 0 0 2px;
+    }
+
+    .product-card__artist a {
+      color: #8C7B6E;
+      text-decoration: none;
+    }
+
+    .product-card__artist a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .product-card__price {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      color: #5C5040;
+      margin: 0;
+    }
+
+    /* --- PROMOTIONAL MERCH BLOCKS (inline in grid) --- */
+    .merch-block {
+      grid-column: 1 / -1;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .merch-block img {
+      width: 100%;
+      display: block;
+    }
+
+    .merch-block__cta {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2B2B2B;
+      text-decoration: none;
+      border-bottom: 1px solid #2B2B2B;
+      padding-bottom: 1px;
+    }
+
+    /* --- PAGINATION --- */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      padding: 48px 0 32px;
+    }
+
+    .pagination__item {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #5C5040;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .pagination__item:hover { border-color: #C4B8AA; }
+
+    .pagination__item--active {
+      background-color: #2B2B2B;
+      color: #FFFFFF;
+      border-color: #2B2B2B;
+    }
+
+    .pagination__arrow {
+      padding: 0 8px;
+    }
+
+    /* --- CURATED COLLECTIONS STRIP --- */
+    .collections-section {
+      padding: 48px 0 32px;
+    }
+
+    .section-heading {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #2B2B2B;
+      margin: 0 0 24px;
+      text-align: center;
+    }
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      text-decoration: none;
+      display: block;
+    }
+
+    .collection-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .collection-card:hover img { transform: scale(1.04); }
+
+    .collection-card__label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 16px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      color: #FFFFFF;
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    /* --- SEO CONTENT SECTIONS --- */
+    .seo-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .seo-content h1 {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      font-style: italic;
+      color: #2B2B2B;
+      margin: 0 0 12px;
+      line-height: 1.3;
+    }
+
+    .seo-content h2 {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8C7B6E;
+      margin: 0 0 32px;
+    }
+
+    .seo-content p {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #5C5040;
+    }
+
+    /* --- FAQ ACCORDION --- */
+    .faq-section {
+      padding: 32px 0;
+      border-top: 1px solid #E8E4DF;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #E8E4DF;
+    }
+
+    .faq-item__question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      cursor: pointer;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #2B2B2B;
+      font-weight: 400;
+    }
+
+    .faq-item__answer {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #5C5040;
+      padding: 0 0 18px;
+      display: none;
+    }
+
+    .faq-item.open .faq-item__answer { display: block; }
+
+    /* --- TRUST SIGNALS ROW --- */
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 40px 0;
+      border-top: 1px solid #E8E4DF;
+      border-bottom: 1px solid #E8E4DF;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .trust-item__icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .trust-item__title {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2B2B2B;
+    }
+
+    .trust-item__description {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 14px;
+      color: #8C7B6E;
+      line-height: 1.5;
+    }
+
+    /* --- TESTIMONIALS --- */
+    .testimonials-section {
+      padding: 48px 0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E8E4DF;
+      padding: 24px;
+    }
+
+    .testimonial-card__stars {
+      color: #C4A35A; /* warm gold for stars only */
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card__text {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 14px;
+      font-style: italic;
+      color: #5C5040;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card__author {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: #8C7B6E;
+      letter-spacing: 0.04em;
+    }
+
+    /* --- EMAIL SIGNUP --- */
+    .email-signup {
+      background-color: #F2EDE8;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .email-signup__heading {
+      font-family: "Freight Text Pro", Georgia, serif;
+      font-size: 24px;
+      font-style: italic;
+      color: #2B2B2B;
+      margin: 0 0 8px;
+    }
+
+    .email-signup__form {
+      display: flex;
+      gap: 8px;
+      max-width: 480px;
+      margin: 20px auto 0;
+    }
+
+    .email-signup__input {
+      flex: 1;
+      padding: 12px 14px;
+      border: 1px solid #C4B8AA;
+      background: #FFFFFF;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #2B2B2B;
+      outline: none;
+      border-radius: 0;
+    }
+
+    .email-signup__input:focus { border-color: #2B2B2B; }
+
+    .btn-primary {
+      background-color: #2B2B2B;
+      color: #FFFFFF;
+      border: 1px solid #2B2B2B;
+      padding: 12px 24px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      border-radius: 0;
+    }
+
+    .btn-primary:hover {
+      background-color: #FFFFFF;
+      color: #2B2B2B;
+    }
+
+    /* Secondary (outline) button variant */
+    .btn-secondary {
+      background-color: transparent;
+      color: #2B2B2B;
+      border: 1px solid #2B2B2B;
+      padding: 10px 22px;
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 0;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background-color: #2B2B2B;
+      color: #FFFFFF;
+    }
+
+    /* Ghost link (text with arrow) */
+    .btn-ghost {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2B2B2B;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+
+    /* --- FOOTER --- */
+    .site-footer {
+      background-color: #FFFFFF;
+      border-top: 1px solid #E8E4DF;
+      padding: 48px 24px 24px;
+    }
+
+    .footer-grid {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #E8E4DF;
+    }
+
+    .footer-col__heading {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2B2B2B;
+      margin: 0 0 16px;
+    }
+
+    .footer-col__links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col__links a {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #8C7B6E;
+      text-decoration: none;
+    }
+
+    .footer-col__links a:hover { color: #2B2B2B; }
+
+    .footer-bottom {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      color: #8C7B6E;
+      text-decoration: none;
+    }
+
+    .footer-legal {
+      font-family: "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: #C4B8AA;
+      letter-spacing: 0.02em;
+    }
+
+    /* ===================================================
+       CLOUDINARY IMAGE URL PATTERN ANALYSIS
+       t_WEDDING_Portrait-A7_Hero variants:
+       - _Hero (standard rect)
+       - _Hero_Rounded-Corners
+       - _Hero_Mini-Scallop
+       - _Hero_Arch
+       - _Hero_Waved-Frame
+       - _Hero_Classic-Oval
+       t_WEDDING_Landscape-A7_Hero (for landscape format)
+       t_WEDDING_Square-6x6_Hero-letterpress (square letterpress)
+       All at w_250, dpr_2.0, f_auto, q_auto:eco
+       Letterpress/Foil variants add q_95 for quality boost
+    =================================================== */
+
+    /* ===================================================
+       CSS CLASS EVIDENCE (from page source)
+       .css-l088ss — Emotion-generated hash (CSS-in-JS)
+       .mntd_prf — Minted profiling/analytics param
+    =================================================== */
+
+  </style>
+</head>
+
+<body>
+
+<!-- PROMOTIONAL BANNER -->
+<div class="promo-banner">
+  <div class="promo-carousel">
+    <button class="promo-carousel__arrow" aria-label="Previous promotion">
+      <img src="https://cdn3.minted.com/files/content/CyclerArrowLeft-Lt.png" alt="" width="8" height="14" />
+    </button>
+    <span>15% off wedding invitations. Code: <strong>DAYOF26</strong>, ends Mon 5/4 &nbsp;<a href="#">See details</a></span>
+    <button class="promo-carousel__arrow" aria-label="Next promotion">
+      <img src="https://cdn3.minted.com/files/content/CyclerArrowRight-Lt.png" alt="" width="8" height="14" />
+    </button>
+  </div>
+</div>
+
+<!-- MAIN NAVIGATION -->
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a href="https://www.minted.com/" class="site-header__logo" aria-label="Minted home">
+      <img src="https://cdn3.minted.com/files/content/header/minted_wedding_logo_desktop_v2.svg"
+           alt="Minted Weddings" />
+    </a>
+    <nav aria-label="Primary navigation">
+      <ul class="site-nav">
+        <li class="site-nav__item">
+          <a href="https://www.minted.com/participate/overview" class="site-nav__link">Submit Artwork</a>
+        </li>
+        <li class="site-nav__item">
+          <a href="https://www.minted.com/design-vote" class="site-nav__link">Vote on Artwork</a>
+        </li>
+        <li class="site-nav__item">
+          <a href="https://www.minted.com/lp/trade" class="site-nav__link">Trade Program</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="site-header__utilities">
+      <a href="https://www.minted.com/" class="btn-utility">Favorites</a>
+      <a href="https://www.minted.com/cart" class="btn-utility">Cart</a>
+      <a href="https://www.minted.com/login" class="btn-utility">Sign In</a>
+    </div>
+  </div>
+</header>
+
+<!-- WEDDING SUB-NAVIGATION -->
+<nav class="wedding-subnav" aria-label="Wedding categories">
+  <a href="https://www.minted.com/save-the-date" class="wedding-subnav__link">Save the dates</a>
+  <a href="https://www.minted.com/wedding-invitations" class="wedding-subnav__link active">Invitations</a>
+  <a href="https://www.minted.com/wedding-websites" class="wedding-subnav__link">Wedding websites</a>
+  <a href="https://www.minted.com/wedding-stationery" class="wedding-subnav__link">Ceremony &amp; reception</a>
+  <a href="https://www.minted.com/" class="wedding-subnav__link">Shower &amp; parties</a>
+  <a href="https://www.minted.com/" class="wedding-subnav__link">Thank you cards</a>
+  <a href="https://www.minted.com/lp/wedding-resource-guide" class="wedding-subnav__link">Inspiration &amp; planning</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://www.minted.com/">Minted</a>
+  <span class="breadcrumb__separator">/</span>
+  <a href="https://www.minted.com/wedding">wedding</a>
+  <span class="breadcrumb__separator">/</span>
+  <span class="breadcrumb__current">Wedding Invitations</span>
+</nav>
+
+<!-- PROMO BLOCK: Day Of (inline merch block) -->
+<div style="max-width:1440px;margin:0 auto;padding:0 24px 16px;">
+  <div class="merch-block">
+    <img src="https://assets.minted.com/image/upload/f_auto,q_auto/q_auto/f_auto/Minted_Onsite_Assets/2026/CP/Wedding/269553_MB_Day-OfPromoEvent_Mob.jpg"
+         alt="20% off day of stationery and decor" />
+    <a href="#" class="merch-block__cta">Shop Now &rsaquo;</a>
+  </div>
+</div>
+
+<!-- PAGE LAYOUT: sidebar + main -->
+<div class="page-layout">
+
+  <!-- FILTER SIDEBAR -->
+  <aside class="filter-sidebar" aria-label="Product filters">
+    <h2 class="filter-sidebar__title">Refine</h2>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="true">
+        <span class="filter-group__label">Style</span>
+        <span class="filter-group__toggle">&#8722;</span>
+      </button>
+      <div class="filter-group__options">
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">New Collection</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Classic &amp; Formal</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Simple &amp; Minimalist</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Floral</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Greenery</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Vintage</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Modern</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Hand-Drawn</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span class="filter-option__label">Rustic &amp; Natural</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Color</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Printing Type</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Season</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Venue</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Photos on Front</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Format &amp; Size</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Wording</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Card Orientation</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Shape</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Trending</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Culture</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Photo Orientation</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Special Collection</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Foil Color</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Matching Products</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__header" aria-expanded="false">
+        <span class="filter-group__label">Typography</span>
+        <span class="filter-group__toggle">+</span>
+      </button>
+    </div>
+
+    <!-- SERVICE CTAs in sidebar -->
+    <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+      <a href="https://www.minted.com/lp/wedding-concierge" class="btn-secondary" style="text-align:center;font-size:10px;">
+        Book a Concierge Appointment
+      </a>
+      <a href="https://www.minted.com/wedding-invitation-samples" class="btn-secondary" style="text-align:center;font-size:10px;">
+        Order Free Samples
+      </a>
+      <a href="https://www.minted.com/lp/wedding-style-quiz" class="btn-secondary" style="text-align:center;font-size:10px;">
+        Take Our Style Quiz
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN PRODUCT CONTENT -->
+  <main class="main-content">
+
+    <!-- PAGE HEADING -->
+    <div class="seo-content" style="padding:0 0 24px;max-width:none;">
+      <h1>Elegant &amp; Customizable Wedding Invitations</h1>
+      <h2>Easily Customizable Invitations For Your Dream Wedding</h2>
+    </div>
+
+    <!-- CATEGORY SCROLL STRIP (Shop by Type circles) -->
+    <div class="category-strip" role="list">
+      <a class="category-chip" href="https://www.minted.com/foil-pressed-save-the-date-cards">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/56bf4428-e296-11f0-b4f3-97b9d8bf6108.jpg"
+               alt="Foil-Pressed" />
+        </div>
+        <span class="category-chip__label">Foil-Pressed</span>
+      </a>
+      <a class="category-chip" href="https://www.minted.com/letterpress-save-the-dates">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/64266131-e296-11f0-a578-774a9940e67f.jpg"
+               alt="Letterpress" />
+        </div>
+        <span class="category-chip__label">Letterpress</span>
+      </a>
+      <a class="category-chip" href="#">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/6df9f692-e296-11f0-881a-f3091eeb6f93.jpg"
+               alt="Photo Mount" />
+        </div>
+        <span class="category-chip__label">Photo Mount</span>
+      </a>
+      <a class="category-chip" href="#">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/7d16204c-e296-11f0-ab88-55a7cb399d14.jpg"
+               alt="Vellum" />
+        </div>
+        <span class="category-chip__label">Vellum</span>
+      </a>
+      <a class="category-chip" href="https://www.minted.com/save-the-date-magnets">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/b25727f6-e804-11f0-b190-537911f931d4.jpg"
+               alt="Magnet" />
+        </div>
+        <span class="category-chip__label">Magnet</span>
+      </a>
+      <a class="category-chip" href="https://www.minted.com/save-the-date-postcards">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/af844d92-e804-11f0-97ab-fb35ac12ca17.jpg"
+               alt="Postcard" />
+        </div>
+        <span class="category-chip__label">Postcard</span>
+      </a>
+      <a class="category-chip" href="#">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/ab866e59-e804-11f0-9040-63545d44f181.jpg"
+               alt="New Collection" />
+        </div>
+        <span class="category-chip__label">New Collection</span>
+      </a>
+      <a class="category-chip" href="#">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/a89e7e2f-e804-11f0-b106-43bac589a3a3.jpg"
+               alt="Classic &amp; Formal" />
+        </div>
+        <span class="category-chip__label">Classic &amp; Formal</span>
+      </a>
+      <a class="category-chip" href="#">
+        <div class="category-chip__image">
+          <img src="https://assets.minted.com/image/fetch/dpr_2.0,q_auto,w_112/https://cdn3.minted.com/category/assets/9d334ab3-e804-11f0-8332-c7170fc96ddb.jpg"
+               alt="Simple &amp; Minimalist" />
+        </div>
+        <span class="category-chip__label">Simple &amp; Minimalist</span>
+      </a>
+    </div>
+
+    <!-- RESULTS TOOLBAR -->
+    <div class="results-toolbar">
+      <span class="results-count">2,217 items</span>
+      <select class="sort-select" aria-label="Sort products">
+        <option>Sort: Featured</option>
+        <option>Newest</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+      </select>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid" role="list">
+
+      <!-- PRODUCT CARD 1: Barolo -->
+      <article class="product-card" role="listitem">
+        <a href="https://www.minted.com/product/wedding-invitations/MIN-GOW-INV/barolo?color=A&greeting=&shape=default" tabindex="0">
+          <div class="product-card__image-container">
+            <img class="product-card__image--primary"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Mini-Scallop/prod/artwork/INV/GOW/MIN-GOW-INV_A_FRT.jpg"
+                 alt="Barolo Wedding Invitation"
+                 loading="lazy" width="250" height="312" />
+            <img class="product-card__image--detail"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Detail/prod/artwork/INV/GOW/MIN-GOW-INV_A_FRT.jpg"
+                 alt="Barolo detail" loading="lazy" width="250" height="312" />
+            <button class="product-card__favorite" aria-label="Save Barolo to favorites">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path d="M7 12L1.5 6.5C0.5 5.5 0.5 3.5 2 2.5 3 2 4.5 2 5.5 3L7 4.5 8.5 3C9.5 2 11 2 12 2.5 13.5 3.5 13.5 5.5 12.5 6.5Z" stroke="#2B2B2B" stroke-width="1" fill="none"/>
+              </svg>
+            </button>
+            <div class="badge-container">
+              <span class="badge badge--new-collection">New Collection</span>
+            </div>
+          </div>
+          <div class="product-card__thumbnails">
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/GOW/MIN-GOW-INV-014A_A_PD.jpg"
+                   alt="Barolo envelope" loading="lazy" />
+            </div>
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/GOW/MIN-GOW-INV-002C_A_PD.jpg"
+                   alt="Barolo back" loading="lazy" />
+            </div>
+          </div>
+        </a>
+        <div class="product-card__meta">
+          <p class="product-card__name">Barolo</p>
+          <p class="product-card__artist">By <a href="https://www.minted.com/store/patriciacascino">Pati Cascino</a></p>
+        </div>
+      </article>
+
+      <!-- PRODUCT CARD 2: Vermilion (Letterpress) -->
+      <article class="product-card" role="listitem">
+        <a href="https://www.minted.com/product/letterpress-wedding-invitations/MIN-ZH7-LPI/vermilion">
+          <div class="product-card__image-container">
+            <img class="product-card__image--primary"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,q_95,t_WEDDING_Portrait-A7_Hero-letterpress/prod/artwork/LPI/ZH7/MIN-ZH7-LPI_A_SOLO.jpg"
+                 alt="Vermilion Letterpress Wedding Invitation"
+                 loading="lazy" width="250" height="312" />
+            <img class="product-card__image--detail"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,q_95,t_WEDDING_Portrait-A7_Detail-letterpress/prod/artwork/LPI/ZH7/MIN-ZH7-LPI_A_SOLO.jpg"
+                 alt="Vermilion detail" loading="lazy" width="250" height="312" />
+            <button class="product-card__favorite" aria-label="Save Vermilion to favorites">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path d="M7 12L1.5 6.5C0.5 5.5 0.5 3.5 2 2.5 3 2 4.5 2 5.5 3L7 4.5 8.5 3C9.5 2 11 2 12 2.5 13.5 3.5 13.5 5.5 12.5 6.5Z" stroke="#2B2B2B" stroke-width="1" fill="none"/>
+              </svg>
+            </button>
+            <div class="badge-container">
+              <span class="badge badge--letterpress">
+                <img src="https://cdn3.minted.com/files/content/minted_ui/letterpress_texture_icon.png" alt="" width="14" height="14" />
+                Letterpress
+              </span>
+            </div>
+          </div>
+          <div class="product-card__thumbnails">
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/LPI/ZH7/MIN-ZH7-LPI-014A_A_PD.jpg"
+                   alt="Vermilion envelope" loading="lazy" />
+            </div>
+          </div>
+        </a>
+        <div class="product-card__meta">
+          <p class="product-card__name">Vermilion</p>
+          <p class="product-card__artist">By <a href="https://www.minted.com/store/jennaholcomb">Jenna Holcomb</a></p>
+        </div>
+      </article>
+
+      <!-- PRODUCT CARD 3: Shiruko (Letterpress, Rounded Corners) -->
+      <article class="product-card" role="listitem">
+        <a href="https://www.minted.com/product/letterpress-wedding-invitations/MIN-ZFC-LPI/shiruko">
+          <div class="product-card__image-container">
+            <img class="product-card__image--primary"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,q_95,t_WEDDING_Portrait-A7_Hero_Rounded-Corners-letterpress/prod/artwork/LPI/ZFC/MIN-ZFC-LPI_A_SOLO.jpg"
+                 alt="Shiruko Letterpress Wedding Invitation"
+                 loading="lazy" width="250" height="312" />
+            <img class="product-card__image--detail"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,q_95,t_WEDDING_Portrait-A7_Detail-letterpress/prod/artwork/LPI/ZFC/MIN-ZFC-LPI_A_SOLO.jpg"
+                 alt="Shiruko detail" loading="lazy" width="250" height="312" />
+            <button class="product-card__favorite" aria-label="Save Shiruko to favorites">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path d="M7 12L1.5 6.5C0.5 5.5 0.5 3.5 2 2.5 3 2 4.5 2 5.5 3L7 4.5 8.5 3C9.5 2 11 2 12 2.5 13.5 3.5 13.5 5.5 12.5 6.5Z" stroke="#2B2B2B" stroke-width="1" fill="none"/>
+              </svg>
+            </button>
+            <div class="badge-container">
+              <span class="badge badge--letterpress">
+                <img src="https://cdn3.minted.com/files/content/minted_ui/letterpress_texture_icon.png" alt="" width="14" height="14" />
+                Letterpress
+              </span>
+            </div>
+          </div>
+          <div class="product-card__thumbnails">
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/LPI/ZFC/MIN-ZFC-LPI-014A_A_PD.jpg"
+                   alt="Shiruko envelope" loading="lazy" />
+            </div>
+          </div>
+        </a>
+        <div class="product-card__meta">
+          <p class="product-card__name">Shiruko</p>
+          <p class="product-card__artist">By <a href="https://www.minted.com/store/chocomocacino">Chocomocacino</a></p>
+        </div>
+      </article>
+
+      <!-- PRODUCT CARD 4: Folk Garden -->
+      <article class="product-card" role="listitem">
+        <a href="https://www.minted.com/product/wedding-invitations/MIN-LEU-INV/folk-garden">
+          <div class="product-card__image-container">
+            <img class="product-card__image--primary"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero_Waved-Frame/prod/artwork/INV/LEU/MIN-LEU-INV_A_FRT.jpg"
+                 alt="Folk Garden Wedding Invitation"
+                 loading="lazy" width="250" height="312" />
+            <img class="product-card__image--detail"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Detail/prod/artwork/INV/LEU/MIN-LEU-INV_A_FRT.jpg"
+                 alt="Folk Garden detail" loading="lazy" width="250" height="312" />
+            <button class="product-card__favorite" aria-label="Save Folk Garden to favorites">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path d="M7 12L1.5 6.5C0.5 5.5 0.5 3.5 2 2.5 3 2 4.5 2 5.5 3L7 4.5 8.5 3C9.5 2 11 2 12 2.5 13.5 3.5 13.5 5.5 12.5 6.5Z" stroke="#2B2B2B" stroke-width="1" fill="none"/>
+              </svg>
+            </button>
+          </div>
+          <div class="product-card__thumbnails">
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/LEU/MIN-LEU-INV-014A_A_PD.jpg"
+                   alt="Folk Garden envelope" loading="lazy" />
+            </div>
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/LEU/MIN-LEU-INV-002C_A_PD.jpg"
+                   alt="Folk Garden back" loading="lazy" />
+            </div>
+          </div>
+        </a>
+        <div class="product-card__meta">
+          <p class="product-card__name">Folk Garden</p>
+          <p class="product-card__artist">By <a href="https://www.minted.com/store/creostudy">Creo Study</a></p>
+        </div>
+      </article>
+
+      <!-- INLINE MERCH BLOCK: Color of the Year -->
+      <div class="merch-block">
+        <img src="https://assets.minted.com/image/upload/f_auto,q_auto/v1762800420/Minted_Onsite_Assets/2025/CP/Wedding/258341_Merch_Block_COTY_MOB.jpg"
+             alt="Wedding Color of the Year" />
+        <a href="https://www.minted.com/brides-collection" class="merch-block__cta">Explore Now &rsaquo;</a>
+      </div>
+
+      <!-- PRODUCT CARD 5: Blooming Path (Foil Gold) -->
+      <article class="product-card" role="listitem">
+        <a href="https://www.minted.com/product/foil-stamped-wedding-invitations/MIN-8UT-IFS/blooming-path">
+          <div class="product-card__image-container">
+            <img class="product-card__image--primary"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero/prod/artwork/IFS/8UT/MIN-8UT-IFS_A_FRTGOLD.jpg"
+                 alt="Blooming Path Foil Wedding Invitation"
+                 loading="lazy" width="250" height="312" />
+            <img class="product-card__image--detail"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Detail/prod/artwork/IFS/8UT/MIN-8UT-IFS_A_FRTGOLD.jpg"
+                 alt="Blooming Path detail" loading="lazy" width="250" height="312" />
+            <button class="product-card__favorite" aria-label="Save Blooming Path to favorites">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path d="M7 12L1.5 6.5C0.5 5.5 0.5 3.5 2 2.5 3 2 4.5 2 5.5 3L7 4.5 8.5 3C9.5 2 11 2 12 2.5 13.5 3.5 13.5 5.5 12.5 6.5Z" stroke="#2B2B2B" stroke-width="1" fill="none"/>
+              </svg>
+            </button>
+            <div class="badge-container">
+              <span class="badge badge--foil-gold">
+                <img src="https://cdn3.minted.com/files/content/minted_ui/realfoil_gold.png" alt="" width="14" height="14" />
+                Real Foil
+              </span>
+            </div>
+          </div>
+          <div class="product-card__thumbnails">
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/IFS/8UT/MIN-8UT-IFS-014A_A_PD.jpg"
+                   alt="Blooming Path envelope" loading="lazy" />
+            </div>
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/IFS/8UT/MIN-8UT-IFS-002C_A_PD.jpg"
+                   alt="Blooming Path suite" loading="lazy" />
+            </div>
+          </div>
+        </a>
+        <div class="product-card__meta">
+          <p class="product-card__name">Blooming Path</p>
+          <p class="product-card__artist">By <a href="https://www.minted.com/store/paola">Paola Benenati</a></p>
+        </div>
+      </article>
+
+      <!-- PRODUCT CARD 6: Greenwood (Foil Silver) -->
+      <article class="product-card" role="listitem">
+        <a href="https://www.minted.com/product/foil-stamped-wedding-invitations/MIN-1KF-IFS/greenwood">
+          <div class="product-card__image-container">
+            <img class="product-card__image--primary"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Hero/prod/artwork/IFS/1KF/MIN-1KF-IFS_A_FRTSILVER.jpg"
+                 alt="Greenwood Silver Foil Wedding Invitation"
+                 loading="lazy" width="250" height="312" />
+            <img class="product-card__image--detail"
+                 src="https://assets.minted.com/image/upload/c_scale,f_auto,q_auto:eco,w_250,dpr_2.0,t_WEDDING_Portrait-A7_Detail/prod/artwork/IFS/1KF/MIN-1KF-IFS_A_FRTSILVER.jpg"
+                 alt="Greenwood detail" loading="lazy" width="250" height="312" />
+            <button class="product-card__favorite" aria-label="Save Greenwood to favorites">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path d="M7 12L1.5 6.5C0.5 5.5 0.5 3.5 2 2.5 3 2 4.5 2 5.5 3L7 4.5 8.5 3C9.5 2 11 2 12 2.5 13.5 3.5 13.5 5.5 12.5 6.5Z" stroke="#2B2B2B" stroke-width="1" fill="none"/>
+              </svg>
+            </button>
+            <div class="badge-container">
+              <span class="badge badge--foil-silver">
+                <img src="https://cdn3.minted.com/files/content/minted_ui/realfoil_silver.png" alt="" width="14" height="14" />
+                Real Foil Silver
+              </span>
+            </div>
+          </div>
+          <div class="product-card__thumbnails">
+            <div class="product-card__thumbnail">
+              <img src="https://cdn3.minted.com/files/mintedProductsImages/MIN/IFS/1KF/MIN-1KF-IFS-014A_A_PD.jpg"
+                   alt="Greenwood envelope" loading="lazy" />
+            </div>
+          </div>
+        </a>
+        <div class="product-card__meta">
+          <p class="product-card__name">Greenwood</p>
+          <p class="product-card__artist">By <a href="https://www.minted.com/store/kellyschmidt">Kelly Schmidt</a></p>
+        </div>
+      </article>
+
+      <!-- INLINE MERCH BLOCK: Novelty Shapes -->
+      <div class="merch-block">
+        <img src="https://assets.minted.com/image/upload/f_auto,q_auto/Minted_Onsite_Assets/2026/CP/Wedding/269302_-_Onsite__Novelty_Shapes_Merch_Block__Mob.jpg"
+             alt="NEW! Novelty Shapes" />
+        <a href="https://www.minted.com/enclosure-cards" class="merch-block__cta">Shop Now &rsaquo;</a>
+      </div>
+
+      <!-- More products follow the same pattern — 2217 total items across 37 pages -->
+      <!-- Additional products extracted: Brasserie, Museo, Maximalist Poppies, Elizabeth,
+           Chantilly, Dewberry, Gates And Pillars, Silk, Delicate Vines, Lavender Dreams,
+           Summer Linen, Hilton, Penumbra, Court, Rose Ink, Victorian Trellis, Cherished,
+           Patterned Florals, Vienes, Simple Type, Romantic Garden, Parisian Garden,
+           Written In The Stars, Vintage Lovers, Aperitif, Rory, Marshland, Carlyle,
+           Threaded, Pillowy Border, Vintage Oval, Garden Trellis, Everlasting Romance,
+           Close-up, Cheers, Elegant Lillies, Dancing In The Garden, Posh, Isle,
+           Krytharaki, Linea, Blue Crest, Classic Cherries, Courthouse, Classic Toile,
+           Handwritten, Chinoiserie, Darcy, Ethereal Gardens, Hydrangea Bloom, Party On! -->
+
+    </div><!-- /.product-grid -->
+
+    <!-- PAGINATION -->
+    <nav class="pagination" aria-label="Pagination">
+      <a class="pagination__item pagination__arrow" href="#" aria-label="Previous page">&lsaquo;</a>
+      <a class="pagination__item pagination__item--active" href="#" aria-current="page">1</a>
+      <a class="pagination__item" href="#">2</a>
+      <a class="pagination__item" href="#">3</a>
+      <span class="pagination__item" aria-hidden="true">...</span>
+      <a class="pagination__item" href="#">37</a>
+      <a class="pagination__item pagination__arrow" href="#" aria-label="Next page">&rsaquo;</a>
+    </nav>
+
+    <!-- SEO CONTENT SECTIONS -->
+    <div class="seo-content">
+      <h2 class="section-heading" style="text-align:left;margin-bottom:16px;">Our Curated Wedding Invitation Collections</h2>
+      <div class="collections-section">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <a href="https://www.minted.com/foil-pressed-wedding-invitations" style="display:block;text-align:center;padding:12px;border:1px solid #E8E4DF;font-family:'Neue Haas Grotesk',Helvetica,Arial,sans-serif;font-size:12px;color:#5C5040;text-decoration:none;">Foil Wedding Invitations</a>
+          <a href="https://www.minted.com/classic-formal-wedding-invitations" style="display:block;text-align:center;padding:12px;border:1px solid #E8E4DF;font-family:'Neue Haas Grotesk',Helvetica,Arial,sans-serif;font-size:12px;color:#5C5040;text-decoration:none;">Classic &amp; Formal</a>
+          <a href="https://www.minted.com/simple-minimalist-wedding-invitations" style="display:block;text-align:center;padding:12px;border:1px solid #E8E4DF;font-family:'Neue Haas Grotesk',Helvetica,Arial,sans-serif;font-size:12px;color:#5C5040;text-decoration:none;">Simple &amp; Minimalist</a>
+          <a href="https://www.minted.com/rustic-wedding-invitations" style="display:block;text-align:center;padding:12px;border:1px solid #E8E4DF;font-family:'Neue Haas Grotesk',Helvetica,Arial,sans-serif;font-size:12px;color:#5C5040;text-decoration:none;">Rustic &amp; Natural</a>
+          <a href="https://www.minted.com/flower-botanical-wedding-invitations" style="display:block;text-align:center;padding:12px;border:1px solid #E8E4DF;font-family:'Neue Haas Grotesk',Helvetica,Arial,sans-serif;font-size:12px;color:#5C5040;text-decoration:none;">Floral &amp; Botanical</a>
+          <a href="https://www.minted.com/vintage-wedding-invitations" style="display:block;text-align:center;padding:12px;border:1px solid #E8E4DF;font-family:'Neue Haas Grotesk',Helvetica,Arial,sans-serif;font-size:12px;color:#5C5040;text-decoration:none;">Vintage</a>
+        </div>
+      </div>
+
+      <!-- WHY MINTED -->
+      <div class="trust-row">
+        <div class="trust-item">
+          <div class="trust-item__title">Free Recipient Addressing</div>
+          <p class="trust-item__description">We address your envelopes so you don't have to</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item__title">Up to 10 Free Samples</div>
+          <p class="trust-item__description">Feel the paper quality before you commit</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item__title">Expert Concierge</div>
+          <p class="trust-item__description">Responsive designers to assist you</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item__title">Premium Papers</div>
+          <p class="trust-item__description">Signature, Pearlescent, Recycled, Double-thick</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h2 class="section-heading">Wedding Invitations Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            Are envelopes included with the price of Minted wedding invitations?
+            <span>+</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            What should wedding invitations say?
+            <span>+</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            When should wedding invitations be mailed out?
+            <span>+</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            Is it OK to send wedding invitations online?
+            <span>+</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            Do you put last names on wedding invitations?
+            <span>+</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            How should I address my invitations?
+            <span>+</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            Does the man or woman's name go first?
+            <span>+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRICING INFO -->
+      <div style="padding:32px 0;border-top:1px solid #E8E4DF;">
+        <h2 class="section-heading" style="text-align:left;">Pricing</h2>
+        <p style="font-family:'Freight Text Pro',Georgia,serif;font-size:15px;color:#5C5040;line-height:1.7;">
+          Minimum order: 10 invitations. Classic size (7&quot; x 5&quot;): starting at $2.34 per card (100 qty).
+          Petite size (6&quot; x 4.25&quot;): starting at $2.00 per card (100 qty).
+        </p>
+      </div>
+
+    </div><!-- /.seo-content -->
+
+  </main><!-- /.main-content -->
+
+</div><!-- /.page-layout -->
+
+<!-- EMAIL SIGNUP -->
+<section class="email-signup">
+  <h3 class="email-signup__heading">Stay in the know</h3>
+  <form class="email-signup__form" novalidate>
+    <input type="email" class="email-signup__input" placeholder="Email address" aria-label="Email address" />
+    <button type="submit" class="btn-primary">Sign Up</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Company Info</h4>
+      <ul class="footer-col__links">
+        <li><a href="https://www.minted.com/lp/minted-mission">Our Mission</a></li>
+        <li><a href="https://www.minted.com/jobs">Careers</a></li>
+        <li><a href="https://www.minted.com/press">Press</a></li>
+        <li><a href="https://www.minted.com/paper-types">Commitment To Quality</a></li>
+        <li><a href="https://www.minted.com/lp/our-actions">Commitment To Diversity</a></li>
+        <li><a href="https://www.minted.com/lp/sustainability-pledge">Sustainability Pledge</a></li>
+        <li><a href="https://www.minted.com/minted-labs">Minted Labs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Customer Service</h4>
+      <ul class="footer-col__links">
+        <li><a href="https://help2.minted.com/s/">Help</a></li>
+        <li><a href="https://www.minted.com/gifts/returns">Returns &amp; Exchanges</a></li>
+        <li><a href="https://www.minted.com/gifts/shipping">Shipping</a></li>
+        <li><a href="https://www.minted.com/gift-cards">Gift Cards</a></li>
+        <li><a href="https://www.minted.com/opt-out">Your Privacy Choices</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Partners</h4>
+      <ul class="footer-col__links">
+        <li><a href="https://www.minted.com/lp/affiliate">Affiliate Program</a></li>
+        <li><a href="https://www.minted.com/photographer">Photographer Program</a></li>
+        <li><a href="https://www.minted.com/lp/trade">Art Trade Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/minted">Facebook</a>
+        <a href="https://www.pinterest.com/minted/">Pinterest</a>
+        <a href="https://www.tiktok.com/@minted">TikTok</a>
+        <a href="https://www.instagram.com/minted/">Instagram</a>
+      </div>
+      <div style="margin-top:16px;">
+        <a href="https://apps.apple.com/us/app/minted-the-address-book/id1534180105" class="btn-secondary" style="font-size:10px;">
+          Download Address Book App
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <img src="https://cdn3.minted.com/files/content/header/minted_logo_desktop_v2.svg" alt="Minted" height="20" />
+    <p class="footer-legal">&copy; 2026 Minted, LLC. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!--
+=== JAVASCRIPT NOTES ===
+Minted uses a React SPA with CSS-in-JS (Emotion v10+).
+Evidence: .css-l088ss class (Emotion hash pattern).
+Bundles served from: assets.minted.com/static/js/[hash].chunk.js
+Cloudinary transforms handled server-side via Named Transformations.
+Image lazy loading via native loading="lazy" attribute.
+Analytics: .mntd_prf parameter on requests (Minted profiling).
+Filter state: encoded in URL as selectedFilters[] arrays with
+  form_factor, num_cover_photos, style as properties.
+URL pattern for filtered state:
+  /wedding-invitations?selectedFilters[0][name]=form_factor&selectedFilters[0][value]=portrait
+Carousel/slider: likely React-based component, no GSAP/external lib detected.
+No Three.js, GSAP, or Lenis detected.
+-->
+
+</body>
+</html>

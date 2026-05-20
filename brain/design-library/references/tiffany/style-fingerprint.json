@@ -1,0 +1,30 @@
+{
+  "extracted_signals": {
+    "radius_scale": "high",
+    "color_saturation": "high",
+    "spacing_density": "moderate",
+    "typography_weight": "regular",
+    "shadow_intensity": "strong",
+    "surface_treatment": "glass"
+  },
+  "classification": {
+    "primary_archetype": "marketing-gradient",
+    "confidence_score": 79,
+    "secondary_archetype": "apple-glass",
+    "explanation": "Matched marketing-gradient on: radius_scale=high, color_saturation=high, shadow_intensity=strong, surface_treatment=glass. Diverged on: spacing_density=moderate (expected very-roomy), typography_weight=regular (expected thin-bold|regular-bold)."
+  },
+  "archetype_distance": {
+    "shadcn-neutral": 58.82352941176471,
+    "carbon-enterprise": 13.333333333333334,
+    "material-elevation": 50,
+    "polaris-friendly": 62.5,
+    "apple-glass": 73.68421052631578,
+    "brutalist-mono": 31.25,
+    "govuk-conservative": 13.333333333333334,
+    "porsche-precision": 13.333333333333334,
+    "ant-china-enterprise": 33.33333333333333,
+    "marketing-gradient": 78.94736842105263,
+    "community-polished": 33.33333333333333
+  },
+  "_reference": "lib/extractors.cjs:ARCHETYPES"
+}

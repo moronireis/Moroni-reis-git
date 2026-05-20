@@ -1,0 +1,1571 @@
+{
+  "source": "noivasa-demo-vo.mp3",
+  "language": "pt",
+  "duration": 48.16,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.02,
+      "text": "Você noivou. E agora tem 47 abas abertas no Chrome.",
+      "words": [
+        {
+          "word": "Você",
+          "start": 0.0,
+          "end": 0.34,
+          "probability": 0.432
+        },
+        {
+          "word": "noivou.",
+          "start": 0.34,
+          "end": 1.06,
+          "probability": 0.987
+        },
+        {
+          "word": "E",
+          "start": 1.4,
+          "end": 1.56,
+          "probability": 0.974
+        },
+        {
+          "word": "agora",
+          "start": 1.56,
+          "end": 1.8,
+          "probability": 0.991
+        },
+        {
+          "word": "tem",
+          "start": 1.8,
+          "end": 1.98,
+          "probability": 0.966
+        },
+        {
+          "word": "47",
+          "start": 1.98,
+          "end": 2.58,
+          "probability": 0.773
+        },
+        {
+          "word": "abas",
+          "start": 2.58,
+          "end": 2.98,
+          "probability": 0.98
+        },
+        {
+          "word": "abertas",
+          "start": 2.98,
+          "end": 3.44,
+          "probability": 0.992
+        },
+        {
+          "word": "no",
+          "start": 3.44,
+          "end": 3.64,
+          "probability": 0.982
+        },
+        {
+          "word": "Chrome.",
+          "start": 3.64,
+          "end": 4.02,
+          "probability": 0.93
+        }
+      ]
+    },
+    {
+      "start": 4.48,
+      "end": 7.38,
+      "text": "Fornecedor que some. Orçamento que não fecha.",
+      "words": [
+        {
+          "word": "Fornecedor",
+          "start": 4.48,
+          "end": 5.04,
+          "probability": 0.988
+        },
+        {
+          "word": "que",
+          "start": 5.04,
+          "end": 5.28,
+          "probability": 0.992
+        },
+        {
+          "word": "some.",
+          "start": 5.28,
+          "end": 5.54,
+          "probability": 0.972
+        },
+        {
+          "word": "Orçamento",
+          "start": 5.9,
+          "end": 6.5,
+          "probability": 0.995
+        },
+        {
+          "word": "que",
+          "start": 6.5,
+          "end": 6.7,
+          "probability": 0.975
+        },
+        {
+          "word": "não",
+          "start": 6.7,
+          "end": 6.94,
+          "probability": 0.998
+        },
+        {
+          "word": "fecha.",
+          "start": 6.94,
+          "end": 7.38,
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "start": 7.78,
+      "end": 10.44,
+      "text": "Noivo que pergunta, mas você confirmou com quem?",
+      "words": [
+        {
+          "word": "Noivo",
+          "start": 7.78,
+          "end": 8.02,
+          "probability": 0.994
+        },
+        {
+          "word": "que",
+          "start": 8.02,
+          "end": 8.34,
+          "probability": 0.998
+        },
+        {
+          "word": "pergunta,",
+          "start": 8.34,
+          "end": 8.68,
+          "probability": 0.996
+        },
+        {
+          "word": "mas",
+          "start": 8.9,
+          "end": 9.08,
+          "probability": 0.912
+        },
+        {
+          "word": "você",
+          "start": 9.08,
+          "end": 9.46,
+          "probability": 0.993
+        },
+        {
+          "word": "confirmou",
+          "start": 9.46,
+          "end": 9.92,
+          "probability": 0.997
+        },
+        {
+          "word": "com",
+          "start": 9.92,
+          "end": 10.2,
+          "probability": 0.989
+        },
+        {
+          "word": "quem?",
+          "start": 10.2,
+          "end": 10.44,
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "start": 10.92,
+      "end": 15.66,
+      "text": "Casamento não é evento, é projeto. E projeto sem método vira caos.",
+      "words": [
+        {
+          "word": "Casamento",
+          "start": 10.92,
+          "end": 11.42,
+          "probability": 0.992
+        },
+        {
+          "word": "não",
+          "start": 11.42,
+          "end": 11.6,
+          "probability": 0.995
+        },
+        {
+          "word": "é",
+          "start": 11.6,
+          "end": 11.8,
+          "probability": 0.999
+        },
+        {
+          "word": "evento,",
+          "start": 11.8,
+          "end": 12.08,
+          "probability": 0.998
+        },
+        {
+          "word": "é",
+          "start": 12.44,
+          "end": 12.62,
+          "probability": 0.996
+        },
+        {
+          "word": "projeto.",
+          "start": 12.62,
+          "end": 13.16,
+          "probability": 0.995
+        },
+        {
+          "word": "E",
+          "start": 13.48,
+          "end": 13.76,
+          "probability": 0.994
+        },
+        {
+          "word": "projeto",
+          "start": 13.76,
+          "end": 14.14,
+          "probability": 0.957
+        },
+        {
+          "word": "sem",
+          "start": 14.14,
+          "end": 14.4,
+          "probability": 0.978
+        },
+        {
+          "word": "método",
+          "start": 14.4,
+          "end": 14.86,
+          "probability": 0.995
+        },
+        {
+          "word": "vira",
+          "start": 14.86,
+          "end": 15.2,
+          "probability": 0.985
+        },
+        {
+          "word": "caos.",
+          "start": 15.2,
+          "end": 15.66,
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "start": 15.96,
+      "end": 18.5,
+      "text": "A Giovana já conduziu mais de 100 casamentos.",
+      "words": [
+        {
+          "word": "A",
+          "start": 15.96,
+          "end": 16.18,
+          "probability": 0.989
+        },
+        {
+          "word": "Giovana",
+          "start": 16.18,
+          "end": 16.6,
+          "probability": 0.805
+        },
+        {
+          "word": "já",
+          "start": 16.6,
+          "end": 16.88,
+          "probability": 0.989
+        },
+        {
+          "word": "conduziu",
+          "start": 16.88,
+          "end": 17.24,
+          "probability": 0.993
+        },
+        {
+          "word": "mais",
+          "start": 17.24,
+          "end": 17.46,
+          "probability": 0.998
+        },
+        {
+          "word": "de",
+          "start": 17.46,
+          "end": 17.62,
+          "probability": 0.998
+        },
+        {
+          "word": "100",
+          "start": 17.62,
+          "end": 17.78,
+          "probability": 0.699
+        },
+        {
+          "word": "casamentos.",
+          "start": 17.78,
+          "end": 18.5,
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "start": 19.02,
+      "end": 21.48,
+      "text": "Ela tem um método. Processo a processo.",
+      "words": [
+        {
+          "word": "Ela",
+          "start": 19.02,
+          "end": 19.2,
+          "probability": 0.996
+        },
+        {
+          "word": "tem",
+          "start": 19.2,
+          "end": 19.36,
+          "probability": 0.997
+        },
+        {
+          "word": "um",
+          "start": 19.36,
+          "end": 19.56,
+          "probability": 0.974
+        },
+        {
+          "word": "método.",
+          "start": 19.56,
+          "end": 20.16,
+          "probability": 0.999
+        },
+        {
+          "word": "Processo",
+          "start": 20.34,
+          "end": 20.76,
+          "probability": 0.595
+        },
+        {
+          "word": "a",
+          "start": 20.76,
+          "end": 20.98,
+          "probability": 0.986
+        },
+        {
+          "word": "processo.",
+          "start": 20.98,
+          "end": 21.48,
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "start": 21.8,
+      "end": 23.36,
+      "text": "Fornecedor por fornecedor.",
+      "words": [
+        {
+          "word": "Fornecedor",
+          "start": 21.8,
+          "end": 22.44,
+          "probability": 0.999
+        },
+        {
+          "word": "por",
+          "start": 22.44,
+          "end": 22.64,
+          "probability": 0.997
+        },
+        {
+          "word": "fornecedor.",
+          "start": 22.64,
+          "end": 23.36,
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "start": 23.64,
+      "end": 28.0,
+      "text": "Para você chegar no altar sem ter passado 8 meses apagando incêndio.",
+      "words": [
+        {
+          "word": "Para",
+          "start": 23.64,
+          "end": 23.8,
+          "probability": 0.587
+        },
+        {
+          "word": "você",
+          "start": 23.8,
+          "end": 24.06,
+          "probability": 0.998
+        },
+        {
+          "word": "chegar",
+          "start": 24.06,
+          "end": 24.32,
+          "probability": 0.996
+        },
+        {
+          "word": "no",
+          "start": 24.32,
+          "end": 24.52,
+          "probability": 0.982
+        },
+        {
+          "word": "altar",
+          "start": 24.52,
+          "end": 24.9,
+          "probability": 0.997
+        },
+        {
+          "word": "sem",
+          "start": 24.9,
+          "end": 25.1,
+          "probability": 0.926
+        },
+        {
+          "word": "ter",
+          "start": 25.1,
+          "end": 25.4,
+          "probability": 0.999
+        },
+        {
+          "word": "passado",
+          "start": 25.4,
+          "end": 25.72,
+          "probability": 0.989
+        },
+        {
+          "word": "8",
+          "start": 25.72,
+          "end": 26.14,
+          "probability": 0.524
+        },
+        {
+          "word": "meses",
+          "start": 26.14,
+          "end": 26.54,
+          "probability": 0.999
+        },
+        {
+          "word": "apagando",
+          "start": 26.54,
+          "end": 27.06,
+          "probability": 0.998
+        },
+        {
+          "word": "incêndio.",
+          "start": 27.06,
+          "end": 28.0,
+          "probability": 0.937
+        }
+      ]
+    },
+    {
+      "start": 28.0,
+      "end": 33.86,
+      "text": "Com a Noiva SA, você tem assessoria completa, site do casamento, comunidade de noivas.",
+      "words": [
+        {
+          "word": "Com",
+          "start": 28.0,
+          "end": 28.3,
+          "probability": 0.934
+        },
+        {
+          "word": "a",
+          "start": 28.3,
+          "end": 28.46,
+          "probability": 0.99
+        },
+        {
+          "word": "Noiva",
+          "start": 28.46,
+          "end": 28.76,
+          "probability": 0.919
+        },
+        {
+          "word": "SA,",
+          "start": 28.76,
+          "end": 29.12,
+          "probability": 0.603
+        },
+        {
+          "word": "você",
+          "start": 29.46,
+          "end": 29.62,
+          "probability": 0.997
+        },
+        {
+          "word": "tem",
+          "start": 29.62,
+          "end": 29.8,
+          "probability": 0.987
+        },
+        {
+          "word": "assessoria",
+          "start": 29.8,
+          "end": 30.34,
+          "probability": 0.962
+        },
+        {
+          "word": "completa,",
+          "start": 30.34,
+          "end": 30.94,
+          "probability": 0.999
+        },
+        {
+          "word": "site",
+          "start": 31.28,
+          "end": 31.54,
+          "probability": 0.993
+        },
+        {
+          "word": "do",
+          "start": 31.54,
+          "end": 31.74,
+          "probability": 0.977
+        },
+        {
+          "word": "casamento,",
+          "start": 31.74,
+          "end": 32.36,
+          "probability": 0.997
+        },
+        {
+          "word": "comunidade",
+          "start": 32.76,
+          "end": 33.26,
+          "probability": 0.975
+        },
+        {
+          "word": "de",
+          "start": 33.26,
+          "end": 33.48,
+          "probability": 0.999
+        },
+        {
+          "word": "noivas.",
+          "start": 33.48,
+          "end": 33.86,
+          "probability": 0.991
+        }
+      ]
+    },
+    {
+      "start": 34.22,
+      "end": 37.68,
+      "text": "E a segurança de saber que tem alguém que já resolveu isso antes.",
+      "words": [
+        {
+          "word": "E",
+          "start": 34.22,
+          "end": 34.36,
+          "probability": 0.962
+        },
+        {
+          "word": "a",
+          "start": 34.36,
+          "end": 34.6,
+          "probability": 0.978
+        },
+        {
+          "word": "segurança",
+          "start": 34.6,
+          "end": 34.98,
+          "probability": 0.997
+        },
+        {
+          "word": "de",
+          "start": 34.98,
+          "end": 35.24,
+          "probability": 0.998
+        },
+        {
+          "word": "saber",
+          "start": 35.24,
+          "end": 35.5,
+          "probability": 0.998
+        },
+        {
+          "word": "que",
+          "start": 35.5,
+          "end": 35.72,
+          "probability": 0.997
+        },
+        {
+          "word": "tem",
+          "start": 35.72,
+          "end": 35.9,
+          "probability": 0.991
+        },
+        {
+          "word": "alguém",
+          "start": 35.9,
+          "end": 36.24,
+          "probability": 0.998
+        },
+        {
+          "word": "que",
+          "start": 36.24,
+          "end": 36.44,
+          "probability": 0.998
+        },
+        {
+          "word": "já",
+          "start": 36.44,
+          "end": 36.62,
+          "probability": 0.996
+        },
+        {
+          "word": "resolveu",
+          "start": 36.62,
+          "end": 37.1,
+          "probability": 0.998
+        },
+        {
+          "word": "isso",
+          "start": 37.1,
+          "end": 37.28,
+          "probability": 0.996
+        },
+        {
+          "word": "antes.",
+          "start": 37.28,
+          "end": 37.68,
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "start": 37.96,
+      "end": 39.8,
+      "text": "Do começo ao dia do altar.",
+      "words": [
+        {
+          "word": "Do",
+          "start": 37.96,
+          "end": 38.16,
+          "probability": 0.988
+        },
+        {
+          "word": "começo",
+          "start": 38.16,
+          "end": 38.68,
+          "probability": 0.985
+        },
+        {
+          "word": "ao",
+          "start": 38.68,
+          "end": 39.04,
+          "probability": 0.886
+        },
+        {
+          "word": "dia",
+          "start": 39.04,
+          "end": 39.24,
+          "probability": 0.99
+        },
+        {
+          "word": "do",
+          "start": 39.24,
+          "end": 39.42,
+          "probability": 0.996
+        },
+        {
+          "word": "altar.",
+          "start": 39.42,
+          "end": 39.8,
+          "probability": 0.995
+        }
+      ]
+    },
+    {
+      "start": 40.36,
+      "end": 44.32,
+      "text": "Se o seu casamento vai custar 50 mil ou 150 mil,",
+      "words": [
+        {
+          "word": "Se",
+          "start": 40.36,
+          "end": 40.5,
+          "probability": 0.996
+        },
+        {
+          "word": "o",
+          "start": 40.5,
+          "end": 40.62,
+          "probability": 0.976
+        },
+        {
+          "word": "seu",
+          "start": 40.62,
+          "end": 40.76,
+          "probability": 0.999
+        },
+        {
+          "word": "casamento",
+          "start": 40.76,
+          "end": 41.3,
+          "probability": 1.0
+        },
+        {
+          "word": "vai",
+          "start": 41.3,
+          "end": 41.46,
+          "probability": 0.998
+        },
+        {
+          "word": "custar",
+          "start": 41.46,
+          "end": 41.98,
+          "probability": 0.996
+        },
+        {
+          "word": "50",
+          "start": 41.98,
+          "end": 42.34,
+          "probability": 0.44
+        },
+        {
+          "word": "mil",
+          "start": 42.34,
+          "end": 42.74,
+          "probability": 0.93
+        },
+        {
+          "word": "ou",
+          "start": 42.74,
+          "end": 43.14,
+          "probability": 0.918
+        },
+        {
+          "word": "150",
+          "start": 43.14,
+          "end": 43.66,
+          "probability": 0.982
+        },
+        {
+          "word": "mil,",
+          "start": 43.66,
+          "end": 44.32,
+          "probability": 0.996
+        }
+      ]
+    },
+    {
+      "start": 44.82,
+      "end": 46.92,
+      "text": "merece alguém que sabe o que está fazendo.",
+      "words": [
+        {
+          "word": "merece",
+          "start": 44.82,
+          "end": 45.14,
+          "probability": 0.995
+        },
+        {
+          "word": "alguém",
+          "start": 45.14,
+          "end": 45.4,
+          "probability": 0.996
+        },
+        {
+          "word": "que",
+          "start": 45.4,
+          "end": 45.7,
+          "probability": 0.998
+        },
+        {
+          "word": "sabe",
+          "start": 45.7,
+          "end": 45.84,
+          "probability": 0.947
+        },
+        {
+          "word": "o",
+          "start": 45.84,
+          "end": 45.98,
+          "probability": 0.998
+        },
+        {
+          "word": "que",
+          "start": 45.98,
+          "end": 46.18,
+          "probability": 0.999
+        },
+        {
+          "word": "está",
+          "start": 46.18,
+          "end": 46.4,
+          "probability": 0.993
+        },
+        {
+          "word": "fazendo.",
+          "start": 46.4,
+          "end": 46.92,
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "start": 47.46,
+      "end": 48.16,
+      "text": "Chama a gente.",
+      "words": [
+        {
+          "word": "Chama",
+          "start": 47.46,
+          "end": 47.7,
+          "probability": 0.983
+        },
+        {
+          "word": "a",
+          "start": 47.7,
+          "end": 47.88,
+          "probability": 0.983
+        },
+        {
+          "word": "gente.",
+          "start": 47.88,
+          "end": 48.16,
+          "probability": 0.998
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": "Você",
+      "start": 0.0,
+      "end": 0.34,
+      "probability": 0.432
+    },
+    {
+      "word": "noivou.",
+      "start": 0.34,
+      "end": 1.06,
+      "probability": 0.987
+    },
+    {
+      "word": "E",
+      "start": 1.4,
+      "end": 1.56,
+      "probability": 0.974
+    },
+    {
+      "word": "agora",
+      "start": 1.56,
+      "end": 1.8,
+      "probability": 0.991
+    },
+    {
+      "word": "tem",
+      "start": 1.8,
+      "end": 1.98,
+      "probability": 0.966
+    },
+    {
+      "word": "47",
+      "start": 1.98,
+      "end": 2.58,
+      "probability": 0.773
+    },
+    {
+      "word": "abas",
+      "start": 2.58,
+      "end": 2.98,
+      "probability": 0.98
+    },
+    {
+      "word": "abertas",
+      "start": 2.98,
+      "end": 3.44,
+      "probability": 0.992
+    },
+    {
+      "word": "no",
+      "start": 3.44,
+      "end": 3.64,
+      "probability": 0.982
+    },
+    {
+      "word": "Chrome.",
+      "start": 3.64,
+      "end": 4.02,
+      "probability": 0.93
+    },
+    {
+      "word": "Fornecedor",
+      "start": 4.48,
+      "end": 5.04,
+      "probability": 0.988
+    },
+    {
+      "word": "que",
+      "start": 5.04,
+      "end": 5.28,
+      "probability": 0.992
+    },
+    {
+      "word": "some.",
+      "start": 5.28,
+      "end": 5.54,
+      "probability": 0.972
+    },
+    {
+      "word": "Orçamento",
+      "start": 5.9,
+      "end": 6.5,
+      "probability": 0.995
+    },
+    {
+      "word": "que",
+      "start": 6.5,
+      "end": 6.7,
+      "probability": 0.975
+    },
+    {
+      "word": "não",
+      "start": 6.7,
+      "end": 6.94,
+      "probability": 0.998
+    },
+    {
+      "word": "fecha.",
+      "start": 6.94,
+      "end": 7.38,
+      "probability": 0.998
+    },
+    {
+      "word": "Noivo",
+      "start": 7.78,
+      "end": 8.02,
+      "probability": 0.994
+    },
+    {
+      "word": "que",
+      "start": 8.02,
+      "end": 8.34,
+      "probability": 0.998
+    },
+    {
+      "word": "pergunta,",
+      "start": 8.34,
+      "end": 8.68,
+      "probability": 0.996
+    },
+    {
+      "word": "mas",
+      "start": 8.9,
+      "end": 9.08,
+      "probability": 0.912
+    },
+    {
+      "word": "você",
+      "start": 9.08,
+      "end": 9.46,
+      "probability": 0.993
+    },
+    {
+      "word": "confirmou",
+      "start": 9.46,
+      "end": 9.92,
+      "probability": 0.997
+    },
+    {
+      "word": "com",
+      "start": 9.92,
+      "end": 10.2,
+      "probability": 0.989
+    },
+    {
+      "word": "quem?",
+      "start": 10.2,
+      "end": 10.44,
+      "probability": 0.997
+    },
+    {
+      "word": "Casamento",
+      "start": 10.92,
+      "end": 11.42,
+      "probability": 0.992
+    },
+    {
+      "word": "não",
+      "start": 11.42,
+      "end": 11.6,
+      "probability": 0.995
+    },
+    {
+      "word": "é",
+      "start": 11.6,
+      "end": 11.8,
+      "probability": 0.999
+    },
+    {
+      "word": "evento,",
+      "start": 11.8,
+      "end": 12.08,
+      "probability": 0.998
+    },
+    {
+      "word": "é",
+      "start": 12.44,
+      "end": 12.62,
+      "probability": 0.996
+    },
+    {
+      "word": "projeto.",
+      "start": 12.62,
+      "end": 13.16,
+      "probability": 0.995
+    },
+    {
+      "word": "E",
+      "start": 13.48,
+      "end": 13.76,
+      "probability": 0.994
+    },
+    {
+      "word": "projeto",
+      "start": 13.76,
+      "end": 14.14,
+      "probability": 0.957
+    },
+    {
+      "word": "sem",
+      "start": 14.14,
+      "end": 14.4,
+      "probability": 0.978
+    },
+    {
+      "word": "método",
+      "start": 14.4,
+      "end": 14.86,
+      "probability": 0.995
+    },
+    {
+      "word": "vira",
+      "start": 14.86,
+      "end": 15.2,
+      "probability": 0.985
+    },
+    {
+      "word": "caos.",
+      "start": 15.2,
+      "end": 15.66,
+      "probability": 0.997
+    },
+    {
+      "word": "A",
+      "start": 15.96,
+      "end": 16.18,
+      "probability": 0.989
+    },
+    {
+      "word": "Giovana",
+      "start": 16.18,
+      "end": 16.6,
+      "probability": 0.805
+    },
+    {
+      "word": "já",
+      "start": 16.6,
+      "end": 16.88,
+      "probability": 0.989
+    },
+    {
+      "word": "conduziu",
+      "start": 16.88,
+      "end": 17.24,
+      "probability": 0.993
+    },
+    {
+      "word": "mais",
+      "start": 17.24,
+      "end": 17.46,
+      "probability": 0.998
+    },
+    {
+      "word": "de",
+      "start": 17.46,
+      "end": 17.62,
+      "probability": 0.998
+    },
+    {
+      "word": "100",
+      "start": 17.62,
+      "end": 17.78,
+      "probability": 0.699
+    },
+    {
+      "word": "casamentos.",
+      "start": 17.78,
+      "end": 18.5,
+      "probability": 0.999
+    },
+    {
+      "word": "Ela",
+      "start": 19.02,
+      "end": 19.2,
+      "probability": 0.996
+    },
+    {
+      "word": "tem",
+      "start": 19.2,
+      "end": 19.36,
+      "probability": 0.997
+    },
+    {
+      "word": "um",
+      "start": 19.36,
+      "end": 19.56,
+      "probability": 0.974
+    },
+    {
+      "word": "método.",
+      "start": 19.56,
+      "end": 20.16,
+      "probability": 0.999
+    },
+    {
+      "word": "Processo",
+      "start": 20.34,
+      "end": 20.76,
+      "probability": 0.595
+    },
+    {
+      "word": "a",
+      "start": 20.76,
+      "end": 20.98,
+      "probability": 0.986
+    },
+    {
+      "word": "processo.",
+      "start": 20.98,
+      "end": 21.48,
+      "probability": 0.999
+    },
+    {
+      "word": "Fornecedor",
+      "start": 21.8,
+      "end": 22.44,
+      "probability": 0.999
+    },
+    {
+      "word": "por",
+      "start": 22.44,
+      "end": 22.64,
+      "probability": 0.997
+    },
+    {
+      "word": "fornecedor.",
+      "start": 22.64,
+      "end": 23.36,
+      "probability": 0.998
+    },
+    {
+      "word": "Para",
+      "start": 23.64,
+      "end": 23.8,
+      "probability": 0.587
+    },
+    {
+      "word": "você",
+      "start": 23.8,
+      "end": 24.06,
+      "probability": 0.998
+    },
+    {
+      "word": "chegar",
+      "start": 24.06,
+      "end": 24.32,
+      "probability": 0.996
+    },
+    {
+      "word": "no",
+      "start": 24.32,
+      "end": 24.52,
+      "probability": 0.982
+    },
+    {
+      "word": "altar",
+      "start": 24.52,
+      "end": 24.9,
+      "probability": 0.997
+    },
+    {
+      "word": "sem",
+      "start": 24.9,
+      "end": 25.1,
+      "probability": 0.926
+    },
+    {
+      "word": "ter",
+      "start": 25.1,
+      "end": 25.4,
+      "probability": 0.999
+    },
+    {
+      "word": "passado",
+      "start": 25.4,
+      "end": 25.72,
+      "probability": 0.989
+    },
+    {
+      "word": "8",
+      "start": 25.72,
+      "end": 26.14,
+      "probability": 0.524
+    },
+    {
+      "word": "meses",
+      "start": 26.14,
+      "end": 26.54,
+      "probability": 0.999
+    },
+    {
+      "word": "apagando",
+      "start": 26.54,
+      "end": 27.06,
+      "probability": 0.998
+    },
+    {
+      "word": "incêndio.",
+      "start": 27.06,
+      "end": 28.0,
+      "probability": 0.937
+    },
+    {
+      "word": "Com",
+      "start": 28.0,
+      "end": 28.3,
+      "probability": 0.934
+    },
+    {
+      "word": "a",
+      "start": 28.3,
+      "end": 28.46,
+      "probability": 0.99
+    },
+    {
+      "word": "Noiva",
+      "start": 28.46,
+      "end": 28.76,
+      "probability": 0.919
+    },
+    {
+      "word": "SA,",
+      "start": 28.76,
+      "end": 29.12,
+      "probability": 0.603
+    },
+    {
+      "word": "você",
+      "start": 29.46,
+      "end": 29.62,
+      "probability": 0.997
+    },
+    {
+      "word": "tem",
+      "start": 29.62,
+      "end": 29.8,
+      "probability": 0.987
+    },
+    {
+      "word": "assessoria",
+      "start": 29.8,
+      "end": 30.34,
+      "probability": 0.962
+    },
+    {
+      "word": "completa,",
+      "start": 30.34,
+      "end": 30.94,
+      "probability": 0.999
+    },
+    {
+      "word": "site",
+      "start": 31.28,
+      "end": 31.54,
+      "probability": 0.993
+    },
+    {
+      "word": "do",
+      "start": 31.54,
+      "end": 31.74,
+      "probability": 0.977
+    },
+    {
+      "word": "casamento,",
+      "start": 31.74,
+      "end": 32.36,
+      "probability": 0.997
+    },
+    {
+      "word": "comunidade",
+      "start": 32.76,
+      "end": 33.26,
+      "probability": 0.975
+    },
+    {
+      "word": "de",
+      "start": 33.26,
+      "end": 33.48,
+      "probability": 0.999
+    },
+    {
+      "word": "noivas.",
+      "start": 33.48,
+      "end": 33.86,
+      "probability": 0.991
+    },
+    {
+      "word": "E",
+      "start": 34.22,
+      "end": 34.36,
+      "probability": 0.962
+    },
+    {
+      "word": "a",
+      "start": 34.36,
+      "end": 34.6,
+      "probability": 0.978
+    },
+    {
+      "word": "segurança",
+      "start": 34.6,
+      "end": 34.98,
+      "probability": 0.997
+    },
+    {
+      "word": "de",
+      "start": 34.98,
+      "end": 35.24,
+      "probability": 0.998
+    },
+    {
+      "word": "saber",
+      "start": 35.24,
+      "end": 35.5,
+      "probability": 0.998
+    },
+    {
+      "word": "que",
+      "start": 35.5,
+      "end": 35.72,
+      "probability": 0.997
+    },
+    {
+      "word": "tem",
+      "start": 35.72,
+      "end": 35.9,
+      "probability": 0.991
+    },
+    {
+      "word": "alguém",
+      "start": 35.9,
+      "end": 36.24,
+      "probability": 0.998
+    },
+    {
+      "word": "que",
+      "start": 36.24,
+      "end": 36.44,
+      "probability": 0.998
+    },
+    {
+      "word": "já",
+      "start": 36.44,
+      "end": 36.62,
+      "probability": 0.996
+    },
+    {
+      "word": "resolveu",
+      "start": 36.62,
+      "end": 37.1,
+      "probability": 0.998
+    },
+    {
+      "word": "isso",
+      "start": 37.1,
+      "end": 37.28,
+      "probability": 0.996
+    },
+    {
+      "word": "antes.",
+      "start": 37.28,
+      "end": 37.68,
+      "probability": 0.998
+    },
+    {
+      "word": "Do",
+      "start": 37.96,
+      "end": 38.16,
+      "probability": 0.988
+    },
+    {
+      "word": "começo",
+      "start": 38.16,
+      "end": 38.68,
+      "probability": 0.985
+    },
+    {
+      "word": "ao",
+      "start": 38.68,
+      "end": 39.04,
+      "probability": 0.886
+    },
+    {
+      "word": "dia",
+      "start": 39.04,
+      "end": 39.24,
+      "probability": 0.99
+    },
+    {
+      "word": "do",
+      "start": 39.24,
+      "end": 39.42,
+      "probability": 0.996
+    },
+    {
+      "word": "altar.",
+      "start": 39.42,
+      "end": 39.8,
+      "probability": 0.995
+    },
+    {
+      "word": "Se",
+      "start": 40.36,
+      "end": 40.5,
+      "probability": 0.996
+    },
+    {
+      "word": "o",
+      "start": 40.5,
+      "end": 40.62,
+      "probability": 0.976
+    },
+    {
+      "word": "seu",
+      "start": 40.62,
+      "end": 40.76,
+      "probability": 0.999
+    },
+    {
+      "word": "casamento",
+      "start": 40.76,
+      "end": 41.3,
+      "probability": 1.0
+    },
+    {
+      "word": "vai",
+      "start": 41.3,
+      "end": 41.46,
+      "probability": 0.998
+    },
+    {
+      "word": "custar",
+      "start": 41.46,
+      "end": 41.98,
+      "probability": 0.996
+    },
+    {
+      "word": "50",
+      "start": 41.98,
+      "end": 42.34,
+      "probability": 0.44
+    },
+    {
+      "word": "mil",
+      "start": 42.34,
+      "end": 42.74,
+      "probability": 0.93
+    },
+    {
+      "word": "ou",
+      "start": 42.74,
+      "end": 43.14,
+      "probability": 0.918
+    },
+    {
+      "word": "150",
+      "start": 43.14,
+      "end": 43.66,
+      "probability": 0.982
+    },
+    {
+      "word": "mil,",
+      "start": 43.66,
+      "end": 44.32,
+      "probability": 0.996
+    },
+    {
+      "word": "merece",
+      "start": 44.82,
+      "end": 45.14,
+      "probability": 0.995
+    },
+    {
+      "word": "alguém",
+      "start": 45.14,
+      "end": 45.4,
+      "probability": 0.996
+    },
+    {
+      "word": "que",
+      "start": 45.4,
+      "end": 45.7,
+      "probability": 0.998
+    },
+    {
+      "word": "sabe",
+      "start": 45.7,
+      "end": 45.84,
+      "probability": 0.947
+    },
+    {
+      "word": "o",
+      "start": 45.84,
+      "end": 45.98,
+      "probability": 0.998
+    },
+    {
+      "word": "que",
+      "start": 45.98,
+      "end": 46.18,
+      "probability": 0.999
+    },
+    {
+      "word": "está",
+      "start": 46.18,
+      "end": 46.4,
+      "probability": 0.993
+    },
+    {
+      "word": "fazendo.",
+      "start": 46.4,
+      "end": 46.92,
+      "probability": 0.999
+    },
+    {
+      "word": "Chama",
+      "start": 47.46,
+      "end": 47.7,
+      "probability": 0.983
+    },
+    {
+      "word": "a",
+      "start": 47.7,
+      "end": 47.88,
+      "probability": 0.983
+    },
+    {
+      "word": "gente.",
+      "start": 47.88,
+      "end": 48.16,
+      "probability": 0.998
+    }
+  ]
+}

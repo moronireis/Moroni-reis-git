@@ -1,0 +1,1192 @@
+[
+  {
+    "selector": ":root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-edito",
+    "value": "\"EBGaramond\", \"Bell MT\", Times New Roman,sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-secondary",
+    "value": "\"Overpass Mono\", \"Gill Sans MT\", calibri, sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-primary",
+    "value": "\"Manrope\", \"Roboto\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-xxl",
+    "value": "2.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-xl",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-l",
+    "value": "1.625rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-m",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-default",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-s",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-heading-xs",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-xl",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-l",
+    "value": ".875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-m",
+    "value": ".75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-default",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-s",
+    "value": ".625rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-size-body-xs",
+    "value": ".5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-filosofia",
+    "value": "\"Filosofia\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-akkurat",
+    "value": "\"Akkurat\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-jungle-love",
+    "value": "\"Jungle-Regular\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-brides-de-gala",
+    "value": "\"BridesdeGala-Regular\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-mors-a-jouet",
+    "value": "\"Mors-Regular-Auto\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-100",
+    "value": "100",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-200",
+    "value": "200",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-300",
+    "value": "300",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-400",
+    "value": "400",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-500",
+    "value": "500",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-600",
+    "value": "600",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-700",
+    "value": "700",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--font-weight-800",
+    "value": "800",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-edito",
+    "value": "\"\\30e1\\30a4\\30ea\\30aa\", \"Hiragino Sans\", \"Noto Sans\", \"\\ff2d\\ff33  \\ff30\\30b4\\30b7\\30c3\\30af\", \"Manrope\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-secondary",
+    "value": "\"\\30e1\\30a4\\30ea\\30aa\", \"Hiragino Sans\", \"Noto Sans\", \"\\ff2d\\ff33  \\ff30\\30b4\\30b7\\30c3\\30af\", \"Manrope\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-primary",
+    "value": "\"\\30e1\\30a4\\30ea\\30aa\", \"Hiragino Sans\", \"Noto Sans\", \"\\ff2d\\ff33  \\ff30\\30b4\\30b7\\30c3\\30af\", \"Manrope\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-xxl",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-xl",
+    "value": "1.75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-l",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-m",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-default",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-s",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-heading-xs",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-body-xl",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-body-l",
+    "value": ".875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-body-m",
+    "value": ".75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-body-default",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-body-s",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ja]",
+    "name": "--font-size-body-xs",
+    "value": ".5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-edito",
+    "value": "\"Arial unicode MS\", \"Overpass Mono\", \"Gill Sans\", \"Gill Sans MT\", \"Calibri\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-secondary",
+    "value": "\"Arial unicode MS\", \"Overpass Mono\", \"Gill Sans\", \"Gill Sans MT\", \"Calibri\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-primary",
+    "value": "\"Apple SD Gothic Neo\", \"Noto Sans\", \"Malgun Gothic\", \"Manrope\", \"Roboto\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-xxl",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-xl",
+    "value": "1.75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-l",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-m",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-default",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-s",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-heading-xs",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-body-xl",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-body-l",
+    "value": ".875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-body-m",
+    "value": ".75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-body-default",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-body-s",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=ko]",
+    "name": "--font-size-body-xs",
+    "value": ".5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-edito",
+    "value": "\"PingFang SC\", \"\\840d\\65b9\", \"Noto Sans\", \"Microsoft YaHei\", \"\\5fae\\8f6f\\96c5\\9ed1\", \"SimHei\", \"\\9ed1\\4f53\", \"Manrope\", \"Roboto\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-secondary",
+    "value": "\"PingFang SC\", \"\\840d\\65b9\", \"Noto Sans\", \"Microsoft YaHei\", \"\\5fae\\8f6f\\96c5\\9ed1\", \"SimHei\", \"\\9ed1\\4f53\", \"Overpass Mono\", \"Gill Sans\", \"Gill Sans MT\", \"Calibri\", serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-primary",
+    "value": "\"PingFang SC\", \"\\840d\\65b9\", \"Noto Sans\", \"Microsoft YaHei\", \"\\5fae\\8f6f\\96c5\\9ed1\", \"SimHei\", \"\\9ed1\\4f53\", \"Manrope\", \"Roboto\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-xxl",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-xl",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-l",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-m",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-default",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-s",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-heading-xs",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-body-xl",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-body-l",
+    "value": ".875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-body-m",
+    "value": ".75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-body-default",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-body-s",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hans]",
+    "name": "--font-size-body-xs",
+    "value": ".5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-edito",
+    "value": "\"Overpass Mono\", \"Gill Sans MT\", calibri, sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-secondary",
+    "value": "\"Overpass Mono\", \"Gill Sans MT\", calibri, sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-primary",
+    "value": "\"Manrope\", \"Roboto\", sans-serif",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-xxl",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-xl",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-l",
+    "value": "1.625rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-m",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-default",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-s",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-heading-xs",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-body-xl",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-body-l",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-body-m",
+    "value": ".75rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-body-default",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-body-s",
+    "value": ".6875rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root[lang^=zh-Hant]",
+    "name": "--font-size-body-xs",
+    "value": ".5rem",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "h-root :root,.sb-show-main :root,.modal-service :root,.cdk-overlay :root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": "[_ngcontent-hermes-c792788174]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 22
+  },
+  {
+    "selector": "/* ── inline <style> #5 ── */ [_ngcontent-hermes-c2212723945]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 22
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2302588164]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 28
+  },
+  {
+    "selector": "[_ngcontent-hermes-c943735703]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 31
+  },
+  {
+    "selector": "/* ── inline <style> #9 ── */ [_ngcontent-hermes-c57524332]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 34
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3105878410]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 40
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1885941940]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 43
+  },
+  {
+    "selector": "[_ngcontent-hermes-c212045177]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 49
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2595053774]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 52
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3706755530]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 55
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3379501136]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 58
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2699119874]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1373655413]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 67
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2791220270]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 70
+  },
+  {
+    "selector": "/* ── inline <style> #21 ── */ [_ngcontent-hermes-c3543734758]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 70
+  },
+  {
+    "selector": "/* ── inline <style> #22 ── */ [_ngcontent-hermes-c1845551674]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 73
+  },
+  {
+    "selector": ".redesign-homepage[_nghost-hermes-c1845551674] :root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 76
+  },
+  {
+    "selector": "[_nghost-hermes-c1845551674]:not(.redesign-homepage) :root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 76
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1756898658]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 79
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1561628162]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 82
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3427122017]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 85
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1865092660]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 88
+  },
+  {
+    "selector": "[_ngcontent-hermes-c413963698]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 91
+  },
+  {
+    "selector": "[_ngcontent-hermes-c4156085061]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 94
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3955679591]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 97
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1225755785]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 100
+  },
+  {
+    "selector": "[_ngcontent-hermes-c399490316]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 103
+  },
+  {
+    "selector": "/* ── inline <style> #32 ── */ [_ngcontent-hermes-c3948981286]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 103
+  },
+  {
+    "selector": "/* ── inline <style> #33 ── */ [_ngcontent-hermes-c1198964158]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 106
+  },
+  {
+    "selector": "/* ── inline <style> #34 ── */ [_ngcontent-hermes-c2887964127]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 109
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3616316463]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 115
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2345871595]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 118
+  },
+  {
+    "selector": "[_ngcontent-hermes-c414533774]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 121
+  },
+  {
+    "selector": "[_ngcontent-hermes-c694820830]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 124
+  },
+  {
+    "selector": "[_ngcontent-hermes-c3543503977]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 127
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2799982381]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 130
+  },
+  {
+    "selector": "[_ngcontent-hermes-c4106925510]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 133
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1179051366]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 136
+  },
+  {
+    "selector": "[_ngcontent-hermes-c1344218598]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 139
+  },
+  {
+    "selector": "/* ── inline <style> #44 ── */ [_ngcontent-hermes-c252797973]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 139
+  },
+  {
+    "selector": "[_ngcontent-hermes-c620092663]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 145
+  },
+  {
+    "selector": "/* ── inline <style> #46 ── */ [_ngcontent-hermes-c3272563277]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 145
+  },
+  {
+    "selector": "[_ngcontent-hermes-c2768551082]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 151
+  },
+  {
+    "selector": "[_ngcontent-hermes-c81489582]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 154
+  },
+  {
+    "selector": "[_ngcontent-hermes-c789395620]:root",
+    "name": "--header-menu-top",
+    "value": "58px",
+    "is_alias": false,
+    "line": 157
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline1",
+    "name": "--header-height-mobile",
+    "value": "50px",
+    "is_alias": false,
+    "line": 157
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline1",
+    "name": "--header-height-desktop",
+    "value": "64px",
+    "is_alias": false,
+    "line": 157
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline1",
+    "name": "--header-height-desktop-with-menu",
+    "value": "110px",
+    "is_alias": false,
+    "line": 157
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline6",
+    "name": "--header-menu-height",
+    "value": "46px",
+    "is_alias": false,
+    "line": 172
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline7",
+    "name": "--category-max-height",
+    "value": "266px",
+    "is_alias": false,
+    "line": 175
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline7",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 175
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline8",
+    "name": "--category-max-height",
+    "value": "294px",
+    "is_alias": false,
+    "line": 178
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline8",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 178
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline9",
+    "name": "--category-max-height",
+    "value": "154px",
+    "is_alias": false,
+    "line": 181
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline9",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 181
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline10",
+    "name": "--category-max-height",
+    "value": "182px",
+    "is_alias": false,
+    "line": 184
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline10",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 184
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--category-max-height",
+    "value": "126px",
+    "is_alias": false,
+    "line": 187
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 187
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline12",
+    "name": "--category-max-height",
+    "value": "154px",
+    "is_alias": false,
+    "line": 190
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline12",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 190
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline13",
+    "name": "--category-max-height",
+    "value": "182px",
+    "is_alias": false,
+    "line": 193
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline13",
+    "name": "--category-min-height",
+    "value": "42px",
+    "is_alias": false,
+    "line": 193
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline14",
+    "name": "--category-max-height",
+    "value": "14px",
+    "is_alias": false,
+    "line": 196
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline14",
+    "name": "--category-min-height",
+    "value": "90px",
+    "is_alias": false,
+    "line": 196
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline15",
+    "name": "--category-max-height",
+    "value": "14px",
+    "is_alias": false,
+    "line": 199
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline15",
+    "name": "--category-min-height",
+    "value": "128px",
+    "is_alias": false,
+    "line": 199
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--category-max-height",
+    "value": "14px",
+    "is_alias": false,
+    "line": 202
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline16",
+    "name": "--category-min-height",
+    "value": "90px",
+    "is_alias": false,
+    "line": 202
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline17",
+    "name": "--category-max-height",
+    "value": "auto",
+    "is_alias": false,
+    "line": 205
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline17",
+    "name": "--category-min-height",
+    "value": "auto",
+    "is_alias": false,
+    "line": 205
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline18",
+    "name": "--header-height-mobile",
+    "value": "50px",
+    "is_alias": false,
+    "line": 208
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline18",
+    "name": "--header-height-desktop",
+    "value": "64px",
+    "is_alias": false,
+    "line": 208
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline18",
+    "name": "--header-height-desktop-with-menu",
+    "value": "110px",
+    "is_alias": false,
+    "line": 208
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline18",
+    "name": "--header-height-desktop-with-skip-links",
+    "value": "91px",
+    "is_alias": false,
+    "line": 208
+  }
+]

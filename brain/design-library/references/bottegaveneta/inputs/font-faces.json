@@ -1,0 +1,100 @@
+[
+  {
+    "family": "bottegaveneta-regular-webfont",
+    "weight": null,
+    "style": null,
+    "display": "optional",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../webfonts/bottegaveneta-regular-webfont.eot?#iefix"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.bottegaveneta.com/on/demandware.static/Sites-BV-R-SOAM-Site/-/pt_BR/v1779123141355/css/style.css",
+    "raw": "@font-face{font-family:bottegaveneta-regular-webfont;src:url(../webfonts/bottegaveneta-regular-webfont.eot?#iefix);src:url(../webfonts/bottegaveneta-regular-webfont.eot?#iefix) format(\"eot\"),url(../webfonts/bottegaveneta-regular-webfont.woff2) format(\"woff2\"),url(../webfonts/bottegaveneta-regular-webfont.woff) format(\"woff\"),url(../webfonts/bottegaveneta-regular-webfont.ttf) format(\"truetype\");font-display:optional}"
+  },
+  {
+    "family": "bottegaveneta-bold-webfont",
+    "weight": null,
+    "style": null,
+    "display": "optional",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../webfonts/bottegaveneta-bold-webfont.woff2",
+      "../webfonts/bottegaveneta-bold-webfont.woff",
+      "../webfonts/bottegaveneta-bold-webfont.ttf"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "truetype"
+    ],
+    "source_css_url": "https://www.bottegaveneta.com/on/demandware.static/Sites-BV-R-SOAM-Site/-/pt_BR/v1779123141355/css/style.css",
+    "raw": "@font-face{font-family:bottegaveneta-bold-webfont;src:url(../webfonts/bottegaveneta-bold-webfont.woff2) format(\"woff2\"),url(../webfonts/bottegaveneta-bold-webfont.woff) format(\"woff\"),url(../webfonts/bottegaveneta-bold-webfont.ttf) format(\"truetype\");font-display:optional}"
+  },
+  {
+    "family": "masked-text-webfont",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../webfonts/fontello.eot",
+      "../webfonts/fontello.woff2",
+      "../webfonts/fontello.woff",
+      "../webfonts/fontello.ttf"
+    ],
+    "src_formats": [
+      "eot",
+      "woff2",
+      "woff",
+      "truetype"
+    ],
+    "source_css_url": "https://www.bottegaveneta.com/on/demandware.static/Sites-BV-R-SOAM-Site/-/pt_BR/v1779123141355/css/style.css",
+    "raw": "@font-face{font-family:masked-text-webfont;src:url(../webfonts/fontello.eot) format(\"eot\"),url(../webfonts/fontello.woff2) format(\"woff2\"),url(../webfonts/fontello.woff) format(\"woff\"),url(../webfonts/fontello.ttf) format(\"truetype\")}"
+  },
+  {
+    "family": "bottegaveneta-regular-perso-webfont",
+    "weight": null,
+    "style": null,
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../webfonts/bottegavenetauc-regular-webfont.woff2",
+      "../webfonts/bottegavenetauc-regular-webfont.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bottegaveneta.com/on/demandware.static/Sites-BV-R-SOAM-Site/-/pt_BR/v1779123141355/css/style.css",
+    "raw": "@font-face{font-family:bottegaveneta-regular-perso-webfont;src:url(../webfonts/bottegavenetauc-regular-webfont.woff2) format(\"woff2\"),url(../webfonts/bottegavenetauc-regular-webfont.woff) format(\"woff\");font-display:swap}"
+  },
+  {
+    "family": "icons",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/icons.eot?530763c630706434edb67b956e90cd82?#iefix",
+      "../fonts/icons.woff2?530763c630706434edb67b956e90cd82",
+      "../fonts/icons.woff?530763c630706434edb67b956e90cd82",
+      "../fonts/icons.ttf?530763c630706434edb67b956e90cd82",
+      "../fonts/icons.svg?530763c630706434edb67b956e90cd82#icons"
+    ],
+    "src_formats": [
+      "embedded-opentype",
+      "woff2",
+      "woff",
+      "truetype",
+      "svg"
+    ],
+    "source_css_url": "https://www.bottegaveneta.com/on/demandware.static/Sites-BV-R-SOAM-Site/-/pt_BR/v1779123141355/css/style.css",
+    "raw": "@font-face{font-family:icons;src:url(../fonts/icons.eot?530763c630706434edb67b956e90cd82?#iefix) format(\"embedded-opentype\"),url(../fonts/icons.woff2?530763c630706434edb67b956e90cd82) format(\"woff2\"),url(../fonts/icons.woff?530763c630706434edb67b956e90cd82) format(\"woff\"),url(../fonts/icons.ttf?530763c630706434edb67b956e90cd82) format(\"truetype\"),url(../fonts/icons.svg?530763c630706434edb67b956e90cd82#icons) format(\"svg\")}"
+  }
+]

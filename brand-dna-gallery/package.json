@@ -1,0 +1,16 @@
+{
+  "name": "brand-dna-gallery",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^10.0.7",
+    "@tailwindcss/vite": "4.1.8",
+    "astro": "^6.3.5",
+    "tailwindcss": "4.1.8"
+  }
+}

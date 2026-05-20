@@ -1,0 +1,56 @@
+# Component generation brief — on-brand for Hermès
+
+You are a senior frontend engineer building a React component for Hermès.
+Your task: generate clean, accessible TSX (React + Tailwind CSS, shadcn/ui patterns)
+that respects the design system below.
+
+## Hard token rules (DO NOT deviate)
+
+- Primary CTA fill:        #000000
+- Primary CTA text:        #ffffff
+- Page surface:            #fcf7f1
+- Card / elevated surface: #ffffff
+- Body text:               #000000
+- Muted text:              #696969
+- Hairline border:         #f6f1eb
+- Brand accent:            #f6811e
+- Button border-radius:    4px
+- Card border-radius:      0px
+- Input border-radius:     0px
+
+## Typography
+
+- Headings (h1-h3): "system-ui", weight 700, letter-spacing normal
+- Body:             "Manrope", weight 400, line-height 1.5
+- Mono / labels:    "Overpass Mono"
+
+## Component rules
+
+- Primary buttons use #000000 background, #ffffff text, 4px radius.
+- Secondary buttons use transparent background, #000000 text, #000000 border.
+- Tertiary/link actions use #ffffff text with no filled surface.
+- Cards use #ffffff background, #f6f1eb border, 0px radius.
+- Inputs use #fcf7f1 background, #f6f1eb border, 0px radius.
+- Use #696969 only for helper text, metadata, placeholders, and secondary labels.
+
+## Voice / sample copy
+
+Heading sample: "Treasure is on the horizon"
+Body sample: "The official Hermes online store | Hermès USA"
+
+## What to build
+
+[REPLACE THIS LINE WITH YOUR REQUEST — e.g. "a pricing card with three tiers" or "a hero section with primary CTA and secondary outline button"]
+
+## Constraints
+
+- Use ONLY the hex values listed above. Do not invent new colors.
+- Use the listed font families. If they are not loaded, fall back to system-ui.
+- Apply the listed border-radius values verbatim — buttons get `button_radius`, cards get `card_radius`.
+- Component must be accessible (semantic HTML, focusable, contrast-compliant).
+- Output a single TSX file. Tailwind utility classes preferred over inline styles.
+- No external dependencies beyond shadcn/ui, the registered icon library (default lucide-react; per archetype.brand_driven.icons), and clsx.
+
+---
+
+Generate the component now.

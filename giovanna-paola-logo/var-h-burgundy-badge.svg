@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Variation H — Burgundy Badge: Circular badge/seal with name arranged in arc -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Outer circle -->
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#5C2E35" stroke-width="1.2"/>
+  <!-- Inner circle -->
+  <circle cx="200" cy="200" r="148" fill="none" stroke="#DBA99F" stroke-width="0.5"/>
+  <!-- Center text — stacked -->
+  <text x="200" y="175" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="300" font-size="38" fill="#2C2C2C" text-anchor="middle" letter-spacing="6">GIOVANNA</text>
+  <line x1="130" y1="190" x2="270" y2="190" stroke="#DBA99F" stroke-width="0.5"/>
+  <text x="200" y="225" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="500" font-size="28" fill="#5C2E35" text-anchor="middle" letter-spacing="10">PAOLA</text>
+  <!-- Top/bottom decorative dots -->
+  <circle cx="200" cy="55" r="2.5" fill="#DBA99F"/>
+  <circle cx="200" cy="345" r="2.5" fill="#DBA99F"/>
+  <!-- Side dots -->
+  <circle cx="55" cy="200" r="2" fill="#DBA99F" opacity="0.5"/>
+  <circle cx="345" cy="200" r="2" fill="#DBA99F" opacity="0.5"/>
+</svg>

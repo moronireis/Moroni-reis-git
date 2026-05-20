@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>V2 — Foto + Overlay Claro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .canvas {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+    background: #FAFAF7;
+  }
+
+  /* ═══ PHOTO ZONE — top 48% ═══ */
+  .photo-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 52%;
+    overflow: hidden;
+  }
+
+  .photo-zone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+  }
+
+  /* Gentle vignette on photo edges */
+  .photo-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.10) 0%, transparent 20%, transparent 70%, rgba(250,250,247,1) 100%),
+      linear-gradient(0deg, transparent 92%, rgba(0,0,0,0.06) 100%);
+    pointer-events: none;
+  }
+
+  /* Brand over photo — bottom of photo zone */
+  .photo-brand {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 3;
+  }
+
+  .photo-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 40px rgba(0,0,0,0.15);
+  }
+
+  .photo-brand-loc {
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.2em;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+
+  /* ═══ CONTENT ZONE — bottom 52% ═══ */
+  .content-zone {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 54%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+  }
+
+  /* ─── Headline ─── */
+  .headline {
+    margin-top: 28px;
+    text-align: center;
+  }
+
+  .event-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #C9A96E;
+  }
+
+  .event-title {
+    margin-top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 74px;
+    font-weight: 300;
+    color: #1A2820;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .event-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #2F4A3A;
+    font-size: 64px;
+  }
+
+  .year {
+    margin-top: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 136px;
+    font-weight: 600;
+    color: #C9A96E;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── Hairline ─── */
+  .hairline {
+    margin-top: 28px;
+    width: 320px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+  }
+
+  /* ─── Prices ─── */
+  .prices {
+    margin-top: 32px;
+    display: flex;
+    gap: 24px;
+  }
+
+  .price-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 44px;
+    border: 1px solid rgba(201, 169, 110, 0.30);
+    background: rgba(255,255,255,0.7);
+    min-width: 360px;
+  }
+
+  .price-day {
+    font-family: 'Inter', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: #2F4A3A;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 600;
+    color: #1A2820;
+    line-height: 1;
+  }
+
+  .price-amount .rs {
+    font-size: 28px;
+    font-weight: 400;
+    color: #C9A96E;
+    margin-right: 2px;
+  }
+
+  /* ─── Included ─── */
+  .included {
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .included-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #C9A96E;
+    margin-bottom: 12px;
+  }
+
+  .included-items {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #3D5A47;
+    line-height: 1.7;
+  }
+
+  .included-items strong {
+    font-weight: 600;
+    color: #1A2820;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #C9A96E;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 0 8px;
+  }
+
+  /* ─── Condition ─── */
+  .condition {
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: #8A6A3E;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── CTA ─── */
+  .cta {
+    margin-top: auto;
+    margin-bottom: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .cta-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: italic;
+    color: #1A2820;
+  }
+
+  .cta-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1E2E24;
+    padding: 18px 44px;
+    color: #F4EFE6;
+    font-family: 'Inter', sans-serif;
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+    fill: #25D366;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- PHOTO — top half, vivid, no wash -->
+  <div class="photo-zone">
+    <img src="photos/castelo-aereo-drone.jpg" alt="Castelo dos Lagos — vista aérea">
+    <div class="photo-vignette"></div>
+    <div class="photo-brand">
+      <div class="photo-brand-name">Castelo dos Lagos</div>
+      <div class="photo-brand-loc">Ribeirão Pires · São Paulo</div>
+    </div>
+  </div>
+
+  <!-- CONTENT — bottom half, clean background -->
+  <div class="content-zone">
+
+    <div class="headline">
+      <div class="event-label">Condições Especiais</div>
+      <div class="event-title">Casamentos <em>&</em> Debutantes</div>
+      <div class="year">2026</div>
+    </div>
+
+    <div class="hairline"></div>
+
+    <div class="prices">
+      <div class="price-card">
+        <span class="price-day">Sexta e Domingo</span>
+        <span class="price-amount"><span class="rs">R$</span>25.990</span>
+      </div>
+      <div class="price-card">
+        <span class="price-day">Sábado</span>
+        <span class="price-amount"><span class="rs">R$</span>27.990</span>
+      </div>
+    </div>
+
+    <div class="included">
+      <div class="included-label">Tudo incluso</div>
+      <div class="included-items">
+        Espaço <span class="dot"></span> <strong>Churrasco à Gaúcha</strong> <span class="dot"></span> DJ <span class="dot"></span> Som <span class="dot"></span> Iluminação<br>
+        Gerador <span class="dot"></span> Suítes <span class="dot"></span> Segurança <span class="dot"></span> Cortesias
+      </div>
+    </div>
+
+    <div class="condition">Eventos até novembro de 2026</div>
+
+    <div class="cta">
+      <span class="cta-label">Agende sua visita</span>
+      <div class="cta-whatsapp">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        (11) 9 5590-6035
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!-- CONFIGURE: Replace PLACEHOLDER_SUPABASE_URL, PLACEHOLDER_SUPABASE_ANON_KEY, PLACEHOLDER_SUPABASE_SERVICE_KEY with real values -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M&D — Painel de Convidados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --wine: #2D0A0F;
+      --wine-deep: #1A0508;
+      --wine-mid: #4A1019;
+      --wine-tint: #F7F0F1;
+      --parchment: #FAF8F6;
+      --white: #FFFFFF;
+      --white-muted: rgba(255,255,255,0.82);
+      --white-dim: rgba(255,255,255,0.40);
+      --gold: #D4AF37;
+      --gold-border: rgba(212,175,55,0.30);
+      --fd: 'Fraunces', Georgia, serif;
+      --fu: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: var(--wine-deep);
+      color: var(--white);
+      font-family: var(--fu);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--wine);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header__brand {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: 22px;
+      font-variation-settings: "opsz" 72, "SOFT" 40, "WONK" 0;
+      letter-spacing: .08em;
+    }
+    .header__brand i { font-style: italic; opacity: .5; padding: 0 .06em; }
+    .header__sub {
+      font-family: var(--fu);
+      font-size: 10px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--gold);
+      opacity: .6;
+      margin-top: 4px;
+    }
+    .header__refresh {
+      font-family: var(--fu);
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--gold);
+      opacity: .6;
+      cursor: pointer;
+      border: 1px solid var(--gold-border);
+      padding: 8px 20px;
+      background: transparent;
+      transition: all 400ms;
+    }
+    .header__refresh:hover { opacity: 1; background: rgba(212,175,55,0.08); }
+
+    /* ── STATS ── */
+    .stats-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--gold-border);
+      background: var(--wine-mid);
+    }
+    .stat {
+      flex: 1;
+      padding: 20px 24px;
+      text-align: center;
+      border-right: 1px solid var(--gold-border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat__num {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: 36px;
+      font-variation-settings: "opsz" 72, "SOFT" 20, "WONK" 0;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat__label {
+      font-family: var(--fu);
+      font-size: 9px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      opacity: .45;
+    }
+
+    /* ── FILTER TABS ── */
+    .filters {
+      padding: 0 32px;
+      background: var(--wine);
+      border-bottom: 1px solid var(--gold-border);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .filter-tab {
+      font-family: var(--fu);
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      padding: 16px 24px;
+      cursor: pointer;
+      border: none;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      color: var(--white-dim);
+      white-space: nowrap;
+      transition: all 300ms;
+    }
+    .filter-tab:hover { color: var(--white-muted); }
+    .filter-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      opacity: 1;
+    }
+
+    /* ── TABLE WRAPPER ── */
+    .table-wrap {
+      padding: 32px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+    thead th {
+      font-family: var(--fu);
+      font-size: 9px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--gold);
+      opacity: .5;
+      padding: 0 16px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+      transition: background 300ms;
+    }
+    tbody tr:hover { background: rgba(212,175,55,0.04); }
+    td {
+      padding: 16px;
+      font-family: var(--fu);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--white-muted);
+      vertical-align: top;
+    }
+    .td-name {
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: 15px;
+      font-variation-settings: "opsz" 48, "SOFT" 20, "WONK" 0;
+      color: var(--white);
+    }
+    .companions-list {
+      margin-top: 6px;
+      font-size: 11px;
+      opacity: .45;
+      line-height: 1.7;
+    }
+    .companions-list span { display: block; }
+
+    /* ── STATUS BADGE ── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-family: var(--fu);
+      font-size: 9px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+    .badge--pendente   { color: var(--gold); border: 1px solid rgba(212,175,55,0.35); }
+    .badge--aprovado   { color: #6AADFF; border: 1px solid rgba(106,173,255,0.35); }
+    .badge--enviado    { color: #9BDDFF; border: 1px solid rgba(155,221,255,0.35); }
+    .badge--confirmado { color: #6FCF97; border: 1px solid rgba(111,207,151,0.35); }
+    .badge--recusado   { color: #EB5757; border: 1px solid rgba(235,87,87,0.35); }
+
+    /* ── STATUS SELECT ── */
+    .status-select {
+      font-family: var(--fu);
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--white-muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--gold-border);
+      padding: 6px 10px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      transition: border-color 300ms;
+      min-width: 140px;
+    }
+    .status-select:hover { border-color: rgba(212,175,55,0.55); }
+
+    /* ── FONTE TAG ── */
+    .fonte-tag {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      padding: 2px 8px;
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--white-dim);
+    }
+
+    /* ── EMPTY / LOADING STATE ── */
+    .state-msg {
+      text-align: center;
+      padding: 64px 32px;
+      font-family: var(--fd);
+      font-weight: 300;
+      font-size: 20px;
+      font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 0;
+      color: var(--white-dim);
+    }
+
+    /* ── GOLD DIVIDER ── */
+    .gold-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .3;
+      margin: 0 auto 4px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .stats-bar { flex-wrap: wrap; }
+      .stat { flex: 1 1 50%; }
+      .header { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .table-wrap { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div>
+    <p class="header__brand">M<i>&amp;</i>D</p>
+    <p class="header__sub">Painel de Convidados</p>
+  </div>
+  <button class="header__refresh" onclick="renderGuests()">Atualizar</button>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat__num" id="stat-total">—</div>
+    <div class="stat__label">Total Cadastrados</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num" id="stat-confirmados">—</div>
+    <div class="stat__label">Confirmados</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num" id="stat-pendentes">—</div>
+    <div class="stat__label">Pendentes</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num" id="stat-recusados">—</div>
+    <div class="stat__label">Recusados</div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<nav class="filters">
+  <button class="filter-tab active" data-status="todos" onclick="setFilter('todos', this)">Todos</button>
+  <button class="filter-tab" data-status="pendente" onclick="setFilter('pendente', this)">Pendentes</button>
+  <button class="filter-tab" data-status="aprovado" onclick="setFilter('aprovado', this)">Aprovados</button>
+  <button class="filter-tab" data-status="enviado" onclick="setFilter('enviado', this)">Convite Enviado</button>
+  <button class="filter-tab" data-status="confirmado" onclick="setFilter('confirmado', this)">Confirmados</button>
+  <button class="filter-tab" data-status="recusado" onclick="setFilter('recusado', this)">Recusados</button>
+</nav>
+
+<!-- TABLE -->
+<div class="table-wrap">
+  <div id="table-container">
+    <div class="state-msg" id="loading-msg">Carregando convidados...</div>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://weirdpigeon-supabase.cloudfy.live';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3Njg1MTYsImV4cCI6MTgwNTMwNDUxNn0.Hziwx8ocWnFVLHvt5DhT8nTkL2XVMa58ofjL-0hCMxw';
+
+  let currentFilter = 'todos';
+  let allGuests = [];
+
+  async function loadGuests() {
+    let url = SUPABASE_URL + '/rest/v1/wedding_guests?select=*,wedding_companions(*)&order=created_at.desc';
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      }
+    });
+    return res.json();
+  }
+
+  async function updateStatus(id, newStatus) {
+    await fetch(SUPABASE_URL + '/rest/v1/wedding_guests?id=eq.' + id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      },
+      body: JSON.stringify({ status: newStatus, updated_at: new Date().toISOString() })
+    });
+    await renderGuests();
+  }
+
+  async function deleteGuest(id, nome) {
+    if (!confirm('Deletar "' + nome + '" e todos os acompanhantes?')) return;
+    await fetch(SUPABASE_URL + '/rest/v1/wedding_companions?guest_id=eq.' + id, {
+      method: 'DELETE',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+    });
+    await fetch(SUPABASE_URL + '/rest/v1/wedding_guests?id=eq.' + id, {
+      method: 'DELETE',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+    });
+    await renderGuests();
+  }
+
+  function setFilter(status, btn) {
+    currentFilter = status;
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    drawTable();
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' }) +
+           ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function badgeHTML(status) {
+    const s = (status || 'pendente').toLowerCase();
+    const labels = {
+      pendente: 'Pendente',
+      aprovado: 'Aprovado',
+      enviado: 'Convite Enviado',
+      confirmado: 'Confirmado',
+      recusado: 'Recusado'
+    };
+    return `<span class="badge badge--${s}">${labels[s] || s}</span>`;
+  }
+
+  function drawTable() {
+    const container = document.getElementById('table-container');
+
+    // Stats (always from allGuests regardless of filter)
+    const total = allGuests.length;
+    const confirmados = allGuests.filter(g => g.status === 'confirmado').length;
+    const pendentes = allGuests.filter(g => !g.status || g.status === 'pendente').length;
+    const recusados = allGuests.filter(g => g.status === 'recusado').length;
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-confirmados').textContent = confirmados;
+    document.getElementById('stat-pendentes').textContent = pendentes;
+    document.getElementById('stat-recusados').textContent = recusados;
+
+    // Filter
+    const guests = currentFilter === 'todos'
+      ? allGuests
+      : allGuests.filter(g => {
+          const s = g.status || 'pendente';
+          return s === currentFilter;
+        });
+
+    if (!guests.length) {
+      container.innerHTML = '<div class="state-msg">Nenhum convidado encontrado.</div>';
+      return;
+    }
+
+    let rows = guests.map(g => {
+      const comps = Array.isArray(g.wedding_companions) ? g.wedding_companions : [];
+      const compHTML = comps.length
+        ? `<div class="companions-list">${comps.map(c => `<span>${c.nome}${c.idade ? ', ' + c.idade + ' anos' : ''}</span>`).join('')}</div>`
+        : '';
+
+      const statusOptions = ['pendente','aprovado','enviado','confirmado','recusado'];
+      const currentStatus = g.status || 'pendente';
+      const selectOptions = statusOptions.map(s => {
+        const labels = { pendente:'Pendente', aprovado:'Aprovado', enviado:'Convite Enviado', confirmado:'Confirmado', recusado:'Recusado' };
+        return `<option value="${s}" ${s === currentStatus ? 'selected' : ''}>${labels[s]}</option>`;
+      }).join('');
+
+      const restricoes = g.restricoes_alimentares ? `<div style="font-size:11px;opacity:.45;margin-top:4px;">${g.restricoes_alimentares}</div>` : '';
+      const mensagem = g.mensagem ? `<div style="font-size:11px;opacity:.45;margin-top:4px;font-style:italic;">"${g.mensagem}"</div>` : '';
+
+      return `
+        <tr>
+          <td>
+            <div class="td-name">${g.nome || '—'}</div>
+            ${compHTML}
+          </td>
+          <td>${g.whatsapp || '—'}</td>
+          <td>${g.interesse || '—'}</td>
+          <td>${g.acompanhantes != null ? g.acompanhantes : (comps.length || '0')}</td>
+          <td><span class="fonte-tag">${g.fonte || '—'}</span></td>
+          <td>${badgeHTML(g.status)}</td>
+          <td>${formatDate(g.created_at)}</td>
+          <td>
+            <select class="status-select" onchange="updateStatus('${g.id}', this.value)">
+              ${selectOptions}
+            </select>
+            <button onclick="deleteGuest('${g.id}', '${(g.nome||'').replace(/'/g,"\\'")}');" style="display:block;margin-top:8px;padding:4px 12px;background:transparent;border:1px solid rgba(200,50,50,0.3);color:rgba(200,50,50,0.6);font-family:var(--fu);font-size:10px;letter-spacing:.08em;cursor:pointer;transition:all .3s;" onmouseenter="this.style.background='rgba(200,50,50,0.15)';this.style.color='#c03232'" onmouseleave="this.style.background='transparent';this.style.color='rgba(200,50,50,0.6)'">Deletar</button>
+            ${restricoes}
+            ${mensagem}
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    container.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>WhatsApp</th>
+            <th>Interesse</th>
+            <th>Acomp.</th>
+            <th>Fonte</th>
+            <th>Status</th>
+            <th>Data</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+  }
+
+  async function renderGuests() {
+    document.getElementById('table-container').innerHTML = '<div class="state-msg">Carregando...</div>';
+    try {
+      allGuests = await loadGuests();
+      if (!Array.isArray(allGuests)) {
+        console.error('Resposta inesperada:', allGuests);
+        allGuests = [];
+        document.getElementById('table-container').innerHTML = '<div class="state-msg">Erro ao carregar dados. Verifique as credenciais do Supabase.</div>';
+        return;
+      }
+      drawTable();
+    } catch(err) {
+      console.error('Erro ao carregar convidados:', err);
+      document.getElementById('table-container').innerHTML = '<div class="state-msg">Erro de conexão com o Supabase.</div>';
+    }
+  }
+
+  // Init
+  renderGuests();
+</script>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giovanna Paola — Logo Final</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --rose: #DBA99F;
+      --cream: #F4F3EE;
+      --taupe: #9C958F;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0A0A0A;
+      color: #fff;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      text-align: center;
+      padding: 60px 40px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-size: 32px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-weight: 200;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── Grid ─── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      padding: 2px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+      padding: 60px 40px;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .card:hover { background: #151515; }
+    .card.full { grid-column: 1 / -1; min-height: 400px; }
+
+    .card-label {
+      position: absolute;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    /* ─── Section labels ─── */
+    .section-label {
+      text-align: center;
+      padding: 50px 40px 20px;
+      font-weight: 200;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+    .section-label.on-light { color: rgba(26,26,26,0.3); }
+
+    /* ─── Thin horizontal rule ─── */
+    .thin-rule {
+      width: 100%;
+      max-width: 280px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    }
+    .thin-rule.short { max-width: 50px; background: rgba(255,255,255,0.15); }
+    .thin-rule.rose { background: linear-gradient(90deg, transparent, rgba(219,169,159,0.3), transparent); }
+
+    /* ════════════════════════════════════════
+       V1 — Single line, thin rule, subtitle
+       GIOVANNA PAOLA (one line) + rule + sub
+       ════════════════════════════════════════ */
+    .v1-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-size: 36px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .v1-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 18px;
+    }
+
+    /* ════════════════════════════════════════
+       V2 — Stacked, name + PAOLA smaller + rule + sub
+       ════════════════════════════════════════ */
+    .v2-first {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-size: 38px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .v2-last {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
+    .v2-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 16px;
+    }
+
+    /* ════════════════════════════════════════
+       V3 — Two lines equal weight, tight
+       ════════════════════════════════════════ */
+    .v3-line {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-size: 34px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.4;
+    }
+    .v3-line.second {
+      font-size: 34px;
+      letter-spacing: 8px;
+    }
+    .v3-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 16px;
+    }
+
+    /* ════════════════════════════════════════
+       V4 — Josefin Sans variant (more geometric)
+       ════════════════════════════════════════ */
+    .v4-name {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 100;
+      font-size: 36px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .v4-sub {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 18px;
+    }
+
+    /* ════════════════════════════════════════
+       V5 — Weight contrast: 100 vs 300
+       ════════════════════════════════════════ */
+    .v5-first {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-size: 36px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .v5-last {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 36px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-top: 2px;
+    }
+    .v5-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 20px;
+    }
+
+    /* ════════════════════════════════════════
+       V6 — Compact: smaller, tighter, elegant
+       ════════════════════════════════════════ */
+    .v6-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 22px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .v6-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 12px;
+    }
+
+    /* ════════════════════════════════════════
+       Light background overrides
+       ════════════════════════════════════════ */
+    .light-section {
+      background: var(--cream);
+      padding: 80px 40px;
+    }
+    .light-section .card {
+      background: #fff;
+      min-height: 440px;
+    }
+    .light-section .card:hover { background: #fafafa; }
+    .light-section .card-label { color: rgba(0,0,0,0.2); }
+
+    .light .v1-name,
+    .light .v2-first,
+    .light .v3-line,
+    .light .v4-name,
+    .light .v5-first,
+    .light .v5-last,
+    .light .v6-name { color: #1a1a1a; }
+
+    .light .v1-sub,
+    .light .v2-sub,
+    .light .v3-sub,
+    .light .v4-sub,
+    .light .v5-sub,
+    .light .v6-sub { color: rgba(26,26,26,0.4); }
+
+    .light .v2-last { color: #9C958F; }
+
+    .light .thin-rule {
+      background: linear-gradient(90deg, transparent, rgba(26,26,26,0.15), transparent);
+    }
+    .light .thin-rule.short { background: rgba(26,26,26,0.12); }
+    .light .thin-rule.rose { background: linear-gradient(90deg, transparent, rgba(219,169,159,0.35), transparent); }
+
+    /* ─── Mockups ─── */
+    .mockup-section {
+      padding: 80px 40px;
+      background: #0A0A0A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) { .mockup-grid { grid-template-columns: 1fr; } }
+
+    .mockup-card {
+      background: #111;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .mockup-preview {
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .mockup-info {
+      padding: 14px 20px;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 600px) {
+      .v1-name, .v4-name { font-size: 24px; letter-spacing: 4px; }
+      .v2-first, .v5-first, .v5-last { font-size: 26px; }
+      .v3-line, .v3-line.second { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Giovanna Paola</h1>
+    <p>Logo &mdash; Direção Final</p>
+  </header>
+
+  <!-- ═══ DARK ═══ -->
+  <div class="section-label">Fundo Escuro</div>
+  <div class="grid">
+
+    <!-- V1 — Single line + rule + subtitle -->
+    <div class="card">
+      <div class="v1-name">Giovanna Paola</div>
+      <div class="thin-rule"></div>
+      <div class="v1-sub">Produção de Eventos</div>
+      <div class="card-label">1 &mdash; Linha Única</div>
+    </div>
+
+    <!-- V2 — Stacked with rose accent -->
+    <div class="card">
+      <div class="v2-first">Giovanna</div>
+      <div class="v2-last">Paola</div>
+      <div class="thin-rule short"></div>
+      <div class="v2-sub">Produção de Eventos</div>
+      <div class="card-label">2 &mdash; Stacked Rose</div>
+    </div>
+
+    <!-- V3 — Two lines equal -->
+    <div class="card">
+      <div style="text-align: center;">
+        <div class="v3-line">Giovanna</div>
+        <div class="v3-line second">Paola</div>
+        <div class="thin-rule rose" style="margin: 18px auto 0;"></div>
+        <div class="v3-sub">Produção de Eventos</div>
+      </div>
+      <div class="card-label">3 &mdash; Duas Linhas</div>
+    </div>
+
+    <!-- V4 — Josefin Sans (more geometric) -->
+    <div class="card">
+      <div class="v4-name">Giovanna Paola</div>
+      <div class="thin-rule"></div>
+      <div class="v4-sub">Produção de Eventos</div>
+      <div class="card-label">4 &mdash; Josefin Geometric</div>
+    </div>
+
+    <!-- V5 — Weight contrast full width -->
+    <div class="card full">
+      <div style="text-align: center;">
+        <div class="v5-first">Giovanna</div>
+        <div class="v5-last">Paola</div>
+        <div class="thin-rule" style="margin: 20px auto 0;"></div>
+        <div class="v5-sub">Produção de Eventos</div>
+      </div>
+      <div class="card-label">5 &mdash; Contraste de Peso</div>
+    </div>
+
+    <!-- V6 — Compact elegant -->
+    <div class="card">
+      <div class="v6-name">Giovanna Paola</div>
+      <div class="thin-rule" style="max-width: 200px;"></div>
+      <div class="v6-sub">Produção de Eventos</div>
+      <div class="card-label">6 &mdash; Compacto</div>
+    </div>
+
+    <!-- V7 — Josefin stacked -->
+    <div class="card">
+      <div style="text-align: center;">
+        <div style="font-family: 'Josefin Sans', sans-serif; font-weight: 100; font-size: 34px; letter-spacing: 5px; text-transform: uppercase; color: #fff;">Giovanna</div>
+        <div style="font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 14px; letter-spacing: 6px; text-transform: uppercase; color: var(--rose); margin-top: 6px;">Paola</div>
+        <div class="thin-rule rose" style="margin: 16px auto 0;"></div>
+        <div style="font-family: 'Josefin Sans', sans-serif; font-weight: 200; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 16px;">Produção de Eventos</div>
+      </div>
+      <div class="card-label">7 &mdash; Josefin Stacked</div>
+    </div>
+
+    <!-- V8 — Ultra-minimal one line -->
+    <div class="card full">
+      <div style="text-align: center;">
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 42px; letter-spacing: 4px; text-transform: uppercase; color: #fff;">Giovanna Paola</div>
+        <div style="width: 100%; max-width: 380px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: 20px auto 0;"></div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 18px;">Produção de Eventos</div>
+      </div>
+      <div class="card-label">8 &mdash; Ultra Minimal</div>
+    </div>
+
+  </div>
+
+  <!-- ═══ LIGHT ═══ -->
+  <div class="light-section">
+    <div class="section-label on-light">Fundo Claro</div>
+    <div class="grid">
+
+      <div class="card light">
+        <div class="v1-name">Giovanna Paola</div>
+        <div class="thin-rule"></div>
+        <div class="v1-sub">Produção de Eventos</div>
+        <div class="card-label">1 &mdash; Linha Única</div>
+      </div>
+
+      <div class="card light">
+        <div class="v2-first">Giovanna</div>
+        <div class="v2-last">Paola</div>
+        <div class="thin-rule short"></div>
+        <div class="v2-sub">Produção de Eventos</div>
+        <div class="card-label">2 &mdash; Stacked Rose</div>
+      </div>
+
+      <div class="card light full">
+        <div style="text-align: center;">
+          <div class="v5-first">Giovanna</div>
+          <div class="v5-last">Paola</div>
+          <div class="thin-rule" style="margin: 20px auto 0;"></div>
+          <div class="v5-sub">Produção de Eventos</div>
+        </div>
+        <div class="card-label">5 &mdash; Contraste de Peso</div>
+      </div>
+
+      <div class="card light">
+        <div class="v4-name">Giovanna Paola</div>
+        <div class="thin-rule"></div>
+        <div class="v4-sub">Produção de Eventos</div>
+        <div class="card-label">4 &mdash; Josefin Geometric</div>
+      </div>
+
+      <div class="card light">
+        <div class="v6-name">Giovanna Paola</div>
+        <div class="thin-rule" style="max-width: 200px;"></div>
+        <div class="v6-sub">Produção de Eventos</div>
+        <div class="card-label">6 &mdash; Compacto</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ Mockups ═══ -->
+  <div class="mockup-section">
+    <div class="section-label" style="margin-bottom: 40px;">Aplicações</div>
+    <div class="mockup-grid">
+
+      <div class="mockup-card">
+        <div class="mockup-preview" style="background: #0a0a0a;">
+          <div style="text-align: center;">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 20px; letter-spacing: 4px; text-transform: uppercase; color: #fff;">Giovanna Paola</div>
+            <div style="width: 140px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); margin: 10px auto;"></div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35);">Produção de Eventos</div>
+          </div>
+        </div>
+        <div class="mockup-info">Cartão de Visita — Escuro</div>
+      </div>
+
+      <div class="mockup-card">
+        <div class="mockup-preview" style="background: linear-gradient(135deg, #e8e4e0, #d4cfc9);">
+          <div style="text-align: center;">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 20px; letter-spacing: 4px; text-transform: uppercase; color: #1a1a1a;">Giovanna Paola</div>
+            <div style="width: 140px; height: 1px; background: linear-gradient(90deg, transparent, rgba(26,26,26,0.15), transparent); margin: 10px auto;"></div>
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: rgba(26,26,26,0.4);">Produção de Eventos</div>
+          </div>
+        </div>
+        <div class="mockup-info">Cartão de Visita — Mármore</div>
+      </div>
+
+      <div class="mockup-card">
+        <div class="mockup-preview" style="background: #1a1a1a;">
+          <div style="width: 110px; height: 110px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center;">
+            <div style="font-family: 'Montserrat', sans-serif; font-weight: 100; font-size: 28px; letter-spacing: 3px; color: #fff;">GP</div>
+          </div>
+        </div>
+        <div class="mockup-info">Avatar — Instagram / WhatsApp</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

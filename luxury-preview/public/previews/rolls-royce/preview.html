@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolls-Royce Motor Cars — Design System Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================
+     Rolls-Royce Motor Cars — Design System Preview
+     Extraction: 2026-05-18 | Method: Research-based
+     Confidence: MEDIUM-HIGH
+
+     NOTE: Riviera Nights is a proprietary Rolls-Royce typeface.
+     This preview uses Playfair Display as the closest publicly
+     available approximation (transitional serif, high contrast,
+     elegant display characteristics). In production, Riviera
+     Nights would be self-hosted from licensed font files.
+     ========================================================== */
+
+  :root {
+    /* Brand Colors */
+    --purple-spirit: #6B2D8B;
+    --purple-spirit-deep: #4A1D6B;
+    --purple-spirit-light: #8B4DAB;
+    --charles-blue: #1C3E6E;
+    --spirit-gold: #C4A265;
+    --spirit-gold-light: #D4B87A;
+
+    /* Neutrals */
+    --black: #000000;
+    --near-black: #0D0D0D;
+    --anthracite: #1A1A1A;
+    --graphite: #2C2C2C;
+    --gunmetal: #3D3D3D;
+    --silver: #C0C0C0;
+    --silver-light: #D4D4D4;
+    --alabaster: #F5F5F0;
+    --white: #FFFFFF;
+
+    /* Semantic */
+    --surface-primary: var(--black);
+    --surface-elevated: var(--near-black);
+    --surface-card: var(--anthracite);
+    --text-primary: var(--white);
+    --text-secondary: var(--silver);
+    --text-tertiary: #808080;
+    --border-default: var(--graphite);
+    --border-accent: var(--purple-spirit);
+
+    /* Typography — Riviera Nights approximated by Playfair Display */
+    --font-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-system: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+    --space-4xl: 128px;
+
+    /* Motion */
+    --duration-fast: 200ms;
+    --duration-normal: 400ms;
+    --duration-slow: 600ms;
+    --duration-stately: 1000ms;
+    --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    --ease-enter: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+    --ease-stately: cubic-bezier(0.22, 0.61, 0.36, 1.0);
+    --ease-glide: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--surface-primary);
+    color: var(--text-primary);
+    font-family: var(--font-system);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---- Header / Nav ---- */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-xl);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-brand {
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-system);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease-default);
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ---- Meta Banner ---- */
+  .meta-banner {
+    margin-top: 80px;
+    padding: var(--space-md) var(--space-xl);
+    background: var(--purple-spirit-deep);
+    text-align: center;
+    font-family: var(--font-system);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--silver-light);
+  }
+
+  .meta-banner strong { color: var(--white); }
+
+  /* ---- Sections ---- */
+  .section {
+    padding: var(--space-3xl) var(--space-xl);
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .section + .section {
+    border-top: 1px solid var(--border-default);
+  }
+
+  .section-title {
+    font-family: var(--font-primary);
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin-bottom: var(--space-xl);
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    font-family: var(--font-system);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-md);
+  }
+
+  .section-body {
+    font-family: var(--font-system);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* ---- Color Swatches ---- */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .swatch {
+    aspect-ratio: 3/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-sm);
+    border: 1px solid var(--border-default);
+    transition: border-color var(--duration-normal) var(--ease-default);
+  }
+
+  .swatch:hover { border-color: var(--purple-spirit); }
+
+  .swatch-name {
+    font-family: var(--font-system);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .swatch-value {
+    font-family: var(--font-system);
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .swatch--light .swatch-name,
+  .swatch--light .swatch-value { color: var(--black); }
+
+  .swatch--dark .swatch-name,
+  .swatch--dark .swatch-value { color: var(--white); }
+
+  /* ---- Typography Specimens ---- */
+  .type-specimens {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .type-specimen {
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .type-specimen:last-child { border-bottom: none; }
+
+  .type-label {
+    font-family: var(--font-system);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple-spirit-light);
+    margin-bottom: var(--space-sm);
+  }
+
+  .type-meta {
+    font-family: var(--font-system);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: var(--space-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-display-hero {
+    font-family: var(--font-primary);
+    font-size: clamp(40px, 5vw, 80px);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    line-height: 1.1;
+    color: var(--text-primary);
+  }
+
+  .type-display-large {
+    font-family: var(--font-primary);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .type-display-medium {
+    font-family: var(--font-primary);
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .type-heading-1 {
+    font-family: var(--font-primary);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .type-heading-2 {
+    font-family: var(--font-primary);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .type-body-large {
+    font-family: var(--font-system);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .type-body {
+    font-family: var(--font-system);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .type-nav {
+    font-family: var(--font-system);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .type-caption {
+    font-family: var(--font-system);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    color: var(--text-tertiary);
+  }
+
+  /* ---- Spacing Scale ---- */
+  .spacing-scale {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .spacing-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .spacing-bar {
+    height: 24px;
+    background: var(--purple-spirit);
+    opacity: 0.6;
+    transition: opacity var(--duration-normal) var(--ease-default);
+  }
+
+  .spacing-item:hover .spacing-bar { opacity: 1; }
+
+  .spacing-label {
+    font-family: var(--font-system);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    min-width: 120px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- Component Demos ---- */
+  .component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .component-demo {
+    padding: var(--space-lg);
+    background: var(--surface-elevated);
+    border: 1px solid var(--border-default);
+  }
+
+  .component-label {
+    font-family: var(--font-system);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple-spirit-light);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Button Demos */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 32px;
+    font-family: var(--font-system);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-default);
+  }
+
+  .btn-primary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+  }
+
+  .btn-primary:hover {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .btn-accent {
+    background: transparent;
+    color: var(--purple-spirit-light);
+    border: 1px solid var(--purple-spirit);
+  }
+
+  .btn-accent:hover {
+    background: var(--purple-spirit);
+    color: var(--white);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--graphite);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  .btn-group {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Card Demo */
+  .card-demo {
+    background: var(--surface-card);
+    overflow: hidden;
+  }
+
+  .card-demo-image {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--anthracite) 0%, var(--graphite) 50%, var(--anthracite) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    font-family: var(--font-system);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .card-demo-content {
+    padding: var(--space-lg);
+  }
+
+  .card-demo-title {
+    font-family: var(--font-primary);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+  }
+
+  .card-demo-text {
+    font-family: var(--font-system);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .card-demo-link {
+    font-family: var(--font-system);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple-spirit-light);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease-default);
+  }
+
+  .card-demo-link:hover { color: var(--white); }
+
+  /* ---- Motion Demo ---- */
+  .motion-demos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .motion-demo {
+    padding: var(--space-lg);
+    background: var(--surface-elevated);
+    border: 1px solid var(--border-default);
+    text-align: center;
+  }
+
+  .motion-box {
+    width: 60px;
+    height: 60px;
+    background: var(--purple-spirit);
+    margin: var(--space-md) auto;
+    transition-property: transform, opacity, background-color;
+  }
+
+  .motion-demo:hover .motion-box--default {
+    transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    transform: translateY(-12px);
+    background-color: var(--purple-spirit-light);
+  }
+
+  .motion-demo:hover .motion-box--stately {
+    transition: all 1000ms cubic-bezier(0.22, 0.61, 0.36, 1.0);
+    transform: translateY(-12px);
+    background-color: var(--purple-spirit-light);
+  }
+
+  .motion-demo:hover .motion-box--glide {
+    transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(40px);
+    background-color: var(--purple-spirit-light);
+  }
+
+  .motion-demo:hover .motion-box--cinematic {
+    transition: all 1500ms cubic-bezier(0.22, 0.61, 0.36, 1.0);
+    transform: scale(1.3);
+    opacity: 0.7;
+    background-color: var(--purple-spirit-light);
+  }
+
+  .motion-label {
+    font-family: var(--font-system);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-top: var(--space-sm);
+  }
+
+  .motion-value {
+    font-family: var(--font-system);
+    font-size: 11px;
+    color: var(--purple-spirit-light);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- Hero Demo ---- */
+  .hero-demo {
+    position: relative;
+    min-height: 60vh;
+    background: linear-gradient(145deg, #0A0A0A 0%, #151515 30%, #0D0D0D 60%, #080808 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-3xl) var(--space-xl);
+    overflow: hidden;
+    margin: 0 calc(var(--space-xl) * -1);
+  }
+
+  .hero-demo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+  }
+
+  .hero-demo::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 40%;
+    background: radial-gradient(ellipse, rgba(107,45,139,0.08) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-overline {
+    font-family: var(--font-system);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-spirit-light);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-title {
+    font-family: var(--font-primary);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-system);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    color: var(--silver);
+    max-width: 600px;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* ---- Surface Demo ---- */
+  .surface-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .surface-layer {
+    padding: var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .surface-name {
+    font-family: var(--font-system);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .surface-hex {
+    font-family: var(--font-system);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- Footer ---- */
+  .footer {
+    padding: var(--space-xl);
+    text-align: center;
+    border-top: 1px solid var(--border-default);
+    margin-top: var(--space-3xl);
+  }
+
+  .footer-text {
+    font-family: var(--font-system);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.8;
+  }
+
+  .footer-text a {
+    color: var(--purple-spirit-light);
+    text-decoration: none;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 768px) {
+    .section { padding: var(--space-xl) var(--space-md); }
+    .nav { padding: 0 var(--space-md); }
+    .nav-links { display: none; }
+    .hero-demo { padding: var(--space-xl) var(--space-md); margin: 0 calc(var(--space-md) * -1); }
+    .swatches { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  }
+
+  /* ---- Print ---- */
+  @media print {
+    body { background: white; color: black; }
+    .nav, .meta-banner { display: none; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <span class="nav-brand">Rolls-Royce Motor Cars</span>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#spacing">Spacing</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#motion">Motion</a></li>
+  </ul>
+</nav>
+
+<!-- Meta -->
+<div class="meta-banner">
+  <strong>Design System Preview</strong> &mdash; rolls-roycemotorcars.com &mdash; Extracted 2026-05-18 &mdash; Method: Research-based (site blocks automated fetching) &mdash; Confidence: MEDIUM-HIGH &mdash; Font: Playfair Display (Riviera Nights approximation)
+</div>
+
+<!-- Hero Demo -->
+<section class="section" style="padding-top: 0; padding-bottom: 0;">
+  <div class="hero-demo">
+    <div class="hero-content">
+      <div class="hero-overline">Bespoke Motor Cars</div>
+      <h1 class="hero-title">Inspiring Greatness</h1>
+      <p class="hero-subtitle">A masterwork of design, engineering, and craftsmanship. Conceived without compromise, executed without equal.</p>
+      <a href="#" class="btn btn-primary">Explore the Marque</a>
+    </div>
+  </div>
+</section>
+
+<!-- Colors -->
+<section id="colors" class="section">
+  <div class="section-subtitle">01 &mdash; Color System</div>
+  <h2 class="section-title">Colour Palette</h2>
+  <p class="section-body">The Rolls-Royce palette is defined by its discipline. True black backgrounds create the stage for the product to illuminate. Purple Spirit, the 2021 rebrand signature, appears with extreme restraint — accent highlights only. Spirit Gold references the iconic figurine.</p>
+
+  <div class="section-subtitle" style="margin-top: var(--space-xl);">Brand Colors</div>
+  <div class="swatches">
+    <div class="swatch swatch--dark" style="background: #6B2D8B;">
+      <span class="swatch-name">Purple Spirit</span>
+      <span class="swatch-value">#6B2D8B</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #4A1D6B;">
+      <span class="swatch-name">Purple Deep</span>
+      <span class="swatch-value">#4A1D6B</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #8B4DAB;">
+      <span class="swatch-name">Purple Light</span>
+      <span class="swatch-value">#8B4DAB</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #1C3E6E;">
+      <span class="swatch-name">Charles Blue</span>
+      <span class="swatch-value">#1C3E6E</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #C4A265;">
+      <span class="swatch-name">Spirit Gold</span>
+      <span class="swatch-value">#C4A265</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #D4B87A;">
+      <span class="swatch-name">Gold Light</span>
+      <span class="swatch-value">#D4B87A</span>
+    </div>
+  </div>
+
+  <div class="section-subtitle">Neutrals</div>
+  <div class="swatches">
+    <div class="swatch swatch--dark" style="background: #000000;">
+      <span class="swatch-name">Black</span>
+      <span class="swatch-value">#000000</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #0D0D0D;">
+      <span class="swatch-name">Near Black</span>
+      <span class="swatch-value">#0D0D0D</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #1A1A1A;">
+      <span class="swatch-name">Anthracite</span>
+      <span class="swatch-value">#1A1A1A</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #2C2C2C;">
+      <span class="swatch-name">Graphite</span>
+      <span class="swatch-value">#2C2C2C</span>
+    </div>
+    <div class="swatch swatch--dark" style="background: #3D3D3D;">
+      <span class="swatch-name">Gunmetal</span>
+      <span class="swatch-value">#3D3D3D</span>
+    </div>
+    <div class="swatch swatch--light" style="background: #C0C0C0;">
+      <span class="swatch-name">Silver</span>
+      <span class="swatch-value">#C0C0C0</span>
+    </div>
+    <div class="swatch swatch--light" style="background: #D4D4D4;">
+      <span class="swatch-name">Silver Light</span>
+      <span class="swatch-value">#D4D4D4</span>
+    </div>
+    <div class="swatch swatch--light" style="background: #F5F5F0;">
+      <span class="swatch-name">Alabaster</span>
+      <span class="swatch-value">#F5F5F0</span>
+    </div>
+    <div class="swatch swatch--light" style="background: #FFFFFF;">
+      <span class="swatch-name">White</span>
+      <span class="swatch-value">#FFFFFF</span>
+    </div>
+  </div>
+
+  <div class="section-subtitle">Surface Hierarchy</div>
+  <div class="surface-stack">
+    <div class="surface-layer" style="background: #000000;">
+      <span class="surface-name">Page Background</span>
+      <span class="surface-hex">#000000</span>
+    </div>
+    <div class="surface-layer" style="background: #0D0D0D;">
+      <span class="surface-name">Elevated Panel</span>
+      <span class="surface-hex">#0D0D0D</span>
+    </div>
+    <div class="surface-layer" style="background: #1A1A1A;">
+      <span class="surface-name">Card Surface</span>
+      <span class="surface-hex">#1A1A1A</span>
+    </div>
+    <div class="surface-layer" style="background: #2C2C2C;">
+      <span class="surface-name">Border / Divider</span>
+      <span class="surface-hex">#2C2C2C</span>
+    </div>
+    <div class="surface-layer" style="background: #3D3D3D;">
+      <span class="surface-name">Active Border</span>
+      <span class="surface-hex">#3D3D3D</span>
+    </div>
+  </div>
+</section>
+
+<!-- Typography -->
+<section id="typography" class="section">
+  <div class="section-subtitle">02 &mdash; Typography</div>
+  <h2 class="section-title">Riviera Nights</h2>
+  <p class="section-body">Custom typeface by Pentagram (2021), replacing Gill Sans. Transitional serif with beveled letterforms, extreme delicacy at light weights, and high stroke contrast. Previewed here with Playfair Display as the closest public approximation. Body text uses Inter (system sans-serif).</p>
+
+  <div class="type-specimens">
+    <div class="type-specimen">
+      <div class="type-label">Display Hero</div>
+      <div class="type-display-hero">Inspiring Greatness</div>
+      <div class="type-meta">80px / 300 / 0.15em / 1.1</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Display Large</div>
+      <div class="type-display-large">The Art of the Impossible</div>
+      <div class="type-meta">56px / 300 / 0.08em / 1.2</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Display Medium</div>
+      <div class="type-display-medium">Bespoke is the True Spirit of Rolls-Royce</div>
+      <div class="type-meta">40px / 400 / 0.08em / 1.2</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Heading 1</div>
+      <div class="type-heading-1">A Masterwork of Design and Engineering</div>
+      <div class="type-meta">32px / 400 / 0.05em / 1.2</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Heading 2</div>
+      <div class="type-heading-2">Conceived Without Compromise</div>
+      <div class="type-meta">24px / 400 / 0.05em / 1.2</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Body Large</div>
+      <div class="type-body-large">Every Rolls-Royce motor car is a singular expression of its owner's vision. From the first consultation to the final delivery, the bespoke process transforms aspiration into an extraordinary reality.</div>
+      <div class="type-meta">18px / 400 / 0.02em / 1.6 &mdash; Inter</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Body</div>
+      <div class="type-body">The Phantom is the signature Rolls-Royce. An extraordinary creation that redefines what a motor car can be. Its presence requires no announcement, its quality no justification. It simply is.</div>
+      <div class="type-meta">16px / 400 / 0.02em / 1.6 &mdash; Inter</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Navigation</div>
+      <div class="type-nav">Models &nbsp;&nbsp; Bespoke &nbsp;&nbsp; Commissioning &nbsp;&nbsp; Heritage</div>
+      <div class="type-meta">13px / 400 / 0.2em / uppercase &mdash; Inter</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Caption</div>
+      <div class="type-caption">Rolls-Royce Motor Cars Ltd. Goodwood, West Sussex, England.</div>
+      <div class="type-meta">12px / 400 / 0.02em / 1.4 &mdash; Inter</div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacing -->
+<section id="spacing" class="section">
+  <div class="section-subtitle">03 &mdash; Spacing</div>
+  <h2 class="section-title">Spatial System</h2>
+  <p class="section-body">Luxury is negative space. Sections have cinematic separation. Content breathes. The website uses spacing the way the car uses silence.</p>
+
+  <div class="spacing-scale">
+    <div class="spacing-item">
+      <span class="spacing-label">xs &mdash; 8px</span>
+      <div class="spacing-bar" style="width: 8px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">sm &mdash; 16px</span>
+      <div class="spacing-bar" style="width: 16px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">md &mdash; 24px</span>
+      <div class="spacing-bar" style="width: 24px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">lg &mdash; 32px</span>
+      <div class="spacing-bar" style="width: 32px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">xl &mdash; 48px</span>
+      <div class="spacing-bar" style="width: 48px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">2xl &mdash; 64px</span>
+      <div class="spacing-bar" style="width: 64px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">3xl &mdash; 96px</span>
+      <div class="spacing-bar" style="width: 96px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">4xl &mdash; 128px</span>
+      <div class="spacing-bar" style="width: 128px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">5xl &mdash; 160px</span>
+      <div class="spacing-bar" style="width: 160px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">section-gap &mdash; 120px</span>
+      <div class="spacing-bar" style="width: 120px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">hero-top &mdash; 200px</span>
+      <div class="spacing-bar" style="width: 200px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Components -->
+<section id="components" class="section">
+  <div class="section-subtitle">04 &mdash; Components</div>
+  <h2 class="section-title">Component Library</h2>
+
+  <div class="component-grid">
+    <!-- Buttons -->
+    <div class="component-demo">
+      <div class="component-label">Buttons</div>
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">Discover</a>
+        <a href="#" class="btn btn-accent">Configure</a>
+        <a href="#" class="btn btn-ghost">Learn More</a>
+      </div>
+      <p class="type-caption" style="margin-top: var(--space-md);">Primary = outlined (restraint). Accent = Purple Spirit (bespoke CTAs). Ghost = subtle navigation.</p>
+    </div>
+
+    <!-- Card -->
+    <div class="component-demo" style="padding: 0;">
+      <div class="component-label" style="padding: var(--space-lg) var(--space-lg) 0;">Card</div>
+      <div class="card-demo" style="margin-top: var(--space-md);">
+        <div class="card-demo-image">16:9 Automotive Photography</div>
+        <div class="card-demo-content">
+          <h3 class="card-demo-title">Phantom Extended</h3>
+          <p class="card-demo-text">The pinnacle of luxury motoring. An architecture of serenity, a sanctuary of silence.</p>
+          <a href="#" class="card-demo-link">Explore</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation State -->
+    <div class="component-demo">
+      <div class="component-label">Navigation Pattern</div>
+      <div style="background: rgba(0,0,0,0.95); padding: var(--space-md); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: var(--font-primary); font-size: 11px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase;">Rolls-Royce</span>
+          <div style="display: flex; gap: var(--space-md);">
+            <span class="type-nav" style="color: var(--white);">Models</span>
+            <span class="type-nav">Bespoke</span>
+            <span class="type-nav">Heritage</span>
+          </div>
+        </div>
+      </div>
+      <p class="type-caption" style="margin-top: var(--space-md);">Fixed, semi-transparent. 80px height. Frosted glass backdrop-filter. Uppercase nav links at 13px with 0.2em tracking.</p>
+    </div>
+
+    <!-- Surface Elevation -->
+    <div class="component-demo">
+      <div class="component-label">Elevation (No Shadows)</div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="background: #000000; padding: var(--space-md); display: flex; justify-content: space-between;">
+          <span class="type-caption">Level 0 &mdash; Page</span>
+          <span class="type-caption">#000000</span>
+        </div>
+        <div style="background: #0D0D0D; padding: var(--space-md); display: flex; justify-content: space-between;">
+          <span class="type-caption">Level 1 &mdash; Elevated</span>
+          <span class="type-caption">#0D0D0D</span>
+        </div>
+        <div style="background: #1A1A1A; padding: var(--space-md); display: flex; justify-content: space-between;">
+          <span class="type-caption">Level 2 &mdash; Card</span>
+          <span class="type-caption">#1A1A1A</span>
+        </div>
+      </div>
+      <p class="type-caption" style="margin-top: var(--space-md);">Elevation through tonal shift, never drop shadows. Surfaces float through color differentiation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Motion -->
+<section id="motion" class="section">
+  <div class="section-subtitle">05 &mdash; Motion Design</div>
+  <h2 class="section-title">The Art of Movement</h2>
+  <p class="section-body">Every animation should feel like the Spirit of Ecstasy rising from the bonnet: deliberate, graceful, unhurried. Nothing snaps. Nothing bounces. Everything glides. Hover over each box to preview the easing curve.</p>
+
+  <div class="motion-demos">
+    <div class="motion-demo">
+      <div class="component-label">Default</div>
+      <div class="motion-box motion-box--default"></div>
+      <div class="motion-label">Standard Ease</div>
+      <div class="motion-value">400ms cubic-bezier(0.25, 0.1, 0.25, 1.0)</div>
+    </div>
+
+    <div class="motion-demo">
+      <div class="component-label">Stately</div>
+      <div class="motion-box motion-box--stately"></div>
+      <div class="motion-label">Dignified Reveal</div>
+      <div class="motion-value">1000ms cubic-bezier(0.22, 0.61, 0.36, 1.0)</div>
+    </div>
+
+    <div class="motion-demo">
+      <div class="component-label">Glide</div>
+      <div class="motion-box motion-box--glide"></div>
+      <div class="motion-label">Smooth Scroll / Parallax</div>
+      <div class="motion-value">600ms cubic-bezier(0.16, 1, 0.3, 1)</div>
+    </div>
+
+    <div class="motion-demo">
+      <div class="component-label">Cinematic</div>
+      <div class="motion-box motion-box--cinematic"></div>
+      <div class="motion-label">Full-Screen Transition</div>
+      <div class="motion-value">1500ms cubic-bezier(0.22, 0.61, 0.36, 1.0)</div>
+    </div>
+  </div>
+</section>
+
+<!-- Photography Direction -->
+<section class="section">
+  <div class="section-subtitle">06 &mdash; Photography Direction</div>
+  <h2 class="section-title">Vehicle as Architecture</h2>
+  <p class="section-body">The car is photographed like a building: from below, with reverence. Studio precision even in outdoor settings. Low-key lighting, dark backgrounds, desaturated grading with warm highlights on chrome. The car emerges from darkness like a sculpture in a gallery.</p>
+
+  <div class="component-grid">
+    <div class="component-demo">
+      <div class="component-label">Primary Treatment</div>
+      <div style="aspect-ratio: 21/9; background: linear-gradient(135deg, #050505 0%, #0F0F0F 30%, #080808 70%, #030303 100%); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md);">
+        <span style="font-family: var(--font-primary); font-size: 14px; letter-spacing: 0.15em; color: var(--text-tertiary);">21:9 Ultra-wide Cinematic</span>
+      </div>
+      <p class="type-caption">Low-key studio. Dark background. Dramatic light pools on hood and flanks. Film grain. The car glows.</p>
+    </div>
+    <div class="component-demo">
+      <div class="component-label">Detail Treatment</div>
+      <div style="aspect-ratio: 1/1; background: linear-gradient(145deg, #0D0D0D 0%, #181818 50%, #0A0A0A 100%); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); max-width: 250px;">
+        <span style="font-family: var(--font-primary); font-size: 12px; letter-spacing: 0.1em; color: var(--text-tertiary);">1:1 Material Macro</span>
+      </div>
+      <p class="type-caption">Square format. Hand-stitched leather, open-pore wood, brushed aluminium, starlight headliner. Sells the bespoke craft narrative.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Anti-Patterns -->
+<section class="section">
+  <div class="section-subtitle">07 &mdash; Anti-Patterns</div>
+  <h2 class="section-title">What Rolls-Royce Never Does</h2>
+  <div style="columns: 2; column-gap: var(--space-xl); max-width: 900px;">
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No pricing on the website</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No comparison tables</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No star ratings or reviews</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No pop-ups or intrusive banners</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No chatbots or floating buttons</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No countdown timers</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No animated gradients or mesh</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No bounce or spring easing</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No stock photography</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No social feeds embedded</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No visible loading spinners</p>
+    <p class="type-body" style="margin-bottom: var(--space-sm); break-inside: avoid;">No emoji or casual icons</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-text">
+    Rolls-Royce Motor Cars &mdash; Design System Extraction<br>
+    Source: rolls-roycemotorcars.com &mdash; Method: Research-based (Cloudflare WAF blocked automated fetching)<br>
+    Confidence: MEDIUM-HIGH &mdash; Date: 2026-05-18<br>
+    Brand identity by <a href="https://pentagram.com">Pentagram</a> (Marina Willer) &mdash; Digital by AKQA<br>
+    Extracted by REIS [IA] design-system-extractor for Protocolo Luxo
+  </p>
+</footer>
+
+</body>
+</html>

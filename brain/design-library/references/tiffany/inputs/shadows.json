@@ -1,0 +1,66 @@
+[
+  {
+    "value": "0 0 0 4px #fff,0 0 0 5px #81d8d0",
+    "count": 3
+  },
+  {
+    "value": "none!important",
+    "count": 2
+  },
+  {
+    "value": "0 0 5px #cacaca",
+    "count": 2
+  },
+  {
+    "value": "0 0 10px rgba(0,0,0,.7)",
+    "count": 2
+  },
+  {
+    "value": "inset 0 3px 5px rgba(0,0,0,.125)",
+    "count": 1
+  },
+  {
+    "value": "inset 0 1px 0 hsla(0,0%,100%,.7)",
+    "count": 1
+  },
+  {
+    "value": "inset 0 1px 2px rgba(0,0,0,.1)",
+    "count": 1
+  },
+  {
+    "value": "0 7px 0 #fff,0 14px 0 #fff",
+    "count": 1
+  },
+  {
+    "value": "0 7px 0 #cacaca,0 14px 0 #cacaca",
+    "count": 1
+  },
+  {
+    "value": "0 7px 0 #000,0 14px 0 #000",
+    "count": 1
+  },
+  {
+    "value": "0 7px 0 #8a8a8a,0 14px 0 #8a8a8a",
+    "count": 1
+  },
+  {
+    "value": "inset -13px 0 20px -13px rgba(0,0,0,.25)",
+    "count": 1
+  },
+  {
+    "value": "inset 13px 0 20px -13px rgba(0,0,0,.25)",
+    "count": 1
+  },
+  {
+    "value": "inset 0 -13px 20px -13px rgba(0,0,0,.25)",
+    "count": 1
+  },
+  {
+    "value": "inset 0 13px 20px -13px rgba(0,0,0,.25)",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 1px rgba(0,0,0,.2)",
+    "count": 1
+  }
+]

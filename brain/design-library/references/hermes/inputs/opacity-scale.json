@@ -1,0 +1,15 @@
+{
+  "all": [
+    {
+      "value": 0.1,
+      "count": 1
+    },
+    {
+      "value": 0.6,
+      "count": 1
+    }
+  ],
+  "disabled": 0.1,
+  "muted": 0.6,
+  "hover": 0.6
+}

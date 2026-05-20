@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesop Design System Preview — Protocolo Luxo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* === NOTE ===
+     Suisse Intl is a commercial typeface (Swiss Typefaces / Grilli Type).
+     This preview uses Inter as the closest free approximation.
+     Inter shares Suisse Intl's neo-grotesque DNA, similar x-height,
+     and comparable weight distribution. For production, license Suisse Intl.
+     Optima is approximated by system serif fallback for editorial sections.
+  */
+
+  :root {
+    /* Colors — Aesop Earth Palette */
+    --aesop-forest: #333D2C;
+    --aesop-olive: #4A5240;
+    --aesop-bark: #544D4B;
+    --aesop-clay: #69615F;
+    --aesop-stone: #8C857E;
+    --aesop-sand: #C5BBAE;
+    --aesop-parchment: #F6F5E8;
+    --aesop-cream: #FFFEF2;
+    --aesop-warm-white: #FAF9F4;
+    --aesop-amber: #D4A76A;
+    --aesop-near-black: #252525;
+    --aesop-border: #D4CFC4;
+    --aesop-error: #9B2C2C;
+    --aesop-success: #2D5016;
+
+    /* Typography */
+    --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-editorial: 'Optima', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-xxl: 48px;
+    --space-section: 80px;
+    --space-hero: 120px;
+
+    /* Motion */
+    --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-deliberate: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 200ms;
+    --duration-standard: 400ms;
+    --duration-slow: 600ms;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-primary);
+    background: var(--aesop-parchment);
+    color: var(--aesop-near-black);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* === HEADER === */
+  .preview-header {
+    background: var(--aesop-warm-white);
+    border-bottom: 1px solid var(--aesop-border);
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .preview-header h1 {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aesop-clay);
+  }
+  .preview-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--aesop-forest);
+    color: var(--aesop-cream);
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .preview-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--aesop-amber);
+  }
+
+  /* === SECTIONS === */
+  .section {
+    padding: var(--space-section) 80px;
+    border-bottom: 1px solid var(--aesop-border);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--aesop-stone);
+    margin-bottom: var(--space-xl);
+  }
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: var(--space-xxl);
+  }
+
+  /* === HERO === */
+  .hero-section {
+    background: var(--aesop-warm-white);
+    padding: var(--space-hero) 80px;
+    text-align: center;
+    border-bottom: 1px solid var(--aesop-border);
+  }
+  .hero-brand {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aesop-stone);
+    margin-bottom: var(--space-xl);
+  }
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    max-width: 800px;
+    margin: 0 auto var(--space-lg);
+  }
+  .hero-subtitle {
+    font-family: var(--font-editorial);
+    font-size: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.45;
+    color: var(--aesop-clay);
+    max-width: 540px;
+    margin: 0 auto var(--space-xxl);
+  }
+  .hero-meta {
+    font-size: 0.6875rem;
+    color: var(--aesop-stone);
+    letter-spacing: 0.02em;
+  }
+
+  /* === COLOR SWATCHES === */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+  .color-swatch {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-md);
+    transition: transform var(--duration-standard) var(--ease-standard);
+  }
+  .color-swatch:hover {
+    transform: scale(1.02);
+  }
+  .color-swatch .name {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .color-swatch .hex {
+    font-size: 0.625rem;
+    font-weight: 400;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+  .color-swatch.light-text { color: var(--aesop-cream); }
+  .color-swatch.dark-text { color: var(--aesop-near-black); }
+
+  /* === TYPOGRAPHY SPECIMENS === */
+  .type-specimen {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--aesop-border);
+  }
+  .type-specimen:last-child { border-bottom: none; }
+  .type-meta {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+  .type-meta span {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aesop-stone);
+  }
+  .type-sample {
+    margin-top: var(--space-md);
+  }
+
+  /* === SPACING SCALE === */
+  .spacing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  .spacing-label {
+    width: 80px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--aesop-clay);
+    flex-shrink: 0;
+  }
+  .spacing-bar {
+    height: 24px;
+    background: var(--aesop-forest);
+    opacity: 0.2;
+    transition: opacity var(--duration-fast) ease-out;
+  }
+  .spacing-bar:hover { opacity: 0.5; }
+  .spacing-value {
+    font-size: 0.6875rem;
+    color: var(--aesop-stone);
+    font-variant-numeric: tabular-nums;
+    width: 50px;
+    flex-shrink: 0;
+  }
+
+  /* === BUTTONS === */
+  .button-grid {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn {
+    font-family: var(--font-primary);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 14px 24px;
+    border: none;
+    cursor: pointer;
+    transition: all var(--duration-fast) ease-out;
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-primary {
+    background: var(--aesop-near-black);
+    color: var(--aesop-cream);
+  }
+  .btn-primary:hover { background: #000000; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--aesop-near-black);
+    border: 1px solid var(--aesop-near-black);
+  }
+  .btn-secondary:hover {
+    background: var(--aesop-near-black);
+    color: var(--aesop-cream);
+  }
+  .btn-disabled {
+    background: var(--aesop-stone);
+    color: var(--aesop-sand);
+    cursor: not-allowed;
+  }
+  .text-link {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    color: var(--aesop-near-black);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-fast) ease-out;
+    cursor: pointer;
+  }
+  .text-link:hover { border-bottom-color: var(--aesop-near-black); }
+
+  /* === CARDS === */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+  .product-card {
+    background: var(--aesop-warm-white);
+  }
+  .product-card-image {
+    aspect-ratio: 4/5;
+    background: var(--aesop-parchment);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--duration-standard) var(--ease-standard);
+  }
+  .product-card-image .placeholder {
+    width: 40%;
+    height: 60%;
+    border: 1px solid var(--aesop-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    color: var(--aesop-stone);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .product-card:hover .product-card-image { opacity: 0.95; }
+  .product-card-info {
+    padding: var(--space-md);
+  }
+  .product-card-info .category {
+    font-size: 0.75rem;
+    color: var(--aesop-clay);
+    margin-bottom: 4px;
+  }
+  .product-card-info .name {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .product-card-info .price {
+    font-size: 0.875rem;
+    color: var(--aesop-near-black);
+  }
+
+  /* === FORM INPUTS === */
+  .form-group {
+    margin-bottom: var(--space-xl);
+    max-width: 400px;
+  }
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aesop-clay);
+    margin-bottom: var(--space-sm);
+  }
+  .form-input {
+    width: 100%;
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    color: var(--aesop-near-black);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--aesop-stone);
+    padding: 12px 0;
+    outline: none;
+    transition: border-color var(--duration-fast) ease-out;
+  }
+  .form-input:focus {
+    border-bottom-color: var(--aesop-near-black);
+  }
+  .form-input::placeholder {
+    color: var(--aesop-stone);
+  }
+
+  /* === EDITORIAL BLOCK === */
+  .editorial-block {
+    background: var(--aesop-warm-white);
+    padding: var(--space-section) 80px;
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+  .editorial-text h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin-bottom: var(--space-lg);
+  }
+  .editorial-text .pull-quote {
+    font-family: var(--font-editorial);
+    font-size: 1.375rem;
+    line-height: 1.45;
+    color: var(--aesop-clay);
+    margin-bottom: var(--space-lg);
+  }
+  .editorial-text p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--aesop-bark);
+    max-width: 50ch;
+  }
+  .editorial-image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(
+      145deg,
+      var(--aesop-sand) 0%,
+      var(--aesop-parchment) 50%,
+      var(--aesop-sand) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .editorial-image .placeholder-bottle {
+    width: 80px;
+    height: 200px;
+    border: 1px solid var(--aesop-border);
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--aesop-stone);
+  }
+
+  /* === MOTION DEMO === */
+  .motion-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-md);
+  }
+  .motion-card {
+    aspect-ratio: 1;
+    background: var(--aesop-warm-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .motion-card .timing {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aesop-stone);
+    margin-bottom: var(--space-sm);
+  }
+  .motion-card .bar {
+    width: 60%;
+    height: 3px;
+    background: var(--aesop-forest);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  .motion-card:hover .bar { transform: scaleX(1); }
+  .motion-card:nth-child(1) .bar { transition: transform 100ms ease-out; }
+  .motion-card:nth-child(2) .bar { transition: transform 200ms ease-out; }
+  .motion-card:nth-child(3) .bar { transition: transform 400ms cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .motion-card:nth-child(4) .bar { transition: transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .motion-card:nth-child(5) .bar { transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-card .duration {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-top: var(--space-sm);
+    color: var(--aesop-near-black);
+  }
+
+  /* === RADIUS DEMO === */
+  .radius-grid {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-end;
+  }
+  .radius-item {
+    text-align: center;
+  }
+  .radius-box {
+    width: 80px;
+    height: 80px;
+    background: var(--aesop-forest);
+    opacity: 0.15;
+    margin-bottom: var(--space-sm);
+  }
+  .radius-label {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aesop-stone);
+  }
+  .radius-value {
+    font-size: 0.6875rem;
+    color: var(--aesop-clay);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* === PROVENANCE === */
+  .provenance {
+    background: var(--aesop-warm-white);
+    padding: var(--space-xxl) 80px;
+    font-size: 0.75rem;
+    color: var(--aesop-clay);
+    line-height: 1.8;
+    border-top: 1px solid var(--aesop-border);
+  }
+  .provenance strong { color: var(--aesop-near-black); }
+  .provenance .warn {
+    display: inline-block;
+    background: var(--aesop-amber);
+    color: var(--aesop-cream);
+    padding: 2px 8px;
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .section, .hero-section, .editorial-block, .provenance, .preview-header {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    .color-grid { grid-template-columns: repeat(5, 1fr); }
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .editorial-block { grid-template-columns: 1fr; }
+    .motion-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .section, .hero-section, .editorial-block, .provenance, .preview-header {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .hero-title { font-size: 2.25rem; }
+    .color-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .motion-grid { grid-template-columns: repeat(2, 1fr); }
+    .button-grid { flex-direction: column; align-items: flex-start; }
+    .editorial-text h2 { font-size: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="preview-header">
+  <h1>Aesop Design System Preview</h1>
+  <span class="preview-badge"><span class="dot"></span>Protocolo Luxo</span>
+</header>
+
+<!-- Hero -->
+<section class="hero-section">
+  <p class="hero-brand">Design System Reference</p>
+  <h1 class="hero-title">The art of luxury through typographic restraint</h1>
+  <p class="hero-subtitle">A single sans-serif family, an earth-toned palette, and disciplined whitespace communicating more luxury than any ornament.</p>
+  <p class="hero-meta">Research-based extraction -- 2026-05-18 -- Confidence: Medium-High</p>
+</section>
+
+<!-- Colors -->
+<section class="section">
+  <p class="section-label">01 -- Color Palette</p>
+  <h2 class="section-title">Earth Progression</h2>
+  <div class="color-grid">
+    <div class="color-swatch light-text" style="background: #333D2C;">
+      <span class="name">Forest</span>
+      <span class="hex">#333D2C</span>
+    </div>
+    <div class="color-swatch light-text" style="background: #4A5240;">
+      <span class="name">Olive</span>
+      <span class="hex">#4A5240</span>
+    </div>
+    <div class="color-swatch light-text" style="background: #544D4B;">
+      <span class="name">Bark</span>
+      <span class="hex">#544D4B</span>
+    </div>
+    <div class="color-swatch light-text" style="background: #69615F;">
+      <span class="name">Clay</span>
+      <span class="hex">#69615F</span>
+    </div>
+    <div class="color-swatch light-text" style="background: #8C857E;">
+      <span class="name">Stone</span>
+      <span class="hex">#8C857E</span>
+    </div>
+    <div class="color-swatch dark-text" style="background: #C5BBAE;">
+      <span class="name">Sand</span>
+      <span class="hex">#C5BBAE</span>
+    </div>
+    <div class="color-swatch dark-text" style="background: #D4CFC4;">
+      <span class="name">Border</span>
+      <span class="hex">#D4CFC4</span>
+    </div>
+    <div class="color-swatch dark-text" style="background: #F6F5E8;">
+      <span class="name">Parchment</span>
+      <span class="hex">#F6F5E8</span>
+    </div>
+    <div class="color-swatch dark-text" style="background: #FAF9F4;">
+      <span class="name">Warm White</span>
+      <span class="hex">#FAF9F4</span>
+    </div>
+    <div class="color-swatch dark-text" style="background: #FFFEF2; border: 1px solid #D4CFC4;">
+      <span class="name">Cream</span>
+      <span class="hex">#FFFEF2</span>
+    </div>
+  </div>
+  <div class="color-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="color-swatch light-text" style="background: #252525;">
+      <span class="name">Near Black (Text)</span>
+      <span class="hex">#252525</span>
+    </div>
+    <div class="color-swatch dark-text" style="background: #D4A76A;">
+      <span class="name">Amber (Restraint)</span>
+      <span class="hex">#D4A76A</span>
+    </div>
+    <div class="color-swatch light-text" style="background: #9B2C2C;">
+      <span class="name">Error</span>
+      <span class="hex">#9B2C2C</span>
+    </div>
+    <div class="color-swatch light-text" style="background: #2D5016;">
+      <span class="name">Success</span>
+      <span class="hex">#2D5016</span>
+    </div>
+  </div>
+</section>
+
+<!-- Typography -->
+<section class="section">
+  <p class="section-label">02 -- Typography</p>
+  <h2 class="section-title">Suisse Intl -- One Family, Full Hierarchy</h2>
+  <p style="font-size: 0.8125rem; color: var(--aesop-clay); margin-bottom: var(--space-xxl); max-width: 60ch; line-height: 1.6;">
+    Preview uses Inter as a free approximation. Production requires licensed Suisse Intl from Swiss Typefaces / Grilli Type.
+  </p>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Display Hero</span>
+      <span>3.5rem / 56px</span>
+      <span>Weight 300</span>
+      <span>-0.02em</span>
+    </div>
+    <div class="type-sample" style="font-size: 3.5rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.1;">
+      The science of aromatics
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Display Large</span>
+      <span>2.5rem / 40px</span>
+      <span>Weight 300</span>
+      <span>-0.015em</span>
+    </div>
+    <div class="type-sample" style="font-size: 2.5rem; font-weight: 300; letter-spacing: -0.015em; line-height: 1.15;">
+      Formulations for the discerning
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Section Heading</span>
+      <span>1.75rem / 28px</span>
+      <span>Weight 400</span>
+      <span>-0.01em</span>
+    </div>
+    <div class="type-sample" style="font-size: 1.75rem; font-weight: 400; letter-spacing: -0.01em; line-height: 1.25;">
+      Hand care for all occasions
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Subheading Large</span>
+      <span>1.25rem / 20px</span>
+      <span>Weight 400</span>
+      <span>0em</span>
+    </div>
+    <div class="type-sample" style="font-size: 1.25rem; font-weight: 400; line-height: 1.35;">
+      Parsley Seed Anti-Oxidant Facial Hydrating Cream
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Editorial Pull Quote (Optima)</span>
+      <span>1.375rem / 22px</span>
+      <span>Weight 400</span>
+    </div>
+    <div class="type-sample" style="font-family: var(--font-editorial); font-size: 1.375rem; font-weight: 400; line-height: 1.45; color: var(--aesop-clay);">
+      "We are committed to the primacy of ingredients of the highest quality, and to research and development in the field of skin, hair, and body care."
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Body Large</span>
+      <span>1rem / 16px</span>
+      <span>Weight 400</span>
+      <span>LH 1.6</span>
+    </div>
+    <div class="type-sample" style="font-size: 1rem; font-weight: 400; line-height: 1.6; max-width: 60ch;">
+      For over three decades, Aesop has cultivated an approach to skin, hair and body care that balances efficacy with a commitment to sensory pleasure. Each product in the range has been thoughtfully formulated using the finest plant-based and laboratory-made ingredients.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Body</span>
+      <span>0.875rem / 14px</span>
+      <span>Weight 400</span>
+      <span>LH 1.6</span>
+    </div>
+    <div class="type-sample" style="font-size: 0.875rem; font-weight: 400; line-height: 1.6; max-width: 55ch;">
+      Seek out an Aesop signature store to discover our range and receive a personalised skin care consultation. Our trained consultants are committed to finding formulations that suit your needs.
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Label</span>
+      <span>0.75rem / 12px</span>
+      <span>Weight 500</span>
+      <span>0.06em Uppercase</span>
+    </div>
+    <div class="type-sample" style="font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.35;">
+      Skin Care &nbsp;&nbsp; Hand &amp; Body &nbsp;&nbsp; Hair &nbsp;&nbsp; Fragrance &nbsp;&nbsp; Home
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Label Small</span>
+      <span>0.625rem / 10px</span>
+      <span>Weight 500</span>
+      <span>0.08em Uppercase</span>
+    </div>
+    <div class="type-sample" style="font-size: 0.625rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3;">
+      New Arrival &nbsp;&nbsp; Best Seller &nbsp;&nbsp; Limited Edition
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <span>Caption</span>
+      <span>0.6875rem / 11px</span>
+      <span>Weight 400</span>
+    </div>
+    <div class="type-sample" style="font-size: 0.6875rem; font-weight: 400; line-height: 1.45; color: var(--aesop-clay);">
+      Photography by Marcus Maddox. Products available at selected signature stores.
+    </div>
+  </div>
+</section>
+
+<!-- Spacing -->
+<section class="section">
+  <p class="section-label">03 -- Spacing Scale</p>
+  <h2 class="section-title">8px Base Grid</h2>
+  <div class="spacing-grid">
+    <div class="spacing-row">
+      <span class="spacing-label">xs</span>
+      <div class="spacing-bar" style="width: 4px;"></div>
+      <span class="spacing-value">4px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">sm</span>
+      <div class="spacing-bar" style="width: 8px;"></div>
+      <span class="spacing-value">8px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">md</span>
+      <div class="spacing-bar" style="width: 16px;"></div>
+      <span class="spacing-value">16px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">lg</span>
+      <div class="spacing-bar" style="width: 24px;"></div>
+      <span class="spacing-value">24px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">xl</span>
+      <div class="spacing-bar" style="width: 32px;"></div>
+      <span class="spacing-value">32px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">xxl</span>
+      <div class="spacing-bar" style="width: 48px;"></div>
+      <span class="spacing-value">48px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">section</span>
+      <div class="spacing-bar" style="width: 80px;"></div>
+      <span class="spacing-value">80px</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">hero</span>
+      <div class="spacing-bar" style="width: 120px;"></div>
+      <span class="spacing-value">120px</span>
+    </div>
+  </div>
+</section>
+
+<!-- Border Radius -->
+<section class="section">
+  <p class="section-label">04 -- Border Radius</p>
+  <h2 class="section-title">Sharp Rectangles as Philosophy</h2>
+  <p style="font-size: 0.875rem; line-height: 1.6; color: var(--aesop-bark); margin-bottom: var(--space-xl); max-width: 55ch;">
+    Aesop uses 0px radius on all UI components. The rectangle is a conscious brand decision: sharp corners reference the rectilinear labels on Aesop bottles. Only the bottles themselves have curves.
+  </p>
+  <div class="radius-grid">
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 0px;"></div>
+      <p class="radius-label">none</p>
+      <p class="radius-value">0px</p>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 2px;"></div>
+      <p class="radius-label">sm</p>
+      <p class="radius-value">2px</p>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 4px;"></div>
+      <p class="radius-label">md</p>
+      <p class="radius-value">4px</p>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 8px;"></div>
+      <p class="radius-label">lg</p>
+      <p class="radius-value">8px</p>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 9999px;"></div>
+      <p class="radius-label">full</p>
+      <p class="radius-value">9999px</p>
+    </div>
+  </div>
+</section>
+
+<!-- Components: Buttons -->
+<section class="section">
+  <p class="section-label">05 -- Components</p>
+  <h2 class="section-title">Buttons & Links</h2>
+  <div class="button-grid">
+    <button class="btn btn-primary">Add to your cart</button>
+    <button class="btn btn-secondary">Explore the range</button>
+    <button class="btn btn-disabled" disabled>Unavailable</button>
+    <a class="text-link">View ingredients</a>
+  </div>
+</section>
+
+<!-- Components: Product Cards -->
+<section class="section">
+  <p class="section-label">06 -- Product Grid</p>
+  <h2 class="section-title">Product as Art Object</h2>
+  <div class="card-grid">
+    <div class="product-card">
+      <div class="product-card-image">
+        <div class="placeholder">4:5</div>
+      </div>
+      <div class="product-card-info">
+        <p class="category">Skin Care</p>
+        <p class="name">Parsley Seed Cleansing Oil</p>
+        <p class="price">AUD $57.00</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image">
+        <div class="placeholder">4:5</div>
+      </div>
+      <div class="product-card-info">
+        <p class="category">Hand &amp; Body</p>
+        <p class="name">Resurrection Aromatique Hand Balm</p>
+        <p class="price">AUD $39.00</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image">
+        <div class="placeholder">4:5</div>
+      </div>
+      <div class="product-card-info">
+        <p class="category">Fragrance</p>
+        <p class="name">Hwyl Eau de Parfum</p>
+        <p class="price">AUD $195.00</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image">
+        <div class="placeholder">4:5</div>
+      </div>
+      <div class="product-card-info">
+        <p class="category">Hair</p>
+        <p class="name">Classic Shampoo</p>
+        <p class="price">AUD $45.00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Components: Forms -->
+<section class="section">
+  <p class="section-label">07 -- Form Inputs</p>
+  <h2 class="section-title">Underline-Only Inputs</h2>
+  <div class="form-group">
+    <label class="form-label">Email Address</label>
+    <input class="form-input" type="email" placeholder="your@email.com">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Full Name</label>
+    <input class="form-input" type="text" placeholder="First and last name">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Skin Concern</label>
+    <input class="form-input" type="text" placeholder="Describe your primary concern">
+  </div>
+</section>
+
+<!-- Motion -->
+<section class="section">
+  <p class="section-label">08 -- Motion Timing</p>
+  <h2 class="section-title">Hover to Reveal Easing</h2>
+  <div class="motion-grid">
+    <div class="motion-card">
+      <span class="timing">Instant</span>
+      <div class="bar"></div>
+      <span class="duration">100ms</span>
+    </div>
+    <div class="motion-card">
+      <span class="timing">Fast</span>
+      <div class="bar"></div>
+      <span class="duration">200ms</span>
+    </div>
+    <div class="motion-card">
+      <span class="timing">Standard</span>
+      <div class="bar"></div>
+      <span class="duration">400ms</span>
+    </div>
+    <div class="motion-card">
+      <span class="timing">Slow</span>
+      <div class="bar"></div>
+      <span class="duration">600ms</span>
+    </div>
+    <div class="motion-card">
+      <span class="timing">Deliberate</span>
+      <div class="bar"></div>
+      <span class="duration">800ms</span>
+    </div>
+  </div>
+</section>
+
+<!-- Editorial Block -->
+<section class="editorial-block">
+  <div class="editorial-text">
+    <h2>The pursuit of what endures</h2>
+    <p class="pull-quote">"We seek the finest plant-based and laboratory-made ingredients, and aspire to a considered but not overly precious approach to design."</p>
+    <p>Aesop was established in Melbourne in 1987. Our objective has always been to formulate skin, hair and body care products of the finest quality, and to retail them in elegant and distinctive stores.</p>
+  </div>
+  <div class="editorial-image">
+    <div class="placeholder-bottle">Aesop</div>
+  </div>
+</section>
+
+<!-- Provenance -->
+<footer class="provenance">
+  <p><span class="warn">Research-Based</span> This extraction was produced from web research, not direct CSS analysis. Aesop's entire infrastructure (aesop.com + shop.aesop.com) returns 403 to automated fetching via Cloudflare WAF.</p>
+  <br>
+  <p><strong>Confirmed via sources:</strong> Suisse Intl (font CDN path verified), Optima/Zapf Humanist (Fonts In Use), Neue Helvetica for packaging (Fonts In Use), Work & Co design agency, Shopify Plus platform.</p>
+  <p><strong>Approximated:</strong> Color hex values (from brand analysis + community palettes), spacing values (8px grid convention), motion timings (inferred from case study descriptions), component dimensions.</p>
+  <p><strong>Font note:</strong> This preview uses Inter (Google Fonts, free) as the closest approximation of Suisse Intl (commercial). For production use, license Suisse Intl from Swiss Typefaces / Grilli Type.</p>
+  <br>
+  <p><strong>Consumed by:</strong> art-director, designer-agent, typography-specialist, visual-qa-agent -- Protocolo Luxo knowledge base.</p>
+  <p><strong>Extracted:</strong> 2026-05-18 &nbsp;|&nbsp; <strong>Confidence:</strong> Medium-High &nbsp;|&nbsp; <strong>REIS [IA] Design Library</strong></p>
+</footer>
+
+</body>
+</html>

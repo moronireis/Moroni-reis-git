@@ -1,0 +1,195 @@
+{
+  "ads_found": false,
+  "last_updated": "2026-04-29",
+  "competitor": "Caminhando para o Altar (CPA) — Thaisa Rangel",
+  "notes": "Meta Ad Library API returned error 2332002 (requires ad library API onboarding at facebook.com/ads/library/api). Facebook Ad Library web UI blocked WebFetch (socket closed). No cached ad screenshots found via web search. The competitor may run ads under the page name 'Caminhando para o Altar' (facebook.com/caminhandoparaoaltar) but no individual ad creatives could be captured programmatically.",
+  "search_results": {
+    "mcp_meta_ads": {
+      "status": "error",
+      "error_code": "10/2332002",
+      "message": "Ad Library API access not configured. Requires onboarding at facebook.com/ads/library/api",
+      "searches_attempted": [
+        "caminhando para o altar",
+        "the bride club",
+        "thaisa rangel casamento"
+      ]
+    },
+    "web_fetch_ad_library": {
+      "status": "blocked",
+      "message": "Facebook Ad Library pages blocked WebFetch (socket connection closed). Facebook renders ad library via JavaScript SPA, not crawlable."
+    }
+  },
+  "ad_library_data": [],
+  "web_search_findings": [
+    {
+      "source": "web_search",
+      "finding_type": "social_profiles",
+      "data": {
+        "facebook_page": "https://www.facebook.com/caminhandoparaoaltar/",
+        "facebook_page_name": "Caminhando para o Altar",
+        "facebook_likes": 123,
+        "instagram": "https://www.instagram.com/caminhandoparaoaltar/",
+        "instagram_handle": "@caminhandoparaoaltar",
+        "instagram_followers": "40K+",
+        "tiktok": "https://www.tiktok.com/@caminhandoparaoaltar",
+        "tiktok_handle": "@caminhandoparaoaltar",
+        "youtube": "https://www.youtube.com/@thaisarangel7828",
+        "website": "https://www.caminhandoparaoaltar.com.br",
+        "personal_instagram": "https://www.instagram.com/thaisa_rangel/"
+      }
+    },
+    {
+      "source": "website_crawl",
+      "finding_type": "business_info",
+      "data": {
+        "brand_name": "CPA — Caminhando para o Altar",
+        "founder": "Thaisa Rangel (Thai)",
+        "email": "contato@thaisarangel.com",
+        "phone": "(21) 4042-9544",
+        "address": "Rua Amilcar de Castro, 150",
+        "location": "Rio de Janeiro (area code 21)"
+      }
+    },
+    {
+      "source": "website_crawl",
+      "finding_type": "services_offered",
+      "data": {
+        "services": [
+          "Assessoria de Casamento (Wedding Coordination)",
+          "Design de Casamento (Wedding Design / Styling)",
+          "Planner (Wedding Planner Workbook)",
+          "Wedding Business Academy",
+          "Loja (Shop)"
+        ],
+        "website_headline": "O CAMINHO PARA O ALTAR COMEÇA AQUI",
+        "website_subheadline": "PRONTA PARA CASAR E REALIZAR SEU SONHO?",
+        "cta_text": "VAMOS COMEÇAR A PLANEJAR SEU grande dia"
+      }
+    },
+    {
+      "source": "website_crawl + review_sites",
+      "finding_type": "digital_product_the_bride_club",
+      "data": {
+        "product_name": "The Bride Club | Comunidade de Noivas",
+        "platform": "Hotmart",
+        "hotmart_id": "B72584717A",
+        "hotmart_url": "https://hotmart.com/pt-br/marketplace/produtos/the-bride-club/B72584717A",
+        "price": "R$ 2,497 (or 12x R$ 199.31)",
+        "guarantee": "7-day money-back guarantee",
+        "access_duration": "3 years",
+        "rating": "4.9/5 stars",
+        "students": "200+",
+        "sales_page_url": "https://www.caminhandoparaoaltar.com.br/the-bride-club",
+        "about_page_url": "https://www.caminhandoparaoaltar.com.br/the-bride-club-sobre",
+        "headline": "Faça parte da única comunidade de noivas - a chave para transformar o seu sonho em realidade aproveitando cada segundo",
+        "sub_headline": "Tudo que você precisa em um único lugar",
+        "positioning": "The first and only bride community with complete virtual wedding consulting",
+        "method_name": "BRIDE Method",
+        "method_acronym": {
+          "B": "Base do sonho (dream foundation: style, budget, guest list)",
+          "R": "Roteiro perfeito (perfect roadmap for planning steps)",
+          "I": "Inteligência financeira (financial intelligence/budgeting)",
+          "D": "Decisões ideais (ideal decisions: vendor selection, contracts)",
+          "E": "Execução perfeita (perfect execution with zero regrets)"
+        },
+        "platform_components": [
+          {
+            "name": "Brideflix",
+            "type": "Pre-recorded video course",
+            "topics": [
+              "Budget, guest list, financial planning",
+              "Website creation, pre-wedding photoshoot coordination",
+              "Design vision and color palette development",
+              "Day-of timeline and anxiety management",
+              "Vendor selection and contract guidance"
+            ]
+          },
+          {
+            "name": "Wedding Plan",
+            "type": "Organizational tools",
+            "description": "Chronological checklist and financial control spreadsheet"
+          },
+          {
+            "name": "Wedding Talk",
+            "type": "Monthly live sessions",
+            "description": "Q&A and community connection"
+          },
+          {
+            "name": "Wedding Guest",
+            "type": "Monthly vendor interviews",
+            "description": "Behind-the-scenes insights from vendors"
+          },
+          {
+            "name": "Exclusive Group",
+            "type": "Community",
+            "description": "Daily access for shared experiences and vendor recommendations"
+          },
+          {
+            "name": "Bride's Diary",
+            "type": "Journey documentation",
+            "description": "Personal wedding journey + exclusive vendor discounts"
+          }
+        ],
+        "pain_points_addressed": [
+          "Feeling lost without knowing where to start",
+          "Fear something will go wrong on the wedding day",
+          "Uncertainty about wedding costs and vendor budgeting",
+          "Anxiety and stress throughout planning",
+          "Risk of overspending without achieving the dream wedding"
+        ],
+        "primary_cta": "QUERO ME TORNAR BRIDE",
+        "secondary_ctas": [
+          "JÁ SOU BRIDE (member login)",
+          "AINDA NÃO SOU BRIDE (info page)",
+          "WhatsApp direct messaging"
+        ],
+        "testimonial_themes": [
+          "Clarity and direction in decision-making",
+          "Reduced wedding-day anxiety",
+          "Exceeded expectations",
+          "Essential guidance when feeling overwhelmed"
+        ],
+        "sample_testimonial": "Foi perfeito! Você foi fundamental! Ainda bem que eu fechei"
+      }
+    },
+    {
+      "source": "hotmart_marketplace",
+      "finding_type": "digital_product_close_friends",
+      "data": {
+        "product_name": "Close Friends | Caminhando para o Altar - Thaisa",
+        "platform": "Hotmart",
+        "hotmart_id": "S84727292P",
+        "hotmart_url": "https://hotmart.com/pt-br/marketplace/produtos/close-friends-caminhando-para-o-altar/S84727292P",
+        "description": "Instagram Close Friends exclusive content product",
+        "price": "Not displayed"
+      }
+    },
+    {
+      "source": "affiliate_sites",
+      "finding_type": "marketing_intelligence",
+      "data": {
+        "affiliate_landing_pages_found": [
+          "https://thebrideclub.oficiallvenda.com/ (60% discount angle)",
+          "https://thebrideclub.tripod.com.br/ (73% discount angle, 'últimas vagas')",
+          "https://cursosverificados.com.br/guia-de-casamento-15-passos-para-o-altar/saiba-mais"
+        ],
+        "affiliate_angles": [
+          "Heavy discounting (60-73% off)",
+          "Scarcity / últimas vagas (last spots)",
+          "Cupom e Bônus (coupon + bonus)"
+        ],
+        "review_sites_with_coverage": [
+          "https://avaliacoesdecursos.com.br/the-bride-club-comunidade-de-noivas-e-confiavel-e-bom-vale-a-pena/",
+          "https://mestredalingua.com.br/the-bride-club-2/",
+          "https://startcanaldesucesso.com.br/the-bride-club-comunidade-de-noivas/"
+        ],
+        "key_marketing_claims": [
+          "90% dos alunos reported significant advances",
+          "4.9/5 stars average rating",
+          "No significant complaints on Reclame Aqui",
+          "NÃO PROMETE RESULTADOS MÁGICOS (doesn't promise magic results)"
+        ]
+      }
+    }
+  ]
+}

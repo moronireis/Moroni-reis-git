@@ -1,0 +1,2999 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>u4digital — Roteiros e Criativos</title>
+  <meta name="description" content="Roteiros e criativos completos — assessoria de IA para negócios digitais." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="components.css" />
+
+  <style>
+    /* ─── Page layout ──────────────────────────────────────── */
+
+    .doc-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ─── Sidebar ──────────────────────────────────────────── */
+
+    .doc-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-bg-sunken);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-8) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .doc-sidebar__brand {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    .doc-sidebar__brand .accent { color: var(--color-accent); }
+
+    .doc-sidebar__meta {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      line-height: var(--leading-relaxed);
+    }
+
+    .doc-sidebar__section-label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-sidebar__links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .doc-sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+      line-height: var(--leading-snug);
+    }
+
+    .doc-sidebar__link:hover {
+      color: var(--color-text-primary);
+      background: var(--color-hover);
+    }
+
+    .doc-sidebar__link.is-active {
+      color: var(--color-accent);
+      background: var(--color-accent-muted);
+    }
+
+    .doc-sidebar__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-border-strong);
+      flex-shrink: 0;
+      margin-right: var(--space-1);
+    }
+
+    /* ─── Main content ─────────────────────────────────────── */
+
+    .doc-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ─── Hero header ──────────────────────────────────────── */
+
+    .doc-hero {
+      padding: var(--space-16) var(--space-16) var(--space-14);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-sunken);
+    }
+
+    .doc-hero__wordmark {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-8);
+      display: block;
+    }
+
+    .doc-hero__wordmark .accent { color: var(--color-accent); }
+
+    .doc-hero__eyebrow {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__title {
+      font-size: var(--font-4xl);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__subtitle {
+      font-size: var(--font-lg);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-light);
+      margin-bottom: var(--space-6);
+    }
+
+    .doc-hero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* ─── Section blocks ───────────────────────────────────── */
+
+    .doc-section {
+      padding: var(--space-16) var(--space-16);
+      border-bottom: 1px solid var(--color-border-muted);
+      scroll-margin-top: var(--space-6);
+    }
+
+    .doc-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .doc-section-header {
+      margin-bottom: var(--space-10);
+    }
+
+    .doc-section-number {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-section-title {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+    }
+
+    .doc-section-desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      line-height: var(--leading-relaxed);
+      max-width: 600px;
+    }
+
+    /* ─── Script header card ───────────────────────────────── */
+
+    .script-header {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-7);
+      margin-bottom: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .script-header__title {
+      font-size: var(--font-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .script-header__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .script-header__meta {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ─── Teleprompter block ───────────────────────────────── */
+
+    .teleprompter {
+      background: #080808;
+      border: 1px solid #222;
+      border-radius: var(--radius-lg);
+      padding: var(--space-10) var(--space-12);
+      margin-bottom: var(--space-6);
+      position: relative;
+    }
+
+    .teleprompter__label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .teleprompter__label::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .teleprompter__line {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #f0f0f0;
+      line-height: 1.85;
+      margin-bottom: var(--space-7);
+    }
+
+    .teleprompter__line:last-child {
+      margin-bottom: 0;
+    }
+
+    .teleprompter__direction {
+      font-size: var(--font-sm);
+      font-style: italic;
+      color: #555;
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-5);
+      padding-left: var(--space-4);
+      border-left: 2px solid #2a2a2a;
+    }
+
+    .teleprompter__pause {
+      display: block;
+      width: fit-content;
+      font-size: 0.65rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(74, 144, 255, 0.1);
+      border: 1px solid rgba(74, 144, 255, 0.3);
+      border-radius: 100px;
+      padding: 3px 12px;
+      margin-bottom: var(--space-5);
+    }
+
+    .teleprompter__screen-label {
+      font-size: 0.65rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: var(--space-2);
+    }
+
+    .teleprompter__screen-text {
+      font-size: 1.1rem;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-accent);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+      padding: var(--space-4) var(--space-5);
+      background: rgba(74, 144, 255, 0.06);
+      border: 1px solid rgba(74, 144, 255, 0.15);
+      border-radius: var(--radius-md);
+    }
+
+    .teleprompter__voice-label {
+      font-size: 0.65rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: var(--space-2);
+    }
+
+    /* ─── Comparativo side-by-side (Ad 3) ─────────────────── */
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      margin: var(--space-6) 0;
+    }
+
+    .compare-col {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+    }
+
+    .compare-col--danger {
+      border-color: rgba(255, 80, 80, 0.2);
+    }
+
+    .compare-col--accent {
+      border-color: rgba(74, 144, 255, 0.3);
+      background: rgba(74, 144, 255, 0.03);
+    }
+
+    .compare-col__label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-3);
+    }
+
+    .compare-col__number {
+      font-size: var(--font-3xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-4);
+      line-height: 1;
+    }
+
+    .compare-col__number--danger { color: #ff6b6b; }
+    .compare-col__number--accent { color: var(--color-accent); }
+
+    .compare-col__items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .compare-col__item {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .compare-col__item:last-child {
+      border-bottom: none;
+    }
+
+    .compare-col__item-value {
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Post copy card ───────────────────────────────────── */
+
+    .post-copy {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7);
+      margin-bottom: var(--space-8);
+    }
+
+    .post-copy__label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .post-copy__field {
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .post-copy__field:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .post-copy__field-label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .post-copy__field-content {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .post-copy__field-content--primary {
+      font-size: var(--font-base);
+      color: var(--color-text-primary);
+      line-height: 1.8;
+    }
+
+    .post-copy__field-content--headline {
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    /* ─── Static ad cards ──────────────────────────────────── */
+
+    .static-ad {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .static-ad__copy {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .static-ad__headline {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+    }
+
+    .static-ad__primary {
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .static-ad__primary p {
+      margin-bottom: var(--space-3);
+    }
+
+    .static-ad__primary p:last-child {
+      margin-bottom: 0;
+    }
+
+    .static-ad__cta-preview {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius-md);
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    .static-ad__visual-direction {
+      background: var(--color-bg-sunken);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      align-self: start;
+    }
+
+    .static-ad__visual-label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-4);
+    }
+
+    .static-ad__visual-text {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      font-style: italic;
+    }
+
+    /* ─── WhatsApp bubbles ─────────────────────────────────── */
+
+    .whatsapp-sequence {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+      max-width: 640px;
+    }
+
+    .whatsapp-message {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .whatsapp-day-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 12px;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.04em;
+      color: var(--color-text-disabled);
+      width: fit-content;
+    }
+
+    .whatsapp-bubble {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      border-top-left-radius: 4px;
+      padding: var(--space-5) var(--space-6);
+    }
+
+    .whatsapp-bubble__text {
+      font-size: var(--font-base);
+      color: var(--color-text-primary);
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .whatsapp-placeholder {
+      font-weight: var(--font-weight-semibold);
+      color: #4ade80;
+    }
+
+    /* ─── Specs tables ─────────────────────────────────────── */
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--space-8);
+      font-size: var(--font-sm);
+    }
+
+    .specs-table th {
+      text-align: left;
+      padding: var(--space-3) var(--space-4);
+      font-size: 0.65rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-sunken);
+    }
+
+    .specs-table td {
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border-muted);
+      vertical-align: top;
+      line-height: var(--leading-relaxed);
+    }
+
+    .specs-table td:first-child {
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-medium);
+      white-space: nowrap;
+    }
+
+    .specs-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ─── Checklist ────────────────────────────────────────── */
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .checklist__box {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--color-border-strong);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .specs-subtitle {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-10);
+    }
+
+    .specs-subtitle:first-of-type {
+      margin-top: 0;
+    }
+
+    /* ─── Batch 2 compact cards ───────────────────────────── */
+
+    .batch-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+    }
+
+    .batch2-overview {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7);
+      margin-bottom: var(--space-10);
+    }
+
+    .batch2-overview__title {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border-muted);
+    }
+
+    .batch2-overview__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .batch2-stat {
+      text-align: center;
+      padding: var(--space-4);
+      background: var(--color-bg-sunken);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border-muted);
+    }
+
+    .batch2-stat__number {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-accent);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      margin-bottom: var(--space-1);
+    }
+
+    .batch2-stat__label {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      line-height: var(--leading-snug);
+    }
+
+    .batch2-overview__tables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .batch2-overview__priority {
+      margin-top: var(--space-2);
+    }
+
+    .batch2-priority-label {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-3);
+    }
+
+    .batch2-priority-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .batch2-priority-list li {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      padding: var(--space-2) var(--space-3);
+      background: var(--color-bg-sunken);
+      border-radius: var(--radius-sm);
+    }
+
+    .batch2-priority-list li strong {
+      color: var(--color-accent);
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-xs);
+      min-width: 24px;
+    }
+
+    /* ─── Criativo card (Batch 2) ──────────────────────────── */
+
+    .criativo-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-8);
+    }
+
+    .criativo-card__header {
+      background: var(--color-bg-elevated);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .criativo-card__number {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-disabled);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+
+    .criativo-card__header-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .criativo-card__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .criativo-card__body {
+      padding: var(--space-6) var(--space-7);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .criativo-card__hook {
+      font-size: var(--font-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-accent);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .criativo-card__field-label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .criativo-card__concept {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .criativo-card__primary-text {
+      font-size: var(--font-base);
+      color: var(--color-text-primary);
+      line-height: 1.8;
+      background: var(--color-bg-sunken);
+      border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6);
+      border: 1px solid var(--color-border-muted);
+    }
+
+    .criativo-card__primary-text p {
+      margin-bottom: var(--space-3);
+    }
+
+    .criativo-card__primary-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .criativo-card__headline {
+      font-size: var(--font-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .criativo-card__visual {
+      font-size: var(--font-sm);
+      color: var(--color-text-disabled);
+      font-style: italic;
+      line-height: var(--leading-relaxed);
+      padding-left: var(--space-4);
+      border-left: 2px solid var(--color-border);
+    }
+
+    .criativo-card__slide-block {
+      background: var(--color-bg-sunken);
+      border: 1px solid var(--color-border-muted);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+    }
+
+    .criativo-card__slide-block p {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+    }
+
+    .criativo-card__slide-title {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .criativo-card__slides {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    /* ─── Responsive ───────────────────────────────────────── */
+
+    @media (max-width: 1023px) {
+      .doc-sidebar {
+        display: none;
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
+      }
+
+      .static-ad {
+        grid-template-columns: 1fr;
+      }
+
+      .compare-row {
+        grid-template-columns: 1fr;
+      }
+
+      .teleprompter {
+        padding: var(--space-7);
+      }
+
+      .teleprompter__line {
+        font-size: 1.1rem;
+      }
+
+      .batch2-overview__tables {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .doc-hero,
+      .doc-section {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+      }
+
+      .teleprompter {
+        padding: var(--space-6);
+      }
+
+      .teleprompter__line {
+        font-size: 1rem;
+      }
+
+      .compare-col__number {
+        font-size: var(--font-2xl);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc-layout">
+
+    <!-- ─── Sidebar ─────────────────────────────────────────── -->
+    <aside class="doc-sidebar">
+      <div>
+        <span class="doc-sidebar__brand">u4<span class="accent">digital</span></span>
+        <div class="doc-sidebar__meta">Roteiros e Criativos<br/>Maio 2026</div>
+      </div>
+
+      <nav>
+        <div class="doc-sidebar__section-label">Conteúdo</div>
+        <div class="doc-sidebar__links">
+          <a href="#notas" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Notas de Produção
+          </a>
+          <a href="#video-lp" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Vídeo LP
+          </a>
+          <a href="#ad1" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Ad 1 — Moroni
+          </a>
+          <a href="#ad2" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Ad 2 — Tiago
+          </a>
+          <a href="#ad3" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Ad 3 — Brand
+          </a>
+          <a href="#static1" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Estático 1
+          </a>
+          <a href="#static2" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Estático 2
+          </a>
+          <a href="#static3" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Estático 3
+          </a>
+          <a href="#whatsapp" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            WhatsApp
+          </a>
+          <a href="#specs" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Specs
+          </a>
+        </div>
+      </nav>
+
+      <nav>
+        <div class="doc-sidebar__section-label">Batch 2 (18)</div>
+        <div class="doc-sidebar__links">
+          <a href="#batch2-overview" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Overview
+          </a>
+          <a href="#batch2-videos" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Videos — 01, 03, 05, 06, 08
+          </a>
+          <a href="#batch2-videos2" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Videos — 10, 14, 16, 17
+          </a>
+          <a href="#batch2-carousels" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Carousels — 02, 09, 13, 18
+          </a>
+          <a href="#batch2-statics" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Statics — 04, 12, 15
+          </a>
+          <a href="#batch2-demos" class="doc-sidebar__link">
+            <span class="doc-sidebar__dot"></span>
+            Demos — 07, 11
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- ─── Main ────────────────────────────────────────────── -->
+    <main class="doc-main">
+
+      <!-- Hero -->
+      <header class="doc-hero">
+        <span class="doc-hero__wordmark">u4<span class="accent">digital</span></span>
+        <div class="doc-hero__eyebrow">Documento de Produção</div>
+        <h1 class="doc-hero__title">Roteiros e Criativos</h1>
+        <p class="doc-hero__subtitle">u4digital — Assessoria de IA para Negócios Digitais</p>
+        <div class="doc-hero__badges">
+          <span class="badge badge--neutral">4 vídeos</span>
+          <span class="badge badge--neutral">3 estáticos</span>
+          <span class="badge badge--neutral">5 msgs WhatsApp</span>
+          <span class="badge badge--accent">Maio 2026</span>
+        </div>
+      </header>
+
+      <!-- ─── NOTAS DE PRODUÇÃO ─────────────────────────────── -->
+      <section id="notas" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Seção 00</div>
+          <h2 class="doc-section-title">Notas de Produção</h2>
+          <p class="doc-section-desc">Leia antes de gravar qualquer vídeo desta campanha.</p>
+        </div>
+
+        <div class="alert alert--info">
+          <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+            <div>
+              <div style="font-size: var(--font-xs); font-weight: var(--font-weight-medium); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-2);">Tom-base</div>
+              <p style="font-size: var(--font-base); color: var(--color-text-primary); line-height: var(--leading-relaxed); margin: 0;">Consultor sênior falando com um par. Não é professor. Não é vendedor. É alguém que já resolveu o problema e está compartilhando o que viu.</p>
+            </div>
+            <div>
+              <div style="font-size: var(--font-xs); font-weight: var(--font-weight-medium); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-2);">Ritmo geral</div>
+              <p style="font-size: var(--font-base); color: var(--color-text-primary); line-height: var(--leading-relaxed); margin: 0;">Frases curtas seguidas de uma pausa visual. Não correr. O silêncio após uma afirmação forte é parte do roteiro.</p>
+            </div>
+            <div>
+              <div style="font-size: var(--font-xs); font-weight: var(--font-weight-medium); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-2);">Expressão facial</div>
+              <p style="font-size: var(--font-base); color: var(--color-text-primary); line-height: var(--leading-relaxed); margin: 0;">Neutro e direto nos momentos de dado/problema. Levemente mais aberto nos momentos de solução. Nunca sorriso de apresentação comercial.</p>
+            </div>
+            <div>
+              <div style="font-size: var(--font-xs); font-weight: var(--font-weight-medium); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-2);">Vestuário</div>
+              <p style="font-size: var(--font-base); color: var(--color-text-primary); line-height: var(--leading-relaxed); margin: 0;">Premium casual. Sem terno. Sem camiseta básica. O visual deve dizer "esse cara fatura bem" sem esforço.</p>
+            </div>
+            <div>
+              <div style="font-size: var(--font-xs); font-weight: var(--font-weight-medium); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-2);">Setup de câmera</div>
+              <p style="font-size: var(--font-base); color: var(--color-text-primary); line-height: var(--leading-relaxed); margin: 0;">Ombro e acima, fundo limpo ou escritório minimalista. Sem fundo de estúdio genérico com elementos azuis que parecem de curso online.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── VÍDEO LP ─────────────────────────────────────── -->
+      <section id="video-lp" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 01</div>
+          <h2 class="doc-section-title">Vídeo da LP</h2>
+          <p class="doc-section-desc">Roteiro completo para o vídeo hero da landing page do Raio-X Digital.</p>
+        </div>
+
+        <!-- Header card -->
+        <div class="script-header">
+          <div class="script-header__title">Vídeo da LP — Raio-X Digital</div>
+          <div class="script-header__badges">
+            <span class="badge badge--neutral">Raio-X — diagnóstico como promessa</span>
+            <span class="badge badge--neutral">75–90 segundos</span>
+            <span class="badge badge--neutral">Moroni ou Tiago</span>
+            <span class="badge badge--accent">Hero LP</span>
+          </div>
+          <div class="script-header__meta">
+            Ângulo: Raio-X — Diagnóstico como promessa de clareza imediata&nbsp;&nbsp;·&nbsp;&nbsp;
+            Onde aparece: hero section ou logo abaixo, na LP u4digital.com.br/raio-x&nbsp;&nbsp;·&nbsp;&nbsp;
+            Formato de câmera: direto ao espectador, olho na lente
+          </div>
+        </div>
+
+        <!-- Teleprompter -->
+        <div class="teleprompter">
+          <div class="teleprompter__label">Roteiro teleprompter</div>
+
+          <div class="teleprompter__direction">Começa sem música. Silêncio. Câmera fixa. Orador olha direto para a lente 1 segundo antes de falar.</div>
+
+          <div class="teleprompter__line">Você fatura todo mês. Às vezes bem.</div>
+
+          <span class="teleprompter__pause">Pausa curta — deixar a frase assentar</span>
+
+          <div class="teleprompter__line">Mas quando vai calcular o que sobrou de verdade — depois do time, das ferramentas, dos freelancers, do suporte, do tráfego — o número é bem diferente do que o faturamento sugere.</div>
+
+          <div class="teleprompter__direction">Tom levemente mais intenso. Não agressivo — reconhecedor. Como quem diz "eu sei o que você está sentindo".</div>
+
+          <div class="teleprompter__line">E o pior não é o custo. É saber que você está trabalhando mais pra proteger a margem que tinha antes. Não pra crescer. Só pra não perder.</div>
+
+          <span class="teleprompter__pause">Pausa — 1 segundo</span>
+
+          <div class="teleprompter__line">Eu vi esse padrão dezenas de vezes.</div>
+
+          <div class="teleprompter__direction">Pequena virada de tom. Menos peso, mais direção. O consultor identifica o problema e aponta a saída.</div>
+
+          <div class="teleprompter__line">A maioria dos negócios digitais que chegam até nós não precisa de mais ferramenta. Não precisa de mais gente. Precisa entender exatamente onde o custo está saindo — e o que a IA pode assumir.</div>
+
+          <span class="teleprompter__pause">Pausa curta</span>
+
+          <div class="teleprompter__line">É por isso que criamos o Raio-X Digital.</div>
+
+          <div class="teleprompter__direction">Tom firme, factual. Não "apresentação de produto". Mais "deixa eu te explicar o que é isso".</div>
+
+          <div class="teleprompter__line">São 35 minutos. Gratuito. A gente mapeia a estrutura do seu negócio: quanto cada função custa, onde o seu time faz a mesma coisa toda semana, onde a qualidade depende de uma só pessoa.</div>
+
+          <div class="teleprompter__line">E antes do fim da reunião, você vai ver um agente de IA funcionando ao vivo — treinado no contexto do seu negócio, respondendo como você responderia.</div>
+
+          <span class="teleprompter__pause">Pausa — 1.5 segundo — deixar o impacto da demo ao vivo trabalhar</span>
+
+          <div class="teleprompter__line">Você sai com um diagnóstico em PDF. Com números reais. Mesmo que não contrate.</div>
+
+          <div class="teleprompter__direction">CTA direto. Nenhum sorriso de fechamento. Tom neutro e confiante — como quem diz "a decisão é sua, mas o próximo passo é claro".</div>
+
+          <div class="teleprompter__line">Se você fatura acima de R$10 mil por mês e ainda não sabe exatamente quanto a sua operação custa — esse diagnóstico é pra você.</div>
+
+          <div class="teleprompter__line">O link está aqui. Agende o seu Raio-X Digital.</div>
+
+          <div class="teleprompter__direction">Última frase dita com a câmera. Depois — corte direto. Sem fade musical. Sem "obrigado por assistir". Sem logo animado lento. Corte.</div>
+        </div>
+
+        <!-- Post copy -->
+        <div class="post-copy">
+          <div class="post-copy__label">Post Copy — para uso em anúncio desta versão, se necessário</div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Primary Text</div>
+            <div class="post-copy__field-content--primary">
+              Você fatura. Mas o que sobra?<br/><br/>
+              A maioria dos experts digitais nunca somou o custo real da operação. Time, freelancers, ferramentas, tráfego — somados, o número surpreende.<br/><br/>
+              O Raio-X Digital mapeia isso em 35 minutos. Gratuito. Você sai com diagnóstico em PDF e vê um agente funcionando no contexto do seu negócio — antes de qualquer decisão.<br/><br/>
+              Agende abaixo.
+            </div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Headline</div>
+            <div class="post-copy__field-content--headline">Raio-X Digital — 35 minutos, gratuito</div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Description</div>
+            <div class="post-copy__field-content">Diagnóstico de IA para negócios digitais. Sem pitch. Você sai com números reais.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── AD 1 ──────────────────────────────────────────── -->
+      <section id="ad1" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 02</div>
+          <h2 class="doc-section-title">Ad 1 — Moroni</h2>
+          <p class="doc-section-desc">Less Bad — custo fixo do time comendo margem silenciosamente.</p>
+        </div>
+
+        <!-- Header card -->
+        <div class="script-header">
+          <div class="script-header__title">Ad 1 — Moroni (Less Bad: Custo do Time)</div>
+          <div class="script-header__badges">
+            <span class="badge badge--neutral">Less Bad</span>
+            <span class="badge badge--neutral">45–50 segundos</span>
+            <span class="badge badge--neutral">Moroni</span>
+            <span class="badge badge--accent">UGC estilo</span>
+          </div>
+          <div class="script-header__meta">
+            Hook: "Quanto o seu time te custou esse mês — de verdade?"&nbsp;&nbsp;·&nbsp;&nbsp;
+            Formato: UGC estilo — câmera de frente, leve e direto. Pode ser no escritório, pode ser andando.
+          </div>
+        </div>
+
+        <!-- Teleprompter -->
+        <div class="teleprompter">
+          <div class="teleprompter__label">Roteiro teleprompter</div>
+
+          <div class="teleprompter__direction">Começa no frame. Sem contagem regressiva. Orador já está falando quando o vídeo inicia — transmite espontaneidade.</div>
+
+          <div class="teleprompter__line">Quanto o seu time te custou esse mês — de verdade?</div>
+
+          <span class="teleprompter__pause">Pausa curta — 0.8 segundo</span>
+
+          <div class="teleprompter__line">Não o salário. O custo total.</div>
+
+          <div class="teleprompter__direction">Tom de quem está pensando junto com o espectador, não lendo uma lista. Natural, como numa conversa.</div>
+
+          <div class="teleprompter__line">Encargos, freelancer de copy que não entregou, SDR que ficou 2 semanas sem usar o CRM direito, CS que está sobrecarregado e sumiu 3 dias.</div>
+
+          <div class="teleprompter__line">Agora some isso.</div>
+
+          <span class="teleprompter__pause">Pausa — 1 segundo</span>
+
+          <div class="teleprompter__direction">Pequena virada. Tom mais firme. "Agora eu vou te dizer algo importante".</div>
+
+          <div class="teleprompter__line">A maioria dos experts digitais nunca fez essa conta. E quando fazem — geralmente entre R$8 mil e R$15 mil por mês em custo operacional que a IA poderia assumir.</div>
+
+          <div class="teleprompter__line">Com uma fração disso.</div>
+
+          <span class="teleprompter__pause">Pausa curta</span>
+
+          <div class="teleprompter__line">A u4digital faz o diagnóstico de 35 minutos — gratuito — e te mostra exatamente onde estão esses custos no seu negócio.</div>
+
+          <div class="teleprompter__direction">CTA direto. Sem floreio.</div>
+
+          <div class="teleprompter__line">O link está aqui. Agende o Raio-X Digital.</div>
+
+          <div class="teleprompter__direction">Corte direto. Sem assinatura longa.</div>
+        </div>
+
+        <!-- Post copy -->
+        <div class="post-copy">
+          <div class="post-copy__label">Post Copy — Ad 1</div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Primary Text</div>
+            <div class="post-copy__field-content--primary">
+              Quanto o seu time te custou esse mês — de verdade?<br/><br/>
+              Não o salário. O total: encargos, freelancers, ferramentas, o SDR que não converte, o CS que apaga incêndio.<br/><br/>
+              A maioria dos experts digitais nunca somou isso. Quando somam, o número está entre R$8K e R$15K por mês — em funções que agentes de IA assumem por uma fração do custo.<br/><br/>
+              O Raio-X Digital mapeia isso no seu negócio em 35 minutos. Gratuito. Você sai com o número real e um plano de onde a IA entra.
+            </div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Headline</div>
+            <div class="post-copy__field-content--headline">Seu time custa quanto por mês — de verdade?</div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Description</div>
+            <div class="post-copy__field-content">Diagnóstico gratuito de IA para negócios digitais. 35 minutos. Você decide depois.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── AD 2 ──────────────────────────────────────────── -->
+      <section id="ad2" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 03</div>
+          <h2 class="doc-section-title">Ad 2 — Tiago</h2>
+          <p class="doc-section-desc">Less Bad — dependência de pessoas e fragilidade operacional.</p>
+        </div>
+
+        <!-- Header card -->
+        <div class="script-header">
+          <div class="script-header__title">Ad 2 — Tiago (Less Bad: Tempo Operacional)</div>
+          <div class="script-header__badges">
+            <span class="badge badge--neutral">Less Bad</span>
+            <span class="badge badge--neutral">45–50 segundos</span>
+            <span class="badge badge--neutral">Tiago</span>
+            <span class="badge badge--accent">Direto à câmera</span>
+          </div>
+          <div class="script-header__meta">
+            Hook: "Se você parar uma semana, o que quebra primeiro no seu negócio?"&nbsp;&nbsp;·&nbsp;&nbsp;
+            Tom mais urgente que o Ad 1 — mas não alarmista.
+          </div>
+        </div>
+
+        <!-- Teleprompter -->
+        <div class="teleprompter">
+          <div class="teleprompter__label">Roteiro teleprompter</div>
+
+          <div class="teleprompter__direction">Começa no frame. Expressão séria — não assustada, só focada. Tom de alguém que vai fazer uma pergunta que incomoda.</div>
+
+          <div class="teleprompter__line">Se você parar uma semana — de verdade, sem responder nada — o que quebra primeiro no seu negócio?</div>
+
+          <span class="teleprompter__pause">Pausa — 1.5 segundo — deixar a pergunta trabalhar</span>
+
+          <div class="teleprompter__direction">Tom levemente mais pausado. Dando tempo pro espectador responder mentalmente.</div>
+
+          <div class="teleprompter__line">O lead que entrou na madrugada? Fica sem resposta.</div>
+
+          <div class="teleprompter__line">O aluno que tá com dúvida? Fica sem suporte.</div>
+
+          <div class="teleprompter__line">A campanha que começou a sangrar? Você não vê.</div>
+
+          <span class="teleprompter__pause">Pausa curta</span>
+
+          <div class="teleprompter__direction">Virada. Não é julgamento — é constatação de um padrão.</div>
+
+          <div class="teleprompter__line">Isso não é um problema de time. É um problema de estrutura. Você construiu um negócio que funciona só quando você está presente.</div>
+
+          <div class="teleprompter__line">E isso tem um custo — mesmo quando você está.</div>
+
+          <span class="teleprompter__pause">Pausa — 1 segundo</span>
+
+          <div class="teleprompter__line">A u4digital implementa agentes de IA que cobrem exatamente esses pontos de ruptura. SDR que responde em 90 segundos. CS que não sobrecarrega. Monitoramento que não depende de você olhar o dashboard.</div>
+
+          <div class="teleprompter__direction">Tom mais firme, direto. CTA como consequência natural do raciocínio — não como venda.</div>
+
+          <div class="teleprompter__line">Começa com 35 minutos de diagnóstico. Gratuito.</div>
+
+          <div class="teleprompter__line">O link está aqui. Agende o Raio-X Digital.</div>
+
+          <div class="teleprompter__direction">Corte direto.</div>
+        </div>
+
+        <!-- Post copy -->
+        <div class="post-copy">
+          <div class="post-copy__label">Post Copy — Ad 2</div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Primary Text</div>
+            <div class="post-copy__field-content--primary">
+              Se você parar uma semana, o que quebra primeiro?<br/><br/>
+              Essa pergunta diz tudo sobre a estrutura do seu negócio.<br/><br/>
+              Negócio que funciona só quando o dono está presente não é escala — é sobrevivência com faturamento alto.<br/><br/>
+              A u4digital implementa agentes de IA nos pontos de ruptura do seu negócio: resposta de lead, suporte ao aluno, monitoramento de campanha. Feito com a sua voz, o seu método, o seu tom.<br/><br/>
+              Diagnóstico gratuito de 35 minutos. Você vê um agente funcionando no contexto do seu negócio antes de qualquer decisão.
+            </div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Headline</div>
+            <div class="post-copy__field-content--headline">Seu negócio funciona sem você?</div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Description</div>
+            <div class="post-copy__field-content">Raio-X Digital — diagnóstico gratuito de IA para experts digitais. 35 minutos.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── AD 3 ──────────────────────────────────────────── -->
+      <section id="ad3" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 04</div>
+          <h2 class="doc-section-title">Ad 3 — Brand (Comparativo Animado)</h2>
+          <p class="doc-section-desc">More Good — redução de custo operacional com números concretos. Sem rosto, animação de texto/números.</p>
+        </div>
+
+        <!-- Header card -->
+        <div class="script-header">
+          <div class="script-header__title">Ad 3 — Brand (Comparativo Animado, sem rosto)</div>
+          <div class="script-header__badges">
+            <span class="badge badge--neutral">More Good</span>
+            <span class="badge badge--neutral">40–50 segundos</span>
+            <span class="badge badge--neutral">Voz em off</span>
+            <span class="badge badge--accent">Sem rosto</span>
+          </div>
+          <div class="script-header__meta">
+            Hook: "R$18.200 por mês. Ou R$2.800."&nbsp;&nbsp;·&nbsp;&nbsp;
+            Visual base: Fundo escuro (#000 ou #0A0A0A). Texto branco e azul (#4A90FF). Números com destaque progressivo.
+          </div>
+        </div>
+
+        <!-- Comparativo visual -->
+        <div class="compare-row">
+          <div class="compare-col compare-col--danger">
+            <div class="compare-col__label">Time (3–5 pessoas)</div>
+            <div class="compare-col__number compare-col__number--danger">R$18.200</div>
+            <div class="compare-col__items">
+              <div class="compare-col__item">
+                <span>SDR</span>
+                <span class="compare-col__item-value">R$3.700</span>
+              </div>
+              <div class="compare-col__item">
+                <span>CS</span>
+                <span class="compare-col__item-value">R$2.800</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Copywriter</span>
+                <span class="compare-col__item-value">R$2.500</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Gestor de tráfego</span>
+                <span class="compare-col__item-value">R$4.200</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Briefing de design</span>
+                <span class="compare-col__item-value">R$2.000</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Ferramentas</span>
+                <span class="compare-col__item-value">R$3.000</span>
+              </div>
+            </div>
+          </div>
+          <div class="compare-col compare-col--accent">
+            <div class="compare-col__label">5 Agentes de IA</div>
+            <div class="compare-col__number compare-col__number--accent">R$2.800</div>
+            <div class="compare-col__items">
+              <div class="compare-col__item">
+                <span>Operação 24h/dia</span>
+                <span class="compare-col__item-value">incluído</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Sem turnover</span>
+                <span class="compare-col__item-value">incluído</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Treinado na sua voz</span>
+                <span class="compare-col__item-value">incluído</span>
+              </div>
+              <div class="compare-col__item">
+                <span>Sem dias ruins</span>
+                <span class="compare-col__item-value">incluído</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teleprompter — roteiro com voz em off e direção visual -->
+        <div class="teleprompter">
+          <div class="teleprompter__label">Roteiro — Voz em off + Direção visual</div>
+
+          <div class="teleprompter__direction">Direção visual: Tela preta. Silêncio de 0.5 segundo. Aparece o número:</div>
+
+          <div class="teleprompter__screen-label">Na tela</div>
+          <div class="teleprompter__screen-text">R$18.200</div>
+
+          <div class="teleprompter__voice-label">Voz em off — tom factual, neutro, como locutor de noticiário premium</div>
+          <div class="teleprompter__line">R$18.200 por mês.</div>
+
+          <div class="teleprompter__direction">Direção visual: Abaixo do número, aparece a legenda item a item, com delay de 0.3 segundo entre cada linha:</div>
+
+          <div class="teleprompter__screen-label">Na tela, linha a linha</div>
+          <div class="teleprompter__screen-text">SDR: R$3.700<br/>CS: R$2.800<br/>Copywriter: R$2.500<br/>Gestor de tráfego: R$4.200<br/>Briefing de design: R$2.000<br/>Ferramentas: R$3.000</div>
+
+          <div class="teleprompter__voice-label">Voz em off</div>
+          <div class="teleprompter__line">Esse é o custo médio mensal de um negócio digital com time de 3 a 5 pessoas.</div>
+
+          <span class="teleprompter__pause">Pausa — 1 segundo</span>
+
+          <div class="teleprompter__direction">Direção visual: Os números somem. Aparece novo número com destaque maior:</div>
+
+          <div class="teleprompter__screen-label">Na tela</div>
+          <div class="teleprompter__screen-text">R$2.800</div>
+
+          <div class="teleprompter__voice-label">Voz em off</div>
+          <div class="teleprompter__line">R$2.800.</div>
+
+          <span class="teleprompter__pause">Pausa curta — 0.8 segundo</span>
+
+          <div class="teleprompter__line">Esse é o custo de 5 agentes de IA cobrindo as mesmas funções — treinados na sua voz, operando 24 horas, sem turnover.</div>
+
+          <div class="teleprompter__direction">Direção visual: Lado a lado. Esquerda: "Time" com R$18.200. Direita: "Agentes" com R$2.800. Uma linha vermelha cruza a diferença.</div>
+
+          <div class="teleprompter__voice-label">Voz em off</div>
+          <div class="teleprompter__line">A diferença não é teórica. É o que os negócios digitais que implementam certo estão economizando todo mês.</div>
+
+          <span class="teleprompter__pause">Pausa — 1 segundo</span>
+
+          <div class="teleprompter__direction">Direção visual: Tela limpa. Texto centralizado aparece:</div>
+
+          <div class="teleprompter__screen-label">Na tela</div>
+          <div class="teleprompter__screen-text">Raio-X Digital — 35 min, gratuito<br/><span style="font-size: 0.9rem; opacity: 0.65;">u4digital.com.br/raio-x</span></div>
+
+          <div class="teleprompter__voice-label">Voz em off</div>
+          <div class="teleprompter__line">O Raio-X Digital mapeia esses custos no seu negócio em 35 minutos. Gratuito. O link está aqui.</div>
+
+          <div class="teleprompter__direction">Direção visual: Fade out suave. Sem logo animado complexo. O URL permanece por 3 segundos.</div>
+        </div>
+
+        <!-- Post copy -->
+        <div class="post-copy">
+          <div class="post-copy__label">Post Copy — Ad 3</div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Primary Text</div>
+            <div class="post-copy__field-content--primary">
+              R$18.200 por mês. Ou R$2.800.<br/><br/>
+              SDR, CS, copywriter, gestor de tráfego, briefing de design — somados, o custo operacional médio de um negócio digital com 3 a 5 pessoas fica entre R$15K e R$20K/mês.<br/><br/>
+              Agentes de IA treinados com a sua voz cobrem as mesmas funções por uma fração desse valor. Sem turnover. Sem dias ruins. Sem lançamento que para porque alguém sumiu.<br/><br/>
+              O Raio-X Digital mapeia exatamente onde esses custos estão no seu negócio — em 35 minutos, gratuito.
+            </div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Headline</div>
+            <div class="post-copy__field-content--headline">Time: R$18K/mês. Agentes: R$2,8K. O que está esperando?</div>
+          </div>
+
+          <div class="post-copy__field">
+            <div class="post-copy__field-label">Description</div>
+            <div class="post-copy__field-content">Diagnóstico gratuito. Você vê os números do seu negócio — não estimativas genéricas.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── ESTÁTICO 1 ────────────────────────────────────── -->
+      <section id="static1" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 05</div>
+          <h2 class="doc-section-title">Estático 1 — Comparativo de Custo</h2>
+          <p class="doc-section-desc">More Good — custo real vs custo com agentes.</p>
+        </div>
+
+        <div class="static-ad">
+          <div class="static-ad__copy">
+            <div class="static-ad__headline">Time vs. agente: R$14K ou R$2,8K?</div>
+
+            <div class="static-ad__primary">
+              <p>SDR com encargos: R$3.700/mês.<br/>
+              Copywriter freelancer: R$2.500/mês.<br/>
+              CS de atendimento: R$2.800/mês.<br/>
+              Gestor de tráfego (monitoramento): R$3.000/mês.<br/>
+              Ferramentas de suporte: R$2.000/mês.</p>
+
+              <p><strong style="color: var(--color-text-primary);">Total: R$14.000/mês.</strong></p>
+
+              <p>Agentes de IA cobrindo as mesmas funções — treinados na sua voz, operando 24h — custam uma fração disso.</p>
+
+              <p>O Raio-X Digital mapeia onde estão esses custos no seu negócio em 35 minutos. Gratuito.</p>
+            </div>
+
+            <span class="static-ad__cta-preview">Agendar Raio-X Digital</span>
+          </div>
+
+          <div class="static-ad__visual-direction">
+            <div class="static-ad__visual-label">Direção visual</div>
+            <div class="static-ad__visual-text">Split visual. Lado esquerdo: fundo branco acinzentado, lista de custos com fonte preta, total em vermelho discreto. Lado direito: fundo escuro (#0A0A0A), número R$2.800 em azul (#4A90FF), texto branco. Linha divisória central. Clean e cirúrgico — sem seta, sem emoji, sem gradiente. Logotipo u4digital no rodapé.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── ESTÁTICO 2 ────────────────────────────────────── -->
+      <section id="static2" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 06</div>
+          <h2 class="doc-section-title">Estático 2 — Urgência de Mercado</h2>
+          <p class="doc-section-desc">Less Bad — custo da inação em mercado que está ficando mais caro.</p>
+        </div>
+
+        <div class="static-ad">
+          <div class="static-ad__copy">
+            <div class="static-ad__headline">CPL subiu 33% em 18 meses.</div>
+
+            <div class="static-ad__primary">
+              <p>O mesmo resultado que você tinha em 2024 hoje exige 33% mais em investimento de mídia.</p>
+
+              <p>Mais criativo. Mais teste. Mais time pra operar.</p>
+
+              <p>Enquanto o topo do mercado resolve isso com agentes — que produzem, qualificam, atendem e monitoram por uma fração do custo — a maior parte dos experts continua contratando pessoa pra resolver problema que já tem solução.</p>
+
+              <p>O Raio-X Digital identifica onde a IA entra na sua operação antes que mais um mês passe.</p>
+
+              <p>35 minutos. Gratuito.</p>
+            </div>
+
+            <span class="static-ad__cta-preview">Agendar diagnóstico gratuito</span>
+          </div>
+
+          <div class="static-ad__visual-direction">
+            <div class="static-ad__visual-label">Direção visual</div>
+            <div class="static-ad__visual-text">Fundo escuro. Um gráfico de linha simples ascendente — linha vermelha fina, sobe da esquerda para a direita. Sem eixo Y detalhado. Acima do gráfico: headline em branco, grande. Abaixo do gráfico: "18 meses" no eixo X, discreto. CTA em azul (#4A90FF) no rodapé. Tipografia Inter. Sem ornamento. Visual frio e jornalístico.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── ESTÁTICO 3 ────────────────────────────────────── -->
+      <section id="static3" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 07</div>
+          <h2 class="doc-section-title">Estático 3 — Desobjeção ChatGPT</h2>
+          <p class="doc-section-desc">Less Bad — desobjeção da falsa tentativa anterior com IA.</p>
+        </div>
+
+        <div class="static-ad">
+          <div class="static-ad__copy">
+            <div class="static-ad__headline">ChatGPT não é agente de IA.</div>
+
+            <div class="static-ad__primary">
+              <p>ChatGPT responde perguntas. Agente executa processos.</p>
+
+              <p>ChatGPT precisa de você toda vez. Agente opera sozinho — dentro do seu negócio, com sua voz, seus critérios, sua lógica de qualificação.</p>
+
+              <p>70% das implementações de IA falham porque as empresas usam a ferramenta errada para o problema errado. (MIT, 2024)</p>
+
+              <p>A u4digital começa pelo diagnóstico: qual processo, qual agente, em qual ordem — antes de qualquer implementação.</p>
+
+              <p>Se você já tentou IA e não funcionou, o problema provavelmente não foi a tecnologia.</p>
+
+              <p>Raio-X Digital — 35 minutos, gratuito.</p>
+            </div>
+
+            <span class="static-ad__cta-preview">Agendar meu Raio-X</span>
+          </div>
+
+          <div class="static-ad__visual-direction">
+            <div class="static-ad__visual-label">Direção visual</div>
+            <div class="static-ad__visual-text">Dois blocos verticais side by side. Esquerda: ícone simples de chat bubble (ChatGPT style, sem logo oficial) com título "ChatGPT" e subtítulo "Responde". Direita: ícone de engrenagem minimalista com título "Agente de IA" e subtítulo "Executa". Linha separando os dois. Abaixo: copy de apoio em fonte menor. Fundo escuro. Sem gradiente. Sem emoji. Visual de diagnóstico técnico — não de marketing de curso.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── WHATSAPP ──────────────────────────────────────── -->
+      <section id="whatsapp" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Deliverable 08</div>
+          <h2 class="doc-section-title">Sequência WhatsApp</h2>
+          <p class="doc-section-desc">5 mensagens em 7 dias — enviada após lead se inscrever para o Raio-X Digital mas não agendar, ou após agendamento não confirmado.</p>
+        </div>
+
+        <div class="alert alert--info" style="margin-bottom: var(--space-8);">
+          <strong style="color: var(--color-text-primary);">Tom:</strong> Direto, curto, sem enrolação. Como uma mensagem de um consultor sênior — não de um SDR lendo script.<br/><br/>
+          <strong style="color: var(--color-text-primary);">Placeholders:</strong> marcados com <span class="whatsapp-placeholder">[COLCHETES]</span> — substituir antes de enviar.
+        </div>
+
+        <div class="whatsapp-sequence">
+
+          <!-- Mensagem 1 -->
+          <div class="whatsapp-message">
+            <span class="whatsapp-day-badge">Dia 0 — imediatamente após inscrição, sem agendamento</span>
+            <div class="whatsapp-bubble">
+              <div class="whatsapp-bubble__text">Oi, <span class="whatsapp-placeholder">[NOME PRIMEIRO]</span>. Aqui é <span class="whatsapp-placeholder">[NOME DO CONSULTOR]</span>, da u4digital.
+
+Vi que você se inscreveu para o Raio-X Digital mas ainda não escolheu um horário.
+
+São 35 minutos. O diagnóstico é gratuito e você leva um PDF mesmo que não contrate nada.
+
+Qual horário funciona melhor pra você esta semana?
+
+<span class="whatsapp-placeholder">[LINK DE AGENDAMENTO]</span></div>
+            </div>
+          </div>
+
+          <!-- Mensagem 2 -->
+          <div class="whatsapp-message">
+            <span class="whatsapp-day-badge">Dia 2 — sem resposta</span>
+            <div class="whatsapp-bubble">
+              <div class="whatsapp-bubble__text"><span class="whatsapp-placeholder">[NOME PRIMEIRO]</span>, uma pergunta direta:
+
+Quanto seu time te custa por mês no total — somando encargos, freelancers e ferramentas?
+
+A maioria dos experts com quem converso nunca fez essa conta. Quando faz, o número está entre R$8K e R$15K em funções que a IA já substitui.
+
+O Raio-X mapeia exatamente isso no seu negócio. 35 minutos. Gratuito.
+
+<span class="whatsapp-placeholder">[LINK DE AGENDAMENTO]</span></div>
+            </div>
+          </div>
+
+          <!-- Mensagem 3 -->
+          <div class="whatsapp-message">
+            <span class="whatsapp-day-badge">Dia 4 — sem resposta</span>
+            <div class="whatsapp-bubble">
+              <div class="whatsapp-bubble__text"><span class="whatsapp-placeholder">[NOME PRIMEIRO]</span>, antes de encerrar sua vaga para esta semana:
+
+No Raio-X Digital você vê um agente funcionando ao vivo — treinado com dados do seu negócio, respondendo como você responderia.
+
+Não é demo gravada. Não é exemplo genérico.
+
+Se quiser agendar ainda esta semana, o link está abaixo. Se preferir semana que vem, me avisa aqui e reservo um horário pra você.
+
+<span class="whatsapp-placeholder">[LINK DE AGENDAMENTO]</span></div>
+            </div>
+          </div>
+
+          <!-- Mensagem 4 -->
+          <div class="whatsapp-message">
+            <span class="whatsapp-day-badge">Dia 5 — para quem respondeu mas não agendou</span>
+            <div class="whatsapp-bubble">
+              <div class="whatsapp-bubble__text">Entendido, <span class="whatsapp-placeholder">[NOME PRIMEIRO]</span>.
+
+Só quero garantir uma coisa antes de você decidir: o diagnóstico não pressupõe compra. Você sai com um PDF de 2 a 3 páginas — mapeando os custos reais da sua operação e onde a IA entra — independente do que decidir depois.
+
+O único risco é investir 35 minutos e descobrir que já está fazendo tudo certo. Se for esse o caso, a gente te diz isso na hora.
+
+<span class="whatsapp-placeholder">[LINK DE AGENDAMENTO]</span></div>
+            </div>
+          </div>
+
+          <!-- Mensagem 5 -->
+          <div class="whatsapp-message">
+            <span class="whatsapp-day-badge">Dia 7 — última mensagem da sequência</span>
+            <div class="whatsapp-bubble">
+              <div class="whatsapp-bubble__text"><span class="whatsapp-placeholder">[NOME PRIMEIRO]</span>, esta é a última mensagem que vou te enviar sobre o Raio-X.
+
+Se não faz sentido agora, tudo bem — fica o contato para quando fizer.
+
+Só fica a pergunta:
+
+Se o seu custo operacional está acima de R$8K por mês em time e freelancers, e você ainda não sabe exatamente o que a IA pode assumir no seu negócio — quando vai ser o momento certo pra descobrir?
+
+Quando quiser, o link abaixo continua disponível.
+
+<span class="whatsapp-placeholder">[LINK DE AGENDAMENTO]</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ─── SPECS ─────────────────────────────────────────── -->
+      <section id="specs" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Referência</div>
+          <h2 class="doc-section-title">Specs de Produção</h2>
+          <p class="doc-section-desc">Especificações técnicas, contagens e checklist de qualidade.</p>
+        </div>
+
+        <h3 class="specs-subtitle">Especificações por formato</h3>
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Criativo</th>
+              <th>Formato</th>
+              <th>Duração / Dimensão</th>
+              <th>Ratio</th>
+              <th>Quem grava</th>
+              <th>Destino</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vídeo LP</td>
+              <td>MP4, H.264</td>
+              <td>75–90 segundos</td>
+              <td>16:9 ou 9:16</td>
+              <td>Moroni ou Tiago</td>
+              <td>Hero LP</td>
+            </tr>
+            <tr>
+              <td>Ad 1 — Moroni</td>
+              <td>MP4, H.264</td>
+              <td>45–50 segundos</td>
+              <td>9:16 (Reels/Stories)</td>
+              <td>Moroni</td>
+              <td>Meta Ads</td>
+            </tr>
+            <tr>
+              <td>Ad 2 — Tiago</td>
+              <td>MP4, H.264</td>
+              <td>45–50 segundos</td>
+              <td>9:16 (Reels/Stories)</td>
+              <td>Tiago</td>
+              <td>Meta Ads</td>
+            </tr>
+            <tr>
+              <td>Ad 3 — Brand</td>
+              <td>MP4, H.264</td>
+              <td>40–50 segundos</td>
+              <td>1:1 ou 4:5</td>
+              <td>Voz em off</td>
+              <td>Meta Ads / Feed</td>
+            </tr>
+            <tr>
+              <td>Estático 1</td>
+              <td>JPG / PNG</td>
+              <td>1080×1080 ou 1080×1350</td>
+              <td>1:1 ou 4:5</td>
+              <td>—</td>
+              <td>Meta Ads / Feed</td>
+            </tr>
+            <tr>
+              <td>Estático 2</td>
+              <td>JPG / PNG</td>
+              <td>1080×1080 ou 1080×1350</td>
+              <td>1:1 ou 4:5</td>
+              <td>—</td>
+              <td>Meta Ads / Feed</td>
+            </tr>
+            <tr>
+              <td>Estático 3</td>
+              <td>JPG / PNG</td>
+              <td>1080×1080 ou 1080×1350</td>
+              <td>1:1 ou 4:5</td>
+              <td>—</td>
+              <td>Meta Ads / Feed</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="specs-subtitle">Contagens de copy (Meta Ads)</h3>
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Limite Meta</th>
+              <th>Vídeo LP</th>
+              <th>Ad 1</th>
+              <th>Ad 2</th>
+              <th>Ad 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary Text</td>
+              <td>125 chars (preview)</td>
+              <td>~250 chars</td>
+              <td>~320 chars</td>
+              <td>~380 chars</td>
+              <td>~340 chars</td>
+            </tr>
+            <tr>
+              <td>Headline</td>
+              <td>40 chars</td>
+              <td>37 chars</td>
+              <td>38 chars</td>
+              <td>28 chars</td>
+              <td>40 chars</td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td>30 chars</td>
+              <td>~55 chars</td>
+              <td>~60 chars</td>
+              <td>~55 chars</td>
+              <td>~65 chars</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="specs-subtitle">Checklist de qualidade — pré-publicação</h3>
+        <div class="checklist">
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Todos os placeholders substituídos nas mensagens WhatsApp antes do envio</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Vídeos gravados com câmera estabilizada — sem trepidação visível</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Áudio sem eco, sem ruído de fundo, sem vento</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Expressão facial dentro das diretrizes de produção — neutro a levemente aberto, sem sorriso comercial</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Cortes diretos — sem fade musical, sem logo animado longo no final</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Estáticos exportados em 72 DPI para digital, fundo escuro #0A0A0A conforme direção visual</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>URL u4digital.com.br/raio-x funcionando e trackeada (UTM configurado)</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Todos os anúncios criados em status PAUSADO antes de qualquer ativação</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Copy dos anúncios revisada uma vez em voz alta antes de subir</span>
+          </div>
+          <div class="checklist__item">
+            <div class="checklist__box"></div>
+            <span>Vestuário e setup de câmera revisados antes de cada gravação</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- BATCH 2 — 18 Criativos Adicionais                       -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+
+      <hr class="batch-divider" />
+
+      <!-- ─── BATCH 2 OVERVIEW ────────────────────────────────── -->
+      <section id="batch2-overview" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Batch 2</div>
+          <h2 class="doc-section-title">18 Criativos Adicionais</h2>
+          <p class="doc-section-desc">Mix ampliado de ângulos, formatos e hooks. Todos os CTAs apontam para u4digital.com.br/raio-x. Produção aguardada.</p>
+        </div>
+
+        <div class="batch2-overview">
+          <div class="batch2-overview__title">Visão geral do batch</div>
+
+          <div class="batch2-overview__stats">
+            <div class="batch2-stat">
+              <div class="batch2-stat__number">18</div>
+              <div class="batch2-stat__label">criativos</div>
+            </div>
+            <div class="batch2-stat">
+              <div class="batch2-stat__number">7</div>
+              <div class="batch2-stat__label">vídeos (face)</div>
+            </div>
+            <div class="batch2-stat">
+              <div class="batch2-stat__number">3</div>
+              <div class="batch2-stat__label">Reels verticais</div>
+            </div>
+            <div class="batch2-stat">
+              <div class="batch2-stat__number">3</div>
+              <div class="batch2-stat__label">estáticos</div>
+            </div>
+            <div class="batch2-stat">
+              <div class="batch2-stat__number">4</div>
+              <div class="batch2-stat__label">carousels</div>
+            </div>
+            <div class="batch2-stat">
+              <div class="batch2-stat__number">2</div>
+              <div class="batch2-stat__label">demos/proof</div>
+            </div>
+          </div>
+
+          <div class="batch2-overview__tables">
+            <div>
+              <div class="batch2-priority-label">Distribuição por ângulo Hormozi</div>
+              <table class="specs-table" style="margin-bottom: 0;">
+                <thead>
+                  <tr>
+                    <th>Ângulo</th>
+                    <th>Qtd</th>
+                    <th>Criativos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>More Good</td>
+                    <td>6</td>
+                    <td>01, 02, 03, 07, 11, 14, 17, 18</td>
+                  </tr>
+                  <tr>
+                    <td>Less Bad</td>
+                    <td>4</td>
+                    <td>04, 05, 08, 12</td>
+                  </tr>
+                  <tr>
+                    <td>Status</td>
+                    <td>3</td>
+                    <td>06, 09, 16</td>
+                  </tr>
+                  <tr>
+                    <td>Social Risk</td>
+                    <td>3</td>
+                    <td>10, 13, 15</td>
+                  </tr>
+                  <tr>
+                    <td>Proof / Demo</td>
+                    <td>2</td>
+                    <td>07, 11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <div class="batch2-priority-label">Distribuição por formato</div>
+              <table class="specs-table" style="margin-bottom: 0;">
+                <thead>
+                  <tr>
+                    <th>Formato</th>
+                    <th>Qtd</th>
+                    <th>Criativos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Vídeo (face)</td>
+                    <td>7</td>
+                    <td>01, 03, 06, 08, 14, 16, 17</td>
+                  </tr>
+                  <tr>
+                    <td>Reels vertical</td>
+                    <td>3</td>
+                    <td>05, 10, 16</td>
+                  </tr>
+                  <tr>
+                    <td>Static (imagem)</td>
+                    <td>3</td>
+                    <td>04, 12, 15</td>
+                  </tr>
+                  <tr>
+                    <td>Carousel</td>
+                    <td>4</td>
+                    <td>02, 09, 13, 18</td>
+                  </tr>
+                  <tr>
+                    <td>Demo / Proof</td>
+                    <td>2</td>
+                    <td>07, 11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="batch2-overview__priority">
+            <div class="batch2-priority-label">Top 5 — prioridade de produção sugerida</div>
+            <ol class="batch2-priority-list">
+              <li><strong>08</strong> Story antes/depois, Moroni — ângulo emocional inexplorado no batch 1</li>
+              <li><strong>18</strong> Carousel BOFU, Raio-X em si — conversão direta, reduz fricção</li>
+              <li><strong>07</strong> Demo/proof, agente em ação — prova social concreta</li>
+              <li><strong>01</strong> More Good, margem, Moroni — ângulo ausente no batch 1</li>
+              <li><strong>10</strong> Reels, Social Risk temporal, Moroni — alto potencial de stop scroll</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── BATCH 2 — VIDEOS (01, 03, 05, 06, 08) ──────────── -->
+      <section id="batch2-videos" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Batch 2 — Videos</div>
+          <h2 class="doc-section-title">Criativos 01, 03, 05, 06, 08</h2>
+          <p class="doc-section-desc">Vídeos de face e Reels — Moroni e Tiago.</p>
+        </div>
+
+        <!-- CRIATIVO 01 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">01</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Video</span>
+                <span class="badge badge--success">More Good</span>
+                <span class="badge">Moroni</span>
+                <span class="badge badge--neutral">45–60s Feed</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"O que acontece quando você não precisa mais do seu time para crescer?"</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Abre com Moroni em câmera direta, tom calmo e direto. Ele apresenta a equação que experts digitais raramente calculam: quanto custa cada R$1 de receita quando a estrutura é toda humana? Depois mostra o outro lado — experts que implementaram IA na operação e viram a margem subir sem contratar ninguém.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>A maioria dos experts mede crescimento pelo faturamento.</p>
+                <p>Os melhores medem pelo que sobra.</p>
+                <p>Tem uma diferença enorme entre faturar R$60K com 40% de margem e faturar R$80K com 18% de margem. Um número parece maior. O outro é maior.</p>
+                <p>O que a IA faz na prática não é magia. É remover do seu custo operacional tudo que não precisa ser humano.</p>
+                <p>Atendimento de qualificação? Pode ser IA.<br/>Follow-up pós-compra? Pode ser IA.<br/>Entrega de conteúdo, gestão de leads, relatórios? Tudo pode ser IA.</p>
+                <p>O que sobra pra você: decisão, estratégia e relacionamento. As coisas que só um humano faz bem.</p>
+                <p>Fizemos um diagnóstico gratuito de 35 minutos chamado Raio-X Digital. Você termina a sessão sabendo exatamente onde a IA entra no seu negócio — e quanto ela libera na margem.</p>
+                <p>Link na bio.</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">Mais margem. Sem contratar.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Moroni sentado, fundo neutro escuro, enquadramento meio corpo. Texto animado aparece na tela com os números em destaque (40%, 18%). Corte limpo, sem music bed intrusiva. Iluminação de estúdio simples, tom sério e consultivo.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 03 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">03</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Video</span>
+                <span class="badge badge--success">More Good — Hot Take</span>
+                <span class="badge">Tiago</span>
+                <span class="badge badge--neutral">30–45s Reels/Feed</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"IA não vai substituir experts. Vai substituir os experts que não usam IA do jeito certo."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Tiago abre com esse hot take e imediatamente desenvolve o que "do jeito certo" significa na prática — não é usar ChatGPT para redigir posts, é usar agentes para operar o negócio. O ângulo é de ganho competitivo: quem age agora tem 12 a 18 meses de vantagem sobre quem vai agir depois.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Todo mundo já ouviu que "IA vai substituir pessoas". A verdade mais honesta é diferente.</p>
+                <p>IA vai substituir a estrutura de custo de quem não sabe usá-la.</p>
+                <p>Um expert que opera com agentes de IA consegue atender mais clientes, com mais consistência, com custo menor por cliente. Um expert que não opera assim vai precisar de mais gente, mais ferramentas, mais esforço — pra gerar o mesmo resultado.</p>
+                <p>Não é sobre automação. É sobre competitividade.</p>
+                <p>E a diferença entre quem entende isso agora e quem vai entender daqui a 18 meses é enorme. Não em tecnologia. Em margem, em reputação, em liberdade de operação.</p>
+                <p>Raio-X Digital: 35 minutos. Gratuito. Você sai com um diagnóstico real do que implementar primeiro.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">A vantagem de 18 meses</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Tiago em câmera, cenário moderno minimalista. Corte no hook para um split-screen rápido mostrando dois lados: "Com IA estruturada" vs "Sem IA estruturada" — texto animado simples sobre fundo escuro. Volta para Tiago no CTA. Ritmo mais acelerado que o Criativo 01.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 05 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">05</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Reels vertical</span>
+                <span class="badge badge--warning">Less Bad</span>
+                <span class="badge">Moroni</span>
+                <span class="badge badge--neutral">15–25s</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Você está pagando R$8.000 por mês por algo que custa R$400."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Ritmo rápido estilo Reels. Moroni de frente pra câmera, direto. Sem rodeio: apresenta em 20 segundos a conta que a maioria dos experts não fez — o custo real de um processo humano vs o custo do mesmo processo rodando com IA. CTA direto no final.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Vou te dar um número rápido.</p>
+                <p>Qualificação de leads por WhatsApp com um SDR humano: em média R$6.000 a R$9.000/mês entre salário, encargos e ferramentas.</p>
+                <p>O mesmo processo rodando com um agente de IA: entre R$300 e R$600/mês de infraestrutura.</p>
+                <p>Mesma função. 10% do custo.</p>
+                <p>Isso não é hipótese — é o que implementamos na prática, com experts digitais que faturam entre R$30K e R$120K/mês.</p>
+                <p>Se você quer saber qual processo do seu negócio tem esse diferencial, o Raio-X Digital é o próximo passo. 35 minutos, gratuito, feito por quem implementa — não por quem só ensina.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">R$8K por algo que custa R$400</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Vertical (9:16). Moroni em close, câmera de mão ou gimbal leve, fundo neutro. Texto em overlay: "R$8.000/mês" riscado, depois "R$400/mês" em verde. Cortes rápidos. Energia mais alta que os vídeos de Feed. Captions animadas no estilo REIS IA.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 06 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">06</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Video</span>
+                <span class="badge badge--info">Status — Hot Take</span>
+                <span class="badge">Tiago</span>
+                <span class="badge badge--neutral">45–60s Feed</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"A maioria dos experts usa IA pra parecer produtivo. Os melhores usam pra ser lucrativos."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Hot take com desenvolvimento consultivo. Tiago faz a distinção entre uso superficial de IA (automação de conteúdo, ChatGPT para posts) e uso estratégico (agentes que operam processos de negócio e impactam margem). O ângulo de status aparece sutilmente: quem está no nível certo de IA é reconhecido pelos pares.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Existe um benchmark não oficial no mercado de experts digitais.</p>
+                <p>Quem usa IA pra criar conteúdo mais rápido: a maioria.<br/>Quem usa IA pra operar o negócio com menos custo e mais escala: uma minoria pequena — e ela está crescendo em margem enquanto o mercado fica mais competitivo.</p>
+                <p>A distinção é simples: uso cosmético vs. uso estrutural.</p>
+                <p>Uso cosmético: ChatGPT pra escrever legenda, Canva IA pra criar arte, Notion IA pra organizar tarefa.<br/>Uso estrutural: agentes que qualificam lead, entregam produto, fazem follow-up, consolidam dados e operam 24h sem custo marginal por atendimento.</p>
+                <p>Um te faz parecer atualizado. O outro te dá vantagem real.</p>
+                <p>Se você não tem certeza em qual dos dois grupos está — ou quer migrar para o segundo — o Raio-X Digital é feito pra isso.</p>
+                <p>35 minutos. Gratuito. Diagnóstico real.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">Produtivo vs. lucrativo com IA</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Tiago sentado, postura consultiva. Split textual na tela divide os dois grupos (cosmético vs. estrutural) em tempo real conforme ele fala. Fundo escuro, tipografia Inter. Ritmo médio, tom sério sem ser rígido.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 08 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">08</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Video</span>
+                <span class="badge badge--warning">Less Bad</span>
+                <span class="badge">Moroni</span>
+                <span class="badge badge--neutral">60s Feed — Story antes/depois</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Um expert me procurou faturando R$80K/mês. Chorando. Não de alegria."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Narrativa de caso real (ou composta) que o ICP vai reconhecer. Expert com faturamento alto mas margem baixa, dependente do próprio esforço, sem vida fora do negócio. A virada vem com diagnóstico e implementação de IA. Tom empático no começo, consultivo no desenvolvimento, direto no CTA.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Ele faturava R$80K por mês.</p>
+                <p>Trabalhava das 7h às 23h. Tinha 9 pessoas no time. Tirava R$12K pra ele. O resto ia pra estrutura.</p>
+                <p>Quando me procurou, a primeira coisa que disse foi: "Eu construí uma prisão de luxo. Funciona, mas sou eu que fico preso nela."</p>
+                <p>Isso é o que acontece quando o crescimento é feito de camadas humanas em cima de camadas humanas.</p>
+                <p>O que fizemos nos 60 dias seguintes:</p>
+                <p>Mapeamos os 4 processos com maior custo humano do negócio dele. Implementamos agentes para qualificação, entrega, follow-up e relatório. O time foi de 9 para 4 pessoas — por escolha deles, não por corte. A margem foi de 15% para 38%.</p>
+                <p>Hoje ele fatura R$74K — um pouco menos — e tira R$28K. E tem final de semana.</p>
+                <p>Se você está num negócio que funciona, mas só porque você não para, o Raio-X Digital é o diagnóstico certo.</p>
+                <p>35 minutos. Gratuito. u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">De R$12K a R$28K sem crescer.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Moroni sentado, postura próxima, quase íntima. Iluminação levemente mais quente do que os outros vídeos — transmite empatia. Texto animado aparece nos momentos-chave dos números. Sem cortes rápidos — ritmo narrativo, como uma conversa. Câmera fixa.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── BATCH 2 — VIDEOS (10, 14, 16, 17) ───────────────── -->
+      <section id="batch2-videos2" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Batch 2 — Videos (cont.)</div>
+          <h2 class="doc-section-title">Criativos 10, 14, 16, 17</h2>
+          <p class="doc-section-desc">Reels verticais e vídeos de face — continuação.</p>
+        </div>
+
+        <!-- CRIATIVO 10 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">10</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Reels vertical</span>
+                <span class="badge badge--error">Social Risk</span>
+                <span class="badge">Moroni</span>
+                <span class="badge badge--neutral">20–30s</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Daqui a 12 meses, metade dos experts que você conhece vai estar travado. A outra metade vai ter dobrado."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Hook de risco social temporal. Moroni faz uma projeção direta sobre o mercado de experts digitais — não como profecia de doom, mas como análise fria de tendência. O divisor é quem implementou IA de forma estrutural vs. quem ficou no uso superficial. Tom de advisor, não de vendedor.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Essa não é uma previsão pessimista. É uma tendência que já está acontecendo.</p>
+                <p>O mercado de experts digitais está se bifurcando.</p>
+                <p>Um grupo está vendo o custo de operação subir (mais gente, mais ferramenta, mais complexidade) enquanto o CPL sobe e a margem cai.</p>
+                <p>O outro grupo está operando com menos custo, mais consistência e mais margem — porque implementou IA nos processos certos, do jeito certo.</p>
+                <p>Daqui a 12 meses essa distância vai ser muito maior.</p>
+                <p>O que você precisa saber: a janela de implementar IA com vantagem competitiva real está aberta agora. Quando o mercado todo estiver fazendo, o diferencial some.</p>
+                <p>Raio-X Digital — 35 minutos pra saber onde você está nessa bifurcação.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">12 meses. Duas realidades.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Vertical (9:16). Moroni em close, câmera firme. No hook, corte visual para dois caminhos (split screen simples com texto animado: "Travado" vs "Dobrou"). Retorna para Moroni. Captions animadas. Ritmo médio-rápido.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 14 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">14</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Video</span>
+                <span class="badge badge--success">More Good</span>
+                <span class="badge">Tiago</span>
+                <span class="badge badge--neutral">60s Feed — Story antes/depois</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Ela faturava R$45K. Trabalhava 60h por semana. Tinha 2 funcionários. Queria largar tudo."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Narrativa de caso real feminino — representatividade no ICP. A expert estava no limiar do burnout, com uma operação que funcionava mas que a consumia. Tiago conta a história com cuidado, sem melodrama, e apresenta o antes e o depois com números concretos. Tom de empoderamento, não de pena.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Ela tinha um negócio que funcionava. Era o problema.</p>
+                <p>Funcionava porque ela estava presente em tudo. Qualificação de leads? Ela. Suporte a alunos? Ela. Relatório de tráfego? Ela. Follow-up de quem não comprou? Ela.</p>
+                <p>R$45K de faturamento. R$9K de margem. 60 horas de trabalho por semana.</p>
+                <p>Quando chegou na nossa sessão, a primeira coisa que disse foi: "Não quero mais. Construí algo que funciona mas que não funciona sem mim."</p>
+                <p>Nos 75 dias seguintes:</p>
+                <p>Mapeamos os processos onde ela era a única solução. Implementamos agentes de qualificação, atendimento e entrega. O time não cresceu — ela realocou quem já tinha.</p>
+                <p>Resultado: faturamento foi pra R$51K. Horas de trabalho foram pra 38. Margem foi pra R$17K.</p>
+                <p>Mais importante: ela tem sexta à tarde livre pela primeira vez em 3 anos.</p>
+                <p>Isso é o que IA bem implementada faz. Não substitui o expert — libera ele pra ser expert.</p>
+                <p>Raio-X Digital: u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">De 60h para 38h. Mais margem.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Tiago em postura narrativa, câmera próxima. Texto animado mostra os números do antes (em cinza) e do depois (em azul) em momentos-chave da narração. Ritmo calmo, quase documental. Sem cortes rápidos. Iluminação calorosa, tom empático.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 16 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">16</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Reels vertical</span>
+                <span class="badge badge--info">Status</span>
+                <span class="badge">Tiago</span>
+                <span class="badge badge--neutral">20–25s</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"O que acontece no mastermind quando alguém fala que opera com agentes de IA?"</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Hook de status social via curiosidade. Tiago usa o ambiente de mastermind — referência direta ao contexto do ICP — para criar uma cena social real. Quem opera com IA estruturada é percebido de forma diferente pelos pares. Tom leve, quase anedótico no começo, mas com substância estratégica.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Não é sobre impressionar ninguém. Mas vou ser honesto sobre o que acontece.</p>
+                <p>Quando alguém num mastermind de experts diz "reduzi meu time de 8 pra 3 sem perder receita" ou "meu agente de IA qualifica 40 leads por dia sem eu tocar", a conversa para.</p>
+                <p>Não porque é mágica. Porque é diferente do que a maioria está vivendo.</p>
+                <p>A maioria está crescendo com mais gente, mais ferramenta, mais custo. E sabem que não é sustentável, mas não sabem o que fazer diferente.</p>
+                <p>Quem já implementou IA na operação não tem a mesma conversa. Tem um negócio diferente — com margem, com previsibilidade, com menos dependência do próprio esforço.</p>
+                <p>Isso muda como você é percebido pelos pares. Não porque você foi no mastermind pra isso. Mas porque os números são diferentes.</p>
+                <p>Raio-X Digital — onde começa essa diferença.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">O expert que o mastermind respeita.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Vertical (9:16). Tiago em câmera, cenário simples. No hook, corte rápido para texto animado recriando "a cena do mastermind" — balões de conversa estilizados surgindo na tela. Volta para Tiago. Captions animadas. Ritmo conversacional, quase informal no início, mais consultivo ao final.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 17 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">17</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Video</span>
+                <span class="badge badge--success">More Good</span>
+                <span class="badge">Moroni</span>
+                <span class="badge badge--neutral">45s Feed</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Você sabia que é possível ter uma equipe de 12 agentes de IA por menos do que paga um estagiário?"</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Hook de número surpreendente que abre espaço para Moroni apresentar a lógica de custo comparativo com detalhes. O ângulo é de ganho positivo — não do que você perde sem IA, mas do que você constrói com ela. Tom direto, sem hipérbole, com números reais de infraestrutura.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Vou detalhar esse número porque parece absurdo e não é.</p>
+                <p>Um estagiário CLT no Brasil custa, com encargos, entre R$1.800 e R$2.800 por mês. Trabalha 8h por dia, 5 dias por semana. Tem variação de performance. Precisa de onboarding, supervisão, feedback.</p>
+                <p>Uma estrutura de 12 agentes de IA — qualificação, atendimento, entrega, follow-up, relatório, suporte, agendamento, entre outros — roda 24h, 7 dias por semana, com custo de infraestrutura entre R$800 e R$1.800/mês dependendo da escala.</p>
+                <p>Não é hipótese. É o que implementamos com clientes que faturam entre R$30K e R$150K/mês.</p>
+                <p>O ponto não é "IA substitui humano". É "você sabe qual parte do seu negócio precisa de humano e qual não precisa?"</p>
+                <p>O Raio-X Digital responde essa pergunta em 35 minutos.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">12 agentes. Menos que 1 estagiário.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Moroni em câmera direta. Texto animado aparece mostrando a comparação: "1 estagiário = R$2.400/mês / 8h/dia / 5 dias". "12 agentes IA = R$1.200/mês / 24h/dia / 7 dias". Fundo escuro, tipografia em destaque. Ritmo médio, pausas dramáticas nos números.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── BATCH 2 — CAROUSELS (02, 09, 13, 18) ────────────── -->
+      <section id="batch2-carousels" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Batch 2 — Carousels</div>
+          <h2 class="doc-section-title">Criativos 02, 09, 13, 18</h2>
+          <p class="doc-section-desc">Carousels educativos e de conversão — Brand. 1080x1080.</p>
+        </div>
+
+        <!-- CRIATIVO 02 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">02</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--accent">Carousel</span>
+                <span class="badge badge--success">More Good</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">5 slides · 1080x1080</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — Slide 1</div>
+              <div class="criativo-card__hook">"5 processos que experts de R$50K/mês ainda fazem manualmente — e não precisam."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Carousel educativo direto. Cada slide expõe um processo que drena tempo e dinheiro, seguido do que a IA faz no lugar. Tom consultivo, não vendedor. Último slide convida para o Raio-X.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Slides</div>
+              <div class="criativo-card__slides">
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 1 — Capa</div>
+                  <p>"5 processos que experts de R$50K/mês ainda fazem manualmente — e não precisam."<br/>Subtítulo: "Qual deles está no seu negócio?"</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 2 — 01 Qualificação de leads no WhatsApp</div>
+                  <p>Um humano responde a mesma pergunta 40 vezes por dia. Uma IA responde com mais consistência, 24h, e entrega só os leads prontos pra você.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 3 — 02 Follow-up pós-webinar</div>
+                  <p>A janela de conversão fecha em 72h. A maioria perde porque não tem estrutura de follow-up automatizada. Quem tem IA não perde nenhuma janela.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 4 — 03 Entrega do produto digital</div>
+                  <p>Acesso, onboarding, suporte básico, upsell dentro do produto — tudo isso pode rodar sem intervenção humana. Você já viu o quanto do seu suporte são dúvidas repetidas?</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 5 — 04 Relatórios de campanha</div>
+                  <p>Consolidar dados de tráfego, e-mail e vendas levou quantas horas essa semana? Um agente faz isso em 4 minutos e te entrega o resumo pronto.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 6 (CTA) — 05 E o seu processo mais caro?</div>
+                  <p>O Raio-X Digital identifica os 3 processos do seu negócio com maior custo humano e maior potencial de automação. 35 minutos. Gratuito.<br/>CTA: u4digital.com.br/raio-x</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">5 processos que custam caro</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto. Tipografia branca Inter Bold para os títulos dos slides. Número do slide em azul elétrico (#4A90FF) no canto superior esquerdo. Ícone minimalista por processo (linha fina, SVG geométrico). Layout limpo, sem fotos. Último slide com botão/CTA em azul sólido.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 09 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">09</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--accent">Carousel</span>
+                <span class="badge badge--info">Status</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">6 slides · 1080x1080</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — Slide 1</div>
+              <div class="criativo-card__hook">"O que experts de R$100K/mês fazem diferente com IA — que os de R$30K ainda não perceberam."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Carousel de posicionamento. Não é "veja como usar IA" — é "veja o que separa os dois grupos". Cada slide expõe uma decisão estratégica que os top players tomaram. Tom de insider, não de professor. Cria identificação de status para quem já está no nível — e aspiração para quem ainda não chegou.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Slides</div>
+              <div class="criativo-card__slides">
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 1 — Capa</div>
+                  <p>"O que experts de R$100K/mês fazem diferente com IA — que os de R$30K ainda não perceberam."<br/>Subtítulo: "4 decisões que separam os dois grupos."</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 2 — Medem pelo custo por resultado</div>
+                  <p>Não é sobre qual IA assinar. É sobre quanto custa cada lead qualificado, cada cliente atendido, cada entrega concluída — e como IA reduz esse número.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 3 — Treinaram a IA com o próprio negócio</div>
+                  <p>Um agente treinado com sua metodologia, suas objeções e sua linguagem performa diferente de um ChatGPT com prompt solto. A diferença é implementação, não ferramenta.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 4 — Não automatizaram tudo. Escolheram onde automatizar.</div>
+                  <p>Os melhores sabem exatamente o que deve permanecer humano — e por quê. Automatizar o que não devia ser automatizado é tão caro quanto não automatizar o que devia.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 5 — Têm um parceiro de implementação</div>
+                  <p>A diferença entre saber e operar é imensa. Os top players da nova geração não aprendem sobre IA — eles contratam quem coloca pra funcionar.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 6 (CTA) — Você está no grupo certo?</div>
+                  <p>O Raio-X Digital é um diagnóstico de 35 minutos onde mapeamos onde o seu negócio está agora — e o que separa você do próximo nível.<br/>CTA: u4digital.com.br/raio-x</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">O que os top 10% fazem diferente</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto. Título de cada slide em branco grande, Inter Bold. Detalhe em azul #4A90FF no número do slide (01, 02, 03...). Layout assimétrico — título à esquerda, texto de apoio menor à direita. Sem fotos. Slide de CTA com fundo azul sólido e texto branco.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 13 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">13</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--accent">Carousel</span>
+                <span class="badge badge--error">Social Risk</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">5 slides · 1080x1080</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — Slide 1</div>
+              <div class="criativo-card__hook">"70% dos experts que conheço vão perder competitividade nos próximos 18 meses. Sem perceber."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Carousel de risco social calibrado — não doom, mas análise estratégica. Cada slide expõe um sinal de risco que o expert pode estar ignorando. Tom de advisor interno, como um sócio honesto que fala o que o mercado não diz. Último slide oferece o diagnóstico como saída.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Slides</div>
+              <div class="criativo-card__slides">
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 1 — Capa</div>
+                  <p>"70% dos experts que conheço vão perder competitividade nos próximos 18 meses. Sem perceber."<br/>Subtítulo: "4 sinais que estão no seu negócio agora."</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 2 — Sinal 01: Seu crescimento depende de você trabalhar mais.</div>
+                  <p>Se cada novo cliente significa mais horas suas ou do time, você não tem um negócio escalável. Tem um emprego de alta renda com CNPJ.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 3 — Sinal 02: Seu CPL está subindo e você não sabe por quê.</div>
+                  <p>CPL em alta não é só problema de tráfego. Muitas vezes é problema de qualificação e follow-up — processos que IA resolve com consistência que humano não tem.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 4 — Sinal 03: Você já tem 4 ferramentas de IA assinadas e nenhuma resolve a operação.</div>
+                  <p>ChatGPT, Midjourney, Notion IA, Gemini. Uso cosmético. O que o seu negócio precisa é de agentes que operam processos — não ferramentas que ajudam a fazer tarefa.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 5 — Sinal 04: Seu concorrente está entregando mais pelo mesmo preço.</div>
+                  <p>Quando o concorrente opera com IA estruturada, ele consegue atender mais clientes com o mesmo time — ou o mesmo número de clientes com time menor. Você sente isso na proposta, no prazo, no preço.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 6 (CTA) — Quantos desses sinais você reconheceu?</div>
+                  <p>O Raio-X Digital mapeia onde o risco está no seu negócio — e o que implementar primeiro pra reverter.<br/>CTA: u4digital.com.br/raio-x</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">4 sinais que você está ignorando</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto. Cada sinal aparece com número grande em vermelho escuro (#CC3333) — cor diferente do padrão para criar alertas visuais. Título do sinal em branco, explicação em cinza claro. Último slide retorna ao azul #4A90FF para contraste positivo com o CTA.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 18 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">18</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--accent">Carousel</span>
+                <span class="badge badge--success">More Good — BOFU</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">6 slides · 1080x1080</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — Slide 1</div>
+              <div class="criativo-card__hook">"Como funciona um Raio-X Digital na prática — e o que você sai sabendo."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Carousel que desmistifica e vende o próprio diagnóstico. Muitos prospects hesitam porque não sabem o que é a sessão. Esse carousel elimina a fricção mostrando o processo passo a passo, com expectativas concretas de o que vão receber. É o carousel de conversão direta — BOFU.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Slides</div>
+              <div class="criativo-card__slides">
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 1 — Capa</div>
+                  <p>"Como funciona um Raio-X Digital na prática — e o que você sai sabendo."<br/>Subtítulo: "35 minutos. Gratuito. Sem pitch."</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 2 — Passo 1: Mapeamento da operação (10 minutos)</div>
+                  <p>Entendemos como o seu negócio opera hoje: onde estão as pessoas, os processos, as ferramentas e os custos. Sem formulário genérico — conversa real sobre o que você tem.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 3 — Passo 2: Diagnóstico de custo oculto (10 minutos)</div>
+                  <p>Identificamos os 3 processos com maior custo humano e menor necessidade de presença humana. Na maioria dos casos, encontramos entre R$8.000 e R$20.000/mês de oportunidade que o expert não via.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 4 — Passo 3: Mapa de implementação (10 minutos)</div>
+                  <p>Apresentamos quais agentes de IA fazem sentido para o seu modelo de negócio, em que ordem implementar e qual o impacto esperado na margem. Sem promessa vaga — projeção baseada no diagnóstico real.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 5 — O que você leva no final</div>
+                  <p>Um mapa claro de onde a IA entra no seu negócio. Estimativa de custo e impacto por processo. Ordem de prioridade de implementação. Clareza sobre o que fazer — com ou sem a gente.</p>
+                </div>
+                <div class="criativo-card__slide-block">
+                  <div class="criativo-card__slide-title">Slide 6 (CTA) — Próximo passo</div>
+                  <p>Agendamento em menos de 2 minutos. 35 minutos de sessão. Você decide o que fazer com o diagnóstico.<br/>CTA: u4digital.com.br/raio-x</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">O diagnóstico que clarifica tudo.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto. Cada slide tem um número de passo grande em azul #4A90FF, título em branco Inter Bold, texto em cinza claro. Progress bar no topo de cada slide mostrando avanço (slide 2 = 33%, slide 3 = 66%, slide 4 = 100%). Slide 5 com ícone de checklist minimalista. Slide final com fundo azul sólido e CTA em branco.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── BATCH 2 — STATICS (04, 12, 15) ──────────────────── -->
+      <section id="batch2-statics" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Batch 2 — Statics</div>
+          <h2 class="doc-section-title">Criativos 04, 12, 15</h2>
+          <p class="doc-section-desc">Imagens estáticas de impacto — Brand. 1080x1080 + variações Stories.</p>
+        </div>
+
+        <!-- CRIATIVO 04 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">04</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--outline">Static</span>
+                <span class="badge badge--warning">Less Bad</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">1080x1080 + Stories</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — texto principal da imagem</div>
+              <div class="criativo-card__hook">"Você fatura R$50K. Tira R$8K. O resto foi pro time."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Imagem de impacto com matemática crua. Sem explicação longa — os números falam. Força o expert a fazer a conta do próprio negócio. Copy de suporte no Primary Text aprofunda a dor e aponta a saída.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Essa conta que eu acabei de fazer é a de um cliente real.</p>
+                <p>Faturamento: R$52.000<br/>Time (CLT + freelas + ferramentas): R$21.800<br/>Tráfego: R$9.400<br/>Plataformas e overhead: R$6.200<br/>Margem real: R$14.600</p>
+                <p>28% de margem em um negócio de R$52K/mês não é liberdade. É um salário de gerente com risco de empreendedor.</p>
+                <p>O que mudou depois de 60 dias com IA estruturada na operação?</p>
+                <p>Time foi de 7 pessoas para 3. Custo de operação caiu R$11.000/mês. Margem foi de 28% para 49%.</p>
+                <p>Não foi mágica. Foi diagnóstico, mapeamento e implementação.</p>
+                <p>O primeiro passo é o Raio-X Digital: 35 minutos, gratuito, feito com quem já fez isso antes.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">28% de margem não é liberdade.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto total. Dois blocos de texto centralizados: Bloco 1 (cinza/médio): "Você fatura R$50K." — Bloco 2 (branco, grande): "Tira R$8K." — Bloco 3 (azul #4A90FF, menor): "O resto foi pro time." Tipografia Inter. Sem imagem de pessoa. Austero, direto, sem decoração.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 12 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">12</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--outline">Static</span>
+                <span class="badge badge--warning">Less Bad</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">1080x1080</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — texto principal da imagem</div>
+              <div class="criativo-card__hook">"Você terceirizou. Automatizou. Contratou. E o lucro ainda não apareceu."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Imagem textual de impacto que nomeia a exaustão do expert que já tentou várias saídas e não resolveu a equação de margem. A distinção que o static faz é entre "fazer mais coisas" e "fazer as coisas certas com IA" — antes da copy aprofundar.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Esse é o ciclo que a maioria dos experts digitais de R$40K-R$100K/mês está vivendo:</p>
+                <p>Fatura mais. Precisa de mais estrutura. Contrata mais. Custo sobe. Margem cai. Fatura mais pra compensar. Repete.</p>
+                <p>Não é falta de esforço. É falta de alavanca certa.</p>
+                <p>A IA entra aqui não como mais uma ferramenta, mas como a reestruturação da equação: menos custo por processo, mais consistência por entrega, mais margem por real faturado.</p>
+                <p>O problema é que a maioria dos experts usa IA no lugar errado — em conteúdo, em imagem, em texto. Útil, mas cosmético.</p>
+                <p>O lugar certo é na operação: qualificação, atendimento, entrega, relatório, follow-up.</p>
+                <p>Se você ainda não mapeou onde a IA entra na operação do seu negócio, o Raio-X Digital é o ponto de partida.</p>
+                <p>35 minutos. Gratuito. Sem pitch.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">O ciclo que drena seu lucro.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto. Ciclo vicioso representado visualmente com setas em círculo — palavras-chave em cada ponta: "Fatura mais / Contrata mais / Custo sobe / Margem cai". No centro, texto pequeno: "Isso não é crescimento. É giro." Cor de destaque: azul #4A90FF nas setas. Tipografia Inter.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 15 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">15</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge badge--outline">Static</span>
+                <span class="badge badge--error">Social Risk</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">1080x1080 + Stories</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook — texto principal da imagem</div>
+              <div class="criativo-card__hook">"Enquanto você estava lendo sobre IA, seu concorrente estava implementando."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Imagem textual de urgência sem alarmismo. A distinção entre consumir conteúdo sobre IA e implementar IA na operação. O risco social aqui é ficar para trás no mercado de pares — não uma ameaça abstrata, mas uma dinâmica competitiva concreta.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Existe um gap crescente no mercado de experts digitais.</p>
+                <p>De um lado: quem leu, assistiu, se atualizou sobre IA. Sabe o vocabulário, entende o conceito, usa algumas ferramentas.</p>
+                <p>Do outro lado: quem implementou. Que tem agentes rodando. Que reduziu custo de operação. Que atende mais com menos.</p>
+                <p>O primeiro grupo acha que está na frente. O segundo grupo está na frente.</p>
+                <p>A diferença não é de conhecimento — é de execução.</p>
+                <p>E o mercado não espera. Cada mês que passa, os que implementaram abrem mais distância: em margem, em capacidade de atendimento, em capacidade de investir em crescimento.</p>
+                <p>A pergunta não é "quando vou implementar IA". É "quanto já custou não ter implementado ainda".</p>
+                <p>Raio-X Digital — 35 minutos pra sair do grupo errado.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">Lendo sobre IA vs. usando IA.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Fundo preto. Dois lados divididos por uma linha vertical fina em azul. Lado esquerdo (cinza escuro): "Lendo sobre IA". Lado direito (branco): "Implementando IA." Abaixo de cada lado, 3 bullets em contraste. Layout limpo, tipografia Inter, sem imagens de pessoas.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── BATCH 2 — DEMOS (07, 11) ─────────────────────────── -->
+      <section id="batch2-demos" class="doc-section">
+        <div class="doc-section-header">
+          <div class="doc-section-number">Batch 2 — Demos</div>
+          <h2 class="doc-section-title">Criativos 07, 11</h2>
+          <p class="doc-section-desc">Vídeos de demo e prova — Brand, screen recording e animação.</p>
+        </div>
+
+        <!-- CRIATIVO 07 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">07</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Demo / Proof</span>
+                <span class="badge badge--success">More Good</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">45–60s Feed — Screen Recording</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Esse agente de IA qualificou 47 leads em 3 horas. Sem nenhuma intervenção humana."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Demo de produto. Mostra na tela (screen recording estilizado) um agente respondendo leads no WhatsApp — perguntas reais de qualificação, respostas contextualmente corretas, passagem para o humano só quando lead está pronto. Narração off em voz de autoridade. Termina com dado de resultado do cliente.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>O que você está vendo é real.</p>
+                <p>Um agente de IA treinado com o contexto do negócio, regras de qualificação e linguagem do cliente — respondendo leads no WhatsApp com consistência que a maioria dos SDRs humanos não tem.</p>
+                <p>Ele não dorme, não esquece o script, não varia o humor conforme o dia.</p>
+                <p>Em 3 horas de operação autônoma: 47 leads respondidos, 11 qualificados como prontos pra conversa, 0 intervenções humanas necessárias.</p>
+                <p>Custo desse agente por mês: R$380 de infraestrutura.</p>
+                <p>Custo de um SDR humano fazendo o mesmo processo: R$7.200 a R$9.000.</p>
+                <p>Implementamos isso com experts digitais que faturam entre R$30K e R$150K/mês. O Raio-X Digital identifica se esse processo faz sentido pra você — e qual seria o impacto real na sua margem.</p>
+                <p>u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">47 leads. 3h. Zero humano.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Abertura com screen recording do WhatsApp/interface de agente — mensagens aparecendo em tempo real. Overlay com contador de leads qualificados. Corte para dados animados: "R$380/mês" vs "R$7.200/mês". Narração off masculina, tom técnico-consultivo. Fundo escuro com glow azul nos elementos de interface.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRIATIVO 11 -->
+        <div class="criativo-card">
+          <div class="criativo-card__header">
+            <div class="criativo-card__number">11</div>
+            <div class="criativo-card__header-info">
+              <div class="criativo-card__badges">
+                <span class="badge">Demo / Proof</span>
+                <span class="badge badge--success">More Good</span>
+                <span class="badge">Brand</span>
+                <span class="badge badge--neutral">45s Feed — Animação</span>
+              </div>
+            </div>
+          </div>
+          <div class="criativo-card__body">
+            <div>
+              <div class="criativo-card__field-label">Hook (0–3s)</div>
+              <div class="criativo-card__hook">"Em 35 minutos de diagnóstico, encontramos R$14.000 parados no negócio desse expert."</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Conceito</div>
+              <div class="criativo-card__concept">Recria visualmente uma sessão de Raio-X Digital animada. Mostra o "antes" do mapeamento (processos opacos, custo não mapeado) e o "depois" (3 oportunidades identificadas com valor estimado de retorno). O objetivo é demonstrar o valor do próprio Raio-X — não só da IA — e reduzir a fricção para agendar.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Primary Text</div>
+              <div class="criativo-card__primary-text">
+                <p>Quando um expert chega no Raio-X Digital, a primeira coisa que fazemos é mapear onde o dinheiro está saindo sem ele perceber.</p>
+                <p>No caso que vou contar, foi assim:</p>
+                <p>Processo 1 — Qualificação de leads: 4 horas/semana do próprio expert + 1 assistente em tempo parcial = R$5.200/mês de custo real.<br/>Processo 2 — Follow-up de carrinho: taxa de recuperação manual de 11%. Com automação: estimativa de 31%. Diferença: R$4.800/mês de receita recuperada.<br/>Processo 3 — Suporte básico de alunos: 60% das perguntas eram repetidas. Resolvidas com uma base de conhecimento + agente = R$3.800/mês de custo eliminado.</p>
+                <p>Total identificado em 35 minutos: R$13.800/mês de oportunidade.</p>
+                <p>O Raio-X não vende nada. Mapeia. E você decide o que fazer com o mapa.</p>
+                <p>Agendamento gratuito: u4digital.com.br/raio-x</p>
+              </div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Headline</div>
+              <div class="criativo-card__headline">R$14K identificados em 35 min.</div>
+            </div>
+            <div>
+              <div class="criativo-card__field-label">Direção Visual</div>
+              <div class="criativo-card__visual">Animação estilo dashboard. Processos aparecem como blocos com custo ao lado. Números somam em tempo real conforme a narração avança. Paleta escura com texto branco e destaque em azul. Narração off, tom consultivo. Sem rosto — só dado e contexto.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Active sidebar link on scroll
+    const sections = document.querySelectorAll('.doc-section[id]');
+    const links = document.querySelectorAll('.doc-sidebar__link');
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function(link) {
+            link.classList.remove('is-active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('is-active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(function(section) { observer.observe(section); });
+  </script>
+</body>
+</html>

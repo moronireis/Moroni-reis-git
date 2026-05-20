@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "url": "https://www.hermes.com/us/en/"
+  },
+  "theme": {
+    "default": "light",
+    "default_mode": "light",
+    "supports_dark": false,
+    "supports_dark_reason": "light-default surface without dark toggle evidence",
+    "declared_default": "light",
+    "confidence": "high",
+    "inferred_from_surface": "light",
+    "surface": "#fcf7f1",
+    "surface_alt": "#ffffff",
+    "text": "#000000",
+    "muted": "#696969",
+    "border": "#f6f1eb",
+    "accent": "#f6811e"
+  },
+  "native_vars": {
+    "supports_dark": false,
+    "has_explicit_dark_scope": false,
+    "preferred_selector": null,
+    "preferred_count": 0,
+    "light": {
+      "--header-height-mobile": "50px",
+      "--header-height-desktop": "64px",
+      "--header-height-desktop-with-menu": "110px",
+      "--header-menu-height": "46px",
+      "--category-max-height": "14px",
+      "--category-min-height": "42px",
+      "--header-height-desktop-with-skip-links": "91px",
+      "--header-menu-top": "58px",
+      "--font-edito": "\"Overpass Mono\", \"Gill Sans MT\", calibri, sans-serif",
+      "--font-secondary": "\"Overpass Mono\", \"Gill Sans MT\", calibri, sans-serif",
+      "--font-primary": "\"Manrope\", \"Roboto\", sans-serif",
+      "--font-size-heading-xxl": "2rem",
+      "--font-size-heading-xl": "1.875rem",
+      "--font-size-heading-l": "1.625rem",
+      "--font-size-heading-m": "1.5rem",
+      "--font-size-heading-default": "1.375rem",
+      "--font-size-heading-s": "1.125rem",
+      "--font-size-heading-xs": "1.125rem",
+      "--font-size-body-xl": "1rem",
+      "--font-size-body-l": "1rem",
+      "--font-size-body-m": ".75rem",
+      "--font-size-body-default": ".6875rem",
+      "--font-size-body-s": ".6875rem",
+      "--font-size-body-xs": ".5rem",
+      "--font-filosofia": "\"Filosofia\", serif",
+      "--font-akkurat": "\"Akkurat\", serif",
+      "--font-jungle-love": "\"Jungle-Regular\", serif",
+      "--font-brides-de-gala": "\"BridesdeGala-Regular\", serif",
+      "--font-mors-a-jouet": "\"Mors-Regular-Auto\", serif",
+      "--font-weight-100": "100",
+      "--font-weight-200": "200",
+      "--font-weight-300": "300",
+      "--font-weight-400": "400",
+      "--font-weight-500": "500",
+      "--font-weight-600": "600",
+      "--font-weight-700": "700",
+      "--font-weight-800": "800"
+    },
+    "dark": {},
+    "preferred": {}
+  },
+  "components": {
+    "button": {
+      "renderable": true,
+      "base": {
+        "bg": "#000000",
+        "text": "#ffffff",
+        "border_color": "#000000",
+        "border_width": "1px",
+        "radius": "4px",
+        "padding": "0.65rem 1.2rem",
+        "font_size": "var(--font-size-body-m, .75rem)",
+        "font_weight": 600
+      },
+      "variants": {
+        "primary": {
+          "renderable": true,
+          "missing": [],
+          "bg": "#000000",
+          "text": "#ffffff",
+          "border_color": "#000000",
+          "border_width": "1px",
+          "radius": "4px",
+          "padding": "0.65rem 1.2rem",
+          "font_size": "var(--font-size-body-m, .75rem)",
+          "font_weight": 600
+        },
+        "secondary": {
+          "renderable": true,
+          "missing": [],
+          "bg": "transparent",
+          "text": "#000000",
+          "border_color": "#000000",
+          "border_width": "1px",
+          "radius": "4px",
+          "padding": "0.65rem 1.2rem",
+          "font_size": "var(--font-size-body-m, .75rem)",
+          "font_weight": 600
+        }
+      },
+      "states": {
+        "hover": {},
+        "active": {},
+        "disabled": {},
+        "focus_visible": {
+          "outline": "2px solid #000",
+          "outline_color": "#fff",
+          "outline_offset": "2px"
+        }
+      },
+      "source_confidence": "high"
+    },
+    "card": {
+      "renderable": true,
+      "base": {
+        "bg": "#ffffff",
+        "text": "#000000",
+        "border_color": "#f6f1eb",
+        "border_width": "1px",
+        "radius": "0px",
+        "padding": "1.25rem"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "missing"
+    },
+    "input": {
+      "renderable": true,
+      "base": {
+        "bg": "transparent",
+        "text": "#000",
+        "border_color": "#f6f1eb",
+        "border_width": "1px",
+        "radius": "0px",
+        "transition": "text-indent .3s ease-out"
+      },
+      "states": {},
+      "variants": {
+        "service": {
+          "bg": "transparent",
+          "text": "#fff0",
+          "cursor": "pointer"
+        }
+      },
+      "source_confidence": "medium"
+    },
+    "link": {
+      "renderable": true,
+      "base": {
+        "bg": "transparent",
+        "text": "#000",
+        "padding": "0 12px",
+        "font_size": "var(--font-size-body-m, .75rem)"
+      },
+      "states": {
+        "hover": {
+          "text": "#000"
+        },
+        "focus": {
+          "outline": "2px solid #fff",
+          "outline_offset": "var(--focus-offset, 2px)"
+        },
+        "focus-visible": {
+          "outline_offset": "0",
+          "outline": "2px solid #fff"
+        }
+      },
+      "variants": {
+        "service": {
+          "text": "#000",
+          "font_size": "var(--font-size-body-m, .75rem)"
+        }
+      },
+      "source_confidence": "high"
+    },
+    "nav": {
+      "renderable": true,
+      "base": {
+        "text": "#000000",
+        "font_size": "var(--font-size-body-s, .6875rem)",
+        "font_weight": "var(--font-weight-700, 700)"
+      },
+      "states": {},
+      "variants": {
+        "menu-nav": {
+          "font_weight": "var(--font-weight-700, 700)",
+          "font_size": "var(--font-size-body-s, .6875rem)"
+        },
+        "service": {
+          "font_weight": "var(--font-weight-700, 700)",
+          "font_size": "var(--font-size-body-s, .6875rem)",
+          "outline": "2px solid #000",
+          "outline_offset": "0"
+        }
+      },
+      "source_confidence": "medium"
+    },
+    "alert": {
+      "renderable": true,
+      "base": {
+        "bg": "#ffffffe6",
+        "text": "#000",
+        "padding": "16px 15px 8px",
+        "font_size": "var(--font-size-body-l, 1rem)"
+      },
+      "states": {
+        "hover": {
+          "transform": "translateZ(0)",
+          "shadow": "inset 0 0 6px 6px #000"
+        }
+      },
+      "variants": {},
+      "source_confidence": "medium"
+    },
+    "tooltip": {
+      "renderable": true,
+      "base": {
+        "text": "#000",
+        "font_size": "var(--font-size-body-m, .75rem)"
+      },
+      "states": {},
+      "variants": {},
+      "source_confidence": "thin"
+    },
+    "modal": {
+      "renderable": true,
+      "base": {
+        "bg": "#f5f5f5",
+        "text": "#000",
+        "radius": "50%",
+        "font_size": "var(--font-size-body-xl, 1rem)",
+        "font_weight": "var(--font-weight-300, 300)"
+      },
+      "states": {},
+      "variants": {
+        "service": {
+          "bg": "#f5f5f5",
+          "font_weight": "var(--font-weight-300, 300)",
+          "text": "#000",
+          "font_size": "var(--font-size-body-xl, 1rem)",
+          "radius": "50%",
+          "transition": "opacity,transform 0ms cubic-bezier(0,0,.2,1)"
+        },
+        "medium": {
+          "font_weight": "var(--font-weight-500, 500)",
+          "font_size": "var(--font-size-body-m, .75rem)"
+        },
+        "small": {
+          "font_weight": "var(--font-weight-500, 500)",
+          "font_size": "var(--font-size-body-s, .6875rem)"
+        }
+      },
+      "source_confidence": "medium"
+    },
+    "label": {
+      "renderable": true,
+      "base": {
+        "text": "#696969"
+      },
+      "states": {},
+      "variants": {
+        "medium": {
+          "font_weight": "var(--font-weight-500, 500)",
+          "font_size": "var(--font-size-body-m, .75rem)"
+        },
+        "small": {
+          "font_weight": "var(--font-weight-500, 500)",
+          "font_size": "var(--font-size-body-s, .6875rem)"
+        }
+      },
+      "source_confidence": "thin"
+    }
+  },
+  "warnings": []
+}

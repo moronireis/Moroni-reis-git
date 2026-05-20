@@ -1,0 +1,1765 @@
+{
+  "source": "/Users/moronireis/Downloads/criativos/294DCC89-98F1-442F-96AD-3FE485ED96F9.MOV",
+  "language": "pt",
+  "duration": 42.9786875,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Mais de quarenta a gente se dia para você utilizar hoje a gente se de design a gente se de copio de",
+      "words": [
+        {
+          "word": "Mais",
+          "start": 0.0,
+          "end": 0.16,
+          "probability": 0.036
+        },
+        {
+          "word": "de",
+          "start": 0.16,
+          "end": 0.3,
+          "probability": 0.96
+        },
+        {
+          "word": "quarenta",
+          "start": 0.3,
+          "end": 0.7,
+          "probability": 0.676
+        },
+        {
+          "word": "a",
+          "start": 0.7,
+          "end": 0.8,
+          "probability": 0.554
+        },
+        {
+          "word": "gente",
+          "start": 0.8,
+          "end": 0.9,
+          "probability": 0.995
+        },
+        {
+          "word": "se",
+          "start": 0.9,
+          "end": 1.06,
+          "probability": 0.955
+        },
+        {
+          "word": "dia",
+          "start": 1.06,
+          "end": 1.32,
+          "probability": 0.764
+        },
+        {
+          "word": "para",
+          "start": 1.32,
+          "end": 1.52,
+          "probability": 0.631
+        },
+        {
+          "word": "você",
+          "start": 1.52,
+          "end": 1.82,
+          "probability": 0.95
+        },
+        {
+          "word": "utilizar",
+          "start": 1.82,
+          "end": 2.36,
+          "probability": 0.976
+        },
+        {
+          "word": "hoje",
+          "start": 2.36,
+          "end": 2.84,
+          "probability": 0.946
+        },
+        {
+          "word": "a",
+          "start": 2.84,
+          "end": 3.02,
+          "probability": 0.573
+        },
+        {
+          "word": "gente",
+          "start": 3.02,
+          "end": 3.16,
+          "probability": 0.998
+        },
+        {
+          "word": "se",
+          "start": 3.16,
+          "end": 3.32,
+          "probability": 0.648
+        },
+        {
+          "word": "de",
+          "start": 3.32,
+          "end": 3.48,
+          "probability": 0.475
+        },
+        {
+          "word": "design",
+          "start": 3.48,
+          "end": 4.0,
+          "probability": 0.788
+        },
+        {
+          "word": "a",
+          "start": 4.0,
+          "end": 4.2,
+          "probability": 0.779
+        },
+        {
+          "word": "gente",
+          "start": 4.2,
+          "end": 4.32,
+          "probability": 0.998
+        },
+        {
+          "word": "se",
+          "start": 4.32,
+          "end": 4.46,
+          "probability": 0.778
+        },
+        {
+          "word": "de",
+          "start": 4.46,
+          "end": 4.54,
+          "probability": 0.948
+        },
+        {
+          "word": "copio",
+          "start": 4.54,
+          "end": 5.22,
+          "probability": 0.253
+        },
+        {
+          "word": "de",
+          "start": 5.22,
+          "end": 5.36,
+          "probability": 0.947
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 5.36,
+      "end": 10.7,
+      "text": " tráfego de agentes para desenvolver aplicativos tudo pronto aqui para você já uma estrutura",
+      "words": [
+        {
+          "word": "tráfego",
+          "start": 5.36,
+          "end": 6.0,
+          "probability": 0.901
+        },
+        {
+          "word": "de",
+          "start": 6.0,
+          "end": 6.32,
+          "probability": 0.295
+        },
+        {
+          "word": "agentes",
+          "start": 6.32,
+          "end": 6.58,
+          "probability": 0.822
+        },
+        {
+          "word": "para",
+          "start": 6.58,
+          "end": 6.82,
+          "probability": 0.904
+        },
+        {
+          "word": "desenvolver",
+          "start": 6.82,
+          "end": 7.28,
+          "probability": 0.996
+        },
+        {
+          "word": "aplicativos",
+          "start": 7.28,
+          "end": 8.06,
+          "probability": 0.989
+        },
+        {
+          "word": "tudo",
+          "start": 8.06,
+          "end": 8.46,
+          "probability": 0.734
+        },
+        {
+          "word": "pronto",
+          "start": 8.46,
+          "end": 8.9,
+          "probability": 0.949
+        },
+        {
+          "word": "aqui",
+          "start": 8.9,
+          "end": 9.2,
+          "probability": 0.961
+        },
+        {
+          "word": "para",
+          "start": 9.2,
+          "end": 9.36,
+          "probability": 0.721
+        },
+        {
+          "word": "você",
+          "start": 9.36,
+          "end": 9.76,
+          "probability": 0.997
+        },
+        {
+          "word": "já",
+          "start": 9.76,
+          "end": 10.22,
+          "probability": 0.921
+        },
+        {
+          "word": "uma",
+          "start": 10.22,
+          "end": 10.32,
+          "probability": 0.97
+        },
+        {
+          "word": "estrutura",
+          "start": 10.32,
+          "end": 10.7,
+          "probability": 0.995
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 10.7,
+      "end": 15.7,
+      "text": " robusta para você utilizar hoje de forma profissional tá eles fazem tudo de forma",
+      "words": [
+        {
+          "word": "robusta",
+          "start": 10.7,
+          "end": 11.34,
+          "probability": 0.955
+        },
+        {
+          "word": "para",
+          "start": 11.34,
+          "end": 11.5,
+          "probability": 0.948
+        },
+        {
+          "word": "você",
+          "start": 11.5,
+          "end": 11.7,
+          "probability": 0.994
+        },
+        {
+          "word": "utilizar",
+          "start": 11.7,
+          "end": 12.14,
+          "probability": 0.98
+        },
+        {
+          "word": "hoje",
+          "start": 12.14,
+          "end": 12.6,
+          "probability": 0.989
+        },
+        {
+          "word": "de",
+          "start": 12.6,
+          "end": 13.12,
+          "probability": 0.923
+        },
+        {
+          "word": "forma",
+          "start": 13.12,
+          "end": 13.32,
+          "probability": 0.995
+        },
+        {
+          "word": "profissional",
+          "start": 13.32,
+          "end": 14.16,
+          "probability": 0.993
+        },
+        {
+          "word": "tá",
+          "start": 14.16,
+          "end": 14.56,
+          "probability": 0.168
+        },
+        {
+          "word": "eles",
+          "start": 14.56,
+          "end": 14.74,
+          "probability": 0.43
+        },
+        {
+          "word": "fazem",
+          "start": 14.74,
+          "end": 15.04,
+          "probability": 0.993
+        },
+        {
+          "word": "tudo",
+          "start": 15.04,
+          "end": 15.34,
+          "probability": 0.976
+        },
+        {
+          "word": "de",
+          "start": 15.34,
+          "end": 15.52,
+          "probability": 0.981
+        },
+        {
+          "word": "forma",
+          "start": 15.52,
+          "end": 15.7,
+          "probability": 0.993
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 15.7,
+      "end": 20.44,
+      "text": " premium profissional você vai ver o resultado é o melhor que tem hoje no mercado você vai ter",
+      "words": [
+        {
+          "word": "premium",
+          "start": 15.7,
+          "end": 16.24,
+          "probability": 0.402
+        },
+        {
+          "word": "profissional",
+          "start": 16.24,
+          "end": 16.84,
+          "probability": 0.968
+        },
+        {
+          "word": "você",
+          "start": 16.84,
+          "end": 17.06,
+          "probability": 0.7
+        },
+        {
+          "word": "vai",
+          "start": 17.06,
+          "end": 17.18,
+          "probability": 0.977
+        },
+        {
+          "word": "ver",
+          "start": 17.18,
+          "end": 17.34,
+          "probability": 0.988
+        },
+        {
+          "word": "o",
+          "start": 17.34,
+          "end": 17.52,
+          "probability": 0.678
+        },
+        {
+          "word": "resultado",
+          "start": 17.52,
+          "end": 17.88,
+          "probability": 0.989
+        },
+        {
+          "word": "é",
+          "start": 17.88,
+          "end": 18.04,
+          "probability": 0.675
+        },
+        {
+          "word": "o",
+          "start": 18.04,
+          "end": 18.1,
+          "probability": 0.871
+        },
+        {
+          "word": "melhor",
+          "start": 18.1,
+          "end": 18.26,
+          "probability": 0.998
+        },
+        {
+          "word": "que",
+          "start": 18.26,
+          "end": 18.5,
+          "probability": 0.821
+        },
+        {
+          "word": "tem",
+          "start": 18.5,
+          "end": 18.62,
+          "probability": 0.76
+        },
+        {
+          "word": "hoje",
+          "start": 18.62,
+          "end": 18.88,
+          "probability": 0.977
+        },
+        {
+          "word": "no",
+          "start": 18.88,
+          "end": 19.06,
+          "probability": 0.984
+        },
+        {
+          "word": "mercado",
+          "start": 19.06,
+          "end": 19.4,
+          "probability": 0.996
+        },
+        {
+          "word": "você",
+          "start": 19.4,
+          "end": 20.16,
+          "probability": 0.818
+        },
+        {
+          "word": "vai",
+          "start": 20.16,
+          "end": 20.26,
+          "probability": 0.997
+        },
+        {
+          "word": "ter",
+          "start": 20.26,
+          "end": 20.44,
+          "probability": 0.992
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 20.44,
+      "end": 26.12,
+      "text": " isso por menos de 47 reais ali é um menos que um real para a gente você vai ter aqui tudo",
+      "words": [
+        {
+          "word": "isso",
+          "start": 20.44,
+          "end": 20.74,
+          "probability": 0.987
+        },
+        {
+          "word": "por",
+          "start": 20.74,
+          "end": 20.92,
+          "probability": 0.964
+        },
+        {
+          "word": "menos",
+          "start": 20.92,
+          "end": 21.08,
+          "probability": 0.96
+        },
+        {
+          "word": "de",
+          "start": 21.08,
+          "end": 21.24,
+          "probability": 0.968
+        },
+        {
+          "word": "47",
+          "start": 21.24,
+          "end": 21.68,
+          "probability": 0.54
+        },
+        {
+          "word": "reais",
+          "start": 21.68,
+          "end": 22.06,
+          "probability": 0.977
+        },
+        {
+          "word": "ali",
+          "start": 22.06,
+          "end": 22.56,
+          "probability": 0.789
+        },
+        {
+          "word": "é",
+          "start": 22.56,
+          "end": 22.72,
+          "probability": 0.789
+        },
+        {
+          "word": "um",
+          "start": 22.72,
+          "end": 23.4,
+          "probability": 0.303
+        },
+        {
+          "word": "menos",
+          "start": 23.4,
+          "end": 23.9,
+          "probability": 0.756
+        },
+        {
+          "word": "que",
+          "start": 23.9,
+          "end": 24.06,
+          "probability": 0.969
+        },
+        {
+          "word": "um",
+          "start": 24.06,
+          "end": 24.14,
+          "probability": 0.891
+        },
+        {
+          "word": "real",
+          "start": 24.14,
+          "end": 24.32,
+          "probability": 0.931
+        },
+        {
+          "word": "para",
+          "start": 24.32,
+          "end": 24.5,
+          "probability": 0.398
+        },
+        {
+          "word": "a",
+          "start": 24.5,
+          "end": 24.64,
+          "probability": 0.753
+        },
+        {
+          "word": "gente",
+          "start": 24.64,
+          "end": 24.8,
+          "probability": 0.994
+        },
+        {
+          "word": "você",
+          "start": 24.8,
+          "end": 25.04,
+          "probability": 0.717
+        },
+        {
+          "word": "vai",
+          "start": 25.04,
+          "end": 25.16,
+          "probability": 0.998
+        },
+        {
+          "word": "ter",
+          "start": 25.16,
+          "end": 25.34,
+          "probability": 0.995
+        },
+        {
+          "word": "aqui",
+          "start": 25.34,
+          "end": 25.58,
+          "probability": 0.869
+        },
+        {
+          "word": "tudo",
+          "start": 25.58,
+          "end": 26.12,
+          "probability": 0.991
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 26.12,
+      "end": 31.7,
+      "text": " pronto para você utilizar hoje vai vir quatro aulas exclusivas para você entender como aplicar",
+      "words": [
+        {
+          "word": "pronto",
+          "start": 26.12,
+          "end": 26.54,
+          "probability": 0.058
+        },
+        {
+          "word": "para",
+          "start": 26.54,
+          "end": 26.78,
+          "probability": 0.459
+        },
+        {
+          "word": "você",
+          "start": 26.78,
+          "end": 27.06,
+          "probability": 0.979
+        },
+        {
+          "word": "utilizar",
+          "start": 27.06,
+          "end": 27.56,
+          "probability": 0.968
+        },
+        {
+          "word": "hoje",
+          "start": 27.56,
+          "end": 28.0,
+          "probability": 0.961
+        },
+        {
+          "word": "vai",
+          "start": 28.0,
+          "end": 28.34,
+          "probability": 0.438
+        },
+        {
+          "word": "vir",
+          "start": 28.34,
+          "end": 28.44,
+          "probability": 0.699
+        },
+        {
+          "word": "quatro",
+          "start": 28.44,
+          "end": 28.82,
+          "probability": 0.862
+        },
+        {
+          "word": "aulas",
+          "start": 28.82,
+          "end": 29.16,
+          "probability": 0.996
+        },
+        {
+          "word": "exclusivas",
+          "start": 29.16,
+          "end": 29.84,
+          "probability": 0.993
+        },
+        {
+          "word": "para",
+          "start": 29.84,
+          "end": 30.06,
+          "probability": 0.895
+        },
+        {
+          "word": "você",
+          "start": 30.06,
+          "end": 30.26,
+          "probability": 0.996
+        },
+        {
+          "word": "entender",
+          "start": 30.26,
+          "end": 30.66,
+          "probability": 0.998
+        },
+        {
+          "word": "como",
+          "start": 30.66,
+          "end": 30.9,
+          "probability": 0.989
+        },
+        {
+          "word": "aplicar",
+          "start": 30.9,
+          "end": 31.7,
+          "probability": 0.996
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 31.7,
+      "end": 36.74,
+      "text": " como utilizar isso ainda hoje você clica aqui em saiba mais que eu já te espero ali do outro lado",
+      "words": [
+        {
+          "word": "como",
+          "start": 31.7,
+          "end": 31.96,
+          "probability": 0.648
+        },
+        {
+          "word": "utilizar",
+          "start": 31.96,
+          "end": 32.44,
+          "probability": 0.979
+        },
+        {
+          "word": "isso",
+          "start": 32.44,
+          "end": 32.82,
+          "probability": 0.96
+        },
+        {
+          "word": "ainda",
+          "start": 32.82,
+          "end": 33.04,
+          "probability": 0.987
+        },
+        {
+          "word": "hoje",
+          "start": 33.04,
+          "end": 33.44,
+          "probability": 0.996
+        },
+        {
+          "word": "você",
+          "start": 33.44,
+          "end": 33.98,
+          "probability": 0.524
+        },
+        {
+          "word": "clica",
+          "start": 33.98,
+          "end": 34.18,
+          "probability": 0.871
+        },
+        {
+          "word": "aqui",
+          "start": 34.18,
+          "end": 34.34,
+          "probability": 0.771
+        },
+        {
+          "word": "em",
+          "start": 34.34,
+          "end": 34.44,
+          "probability": 0.828
+        },
+        {
+          "word": "saiba",
+          "start": 34.44,
+          "end": 34.76,
+          "probability": 0.789
+        },
+        {
+          "word": "mais",
+          "start": 34.76,
+          "end": 35.08,
+          "probability": 0.978
+        },
+        {
+          "word": "que",
+          "start": 35.08,
+          "end": 35.26,
+          "probability": 0.98
+        },
+        {
+          "word": "eu",
+          "start": 35.26,
+          "end": 35.46,
+          "probability": 0.971
+        },
+        {
+          "word": "já",
+          "start": 35.46,
+          "end": 35.68,
+          "probability": 0.982
+        },
+        {
+          "word": "te",
+          "start": 35.68,
+          "end": 35.84,
+          "probability": 0.615
+        },
+        {
+          "word": "espero",
+          "start": 35.84,
+          "end": 36.06,
+          "probability": 0.907
+        },
+        {
+          "word": "ali",
+          "start": 36.06,
+          "end": 36.28,
+          "probability": 0.976
+        },
+        {
+          "word": "do",
+          "start": 36.28,
+          "end": 36.42,
+          "probability": 0.975
+        },
+        {
+          "word": "outro",
+          "start": 36.42,
+          "end": 36.54,
+          "probability": 0.984
+        },
+        {
+          "word": "lado",
+          "start": 36.54,
+          "end": 36.74,
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 36.74,
+      "end": 41.36,
+      "text": " para você começar a ter resultado aí usar e aí para automatizar tudo para você vamos embora",
+      "words": [
+        {
+          "word": "para",
+          "start": 36.74,
+          "end": 36.94,
+          "probability": 0.84
+        },
+        {
+          "word": "você",
+          "start": 36.94,
+          "end": 37.3,
+          "probability": 0.997
+        },
+        {
+          "word": "começar",
+          "start": 37.3,
+          "end": 38.02,
+          "probability": 0.981
+        },
+        {
+          "word": "a",
+          "start": 38.02,
+          "end": 38.22,
+          "probability": 0.773
+        },
+        {
+          "word": "ter",
+          "start": 38.22,
+          "end": 38.26,
+          "probability": 0.986
+        },
+        {
+          "word": "resultado",
+          "start": 38.26,
+          "end": 38.62,
+          "probability": 0.881
+        },
+        {
+          "word": "aí",
+          "start": 38.62,
+          "end": 38.92,
+          "probability": 0.566
+        },
+        {
+          "word": "usar",
+          "start": 38.92,
+          "end": 39.12,
+          "probability": 0.796
+        },
+        {
+          "word": "e",
+          "start": 39.12,
+          "end": 39.34,
+          "probability": 0.739
+        },
+        {
+          "word": "aí",
+          "start": 39.34,
+          "end": 39.46,
+          "probability": 0.259
+        },
+        {
+          "word": "para",
+          "start": 39.46,
+          "end": 39.66,
+          "probability": 0.939
+        },
+        {
+          "word": "automatizar",
+          "start": 39.66,
+          "end": 40.12,
+          "probability": 0.975
+        },
+        {
+          "word": "tudo",
+          "start": 40.12,
+          "end": 40.4,
+          "probability": 0.99
+        },
+        {
+          "word": "para",
+          "start": 40.4,
+          "end": 40.62,
+          "probability": 0.786
+        },
+        {
+          "word": "você",
+          "start": 40.62,
+          "end": 40.92,
+          "probability": 0.996
+        },
+        {
+          "word": "vamos",
+          "start": 40.92,
+          "end": 41.12,
+          "probability": 0.57
+        },
+        {
+          "word": "embora",
+          "start": 41.12,
+          "end": 41.36,
+          "probability": 0.836
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": "Mais",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.036
+    },
+    {
+      "word": "de",
+      "start": 0.16,
+      "end": 0.3,
+      "probability": 0.96
+    },
+    {
+      "word": "quarenta",
+      "start": 0.3,
+      "end": 0.7,
+      "probability": 0.676
+    },
+    {
+      "word": "a",
+      "start": 0.7,
+      "end": 0.8,
+      "probability": 0.554
+    },
+    {
+      "word": "gente",
+      "start": 0.8,
+      "end": 0.9,
+      "probability": 0.995
+    },
+    {
+      "word": "se",
+      "start": 0.9,
+      "end": 1.06,
+      "probability": 0.955
+    },
+    {
+      "word": "dia",
+      "start": 1.06,
+      "end": 1.32,
+      "probability": 0.764
+    },
+    {
+      "word": "para",
+      "start": 1.32,
+      "end": 1.52,
+      "probability": 0.631
+    },
+    {
+      "word": "você",
+      "start": 1.52,
+      "end": 1.82,
+      "probability": 0.95
+    },
+    {
+      "word": "utilizar",
+      "start": 1.82,
+      "end": 2.36,
+      "probability": 0.976
+    },
+    {
+      "word": "hoje",
+      "start": 2.36,
+      "end": 2.84,
+      "probability": 0.946
+    },
+    {
+      "word": "a",
+      "start": 2.84,
+      "end": 3.02,
+      "probability": 0.573
+    },
+    {
+      "word": "gente",
+      "start": 3.02,
+      "end": 3.16,
+      "probability": 0.998
+    },
+    {
+      "word": "se",
+      "start": 3.16,
+      "end": 3.32,
+      "probability": 0.648
+    },
+    {
+      "word": "de",
+      "start": 3.32,
+      "end": 3.48,
+      "probability": 0.475
+    },
+    {
+      "word": "design",
+      "start": 3.48,
+      "end": 4.0,
+      "probability": 0.788
+    },
+    {
+      "word": "a",
+      "start": 4.0,
+      "end": 4.2,
+      "probability": 0.779
+    },
+    {
+      "word": "gente",
+      "start": 4.2,
+      "end": 4.32,
+      "probability": 0.998
+    },
+    {
+      "word": "se",
+      "start": 4.32,
+      "end": 4.46,
+      "probability": 0.778
+    },
+    {
+      "word": "de",
+      "start": 4.46,
+      "end": 4.54,
+      "probability": 0.948
+    },
+    {
+      "word": "copio",
+      "start": 4.54,
+      "end": 5.22,
+      "probability": 0.253
+    },
+    {
+      "word": "de",
+      "start": 5.22,
+      "end": 5.36,
+      "probability": 0.947
+    },
+    {
+      "word": "tráfego",
+      "start": 5.36,
+      "end": 6.0,
+      "probability": 0.901
+    },
+    {
+      "word": "de",
+      "start": 6.0,
+      "end": 6.32,
+      "probability": 0.295
+    },
+    {
+      "word": "agentes",
+      "start": 6.32,
+      "end": 6.58,
+      "probability": 0.822
+    },
+    {
+      "word": "para",
+      "start": 6.58,
+      "end": 6.82,
+      "probability": 0.904
+    },
+    {
+      "word": "desenvolver",
+      "start": 6.82,
+      "end": 7.28,
+      "probability": 0.996
+    },
+    {
+      "word": "aplicativos",
+      "start": 7.28,
+      "end": 8.06,
+      "probability": 0.989
+    },
+    {
+      "word": "tudo",
+      "start": 8.06,
+      "end": 8.46,
+      "probability": 0.734
+    },
+    {
+      "word": "pronto",
+      "start": 8.46,
+      "end": 8.9,
+      "probability": 0.949
+    },
+    {
+      "word": "aqui",
+      "start": 8.9,
+      "end": 9.2,
+      "probability": 0.961
+    },
+    {
+      "word": "para",
+      "start": 9.2,
+      "end": 9.36,
+      "probability": 0.721
+    },
+    {
+      "word": "você",
+      "start": 9.36,
+      "end": 9.76,
+      "probability": 0.997
+    },
+    {
+      "word": "já",
+      "start": 9.76,
+      "end": 10.22,
+      "probability": 0.921
+    },
+    {
+      "word": "uma",
+      "start": 10.22,
+      "end": 10.32,
+      "probability": 0.97
+    },
+    {
+      "word": "estrutura",
+      "start": 10.32,
+      "end": 10.7,
+      "probability": 0.995
+    },
+    {
+      "word": "robusta",
+      "start": 10.7,
+      "end": 11.34,
+      "probability": 0.955
+    },
+    {
+      "word": "para",
+      "start": 11.34,
+      "end": 11.5,
+      "probability": 0.948
+    },
+    {
+      "word": "você",
+      "start": 11.5,
+      "end": 11.7,
+      "probability": 0.994
+    },
+    {
+      "word": "utilizar",
+      "start": 11.7,
+      "end": 12.14,
+      "probability": 0.98
+    },
+    {
+      "word": "hoje",
+      "start": 12.14,
+      "end": 12.6,
+      "probability": 0.989
+    },
+    {
+      "word": "de",
+      "start": 12.6,
+      "end": 13.12,
+      "probability": 0.923
+    },
+    {
+      "word": "forma",
+      "start": 13.12,
+      "end": 13.32,
+      "probability": 0.995
+    },
+    {
+      "word": "profissional",
+      "start": 13.32,
+      "end": 14.16,
+      "probability": 0.993
+    },
+    {
+      "word": "tá",
+      "start": 14.16,
+      "end": 14.56,
+      "probability": 0.168
+    },
+    {
+      "word": "eles",
+      "start": 14.56,
+      "end": 14.74,
+      "probability": 0.43
+    },
+    {
+      "word": "fazem",
+      "start": 14.74,
+      "end": 15.04,
+      "probability": 0.993
+    },
+    {
+      "word": "tudo",
+      "start": 15.04,
+      "end": 15.34,
+      "probability": 0.976
+    },
+    {
+      "word": "de",
+      "start": 15.34,
+      "end": 15.52,
+      "probability": 0.981
+    },
+    {
+      "word": "forma",
+      "start": 15.52,
+      "end": 15.7,
+      "probability": 0.993
+    },
+    {
+      "word": "premium",
+      "start": 15.7,
+      "end": 16.24,
+      "probability": 0.402
+    },
+    {
+      "word": "profissional",
+      "start": 16.24,
+      "end": 16.84,
+      "probability": 0.968
+    },
+    {
+      "word": "você",
+      "start": 16.84,
+      "end": 17.06,
+      "probability": 0.7
+    },
+    {
+      "word": "vai",
+      "start": 17.06,
+      "end": 17.18,
+      "probability": 0.977
+    },
+    {
+      "word": "ver",
+      "start": 17.18,
+      "end": 17.34,
+      "probability": 0.988
+    },
+    {
+      "word": "o",
+      "start": 17.34,
+      "end": 17.52,
+      "probability": 0.678
+    },
+    {
+      "word": "resultado",
+      "start": 17.52,
+      "end": 17.88,
+      "probability": 0.989
+    },
+    {
+      "word": "é",
+      "start": 17.88,
+      "end": 18.04,
+      "probability": 0.675
+    },
+    {
+      "word": "o",
+      "start": 18.04,
+      "end": 18.1,
+      "probability": 0.871
+    },
+    {
+      "word": "melhor",
+      "start": 18.1,
+      "end": 18.26,
+      "probability": 0.998
+    },
+    {
+      "word": "que",
+      "start": 18.26,
+      "end": 18.5,
+      "probability": 0.821
+    },
+    {
+      "word": "tem",
+      "start": 18.5,
+      "end": 18.62,
+      "probability": 0.76
+    },
+    {
+      "word": "hoje",
+      "start": 18.62,
+      "end": 18.88,
+      "probability": 0.977
+    },
+    {
+      "word": "no",
+      "start": 18.88,
+      "end": 19.06,
+      "probability": 0.984
+    },
+    {
+      "word": "mercado",
+      "start": 19.06,
+      "end": 19.4,
+      "probability": 0.996
+    },
+    {
+      "word": "você",
+      "start": 19.4,
+      "end": 20.16,
+      "probability": 0.818
+    },
+    {
+      "word": "vai",
+      "start": 20.16,
+      "end": 20.26,
+      "probability": 0.997
+    },
+    {
+      "word": "ter",
+      "start": 20.26,
+      "end": 20.44,
+      "probability": 0.992
+    },
+    {
+      "word": "isso",
+      "start": 20.44,
+      "end": 20.74,
+      "probability": 0.987
+    },
+    {
+      "word": "por",
+      "start": 20.74,
+      "end": 20.92,
+      "probability": 0.964
+    },
+    {
+      "word": "menos",
+      "start": 20.92,
+      "end": 21.08,
+      "probability": 0.96
+    },
+    {
+      "word": "de",
+      "start": 21.08,
+      "end": 21.24,
+      "probability": 0.968
+    },
+    {
+      "word": "47",
+      "start": 21.24,
+      "end": 21.68,
+      "probability": 0.54
+    },
+    {
+      "word": "reais",
+      "start": 21.68,
+      "end": 22.06,
+      "probability": 0.977
+    },
+    {
+      "word": "ali",
+      "start": 22.06,
+      "end": 22.56,
+      "probability": 0.789
+    },
+    {
+      "word": "é",
+      "start": 22.56,
+      "end": 22.72,
+      "probability": 0.789
+    },
+    {
+      "word": "um",
+      "start": 22.72,
+      "end": 23.4,
+      "probability": 0.303
+    },
+    {
+      "word": "menos",
+      "start": 23.4,
+      "end": 23.9,
+      "probability": 0.756
+    },
+    {
+      "word": "que",
+      "start": 23.9,
+      "end": 24.06,
+      "probability": 0.969
+    },
+    {
+      "word": "um",
+      "start": 24.06,
+      "end": 24.14,
+      "probability": 0.891
+    },
+    {
+      "word": "real",
+      "start": 24.14,
+      "end": 24.32,
+      "probability": 0.931
+    },
+    {
+      "word": "para",
+      "start": 24.32,
+      "end": 24.5,
+      "probability": 0.398
+    },
+    {
+      "word": "a",
+      "start": 24.5,
+      "end": 24.64,
+      "probability": 0.753
+    },
+    {
+      "word": "gente",
+      "start": 24.64,
+      "end": 24.8,
+      "probability": 0.994
+    },
+    {
+      "word": "você",
+      "start": 24.8,
+      "end": 25.04,
+      "probability": 0.717
+    },
+    {
+      "word": "vai",
+      "start": 25.04,
+      "end": 25.16,
+      "probability": 0.998
+    },
+    {
+      "word": "ter",
+      "start": 25.16,
+      "end": 25.34,
+      "probability": 0.995
+    },
+    {
+      "word": "aqui",
+      "start": 25.34,
+      "end": 25.58,
+      "probability": 0.869
+    },
+    {
+      "word": "tudo",
+      "start": 25.58,
+      "end": 26.12,
+      "probability": 0.991
+    },
+    {
+      "word": "pronto",
+      "start": 26.12,
+      "end": 26.54,
+      "probability": 0.058
+    },
+    {
+      "word": "para",
+      "start": 26.54,
+      "end": 26.78,
+      "probability": 0.459
+    },
+    {
+      "word": "você",
+      "start": 26.78,
+      "end": 27.06,
+      "probability": 0.979
+    },
+    {
+      "word": "utilizar",
+      "start": 27.06,
+      "end": 27.56,
+      "probability": 0.968
+    },
+    {
+      "word": "hoje",
+      "start": 27.56,
+      "end": 28.0,
+      "probability": 0.961
+    },
+    {
+      "word": "vai",
+      "start": 28.0,
+      "end": 28.34,
+      "probability": 0.438
+    },
+    {
+      "word": "vir",
+      "start": 28.34,
+      "end": 28.44,
+      "probability": 0.699
+    },
+    {
+      "word": "quatro",
+      "start": 28.44,
+      "end": 28.82,
+      "probability": 0.862
+    },
+    {
+      "word": "aulas",
+      "start": 28.82,
+      "end": 29.16,
+      "probability": 0.996
+    },
+    {
+      "word": "exclusivas",
+      "start": 29.16,
+      "end": 29.84,
+      "probability": 0.993
+    },
+    {
+      "word": "para",
+      "start": 29.84,
+      "end": 30.06,
+      "probability": 0.895
+    },
+    {
+      "word": "você",
+      "start": 30.06,
+      "end": 30.26,
+      "probability": 0.996
+    },
+    {
+      "word": "entender",
+      "start": 30.26,
+      "end": 30.66,
+      "probability": 0.998
+    },
+    {
+      "word": "como",
+      "start": 30.66,
+      "end": 30.9,
+      "probability": 0.989
+    },
+    {
+      "word": "aplicar",
+      "start": 30.9,
+      "end": 31.7,
+      "probability": 0.996
+    },
+    {
+      "word": "como",
+      "start": 31.7,
+      "end": 31.96,
+      "probability": 0.648
+    },
+    {
+      "word": "utilizar",
+      "start": 31.96,
+      "end": 32.44,
+      "probability": 0.979
+    },
+    {
+      "word": "isso",
+      "start": 32.44,
+      "end": 32.82,
+      "probability": 0.96
+    },
+    {
+      "word": "ainda",
+      "start": 32.82,
+      "end": 33.04,
+      "probability": 0.987
+    },
+    {
+      "word": "hoje",
+      "start": 33.04,
+      "end": 33.44,
+      "probability": 0.996
+    },
+    {
+      "word": "você",
+      "start": 33.44,
+      "end": 33.98,
+      "probability": 0.524
+    },
+    {
+      "word": "clica",
+      "start": 33.98,
+      "end": 34.18,
+      "probability": 0.871
+    },
+    {
+      "word": "aqui",
+      "start": 34.18,
+      "end": 34.34,
+      "probability": 0.771
+    },
+    {
+      "word": "em",
+      "start": 34.34,
+      "end": 34.44,
+      "probability": 0.828
+    },
+    {
+      "word": "saiba",
+      "start": 34.44,
+      "end": 34.76,
+      "probability": 0.789
+    },
+    {
+      "word": "mais",
+      "start": 34.76,
+      "end": 35.08,
+      "probability": 0.978
+    },
+    {
+      "word": "que",
+      "start": 35.08,
+      "end": 35.26,
+      "probability": 0.98
+    },
+    {
+      "word": "eu",
+      "start": 35.26,
+      "end": 35.46,
+      "probability": 0.971
+    },
+    {
+      "word": "já",
+      "start": 35.46,
+      "end": 35.68,
+      "probability": 0.982
+    },
+    {
+      "word": "te",
+      "start": 35.68,
+      "end": 35.84,
+      "probability": 0.615
+    },
+    {
+      "word": "espero",
+      "start": 35.84,
+      "end": 36.06,
+      "probability": 0.907
+    },
+    {
+      "word": "ali",
+      "start": 36.06,
+      "end": 36.28,
+      "probability": 0.976
+    },
+    {
+      "word": "do",
+      "start": 36.28,
+      "end": 36.42,
+      "probability": 0.975
+    },
+    {
+      "word": "outro",
+      "start": 36.42,
+      "end": 36.54,
+      "probability": 0.984
+    },
+    {
+      "word": "lado",
+      "start": 36.54,
+      "end": 36.74,
+      "probability": 0.998
+    },
+    {
+      "word": "para",
+      "start": 36.74,
+      "end": 36.94,
+      "probability": 0.84
+    },
+    {
+      "word": "você",
+      "start": 36.94,
+      "end": 37.3,
+      "probability": 0.997
+    },
+    {
+      "word": "começar",
+      "start": 37.3,
+      "end": 38.02,
+      "probability": 0.981
+    },
+    {
+      "word": "a",
+      "start": 38.02,
+      "end": 38.22,
+      "probability": 0.773
+    },
+    {
+      "word": "ter",
+      "start": 38.22,
+      "end": 38.26,
+      "probability": 0.986
+    },
+    {
+      "word": "resultado",
+      "start": 38.26,
+      "end": 38.62,
+      "probability": 0.881
+    },
+    {
+      "word": "aí",
+      "start": 38.62,
+      "end": 38.92,
+      "probability": 0.566
+    },
+    {
+      "word": "usar",
+      "start": 38.92,
+      "end": 39.12,
+      "probability": 0.796
+    },
+    {
+      "word": "e",
+      "start": 39.12,
+      "end": 39.34,
+      "probability": 0.739
+    },
+    {
+      "word": "aí",
+      "start": 39.34,
+      "end": 39.46,
+      "probability": 0.259
+    },
+    {
+      "word": "para",
+      "start": 39.46,
+      "end": 39.66,
+      "probability": 0.939
+    },
+    {
+      "word": "automatizar",
+      "start": 39.66,
+      "end": 40.12,
+      "probability": 0.975
+    },
+    {
+      "word": "tudo",
+      "start": 40.12,
+      "end": 40.4,
+      "probability": 0.99
+    },
+    {
+      "word": "para",
+      "start": 40.4,
+      "end": 40.62,
+      "probability": 0.786
+    },
+    {
+      "word": "você",
+      "start": 40.62,
+      "end": 40.92,
+      "probability": 0.996
+    },
+    {
+      "word": "vamos",
+      "start": 40.92,
+      "end": 41.12,
+      "probability": 0.57
+    },
+    {
+      "word": "embora",
+      "start": 41.12,
+      "end": 41.36,
+      "probability": 0.836
+    }
+  ]
+}

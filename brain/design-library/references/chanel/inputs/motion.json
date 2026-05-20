@@ -1,0 +1,117 @@
+{
+  "durations": [
+    {
+      "value": "2s",
+      "count": 1358
+    },
+    {
+      "value": "3s",
+      "count": 52
+    },
+    {
+      "value": "5s",
+      "count": 31
+    },
+    {
+      "value": "1s",
+      "count": 20
+    },
+    {
+      "value": "0s",
+      "count": 10
+    },
+    {
+      "value": "6s",
+      "count": 9
+    },
+    {
+      "value": "4s",
+      "count": 5
+    },
+    {
+      "value": "54s",
+      "count": 4
+    },
+    {
+      "value": "7s",
+      "count": 4
+    },
+    {
+      "value": "15s",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.8,0,.2,1)",
+      "count": 10
+    },
+    {
+      "value": "cubic-bezier(.25,.1,.25,1)",
+      "count": 9
+    },
+    {
+      "value": "ease-out",
+      "count": 4
+    },
+    {
+      "value": "ease-in-out",
+      "count": 4
+    },
+    {
+      "value": "cubic-bezier(.46,.03,.52,.96)",
+      "count": 3
+    },
+    {
+      "value": "cubic-bezier(.5,0,.5,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.4,0,.5,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.5,0,.45,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.35,.05,.5,1.1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.5,.05,.35,.95)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "spin",
+    "modal-slide-up",
+    "modal-slide-right",
+    "modal-slide-right-rtl",
+    "modal-slide-left",
+    "modal-slide-left-rtl",
+    "modal-slide-down",
+    "no-animation",
+    "side-panel-fade-in",
+    "side-panel-fade-out",
+    "cc-view-fade-in",
+    "cc-view-fade-out",
+    "fade-out",
+    "scale-in",
+    "pulse",
+    "slide-down",
+    "opacity-show",
+    "banner-slide-down",
+    "slide-in",
+    "fadeIn",
+    "modal-fade-out",
+    "modal-slide-up-desktop",
+    "modal-slide-up-mobile",
+    "modal-slide-down-desktop",
+    "modal-slide-down-mobile-only",
+    "fade-in",
+    "loader-scale",
+    "vertical-move",
+    "swiper-preloader-spin"
+  ]
+}

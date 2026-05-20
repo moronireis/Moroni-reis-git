@@ -1,0 +1,1147 @@
+[
+  {
+    "name": "--color-primary-variant",
+    "declarations": 2,
+    "references": 105
+  },
+  {
+    "name": "--color-background",
+    "declarations": 2,
+    "references": 65
+  },
+  {
+    "name": "--color-secondary-light",
+    "declarations": 2,
+    "references": 53
+  },
+  {
+    "name": "--color-primary",
+    "declarations": 2,
+    "references": 43
+  },
+  {
+    "name": "--color-primary-disable",
+    "declarations": 2,
+    "references": 30
+  },
+  {
+    "name": "--transform-duration",
+    "declarations": 1,
+    "references": 25
+  },
+  {
+    "name": "--line-height-body-default",
+    "declarations": 6,
+    "references": 22
+  },
+  {
+    "name": "--transform-animation",
+    "declarations": 1,
+    "references": 22
+  },
+  {
+    "name": "--font-size-body-default",
+    "declarations": 7,
+    "references": 21
+  },
+  {
+    "name": "--font-weight-body-default",
+    "declarations": 1,
+    "references": 21
+  },
+  {
+    "name": "--letter-spacing-body-default",
+    "declarations": 6,
+    "references": 21
+  },
+  {
+    "name": "--aWConquerorDidot",
+    "declarations": 2,
+    "references": 19
+  },
+  {
+    "name": "--color-tertiary-medium",
+    "declarations": 2,
+    "references": 16
+  },
+  {
+    "name": "--color-secondary",
+    "declarations": 2,
+    "references": 15
+  },
+  {
+    "name": "--color-error",
+    "declarations": 2,
+    "references": 14
+  },
+  {
+    "name": "--color-new-body-element",
+    "declarations": 2,
+    "references": 14
+  },
+  {
+    "name": "--color-tertiary-light",
+    "declarations": 2,
+    "references": 12
+  },
+  {
+    "name": "--menu-text-transform-animation",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--color-background-variant",
+    "declarations": 2,
+    "references": 11
+  },
+  {
+    "name": "--menu-text-transform-duration",
+    "declarations": 1,
+    "references": 11
+  },
+  {
+    "name": "--tooltip-arrow-size",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--tooltip-edge",
+    "declarations": 0,
+    "references": 10
+  },
+  {
+    "name": "--cc-header-inset-top",
+    "declarations": 2,
+    "references": 9
+  },
+  {
+    "name": "--font-size-text-small",
+    "declarations": 7,
+    "references": 9
+  },
+  {
+    "name": "--font-weight-text-small",
+    "declarations": 2,
+    "references": 9
+  },
+  {
+    "name": "--line-height-text-small",
+    "declarations": 7,
+    "references": 9
+  },
+  {
+    "name": "--letter-spacing-text-small",
+    "declarations": 7,
+    "references": 9
+  },
+  {
+    "name": "--tooltip-arrow-margin",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--color-inverted-background",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--color-inverted-primary-variant",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--cc-safe-area-inset-top",
+    "declarations": 3,
+    "references": 7
+  },
+  {
+    "name": "--chat-col-background",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--font-size-body-default-strong",
+    "declarations": 7,
+    "references": 6
+  },
+  {
+    "name": "--font-weight-body-default-strong",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--line-height-body-default-strong",
+    "declarations": 7,
+    "references": 6
+  },
+  {
+    "name": "--letter-spacing-body-default-strong",
+    "declarations": 7,
+    "references": 6
+  },
+  {
+    "name": "--cc-safe-area-inset-bottom",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--valueTextColor",
+    "declarations": 41,
+    "references": 6
+  },
+  {
+    "name": "--grid-inline-margins",
+    "declarations": 9,
+    "references": 5
+  },
+  {
+    "name": "--chat-col-text",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--color-inverted-white-primary-variant",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--valueUnderlineColor",
+    "declarations": 0,
+    "references": 5
+  },
+  {
+    "name": "--color-tertiary-strong",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--scrollbar-width",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--content-margin-desktop",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--swiper-theme-color",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--swiper-navigation-size",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tooltip-wrapper-width",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--valueUnderlineColorHover",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--opacity-backdrop",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tooltip-color-background",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cc-header-logo-color",
+    "declarations": 3,
+    "references": 3
+  },
+  {
+    "name": "--cc-header-opacity",
+    "declarations": 4,
+    "references": 3
+  },
+  {
+    "name": "--chat-primary-button",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--modal-width",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--bottom-nav-hidden",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--valueBackgroundButtonColor",
+    "declarations": 14,
+    "references": 3
+  },
+  {
+    "name": "--transition-duration",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--imageContainerWidth",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--padding-inline-start-button",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--padding-inline-end-button",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--icon-gap-button",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--max-width-sub-category-button",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--slider-indicator-color",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--checkbox-color",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--input-coef",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tooltip-arrow-distance",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tooltip-arrow-gap",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--chat-heading",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--color-inverted-error",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-size-body-spaced",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-body-spaced",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--line-height-body-spaced",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--letter-spacing-body-spaced",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--font-size-text-xsmall",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-text-xsmall",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--line-height-text-xsmall",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--letter-spacing-text-xsmall",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--fs-text-spacing-bottom",
+    "declarations": 22,
+    "references": 2
+  },
+  {
+    "name": "--modalWidth",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--left",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--webkit-line-clamp-responsive",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--webkit-line-clamp-desktop",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--valueBorderColor",
+    "declarations": 14,
+    "references": 2
+  },
+  {
+    "name": "--cc-header-limit",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--vh",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--sticky-animation-style",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--pip-width-desktop",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--aspect-ratio-desktop",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--aspect-ratio-mobile",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--pip-width-mobile",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--valueBackgroundColor",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--fs-star-color",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--padding-top-button",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--padding-bottom-button",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--modalHeight",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--custom-space",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--swiper-centered-offset-before",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--swiper-centered-offset-after",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--swiper-navigation-sides-offset",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--swiper-pagination-bullet-size",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--swiper-pagination-color",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--swiper-pagination-progressbar-size",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--tooltip-padding",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tooltip-color-text",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--grid-columns",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--grid-gap",
+    "declarations": 8,
+    "references": 1
+  },
+  {
+    "name": "--cc-header-position",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--chat-primary-button-text",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--chat-icon-filter",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--chat-label-color",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--chat-input-background",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--color-tertiary-extra-light",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--font-size-body-spaced-strong",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--font-weight-body-spaced-strong",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--line-height-body-spaced-strong",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--letter-spacing-body-spaced-strong",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--font-size-chapo",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--font-weight-chapo",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--line-height-chapo",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--letter-spacing-chapo",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--font-size-lead-paragraph",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--font-weight-lead-paragraph",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--line-height-lead-paragraph",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--letter-spacing-lead-paragraph",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--bottom-nav-visible",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--transform-clip-path-open",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--transform-clip-path-close",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--top",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--swiper-preloader-color",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--widthMobile",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--widthDesktop",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--order",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--revertWidthDesktop",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--revertOrder",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--valueTextAlignement",
+    "declarations": 27,
+    "references": 1
+  },
+  {
+    "name": "--hoverColor",
+    "declarations": 14,
+    "references": 1
+  },
+  {
+    "name": "--opacity",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--lwc-esFontSizeSmall",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--notification-inset",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--fs-background-star-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--customAspectRatio",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--openModalHeight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--transitionDuration",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--translateOpen",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--valueUnderlineOffset",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--customValueUnderlineColorHover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--customValueUnderlineColor",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--hover-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--desktopQcaContentHeight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--qcaContentHeight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--slideshow-padding-right",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--numberOfVisibleSLide",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--scroll-bar-translate-y",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--max-width-text-button",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--max-duration-animation-overload",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--max-duration-animation",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--buttonHeight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--buttonWidth",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--modalContentTranslateY",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--width-active-sub-category-modal",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gradient-opacity",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--desktop-padding-ratio",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-padding-ratio",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--rowGapResponsive",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--rowGapDesktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--slideshow-preview-width-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--slideshow-preview-width-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--scroll-padding-left",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--scroll-snap-align",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--aspect-ratio",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--bar-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--bar-translate",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-wrapper-transition-timing-function",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-navigation-top-offset",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-navigation-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bottom",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-top",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-height",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-border-radius",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-inactive-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-inactive-opacity",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-opacity",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-right",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-left",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-vertical-gap",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-bullet-horizontal-gap",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-fraction-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-pagination-progressbar-bg-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--productRatioDesktopVar",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--productRatioMobileVar",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--black",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--tooltip-margin-from-edge",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--is-bottom-navigation-present",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--is-rtw-page",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--is-mobile-white",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--is-white-background",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--with-variations-number",
+    "declarations": 8,
+    "references": 0
+  },
+  {
+    "name": "--color-transparent",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-weight-default",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height-default",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--letter-spacing-default",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-background-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-text-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-black-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-icon-background",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-primary-button-text",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-dark-gray",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-dark-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-overlay-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-darkest-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-axis-focus-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-light-gray-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-flag-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-loader-overlay-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-axis-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-disabled-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-product-image-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-placeholder-color-mobile",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-placeholder-color-tablet",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-ellipsis-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-caret-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-input-field-background-cn",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-input-text-color-cn",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--search-product-button-offset",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--common",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--accessible",
+    "declarations": 1,
+    "references": 0
+  }
+]

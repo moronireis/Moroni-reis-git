@@ -1,0 +1,110 @@
+{
+  "durations": [
+    {
+      "value": "2s",
+      "count": 81
+    },
+    {
+      "value": "5s",
+      "count": 64
+    },
+    {
+      "value": "1s",
+      "count": 62
+    },
+    {
+      "value": "3s",
+      "count": 62
+    },
+    {
+      "value": "0s",
+      "count": 56
+    },
+    {
+      "value": "4s",
+      "count": 25
+    },
+    {
+      "value": "35s",
+      "count": 24
+    },
+    {
+      "value": "6s",
+      "count": 10
+    },
+    {
+      "value": "85s",
+      "count": 10
+    },
+    {
+      "value": "25s",
+      "count": 10
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.645,.045,.355,1)",
+      "count": 35
+    },
+    {
+      "value": "cubic-bezier(.25,.46,.45,.94)",
+      "count": 26
+    },
+    {
+      "value": "cubic-bezier(.39,.575,.565,1)",
+      "count": 14
+    },
+    {
+      "value": "cubic-bezier(.33,.55,.67,.99)",
+      "count": 6
+    },
+    {
+      "value": "cubic-bezier(.22,.61,.36,1)",
+      "count": 6
+    },
+    {
+      "value": "cubic-bezier(.25,1,.5,1)",
+      "count": 4
+    },
+    {
+      "value": "cubic-bezier(.125,.31,0,1.02)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.19,1,.22,1)",
+      "count": 2
+    },
+    {
+      "value": "linear",
+      "count": 2
+    }
+  ],
+  "keyframes": [
+    "fadeIn",
+    "fadeOut",
+    "pop",
+    "openpopindesktop",
+    "closepopindesktop",
+    "popinslideindesktop",
+    "popinslideoutdesktop",
+    "drawerslideindesktop",
+    "drawerslideupdesktop",
+    "drawerslidedowndesktop",
+    "drawerfadeoutdesktop",
+    "burgermenuslideindesktop",
+    "burgermenufadeoutdesktop",
+    "pdpstickyfooterdown",
+    "pdpstickyfooterup",
+    "messageslidein",
+    "messageslideout",
+    "blink",
+    "shrinkk",
+    "groww",
+    "shrinkV2",
+    "growV2",
+    "headerSlideDown",
+    "spin",
+    "showOverflow",
+    "hidecarousel"
+  ]
+}

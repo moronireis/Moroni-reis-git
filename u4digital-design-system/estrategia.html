@@ -1,0 +1,2714 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>u4digital — Documento Estratégico</title>
+  <meta name="description" content="Documento estratégico interno — assessoria de IA para negócios digitais." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="components.css" />
+
+  <style>
+    /* ─── Page layout ──────────────────────────────────────── */
+
+    .doc-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ─── Sidebar ──────────────────────────────────────────── */
+
+    .doc-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-bg-sunken);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-8) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .doc-sidebar__brand {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    .doc-sidebar__brand .accent { color: var(--color-accent); }
+
+    .doc-sidebar__meta {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      line-height: var(--leading-relaxed);
+    }
+
+    .doc-sidebar__section-label {
+      font-size: 0.62rem;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-sidebar__links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .doc-sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+      line-height: var(--leading-snug);
+    }
+
+    .doc-sidebar__link:hover {
+      color: var(--color-text-primary);
+      background: var(--color-hover);
+    }
+
+    .doc-sidebar__link.is-active {
+      color: var(--color-accent);
+      background: var(--color-accent-muted);
+    }
+
+    .doc-sidebar__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-border-strong);
+      flex-shrink: 0;
+      margin-right: var(--space-1);
+    }
+
+    /* ─── Main content ─────────────────────────────────────── */
+
+    .doc-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ─── Hero header ──────────────────────────────────────── */
+
+    .doc-hero {
+      padding: var(--space-16) var(--space-16) var(--space-14);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-sunken);
+    }
+
+    .doc-hero__wordmark {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-8);
+      display: block;
+    }
+
+    .doc-hero__wordmark .accent { color: var(--color-accent); }
+
+    .doc-hero__eyebrow {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__title {
+      font-size: var(--font-4xl);
+      font-weight: var(--font-weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-4);
+    }
+
+    .doc-hero__subtitle {
+      font-size: var(--font-lg);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-light);
+      margin-bottom: var(--space-6);
+    }
+
+    .doc-hero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* ─── Section blocks ───────────────────────────────────── */
+
+    .doc-section {
+      padding: var(--space-16) var(--space-16);
+      border-bottom: 1px solid var(--color-border-muted);
+      scroll-margin-top: var(--space-6);
+    }
+
+    .doc-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .doc-section-header {
+      margin-bottom: var(--space-10);
+    }
+
+    .doc-section-number {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-2);
+    }
+
+    .doc-section-title {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: var(--leading-tight);
+    }
+
+    .doc-section-desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      line-height: var(--leading-relaxed);
+      max-width: 600px;
+    }
+
+    /* ─── Stat row ─────────────────────────────────────────── */
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      margin-bottom: var(--space-10);
+    }
+
+    @media (max-width: 1023px) {
+      .stat-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ─── Bullet list ──────────────────────────────────────── */
+
+    .doc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .doc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .doc-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 0.45em;
+    }
+
+    .doc-list--numbered {
+      counter-reset: list-counter;
+    }
+
+    .doc-list--numbered li {
+      counter-increment: list-counter;
+    }
+
+    .doc-list--numbered li::before {
+      content: counter(list-counter);
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--color-accent-muted);
+      border: 1px solid var(--color-accent-border);
+      color: var(--color-accent);
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-semibold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1em;
+    }
+
+    /* ─── Two-col grid ─────────────────────────────────────── */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 767px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Three-col grid ───────────────────────────────────── */
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+
+    @media (max-width: 1023px) {
+      .three-col { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 767px) {
+      .three-col { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Value equation ───────────────────────────────────── */
+
+    .value-equation {
+      background: var(--color-bg-sunken);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-10);
+      text-align: center;
+      margin-bottom: var(--space-10);
+    }
+
+    .value-equation__label {
+      font-size: var(--font-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-4);
+    }
+
+    .value-equation__formula {
+      font-size: var(--font-xl);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-light);
+      letter-spacing: -0.01em;
+    }
+
+    .value-equation__formula .accent {
+      color: var(--color-accent);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .value-equation__formula .muted {
+      color: var(--color-text-disabled);
+    }
+
+    /* ─── Angle card ───────────────────────────────────────── */
+
+    .angle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
+
+    @media (max-width: 767px) {
+      .angle-grid { grid-template-columns: 1fr; }
+    }
+
+    .angle-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--card-radius);
+      padding: var(--space-7);
+    }
+
+    .angle-card--positive {
+      border-left: 2px solid var(--color-accent);
+      border-left-color: var(--color-accent);
+    }
+
+    .angle-card--negative {
+      border-left: 2px solid var(--color-error);
+      border-left-color: var(--color-error);
+    }
+
+    .angle-card__type {
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .angle-card--positive .angle-card__type { color: var(--color-accent); }
+    .angle-card--negative .angle-card__type { color: var(--color-error-text); }
+
+    .angle-card__title {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ─── Funnel flow ──────────────────────────────────────── */
+
+    .funnel-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .funnel-step {
+      display: flex;
+      gap: var(--space-5);
+      position: relative;
+    }
+
+    .funnel-step__line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 2.5rem;
+    }
+
+    .funnel-step__circle {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--color-accent-muted);
+      border: 1px solid var(--color-accent-border);
+      color: var(--color-accent);
+      font-size: var(--font-xs);
+      font-weight: var(--font-weight-semibold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .funnel-step__connector {
+      width: 1px;
+      flex: 1;
+      background: var(--color-border);
+      min-height: var(--space-8);
+    }
+
+    .funnel-step:last-child .funnel-step__connector {
+      display: none;
+    }
+
+    .funnel-step__content {
+      padding-bottom: var(--space-8);
+      flex: 1;
+    }
+
+    .funnel-step:last-child .funnel-step__content {
+      padding-bottom: 0;
+    }
+
+    .funnel-step__title {
+      font-size: var(--font-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-1);
+      line-height: var(--leading-snug);
+    }
+
+    .funnel-step__desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    .funnel-step__badge {
+      margin-top: var(--space-2);
+    }
+
+    /* ─── One-liner block ──────────────────────────────────── */
+
+    .one-liner {
+      background: var(--color-bg-sunken);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7) var(--space-8);
+      margin-block: var(--space-8);
+    }
+
+    .one-liner__label {
+      font-size: var(--font-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: var(--space-3);
+    }
+
+    .one-liner__text {
+      font-size: var(--font-md);
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-light);
+      line-height: var(--leading-relaxed);
+      letter-spacing: -0.01em;
+    }
+
+    /* ─── Narrative block ──────────────────────────────────── */
+
+    .narrative {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-8);
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-loose);
+      font-style: italic;
+    }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+
+    .doc-footer {
+      padding: var(--space-10) var(--space-16);
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg-sunken);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .doc-footer__wordmark {
+      font-size: var(--font-sm);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-snug);
+    }
+
+    .doc-footer__wordmark .accent { color: var(--color-accent); }
+
+    .doc-footer__meta {
+      font-size: var(--font-xs);
+      color: var(--color-text-disabled);
+      text-align: right;
+    }
+
+    /* ─── Responsive: hide sidebar on mobile ───────────────── */
+
+    @media (max-width: 1023px) {
+      .doc-sidebar {
+        display: none;
+      }
+      .doc-hero,
+      .doc-section {
+        padding-inline: var(--space-6);
+      }
+      .doc-footer {
+        padding-inline: var(--space-6);
+      }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      .doc-hero,
+      .doc-section {
+        padding-inline: var(--space-10);
+      }
+      .doc-footer {
+        padding-inline: var(--space-10);
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="doc-layout">
+
+  <!-- ─── Sidebar Navigation ─────────────────────────────────── -->
+  <aside class="doc-sidebar" aria-label="Navegação do documento">
+
+    <div>
+      <a href="#" class="doc-sidebar__brand">
+        u<span class="accent">4</span>digital
+      </a>
+      <p class="doc-sidebar__meta">Documento Estratégico<br>Versão 1.0 — Maio 2026</p>
+    </div>
+
+    <nav>
+      <p class="doc-sidebar__section-label">Conteúdo</p>
+      <div class="doc-sidebar__links">
+        <a href="#resumo" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Resumo Executivo
+        </a>
+        <a href="#mercado" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Análise de Mercado
+        </a>
+        <a href="#competitiva" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Análise Competitiva
+        </a>
+        <a href="#icp" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          ICP
+        </a>
+        <a href="#posicionamento" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Posicionamento
+        </a>
+        <a href="#inimigo" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Inimigo Narrativo
+        </a>
+        <a href="#mensagem" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Mensagem Central
+        </a>
+        <a href="#angulos" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          4 Ângulos Hormozi
+        </a>
+        <a href="#funil" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Funil de Entrada
+        </a>
+        <a href="#campanha" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Teste de Campanha
+        </a>
+        <a href="#briefing-lp" class="doc-sidebar__link">
+          <span class="doc-sidebar__dot"></span>
+          Briefing LP
+        </a>
+      </div>
+    </nav>
+
+    <div>
+      <p class="doc-sidebar__section-label">Classificação</p>
+      <span class="badge badge--warning">Confidencial</span>
+    </div>
+
+  </aside>
+
+  <!-- ─── Main Content ───────────────────────────────────────── -->
+  <main class="doc-main">
+
+    <!-- ── 1. Hero Header ───────────────────────────────────── -->
+    <header class="doc-hero">
+      <span class="doc-hero__wordmark">u<span class="accent">4</span>digital</span>
+      <p class="doc-hero__eyebrow">Documento Interno</p>
+      <h1 class="doc-hero__title">Documento Estratégico</h1>
+      <p class="doc-hero__subtitle">Assessoria de IA para Negócios Digitais</p>
+      <div class="doc-hero__badges">
+        <span class="badge">Versão 1.0</span>
+        <span class="badge badge--accent">Maio 2026</span>
+        <span class="badge badge--warning">Interno</span>
+        <span class="badge badge--error">Confidencial</span>
+      </div>
+    </header>
+
+    <!-- ── 2. Resumo Executivo ──────────────────────────────── -->
+    <section id="resumo" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 01</p>
+        <h2 class="doc-section-title">Resumo Executivo</h2>
+        <p class="doc-section-desc">Visão geral do contexto de mercado, oportunidade e posicionamento estratégico.</p>
+      </div>
+
+      <ul class="doc-list">
+        <li>Mercado de experts digitais no Brasil: o top 10% concentra 62% dos pagamentos. Renda média R$11.900/mês.</li>
+        <li>Oferta existente de IA é rasa: cursos e SaaS genéricos. Ninguém constrói agentes customizados com a voz do expert.</li>
+        <li>CPL subiu 21% em 2025, +12% em 2026. Margem espremida dos dois lados — custo de aquisição subindo, custo operacional estagnado.</li>
+        <li>Gap principal: implementação, não conhecimento. 70% das implementações de IA falham. O mercado sabe que precisa, não sabe como fazer funcionar.</li>
+        <li>O ângulo de receita está livre. Concorrentes posicionam IA como "economize tempo". Nós: "quanto você perde sem agentes no funil".</li>
+      </ul>
+    </section>
+
+    <!-- ── 3. Análise de Mercado ────────────────────────────── -->
+    <section id="mercado" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 02</p>
+        <h2 class="doc-section-title">Análise de Mercado</h2>
+        <p class="doc-section-desc">Landscape competitivo, dados-chave e oportunidades identificadas.</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stat-row">
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value stat__value--accent">+21%</span>
+            <span class="stat__label">Aumento CPL Meta Ads (2025)</span>
+            <span class="stat__delta stat__delta--negative">+12% em 2026</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">70%</span>
+            <span class="stat__label">Implementações de IA que falham</span>
+            <span class="stat__delta stat__delta--negative">Lacuna de execução</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value stat__value--accent">62%</span>
+            <span class="stat__label">Pagamentos no top 10% do mercado</span>
+            <span class="stat__delta stat__delta--positive">Concentração de valor</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">R$11,9K</span>
+            <span class="stat__label">Renda média produtor ativo</span>
+            <span class="stat__delta stat__delta--positive">Poder de compra real</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competitive table -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Landscape Competitivo</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Tipo</th>
+              <th>Preço Est.</th>
+              <th>Ameaça</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>INFOPRODUTOS.AI</td>
+              <td>SaaS de prompts</td>
+              <td>R$97–197/mês</td>
+              <td><span class="badge">Baixa</span></td>
+            </tr>
+            <tr>
+              <td>Lançador IA (Rodolfo Miró)</td>
+              <td>Curso sobre IA</td>
+              <td>R$497–1.997</td>
+              <td><span class="badge">Baixa</span></td>
+            </tr>
+            <tr>
+              <td>Intelecta</td>
+              <td>Agência IA generalista</td>
+              <td>R$3K setup + R$1,5K/mês</td>
+              <td><span class="badge badge--warning">Média</span></td>
+            </tr>
+            <tr>
+              <td>Brabaflow</td>
+              <td>Agência IA nativa</td>
+              <td>Setup + mensalidade</td>
+              <td><span class="badge badge--warning">Média</span></td>
+            </tr>
+            <tr>
+              <td>AR Agência IA</td>
+              <td>Chatbots WhatsApp</td>
+              <td>R$1,5–3K setup</td>
+              <td><span class="badge">Média-Baixa</span></td>
+            </tr>
+            <tr>
+              <td>V4 Company</td>
+              <td>Marketing digital geral</td>
+              <td>R$5–20K/mês</td>
+              <td><span class="badge">Baixa</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Opportunities -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Oportunidades Identificadas</h3>
+      <ol class="doc-list doc-list--numbered">
+        <li>Especialização vertical em experts digitais — nenhum player ocupa este nicho com profundidade técnica e conhecimento do mercado digital brasileiro.</li>
+        <li>Bundle de agentes por fase do negócio — empacotamento estratégico que resolve o problema de onde começar.</li>
+        <li>Diagnóstico gratuito como canal de aquisição — demonstração de valor antes da venda elimina objeção de risco.</li>
+        <li>Posicionamento em receita, não produtividade — ângulo de margem e lucro, não de horas economizadas.</li>
+        <li>Voz do expert como diferencial técnico — agentes treinados com a voz do cliente, não templates genéricos.</li>
+      </ol>
+    </section>
+
+    <!-- ── 4. Análise Competitiva ──────────────────────────────── -->
+    <section id="competitiva" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 03</p>
+        <h2 class="doc-section-title">Análise Competitiva</h2>
+        <p class="doc-section-desc">Mapeamento profundo de 8 competidores no espaço de IA para experts digitais no Brasil.</p>
+      </div>
+
+      <!-- Part 1: Ranking de Ameaça -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Ranking de Ameaça</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Competidor</th>
+              <th>Tipo</th>
+              <th>Seguidores</th>
+              <th>Ameaça</th>
+              <th>Justificativa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Altaa.ai (Fernando Spengler)</td>
+              <td>Agência IA p/ infoprodutores</td>
+              <td>58K Instagram</td>
+              <td><span class="badge badge--error">Alta</span></td>
+              <td>ICP idêntico. Top-15 Hotmart. Integra Hotmart/Kiwify/Hubla.</td>
+            </tr>
+            <tr>
+              <td>Léo Soares</td>
+              <td>Educação + Imersão IA</td>
+              <td>183K Instagram</td>
+              <td><span class="badge badge--warning">Média-Alta</span></td>
+              <td>Maior audiência no nicho. Vende educação, não assessoria.</td>
+            </tr>
+            <tr>
+              <td>Viver de IA (Rafael Milagre)</td>
+              <td>Educação + Comunidade</td>
+              <td>98K + 93K Instagram</td>
+              <td><span class="badge badge--warning">Média</span></td>
+              <td>Autoridade nacional. Migrou para G4/PME/corporativo.</td>
+            </tr>
+            <tr>
+              <td>Carlos Cassim</td>
+              <td>Mentor Negócios Digitais</td>
+              <td>110K Instagram</td>
+              <td><span class="badge badge--warning">Média</span></td>
+              <td>Audiência consolidada. Generalista, não especialista.</td>
+            </tr>
+            <tr>
+              <td>Upflows</td>
+              <td>Ecossistema Comercial IA</td>
+              <td>—</td>
+              <td><span class="badge badge--warning">Média</span></td>
+              <td>Case com infoprodutor. Cresce silenciosamente.</td>
+            </tr>
+            <tr>
+              <td>AWsales</td>
+              <td>SaaS Agentes Autônomos</td>
+              <td>13K Instagram</td>
+              <td><span class="badge badge--info">Baixa-Média</span></td>
+              <td>Meta Business Partner. Foco enterprise.</td>
+            </tr>
+            <tr>
+              <td>Growth Machine (Thiago Reis)</td>
+              <td>Vendas B2B + SDR IA</td>
+              <td>—</td>
+              <td><span class="badge badge--info">Baixa</span></td>
+              <td>B2B corporativo puro. ICP diferente.</td>
+            </tr>
+            <tr>
+              <td>G4 Educação</td>
+              <td>Educação + Gestão</td>
+              <td>—</td>
+              <td><span class="badge badge--info">Baixa</span></td>
+              <td>Enterprise/PME. Fora do alcance do expert digital.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Part 2: Competidor Mais Perigoso -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Competidor Mais Perigoso — Altaa.ai</h3>
+      <div class="card card--accent" style="margin-bottom: var(--space-10);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="tag tag--accent">Deep-dive</span>
+            <span class="badge badge--error">Ameaça Alta</span>
+          </div>
+          <h3 class="card__title" style="font-size: var(--font-xl);">Altaa.ai — Fernando Spengler</h3>
+          <p class="card__subtitle">Agência de IA para infoprodutores — ICP idêntico ao u4digital</p>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">O que fazem</p>
+            <ul class="doc-list">
+              <li>Agentes de IA para vendas, atendimento, retenção e recuperação de carrinho</li>
+              <li>Top-15 Hotmart no segmento</li>
+              <li>Integração nativa: Hotmart, Kiwify, Hubla, Eduzz, Monetizze</li>
+              <li>Produto de entrada: Pousti.ai (SaaS para criadores)</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Fraqueza explorável</p>
+            <ul class="doc-list">
+              <li>Posiciona como agência de implementação, não assessoria estratégica</li>
+              <li>Entrega o agente — não define qual agente o negócio precisa</li>
+              <li>Sem SLA de resultado financeiro</li>
+              <li>Não pensa o negócio inteiro antes de implementar</li>
+            </ul>
+          </div>
+        </div>
+        <div class="one-liner" style="margin-top: var(--space-6); margin-bottom: 0;">
+          <p class="one-liner__label">Contra-posicionamento direto</p>
+          <p class="one-liner__text">Eles implementam o agente. Nós definimos qual agente você precisa e o que ele precisa entregar.</p>
+        </div>
+      </div>
+
+      <!-- Part 3: Gaps -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">6 Gaps que Nenhum Competidor Ocupa</h3>
+      <ol class="doc-list doc-list--numbered" style="margin-bottom: var(--space-10);">
+        <li>Assessoria com SLA de resultado financeiro — ninguém se compromete com ROI.</li>
+        <li>Estrategista de IA (não agência, não educador) — ninguém pensa o negócio inteiro antes de implementar.</li>
+        <li>IA para múltiplos estágios de receita — todos focam 1 ponto (lançamento OU atendimento).</li>
+        <li>ROI específico do nicho com cases reais — zero cases "expert de X chegou a Y com IA".</li>
+        <li>Conteúdo de estratégia + IA (não tutorial técnico).</li>
+        <li>Transparência de preço e oferta — todo mundo esconde e pede diagnóstico.</li>
+      </ol>
+
+      <!-- Part 4: Contra-Posicionamento -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Contra-Posicionamento</h3>
+      <div class="angle-grid" style="margin-bottom: var(--space-10);">
+        <div class="angle-card angle-card--positive">
+          <p class="angle-card__type">vs. Altaa.ai</p>
+          <p class="angle-card__title">Estratégia antes de implementação</p>
+          <p style="font-size: var(--font-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Eles implementam o agente. Nós definimos qual agente você precisa e o que ele precisa entregar.</p>
+        </div>
+        <div class="angle-card angle-card--positive">
+          <p class="angle-card__type">vs. Léo Soares</p>
+          <p class="angle-card__title">Execução, não educação</p>
+          <p style="font-size: var(--font-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Enquanto você faz o curso, seu concorrente já implementou.</p>
+        </div>
+        <div class="angle-card angle-card--positive">
+          <p class="angle-card__type">vs. Viver de IA</p>
+          <p class="angle-card__title">Especialização no expert digital</p>
+          <p style="font-size: var(--font-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed);">IA genérica para negócios genéricos. IA estratégica para quem vive de conhecimento.</p>
+        </div>
+        <div class="angle-card angle-card--positive">
+          <p class="angle-card__type">vs. Mercado</p>
+          <p class="angle-card__title">Assessoria que paga a si mesma</p>
+          <p style="font-size: var(--font-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Assessoria de IA que paga a si mesma.</p>
+        </div>
+      </div>
+
+      <!-- Part 5: Matriz Competitiva -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Matriz Competitiva</h3>
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Dimensão</th>
+              <th>Viver de IA</th>
+              <th>AWsales</th>
+              <th>Growth Machine</th>
+              <th>Altaa.ai</th>
+              <th>Léo Soares</th>
+              <th style="color: var(--color-accent);">u4digital</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Foco em experts digitais</td>
+              <td><span class="badge">Médio</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--success" style="background:color-mix(in srgb, var(--color-accent) 12%, transparent);border-color:var(--color-accent-border);color:var(--color-accent);">Alto</span></td>
+            </tr>
+            <tr>
+              <td>Modelo assessoria (não curso)</td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--success" style="background:color-mix(in srgb, var(--color-accent) 12%, transparent);border-color:var(--color-accent-border);color:var(--color-accent);">Alto</span></td>
+            </tr>
+            <tr>
+              <td>IA estratégica (não só operacional)</td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--success" style="background:color-mix(in srgb, var(--color-accent) 12%, transparent);border-color:var(--color-accent-border);color:var(--color-accent);">Alto</span></td>
+            </tr>
+            <tr>
+              <td>Prova de ROI específica</td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--accent">Oportunidade</span></td>
+            </tr>
+            <tr>
+              <td>Autoridade de conteúdo</td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--warning" style="background:color-mix(in srgb, var(--color-warning, #f59e0b) 10%, transparent);border-color:color-mix(in srgb, var(--color-warning, #f59e0b) 30%, transparent);color:var(--color-warning-text, #fbbf24);">Construir</span></td>
+            </tr>
+            <tr>
+              <td>Implementação lado a lado</td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--warning">Médio</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge badge--success">Alto</span></td>
+              <td><span class="badge" style="background:var(--color-bg-sunken);color:var(--color-text-disabled);border-color:var(--color-border);">Baixo</span></td>
+              <td><span class="badge badge--success" style="background:color-mix(in srgb, var(--color-accent) 12%, transparent);border-color:var(--color-accent-border);color:var(--color-accent);">Alto</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Part 6: Deep-Dives por Competidor -->
+      <h3 class="h4" style="margin-top: var(--space-12); margin-bottom: var(--space-6);">Deep-Dives por Competidor</h3>
+
+      <!-- Viver de IA -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">Viver de IA — Rafael Milagre</h3>
+            <span class="badge badge--warning">Ameaça Média</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">viverdeia.ai · milagredigital.com</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">@rafaelmilagre 98K + @viverdeia.ai 93K</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">Parceria G4 Educação · 2.000+ empresas</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>Plataforma de educação + comunidade (Viver de IA Club — recorrente)</li>
+              <li>Formação gravada + imersões presenciais</li>
+              <li>Parceria G4 Educação — pacote estimado R$15.000+</li>
+              <li>Público: empresas e empreendedores — posicionamento amplo</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Autoridade nacional, primeiro mover, parceria G4</li>
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> 2.000+ empresas na base</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Migrou para PME/corporativo — abandonou o expert digital</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Entrega conhecimento, não resultado — cliente implementa sozinho</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-text-disabled); margin-bottom: var(--space-1);">Promessa central</p>
+          <p class="text-sm" style="color: var(--color-text-secondary); font-style: italic;">"De 0 a R$20M com IA em 18 meses"</p>
+          <p class="text-xs" style="color: var(--color-accent); margin-top: var(--space-3);">Gap u4digital: eles ensinam como usar IA. Nós implementamos o que você precisa — sem cursos, sem você aprender nada.</p>
+        </div>
+      </div>
+
+      <!-- AWsales -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">AWsales — Gabriel Lima</h3>
+            <span class="badge badge--info">Ameaça Baixa-Média</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">awsales.io</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">@awsales.io 13K</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">Meta Business Partner</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>SaaS de agentes autônomos: Autonomous Service Builder, Agent Studio, Cortex</li>
+              <li>Empresas médio/grande porte (Uniasselvi 500K alunos, G4 Educação)</li>
+              <li>Modelo plataforma cloud — não assessoria</li>
+              <li>Meta Business Partner credenciado</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Tecnologia proprietária (Cortex), casos enterprise reconhecidos</li>
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Rapidez de entrega — "operação rodando em 14 dias"</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Não atende experts digitais — escopo enterprise</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Modelo SaaS sem assessoria estratégica</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-text-disabled); margin-bottom: var(--space-1);">Promessa central</p>
+          <p class="text-sm" style="color: var(--color-text-secondary); font-style: italic;">"Uma operação que roda sozinha em 14 dias"</p>
+          <p class="text-xs" style="color: var(--color-accent); margin-top: var(--space-3);">Gap u4digital: ICP completamente diferente. AWsales opera no enterprise — nós somos o único especialista no expert digital.</p>
+        </div>
+      </div>
+
+      <!-- Growth Machine -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">Growth Machine — Thiago Reis</h3>
+            <span class="badge badge--info">Ameaça Baixa</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">growthmachine.com.br</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">4.000+ empresas · R$2 bilhões em receita gerada</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">Livro "Demanda Infinita"</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>Expansão Comercial — implementação de 90 dias + 60 dias de mentoria</li>
+              <li>Prospct AI — SDR digital de prospecção</li>
+              <li>Growth Play — plataforma de playbooks comerciais</li>
+              <li>Público exclusivo: empresas B2B tech, startups, scale-ups</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Autoridade B2B consolidada (8 anos), metodologia validada</li>
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Tecnologia própria (Prospct), cases massivos</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> 100% B2B corporativo — não atende experts digitais</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> IA restrita a prospecção/SDR — escopo estreito</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-text-disabled); margin-bottom: var(--space-1);">Promessa central</p>
+          <p class="text-sm" style="color: var(--color-text-secondary); font-style: italic;">"A única Máquina de Vendas que entrega mais receita com menos esforço"</p>
+          <p class="text-xs" style="color: var(--color-accent); margin-top: var(--space-3);">Gap u4digital: Growth Machine é para empresas B2B com time de vendas. Nosso ICP é o expert digital solo ou com equipe pequena — mercado inteiramente diferente.</p>
+        </div>
+      </div>
+
+      <!-- Altaa.ai — expanded detail -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">Altaa.ai — Fernando Spengler</h3>
+            <span class="badge badge--error">Ameaça Alta</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">altaa.ai · pousti.altaa.ai</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">@fernandos.br 58K</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">Top-15 maior agência Hotmart do Brasil</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>Agentes de IA para vendas, atendimento, retenção e recuperação de carrinho</li>
+              <li>Integração nativa: Hotmart, Hubla, Kiwify, Eduzz, Monetizze</li>
+              <li>Pousti.ai — produto de entrada (SaaS para criadores)</li>
+              <li>Equipe dedicada + implementação + inteligência de dados contínua</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> ICP idêntico ao u4digital — Top-15 Hotmart</li>
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Integração nativa com todas as plataformas do expert</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Posiciona como agência — não assessoria estratégica</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Foco em agentes de execução, não em estratégia de negócio</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-text-disabled); margin-bottom: var(--space-1);">Promessa central</p>
+          <p class="text-sm" style="color: var(--color-text-secondary); font-style: italic;">"Alta performance em vendas e atendimento com IA — Mais vendas, mais tempo, mais liberdade"</p>
+          <p class="text-xs" style="color: var(--color-accent); margin-top: var(--space-3);">Gap u4digital: Altaa implementa o agente. Nós definimos qual agente o seu negócio precisa e o que ele precisa entregar — estratégia antes de execução.</p>
+        </div>
+      </div>
+
+      <!-- Léo Soares -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">Léo Soares</h3>
+            <span class="badge badge--warning">Ameaça Média-Alta</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">ia.leosoares.ai</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">@leosoares.ia 183K — maior audiência no nicho</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">CEO Movement Lançamentos · R$50M+ em lançamentos gerados</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>Imersão IA para Infoprodutos (1 dia) + Mentoria IA para Lançamentos</li>
+              <li>Conceitos próprios: "Expert Clone" e "DNA do Expert"</li>
+              <li>Modelo: imersão + mentoria em grupo</li>
+              <li>Foco exclusivo em lançamentos — não atende funil completo</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> 183K seguidores — maior audiência no nicho exato</li>
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Credibilidade real de lançamentos, combina launcher + IA</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Modelo educação — não implementa, não entrega resultado</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Foco restrito em lançamentos, sem assessoria continuada</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-text-disabled); margin-bottom: var(--space-1);">Promessa central</p>
+          <p class="text-sm" style="color: var(--color-text-secondary); font-style: italic;">"Adicione R$20K a R$100K por mês ao seu faturamento com IA aplicada ao seu funil completo"</p>
+          <p class="text-xs" style="color: var(--color-accent); margin-top: var(--space-3);">Gap u4digital: Léo ensina a teoria — nós implementamos a prática. E enquanto ele só cobre lançamentos, nós atuamos no funil inteiro: venda, suporte, conteúdo, tráfego.</p>
+        </div>
+      </div>
+
+      <!-- Carlos Cassim -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">Carlos Cassim</h3>
+            <span class="badge badge--info">Ameaça Baixa-Média</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">@cassim 110K Instagram</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">YouTube: "CASSIM — MENTOR DE NEGÓCIOS DIGITAIS"</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">60.000+ alunos em 70 países</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>Mentoria + cursos + workshops ao vivo</li>
+              <li>Conteúdo: vendas + IA + marketing digital para negócios</li>
+              <li>Amplo volume de alunos — modelo de cursos com desconto agressivo</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> 110K seguidores, volume de alunos, presença diversa</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Generalista — não especialista em IA para experts</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Modelo de curso, não implementação</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-accent);">Gap u4digital: Cassim cobre marketing digital em geral — não existe profundidade em IA para experts. A especialização vertical nos coloca em categoria diferente.</p>
+        </div>
+      </div>
+
+      <!-- Upflows -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">Upflows</h3>
+            <span class="badge badge--warning">Ameaça Média</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">upflows.com.br</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">Case público: Pettrus Vaz (infoprodutor)</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>Agentes de IA para vendas, suporte e relacionamento</li>
+              <li>Headline: "O Ecossistema Comercial que Opera Sem Você"</li>
+              <li>Case público com infoprodutor — ICP próximo</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Forças e fraquezas</p>
+            <ul class="doc-list">
+              <li><strong style="color: var(--color-text-primary);">Força:</strong> Case com infoprodutor real, conceito de ecossistema</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Baixa visibilidade e presença de conteúdo</li>
+              <li><strong style="color: var(--color-error-text);">Fraqueza:</strong> Sem clareza de diferencial estratégico</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-accent);">Gap u4digital: Upflows cresce silenciosamente no mesmo ICP. A vantagem é velocidade — estabelecer autoridade de conteúdo antes que eles ganhem tração.</p>
+        </div>
+      </div>
+
+      <!-- G4 Educação -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-10);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-3);">
+            <h3 class="card__title" style="font-size: var(--font-lg); margin:0;">G4 Educação</h3>
+            <span class="badge badge--info">Ameaça Baixa</span>
+          </div>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+            <span class="text-xs" style="color: var(--color-text-disabled);">Fundadores: Tallis Gomes, Misa, Bruno Nardon</span>
+            <span class="text-xs" style="color: var(--color-text-disabled);">Faturamento 2025: R$500M · Meta 2026: R$750M</span>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Produto e modelo</p>
+            <ul class="doc-list">
+              <li>G4 Academia de IA + G4 OS (sistema operacional para PMEs)</li>
+              <li>Parceria com Viver de IA — Rafael Milagre como mentor</li>
+              <li>Público: PMEs e scale-ups — fora do alcance do expert digital solo</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Por que é baixa ameaça</p>
+            <ul class="doc-list">
+              <li>ICP completamente diferente — PME com time de gestão</li>
+              <li>Ticket e complexidade fora do perfil do expert digital</li>
+              <li>Não é concorrência direta — é outro mercado</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border-muted);">
+          <p class="text-xs" style="color: var(--color-accent);">Gap u4digital: G4 é enterprise. Nós somos o especialista no expert digital — segmentos que não se cruzam na prática.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── 5. ICP ─────────────────────────────────────────────── -->
+    <section id="icp" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 04</p>
+        <h2 class="doc-section-title">ICP — Perfil do Cliente Ideal</h2>
+        <p class="doc-section-desc">Segmentos-alvo, gatilhos de compra e objeções estratégicas.</p>
+      </div>
+
+      <!-- Primary ICP -->
+      <div class="card card--accent" style="margin-bottom: var(--space-8);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="tag tag--accent">ICP Primário</span>
+            <span class="badge badge--accent">Nível de Consciência 3</span>
+          </div>
+          <h3 class="card__title" style="font-size: var(--font-xl);">"O Expert Lucrativo, Mas Espremido"</h3>
+          <p class="card__subtitle">Faturamento R$10K–80K/mês — Time de 2 a 8 pessoas</p>
+        </div>
+        <div class="two-col">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Perfil</p>
+            <ul class="doc-list">
+              <li>Faturamento: R$10K–80K/mês</li>
+              <li>Time: 2 a 8 pessoas</li>
+              <li>Modelo: lançamento, perpétuo, mentoria, comunidade</li>
+              <li>Awareness: Nível 3 — Solution Aware</li>
+              <li>Medo central: perder a liberdade que conquistou</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Desejos</p>
+            <ul class="doc-list">
+              <li>Escalar sem aumentar a equipe proporcionalmente</li>
+              <li>Parar de ser o gargalo do próprio negócio</li>
+              <li>Ter previsibilidade de receita todos os meses</li>
+              <li>Tempo para criar, não para apagar incêndios</li>
+              <li>Operar como empresa, não como autônomo escalado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-bottom: var(--space-8);">
+        <div class="card">
+          <p class="label" style="margin-bottom: var(--space-4);">Medos</p>
+          <ul class="doc-list">
+            <li>Perder a liberdade que construiu saindo do CLT</li>
+            <li>Depender de uma pessoa que pode sair amanhã</li>
+            <li>Trabalhar mais que no emprego formal</li>
+            <li>Ver a margem encolher enquanto o faturamento cresce</li>
+            <li>Não conseguir replicar o sucesso do último lançamento</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="label" style="margin-bottom: var(--space-4);">Frustrações</p>
+          <ul class="doc-list">
+            <li>Ferramentas de IA genéricas que não entendem o nicho</li>
+            <li>Tentativas de automação que quebraram o processo</li>
+            <li>Time que depende de aprovação para tudo</li>
+            <li>Lançamentos que custam mais esforço a cada ciclo</li>
+            <li>Crescimento que gera mais complexidade, não mais lucro</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Gatilhos -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Gatilhos de Compra</h3>
+      <ol class="doc-list doc-list--numbered" style="margin-bottom: var(--space-10);">
+        <li>Mês de lançamento abaixo do esperado — a dor está no pico, disposição para solução máxima.</li>
+        <li>Perda de membro-chave do time — o negócio travou. Urgência imediata.</li>
+        <li>Concorrente usando IA visivelmente — medo de ficar para trás ativa a compra.</li>
+        <li>Burnout operacional — não aguenta mais a carga, precisa de saída urgente.</li>
+        <li>Comparação financeira — percebe que o concorrente cresce mais gastando menos.</li>
+      </ol>
+
+      <!-- Objeções -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Objeções e Respostas Estratégicas</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Objeção</th>
+              <th>Resposta Estratégica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"IA não entende meu nicho"</td>
+              <td>Agentes treinados com <em>sua</em> voz, não templates genéricos.</td>
+            </tr>
+            <tr>
+              <td>"Já tentei e não funcionou"</td>
+              <td>Tentar sozinho e ter assessoria especializada são coisas completamente diferentes.</td>
+            </tr>
+            <tr>
+              <td>"Não tenho tempo"</td>
+              <td>Você não aprende. A gente implementa.</td>
+            </tr>
+            <tr>
+              <td>"É caro?"</td>
+              <td>Quanto você gasta em time por mês? O agente custa uma fração — sem férias, sem rotatividade.</td>
+            </tr>
+            <tr>
+              <td>"E se não der resultado?"</td>
+              <td>Diagnóstico gratuito primeiro. Você só investe quando vê exatamente o que vai ser construído.</td>
+            </tr>
+            <tr>
+              <td>"Meu público não aceita IA"</td>
+              <td>Ninguém percebe. O agente escreve e responde com a sua voz.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Anti-ICP -->
+      <div class="alert alert--warning" style="margin-bottom: var(--space-8);">
+        <div class="alert__content">
+          <p class="alert__title">Anti-ICP — Quem não é cliente</p>
+          <div class="alert__body">
+            <ul class="doc-list" style="margin-top: var(--space-2);">
+              <li>Iniciantes sem produto validado ou sem faturamento comprovado</li>
+              <li>Negócios que não são digitais (varejo físico, serviços locais sem escala digital)</li>
+              <li>Quem busca automação sem disposição para co-criar o processo com a equipe</li>
+              <li>Quem quer "testar AI" sem compromisso com implementação real</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary ICP -->
+      <div class="card card--bordered">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="tag">ICP Secundário</span>
+          </div>
+          <h3 class="card__title">"O Expert em Monetização"</h3>
+          <p class="card__subtitle">R$5K–15K/mês — Solo ou time mínimo — Aprendendo a escalar</p>
+        </div>
+        <div class="card__body">
+          Já tem audiência e produto vendendo. Faturamento ainda baixo, mas crescendo. Está no ponto de decisão: contratar time ou automatizar desde o início. Nós somos a terceira via — crescer sem montar uma estrutura pesada.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. Posicionamento ─────────────────────────────────── -->
+    <section id="posicionamento" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 05</p>
+        <h2 class="doc-section-title">Posicionamento</h2>
+        <p class="doc-section-desc">Categoria, diferenciais e comparativo com concorrentes.</p>
+      </div>
+
+      <div class="card card--sunken" style="margin-bottom: var(--space-6);">
+        <p class="label" style="margin-bottom: var(--space-2);">Categoria declarada</p>
+        <p class="text-xl text-medium" style="color: var(--color-text-primary);">Assessoria de IA para Negócios Digitais</p>
+      </div>
+
+      <!-- Differentiation table -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Diferenciação Competitiva</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Dimensão</th>
+              <th style="color: var(--color-accent);">u4digital</th>
+              <th>Concorrentes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Especialização</td>
+              <td style="color: var(--color-accent);">100% experts digitais</td>
+              <td>Genérica — qualquer empresa</td>
+            </tr>
+            <tr>
+              <td>Entrega</td>
+              <td style="color: var(--color-accent);">Agentes sob medida, voz do cliente</td>
+              <td>Templates genéricos</td>
+            </tr>
+            <tr>
+              <td>Escopo</td>
+              <td style="color: var(--color-accent);">Venda + Marketing + Suporte (funil completo)</td>
+              <td>Uma área só</td>
+            </tr>
+            <tr>
+              <td>Modelo de relação</td>
+              <td style="color: var(--color-accent);">Assessoria (parceiro estratégico)</td>
+              <td>Agência (fornecedor) ou curso (DIY)</td>
+            </tr>
+            <tr>
+              <td>Conhecimento</td>
+              <td style="color: var(--color-accent);">Lançamentos, perpétuo, tráfego, copy</td>
+              <td>Técnico — não entende o mercado digital</td>
+            </tr>
+            <tr>
+              <td>Resultado medido</td>
+              <td style="color: var(--color-accent);">CPL, ROAS, margem, LTV</td>
+              <td>Agentes criados, automações feitas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Assessoria vs Agência -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Assessoria vs. Agência</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Agência</th>
+              <th style="color: var(--color-accent);">Assessoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Relação</td>
+              <td>Fornecedor-cliente</td>
+              <td style="color: var(--color-accent);">Parceiro estratégico</td>
+            </tr>
+            <tr>
+              <td>Ticket percebido</td>
+              <td>Médio-baixo</td>
+              <td style="color: var(--color-accent);">Alto (premium)</td>
+            </tr>
+            <tr>
+              <td>Duração</td>
+              <td>Projeto finito</td>
+              <td style="color: var(--color-accent);">Relacionamento contínuo</td>
+            </tr>
+            <tr>
+              <td>Autoridade</td>
+              <td>"Quem faz pra mim"</td>
+              <td style="color: var(--color-accent);">"Quem pensa comigo"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- One-liner -->
+      <div class="one-liner">
+        <p class="one-liner__label">One-liner</p>
+        <p class="one-liner__text">
+          u4digital é a assessoria de IA que constrói agentes inteligentes sob medida para o seu negócio digital — com a sua voz, no seu processo, gerando resultado desde o primeiro mês.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 7. Inimigo Narrativo ──────────────────────────────── -->
+    <section id="inimigo" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 06</p>
+        <h2 class="doc-section-title">Inimigo Narrativo</h2>
+        <p class="doc-section-desc">O antagonista que a narrativa da u4digital combate.</p>
+      </div>
+
+      <div class="card card--accent" style="margin-bottom: var(--space-8);">
+        <div class="card__header">
+          <h3 class="card__title" style="font-size: var(--font-xl);">A acumulação de custos que mata a margem silenciosamente</h3>
+          <p class="card__subtitle" style="margin-top: var(--space-2);">Não é só folha de pagamento — é a soma de tudo</p>
+        </div>
+        <div class="three-col" style="margin-top: var(--space-4);">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Ferramentas</p>
+            <ul class="doc-list">
+              <li>ActiveCampaign / MailChimp</li>
+              <li>ManyChat / Manychat Pro</li>
+              <li>Canva Pro / Adobe</li>
+              <li>Capcut, CapCut Business</li>
+              <li>CRM, gestão de projetos</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Serviços</p>
+            <ul class="doc-list">
+              <li>Freelancers: designer, copy, editor</li>
+              <li>Gestor de tráfego</li>
+              <li>Suporte ao aluno</li>
+              <li>Disparos de e-mail e WhatsApp</li>
+              <li>Taxa de checkout e gateway</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Campanhas</p>
+            <ul class="doc-list">
+              <li>Anúncios Meta e Google</li>
+              <li>Produção de criativos</li>
+              <li>Operação de lançamento</li>
+              <li>Remarketing e nutrição</li>
+              <li>CPL crescendo todo mês</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrative block -->
+      <p class="label" style="margin-bottom: var(--space-4);">Narrativa completa</p>
+      <div class="narrative">
+        "Você começou no digital pra ter liberdade. Fez o primeiro lançamento, deu certo, escalou. Aí precisou de editor, designer, social media, gestor de tráfego, suporte, copy. Hoje você tem 5, 6, 7 pessoas no time. O faturamento cresceu. Mas a margem? A margem encolheu. Porque cada real a mais que entra, uma fatia vai pra custos operacionais — ferramentas, freelancers, disparos, checkout, anúncios. Tudo somado, é uma sangria silenciosa que come o lucro. E o pior: se uma pessoa sai, o negócio trava. Você não construiu um sistema. Construiu uma dependência."
+      </div>
+    </section>
+
+    <!-- ── 8. Mensagem Central ───────────────────────────────── -->
+    <section id="mensagem" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 07</p>
+        <h2 class="doc-section-title">Mensagem Central</h2>
+        <p class="doc-section-desc">Core message, variações por contexto e pitch de diferentes durações.</p>
+      </div>
+
+      <!-- Core message -->
+      <div class="one-liner" style="margin-top: 0;">
+        <p class="one-liner__label">Mensagem Principal</p>
+        <p class="one-liner__text">
+          Você não precisa de mais custos e ferramentas. Precisa de uma assessoria que traz estratégias dos maiores masterminds do digital para a sua operação com IA.
+        </p>
+      </div>
+
+      <!-- Variations -->
+      <div class="stack stack--4" style="margin-top: var(--space-8);">
+        <div class="card card--sm">
+          <p class="label" style="margin-bottom: var(--space-2);">Headline curta</p>
+          <p class="text-xl text-medium" style="color: var(--color-text-primary);">Pare de contratar. Comece a automatizar.</p>
+        </div>
+        <div class="card card--sm">
+          <p class="label" style="margin-bottom: var(--space-2);">Subhead</p>
+          <p class="text-md" style="color: var(--color-text-secondary);">Agentes de IA construídos sob medida para o seu negócio digital.</p>
+        </div>
+        <div class="card card--sm">
+          <p class="label" style="margin-bottom: var(--space-2);">Pitch 10 segundos</p>
+          <p class="text-base" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">A u4digital constrói agentes de IA sob medida pra experts digitais. Mesma qualidade do seu time, um terço do custo, 24h por dia.</p>
+        </div>
+        <div class="card card--sm">
+          <p class="label" style="margin-bottom: var(--space-2);">Pitch 30 segundos</p>
+          <p class="text-base" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">A maioria dos experts digitais gasta R$15–25K por mês em time — editor, designer, gestor, suporte, copy. E quando perde alguém, o negócio trava. A u4digital constrói agentes de IA treinados com a voz do expert, que operam dentro do processo dele, em venda, marketing e suporte. Mesma qualidade. Um terço do custo. Sem férias, sem rotatividade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 9. 4 Ângulos Hormozi ──────────────────────────────── -->
+    <section id="angulos" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 08</p>
+        <h2 class="doc-section-title">4 Ângulos Hormozi</h2>
+        <p class="doc-section-desc">Seeds de copy para cada ângulo de persuasão — base para campanhas, anúncios e conteúdo.</p>
+      </div>
+
+      <!-- Value equation -->
+      <div class="value-equation">
+        <p class="value-equation__label">Equação de Valor — Hormozi</p>
+        <p class="value-equation__formula">
+          Valor = <span class="accent">(Resultado Desejado &times; Probabilidade)</span>
+          <span class="muted"> / </span>
+          <span>(Tempo &times; Esforço)</span>
+        </p>
+      </div>
+
+      <!-- 4 angles -->
+      <div class="angle-grid">
+
+        <!-- More Good -->
+        <div class="angle-card angle-card--positive">
+          <p class="angle-card__type">More Good — O que ganham</p>
+          <h3 class="angle-card__title">Mais receita, mais margem, mais liberdade</h3>
+          <ul class="doc-list">
+            <li>Margem real no lançamento — não só faturamento</li>
+            <li>Time que opera 24h sem custo proporcional</li>
+            <li>Produção de conteúdo em escala sem ampliar equipe</li>
+            <li>Independência operacional — o negócio roda sem você</li>
+            <li>Escalar faturamento sem escalar custo</li>
+          </ul>
+        </div>
+
+        <!-- Less Bad -->
+        <div class="angle-card angle-card--negative">
+          <p class="angle-card__type">Less Bad — O que evitam</p>
+          <h3 class="angle-card__title">Fim da sangria silenciosa</h3>
+          <ul class="doc-list">
+            <li>Acumulação de custos que come o lucro mês a mês</li>
+            <li>CPL que só sobe enquanto a margem encolhe</li>
+            <li>Dependência de time que paralisa tudo quando alguém sai</li>
+            <li>Burnout disfarçado de rotina operacional</li>
+            <li>Concorrente que já automatizou e está ganhando terreno</li>
+          </ul>
+        </div>
+
+        <!-- Status -->
+        <div class="angle-card angle-card--positive">
+          <p class="angle-card__type">More Good — Status (outros)</p>
+          <h3 class="angle-card__title">Expert que opera como empresa</h3>
+          <ul class="doc-list">
+            <li>Expert que opera com a estrutura de empresa, não de autônomo</li>
+            <li>Autoridade no nicho sem precisar ser técnico em IA</li>
+            <li>Profissionalismo que gera confiança no aluno e no mercado</li>
+            <li>O "como você faz isso?" que vira uma vantagem competitiva</li>
+          </ul>
+        </div>
+
+        <!-- Social risk -->
+        <div class="angle-card angle-card--negative">
+          <p class="angle-card__type">Less Bad — Risco Social (outros)</p>
+          <h3 class="angle-card__title">Não ser o último a agir</h3>
+          <ul class="doc-list">
+            <li>Não ser o último do mercado a adotar IA enquanto o concorrente avança</li>
+            <li>Parar de justificar margens finas para sócios e equipe</li>
+            <li>Proteger a renda da família contra a instabilidade operacional</li>
+            <li>Sair da posição de quem "está vendo" para quem está executando</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 10. Funil de Entrada ───────────────────────────────── -->
+    <section id="funil" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 09</p>
+        <h2 class="doc-section-title">Funil de Entrada: Raio-X Digital</h2>
+        <p class="doc-section-desc">Diagnóstico gratuito estruturado como canal de aquisição e conversão.</p>
+      </div>
+
+      <div class="two-col" style="align-items: start; margin-bottom: var(--space-10);">
+        <!-- Steps -->
+        <div>
+          <p class="label" style="margin-bottom: var(--space-6);">Estrutura da Sessão (35–45 min)</p>
+          <div class="funnel-steps">
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle">1</div>
+                <div class="funnel-step__connector"></div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Mapeamento de Custos Operacionais</p>
+                <p class="funnel-step__desc">Levantamento completo do que o expert gasta por mês em time e ferramentas. Cria consciência do problema.</p>
+                <div class="funnel-step__badge"><span class="badge">10 min</span></div>
+              </div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle">2</div>
+                <div class="funnel-step__connector"></div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Identificação de Gargalos Automatizáveis</p>
+                <p class="funnel-step__desc">Mapeamento dos processos que consomem mais tempo e que podem ser operados por agentes.</p>
+                <div class="funnel-step__badge"><span class="badge">10 min</span></div>
+              </div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle" style="background: var(--color-accent); color: var(--color-text-inverse); border-color: var(--color-accent);">3</div>
+                <div class="funnel-step__connector"></div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Demonstração ao Vivo de 1 Agente</p>
+                <p class="funnel-step__desc">Momento AHA. O expert vê funcionando, na prática, um agente construído no contexto do negócio dele.</p>
+                <div class="funnel-step__badge">
+                  <span class="badge badge--accent">10 min</span>
+                  <span class="badge badge--success" style="margin-left: var(--space-2);">Momento AHA</span>
+                </div>
+              </div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle">4</div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Projeção de Economia</p>
+                <p class="funnel-step__desc">Tradução em números: quanto o cliente economiza, quanto pode crescer, qual o tempo de retorno do investimento.</p>
+                <div class="funnel-step__badge"><span class="badge">5 min</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outcome + flow -->
+        <div class="stack stack--6">
+          <div class="card card--sunken">
+            <p class="label" style="margin-bottom: var(--space-3);">Entregável</p>
+            <p class="text-base text-semibold" style="color: var(--color-text-primary); margin-bottom: var(--space-2);">PDF "Raio-X Digital"</p>
+            <p class="text-sm" style="color: var(--color-text-muted);">2–3 páginas entregues mesmo que o cliente não compre. Diagnóstico personalizado com mapeamento de custos, oportunidades identificadas e estimativa de retorno.</p>
+          </div>
+          <div class="card card--sunken">
+            <p class="label" style="margin-bottom: var(--space-3);">Formato</p>
+            <ul class="doc-list">
+              <li>Google Meet ou Zoom</li>
+              <li>35–45 minutos</li>
+              <li>Sem proposta comercial durante a sessão</li>
+              <li>Venda acontece naturalmente após a demonstração</li>
+            </ul>
+          </div>
+          <div class="card card--accent">
+            <p class="label" style="margin-bottom: var(--space-3);">Por que funciona</p>
+            <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">O diagnóstico resolve a objeção de risco antes da venda. O cliente vê o valor antes de pagar. A demonstração ao vivo cria o momento AHA — a partir daí, a venda é consequência.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow visual -->
+      <h3 class="h4" style="margin-bottom: var(--space-6);">Fluxo de Conversão</h3>
+      <div class="card card--sunken" style="margin-bottom: var(--space-10);">
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2);">
+          <span class="badge badge--accent">Lead (anúncio ou orgânico)</span>
+          <span style="color: var(--color-text-disabled);">&#8594;</span>
+          <span class="badge">Página de agendamento</span>
+          <span style="color: var(--color-text-disabled);">&#8594;</span>
+          <span class="badge">Confirmação do diagnóstico</span>
+          <span style="color: var(--color-text-disabled);">&#8594;</span>
+          <span class="badge badge--warning">Sessão Raio-X Digital</span>
+          <span style="color: var(--color-text-disabled);">&#8594;</span>
+          <span class="badge badge--success">Apresentação da proposta</span>
+          <span style="color: var(--color-text-disabled);">&#8594;</span>
+          <span class="badge badge--accent">Fechamento</span>
+        </div>
+      </div>
+
+      <!-- Value Ladder -->
+      <h3 class="h4" style="margin-bottom: var(--space-6);">Value Ladder</h3>
+      <div class="stack stack--4" style="margin-bottom: var(--space-10);">
+        <div class="card card--sunken" style="border-left: 2px solid var(--color-border-strong);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-1);">Entrada gratuita</p>
+              <p class="text-base text-semibold" style="color: var(--color-text-primary);">Conteúdo orgânico</p>
+              <p class="text-sm" style="color: var(--color-text-muted); margin-top: var(--space-1);">Reels, LinkedIn, carrossel — conscientização e pré-qualificação</p>
+            </div>
+            <span class="badge" style="font-size: var(--font-lg); padding: var(--space-2) var(--space-4);">R$0</span>
+          </div>
+        </div>
+        <div class="card card--sunken" style="border-left: 2px solid var(--color-border-strong);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-1);">Lead magnet</p>
+              <p class="text-base text-semibold" style="color: var(--color-text-primary);">Raio-X Digital</p>
+              <p class="text-sm" style="color: var(--color-text-muted); margin-top: var(--space-1);">Diagnóstico gratuito de 35–45 min — demonstração de valor, sem risco</p>
+            </div>
+            <span class="badge" style="font-size: var(--font-lg); padding: var(--space-2) var(--space-4);">R$0</span>
+          </div>
+        </div>
+        <div class="card" style="border-left: 2px solid var(--color-accent-border);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-1);">Projeto inicial</p>
+              <p class="text-base text-semibold" style="color: var(--color-text-primary);">Implementação de Agentes</p>
+              <p class="text-sm" style="color: var(--color-text-muted); margin-top: var(--space-1);">Setup dos 5 agentes + configuração + treinamento com voz do expert</p>
+            </div>
+            <span class="badge badge--accent" style="font-size: var(--font-lg); padding: var(--space-2) var(--space-4);">R$3–8K</span>
+          </div>
+        </div>
+        <div class="card card--accent" style="border-left: 2px solid var(--color-accent);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-1);">Recorrência</p>
+              <p class="text-base text-semibold" style="color: var(--color-text-primary);">Assessoria Contínua</p>
+              <p class="text-sm" style="color: var(--color-text-muted); margin-top: var(--space-1);">Acompanhamento estratégico mensal, evolução dos agentes, novos automações</p>
+            </div>
+            <span class="badge badge--accent" style="font-size: var(--font-lg); padding: var(--space-2) var(--space-4);">R$5–15K/mês</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeção R$200 -->
+      <h3 class="h4" style="margin-bottom: var(--space-6);">Projeção com Budget de R$200</h3>
+      <div class="stat-row" style="margin-bottom: var(--space-10);">
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">80</span>
+            <span class="stat__label">Cliques estimados</span>
+            <span class="stat__delta">CPM ~R$30–40</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">16</span>
+            <span class="stat__label">Leads captados</span>
+            <span class="stat__delta">Conversão LP ~20%</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">8</span>
+            <span class="stat__label">Leads qualificados</span>
+            <span class="stat__delta">50% passam no pré-filtro</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">5</span>
+            <span class="stat__label">Bookings agendados</span>
+            <span class="stat__delta">~60% dos qualificados</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">3</span>
+            <span class="stat__label">Diagnósticos realizados</span>
+            <span class="stat__delta">~60% show rate</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value">1</span>
+            <span class="stat__label">Venda fechada</span>
+            <span class="stat__delta">33% de close rate</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value stat__value--accent">25x</span>
+            <span class="stat__label">ROI estimado</span>
+            <span class="stat__delta stat__delta--positive">Base: 1 venda R$5K</span>
+          </div>
+        </div>
+        <div class="card card--sunken">
+          <div class="stat">
+            <span class="stat__value stat__value--accent">R$12,50</span>
+            <span class="stat__label">CPL estimado</span>
+            <span class="stat__delta stat__delta--positive">Abaixo do limite saudável</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pré-qualificação -->
+      <h3 class="h4" style="margin-bottom: var(--space-6);">Formulário de Pré-qualificação</h3>
+      <p class="text-sm" style="color: var(--color-text-muted); margin-bottom: var(--space-5);">5 perguntas obrigatórias no agendamento — filtro antes da sessão.</p>
+      <div class="stack stack--4" style="margin-bottom: var(--space-10);">
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:var(--color-accent-muted); border:1px solid var(--color-accent-border); color:var(--color-accent); font-size:var(--font-xs); font-weight:var(--font-weight-semibold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Quanto você fatura por mês?</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Qualifica o estágio do negócio. Filtro mínimo: R$5K/mês.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:var(--color-accent-muted); border:1px solid var(--color-accent-border); color:var(--color-accent); font-size:var(--font-xs); font-weight:var(--font-weight-semibold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Quantas pessoas no time?</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Avalia tamanho da operação e potencial de automação.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:var(--color-accent-muted); border:1px solid var(--color-accent-border); color:var(--color-accent); font-size:var(--font-xs); font-weight:var(--font-weight-semibold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Modelo de negócio?</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Lançamento, perpétuo, mentoria, comunidade. Define os agentes prioritários.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:var(--color-accent-muted); border:1px solid var(--color-accent-border); color:var(--color-accent); font-size:var(--font-xs); font-weight:var(--font-weight-semibold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Maior dor operacional hoje?</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Resposta aberta — revela o ângulo certo para a sessão.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span style="width:1.5rem; height:1.5rem; border-radius:50%; background:var(--color-accent-muted); border:1px solid var(--color-accent-border); color:var(--color-accent); font-size:var(--font-xs); font-weight:var(--font-weight-semibold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">5</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Quanto gasta em time + ferramentas por mês?</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Ancora o argumento de ROI antes mesmo da sessão.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp follow-up -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Sequência WhatsApp Pós-Diagnóstico</h3>
+      <p class="text-sm" style="color: var(--color-text-muted); margin-bottom: var(--space-5);">Para leads que assistiram ao Raio-X mas não fecharam na sessão.</p>
+      <div class="stack stack--4" style="margin-bottom: var(--space-10);">
+        <div class="card card--sm" style="border-left: 2px solid var(--color-accent-border);">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span class="badge badge--accent" style="flex-shrink:0; white-space:nowrap;">Dia 0</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">PDF do Raio-X + agradecimento</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Entrega o documento prometido. Agradece o tempo. Não vende nada.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span class="badge" style="flex-shrink:0; white-space:nowrap;">Dia 2</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Insight específico baseado na call</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Uma observação personalizada sobre o negócio dele. Prova que foi ouvido.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span class="badge" style="flex-shrink:0; white-space:nowrap;">Dia 4</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Case study ou conteúdo relevante</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Exemplo de resultado de alguém no mesmo modelo de negócio. Constrói prova social.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span class="badge" style="flex-shrink:0; white-space:nowrap;">Dia 5</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Pergunta direta</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">"O que faltou para fazer sentido?" — abre conversa sem pressão, identifica objeção real.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--sm" style="border-left: 2px solid var(--color-border-strong);">
+          <div style="display:flex; align-items:flex-start; gap:var(--space-4);">
+            <span class="badge" style="flex-shrink:0; white-space:nowrap;">Dia 7</span>
+            <div>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Última mensagem — oferta de follow-up call</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Proposta de uma segunda call curta (15 min) para tirar dúvidas específicas. Última tentativa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stack técnico -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Stack Técnico — Custo R$0</h3>
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Função</th>
+              <th>Ferramenta</th>
+              <th>Custo</th>
+              <th>Observação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Landing page</td>
+              <td>Vercel</td>
+              <td><span class="badge badge--success">R$0</span></td>
+              <td>Deploy da LP em Astro ou HTML estático</td>
+            </tr>
+            <tr>
+              <td>Booking</td>
+              <td>Cal.com free</td>
+              <td><span class="badge badge--success">R$0</span></td>
+              <td>Agendamento com formulário de pré-qualificação</td>
+            </tr>
+            <tr>
+              <td>Calls</td>
+              <td>Google Meet</td>
+              <td><span class="badge badge--success">R$0</span></td>
+              <td>Integrado ao Cal.com automaticamente</td>
+            </tr>
+            <tr>
+              <td>CRM (fase 1)</td>
+              <td>Google Sheets</td>
+              <td><span class="badge badge--success">R$0</span></td>
+              <td>Pipeline simples: lead / qualificado / agendado / fechado</td>
+            </tr>
+            <tr>
+              <td>WhatsApp</td>
+              <td>Manual</td>
+              <td><span class="badge badge--success">R$0</span></td>
+              <td>Sequência de 5 mensagens conforme script acima</td>
+            </tr>
+            <tr>
+              <td>Pagamento</td>
+              <td>Pix</td>
+              <td><span class="badge badge--success">R$0</span></td>
+              <td>Fase 1 — sem checkout, sem taxa de plataforma</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── 11. Teste de Campanha ─────────────────────────────── -->
+    <section id="campanha" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 10</p>
+        <h2 class="doc-section-title">Teste de Campanha</h2>
+        <p class="doc-section-desc">Estrutura inicial de teste pago — validação de faces e ângulos.</p>
+      </div>
+
+      <div class="three-col" style="margin-bottom: var(--space-10);">
+        <div class="card card--interactive">
+          <div class="card__header">
+            <span class="tag tag--accent" style="margin-bottom: var(--space-3);">Face A</span>
+            <h3 class="card__title">Moroni</h3>
+            <p class="card__subtitle">Credibilidade e autoridade pessoal</p>
+          </div>
+          <div class="card__body">Ângulo de prova social e autoridade. Expert que já implementou, fala de resultados reais e posiciona a assessoria como diferencial que usa pessoalmente.</div>
+        </div>
+        <div class="card card--interactive">
+          <div class="card__header">
+            <span class="tag" style="margin-bottom: var(--space-3);">Face B</span>
+            <h3 class="card__title">Tiago</h3>
+            <p class="card__subtitle">Empatia com o ICP</p>
+          </div>
+          <div class="card__body">Ângulo de identificação. Fala do ponto de vista de quem sentiu o problema — a margem espremida, o time dependente, o burnout operacional.</div>
+        </div>
+        <div class="card card--interactive">
+          <div class="card__header">
+            <span class="tag" style="margin-bottom: var(--space-3);">Face C</span>
+            <h3 class="card__title">u4digital (sem rosto)</h3>
+            <p class="card__subtitle">Marca e argumento racional</p>
+          </div>
+          <div class="card__body">Ângulo de marca e lógica. Dados, diferenciação, comparativo agência vs. assessoria. Funciona para audiências que já conhecem a solução.</div>
+        </div>
+      </div>
+
+      <!-- Budget and projections -->
+      <div class="two-col" style="margin-bottom: var(--space-10);">
+        <div class="card card--sunken">
+          <p class="label" style="margin-bottom: var(--space-4);">Orçamento — Fase de Teste</p>
+          <div class="stat" style="margin-bottom: var(--space-5);">
+            <span class="stat__value stat__value--accent">R$200</span>
+            <span class="stat__label">Orçamento inicial de teste</span>
+          </div>
+          <ul class="doc-list">
+            <li>Distribuição entre as 3 faces</li>
+            <li>Otimizar para custo por lead qualificado</li>
+            <li>Pausar faces com CPL acima do limite</li>
+            <li>Dobrar budget na face vencedora após 7 dias</li>
+          </ul>
+        </div>
+        <div class="card card--sunken">
+          <p class="label" style="margin-bottom: var(--space-4);">Projeção do Teste</p>
+          <div class="stack stack--4">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border-muted);">
+              <span class="text-sm" style="color: var(--color-text-secondary);">Leads estimados</span>
+              <span class="text-sm text-semibold" style="color: var(--color-text-primary);">7–13 leads</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border-muted);">
+              <span class="text-sm" style="color: var(--color-text-secondary);">Diagnósticos agendados</span>
+              <span class="text-sm text-semibold" style="color: var(--color-text-primary);">2–4 sessões</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="text-sm" style="color: var(--color-text-secondary);">Vendas estimadas</span>
+              <span class="text-sm text-semibold" style="color: var(--color-accent);">1–2 clientes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estrutura de campanha -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Estrutura de Campanha</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Campanha</th>
+              <th>Rosto</th>
+              <th>Ângulo</th>
+              <th>Criativos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>u4d-moroni-mai26</code></td>
+              <td>Moroni</td>
+              <td>Less Bad — custo do time invisível</td>
+              <td>1 vídeo + 1 estático</td>
+            </tr>
+            <tr>
+              <td><code>u4d-tiago-mai26</code></td>
+              <td>Tiago</td>
+              <td>Less Bad — tempo perdido em operacional</td>
+              <td>1 vídeo + 1 estático</td>
+            </tr>
+            <tr>
+              <td><code>u4d-brand-mai26</code></td>
+              <td>Brand (sem rosto)</td>
+              <td>Números comparativos — R$18K vs R$3K</td>
+              <td>1 vídeo + 1 estático</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Scripts dos 3 vídeos -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Scripts dos 3 Vídeos</h3>
+      <div class="three-col" style="margin-bottom: var(--space-10);">
+        <div class="card">
+          <div class="card__header">
+            <span class="tag tag--accent" style="margin-bottom: var(--space-3);">Face A — Moroni</span>
+            <h3 class="card__title">"Quanto ficou de verdade?"</h3>
+          </div>
+          <div class="card__body">
+            <div style="margin-bottom: var(--space-4);">
+              <p class="label" style="margin-bottom: var(--space-2);">Hook</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Seu último lançamento faturou quanto? E quanto FICOU de verdade — depois de time, ferramentas, tráfego e checkout?</p>
+            </div>
+            <div style="margin-bottom: var(--space-4);">
+              <p class="label" style="margin-bottom: var(--space-2);">Desenvolvimento</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Conta a história do custo invisível — o que parece faturamento alto, mas tem margem real muito menor do que parece.</p>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">CTA</p>
+              <p class="text-sm" style="color: var(--color-accent);">Agenda um Raio-X Digital gratuito comigo.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <span class="tag" style="margin-bottom: var(--space-3);">Face B — Tiago</span>
+            <h3 class="card__title">"Quanto tempo você perdeu hoje?"</h3>
+          </div>
+          <div class="card__body">
+            <div style="margin-bottom: var(--space-4);">
+              <p class="label" style="margin-bottom: var(--space-2);">Hook</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Quantas horas você gastou HOJE em tarefas que uma IA faria em 5 minutos?</p>
+            </div>
+            <div style="margin-bottom: var(--space-4);">
+              <p class="label" style="margin-bottom: var(--space-2);">Desenvolvimento</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">O operacional que prende o expert — aprovações, respostas, tarefas repetitivas que bloqueiam o crescimento.</p>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">CTA</p>
+              <p class="text-sm" style="color: var(--color-accent);">Vem pro Raio-X e eu te mostro ao vivo.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <span class="tag" style="margin-bottom: var(--space-3);">Face C — Brand</span>
+            <h3 class="card__title">"R$18K vs R$3K"</h3>
+          </div>
+          <div class="card__body">
+            <div style="margin-bottom: var(--space-4);">
+              <p class="label" style="margin-bottom: var(--space-2);">Hook</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Visual com números: R$18K de time. R$3K de agentes. Mesmo resultado.</p>
+            </div>
+            <div style="margin-bottom: var(--space-4);">
+              <p class="label" style="margin-bottom: var(--space-2);">Desenvolvimento</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Comparação visual animada entre custo de time humano e custo de agentes de IA com a mesma capacidade de entrega.</p>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">CTA</p>
+              <p class="text-sm" style="color: var(--color-accent);">Descubra quanto você pode economizar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Budget detalhado -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Budget Detalhado por Fase</h3>
+      <div class="table-wrapper" style="margin-bottom: var(--space-10);">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Dias</th>
+              <th>Budget/dia</th>
+              <th>Total</th>
+              <th>Objetivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Teste de rostos</td>
+              <td>Dias 1–3</td>
+              <td>R$20/rosto (x3)</td>
+              <td><strong style="color: var(--color-text-primary);">R$180</strong></td>
+              <td>Coletar dados de CPL dos 3 rostos simultaneamente</td>
+            </tr>
+            <tr>
+              <td>Reforço do vencedor</td>
+              <td>Dias 4–7</td>
+              <td>R$20 no rosto vencedor</td>
+              <td><strong style="color: var(--color-text-primary);">R$20</strong></td>
+              <td>Confirmar o melhor rosto antes de escalar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Regras de decisão -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Regras de Decisão por CPL</h3>
+      <div class="stack stack--4" style="margin-bottom: var(--space-10);">
+        <div class="alert alert--success">
+          <div class="alert__content">
+            <p class="alert__title">CPL abaixo de R$15</p>
+            <div class="alert__body">Escalar imediatamente — aumentar budget em 30–50% sem alterar criativo ou audiência.</div>
+          </div>
+        </div>
+        <div class="alert alert--warning">
+          <div class="alert__content">
+            <p class="alert__title">CPL entre R$15 e R$50</p>
+            <div class="alert__body">Otimizar — revisar copy do criativo, testar nova headline ou CTA. Manter budget estável.</div>
+          </div>
+        </div>
+        <div class="alert alert--error">
+          <div class="alert__content">
+            <p class="alert__title">CPL acima de R$50 ou zero leads</p>
+            <div class="alert__body">Revisar oferta e ângulo — problema estrutural. Pausar ad set, rever criativo do zero antes de reativar.</div>
+          </div>
+        </div>
+        <div class="alert alert--error">
+          <div class="alert__content">
+            <p class="alert__title">R$30 gastos sem nenhum lead</p>
+            <div class="alert__body">Pausar ad set imediatamente. Diagnóstico obrigatório: criativo, audiência, LP ou oferta.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audiência -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Configuração de Audiência</h3>
+      <div class="two-col" style="margin-bottom: var(--space-10);">
+        <div class="card card--sunken">
+          <p class="label" style="margin-bottom: var(--space-4);">Fase 1 — Interesses</p>
+          <ul class="doc-list">
+            <li>Hotmart</li>
+            <li>Kiwify</li>
+            <li>"Lançamento digital"</li>
+            <li>"Marketing digital"</li>
+            <li>"Infoproduto"</li>
+            <li>Idade: 27–48 anos</li>
+            <li>Geografia: Brasil inteiro</li>
+          </ul>
+        </div>
+        <div class="card card--sunken">
+          <p class="label" style="margin-bottom: var(--space-4);">Fase 2 — Lookalike</p>
+          <div class="alert alert--warning" style="margin-bottom: var(--space-3);">
+            <div class="alert__content">
+              <div class="alert__body">Lookalike apenas após 50 leads captados — base insuficiente antes disso prejudica a qualidade do público.</div>
+            </div>
+          </div>
+          <ul class="doc-list">
+            <li>1% LAL de lista de leads qualificados</li>
+            <li>1% LAL de quem agendou diagnóstico</li>
+            <li>Retargeting: visitantes da LP nos últimos 30 dias</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pixel/Tracking -->
+      <h3 class="h4" style="margin-bottom: var(--space-5);">Pixel e Rastreamento</h3>
+      <div class="card card--sunken">
+        <div class="two-col">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">Eventos obrigatórios</p>
+            <ul class="doc-list">
+              <li><code>PageView</code> — em todas as páginas</li>
+              <li><code>Lead</code> — no envio do formulário de agendamento</li>
+              <li><code>Schedule</code> — na confirmação do Cal.com</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label" style="margin-bottom: var(--space-3);">UTM obrigatório</p>
+            <ul class="doc-list">
+              <li><code>utm_source=meta</code></li>
+              <li><code>utm_campaign=[nome da campanha]</code></li>
+              <li><code>utm_content=[rosto]</code> — conecta o agendamento ao criativo</li>
+              <li>Análise no Cal.com + Sheets</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 12. Briefing da Landing Page ────────────────────────── -->
+    <section id="briefing-lp" class="doc-section">
+      <div class="doc-section-header">
+        <p class="doc-section-number">Seção 11</p>
+        <h2 class="doc-section-title">Briefing da Landing Page</h2>
+        <p class="doc-section-desc">Estrutura seção por seção da página de captura para o Raio-X Digital.</p>
+      </div>
+
+      <!-- Design direction -->
+      <div class="card card--sunken" style="margin-bottom: var(--space-8);">
+        <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center;">
+          <div>
+            <p class="label" style="margin-bottom: var(--space-2);">Direção visual</p>
+            <div style="display:flex; gap:var(--space-2); flex-wrap:wrap;">
+              <span class="badge">Dark mode (#1E1E1E)</span>
+              <span class="badge badge--accent">Accent #74C69E</span>
+              <span class="badge">Inter font</span>
+              <span class="badge">Minimal premium</span>
+              <span class="badge">Mobile-first</span>
+              <span class="badge badge--warning">CTA sticky</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs" style="color: var(--color-text-disabled); margin-top: var(--space-3);">Sem emojis · Sem gradientes · Sem patterns SaaS · Sem pricing tables</p>
+      </div>
+
+      <!-- Seção 1: Hero -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 1</span>
+            <h3 class="card__title" style="margin:0;">Hero</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="stack stack--4">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">Headline</p>
+              <p class="text-base text-semibold" style="color: var(--color-text-primary);">Você não precisa de mais custos e ferramentas.</p>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">Subheadline</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); line-height: var(--leading-relaxed);">Precisa de uma assessoria que traz estratégias dos maiores masterminds do digital para a sua operação com IA.</p>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">CTA principal</p>
+              <span class="badge badge--accent">Agendar Raio-X Digital Gratuito</span>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">Variantes por rosto</p>
+              <div style="display:flex; gap:var(--space-2); flex-wrap:wrap;">
+                <span class="badge">Face A — Moroni na imagem hero</span>
+                <span class="badge">Face B — Tiago na imagem hero</span>
+                <span class="badge">Face C — Brand sem rosto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 2: Problema -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 2</span>
+            <h3 class="card__title" style="margin:0;">Problema</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="stack stack--4">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">Inimigo narrativo</p>
+              <p class="text-sm" style="color: var(--color-text-secondary);">A acumulação de custos que mata a margem silenciosamente — team, ferramentas, freelancers, tráfego, checkout.</p>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">Dados de prova</p>
+              <div style="display:flex; gap:var(--space-3); flex-wrap:wrap;">
+                <span class="badge badge--warning">CPL +21% em 2025</span>
+                <span class="badge badge--warning">70% das implementações de IA falham</span>
+              </div>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-2);">Frase de encerramento do bloco</p>
+              <p class="text-sm" style="color: var(--color-text-secondary); font-style: italic;">"No final você até lucra. Mas se matou para conseguir."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 3: Solução -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 3</span>
+            <h3 class="card__title" style="margin:0;">Solução — Os 5 Agentes</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="three-col">
+            <div class="card card--sm">
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">SDR / Vendas</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Qualifica leads, responde objeções, move para o fechamento</p>
+            </div>
+            <div class="card card--sm">
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Conteúdo</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Produz roteiros, posts, e-mails com a voz do expert</p>
+            </div>
+            <div class="card card--sm">
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Suporte</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Responde alunos 24h sem depender de time humano</p>
+            </div>
+            <div class="card card--sm">
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Tráfego</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Otimiza campanhas, interpreta dados, sugere ações</p>
+            </div>
+            <div class="card card--sm">
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary);">Design</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Gera criativos, miniaturas e peças visuais automaticamente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 4: Como Funciona -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 4</span>
+            <h3 class="card__title" style="margin:0;">Como Funciona — 3 Passos</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="funnel-steps">
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle">1</div>
+                <div class="funnel-step__connector"></div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Raio-X Digital gratuito</p>
+                <p class="funnel-step__desc">35–45 minutos. Mapeamos custos, identificamos gargalos e demonstramos ao vivo como um agente funciona no seu negócio.</p>
+              </div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle">2</div>
+                <div class="funnel-step__connector"></div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Plano de agentes sob medida</p>
+                <p class="funnel-step__desc">Com base no diagnóstico, desenhamos quais agentes o seu negócio precisa, em qual ordem implementar e qual retorno esperar.</p>
+              </div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-step__line">
+                <div class="funnel-step__circle" style="background: var(--color-accent); color: var(--color-text-inverse); border-color: var(--color-accent);">3</div>
+              </div>
+              <div class="funnel-step__content">
+                <p class="funnel-step__title">Implementação com a sua voz</p>
+                <p class="funnel-step__desc">Treinamos os agentes com a sua linguagem, no seu processo. Ninguém percebe que é IA — e você não precisa aprender nada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 5: Prova Social -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 5</span>
+            <h3 class="card__title" style="margin:0;">Prova Social — Fase Zero</h3>
+          </div>
+          <p class="card__subtitle">Sem cases de clientes ainda — credenciais do time como prova</p>
+        </div>
+        <div class="card__body">
+          <div class="two-col">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-3);">Credenciais do time</p>
+              <ul class="doc-list">
+                <li>R$300K+ em contratos de IA entregues</li>
+                <li>Experiência direta com lançamentos, perpétuo e mentoria</li>
+                <li>Time de 2 especialistas em IA aplicada ao mercado digital</li>
+              </ul>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-3);">Demonstração em tempo real</p>
+              <ul class="doc-list">
+                <li>Screenshots de agentes rodando ao vivo na sessão</li>
+                <li>Nenhuma promessa sem demonstração prática</li>
+                <li>O Raio-X em si é a prova — o lead vê funcionando antes de comprar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 6: O que Acontece no Raio-X -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 6</span>
+            <h3 class="card__title" style="margin:0;">O que Acontece no Raio-X</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);">
+            <div class="card card--sm" style="text-align: center;">
+              <p class="text-lg text-semibold" style="color: var(--color-accent);">10 min</p>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary); margin-top: var(--space-1);">Mapeamento de custos</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Levantamos o que você gasta em time e ferramentas</p>
+            </div>
+            <div class="card card--sm" style="text-align: center;">
+              <p class="text-lg text-semibold" style="color: var(--color-accent);">10 min</p>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary); margin-top: var(--space-1);">Gargalos automatizáveis</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Identificamos o que pode ser operado por agentes</p>
+            </div>
+            <div class="card card--sm" style="text-align: center; border-color: var(--color-accent-border);">
+              <p class="text-lg text-semibold" style="color: var(--color-accent);">10 min</p>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary); margin-top: var(--space-1);">Demo ao vivo</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Você vê um agente funcionando no seu contexto</p>
+            </div>
+            <div class="card card--sm" style="text-align: center;">
+              <p class="text-lg text-semibold" style="color: var(--color-accent);">5 min</p>
+              <p class="text-sm text-semibold" style="color: var(--color-text-primary); margin-top: var(--space-1);">Projeção de retorno</p>
+              <p class="text-xs" style="color: var(--color-text-muted); margin-top: var(--space-1);">Quanto você economiza e em quanto tempo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 7: FAQ -->
+      <div class="card card--bordered" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 7</span>
+            <h3 class="card__title" style="margin:0;">FAQ — 5 Objeções Principais</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Objeção</th>
+                  <th>Resposta na LP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>"IA não entende meu nicho"</td>
+                  <td>Os agentes são treinados com a sua voz, os seus exemplos e o seu processo — não são templates genéricos.</td>
+                </tr>
+                <tr>
+                  <td>"Já tentei e não funcionou"</td>
+                  <td>Tentar sozinho com ferramentas genéricas e ter uma assessoria especializada são coisas completamente diferentes.</td>
+                </tr>
+                <tr>
+                  <td>"Não tenho tempo para aprender"</td>
+                  <td>Você não aprende nada. A gente implementa — e você só usa o resultado.</td>
+                </tr>
+                <tr>
+                  <td>"É caro?"</td>
+                  <td>Quanto você gasta em time por mês? Os agentes custam uma fração disso — sem férias, sem rotatividade, sem rescisão.</td>
+                </tr>
+                <tr>
+                  <td>"Meu público vai perceber que é IA"</td>
+                  <td>Ninguém percebe. O agente responde e escreve com a sua voz — porque foi treinado com o seu material.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção 8: CTA Final -->
+      <div class="card card--accent" style="margin-bottom: var(--space-5);">
+        <div class="card__header">
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span class="badge badge--accent">Seção 8</span>
+            <h3 class="card__title" style="margin:0;">CTA Final — Formulário de Agendamento</h3>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="two-col">
+            <div>
+              <p class="label" style="margin-bottom: var(--space-3);">Componentes</p>
+              <ul class="doc-list">
+                <li>Headline de reforço: "Agende seu Raio-X Digital — 100% gratuito"</li>
+                <li>Sub: "35–45 minutos. Você sai com um diagnóstico personalizado, mesmo que não feche."</li>
+                <li>Formulário Cal.com embutido com as 5 perguntas de pré-qualificação</li>
+                <li>CTA sticky mobile: botão fixo no rodapé em telas pequenas</li>
+              </ul>
+            </div>
+            <div>
+              <p class="label" style="margin-bottom: var(--space-3);">Tokens visuais aplicados</p>
+              <ul class="doc-list">
+                <li>Background: #1E1E1E (dark default)</li>
+                <li>Accent: #74C69E (verde u4digital)</li>
+                <li>Fonte: Inter — pesos 300, 400, 600</li>
+                <li>Sem gradientes decorativos</li>
+                <li>Mobile-first — breakpoint principal: 375px</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── Footer ──────────────────────────────────────────── -->
+    <footer class="doc-footer">
+      <span class="doc-footer__wordmark">u<span class="accent">4</span>digital</span>
+      <div class="doc-footer__meta">
+        <p>Documento interno — Maio 2026</p>
+        <p>Confidencial — não compartilhar externamente</p>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Active sidebar link on scroll
+  (function () {
+    const links = document.querySelectorAll('.doc-sidebar__link[href^="#"]');
+    const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+    function setActive() {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 120) {
+          current = '#' + section.id;
+        }
+      });
+      links.forEach(link => {
+        link.classList.toggle('is-active', link.getAttribute('href') === current);
+      });
+    }
+
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  })();
+</script>
+
+</body>
+</html>

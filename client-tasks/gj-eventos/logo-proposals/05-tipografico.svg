@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140">
+  <!-- Variation 5: Tipográfico Premium — pure typography, elegant connector -->
+
+  <!-- Main GJ letterforms with distinctive ampersand connector -->
+  <g transform="translate(160, 56)">
+    <!-- G — light weight, elegant -->
+    <text x="-36" y="0" text-anchor="middle" font-family="'Georgia', 'Times New Roman', serif" font-size="64" font-weight="400" fill="currentColor">G</text>
+
+    <!-- Connector dot / ampersand element -->
+    <circle cx="0" cy="-6" r="3" fill="#3CBCB4"/>
+    <line x1="0" y1="-16" x2="0" y2="4" stroke="#3CBCB4" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- J — matching weight -->
+    <text x="36" y="0" text-anchor="middle" font-family="'Georgia', 'Times New Roman', serif" font-size="64" font-weight="400" fill="currentColor">J</text>
+  </g>
+
+  <!-- Thin rule -->
+  <line x1="100" y1="78" x2="220" y2="78" stroke="#3CBCB4" stroke-width="0.75" stroke-linecap="round"/>
+
+  <!-- EVENTOS in contrasting sans-serif, ultra-light -->
+  <text x="160" y="100" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="200" letter-spacing="12" fill="currentColor" opacity="0.5">EVENTOS</text>
+</svg>

@@ -1,6 +1,6 @@
 # Strategic Context — Reis IA
 
-Last updated: 2026-03-30
+Last updated: 2026-05-12
 
 This document provides the **core strategic context** for all agents operating in this system.
 
@@ -93,18 +93,30 @@ Primary revenue streams:
 
 ## 6. Current Stage
 
-**Early growth stage.**
+**Active growth stage — multi-client, multi-pillar.**
 
 Current situation:
-- first mentorship clients being acquired
-- early AI implementation projects starting
-- existing audience of students and AI professionals
-- initial case studies being generated
+- 7+ active client projects across Systems and Marketing pillars
+- Low-ticket funnel live (R$47 Agentes IA course at agentesia.moronireis.com.br)
+- Meta Ads running across 5 ad accounts (Moroni Reis, Noiva S/A, Agente Lucrativo, Leo Soares 3)
+- Agent system expanded to 45 specialized agents across 8 pipelines
+- Video pipeline (Stack 3) implemented with OSS tools (Whisper + ffmpeg + Pexels)
+- Paid launch system (Stack 5) documented with 5 launch models
+
+Active clients (as of May 2026):
+- **Noiva S/A**: Wedding services — full marketing + ads + content (ongoing)
+- **Castelo dos Lagos**: Event venue — website + marketing strategy (delivered)
+- **Di Matoso**: Restaurant — website + design system (delivered)
+- **Natori Foods**: Competitive intelligence platform — ML/Shopee/Amazon (demo pending)
+- **RHF Talentos**: AI recruitment automation pilot — R$5K + R$497/mo (300+ franchise network)
+- **Digital People**: Photo/video/booth company — proposal stage
+- **BruxCom / Marcos Junior**: Dental education video editing — test batch agreed
 
 Short-term goals:
-- reach first 100k in revenue
-- generate 3–5 strong case studies
-- structure a predictable sales pipeline
+- scale low-ticket funnel to fund paid launches
+- close RHF Talentos pilot and expand to franchise network
+- launch Builders mentorship program with structured curriculum
+- reach R$100K/month recurring
 
 ---
 
@@ -173,10 +185,17 @@ When working with this context:
 - **Design language**: Minimal geometric, architectural, Apple/Porsche/Stripe level premium
 - **Mode**: Dark mode default
 
-### Agent System
-- 25 specialized AI agents covering: strategy, research, copy (with Hormozi framework + humanization pipeline), design, development, education, brand, and operations
+### Agent System (May 2026)
+- 45 specialized AI agents across 8 pipelines (Copy Squad, Content, Design, Education, Video, Technical, Brand, Ads)
+- 8 rule sets in .claude/rules/ (brand-voice, hormozi-framework, humanization-rules, ads-safety, brand-audit-checklist, content-production, high-ticket-sales, launch-methodology)
+- 4 voice profiles in .claude/voice-profiles/
+- Skills: design-md (Alan Nicolas extraction skill), interactive-ui, visual-backgrounds
+- Meta Ads MCP server connected to 5 ad accounts
+- claude-ads plugin with 250+ audit checks
+- Video pipeline: Whisper + ffmpeg + Pexels (OSS, $0/month)
 - Copy Squad pipeline: CMO brief → Copywriter → Humanizer → Reviewer → CMO sign-off
-- Educational pipeline: Education Director → Scriptwriter → Educational Designer → Review
+- Content pipeline: Social Media Director → Hook Specialist → {Reels/LinkedIn/Carousel} → Humanizer → Reviewer
+- Ads pipeline: CMO → Creative Strategist → Copy Squad + Designer → Traffic Manager (PAUSED) → Human Approval → Ads Analyst
 
 ## 10. Marketing Infrastructure
 
@@ -194,5 +213,27 @@ When working with this context:
 
 ---
 
+## 11. Active Infrastructure (May 2026)
+
+### Deployed Sites
+- **agentesia.moronireis.com.br** — Low-ticket LP (R$47 Agentes IA) + Ticto webhook + CAPI + 12 Meta Ads
+- **marketing.moronireis.com.br** — Diagnostic quiz, event pages, forms, admin panel
+- **hub-reisia.vercel.app** / **reis-ia-hub.vercel.app** — HUB platform (dual domain)
+- Multiple client sites on Vercel (Castelo, Di Matoso, Fortzen, etc.)
+
+### Automation Stack
+- SDR outreach automation (Python — scripts/automation/)
+- WhatsApp-Claude bridge for lead nurturing
+- Email automation via Resend
+- Carousel engine (Playwright + FFmpeg + Sharp)
+- Video pipeline (Whisper + ffmpeg + Pexels APIs)
+
+### Knowledge Base
+- 9 strategy knowledge files (FL framework, Sobral traffic, Baldan LCP, Puglia sales, etc.)
+- 5 mood reports in design library
+- 24 reference site extractions in design library
+- 11 pattern catalogs (GSAP, Three.js, Lenis, editorial, motion, etc.)
+
 ## CHANGELOG
+- [2026-05-12] — Updated to May 2026 reality: 45 agents, 7+ active clients, low-ticket live, Meta Ads active, video pipeline implemented, infrastructure inventory added.
 - [2026-03-30] — Added sections 9 (Current Business Position) and 10 (Marketing Infrastructure) with ecosystem expansion details, confirmed decisions, digital infrastructure inventory, and brand identity finalization.

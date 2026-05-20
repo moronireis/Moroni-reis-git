@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- GP Monogram Standalone — extracted from Variation E for favicon/avatar use -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&amp;display=swap');
+    </style>
+  </defs>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#DBA99F" stroke-width="1.5"/>
+  <text x="100" y="88" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="300" font-size="56" fill="#2C2C2C" text-anchor="middle">G</text>
+  <text x="100" y="132" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="400" font-size="42" fill="#DBA99F" text-anchor="middle">P</text>
+</svg>

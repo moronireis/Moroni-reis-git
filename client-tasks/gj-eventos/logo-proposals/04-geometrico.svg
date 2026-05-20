@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <!-- Variation 4: Geométrico Floral — geometric mark referencing events structure + floral origin -->
+
+  <g transform="translate(160, 70)">
+    <!-- Geometric container — hexagonal frame suggesting structure/events -->
+    <path d="M 0,-40 L 35,-20 L 35,20 L 0,40 L -35,20 L -35,-20 Z" fill="none" stroke="#3CBCB4" stroke-width="1.5" stroke-linejoin="round" opacity="0.3"/>
+
+    <!-- Inner geometric petals — abstract floral form -->
+    <path d="M 0,-28 Q 12,-14 0,0 Q -12,-14 0,-28 Z" fill="#3CBCB4" opacity="0.15"/>
+    <path d="M 0,0 Q 12,14 0,28 Q -12,14 0,0 Z" fill="#3CBCB4" opacity="0.15"/>
+    <path d="M -24,-14 Q -12,0 0,0 Q -12,-14 -24,-14 Z" fill="#3CBCB4" opacity="0.1"/>
+    <path d="M 24,-14 Q 12,0 0,0 Q 12,-14 24,-14 Z" fill="#3CBCB4" opacity="0.1"/>
+    <path d="M -24,14 Q -12,0 0,0 Q -12,14 -24,14 Z" fill="#3CBCB4" opacity="0.1"/>
+    <path d="M 24,14 Q 12,0 0,0 Q 12,14 24,14 Z" fill="#3CBCB4" opacity="0.1"/>
+
+    <!-- Central GJ mark — clean and bold -->
+    <text x="0" y="8" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="2" fill="currentColor">GJ</text>
+  </g>
+
+  <!-- EVENTOS subtitle -->
+  <text x="160" y="136" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="10" fill="currentColor" opacity="0.5">EVENTOS</text>
+
+  <!-- Small accent dot -->
+  <circle cx="160" cy="150" r="2" fill="#3CBCB4" opacity="0.5"/>
+</svg>
