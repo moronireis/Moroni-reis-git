@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leilaine Campioto — Mídia Kit 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bk: #091022;
+      --bk2: #0d1630;
+      --lt: #f4f6fa;
+      --lt2: #edf0f7;
+      --wh: #ffffff;
+      --tl: #d6dce8;
+      --td: #091022;
+      --ml: rgba(214,220,232,.55);
+      --md: rgba(9,16,34,.5);
+      --gold: #DF9F3E;
+      --goldd: rgba(223,159,62,.3);
+      --goldl: rgba(223,159,62,.08);
+      --bline-d: rgba(223,159,62,.12);
+      --bline-l: rgba(9,16,34,.08);
+      --d: 'Cinzel', Georgia, serif;
+      --b: 'Montserrat', 'Helvetica Neue', sans-serif;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body {
+      font-family: var(--b);
+      color: var(--tl);
+      background: var(--bk);
+      overflow-x: hidden;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ─── REVEAL ─── */
+    .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .rv.vis { opacity: 1; transform: none; }
+    .rv-s { transition-delay: .15s; }
+    .rv-m { transition-delay: .30s; }
+    .rv-l { transition-delay: .45s; }
+    .rv-scale { opacity: 0; transform: scale(.96); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+    .rv-scale.vis { opacity: 1; transform: scale(1); }
+
+    /* ─── UTILITIES ─── */
+    .eyebrow {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pad { padding: clamp(64px,10vw,120px) clamp(28px,6vw,72px); }
+    .rule { width: 40px; height: 1px; background: var(--goldd); margin: 0 auto; }
+
+    /* ─── PHOTO PLACEHOLDER ─── */
+    .photo-ph {
+      background: var(--bk2);
+      border: 1px dashed rgba(223,159,62,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-ph span {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(223,159,62,.4);
+    }
+
+    /* ══════════════════════════════════════════
+       1. COVER
+    ══════════════════════════════════════════ */
+    .cover {
+      position: relative;
+      height: 100svh;
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .cover-ph {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #0d1a3a 0%, #091022 60%, #050c1a 100%);
+    }
+    /* Subtle geometric accent */
+    .cover-ph::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(223,159,62,.06) 0%, transparent 70%);
+    }
+    .cover-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,16,34,.95) 0%, rgba(9,16,34,.55) 35%, rgba(9,16,34,.15) 65%, transparent 80%);
+    }
+    .cover-photo-ph {
+      position: absolute;
+      inset: 0;
+    }
+    .cover-photo-ph .photo-ph {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0;
+      background: linear-gradient(160deg, #0d1a3a 0%, #091022 60%, #050c1a 100%);
+    }
+    .cover-photo-ph .photo-ph::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 25%, rgba(223,159,62,.05) 0%, transparent 65%);
+    }
+    .cover-photo-ph .photo-ph span {
+      position: relative;
+      z-index: 1;
+    }
+    .cover-c {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 40px 88px;
+      width: 100%;
+    }
+    .cover-kit {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 22px;
+    }
+    .cover-name {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(44px, 11vw, 108px);
+      line-height: .88;
+      color: #fff;
+      letter-spacing: .04em;
+      text-shadow: 0 3px 24px rgba(9,16,34,.5);
+    }
+    .cover-role {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(9px, 1.4vw, 12px);
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 24px;
+    }
+    .cover-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: pulse 2.2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: .25; }
+      50% { opacity: .75; }
+    }
+
+    /* ══════════════════════════════════════════
+       2. QUEM É
+    ══════════════════════════════════════════ */
+    .about { background: var(--lt); color: var(--td); }
+    .about-bio {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(17px, 2.6vw, 26px);
+      line-height: 1.6;
+      color: var(--td);
+      margin-top: 24px;
+    }
+    .about-bio strong { font-weight: 400; }
+    .about-badges {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .about-badge {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 6px 16px;
+      border: 1px solid rgba(223,159,62,.4);
+      transition: background .4s, color .4s;
+    }
+    .about-badge:hover { background: var(--gold); color: #fff; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 40px;
+      border-top: 1px solid var(--bline-l);
+    }
+    .about-st {
+      padding: 28px 12px;
+      text-align: center;
+      border-right: 1px solid var(--bline-l);
+    }
+    .about-st:nth-child(2n) { border-right: none; }
+    .about-st:nth-child(n+3) { border-top: 1px solid var(--bline-l); }
+    .about-st b {
+      display: block;
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(26px, 4vw, 40px);
+      color: var(--td);
+      line-height: 1;
+    }
+    .about-st b span { color: var(--gold); }
+    .about-st small {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--md);
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ══════════════════════════════════════════
+       3. NÚMERO HERO
+    ══════════════════════════════════════════ */
+    .num-hero {
+      height: 100svh;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--bk);
+      padding: 40px;
+    }
+    .num-hero-num {
+      font-family: var(--b);
+      font-weight: 200;
+      font-size: clamp(68px, 17vw, 160px);
+      line-height: .85;
+      color: var(--tl);
+      letter-spacing: .02em;
+    }
+    .num-hero-num span { color: var(--gold); }
+    .num-hero-label {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(11px, 1.6vw, 16px);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ml);
+      margin-top: 28px;
+    }
+    .num-hero-sub {
+      font-family: var(--d);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(15px, 2vw, 22px);
+      color: var(--ml);
+      margin-top: 48px;
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       4. EXPERTISE
+    ══════════════════════════════════════════ */
+    .expertise { background: var(--lt2); color: var(--td); }
+    .expertise-title {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(28px, 4.5vw, 46px);
+      line-height: 1.1;
+      color: var(--td);
+      margin-top: 20px;
+    }
+    .expertise-desc {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(13px, 1.5vw, 15px);
+      color: var(--md);
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 460px;
+    }
+    .expertise-pillars {
+      margin-top: 56px;
+      border-top: 1px solid var(--bline-l);
+    }
+    .expertise-pillar {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--bline-l);
+    }
+    .expertise-pillar-num {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(44px, 6vw, 64px);
+      color: rgba(9,16,34,.05);
+      line-height: 1;
+    }
+    .expertise-pillar h3 {
+      font-family: var(--d);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(17px, 2.1vw, 22px);
+      color: var(--td);
+      margin-top: -6px;
+      line-height: 1.25;
+    }
+    .expertise-pillar p {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(12px, 1.3vw, 13px);
+      color: var(--md);
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    /* ══════════════════════════════════════════
+       5. PALCOS & EVENTOS
+    ══════════════════════════════════════════ */
+    .palcos {
+      position: relative;
+      min-height: 80svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .palcos-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .palcos-photo-ph {
+      width: 100%;
+      height: 100%;
+    }
+    .palcos-photo-ph .photo-ph {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: unset;
+      border: none;
+      background: linear-gradient(180deg, #0d1630 0%, #091022 100%);
+      position: relative;
+    }
+    .palcos-photo-ph .photo-ph::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 60%, rgba(223,159,62,.04) 0%, transparent 70%);
+    }
+    .palcos-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,16,34,.97) 0%, rgba(9,16,34,.65) 40%, rgba(9,16,34,.25) 75%, rgba(9,16,34,.15) 100%);
+    }
+    .palcos-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      box-shadow: inset 0 0 80px 40px rgba(9,16,34,.5);
+      pointer-events: none;
+    }
+    .palcos-c {
+      position: relative;
+      z-index: 2;
+      padding: clamp(48px,6vw,80px);
+      width: 100%;
+    }
+    .palcos-t {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.1;
+      color: #fff;
+      margin-top: 16px;
+    }
+    .palcos-d {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(12px, 1.4vw, 15px);
+      color: rgba(255,255,255,.6);
+      line-height: 1.7;
+      margin-top: 18px;
+    }
+    .palcos-formats {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .palcos-formats li {
+      list-style: none;
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(12px, 1.4vw, 14px);
+      color: rgba(255,255,255,.72);
+      padding-left: 22px;
+      position: relative;
+    }
+    .palcos-formats li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 9px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .palcos-tags {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .palcos-tag {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 6px 14px;
+      border: 1px solid var(--goldd);
+      transition: background .4s;
+    }
+    .palcos-tag:hover { background: rgba(223,159,62,.1); }
+
+    /* ══════════════════════════════════════════
+       6. TEMAS DISPONÍVEIS
+    ══════════════════════════════════════════ */
+    .temas { background: var(--lt); color: var(--td); }
+    .temas-title {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.1;
+      color: var(--td);
+      margin-top: 20px;
+    }
+    .temas-list {
+      margin-top: 48px;
+      border-top: 1px solid var(--bline-l);
+    }
+    .tema-item {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--bline-l);
+      cursor: default;
+      transition: background .3s;
+    }
+    .tema-item:hover { background: rgba(223,159,62,.03); padding-left: 6px; transition: background .3s, padding .3s; }
+    .tema-num {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(36px, 5vw, 52px);
+      color: rgba(9,16,34,.06);
+      line-height: 1;
+    }
+    .tema-title {
+      font-family: var(--d);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(15px, 1.9vw, 20px);
+      color: var(--td);
+      margin-top: -6px;
+      line-height: 1.3;
+    }
+    .tema-desc {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: var(--md);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    /* ══════════════════════════════════════════
+       7. DIFERENCIAIS
+    ══════════════════════════════════════════ */
+    .diferenciais {
+      background: var(--bk);
+      color: var(--tl);
+    }
+    .diferenciais-title {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.1;
+      color: var(--tl);
+      margin-top: 20px;
+    }
+    .dif-grid {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--bline-d);
+    }
+    .dif-item {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--bline-d);
+      transition: background .4s;
+    }
+    .dif-item:hover { background: rgba(223,159,62,.04); }
+    .dif-num {
+      font-family: var(--b);
+      font-weight: 200;
+      font-size: 11px;
+      letter-spacing: .18em;
+      color: var(--gold);
+    }
+    .dif-item h3 {
+      font-family: var(--d);
+      font-weight: 400;
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: var(--tl);
+      margin-top: 10px;
+      line-height: 1.2;
+    }
+    .dif-item p {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(12px, 1.3vw, 14px);
+      color: var(--ml);
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    /* ══════════════════════════════════════════
+       8. DEPOIMENTOS
+    ══════════════════════════════════════════ */
+    .depoimentos { background: var(--lt2); color: var(--td); }
+    .depoimentos-title {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.1;
+      color: var(--td);
+      margin-top: 20px;
+    }
+    .dep-grid {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .dep-card {
+      padding: 28px;
+      border: 1px solid var(--bline-l);
+      background: rgba(9,16,34,.03);
+      transition: border-color .4s;
+    }
+    .dep-card:hover { border-color: rgba(223,159,62,.3); }
+    .dep-text {
+      font-family: var(--d);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(14px, 1.7vw, 18px);
+      color: rgba(9,16,34,.5);
+      line-height: 1.55;
+    }
+    .dep-text.placeholder-content {
+      border: 1px dashed rgba(9,16,34,.15);
+      padding: 12px;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: .08em;
+      font-family: var(--b);
+      text-transform: uppercase;
+    }
+    .dep-author {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--bline-l);
+    }
+    .dep-name {
+      font-family: var(--b);
+      font-weight: 400;
+      font-size: clamp(11px, 1.2vw, 12px);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--td);
+    }
+    .dep-company {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--md);
+      margin-top: 2px;
+    }
+    .dep-author.placeholder-content {
+      border: 1px dashed rgba(9,16,34,.12);
+      padding: 8px;
+      font-size: 10px;
+      letter-spacing: .08em;
+      font-family: var(--b);
+      text-transform: uppercase;
+      color: rgba(9,16,34,.3);
+      text-align: center;
+    }
+
+    /* ══════════════════════════════════════════
+       9. FORMATOS E INVESTIMENTO
+    ══════════════════════════════════════════ */
+    .investimento {
+      background: var(--bk2);
+      color: var(--tl);
+    }
+    .investimento-title {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.1;
+      color: var(--tl);
+      margin-top: 20px;
+    }
+    .inv-table {
+      margin-top: 48px;
+      border-top: 1px solid var(--bline-d);
+    }
+    .inv-row {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--bline-d);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background .3s;
+    }
+    .inv-row:hover { background: rgba(223,159,62,.04); }
+    .inv-format {
+      font-family: var(--b);
+      font-weight: 400;
+      font-size: clamp(12px, 1.4vw, 14px);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--tl);
+    }
+    .inv-price {
+      font-family: var(--d);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--gold);
+    }
+    .inv-note {
+      margin-top: 32px;
+      padding: 20px;
+      border: 1px solid var(--bline-d);
+      background: rgba(223,159,62,.04);
+    }
+    .inv-note p {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: var(--ml);
+      line-height: 1.6;
+    }
+    .inv-note p strong {
+      color: rgba(223,159,62,.7);
+      font-weight: 400;
+    }
+
+    /* ══════════════════════════════════════════
+       10. CONTATO
+    ══════════════════════════════════════════ */
+    .contato {
+      background: var(--bk);
+      min-height: 85svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: clamp(72px,10vw,100px) clamp(28px,5vw,72px);
+    }
+    .contato-brand {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 52px;
+    }
+    .contato-quote {
+      font-family: var(--d);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(18px, 2.8vw, 28px);
+      line-height: 1.5;
+      color: var(--tl);
+      max-width: 420px;
+    }
+    .contato-line {
+      width: 40px;
+      height: 1px;
+      background: var(--goldd);
+      margin: 48px auto;
+    }
+    .contato-name {
+      font-family: var(--d);
+      font-weight: 300;
+      font-size: clamp(22px, 3.5vw, 32px);
+      color: var(--tl);
+      margin-bottom: 28px;
+    }
+    .contato-info {
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: clamp(14px, 1.7vw, 16px);
+      color: var(--ml);
+      line-height: 2.4;
+    }
+    .contato-info a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity .3s;
+    }
+    .contato-info a:hover { opacity: .75; }
+    .contato-scarcity {
+      margin-top: 48px;
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .contato-ft {
+      margin-top: auto;
+      padding-top: 56px;
+      font-family: var(--b);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: .14em;
+      color: rgba(214,220,232,.12);
+    }
+
+    /* ─── DIVIDERS ─── */
+    .div-gold { height: 1px; background: var(--goldd); }
+
+    /* ─── TEXT-SHADOW on dark overlays ─── */
+    .cover-c *, .palcos-c * { text-shadow: 0 1px 12px rgba(9,16,34,.5); }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      .rv, .rv-scale { opacity: 1; transform: none; transition: none; }
+      .cover-scroll { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       1. COVER
+  ══════════════════════════════════════════ -->
+  <section class="cover">
+    <div class="cover-bg">
+      <img src="assets/web-image00012.jpeg" alt="Leilaine Campioto" style="width:100%;height:100%;object-fit:cover;object-position:center 15%">
+    </div>
+    <div class="cover-c">
+      <p class="cover-kit rv">Mídia Kit 2026</p>
+      <h1 class="cover-name rv rv-s">Leilaine<br>Campioto</h1>
+      <p class="cover-role rv rv-m">Vendas &middot; IA &middot; Estruturação Comercial</p>
+    </div>
+    <div class="cover-scroll"></div>
+  </section>
+
+  <div class="div-gold"></div>
+
+  <!-- ══════════════════════════════════════════
+       2. QUEM É
+  ══════════════════════════════════════════ -->
+  <section class="about pad">
+    <p class="eyebrow rv">Sobre Leilaine</p>
+    <p class="about-bio rv rv-s">
+      20+ anos estruturando operações comerciais. Participação direta em <strong>mais de R$500 milhões em vendas</strong>. Contribuiu para o crescimento de uma empresa de R$20M para R$80M/ano. Fundadora da ZNITH — consultoria de arquitetura comercial com inteligência artificial.
+    </p>
+    <div class="about-badges rv rv-m">
+      <span class="about-badge">ZNITH Consulting</span>
+      <span class="about-badge">ZNITH.AI OS</span>
+      <span class="about-badge">Líderes Leões</span>
+    </div>
+    <div class="about-stats">
+      <div class="about-st rv">
+        <b>20<span>+</span></b>
+        <small>Anos de experiência</small>
+      </div>
+      <div class="about-st rv rv-s">
+        <b>R$500<span>M+</span></b>
+        <small>Em vendas</small>
+      </div>
+      <div class="about-st rv rv-m">
+        <b>R$20→80<span>M</span></b>
+        <small>Crescimento</small>
+      </div>
+      <div class="about-st rv rv-l">
+        <b>4<span>+</span></b>
+        <small>Segmentos atendidos</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       2b. GALERIA EDITORIAL
+  ══════════════════════════════════════════ -->
+  <section style="background:var(--bk);padding:clamp(3px,0.5vw,4px)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+      <img src="assets/web-image00007.jpeg" alt="Leilaine editorial" class="rv" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%">
+      <img src="assets/web-image00001.jpeg" alt="Leilaine retrato" class="rv rv-s" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%">
+      <img src="assets/web-image00008.jpeg" alt="Leilaine close" class="rv rv-m" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 15%">
+      <img src="assets/web-image00005.jpeg" alt="Leilaine casual" class="rv rv-l" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%">
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       3. NÚMERO HERO
+  ══════════════════════════════════════════ -->
+  <section class="num-hero">
+    <div class="rule rv"></div>
+    <div class="rv-scale" style="margin-top:32px;text-align:center">
+      <div class="num-hero-num">R$500<span>M+</span></div>
+    </div>
+    <div class="rule rv rv-s" style="margin-top:32px"></div>
+    <p class="num-hero-label rv rv-s">Em vendas estruturadas</p>
+    <p class="num-hero-sub rv rv-m">"Não é teoria. São duas décadas no campo — a pressão, o caos, as reconstruções."</p>
+  </section>
+
+  <div class="div-gold"></div>
+
+  <!-- ══════════════════════════════════════════
+       4. EXPERTISE
+  ══════════════════════════════════════════ -->
+  <section class="expertise pad">
+    <p class="eyebrow rv">No palco</p>
+    <h2 class="expertise-title rv rv-s">O que Leilaine<br>entrega no palco</h2>
+    <p class="expertise-desc rv rv-m">Não é palestra motivacional. É conteúdo estratégico com aplicação imediata para líderes e equipes comerciais.</p>
+    <div class="expertise-pillars">
+      <div class="expertise-pillar rv">
+        <div class="expertise-pillar-num">01</div>
+        <h3>Vendas com Inteligência Artificial</h3>
+        <p>Como usar IA para acelerar o processo comercial sem automatizar o caos. O que funciona, o que não funciona, e por onde começar.</p>
+      </div>
+      <div class="expertise-pillar rv rv-s">
+        <div class="expertise-pillar-num">02</div>
+        <h3>Estruturação Comercial</h3>
+        <p>Por que 80% das empresas crescem com dor. A diferença entre movimento e direção. Como construir uma operação que não depende do dono.</p>
+      </div>
+      <div class="expertise-pillar rv rv-m">
+        <div class="expertise-pillar-num">03</div>
+        <h3>Liderança Comercial</h3>
+        <p>O líder que constrói times vs. o líder que apaga incêndio. Governança, cadência e cultura comercial.</p>
+      </div>
+      <div class="expertise-pillar rv rv-l">
+        <div class="expertise-pillar-num">04</div>
+        <h3>IA para Negócios</h3>
+        <p>Desmistificação prática. O que a IA pode e o que não pode. Diagnóstico de prontidão. Workshop hands-on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       5. PALCOS & EVENTOS
+  ══════════════════════════════════════════ -->
+  <section class="palcos">
+    <div class="palcos-bg">
+      <img src="assets/web-image00010.jpeg" alt="Leilaine palestrando" style="width:100%;height:100%;object-fit:cover;object-position:center 15%">
+    </div>
+    <div class="palcos-c">
+      <p class="eyebrow rv">Palestras &amp; Eventos</p>
+      <h2 class="palcos-t rv rv-s">Palcos e eventos</h2>
+      <p class="palcos-d rv rv-m">Do treinamento in-company ao palco de 500 pessoas. Cada palestra é customizada para o público e o objetivo do evento.</p>
+      <ul class="palcos-formats rv rv-m">
+        <li>Palestra (45–90 min)</li>
+        <li>Workshop (3–4h)</li>
+        <li>Treinamento In-Company</li>
+        <li>Masterclass</li>
+        <li>Painel / Mesa Redonda</li>
+      </ul>
+      <div class="palcos-tags rv rv-l">
+        <span class="palcos-tag">São Paulo</span>
+        <span class="palcos-tag">Minas Gerais</span>
+        <span class="palcos-tag">Nacional</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="div-gold"></div>
+
+  <!-- ══════════════════════════════════════════
+       5b. COMPOSIÇÃO FOTOS
+  ══════════════════════════════════════════ -->
+  <section style="background:var(--bk);padding:clamp(3px,0.5vw,4px)">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px">
+      <img src="assets/web-image00003.jpeg" alt="Leilaine" class="rv" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%">
+      <img src="assets/web-image00009.jpeg" alt="Leilaine" class="rv rv-s" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 15%">
+      <img src="assets/web-image00010.jpeg" alt="Leilaine" class="rv rv-m" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%">
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       6. TEMAS DISPONÍVEIS
+  ══════════════════════════════════════════ -->
+  <section class="temas pad">
+    <p class="eyebrow rv">Repertório</p>
+    <h2 class="temas-title rv rv-s">Temas disponíveis</h2>
+    <div class="temas-list">
+
+      <div class="tema-item rv">
+        <div class="tema-num">01</div>
+        <h3 class="tema-title">Vendas com IA: o que funciona, o que é hype, e por onde começar</h3>
+        <p class="tema-desc">Para empresas que querem implementar IA no comercial mas não sabem como.</p>
+      </div>
+
+      <div class="tema-item rv rv-s">
+        <div class="tema-num">02</div>
+        <h3 class="tema-title">O cemitério de ferramentas: por que seu CRM não te salvou</h3>
+        <p class="tema-desc">Para equipes frustradas com tecnologia que não deu resultado.</p>
+      </div>
+
+      <div class="tema-item rv">
+        <div class="tema-num">03</div>
+        <h3 class="tema-title">Arquitetura comercial: a estrutura invisível do crescimento</h3>
+        <p class="tema-desc">Para líderes que querem escalar sem virar reféns do próprio negócio.</p>
+      </div>
+
+      <div class="tema-item rv rv-s">
+        <div class="tema-num">04</div>
+        <h3 class="tema-title">Receita invisível: quanto sua empresa perde sem saber</h3>
+        <p class="tema-desc">Para CEOs que faturam bem mas não sabem quanto sobra.</p>
+      </div>
+
+      <div class="tema-item rv">
+        <div class="tema-num">05</div>
+        <h3 class="tema-title">Líderes que constroem vs. líderes que apagam incêndio</h3>
+        <p class="tema-desc">Para gestores e diretores comerciais.</p>
+      </div>
+
+      <div class="tema-item rv rv-s">
+        <div class="tema-num">06</div>
+        <h3 class="tema-title">IA sem direção só acelera o caos</h3>
+        <p class="tema-desc">O tema flagship. Para eventos de tecnologia e inovação.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       7. DIFERENCIAIS
+  ══════════════════════════════════════════ -->
+  <section class="diferenciais pad">
+    <p class="eyebrow rv">Por que Leilaine</p>
+    <h2 class="diferenciais-title rv rv-s">Diferenciais</h2>
+    <div class="dif-grid">
+
+      <div class="dif-item rv">
+        <span class="dif-num">01</span>
+        <h3>Experiência real, não teoria</h3>
+        <p>20+ anos no campo. Já viveu cada desafio que apresenta no palco. Fala com propriedade de quem reconstruiu operações reais.</p>
+      </div>
+
+      <div class="dif-item rv rv-s">
+        <span class="dif-num">02</span>
+        <h3>Conteúdo aplicável imediatamente</h3>
+        <p>O público sai com frameworks, checklists e um plano de ação. Não sai com frases bonitas.</p>
+      </div>
+
+      <div class="dif-item rv rv-m">
+        <span class="dif-num">03</span>
+        <h3>Customização total</h3>
+        <p>Cada palestra é adaptada ao setor, ao momento e ao público do evento. Reunião prévia com organizadores é obrigatória.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       8. DEPOIMENTOS
+  ══════════════════════════════════════════ -->
+  <section class="depoimentos pad">
+    <p class="eyebrow rv">Referências</p>
+    <h2 class="depoimentos-title rv rv-s">O que dizem</h2>
+    <div class="dep-grid">
+
+      <div class="dep-card rv">
+        <p class="dep-text placeholder-content">[Depoimento em breve]</p>
+        <div class="dep-author placeholder-content">[Nome · Cargo · Empresa]</div>
+      </div>
+
+      <div class="dep-card rv rv-s">
+        <p class="dep-text placeholder-content">[Depoimento em breve]</p>
+        <div class="dep-author placeholder-content">[Nome · Cargo · Empresa]</div>
+      </div>
+
+      <div class="dep-card rv rv-m">
+        <p class="dep-text placeholder-content">[Depoimento em breve]</p>
+        <div class="dep-author placeholder-content">[Nome · Cargo · Empresa]</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="div-gold"></div>
+
+  <!-- ══════════════════════════════════════════
+       9. FORMATOS E INVESTIMENTO
+  ══════════════════════════════════════════ -->
+  <section class="investimento pad">
+    <p class="eyebrow rv">Contratação</p>
+    <h2 class="investimento-title rv rv-s">Formatos e investimento</h2>
+
+    <div class="inv-table">
+
+      <div class="inv-row rv">
+        <span class="inv-format">Palestra (45–90 min)</span>
+        <span class="inv-price">A partir de R$5.000</span>
+      </div>
+
+      <div class="inv-row rv rv-s">
+        <span class="inv-format">Workshop (3–4h)</span>
+        <span class="inv-price">A partir de R$8.000</span>
+      </div>
+
+      <div class="inv-row rv rv-m">
+        <span class="inv-format">Treinamento In-Company (1 dia)</span>
+        <span class="inv-price">A partir de R$12.000</span>
+      </div>
+
+      <div class="inv-row rv rv-l">
+        <span class="inv-format">Programa customizado</span>
+        <span class="inv-price">Sob consulta</span>
+      </div>
+
+    </div>
+
+    <div class="inv-note rv rv-l">
+      <p><strong>Nota:</strong> Valores para eventos presenciais em São Paulo. Eventos em outros estados incluem deslocamento e hospedagem.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       10. CONTATO
+  ══════════════════════════════════════════ -->
+  <section class="contato">
+    <p class="contato-brand rv">ZNITH</p>
+    <p class="contato-quote rv rv-s">"IA sem direção só acelera o caos."</p>
+    <div class="contato-line rv rv-m"></div>
+    <h2 class="contato-name rv rv-m">Leilaine Campioto</h2>
+    <p class="contato-info rv rv-l">
+      leilaine@znith.ai<br>
+      WhatsApp: (XX) XXXXX-XXXX<br>
+      <a href="https://instagram.com/leilainecampioto" target="_blank">@leilainecampioto</a>
+    </p>
+    <p class="contato-scarcity rv rv-l">Agenda limitada — consulte disponibilidade</p>
+    <p class="contato-ft">ZNITH &middot; Direção. Consciência. Legado.</p>
+  </section>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('vis');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .08, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('.rv, .rv-scale').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

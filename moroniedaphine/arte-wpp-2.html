@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Arte WhatsApp 2 — Minimalista</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{width:1080px;height:1350px;overflow:hidden;background:#FFFFFF;font-family:'Inter',sans-serif;margin:0}
+    .card{width:1080px;height:1350px;background:#FFFFFF;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 100px}
+
+    /* Thin elegant border */
+    .border-outer{position:absolute;inset:36px;border:1px solid rgba(122,46,58,.15);pointer-events:none}
+    .border-inner{position:absolute;inset:44px;border:1px solid rgba(122,46,58,.08);pointer-events:none}
+
+    /* Corner ornaments */
+    .corner{position:absolute;width:40px;height:40px;pointer-events:none}
+    .corner svg{width:100%;height:100%}
+    .c-tl{top:30px;left:30px}.c-tr{top:30px;right:30px;transform:scaleX(-1)}.c-bl{bottom:30px;left:30px;transform:scaleY(-1)}.c-br{bottom:30px;right:30px;transform:scale(-1)}
+
+    .content{display:flex;flex-direction:column;align-items:center;gap:40px;z-index:2}
+
+    .label{font-size:15px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:#8B7D6B;opacity:.6}
+    .title-block{text-align:center}
+    .title{font-family:'Fraunces',serif;font-weight:300;font-size:110px;line-height:.9;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1;font-style:italic}
+    .title-de{font-family:'Fraunces',serif;font-weight:300;font-size:50px;color:#7A2E3A;font-variation-settings:"opsz" 72,"SOFT" 60,"WONK" 1;font-style:italic;opacity:.7;display:block;margin:4px 0}
+    .title-cozinha{font-family:'Fraunces',serif;font-weight:300;font-size:90px;line-height:.9;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1;font-style:italic}
+
+    .names{font-family:'Fraunces',serif;font-weight:300;font-size:32px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 25;letter-spacing:.08em}
+    .names em{font-style:italic;opacity:.4;font-size:.75em;padding:0 8px}
+
+    .orn-row{display:flex;align-items:center;gap:14px}
+    .orn-line{width:50px;height:1px;background:#7A2E3A;opacity:.15}
+    .orn-dia{width:6px;height:6px;border:1px solid #7A2E3A;opacity:.25;transform:rotate(45deg)}
+
+    /* Illustration — single elegant teacup */
+    .illust{margin:10px 0}
+
+    .date-block{display:flex;align-items:center;gap:48px}
+    .date-col{text-align:center}
+    .date-label{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#8B7D6B;opacity:.5;margin-bottom:6px}
+    .date-val{font-family:'Fraunces',serif;font-weight:300;font-size:28px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 20}
+    .date-big{font-family:'Fraunces',serif;font-weight:300;font-size:130px;line-height:1;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 15}
+    .date-sep{width:1px;height:80px;background:#7A2E3A;opacity:.12}
+
+    .loc{font-size:19px;font-weight:300;color:#6B5B4E;opacity:.55;text-align:center;line-height:1.7}
+    .link-row{display:flex;flex-direction:column;align-items:center;gap:8px}
+    .link-hint{font-size:16px;font-weight:300;color:#7A2E3A;opacity:.45;letter-spacing:.03em}
+    .link-url{font-size:20px;font-weight:400;color:#7A2E3A;opacity:.75;letter-spacing:.02em}
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <div class="border-outer"></div>
+  <div class="border-inner"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner c-tl"><svg viewBox="0 0 40 40" fill="none"><path d="M0 40 L0 0 L40 0" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/><path d="M0 30 L0 10 L10 0" stroke="#7A2E3A" stroke-width=".5" fill="none" opacity=".1"/></svg></div>
+  <div class="corner c-tr"><svg viewBox="0 0 40 40" fill="none"><path d="M0 40 L0 0 L40 0" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/><path d="M0 30 L0 10 L10 0" stroke="#7A2E3A" stroke-width=".5" fill="none" opacity=".1"/></svg></div>
+  <div class="corner c-bl"><svg viewBox="0 0 40 40" fill="none"><path d="M0 40 L0 0 L40 0" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/><path d="M0 30 L0 10 L10 0" stroke="#7A2E3A" stroke-width=".5" fill="none" opacity=".1"/></svg></div>
+  <div class="corner c-br"><svg viewBox="0 0 40 40" fill="none"><path d="M0 40 L0 0 L40 0" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/><path d="M0 30 L0 10 L10 0" stroke="#7A2E3A" stroke-width=".5" fill="none" opacity=".1"/></svg></div>
+
+  <div class="content">
+    <span class="label">Vocês estão convidados para o</span>
+
+    <div class="title-block">
+      <span class="title">Chá</span>
+      <span class="title-de">de</span>
+      <span class="title-cozinha">Casa Nova</span>
+    </div>
+
+    <div class="orn-row">
+      <span class="orn-line"></span>
+      <span class="orn-dia"></span>
+      <span class="orn-line"></span>
+    </div>
+
+    <p class="names">Moroni <em>&</em> Daphine</p>
+
+    <!-- Elegant teacup illustration -->
+    <div class="illust">
+      <svg width="300" height="200" viewBox="0 0 300 200" fill="none">
+        <!-- Saucer -->
+        <ellipse cx="140" cy="165" rx="90" ry="14" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".25"/>
+        <!-- Cup body -->
+        <path d="M75 115 C78 95,95 80,140 80 C185 80,202 95,205 115 L200 150 C198 158,175 165,140 165 C105 165,82 158,80 150Z" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".35"/>
+        <!-- Cup rim highlight -->
+        <ellipse cx="140" cy="82" rx="63" ry="8" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".15"/>
+        <!-- Handle -->
+        <path d="M205 100 C230 95,240 115,235 135 C230 150,215 155,205 145" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".35"/>
+        <!-- Steam -->
+        <path d="M120 70 C118 55,125 45,120 32" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".15"/>
+        <path d="M140 68 C138 50,145 40,140 25" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".18"/>
+        <path d="M160 70 C158 55,165 45,160 32" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".15"/>
+        <!-- Tea bag tag -->
+        <line x1="85" y1="90" x2="65" y2="105" stroke="#8B7D6B" stroke-width="1" opacity=".2"/>
+        <rect x="55" y="105" width="15" height="12" rx="1" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".2"/>
+      </svg>
+    </div>
+
+    <div class="date-block">
+      <div class="date-col">
+        <p class="date-label">Dia</p>
+        <p class="date-val">Sábado</p>
+      </div>
+      <span class="date-sep"></span>
+      <div class="date-col">
+        <p class="date-big">06</p>
+      </div>
+      <span class="date-sep"></span>
+      <div class="date-col">
+        <p class="date-label">Mês</p>
+        <p class="date-val">Junho</p>
+      </div>
+      <span class="date-sep"></span>
+      <div class="date-col">
+        <p class="date-label">Hora</p>
+        <p class="date-val">19h</p>
+      </div>
+    </div>
+
+    <div class="orn-row">
+      <span class="orn-line"></span>
+      <span class="orn-dia"></span>
+      <span class="orn-line"></span>
+    </div>
+
+    <p class="loc">Capela Faustino Augusto Cesar 81<br>Igreja de Jesus Cristo dos Santos dos Últimos Dias</p>
+
+    <div class="link-row">
+      <span class="link-hint">Confirme e veja a lista de presentes</span>
+      <span class="link-url">moroniedaphine.vercel.app/cha-de-cozinha</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

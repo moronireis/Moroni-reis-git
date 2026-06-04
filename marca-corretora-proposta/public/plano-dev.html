@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Desenvolvimento | Marpe CRM Seguros - u4digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060608; --bg2: #0a0a10; --card: #0f0f18; --border: #1a1a2a;
+    --text: #e8e8f0; --text2: #7a7a96; --muted: #4a4a64;
+    --blue: #3B82F6; --blue-dim: rgba(59,130,246,0.12);
+    --green: #22c55e; --green-dim: rgba(34,197,94,0.12);
+    --amber: #f59e0b; --amber-dim: rgba(245,158,11,0.10);
+    --red: #ef4444; --red-dim: rgba(239,68,68,0.10);
+    --purple: #8b5cf6; --purple-dim: rgba(139,92,246,0.10);
+    --cyan: #06b6d4; --cyan-dim: rgba(6,182,212,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,6,8,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  nav .logo { font-weight: 600; font-size: 16px; }
+  nav .tag { font-size: 11px; color: var(--green); background: var(--green-dim); padding: 4px 10px; border-radius: 100px; font-weight: 600; }
+  .content { max-width: 920px; margin: 0 auto; padding: 80px 40px 60px; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+  h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--blue); }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 10px; }
+  h4 { font-size: 14px; font-weight: 600; margin: 16px 0 8px; }
+  p { color: var(--text2); margin-bottom: 12px; font-size: 14px; }
+  .sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+  strong { color: var(--text); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+  th { text-align: left; padding: 10px 14px; background: var(--card); border: 1px solid var(--border); color: var(--blue); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text2); vertical-align: top; }
+  tr:hover td { background: var(--card); }
+  ul, ol { padding-left: 20px; margin: 8px 0 16px; }
+  li { color: var(--text2); margin-bottom: 6px; font-size: 13px; line-height: 1.6; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .card.blue { border-color: rgba(59,130,246,0.25); background: var(--blue-dim); }
+  .card.amber { border-color: rgba(245,158,11,0.25); background: var(--amber-dim); }
+  .card.red { border-color: rgba(239,68,68,0.25); background: var(--red-dim); }
+  .card.green { border-color: rgba(34,197,94,0.25); background: var(--green-dim); }
+  .badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+  .badge.need { background: var(--red-dim); color: var(--red); }
+  .badge.done { background: var(--green-dim); color: var(--green); }
+  .badge.pending { background: var(--amber-dim); color: var(--amber); }
+  .badge.info { background: var(--blue-dim); color: var(--blue); }
+  .badge.phase { background: var(--purple-dim); color: var(--purple); }
+  .section-num { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .phase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .phase-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+  .phase-num.p1 { background: var(--blue-dim); color: var(--blue); border: 2px solid var(--blue); }
+  .phase-num.p2 { background: var(--purple-dim); color: var(--purple); border: 2px solid var(--purple); }
+  .phase-num.p3 { background: var(--amber-dim); color: var(--amber); border: 2px solid var(--amber); }
+  .phase-num.p4 { background: var(--green-dim); color: var(--green); border: 2px solid var(--green); }
+  .phase-title { font-size: 18px; font-weight: 700; }
+  .phase-dates { font-size: 12px; color: var(--muted); }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 8px 0; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid rgba(26,26,42,0.5); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px; }
+  .check-box.done { background: var(--green-dim); border-color: var(--green); }
+  .task-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(26,26,42,0.3); }
+  .task-row:last-child { border-bottom: none; }
+  .task-priority { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .task-priority.high { background: var(--red); }
+  .task-priority.med { background: var(--amber); }
+  .task-priority.low { background: var(--blue); }
+  .task-text { flex: 1; font-size: 13px; color: var(--text2); }
+  .task-text strong { color: var(--text); }
+  .user-tag { font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 600; flex-shrink: 0; }
+  .user-tag.marcel { background: var(--amber-dim); color: var(--amber); }
+  .user-tag.u4 { background: var(--blue-dim); color: var(--blue); }
+  .user-tag.both { background: var(--purple-dim); color: var(--purple); }
+  @media (max-width: 768px) { .content { padding: 80px 20px 40px; } .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">u4digital</span>
+  <span class="tag">Plano de Desenvolvimento</span>
+</nav>
+
+<div class="content">
+
+<div class="section-num">P&oacute;s-Kickoff &mdash; 12/05/2026</div>
+<h1>Plano de Desenvolvimento</h1>
+<p class="sub">Marpe Corretora de Seguros &mdash; CRM Personalizado<br>Baseado nas 4 reuni&otilde;es (30/04, 05/05, 08/05, 12/05) + mapeamento tela a tela do Corp</p>
+
+<!-- STATUS DOS ACESSOS -->
+<h2>1. Status dos Acessos</h2>
+<p>O que j&aacute; temos e o que falta para iniciar o desenvolvimento:</p>
+
+<table>
+  <tr><th>Item</th><th>Status</th><th>A&ccedil;&atilde;o pendente</th></tr>
+  <tr><td><strong>WaSpeed (iSpeed)</strong></td><td><span class="badge done">Recebido</span></td><td>Acesso liberado. Refer&ecirc;ncia de UX mapeada.</td></tr>
+  <tr><td><strong>Clint</strong></td><td><span class="badge done">Recebido</span></td><td>Marcel mant&eacute;m ativo (R$ 800/m&ecirc;s, 8 meses restantes). Refer&ecirc;ncia de funis e inbox.</td></tr>
+  <tr><td><strong>Mapeamento tela a tela (Corp)</strong></td><td><span class="badge done">Conclu&iacute;do</span></td><td>Grava&ccedil;&atilde;o de 74 min. Fluxos completos documentados.</td></tr>
+  <tr><td><strong>Documenta&ccedil;&atilde;o API Corp (Agia)</strong></td><td><span class="badge need">Pendente</span></td><td>Marcel precisa enviar PDF/link dos endpoints da API. J&aacute; enviou antes para Clint &mdash; reenviar para u4digital via WhatsApp.</td></tr>
+  <tr><td><strong>Acesso ao Corp (usu&aacute;rio)</strong></td><td><span class="badge need">Pendente</span></td><td>Marcel verificar se tem usu&aacute;rio dispon&iacute;vel (paga por usu&aacute;rio). Alternativa: compartilhar tela em sess&atilde;o para explorarmos juntos.</td></tr>
+  <tr><td><strong>Meta Business Manager</strong></td><td><span class="badge need">Pendente</span></td><td>Marcel adicionar e-mail do Moroni como parceiro no Business Manager. Necess&aacute;rio para ativar API Cloud WhatsApp.</td></tr>
+  <tr><td><strong>N&uacute;meros WhatsApp</strong></td><td><span class="badge pending">Definir estrat&eacute;gia</span></td><td>3 n&uacute;meros (Marcel, Adria, Vanessa). Ver se&ccedil;&atilde;o &ldquo;Estrat&eacute;gia WhatsApp&rdquo; abaixo.</td></tr>
+</table>
+
+<div class="card red">
+  <strong>Bloqueadores para iniciar Fase 1:</strong>
+  <p style="margin: 8px 0 0;">Precisamos de (1) documenta&ccedil;&atilde;o API Corp e (2) acesso ao Meta Business Manager para come&ccedil;ar. Sem a API Corp, podemos avan&ccedil;ar com o CRM e inbox, mas as automa&ccedil;&otilde;es de sync ficam bloqueadas na Fase 3.</p>
+</div>
+
+<!-- ESTRATEGIA WHATSAPP -->
+<h2>2. Estrat&eacute;gia WhatsApp</h2>
+<p>Marcel levantou um ponto cr&iacute;tico na reuni&atilde;o de 12/05: a API oficial Meta exige templates aprovados para iniciar conversa, o que n&atilde;o serve para o fluxo di&aacute;rio receptivo da Marpe.</p>
+
+<div class="card blue">
+  <strong>Decis&atilde;o recomendada: modelo h&iacute;brido</strong>
+  <p style="margin: 8px 0 0;">Usar <strong>WhatsApp Web (n&atilde;o oficial)</strong> para o inbox di&aacute;rio (receptivo, conversas livres, grupos) + <strong>API oficial Meta</strong> para automa&ccedil;&otilde;es espec&iacute;ficas (boas-vindas, aviso de parcela, pesquisa de satisfa&ccedil;&atilde;o &mdash; que s&atilde;o templates prontos). Isso evita a limita&ccedil;&atilde;o de templates no atendimento do dia a dia.</p>
+</div>
+
+<table>
+  <tr><th>Canal</th><th>Uso</th><th>Vantagem</th></tr>
+  <tr><td><strong>WhatsApp Web (3 n&uacute;meros)</strong></td><td>Inbox di&aacute;rio, conversas livres, grupos de seguradoras, atendimento receptivo</td><td>Sem restri&ccedil;&atilde;o de templates. Hist&oacute;rico salvo. Funciona como WaSpeed mas 24/7.</td></tr>
+  <tr><td><strong>API oficial Meta (1 n&uacute;mero dedicado)</strong></td><td>Automa&ccedil;&otilde;es: boas-vindas, aviso parcela, pesquisa satisfa&ccedil;&atilde;o, campanhas em massa</td><td>24/7 sem PC. Templates aprovados. Ideal para disparos autom&aacute;ticos.</td></tr>
+</table>
+
+<p><strong>Marcel precisa confirmar:</strong> Aceita esse modelo h&iacute;brido? Ou prefere s&oacute; WhatsApp Web (mais simples, menos restri&ccedil;&otilde;es, mas sem garantia de uptime 24/7 para automa&ccedil;&otilde;es)?</p>
+
+<!-- EQUIPE MAPEADA -->
+<h2>3. Equipe e Perfis</h2>
+<table>
+  <tr><th>Nome</th><th>Fun&ccedil;&atilde;o</th><th>WhatsApp</th><th>Perfil no CRM</th></tr>
+  <tr><td><strong>Marcel Foletto</strong></td><td>Gest&atilde;o geral, comercial, negocia&ccedil;&otilde;es, estrat&eacute;gia</td><td>N&uacute;mero pr&oacute;prio</td><td>Administrador</td></tr>
+  <tr><td><strong>Vanessa</strong></td><td>Comercial: cota&ccedil;&otilde;es, renova&ccedil;&otilde;es, contato com parceiros externos</td><td>N&uacute;mero pr&oacute;prio</td><td>Operador (comercial)</td></tr>
+  <tr><td><strong>Adria</strong></td><td>Operacional: transmiss&atilde;o de propostas, cadastro de contratos, emiss&atilde;o, sinistros, assist&ecirc;ncia 24h, boas-vindas</td><td>N&uacute;mero pr&oacute;prio</td><td>Operador (p&oacute;s-venda)</td></tr>
+</table>
+
+<div class="card">
+  <strong>Fluxo de handoff:</strong> Vanessa/Marcel negociam &rarr; fechou &rarr; passa para Adria (muda respons&aacute;vel no card) &rarr; Adria transmite, cadastra contrato, envia boas-vindas &rarr; Adria cuida de sinistros e assist&ecirc;ncia.
+</div>
+
+<!-- MAPEAMENTO COMPLETO -->
+<h2>4. Processos Mapeados (Reuni&atilde;o 12/05)</h2>
+
+<h3>4.1 Fluxo de Vendas (Negocia&ccedil;&atilde;o)</h3>
+<div class="card">
+  <ol>
+    <li><strong>Cadastrar cliente</strong> no Corp (ou buscar existente). Campos: nome, CPF/CNPJ, endere&ccedil;o, telefone, e-mail, profiss&atilde;o, estado civil, dados banc&aacute;rios.</li>
+    <li><strong>Criar negocia&ccedil;&atilde;o</strong> na Central de Neg&oacute;cios do Corp. Campos: cliente, tipo (prospec&ccedil;&atilde;o/endosso), ramo, campanha, dados do seguro atual (seguradora, vig&ecirc;ncia, corretora anterior), estimativa de pr&ecirc;mio, comiss&atilde;o, produtor, <strong>data de aproxima&ccedil;&atilde;o</strong> (controle principal), status.</li>
+    <li><strong>Cotar</strong> no Agilizador (sistema separado, sem integra&ccedil;&atilde;o com Corp). Gerar or&ccedil;amento PDF.</li>
+    <li><strong>Enviar cota&ccedil;&atilde;o</strong> ao cliente via WhatsApp. Registrar atendimento no Corp + anexar PDF.</li>
+    <li><strong>Negociar</strong> via WhatsApp. Atualizar status + pr&oacute;xima a&ccedil;&atilde;o no Corp.</li>
+    <li><strong>Fechar</strong>: registrar &ldquo;cliente de acordo&rdquo;, mudar respons&aacute;vel para Adria.</li>
+    <li><strong>Adria transmite</strong> proposta na seguradora. Cadastra contrato no Corp via InCorp (importa&ccedil;&atilde;o autom&aacute;tica de PDF).</li>
+    <li><strong>Acompanhar emiss&atilde;o</strong>: pendente &rarr; emitido &rarr; recebido &rarr; entregue (3 est&aacute;gios).</li>
+    <li><strong>Boas-vindas</strong>: Adria envia mensagem padr&atilde;o + n&uacute;meros de assist&ecirc;ncia.</li>
+  </ol>
+</div>
+
+<h3>4.2 Fluxo de Renova&ccedil;&atilde;o</h3>
+<div class="card">
+  <ol>
+    <li>Todo dia 20 do m&ecirc;s: Marcel consulta <strong>Oportunidades &rarr; Renova&ccedil;&otilde;es</strong> no Corp (contratos com vig&ecirc;ncia vencendo no m&ecirc;s seguinte).</li>
+    <li>Seleciona todos e clica &ldquo;Gerar Negocia&ccedil;&otilde;es&rdquo; &rarr; cria cards no CRM com status &ldquo;iniciar negocia&ccedil;&atilde;o para renova&ccedil;&atilde;o&rdquo;.</li>
+    <li>Fluxo segue igual ao de vendas (contato &rarr; cota&ccedil;&atilde;o &rarr; fechamento).</li>
+  </ol>
+  <p style="margin: 8px 0 0; color: var(--amber);"><strong>Oportunidade de automa&ccedil;&atilde;o:</strong> gerar negocia&ccedil;&otilde;es de renova&ccedil;&atilde;o automaticamente (sync Corp) + disparar primeiro contato via WhatsApp sem interven&ccedil;&atilde;o manual.</p>
+</div>
+
+<h3>4.3 Fluxo de Resgate + Venda Cruzada</h3>
+<div class="card">
+  <ul>
+    <li><strong>Resgates:</strong> contratos n&atilde;o renovados no ano anterior. Corp lista automaticamente. Marcel decide resgatar ou descartar.</li>
+    <li><strong>Venda cruzada:</strong> filtros por ramo + perfil demogr&aacute;fico (estado civil, profiss&atilde;o, idade, sexo). Ex: oferecer auto para quem tem vida. Gera negocia&ccedil;&otilde;es em lote.</li>
+    <li><strong>Problema atual:</strong> campo &ldquo;motivo de perda&rdquo; n&atilde;o &eacute; obrigat&oacute;rio no Corp &rarr; sem dados de por que perdeu. No novo CRM, tornar <strong>obrigat&oacute;rio</strong> com op&ccedil;&otilde;es configur&aacute;veis.</li>
+  </ul>
+</div>
+
+<h3>4.4 Fluxo de Sinistro / Assist&ecirc;ncia 24h</h3>
+<div class="card">
+  <ol>
+    <li><strong>Abertura:</strong> cadastrar no Corp (data, hora, protocolo, tipo, item segurado, franquia, descri&ccedil;&atilde;o).</li>
+    <li><strong>Acompanhamento:</strong> registrar hist&oacute;rico (vistoria, autoriza&ccedil;&atilde;o, oficina, status). 4 status: pendente, aberto, em andamento, conclu&iacute;do.</li>
+    <li><strong>Automa&ccedil;&otilde;es por mudan&ccedil;a de status:</strong>
+      <ul>
+        <li>Aberto &rarr; msg &ldquo;atendimento aberto, protocolo #X&rdquo;</li>
+        <li>Prestador acionado &rarr; msg &ldquo;prestador a caminho, previs&atilde;o X min&rdquo;</li>
+        <li>Prestador chegou &rarr; msg confirma&ccedil;&atilde;o</li>
+        <li>Conclu&iacute;do &rarr; pesquisa de satisfa&ccedil;&atilde;o</li>
+      </ul>
+    </li>
+    <li><strong>Vari&aacute;veis nos templates:</strong> #primeiro_nome, #protocolo, #ve&iacute;culo, #oficina, #data_evento, #franquia, #per&iacute;odo_dia</li>
+  </ol>
+</div>
+
+<!-- DADOS DO CORP -->
+<h2>5. Dados do Corp a Integrar</h2>
+<p>Baseado no mapeamento tela a tela. Priorizado por fase de entrega:</p>
+
+<table>
+  <tr><th>Dado Corp</th><th>Finalidade no CRM</th><th>Fase</th><th>Prioridade</th></tr>
+  <tr><td>Clientes (nome, CPF, telefone, e-mail, endere&ccedil;o)</td><td>Sincronizar contatos</td><td><span class="badge info">Fase 2</span></td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Negocia&ccedil;&otilde;es (status, ramo, produtor, data aproxima&ccedil;&atilde;o, pr&oacute;xima a&ccedil;&atilde;o)</td><td>Popular Kanban/Grade</td><td><span class="badge info">Fase 2</span></td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Contratos ativos (ramo, vig&ecirc;ncia, pr&ecirc;mio, seguradora, n&deg; p&oacute;lice)</td><td>Dashboard + funil renova&ccedil;&otilde;es</td><td><span class="badge phase">Fase 3</span></td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Parcelas (valor, vencimento, status quitada/pendente)</td><td>Aviso autom&aacute;tico 5 dias antes via WhatsApp</td><td><span class="badge phase">Fase 3</span></td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>P&oacute;lices emitidas (data emiss&atilde;o, n&deg; p&oacute;lice, status)</td><td>Mover card automaticamente + disparar boas-vindas</td><td><span class="badge phase">Fase 3</span></td><td><span class="badge need">Cr&iacute;tico</span></td></tr>
+  <tr><td>Comiss&otilde;es (valor, %)</td><td>Dashboard financeiro, metas por produtor</td><td><span class="badge phase">Fase 3</span></td><td><span class="badge pending">Importante</span></td></tr>
+  <tr><td>Sinistros/Atendimentos (status, protocolo, tipo)</td><td>Funil sinistros + automa&ccedil;&otilde;es de status</td><td><span class="badge phase">Fase 3</span></td><td><span class="badge pending">Importante</span></td></tr>
+  <tr><td>Oportunidades (renova&ccedil;&otilde;es, resgates, venda cruzada)</td><td>Gera&ccedil;&atilde;o autom&aacute;tica de negocia&ccedil;&otilde;es</td><td><span class="badge phase">Fase 3</span></td><td><span class="badge pending">Importante</span></td></tr>
+  <tr><td>Seguradoras parceiras (nome, ramos, logins)</td><td>Campo de sele&ccedil;&atilde;o no CRM</td><td><span class="badge info">Fase 2</span></td><td><span class="badge done">Baixo</span></td></tr>
+</table>
+
+<!-- PLANO DE DESENVOLVIMENTO -->
+<h2>6. Plano de Desenvolvimento por Fase</h2>
+
+<!-- FASE 1 -->
+<div class="card" style="border-left: 3px solid var(--blue);">
+  <div class="phase-header">
+    <div class="phase-num p1">1</div>
+    <div><div class="phase-title">Infraestrutura + WhatsApp</div><div class="phase-dates">Semana 1-2 &mdash; In&iacute;cio ap&oacute;s receber acessos</div></div>
+  </div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Setup do projeto:</strong> Next.js + Supabase + auth multi-usu&aacute;rio (Marcel admin, Vanessa operador, Adria operador)</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Conex&atilde;o WhatsApp Web:</strong> integrar 3 n&uacute;meros via biblioteca n&atilde;o oficial (Baileys/whatsapp-web.js). Inbox funcional com hist&oacute;rico salvo.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Inbox:</strong> lista de conversas, chat em tempo real, busca, visualiza&ccedil;&atilde;o de grupos, envio de arquivos/&aacute;udios.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Setup API Meta Cloud:</strong> configurar 1 n&uacute;mero dedicado para automa&ccedil;&otilde;es. Criar templates base (boas-vindas, parcela, satisfa&ccedil;&atilde;o).</div><span class="user-tag both">Ambos</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Banco de dados:</strong> schema Supabase (contatos, negocia&ccedil;&otilde;es, mensagens, templates, automa&ccedil;&otilde;es, funis).</div><span class="user-tag u4">u4digital</span></div>
+  <p style="margin: 12px 0 0; color: var(--green); font-size: 12px; font-weight: 600;">Entrega: Marcel j&aacute; consegue conversar pelo painel + hist&oacute;rico salvo permanentemente</p>
+</div>
+
+<!-- FASE 2 -->
+<div class="card" style="border-left: 3px solid var(--purple);">
+  <div class="phase-header">
+    <div class="phase-num p2">2</div>
+    <div><div class="phase-title">CRM + Funis + Campos</div><div class="phase-dates">Semana 3-4</div></div>
+  </div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>CRM de negocia&ccedil;&otilde;es:</strong> Kanban + Grade (switch). Campos seguros: pr&ecirc;mio, comiss&atilde;o%, produtor, ramo, vig&ecirc;ncia, seguradora, ap&oacute;lice, data aproxima&ccedil;&atilde;o, pr&oacute;xima a&ccedil;&atilde;o.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Status personaliz&aacute;veis:</strong> Marcel cria seus pr&oacute;prios status (aguardando documento, aguardando vistoria, cotação enviada, etc.). Cores por status (inspirado Monday).</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>M&uacute;ltiplos neg&oacute;cios por contato:</strong> 1 cliente = N seguros independentes. Cada um com seu card, status, ramo.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Funis personalizáveis:</strong> criar, editar, nomear livremente. Pr&eacute;-configurados: Vendas, Assist&ecirc;ncia 24h, Sinistros, Renova&ccedil;&otilde;es.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Handoff de respons&aacute;vel:</strong> mudar produtor no card (Marcel &rarr; Adria). Card aparece na fila do novo respons&aacute;vel.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Motivo de perda obrigat&oacute;rio:</strong> ao marcar &ldquo;perdido&rdquo;, exigir motivo (configur&aacute;vel). Motivos pr&eacute;-cadastrados: sem aceita&ccedil;&atilde;o, sem interesse, sem dinheiro, sem contato, renovou com outro, etc.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Mensagens r&aacute;pidas com vari&aacute;veis:</strong> #primeiro_nome, #per&iacute;odo_dia, #ve&iacute;culo, #seguradora, #protocolo, #franquia, #valor, #vencimento. Configur&aacute;vel pelo usu&aacute;rio.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority low"></div><div class="task-text"><strong>Notas por negocia&ccedil;&atilde;o:</strong> hist&oacute;rico de atendimento (como Corp, mas integrado ao chat).</div><span class="user-tag u4">u4digital</span></div>
+  <p style="margin: 12px 0 0; color: var(--green); font-size: 12px; font-weight: 600;">Entrega: CRM funcional completo. Marcel come&ccedil;a a usar em paralelo com Corp.</p>
+</div>
+
+<!-- FASE 3 -->
+<div class="card" style="border-left: 3px solid var(--amber);">
+  <div class="phase-header">
+    <div class="phase-num p3">3</div>
+    <div><div class="phase-title">Automa&ccedil;&otilde;es + Integra&ccedil;&atilde;o Corp</div><div class="phase-dates">Semana 5-6</div></div>
+  </div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Integra&ccedil;&atilde;o API Corp:</strong> sync bidirecional de clientes, negocia&ccedil;&otilde;es, contratos, parcelas, p&oacute;lices.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Motor de automa&ccedil;&otilde;es:</strong> regras configur&aacute;veis (gatilho &rarr; a&ccedil;&atilde;o). Gatilhos: mudan&ccedil;a de status, data (X dias antes), sync Corp. A&ccedil;&otilde;es: enviar WhatsApp, mover card, notificar usu&aacute;rio.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Aviso de parcela autom&aacute;tico:</strong> sync parcelas Corp &rarr; 5 dias antes &rarr; WhatsApp com vari&aacute;veis (#nome, #valor, #vencimento). Substitui e-mail que ningu&eacute;m l&ecirc;.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Boas-vindas autom&aacute;tica:</strong> Corp emite p&oacute;lice &rarr; mover card para &ldquo;emitido&rdquo; &rarr; WhatsApp de boas-vindas com n&uacute;meros de assist&ecirc;ncia.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Campanhas em massa:</strong> segmentar por ramo, perfil, status. Disparar com vari&aacute;veis personalizadas. Tracking de entrega/leitura.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Automa&ccedil;&otilde;es de sinistro/assist&ecirc;ncia:</strong> mudan&ccedil;a de status no Corp &rarr; msg ao cliente (aberto, prestador acionado, chegou, conclu&iacute;do, pesquisa satisfa&ccedil;&atilde;o).</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority low"></div><div class="task-text"><strong>Gera&ccedil;&atilde;o autom&aacute;tica de renova&ccedil;&otilde;es:</strong> sync vig&ecirc;ncias Corp &rarr; criar negocia&ccedil;&atilde;o 60 dias antes + primeiro contato autom&aacute;tico.</div><span class="user-tag u4">u4digital</span></div>
+  <p style="margin: 12px 0 0; color: var(--green); font-size: 12px; font-weight: 600;">Entrega: Plataforma totalmente integrada. Automa&ccedil;&otilde;es rodando. Zero copy-paste.</p>
+</div>
+
+<!-- FASE 4 -->
+<div class="card" style="border-left: 3px solid var(--green);">
+  <div class="phase-header">
+    <div class="phase-num p4">4</div>
+    <div><div class="phase-title">Refinamento + Go-live</div><div class="phase-dates">Semana 7-8</div></div>
+  </div>
+  <div class="task-row"><div class="task-priority high"></div><div class="task-text"><strong>Dashboard:</strong> neg&oacute;cios ativos, pr&ecirc;mio em carteira, comiss&atilde;o estimada, metas por produtor (Marcel, Vanessa, Adria + parceiros externos), msgs autom&aacute;ticas enviadas, por ramo.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Tracking de links:</strong> links rastreados por campanha (Instagram, parceiros, Google Meu Neg&oacute;cio). Cliques, convers&otilde;es, funil destino.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Chatbot primeiro atendimento:</strong> triagem autom&aacute;tica fora do hor&aacute;rio. Perguntas b&aacute;sicas + encaminhar para humano.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Exporta&ccedil;&atilde;o CSV/PDF:</strong> relat&oacute;rios exportáveis. Filtros por per&iacute;odo, produtor, ramo.</div><span class="user-tag u4">u4digital</span></div>
+  <div class="task-row"><div class="task-priority med"></div><div class="task-text"><strong>Treinamento:</strong> sess&atilde;o com Marcel, Vanessa e Adria. Documenta&ccedil;&atilde;o de uso.</div><span class="user-tag both">Ambos</span></div>
+  <div class="task-row"><div class="task-priority low"></div><div class="task-text"><strong>Ajustes finos:</strong> cores de status (como Monday), micro-ajustes de UX conforme feedback de uso real.</div><span class="user-tag u4">u4digital</span></div>
+  <p style="margin: 12px 0 0; color: var(--green); font-size: 12px; font-weight: 600;">Entrega: Plataforma em produ&ccedil;&atilde;o. Equipe treinada. Mensalidade inicia.</p>
+</div>
+
+<!-- DADOS DA CARTEIRA -->
+<h2>7. Dados da Carteira (levantados 12/05)</h2>
+<div class="grid-3">
+  <div class="card"><div style="font-size: 28px; font-weight: 800; color: var(--blue);">~1.000</div><p style="margin:4px 0 0;">Clientes ativos</p></div>
+  <div class="card"><div style="font-size: 28px; font-weight: 800; color: var(--green);">1.362</div><p style="margin:4px 0 0;">Contratos ativos (documentos)</p></div>
+  <div class="card"><div style="font-size: 28px; font-weight: 800; color: var(--amber);">~100</div><p style="margin:4px 0 0;">Conversas WhatsApp / dia (3 n&uacute;meros)</p></div>
+</div>
+
+<h3>Ramos ativos</h3>
+<p>Autom&oacute;vel, Residencial, Empresarial, Equipamento, Vida Individual, Vida Capital Global, Acidentes Pessoais, Responsabilidade Civil, Cons&oacute;rcio, Financiamento, Empr&eacute;stimos, Carta Verde.</p>
+
+<h3>Seguradoras parceiras</h3>
+<p>Todas cadastradas no Corp com login/API. Integra&ccedil;&atilde;o autom&aacute;tica de extratos de comiss&atilde;o. Lista completa dispon&iacute;vel no Corp &rarr; Seguradoras.</p>
+
+<!-- IDEIAS FUTURAS -->
+<h2>8. Ideias Futuras (p&oacute;s go-live)</h2>
+<div class="card amber">
+  <strong>Marcel mencionou na reuni&atilde;o de 12/05:</strong>
+  <ul style="margin-top: 8px;">
+    <li><strong>Programa de parcerias / clube de benef&iacute;cios:</strong> parceiros locais (auto-center, posto de combust&iacute;vel) oferecem desconto para clientes Marpe. Marpe divulga os parceiros na carteira. Precisa de sistema de vouchers para validar que o cliente &eacute; segurado ativo.</li>
+    <li><strong>Campanhas de venda cruzada autom&aacute;ticas:</strong> filtrar por ramo + perfil demogr&aacute;fico (como no Corp) e disparar campanha segmentada.</li>
+  </ul>
+  <p style="margin: 8px 0 0; color: var(--muted);">Esses itens ficam para uma fase posterior ao go-live. N&atilde;o est&atilde;o no escopo atual.</p>
+</div>
+
+<!-- REUNIOES SEMANAIS -->
+<h2>9. Cadência de Reuni&otilde;es</h2>
+<div class="card green">
+  <strong>Acordado: reuni&otilde;es semanais</strong>
+  <p style="margin: 8px 0 0;">Marcel e Tiago concordaram em manter encontros semanais (~30 min) para sincronizar progresso, mostrar entregas incrementais e coletar feedback. Marcel vai anotando pontos durante a semana e traz na reuni&atilde;o.</p>
+</div>
+
+<!-- PROXIMOS PASSOS IMEDIATOS -->
+<h2>10. Pr&oacute;ximos Passos Imediatos</h2>
+<ul class="checklist">
+  <li><div class="check-box"></div><div><strong>Marcel envia documenta&ccedil;&atilde;o API Corp</strong> via WhatsApp</div><span class="user-tag marcel">Marcel</span></li>
+  <li><div class="check-box"></div><div><strong>Marcel libera acesso ao Corp</strong> (usu&aacute;rio existente ou compartilhar tela)</div><span class="user-tag marcel">Marcel</span></li>
+  <li><div class="check-box"></div><div><strong>Marcel adiciona Moroni no Meta Business Manager</strong> como parceiro</div><span class="user-tag marcel">Marcel</span></li>
+  <li><div class="check-box"></div><div><strong>Marcel confirma estrat&eacute;gia WhatsApp</strong> (h&iacute;brido Web + API ou s&oacute; Web)</div><span class="user-tag marcel">Marcel</span></li>
+  <li><div class="check-box"></div><div><strong>u4digital valida API Corp</strong> (testar endpoints, documentar limita&ccedil;&otilde;es)</div><span class="user-tag u4">u4digital</span></li>
+  <li><div class="check-box done"></div><div><strong>u4digital inicia Fase 1</strong> (setup projeto + conex&atilde;o WhatsApp + inbox)</div><span class="user-tag u4">u4digital</span></li>
+  <li><div class="check-box"></div><div><strong>Agendar primeira reuni&atilde;o semanal</strong> de acompanhamento</div><span class="user-tag both">Ambos</span></li>
+</ul>
+
+<!-- PROGRESSO DEV -->
+<h2>11. Progresso do Desenvolvimento</h2>
+<p>Atualizado em 21/05/2026</p>
+<div class="card green">
+  <strong>Fase 1 iniciada &mdash; Infraestrutura</strong>
+  <ul style="margin-top: 8px;">
+    <li><strong style="color: var(--green);">&check;</strong> Projeto scaffoldado (Astro 6 + React 19 + TailwindCSS v4 + Supabase)</li>
+    <li><strong style="color: var(--green);">&check;</strong> Design system CSS (dark theme, vari&aacute;veis custom Marpe)</li>
+    <li><strong style="color: var(--green);">&check;</strong> AppLayout com sidebar funcional (7 se&ccedil;&otilde;es + &iacute;cones SVG)</li>
+    <li><strong style="color: var(--green);">&check;</strong> Schema SQL completo (18 tabelas + triggers + indexes)</li>
+    <li><strong style="color: var(--green);">&check;</strong> RLS policies para todas as tabelas</li>
+    <li><strong style="color: var(--green);">&check;</strong> Seed: 4 funis padr&atilde;o + 8 motivos de perda + 10 templates de msg r&aacute;pida</li>
+    <li><strong style="color: var(--green);">&check;</strong> Auth system (middleware cookie-based + login + logout + roles admin/operador)</li>
+    <li><strong style="color: var(--green);">&check;</strong> Deploy no Vercel: <a href="https://marpe-crm-seguros.vercel.app" target="_blank" style="color: var(--blue);">marpe-crm-seguros.vercel.app</a></li>
+    <li><strong style="color: var(--amber);">&#9679;</strong> Pr&oacute;ximo: API routes (contacts, deals, messages, funnels) + InboxView</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta — Casa Magnólia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#060606;--dark:#0C0C0C;--card:#111;--card-h:#161616;
+  --stroke:rgba(255,255,255,.06);--stroke-h:rgba(255,255,255,.12);
+  --white:#F5F5F3;--dim:rgba(245,245,243,.55);--muted:rgba(245,245,243,.35);--ghost:rgba(245,245,243,.15);
+  --accent:#C9B97A;--accent-dim:rgba(201,185,122,.25);--accent-glow:rgba(201,185,122,.06);
+  --green:#5ABE7A;
+  --serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+html{font-size:16px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--black);color:var(--white);line-height:1.7;overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.5rem,4vw,3.5rem)}
+.label{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+h2.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.1;letter-spacing:-.02em;color:var(--white);margin-bottom:1rem}
+h2.sec-title span{color:var(--accent)}
+.sec-desc{font-size:.95rem;font-weight:300;color:var(--dim);line-height:1.75;max-width:540px}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,var(--accent-glow),transparent 55%);pointer-events:none;z-index:1}
+.hero-inner{position:relative;z-index:2;width:100%;text-align:center}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.5rem,8vw,7rem);line-height:.95;letter-spacing:-.03em;color:var(--white);max-width:800px;margin:0 auto}
+.hero h1 span{color:var(--accent)}
+.hero-line{width:80px;height:1px;background:var(--accent);opacity:.4;margin:2.5rem auto}
+.hero-sub{font-size:1.05rem;font-weight:300;color:var(--dim);max-width:480px;margin:0 auto;line-height:1.7}
+.hero-meta{display:flex;justify-content:center;gap:2rem;margin-top:3rem;font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+section{padding:clamp(5rem,10vw,8rem) 0;position:relative}
+section.bordered{border-top:1px solid var(--stroke)}
+
+.stat-block{text-align:center;padding:6rem 0;position:relative}
+.stat-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,var(--accent-glow),transparent 65%);pointer-events:none}
+.stat-num{font-family:var(--serif);font-weight:400;font-size:clamp(4rem,12vw,9rem);line-height:.9;letter-spacing:-.04em;color:var(--white)}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:.9rem;font-weight:300;color:var(--dim);margin-top:1.2rem}
+
+.timeline{margin-top:3rem;position:relative}
+.timeline::before{content:'';position:absolute;left:39px;top:0;bottom:0;width:1px;background:var(--stroke)}
+@media(max-width:800px){.timeline::before{left:19px}}
+.tl-step{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:2.5rem 0;border-bottom:1px solid var(--stroke);position:relative}
+@media(max-width:800px){.tl-step{grid-template-columns:40px 1fr;gap:1rem}}
+.tl-step:last-child{border-bottom:none}
+.tl-dot{width:80px;display:flex;flex-direction:column;align-items:center;position:relative}
+@media(max-width:800px){.tl-dot{width:40px}}
+.tl-dot span{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--accent-dim);border-radius:50%;font-family:var(--serif);font-size:.8rem;color:var(--accent);background:var(--black);position:relative;z-index:1}
+.tl-title{font-family:var(--serif);font-size:1.15rem;color:var(--white);margin-bottom:.3rem}
+.tl-body{font-size:.85rem;font-weight:300;color:var(--dim);line-height:1.7}
+.tl-tag{display:inline-block;font-size:.5rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.8rem;padding:.25rem .7rem;border:1px solid rgba(90,190,122,.2);background:rgba(90,190,122,.05)}
+
+.del-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--stroke);margin-top:2rem}
+@media(max-width:800px){.del-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.del-grid{grid-template-columns:1fr}}
+.del-item{background:var(--dark);padding:2rem 1.5rem;transition:background .4s var(--ease)}
+.del-item:hover{background:var(--card)}
+.del-num{font-family:var(--serif);font-size:.8rem;color:var(--accent);opacity:.5;margin-bottom:.6rem}
+.del-name{font-size:.85rem;font-weight:500;color:var(--white);margin-bottom:.3rem;line-height:1.3}
+.del-desc{font-size:.75rem;font-weight:300;color:var(--muted);line-height:1.5}
+
+.result-box{border:1px solid var(--accent-dim);padding:clamp(3rem,5vw,4.5rem);text-align:center;margin-top:3rem;position:relative;overflow:hidden}
+.result-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 100%,var(--accent-glow),transparent 60%);pointer-events:none}
+.result-box h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3.5vw,2.4rem);color:var(--white);line-height:1.2;position:relative}
+.result-box h3 span{color:var(--accent)}
+.result-box p{font-size:.9rem;font-weight:300;color:var(--dim);max-width:480px;margin:1.2rem auto 0;line-height:1.7;position:relative}
+
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--stroke);margin-top:2rem}
+@media(max-width:800px){.comp-grid{grid-template-columns:1fr}}
+.comp-col{background:var(--dark);padding:2.5rem 2rem}
+.comp-col h3{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem}
+.comp-col ul{list-style:none}
+.comp-col li{font-size:.85rem;font-weight:300;color:var(--dim);padding:.5rem 0;display:flex;align-items:flex-start;gap:.6rem;line-height:1.5}
+.comp-col li i{font-style:normal;flex-shrink:0;font-size:.75rem;margin-top:2px}
+
+.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 90%,rgba(201,185,122,.06),transparent 55%);pointer-events:none}
+.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;color:var(--white);max-width:700px;margin:0 auto 1.2rem;position:relative}
+.cta h2 span{color:var(--accent)}
+.cta-sub{font-size:1rem;font-weight:300;color:var(--dim);max-width:460px;margin:0 auto;line-height:1.7;position:relative}
+
+footer{padding:2.5rem 0;text-align:center;border-top:1px solid var(--stroke)}
+footer p{font-size:.6rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--ghost)}
+
+.fi{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fi.v{opacity:1;transform:translateY(0)}
+.fi-d1{transition-delay:.1s}
+.fi-d2{transition-delay:.2s}
+
+@media(max-width:800px){
+  .hero h1{font-size:clamp(2.5rem,9vw,3.5rem)}
+  .hero-meta{flex-direction:column;gap:.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="fi">
+        <div class="hero-tag">Hub High Ticket &middot; Proposta de Parceria</div>
+        <h1>Casa<br><span>Magnólia</span></h1>
+        <div class="hero-line"></div>
+        <p class="hero-sub">Estruturação digital completa em dois meses. Marca, site, conteúdo, tráfego e audiovisual — tudo incluso num único investimento.</p>
+        <p style="font-size:.75rem;font-weight:300;color:var(--muted);margin-top:1.5rem;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6">Hub High Ticket é uma assessoria de marketing e vendas focada em público high ticket.</p>
+        <div class="hero-meta">
+          <span>Maio 2026</span>
+          <span>Confidencial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FASES -->
+<section class="bordered">
+  <div class="wrap">
+    <div class="fi">
+      <p class="label">Estruturação — 2 meses</p>
+      <h2 class="sec-title">Organizar tudo para <span>performar no digital</span></h2>
+      <p class="sec-desc">Enquanto a gente estrutura marca, site e redes, já rodamos tráfego em paralelo — testando conteúdos, analisando o público e entendendo o que atrai a noiva certa. Estruturação e resultado andando juntos desde o dia 1.</p>
+    </div>
+    <div class="timeline fi fi-d1">
+      <div class="tl-step">
+        <div class="tl-dot"><span>1</span></div>
+        <div>
+          <p class="tl-title">Mês 1 — Estruturação + Primeiros Testes</p>
+          <p class="tl-body">Brandbook e identidade visual digital. Site institucional com agendamento. Instagram completo: bio, destaques, grid planejado, narrativa central. Definição das linhas editoriais e estratégia de conteúdo. Configuração do Meta Ads, verificação da empresa e instalação do Pixel. Templates de posts e stories. Primeiros briefings de captação para o audiovisual. Em paralelo, já rodamos os primeiros anúncios com conteúdos existentes — testando públicos, analisando custo por seguidor qualificado e entendendo o comportamento da noiva.</p>
+          <span class="tl-tag">Estruturação + Análises e Testes</span>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"><span>2</span></div>
+        <div>
+          <p class="tl-title">Mês 2 — Conteúdo + Campanhas com Dados</p>
+          <p class="tl-body">Com os aprendizados do mês 1, a gente escala o que funcionou. Captação de foto e vídeo com audiovisual dirigido por nós. Documentação de atendimentos, bastidores e depoimentos de noivas. Conteúdo rodando nas 4 linhas editoriais. Campanhas de tráfego otimizadas com base nos testes — investindo mais no que trouxe o público certo e cortando o que não converteu.</p>
+          <span class="tl-tag">Conteúdo + Campanhas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGAS -->
+<section class="bordered">
+  <div class="wrap">
+    <div class="fi">
+      <p class="label">O que vocês recebem</p>
+      <h2 class="sec-title">O que está <span>incluso</span></h2>
+    </div>
+    <div class="del-grid fi fi-d1">
+      <div class="del-item"><p class="del-num">01</p><p class="del-name">Brandbook + Identidade Visual</p><p class="del-desc">Marca, paleta, tipografia, templates, linguagem digital. A base de tudo.</p></div>
+      <div class="del-item"><p class="del-num">02</p><p class="del-name">Site + Landing Pages</p><p class="del-desc">Site institucional para autoridade. Landing pages de conversão para cada público.</p></div>
+      <div class="del-item"><p class="del-num">03</p><p class="del-name">Instagram Completo</p><p class="del-desc">Bio, destaques, grid, gestão, conteúdo direcionado, stories estratégicos.</p></div>
+      <div class="del-item"><p class="del-num">04</p><p class="del-name">Tráfego Pago</p><p class="del-desc">Meta Ads: criação, gestão, testes A/B. Verba de mídia inclusa no pacote.</p></div>
+      <div class="del-item"><p class="del-num">05</p><p class="del-name">Audiovisual Dirigido</p><p class="del-desc">Profissional de foto e vídeo dirigido por nós. Incluso.</p></div>
+      <div class="del-item"><p class="del-num">06</p><p class="del-name">Direção de Conteúdo</p><p class="del-desc">Narrativa, roteiros, briefings. Cada vídeo com mensagem estratégica definida.</p></div>
+      <div class="del-item"><p class="del-num">07</p><p class="del-name">Análise Comercial</p><p class="del-desc">Comportamento do lead no WhatsApp. O que acontece antes da noiva entrar na porta.</p></div>
+      <div class="del-item"><p class="del-num">08</p><p class="del-name">Estratégia + Métricas</p><p class="del-desc">Custo por seguidor qualificado, taxa de conversão, relatórios transparentes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSIÇÃO -->
+<div class="stat-block bordered fi" style="padding:10rem 0">
+  <p class="stat-num" style="font-size:clamp(3rem,8vw,6rem)">Investimento</p>
+</div>
+
+<!-- INVESTIMENTO -->
+<section class="bordered">
+  <div class="wrap">
+    <div class="fi">
+      <p class="label">Parceria de estruturação</p>
+      <h2 class="sec-title">Dois meses. <span>Um valor. Tudo incluso.</span></h2>
+      <p class="sec-desc">Estratégia, execução, design, site, conteúdo, audiovisual e tráfego — tudo sob a mesma visão, a mesma equipe. Sem custos extras, sem surpresas.</p>
+    </div>
+    <div class="result-box fi fi-d1">
+      <p style="font-size:.55rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;position:relative">Investimento mensal — Tudo incluso</p>
+      <h3 style="font-size:clamp(2.5rem,6vw,4.5rem)">R$ <span>10.000</span><small style="font-size:.4em;color:var(--muted);font-family:var(--sans);font-weight:300">/mês</small></h3>
+      <p>2 meses de estruturação completa. Brandbook, site, Instagram, tráfego, audiovisual dirigido, direção de conteúdo, análise comercial e métricas. Sem nenhum custo adicional.</p>
+    </div>
+    <div class="comp-grid fi fi-d2" style="margin-top:2rem">
+      <div class="comp-col" style="border-left:2px solid var(--green)">
+        <h3 style="color:var(--green)">Incluso no pacote</h3>
+        <ul>
+          <li><i style="color:var(--green)">&#10003;</i> Audiovisual profissional (foto + vídeo dirigido)</li>
+          <li><i style="color:var(--green)">&#10003;</i> Verba de tráfego pago (Meta Ads)</li>
+          <li><i style="color:var(--green)">&#10003;</i> Estratégia, design e execução completa</li>
+          <li><i style="color:var(--green)">&#10003;</i> Site, landing pages e identidade visual</li>
+          <li><i style="color:var(--green)">&#10003;</i> Direção de conteúdo e narrativa</li>
+          <li><i style="color:var(--green)">&#10003;</i> Análise comercial e de comportamento do lead</li>
+        </ul>
+      </div>
+      <div class="comp-col" style="border-left:2px solid var(--accent)">
+        <h3 style="color:var(--accent)">Depois dos 2 meses</h3>
+        <ul>
+          <li><i style="color:var(--accent)">&#10003;</i> Toda a estrutura fica com vocês</li>
+          <li><i style="color:var(--accent)">&#10003;</i> Brandbook, site, templates — tudo é de vocês</li>
+          <li><i style="color:var(--accent)">&#10003;</i> Sentamos juntos para avaliar resultados</li>
+          <li><i style="color:var(--accent)">&#10003;</i> Redefinimos escopo conforme receita permitir</li>
+          <li><i style="color:var(--accent)">&#10003;</i> A parceria cresce junto com a Casa Magnólia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta bordered">
+  <div class="wrap">
+    <div class="fi">
+      <p class="label" style="margin-bottom:1.5rem">Próximo passo</p>
+      <h2>A casa está pronta.<br>Agora é hora de <span>trazer clientes.</span></h2>
+      <p class="cta-sub">A métrica que importa é a venda. Não é alcance, não é seguidor. É a noiva entrando na porta.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Hub High Ticket &middot; Moroni Reis &middot; Rafael Puglia &middot; Luiza Purificação &middot; 2026</p>
+</footer>
+
+<script>
+!function(){
+  var els=document.querySelectorAll('.fi');
+  if(!els.length)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(function(el){obs.observe(el)});
+}();
+</script>
+
+</body>
+</html>

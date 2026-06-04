@@ -1,0 +1,189 @@
+---
+import '../styles/global.css';
+
+export const prerender = false;
+
+interface Props {
+  title: string;
+  activeSection?: 'inbox' | 'crm' | 'dashboard' | 'campanhas' | 'automacoes' | 'links' | 'config';
+}
+
+const { title, activeSection = 'dashboard' } = Astro.props;
+const profile = Astro.locals.profile;
+const isAdmin = profile?.role === 'admin';
+
+function getInitials(name: string | undefined): string {
+  if (!name) return 'U';
+  const parts = name.trim().split(' ');
+  if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+  return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+}
+
+const initials = getInitials(profile?.full_name);
+
+const navItems = [
+  { id: 'inbox', label: 'Inbox', href: '/inbox', icon: 'chat' },
+  { id: 'crm', label: 'Funis', href: '/crm', icon: 'kanban' },
+  { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: 'chart' },
+  { id: 'campanhas', label: 'Campanhas', href: '/campanhas', icon: 'send' },
+  { id: 'automacoes', label: 'Automações', href: '/automacoes', icon: 'bolt' },
+  { id: 'links', label: 'Links', href: '/links', icon: 'link' },
+];
+---
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Marpe CRM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="h-screen overflow-hidden flex">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="/dashboard" class="sidebar-logo" title="Marpe CRM">M</a>
+
+    <div class="sidebar-nav">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class:list={['sidebar-item', { active: activeSection === item.id }]}
+          title={item.label}
+          data-section={item.id}
+        >
+          <svg class="sidebar-icon" viewBox="0 0 24 24">
+            {item.icon === 'chat' && <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />}
+            {item.icon === 'kanban' && <><rect x="3" y="3" width="7" height="18" rx="1" /><rect x="14" y="3" width="7" height="12" rx="1" /></>}
+            {item.icon === 'chart' && <path d="M18 20V10M12 20V4M6 20v-6" />}
+            {item.icon === 'send' && <><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></>}
+            {item.icon === 'bolt' && <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />}
+            {item.icon === 'link' && <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></>}
+          </svg>
+          {activeSection === item.id && <span class="sidebar-indicator"></span>}
+        </a>
+      ))}
+    </div>
+
+    <div class="sidebar-bottom">
+      {isAdmin && (
+        <a href="/config" class:list={['sidebar-item', { active: activeSection === 'config' }]} title="Configurações">
+          <svg class="sidebar-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+        </a>
+      )}
+      <div class="sidebar-avatar" title={profile?.full_name || 'Usuário'}>
+        {initials}
+      </div>
+      <form action="/api/auth/logout" method="post">
+        <button type="submit" class="sidebar-item" title="Sair">
+          <svg class="sidebar-icon" viewBox="0 0 24 24">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-1 overflow-hidden flex flex-col">
+    <slot />
+  </main>
+</body>
+</html>
+
+<style>
+  .sidebar {
+    width: var(--sidebar-width);
+    background: #08080f;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    flex-shrink: 0;
+  }
+  .sidebar-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #2563EB);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .sidebar-item {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    text-decoration: none;
+  }
+  .sidebar-item:hover {
+    background: #14141e;
+    color: var(--text-secondary);
+  }
+  .sidebar-item.active {
+    background: var(--accent-dim);
+    color: var(--accent-light);
+  }
+  .sidebar-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .sidebar-indicator {
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 16px;
+    border-radius: 0 2px 2px 0;
+    background: var(--accent);
+  }
+  .sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .sidebar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1e1e30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-light);
+    cursor: pointer;
+  }
+</style>

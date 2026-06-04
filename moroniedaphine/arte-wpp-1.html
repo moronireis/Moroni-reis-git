@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Arte WhatsApp 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{width:1080px;height:1350px;overflow:hidden;background:#FAF7F2;font-family:'Inter',sans-serif;margin:0}
+    .card{width:1080px;height:1350px;background:#FAF7F2;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:80px 90px 70px}
+
+    /* Wavy border */
+    .border-frame{position:absolute;inset:28px;pointer-events:none}
+    .border-frame svg{width:100%;height:100%}
+
+    .top{display:flex;flex-direction:column;align-items:center;gap:4px;z-index:2}
+    .bow{margin-bottom:10px}
+    .label{font-size:18px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#8B7D6B;opacity:.7}
+    .title{font-family:'Fraunces',serif;font-weight:300;font-size:96px;line-height:.95;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1;font-style:italic}
+    .title-sub{font-family:'Fraunces',serif;font-weight:300;font-size:68px;line-height:1;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1;font-style:italic}
+    .names{font-family:'Fraunces',serif;font-weight:300;font-size:30px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 30;letter-spacing:.05em;margin-top:8px}
+    .names em{font-style:italic;opacity:.45;font-size:.8em;padding:0 5px}
+
+    .mid{z-index:2;display:flex;align-items:center;justify-content:center;flex:1}
+
+    .date-row{display:flex;align-items:center;justify-content:center;gap:32px;z-index:2}
+    .date-side{font-size:22px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:#6B5B4E;text-align:center;line-height:1.5}
+    .date-num{font-family:'Fraunces',serif;font-weight:300;font-size:120px;line-height:1;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 20}
+    .heart{color:#7A2E3A;opacity:.4}
+
+    .bot{display:flex;flex-direction:column;align-items:center;gap:16px;z-index:2}
+    .divline{width:60px;height:1px;background:#7A2E3A;opacity:.2}
+    .loc{font-size:20px;font-weight:300;color:#6B5B4E;opacity:.65;text-align:center;line-height:1.6}
+    .link-label{font-size:18px;font-weight:300;color:#7A2E3A;opacity:.55;letter-spacing:.04em}
+    .link{font-size:21px;font-weight:400;color:#7A2E3A;opacity:.8;letter-spacing:.03em}
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <div class="border-frame">
+    <svg viewBox="0 0 1024 1294" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 25 C90 20,140 30,190 24 C240 18,290 30,340 24 C390 18,440 30,490 24 C540 18,590 30,640 24 C690 18,740 30,790 24 C840 18,890 30,940 24 C965 20,980 24,1000 25 C1004 60,996 110,1002 160 C1008 210,996 260,1002 310 C1008 360,996 410,1002 460 C1008 510,996 560,1002 610 C1008 660,996 710,1002 760 C1008 810,996 860,1002 910 C1008 960,996 1010,1002 1060 C1008 1110,996 1160,1002 1210 C1004 1240,1000 1260,1000 1270 C965 1274,940 1266,890 1272 C840 1278,790 1266,740 1272 C690 1278,640 1266,590 1272 C540 1278,490 1266,440 1272 C390 1278,340 1266,290 1272 C240 1278,190 1266,140 1272 C90 1278,60 1270,50 1270 C46 1240,54 1190,48 1140 C42 1090,54 1040,48 990 C42 940,54 890,48 840 C42 790,54 740,48 690 C42 640,54 590,48 540 C42 490,54 440,48 390 C42 340,54 290,48 240 C42 190,54 140,48 90 C44 55,48 35,50 25Z" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".28"/>
+    </svg>
+  </div>
+
+  <div class="top">
+    <svg class="bow" width="90" height="45" viewBox="0 0 120 60" fill="none">
+      <path d="M60 30 C50 10,20 5,10 20 C5 30,15 40,30 35 C40 32,55 30,60 30Z" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".45"/>
+      <path d="M60 30 C70 10,100 5,110 20 C115 30,105 40,90 35 C80 32,65 30,60 30Z" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".45"/>
+      <path d="M55 30 C56 38,52 48,48 55" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".35"/>
+      <path d="M65 30 C64 38,68 48,72 55" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".35"/>
+    </svg>
+    <span class="label">Vocês estão convidados para o</span>
+    <h1 class="title">Chá de</h1>
+    <h1 class="title-sub">Casa Nova</h1>
+    <p class="names">Moroni <em>&</em> Daphine</p>
+  </div>
+
+  <div class="mid">
+    <svg width="520" height="380" viewBox="0 0 560 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Table with tablecloth -->
+      <ellipse cx="280" cy="340" rx="230" ry="28" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".25"/>
+      <path d="M50 340 C75 352,100 405,130 420 C155 432,200 436,240 438 C280 440,320 440,360 438 C400 436,445 432,470 420 C500 405,525 352,510 340" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".3"/>
+      <path d="M130 360 C138 390,142 415,145 435" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".12"/>
+      <path d="M210 365 C215 395,217 415,218 438" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".12"/>
+      <path d="M280 367 C280 395,280 415,280 440" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".12"/>
+      <path d="M350 365 C345 395,343 415,342 438" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".12"/>
+      <path d="M430 360 C422 390,418 415,415 435" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".12"/>
+
+      <!-- 3-tier cake center -->
+      <rect x="256" y="230" width="48" height="6" rx="2" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".4"/>
+      <line x1="280" y1="236" x2="280" y2="290" stroke="#8B7D6B" stroke-width="1.5" opacity=".35"/>
+      <rect x="258" y="290" width="44" height="5" rx="2" stroke="#8B7D6B" stroke-width="1.3" fill="none" opacity=".35"/>
+      <ellipse cx="280" cy="298" rx="18" ry="3.5" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".3"/>
+      <!-- Cake body -->
+      <rect x="260" y="185" width="40" height="45" rx="3" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".4"/>
+      <rect x="266" y="150" width="28" height="35" rx="2" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".4"/>
+      <rect x="272" y="120" width="16" height="30" rx="2" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".4"/>
+      <!-- Decorative waves on cake -->
+      <path d="M260 205 C266 201,274 209,280 201 C286 209,294 201,300 205" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".25"/>
+      <path d="M266 172 C270 169,276 175,282 169 C288 175,292 169,294 172" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".25"/>
+      <!-- Cherry on top -->
+      <circle cx="280" cy="116" r="5" stroke="#7A2E3A" stroke-width="1.5" fill="none" opacity=".45"/>
+      <line x1="280" y1="111" x2="280" y2="102" stroke="#6B5B4E" stroke-width="1" opacity=".35"/>
+      <path d="M280 102 C284 98,288 100,286 104" stroke="#6B5B4E" stroke-width=".8" fill="none" opacity=".25"/>
+
+      <!-- Flowers in vase (left) -->
+      <path d="M145 298 C148 270,155 260,162 252 L172 252 C178 260,185 270,188 298" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".4"/>
+      <ellipse cx="167" cy="300" rx="22" ry="5" stroke="#8B7D6B" stroke-width="1.3" fill="none" opacity=".25"/>
+      <!-- Stems -->
+      <line x1="167" y1="252" x2="167" y2="190" stroke="#8B7D6B" stroke-width="1" opacity=".3"/>
+      <line x1="160" y1="254" x2="145" y2="200" stroke="#8B7D6B" stroke-width="1" opacity=".25"/>
+      <line x1="174" y1="254" x2="192" y2="205" stroke="#8B7D6B" stroke-width="1" opacity=".25"/>
+      <!-- Flower heads -->
+      <circle cx="167" cy="185" r="11" stroke="#7A2E3A" stroke-width="1.3" fill="none" opacity=".35"/>
+      <circle cx="167" cy="185" r="4" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".25"/>
+      <circle cx="143" cy="196" r="8" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity=".3"/>
+      <circle cx="194" cy="200" r="9" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity=".3"/>
+      <!-- Extra buds -->
+      <circle cx="155" cy="212" r="5" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".2"/>
+      <circle cx="180" cy="215" r="5" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".2"/>
+
+      <!-- Teapot (right) -->
+      <ellipse cx="405" cy="285" rx="32" ry="25" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".4"/>
+      <path d="M380 264 C385 256,425 256,430 264" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".35"/>
+      <circle cx="405" cy="252" r="4" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".3"/>
+      <path d="M437 275 C450 266,457 258,454 248" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".35"/>
+      <path d="M373 272 C355 268,352 285,373 295" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".35"/>
+      <!-- Steam -->
+      <path d="M448 244 C450 236,446 230,449 222" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".18"/>
+      <path d="M455 246 C457 238,453 232,456 224" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".13"/>
+
+      <!-- Cup + saucer -->
+      <path d="M440 315 C442 302,455 295,470 295 C485 295,498 302,500 315" stroke="#8B7D6B" stroke-width="1.3" fill="none" opacity=".35"/>
+      <ellipse cx="470" cy="316" rx="30" ry="5" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".3"/>
+      <path d="M500 305 C510 303,512 314,500 316" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".3"/>
+      <ellipse cx="470" cy="322" rx="35" ry="6" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".2"/>
+
+      <!-- Plate + utensils (far left) -->
+      <ellipse cx="75" cy="318" rx="35" ry="7" stroke="#8B7D6B" stroke-width="1.3" fill="none" opacity=".3"/>
+      <ellipse cx="75" cy="316" rx="24" ry="4.5" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".18"/>
+      <!-- Fork -->
+      <line x1="48" y1="270" x2="56" y2="316" stroke="#8B7D6B" stroke-width="1.3" opacity=".3"/>
+      <line x1="45" y1="270" x2="44" y2="252" stroke="#8B7D6B" stroke-width=".8" opacity=".25"/>
+      <line x1="48" y1="270" x2="47" y2="250" stroke="#8B7D6B" stroke-width=".8" opacity=".25"/>
+      <line x1="51" y1="270" x2="50" y2="252" stroke="#8B7D6B" stroke-width=".8" opacity=".25"/>
+      <!-- Knife -->
+      <line x1="105" y1="270" x2="96" y2="316" stroke="#8B7D6B" stroke-width="1.3" opacity=".3"/>
+      <path d="M105 270 L107 248 C108 244,103 244,104 248Z" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".25"/>
+    </svg>
+  </div>
+
+  <div class="date-row">
+    <div class="date-side">Sábado<br>às 19h</div>
+    <svg class="heart" width="12" height="12" viewBox="0 0 24 24" fill="#7A2E3A"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <div class="date-num">06</div>
+    <svg class="heart" width="12" height="12" viewBox="0 0 24 24" fill="#7A2E3A"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <div class="date-side">Jun<br>2026</div>
+  </div>
+
+  <div class="bot">
+    <div class="divline"></div>
+    <p class="loc">Capela Faustino Augusto Cesar 81<br>Igreja de Jesus Cristo dos Santos dos Últimos Dias</p>
+    <div class="divline"></div>
+    <p class="link-label">Confirme e veja a lista de presentes:</p>
+    <p class="link">moroniedaphine.vercel.app/cha-de-cozinha</p>
+  </div>
+
+</div>
+</body>
+</html>

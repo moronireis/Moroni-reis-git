@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giovanna Paola — Serif Editorial Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Source+Sans+3:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #DBA99F;
+    --rose-light: #ECC8BE;
+    --blush: #FFCBC1;
+    --cream: #F4F3EE;
+    --cream-warm: #FAF8F5;
+    --eucalyptus: #4A6741;
+    --taupe: #9C958F;
+    --silver: #BAB9B6;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b635d;
+    --text-tertiary: #9C958F;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 80px 24px 48px;
+    border-bottom: 1px solid var(--silver);
+  }
+  .header-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(30px, 4.5vw, 44px);
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Section */
+  .section {
+    padding: 64px 24px;
+    border-bottom: 1px solid rgba(186, 185, 182, 0.35);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(24px, 3.5vw, 34px);
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  /* Logo Grid */
+  .logo-grid {
+    display: grid;
+    gap: 28px;
+  }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grid-1 { grid-template-columns: 1fr; }
+
+  @media (max-width: 860px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .section { padding: 48px 16px; }
+  }
+
+  /* Logo Card */
+  .logo-card {
+    border: 1px solid var(--silver);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+  .logo-card:hover { transform: translateY(-2px); }
+
+  .logo-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    padding: 48px 32px;
+    position: relative;
+    transition: background 0.4s ease;
+  }
+  .logo-display.bg-cream { background: var(--cream); }
+  .logo-display.bg-white { background: #fff; }
+  .logo-display.bg-dark { background: #1a1a1a; }
+  .logo-display.bg-blush { background: #FFF5F3; }
+  .logo-display.bg-warm { background: var(--cream-warm); }
+
+  .logo-display svg {
+    max-width: 460px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* BG toggle */
+  .bg-toggles {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+  }
+  .bg-toggle {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--silver);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .bg-toggle:hover { transform: scale(1.15); }
+  .bg-toggle.active { border-color: var(--rose); border-width: 2px; }
+  .bg-toggle[data-bg="cream"] { background: var(--cream); }
+  .bg-toggle[data-bg="white"] { background: #fff; }
+  .bg-toggle[data-bg="dark"] { background: #1a1a1a; }
+  .bg-toggle[data-bg="blush"] { background: #FFF5F3; }
+  .bg-toggle[data-bg="warm"] { background: var(--cream-warm); }
+
+  .logo-info {
+    padding: 20px 24px;
+    background: #fff;
+    border-top: 1px solid rgba(186, 185, 182, 0.25);
+  }
+  .logo-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+  .logo-info .variant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+  .logo-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .logo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--silver);
+    color: var(--text-tertiary);
+  }
+
+  .recommended {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--rose);
+    color: #fff;
+    padding: 3px 8px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--silver);
+  }
+  .footer p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: var(--taupe);
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-label">Serif Editorial &mdash; Variacoes</div>
+  <h1>Giovanna Paola</h1>
+  <p>Foco no estilo Caps Tracked. Menos espacamento, mais elegancia. Variacoes de peso, tracking, separador, tagline e proporcao.</p>
+</header>
+
+<!-- ==================== GRUPO 1: TRACKING REFINADO ==================== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Grupo 01</div>
+    <div class="section-title">Tracking Refinado</div>
+    <div class="section-desc">Menos espacamento que a versao anterior. Letras mais juntas, mais coeso, mais elegante.</div>
+
+    <div class="logo-grid grid-2">
+
+      <!-- V1: Tight tracking + thin line -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v1">
+          <span class="recommended">Favorito</span>
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v1"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v1"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v1"></div>
+            <div class="bg-toggle" data-bg="blush" data-target="v1"></div>
+          </div>
+          <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="68" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="48" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="185" y1="86" x2="335" y2="86" stroke="#DBA99F" stroke-width="0.5" class="adapt-accent"/>
+            <text x="260" y="108" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8.5" font-weight="500" letter-spacing="3.5" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V1 &mdash; Tracking 3px</div>
+          <h3>Tight + Linha Rose Curta</h3>
+          <p>Tracking reduzido de 8 para 3. Linha rose mais curta que o texto. Tagline proporcional.</p>
+        </div>
+      </div>
+
+      <!-- V2: Minimal tracking + no line -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v2">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v2"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v2"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v2"></div>
+            <div class="bg-toggle" data-bg="blush" data-target="v2"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="65" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="48" font-weight="300" letter-spacing="2" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <text x="260" y="95" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V2 &mdash; Tracking 2px</div>
+          <h3>Ultra Tight + Sem Linha</h3>
+          <p>Tracking minimo. Sem linha separadora. Puro e limpo. A tipografia fala sozinha.</p>
+        </div>
+      </div>
+
+      <!-- V3: Medium tracking + dots -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v3">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v3"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v3"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v3"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="62" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="4" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <text x="260" y="92" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="7.5" font-weight="400" letter-spacing="2.5" fill="#DBA99F" class="adapt-accent-text">&bull;&ensp;EVENTOS&ensp;&bull;</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V3 &mdash; Tracking 4px</div>
+          <h3>Medium Track + Bullets Rose</h3>
+          <p>Tracking intermediario. Tagline em rose com bullets decorativos. Sutil toque feminino.</p>
+        </div>
+      </div>
+
+      <!-- V4: Tracking 1.5 + weight 400 -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v4">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v4"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v4"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v4"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="65" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="400" letter-spacing="1.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="160" y1="82" x2="360" y2="82" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="103" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V4 &mdash; Weight 400</div>
+          <h3>Mais Peso + Tracking Justo</h3>
+          <p>Weight 400 (nao 300). Mais presenca sem ficar bold. Tracking 1.5 &mdash; quase sem espaco extra.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GRUPO 2: SEM TAGLINE ==================== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Grupo 02</div>
+    <div class="section-title">Sem Tagline</div>
+    <div class="section-desc">So o nome. Maximo de elegancia e confianca. O nome e a marca.</div>
+
+    <div class="logo-grid grid-2">
+
+      <!-- V5: Pure name light -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v5" style="min-height: 220px;">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v5"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v5"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v5"></div>
+          </div>
+          <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="52" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="50" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V5 &mdash; Pure</div>
+          <h3>Nome Puro 300</h3>
+          <p>Nada mais. Cormorant 300, tracking 3. Elegancia absoluta pela simplicidade.</p>
+        </div>
+      </div>
+
+      <!-- V6: Pure name 400 tighter -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v6" style="min-height: 220px;">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v6"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v6"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v6"></div>
+          </div>
+          <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="52" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="50" font-weight="400" letter-spacing="1.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V6 &mdash; Pure 400</div>
+          <h3>Nome Puro 400</h3>
+          <p>Mesmo conceito, weight 400. Tracking 1.5. Mais firme, mais presente.</p>
+        </div>
+      </div>
+
+      <!-- V7: Pure + underline rose -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v7" style="min-height: 220px;">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v7"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v7"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v7"></div>
+          </div>
+          <svg viewBox="0 0 520 90" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="50" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="48" font-weight="300" letter-spacing="2.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="110" y1="66" x2="410" y2="66" stroke="#DBA99F" stroke-width="0.5" class="adapt-accent"/>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V7 &mdash; Underline</div>
+          <h3>Nome + Underline Rose Full</h3>
+          <p>Linha rose percorre toda a largura do nome. Elegante, editorial, revista de moda.</p>
+        </div>
+      </div>
+
+      <!-- V8: Pure italic -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v8" style="min-height: 220px;">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v8"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v8"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v8"></div>
+          </div>
+          <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="52" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="50" font-weight="300" letter-spacing="2" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V8 &mdash; Italic</div>
+          <h3>Italic Puro 300</h3>
+          <p>Cormorant italic. Movimento sutil sem ser script. Mais editorial, mais revisteiro.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GRUPO 3: VARIAÇÕES DE SEPARADOR ==================== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Grupo 03</div>
+    <div class="section-title">Separadores Elegantes</div>
+    <div class="section-desc">O detalhe entre nome e tagline define a personalidade. Linha, ornamento, espaco.</div>
+
+    <div class="logo-grid grid-2">
+
+      <!-- V9: Diamond separator -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v9">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v9"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v9"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v9"></div>
+          </div>
+          <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="62" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="195" y1="82" x2="252" y2="82" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <polygon points="260,78 264,82 260,86 256,82" fill="#DBA99F" class="adapt-accent-fill"/>
+            <line x1="268" y1="82" x2="325" y2="82" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="106" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V9 &mdash; Diamante</div>
+          <h3>Linhas + Diamante Central</h3>
+          <p>Duas linhas com diamante rose no centro. Joalheria, luxo discreto. Casamento.</p>
+        </div>
+      </div>
+
+      <!-- V10: Double thin lines -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v10">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v10"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v10"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v10"></div>
+          </div>
+          <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="2.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="200" y1="78" x2="320" y2="78" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <line x1="210" y1="82" x2="310" y2="82" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="106" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V10 &mdash; Dupla</div>
+          <h3>Duas Linhas Finas</h3>
+          <p>Duas linhas finas rose, a segunda mais curta. Convite de casamento classico.</p>
+        </div>
+      </div>
+
+      <!-- V11: Rose dot -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v11">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v11"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v11"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v11"></div>
+          </div>
+          <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <circle cx="260" cy="80" r="2" fill="#DBA99F" class="adapt-accent-fill"/>
+            <text x="260" y="106" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V11 &mdash; Ponto</div>
+          <h3>Ponto Rose Central</h3>
+          <p>Um unico ponto rose entre nome e tagline. Maximo minimalismo. Respira.</p>
+        </div>
+      </div>
+
+      <!-- V12: No separator, just space -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v12">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v12"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v12"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v12"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="58" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="2.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <text x="260" y="90" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8.5" font-weight="400" letter-spacing="3.5" fill="#DBA99F" class="adapt-accent-text">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V12 &mdash; Espaco</div>
+          <h3>Sem Separador + Tagline Rose</h3>
+          <p>Nenhuma linha. So espaco e a tagline em rose. A cor faz a separacao.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GRUPO 4: PROPORÇÕES DIFERENTES ==================== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Grupo 04</div>
+    <div class="section-title">Proporcoes e Escalas</div>
+    <div class="section-desc">Mesmo conceito, tamanhos e proporcoes diferentes. Mais compacto, mais largo, empilhado.</div>
+
+    <div class="logo-grid grid-2">
+
+      <!-- V13: Smaller, more compact -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v13">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v13"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v13"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v13"></div>
+          </div>
+          <svg viewBox="0 0 520 110" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="48" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="36" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="205" y1="62" x2="315" y2="62" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="80" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="7" font-weight="400" letter-spacing="2.5" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V13 &mdash; Compacto</div>
+          <h3>Escala Menor (36px)</h3>
+          <p>Versao compacta para headers, cartao de visita, assinatura de email. Proporcionalmente perfeita.</p>
+        </div>
+      </div>
+
+      <!-- V14: Larger, heroic -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v14" style="min-height: 300px;">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v14"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v14"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v14"></div>
+          </div>
+          <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+            <text x="300" y="90" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="64" font-weight="300" letter-spacing="3.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="215" y1="112" x2="385" y2="112" stroke="#DBA99F" stroke-width="0.5" class="adapt-accent"/>
+            <text x="300" y="138" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="9" font-weight="400" letter-spacing="4" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V14 &mdash; Heroico</div>
+          <h3>Escala Grande (64px)</h3>
+          <p>Versao hero para site, banner, backdrop de evento. Imponente mas elegante.</p>
+        </div>
+      </div>
+
+      <!-- V15: Stacked GIOVANNA over PAOLA -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v15">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v15"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v15"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v15"></div>
+          </div>
+          <svg viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="4" fill="#1a1a1a" class="adapt-text">GIOVANNA</text>
+            <text x="260" y="105" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="4" fill="#1a1a1a" class="adapt-text">PAOLA</text>
+            <line x1="210" y1="120" x2="310" y2="120" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="142" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="7.5" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V15 &mdash; Empilhado</div>
+          <h3>GIOVANNA sobre PAOLA</h3>
+          <p>Nome em duas linhas. Mais vertical, mais impactante em formats quadrados (Instagram, selo).</p>
+        </div>
+      </div>
+
+      <!-- V16: Stacked tight with different weights -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v16">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v16"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v16"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v16"></div>
+          </div>
+          <svg viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="58" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="44" font-weight="400" letter-spacing="2" fill="#1a1a1a" class="adapt-text">GIOVANNA</text>
+            <text x="260" y="100" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="44" font-weight="300" letter-spacing="2" fill="#DBA99F" class="adapt-accent-text">PAOLA</text>
+            <text x="260" y="132" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="7.5" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V16 &mdash; Peso Duplo</div>
+          <h3>GIOVANNA 400 + PAOLA 300 Rose</h3>
+          <p>Contraste de peso E cor. GIOVANNA mais firme em dark, PAOLA mais leve em rose.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GRUPO 5: FONTES ALTERNATIVAS ==================== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Grupo 05</div>
+    <div class="section-title">Serifs Alternativas</div>
+    <div class="section-desc">Mesmo conceito mas testando outras serifs. Playfair Display, DM Serif, Libre Baskerville, Cormorant pura.</div>
+
+    <div class="logo-grid grid-2">
+
+      <!-- V17: Playfair Display -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v17">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v17"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v17"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v17"></div>
+          </div>
+          <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="65" text-anchor="middle" font-family="'Playfair Display', serif" font-size="42" font-weight="300" letter-spacing="2" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="195" y1="82" x2="325" y2="82" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="105" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V17 &mdash; Playfair Display</div>
+          <h3>Playfair Display 300</h3>
+          <p>Contraste alto, hastes finas com serifas marcantes. Mais dramatica que Cormorant. Vogue vibe.</p>
+        </div>
+      </div>
+
+      <!-- V18: DM Serif Display -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v18">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v18"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v18"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v18"></div>
+          </div>
+          <svg viewBox="0 0 560 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="280" y="65" text-anchor="middle" font-family="'DM Serif Display', serif" font-size="42" letter-spacing="2" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <circle cx="280" cy="84" r="1.8" fill="#DBA99F" class="adapt-accent-fill"/>
+            <text x="280" y="108" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V18 &mdash; DM Serif Display</div>
+          <h3>DM Serif Display</h3>
+          <p>Serif moderna, mais grossa. Presenca forte, editorial contemporaneo. Menos classica, mais "now".</p>
+        </div>
+      </div>
+
+      <!-- V19: Libre Baskerville -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v19">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v19"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v19"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v19"></div>
+          </div>
+          <svg viewBox="0 0 580 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="290" y="65" text-anchor="middle" font-family="'Libre Baskerville', serif" font-size="34" font-weight="400" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="200" y1="82" x2="380" y2="82" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="290" y="105" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V19 &mdash; Libre Baskerville</div>
+          <h3>Libre Baskerville</h3>
+          <p>Classica britanica. Mais tradicional, mais "gravada em pedra". Autoridade maxima.</p>
+        </div>
+      </div>
+
+      <!-- V20: Cormorant (not Garamond) -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v20">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v20"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v20"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v20"></div>
+          </div>
+          <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="65" text-anchor="middle" font-family="'Cormorant', serif" font-size="48" font-weight="300" letter-spacing="2.5" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="190" y1="84" x2="330" y2="84" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="108" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V20 &mdash; Cormorant Pura</div>
+          <h3>Cormorant (sem Garamond)</h3>
+          <p>Cormorant pura &mdash; mais estreita e afiada que a Garamond. Mesma familia, personalidade diferente.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GRUPO 6: TAGLINES ALTERNATIVAS ==================== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Grupo 06</div>
+    <div class="section-title">Taglines Alternativas</div>
+    <div class="section-desc">Mesmo layout V1 mas testando diferentes descritores abaixo do nome.</div>
+
+    <div class="logo-grid grid-3">
+
+      <!-- V21 -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v21">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v21"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v21"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v21"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="200" y1="78" x2="320" y2="78" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="100" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">ASSESSORIA DE EVENTOS</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V21</div>
+          <h3>Assessoria de Casamentos</h3>
+        </div>
+      </div>
+
+      <!-- V22 -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v22">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v22"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v22"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v22"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="200" y1="78" x2="320" y2="78" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="100" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">ASSESSORA &middot; MENTORA &middot; PALESTRANTE</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V22</div>
+          <h3>Roles com Middots</h3>
+        </div>
+      </div>
+
+      <!-- V23 -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v23">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v23"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v23"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v23"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="200" y1="78" x2="320" y2="78" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="100" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="14" font-weight="300" fill="#9C958F" class="adapt-sub">eventos com metodo</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V23</div>
+          <h3>Tagline Serif Italic</h3>
+          <p>Tagline em Cormorant italic lowercase. Mais poetico, mais intimo.</p>
+        </div>
+      </div>
+
+      <!-- V24 -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v24">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v24"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v24"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v24"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <line x1="200" y1="78" x2="320" y2="78" stroke="#DBA99F" stroke-width="0.4" class="adapt-accent"/>
+            <text x="260" y="100" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="500" letter-spacing="3.5" fill="#9C958F" class="adapt-sub">EVENTOS &amp; MENTORIA</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V24</div>
+          <h3>Casamentos &amp; Mentoria</h3>
+        </div>
+      </div>
+
+      <!-- V25 -->
+      <div class="logo-card">
+        <div class="logo-display bg-cream" id="v25">
+          <div class="bg-toggles">
+            <div class="bg-toggle active" data-bg="cream" data-target="v25"></div>
+            <div class="bg-toggle" data-bg="white" data-target="v25"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v25"></div>
+          </div>
+          <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="60" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <circle cx="260" cy="80" r="1.5" fill="#DBA99F" class="adapt-accent-fill"/>
+            <text x="260" y="100" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="#9C958F" class="adapt-sub">NOIVA S.A.</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V25</div>
+          <h3>Noiva S.A.</h3>
+          <p>Versao vinculada a marca-mae. Para uso dentro do ecossistema Noiva SA.</p>
+        </div>
+      </div>
+
+      <!-- V26 -->
+      <div class="logo-card">
+        <div class="logo-display bg-white" id="v26">
+          <div class="bg-toggles">
+            <div class="bg-toggle" data-bg="cream" data-target="v26"></div>
+            <div class="bg-toggle active" data-bg="white" data-target="v26"></div>
+            <div class="bg-toggle" data-bg="dark" data-target="v26"></div>
+          </div>
+          <svg viewBox="0 0 520 110" xmlns="http://www.w3.org/2000/svg">
+            <text x="260" y="55" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="46" font-weight="300" letter-spacing="3" fill="#1a1a1a" class="adapt-text">GIOVANNA PAOLA</text>
+            <text x="260" y="82" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="16" font-weight="300" fill="#DBA99F" class="adapt-accent-text">onde metodo encontra emocao</text>
+          </svg>
+        </div>
+        <div class="logo-info">
+          <div class="variant">V26</div>
+          <h3>Frase Poetica Italic Rose</h3>
+          <p>"Onde metodo encontra emocao" &mdash; captura os dois arquetipos (Construtora + Aliada).</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <p>Giovanna Paola &mdash; Serif Editorial Variations &mdash; Reis Marketing IA &mdash; Maio 2026</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.bg-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const target = document.getElementById(toggle.dataset.target);
+      if (!target) return;
+      target.classList.remove('bg-cream', 'bg-white', 'bg-dark', 'bg-blush', 'bg-warm');
+      target.classList.add('bg-' + toggle.dataset.bg);
+      target.querySelectorAll('.bg-toggle').forEach(t => t.classList.remove('active'));
+      toggle.classList.add('active');
+      const isDark = toggle.dataset.bg === 'dark';
+      target.querySelectorAll('.adapt-text').forEach(el => el.setAttribute('fill', isDark ? '#F4F3EE' : '#1a1a1a'));
+      target.querySelectorAll('.adapt-sub').forEach(el => el.setAttribute('fill', isDark ? '#9C958F' : '#9C958F'));
+      target.querySelectorAll('.adapt-accent').forEach(el => el.setAttribute('stroke', '#DBA99F'));
+      target.querySelectorAll('.adapt-accent-text').forEach(el => el.setAttribute('fill', '#DBA99F'));
+      target.querySelectorAll('.adapt-accent-fill').forEach(el => el.setAttribute('fill', '#DBA99F'));
+    });
+  });
+</script>
+
+</body>
+</html>

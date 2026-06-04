@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import AnimatedNumbers from '../components/AnimatedNumbers';
 import { SuporteMockup, SegurancaMockup, MonitoramentoMockup } from '../components/MockupDashboard';
+import CyberGridHero from '../components/backgrounds/CyberGridHero';
 
 const partners = [
   { name: 'Kaspersky', file: 'kaspersky.avif' },
@@ -27,8 +28,16 @@ const partners = [
 
   <!-- Hero -->
   <section class="relative min-h-[80vh] md:min-h-[90vh] flex items-center section-padding overflow-hidden grid-bg">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(230,57,70,0.06),transparent_50%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(230,57,70,0.04),transparent_50%)]"></div>
+    <CyberGridHero client:load />
+
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+    <div class="hero-scanline hero-scanline-1"></div>
+    <div class="hero-scanline hero-scanline-2"></div>
 
     <div class="container-narrow relative z-10">
       <div class="max-w-3xl">
@@ -115,7 +124,7 @@ const partners = [
   </section>
 
   <!-- Suporte Avançado -->
-  <section class="section-padding border-t border-cyber-border bg-cyber-dark/30 grid-bg">
+  <section class="section-padding border-t border-cyber-border grid-bg" style="background-color: var(--color-cyber-surface-1);">
     <div class="container-narrow">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div class="reveal-left">
@@ -144,7 +153,8 @@ const partners = [
   </section>
 
   <!-- Segurança -->
-  <section class="section-padding border-t border-cyber-border">
+  <section class="section-padding border-t border-cyber-border relative">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(20,20,60,0.15),transparent_70%)] pointer-events-none"></div>
     <div class="container-narrow">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div class="order-2 lg:order-1 reveal-left">
@@ -182,12 +192,27 @@ const partners = [
           <h2 class="text-xl sm:text-3xl md:text-4xl font-light text-cyber-white mb-6">
             Seu ambiente protegido<br/><span class="text-cyber-red">24 x 7.</span>
           </h2>
-          <p class="text-cyber-text leading-relaxed mb-6">
-            Câmeras que detectam invasão, alarmes que disparam sozinhos e você controlando tudo na palma da mão. De qualquer lugar, a qualquer hora — sem que isso custe uma fortuna.
+          <p class="text-cyber-text leading-relaxed mb-4">
+            Sistemas convencionais dependem de alguém lembrar de armar o alarme. O nosso não. Inteligência artificial monitora seu perímetro 24 horas por dia — sem intervenção humana, sem falha por esquecimento.
           </p>
-          <p class="text-cyber-text leading-relaxed mb-8">
-            Trabalhamos com o que há de mais moderno no mercado. Da instalação ao monitoramento da central, cada ponto do seu espaço fica coberto.
-          </p>
+          <ul class="space-y-2 mb-8">
+            <li class="flex items-start gap-3 text-sm text-cyber-text">
+              <span class="w-1.5 h-1.5 bg-cyber-red flex-shrink-0 mt-1.5"></span>
+              IA diferencia pessoas, veículos e animais — zero alarmes falsos
+            </li>
+            <li class="flex items-start gap-3 text-sm text-cyber-text">
+              <span class="w-1.5 h-1.5 bg-cyber-red flex-shrink-0 mt-1.5"></span>
+              Visão noturna colorida em alta definição
+            </li>
+            <li class="flex items-start gap-3 text-sm text-cyber-text">
+              <span class="w-1.5 h-1.5 bg-cyber-red flex-shrink-0 mt-1.5"></span>
+              Áudio bidirecional — operador age no momento do evento
+            </li>
+            <li class="flex items-start gap-3 text-sm text-cyber-text">
+              <span class="w-1.5 h-1.5 bg-cyber-red flex-shrink-0 mt-1.5"></span>
+              Gestão centralizada em nuvem — múltiplos locais num painel
+            </li>
+          </ul>
           <a href="/servicos" class="btn-primary">
             Saiba mais
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -201,6 +226,55 @@ const partners = [
       </div>
     </div>
   </section>
+
+  <!-- Comparativo -->
+  <section class="section-padding border-t border-cyber-border relative">
+    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(90deg, transparent 48%, rgba(230,57,70,0.03) 50%, rgba(230,57,70,0.06) 100%);"></div>
+    <div class="container-narrow">
+      <div class="text-center mb-12 reveal">
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyber-red">Comparativo</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-light text-cyber-white mt-4 mb-4">
+          Por que a diferença <span class="text-cyber-red">importa.</span>
+        </h2>
+        <p class="text-cyber-text max-w-2xl mx-auto text-sm">
+          Soluções convencionais dependem de pessoas para funcionar. A CyberAct depende de inteligência.
+        </p>
+      </div>
+
+      <div class="border border-cyber-border reveal">
+        <!-- Header row -->
+        <div class="grid grid-cols-2">
+          <div class="px-6 py-4 text-[10px] font-medium uppercase tracking-[0.14em] text-[#555555] bg-cyber-dark border-r border-cyber-border">
+            Solução Convencional
+          </div>
+          <div class="px-6 py-4 text-[10px] font-medium uppercase tracking-[0.14em] text-cyber-red bg-cyber-dark border-t-2 border-t-cyber-red">
+            CyberAct
+          </div>
+        </div>
+        <!-- Rows -->
+        {[
+          ['Ativação manual obrigatória — vulnerável ao esquecimento', 'IA monitora 24/7 de forma totalmente autônoma'],
+          ['Sensores PIR geram muitos falsos alarmes', 'ML diferencia pessoa, veículo e animal com precisão'],
+          ['App do fabricante com funcionalidades limitadas', 'Plataforma cloud própria — controle total centralizado'],
+          ['Visão noturna em preto e branco', 'Noturna colorida em alta definição'],
+          ['Monitoramento passivo — sem intervenção em tempo real', 'Áudio bidirecional — operador age no momento do evento'],
+          ['Cobertura parcial — pontos cegos no perímetro', '100% do perímetro monitorado e verificado'],
+        ].map(([conv, cyber], i) => (
+          <div key={i} class="grid grid-cols-2 border-t border-cyber-border">
+            <div class="px-6 py-3 text-sm text-[#555555] bg-cyber-dark border-r border-cyber-border">
+              {conv}
+            </div>
+            <div class="px-6 py-3 text-sm text-cyber-white bg-[#111111] flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 bg-cyber-red flex-shrink-0 mt-1.5"></span>
+              {cyber}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="gradient-line"></div>
 
   <!-- Depoimentos -->
   <section class="section-padding border-t border-cyber-border">
@@ -251,9 +325,11 @@ const partners = [
     </div>
   </section>
 
+  <div class="gradient-line"></div>
+
   <!-- CTA Final -->
   <section class="section-padding border-t border-cyber-border bg-cyber-dark/30 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,57,70,0.05),transparent_70%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,57,70,0.08),transparent_70%)]"></div>
     <div class="container-narrow text-center relative z-10 reveal-scale">
       <h2 class="text-2xl sm:text-3xl md:text-5xl font-light text-cyber-white mb-6">
         Pronto para uma TI que<br/><span class="text-cyber-red">funciona de verdade?</span>

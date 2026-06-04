@@ -1,0 +1,9 @@
+{
+  "framework": "astro",
+  "crons": [
+    {
+      "path": "/api/internal/corp-sync",
+      "schedule": "0 3 * * *"
+    }
+  ]
+}

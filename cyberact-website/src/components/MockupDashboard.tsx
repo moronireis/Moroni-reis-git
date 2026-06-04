@@ -136,12 +136,16 @@ export function SegurancaMockup() {
   );
 }
 
-/** Monitoramento Mockup - Camera Grid */
+/** Monitoramento Mockup - AI Camera Grid + Event Log */
 export function MonitoramentoMockup() {
   const [activeAlert, setActiveAlert] = useState(false);
+  const [logTime, setLogTime] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setActiveAlert(a => !a), 4000);
+    const interval = setInterval(() => {
+      setActiveAlert(a => !a);
+      setLogTime(t => t + 1);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -152,6 +156,18 @@ export function MonitoramentoMockup() {
     { id: 'CAM-04', location: 'Corredor B2', status: 'rec' },
   ];
 
+  const events = [
+    { time: `14:3${logTime % 10}`, entity: 'Pessoa detectada', cam: 'Câm 02', type: 'alert' as const },
+    { time: '14:18', entity: 'Veículo — sem alerta', cam: 'Câm 01', type: 'ok' as const },
+    { time: '14:05', entity: 'Animal ignorado', cam: 'Câm 03', type: 'skip' as const },
+  ];
+
+  const badgeStyle = (type: 'alert' | 'ok' | 'skip') => ({
+    alert: { background: 'rgba(230,57,70,0.15)', color: '#e63946' },
+    ok:    { background: 'rgba(74,222,128,0.1)',  color: '#4ade80' },
+    skip:  { background: 'rgba(160,160,160,0.1)', color: '#555555' },
+  })[type];
+
   return (
     <div style={{
       background: '#111111',
@@ -160,8 +176,9 @@ export function MonitoramentoMockup() {
       fontFamily: "'Inter', monospace",
       fontSize: 'clamp(0.65rem, 1.5vw, 0.75rem)',
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', paddingBottom: '0.75rem', borderBottom: '1px solid #2a2a2a' }}>
-        <span style={{ color: '#a0a0a0', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.65rem' }}>CyberAct CFTV</span>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #2a2a2a' }}>
+        <span style={{ color: '#a0a0a0', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.65rem' }}>CyberAct CFTV — IA Ativa</span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#e63946', animation: 'pulse 1.5s ease-in-out infinite' }} />
           <span style={{ color: '#e63946', fontSize: '0.6rem' }}>REC</span>
@@ -169,41 +186,55 @@ export function MonitoramentoMockup() {
       </div>
 
       {/* Camera grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem' }}>
         {cameras.map((cam) => (
           <div key={cam.id} style={{
             background: '#0a0a0a',
             border: `1px solid ${cam.status === 'alert' ? '#e63946' : '#1a1a1a'}`,
-            padding: '1rem 0.75rem',
+            padding: '0.75rem',
             transition: 'all 0.5s',
             boxShadow: cam.status === 'alert' ? '0 0 15px rgba(230,57,70,0.15)' : 'none',
           }}>
-            {/* Camera feed placeholder */}
-            <div style={{ height: '3rem', background: '#0f0f0f', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-              {/* Scan line effect */}
+            <div style={{ height: '2.5rem', background: '#0f0f0f', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'rgba(230,57,70,0.3)', animation: 'scanline 3s linear infinite' }} />
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={cam.status === 'alert' ? '#e63946' : '#2a2a2a'} strokeWidth="1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={cam.status === 'alert' ? '#e63946' : '#2a2a2a'} strokeWidth="1">
                 <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
                 <circle cx="12" cy="13" r="4"/>
               </svg>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <div style={{ color: '#ffffff', fontSize: '0.65rem', fontWeight: 500 }}>{cam.id}</div>
-                <div style={{ color: '#4a4a4a', fontSize: '0.55rem' }}>{cam.location}</div>
+                <div style={{ color: '#ffffff', fontSize: '0.6rem', fontWeight: 500 }}>{cam.id}</div>
+                <div style={{ color: '#4a4a4a', fontSize: '0.5rem' }}>{cam.location}</div>
               </div>
               {cam.status === 'alert' && (
-                <span style={{ color: '#e63946', fontSize: '0.55rem', textTransform: 'uppercase', fontWeight: 600 }}>ALERTA</span>
+                <span style={{ color: '#e63946', fontSize: '0.5rem', textTransform: 'uppercase', fontWeight: 600 }}>ALERTA</span>
               )}
             </div>
           </div>
         ))}
       </div>
 
+      {/* AI Event Log */}
+      <div style={{ borderTop: '1px solid #2a2a2a', paddingTop: '0.75rem', marginBottom: '0.75rem' }}>
+        <div style={{ color: '#4a4a4a', fontSize: '0.55rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Log IA — Tempo Real</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+          {events.map((ev, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.6rem' }}>
+              <span style={{ color: '#4a4a4a', width: '2.5rem', flexShrink: 0, fontVariantNumeric: 'tabular-nums' }}>{ev.time}</span>
+              <span style={{ flex: 1, color: '#a0a0a0' }}>{ev.entity} — {ev.cam}</span>
+              <span style={{ ...badgeStyle(ev.type), padding: '1px 5px', fontSize: '0.5rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                {ev.type === 'alert' ? 'Confirmado' : ev.type === 'ok' ? 'Sem alerta' : 'Ignorado'}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Status bar */}
-      <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'space-between', color: '#4a4a4a', fontSize: '0.6rem' }}>
-        <span>4 câmeras ativas</span>
-        <span>Gravando 24/7</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4a4a4a', fontSize: '0.6rem', borderTop: '1px solid #2a2a2a', paddingTop: '0.5rem' }}>
+        <span style={{ color: '#4ade80' }}>47 câmeras online</span>
+        <span>0 alertas ativos</span>
       </div>
     </div>
   );

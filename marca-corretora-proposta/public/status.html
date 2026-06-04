@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Status do Projeto | Marpe CRM Seguros</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060608; --bg2: #0a0a10; --card: #0f0f18; --border: #1a1a2a;
+    --text: #e8e8f0; --text2: #7a7a96; --muted: #4a4a64;
+    --blue: #3B82F6; --blue-dim: rgba(59,130,246,0.12);
+    --green: #22c55e; --green-dim: rgba(34,197,94,0.12);
+    --amber: #f59e0b; --amber-dim: rgba(245,158,11,0.10);
+    --red: #ef4444; --red-dim: rgba(239,68,68,0.10);
+    --purple: #8b5cf6; --purple-dim: rgba(139,92,246,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,6,8,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  nav .logo { font-weight: 600; font-size: 16px; }
+  nav .tag { font-size: 11px; color: var(--green); background: var(--green-dim); padding: 4px 10px; border-radius: 100px; font-weight: 600; }
+  .content { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+  h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--blue); }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 10px; }
+  p { color: var(--text2); margin-bottom: 12px; font-size: 14px; }
+  .sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+  strong { color: var(--text); }
+  ul, ol { padding-left: 20px; margin: 8px 0 16px; }
+  li { color: var(--text2); margin-bottom: 6px; font-size: 13px; line-height: 1.6; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .card.blue { border-color: rgba(59,130,246,0.25); background: var(--blue-dim); }
+  .card.amber { border-color: rgba(245,158,11,0.25); background: var(--amber-dim); }
+  .card.red { border-color: rgba(239,68,68,0.25); background: var(--red-dim); }
+  .card.green { border-color: rgba(34,197,94,0.25); background: var(--green-dim); }
+  .badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+  .badge.done { background: var(--green-dim); color: var(--green); }
+  .badge.pending { background: var(--amber-dim); color: var(--amber); }
+  .badge.need { background: var(--red-dim); color: var(--red); }
+  .badge.info { background: var(--blue-dim); color: var(--blue); }
+  .section-num { font-size: 11px; font-weight: 600; color: var(--green); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+  th { text-align: left; padding: 10px 14px; background: var(--card); border: 1px solid var(--border); color: var(--blue); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text2); }
+  .step-card { display: flex; gap: 16px; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; align-items: flex-start; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+  .step-num.blue { background: var(--blue-dim); color: var(--blue); border: 2px solid var(--blue); }
+  .step-num.amber { background: var(--amber-dim); color: var(--amber); border: 2px solid var(--amber); }
+  .step-content { flex: 1; }
+  .step-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .step-content p { font-size: 13px; color: var(--text2); margin: 0; }
+  @media (max-width: 768px) { .content { padding: 80px 20px 40px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">u4digital</span>
+  <span class="tag">Atualiza&ccedil;&atilde;o do Projeto</span>
+</nav>
+
+<div class="content">
+
+<div class="section-num">Atualiza&ccedil;&atilde;o &mdash; 22/05/2026</div>
+<h1>Marpe CRM Seguros</h1>
+<p class="sub">Marcel, aqui est&aacute; o status do projeto e o que precisamos de voc&ecirc; para dar o pr&oacute;ximo passo.</p>
+
+<!-- O QUE JA FIZEMOS -->
+<h2>1. O que j&aacute; est&aacute; pronto</h2>
+
+<div class="card green">
+  <strong>Infraestrutura completa &mdash; pronta para receber dados reais</strong>
+  <p style="margin: 8px 0 0;">A plataforma j&aacute; est&aacute; no ar, com login funcional, layout, banco de dados e todas as telas principais constru&iacute;das. Falta conectar com os dados reais (WhatsApp + Corp).</p>
+</div>
+
+<table>
+  <tr><th>Item</th><th>Status</th><th>Detalhe</th></tr>
+  <tr><td><strong>Plataforma no ar</strong></td><td><span class="badge done">Pronto</span></td><td><a href="https://marpe-crm-seguros.vercel.app" target="_blank" style="color: var(--blue);">marpe-crm-seguros.vercel.app</a></td></tr>
+  <tr><td><strong>Login com autentica&ccedil;&atilde;o</strong></td><td><span class="badge done">Pronto</span></td><td>admin@marpe.com.br / Admin</td></tr>
+  <tr><td><strong>Banco de dados</strong></td><td><span class="badge done">Pronto</span></td><td>18 tabelas criadas (contatos, neg&oacute;cios, funis, mensagens, automa&ccedil;&otilde;es, parcelas, etc.)</td></tr>
+  <tr><td><strong>Inbox WhatsApp</strong></td><td><span class="badge done">Pronto</span></td><td>Lista de contatos, chat, painel CRM lateral, busca, tags de ramo</td></tr>
+  <tr><td><strong>CRM / Funis</strong></td><td><span class="badge done">Pronto</span></td><td>Kanban + Grade, 4 funis (Vendas, Renova&ccedil;&otilde;es, Sinistros, Assist&ecirc;ncia), switch entre funis</td></tr>
+  <tr><td><strong>Dashboard</strong></td><td><span class="badge done">Pronto</span></td><td>KPIs, funil visual, pr&ecirc;mio por ramo, performance por produtor</td></tr>
+  <tr><td><strong>Funis padr&atilde;o</strong></td><td><span class="badge done">Pronto</span></td><td>4 funis com etapas + 8 motivos de perda + 10 templates de mensagem r&aacute;pida</td></tr>
+  <tr><td><strong>Sistema de perfis</strong></td><td><span class="badge done">Pronto</span></td><td>Admin + Operador (Marcel, Vanessa, Adria)</td></tr>
+</table>
+
+<p>Hoje as telas mostram dados de demonstra&ccedil;&atilde;o. Para trocar por dados reais, precisamos conectar duas coisas: <strong>WhatsApp</strong> e <strong>Corp</strong>.</p>
+
+<!-- WHATSAPP -->
+<h2>2. Conex&atilde;o WhatsApp &mdash; pr&oacute;ximo passo</h2>
+
+<p>Vamos usar a <strong>Evolution API</strong> (a mesma tecnologia que j&aacute; usamos em outros projetos) para conectar os n&uacute;meros de WhatsApp da Marpe &agrave; plataforma. Funciona 24 horas, sem depender de PC ligado.</p>
+
+<div class="card blue">
+  <strong>O que precisamos de voc&ecirc;, Marcel:</strong>
+  <p style="margin: 8px 0 0;">Vamos criar uma inst&acirc;ncia para a Marpe e gerar um <strong>QR Code</strong>. Voc&ecirc; escaneia com o WhatsApp de cada n&uacute;mero (como faz com o WhatsApp Web) e pronto &mdash; as conversas come&ccedil;am a aparecer na plataforma em tempo real.</p>
+</div>
+
+<h3>Como vai funcionar:</h3>
+
+<div class="step-card">
+  <div class="step-num blue">1</div>
+  <div class="step-content">
+    <h4>N&oacute;s geramos o QR Code</h4>
+    <p>Criamos a inst&acirc;ncia no servidor e te mandamos o QR Code por aqui ou em uma call r&aacute;pida.</p>
+  </div>
+</div>
+<div class="step-card">
+  <div class="step-num blue">2</div>
+  <div class="step-content">
+    <h4>Voc&ecirc; escaneia com o WhatsApp</h4>
+    <p>Igual WhatsApp Web &mdash; abre o WhatsApp no celular, vai em &ldquo;Aparelhos conectados&rdquo; e escaneia. Leva 10 segundos por n&uacute;mero.</p>
+  </div>
+</div>
+<div class="step-card">
+  <div class="step-num blue">3</div>
+  <div class="step-content">
+    <h4>Conversas aparecem na plataforma</h4>
+    <p>A partir desse momento, todas as mensagens recebidas e enviadas ficam salvas no CRM. Hist&oacute;rico permanente, sem depender de PC ligado.</p>
+  </div>
+</div>
+
+<p><strong>Quantos n&uacute;meros vamos conectar agora?</strong> Na &uacute;ltima reuni&atilde;o combinamos 3 (Marcel, Vanessa, Adria). Podemos come&ccedil;ar com 1 para testar e depois adicionar os outros.</p>
+
+<!-- CORP API -->
+<h2>3. Conex&atilde;o Corp (Agia) &mdash; o que j&aacute; mapeamos</h2>
+
+<p>J&aacute; analisamos a documenta&ccedil;&atilde;o completa da API do Corp. S&atilde;o <strong>35 endpoints</strong> dispon&iacute;veis que cobrem tudo que precisamos:</p>
+
+<table>
+  <tr><th>&Aacute;rea</th><th>Endpoints</th><th>O que puxamos</th></tr>
+  <tr><td><strong>Clientes</strong></td><td>/clientes, /cliente, /lista_clientes, /cliente_cpf, /busca_cpf</td><td>Nome, CPF, telefone, e-mail, endere&ccedil;o, profiss&atilde;o</td></tr>
+  <tr><td><strong>Documentos/P&oacute;lices</strong></td><td>/documentos, /documento, /producao</td><td>Contratos, ramo, vig&ecirc;ncia, pr&ecirc;mio, seguradora, ap&oacute;lice</td></tr>
+  <tr><td><strong>Renova&ccedil;&otilde;es</strong></td><td>/renovacoes</td><td>Contratos vencendo por per&iacute;odo</td></tr>
+  <tr><td><strong>Negocia&ccedil;&otilde;es</strong></td><td>/negocios_andamento, /negocios_finalizados, /negocio</td><td>Status, datas, produtor</td></tr>
+  <tr><td><strong>Sinistros</strong></td><td>/sinistros</td><td>Status, datas, tipo</td></tr>
+  <tr><td><strong>Produtores</strong></td><td>/produtores, /agentes</td><td>Marcel, Vanessa, Adria</td></tr>
+  <tr><td><strong>Ramos</strong></td><td>/ramos, /lista_ramos</td><td>Todos os ramos ativos</td></tr>
+  <tr><td><strong>InCorp</strong></td><td>/incorp (upload PDF)</td><td>Emiss&atilde;o autom&aacute;tica de p&oacute;lice</td></tr>
+  <tr><td><strong>BI</strong></td><td>/documentos_bi</td><td>Dados agregados para dashboard</td></tr>
+</table>
+
+<div class="card blue">
+  <strong>J&aacute; mapeamos a API inteira e estamos prontos para construir a integra&ccedil;&atilde;o.</strong>
+  <p style="margin: 8px 0 0;">S&oacute; precisamos das credenciais corretas para conectar. A API usa autentica&ccedil;&atilde;o por e-mail e senha via <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px;">POST /login</code>.</p>
+</div>
+
+<h3>O que precisamos de voc&ecirc;, Marcel:</h3>
+
+<div class="step-card">
+  <div class="step-num amber">1</div>
+  <div class="step-content">
+    <h4>Credenciais da API Corp</h4>
+    <p>Precisamos de um <strong>e-mail e senha</strong> que tenha acesso &agrave; API do Corp (Corp+). Se n&atilde;o tiver certeza se a sua conta tem esse acesso, entre em contato com o suporte da Agia/Agger e pergunte sobre o <strong>m&oacute;dulo Corp+ (API REST)</strong> &mdash; pode ser que precise de ativa&ccedil;&atilde;o.</p>
+  </div>
+</div>
+<div class="step-card">
+  <div class="step-num amber">2</div>
+  <div class="step-content">
+    <h4>C&oacute;digo da filial (codfil)</h4>
+    <p>A maioria dos endpoints usa um par&acirc;metro <code style="background: var(--card); padding: 2px 6px; border-radius: 4px;">codfil</code>. Provavelmente &eacute; <strong>1</strong>, mas confirme com a Agia se tiver d&uacute;vida.</p>
+  </div>
+</div>
+
+<p>Com essas credenciais, a gente puxa automaticamente toda a carteira de <strong>~1.000 clientes</strong> e <strong>1.362 contratos</strong> para dentro do CRM.</p>
+
+<!-- RESUMO -->
+<h2>4. Resumo &mdash; o que preciso de voc&ecirc;</h2>
+
+<table>
+  <tr><th>#</th><th>O qu&ecirc;</th><th>Prioridade</th><th>Tempo</th></tr>
+  <tr><td>1</td><td><strong>Agendar 10 min para escanear QR Code do WhatsApp</strong><br>N&oacute;s geramos, voc&ecirc; escaneia. Pode ser por call ou eu mando o QR pelo grupo.</td><td><span class="badge need">Agora</span></td><td>10 min</td></tr>
+  <tr><td>2</td><td><strong>Enviar credenciais da API Corp (e-mail + senha + codfil)</strong><br>Se n&atilde;o tiver certeza do acesso, verificar com a Agia se o Corp+ est&aacute; ativo.</td><td><span class="badge pending">Esta semana</span></td><td>5 min</td></tr>
+</table>
+
+<div class="card green" style="margin-top: 32px;">
+  <strong>Pr&oacute;ximos passos nossos (ap&oacute;s receber):</strong>
+  <ul style="margin: 8px 0 0;">
+    <li><strong>WhatsApp conectado:</strong> inbox com conversas reais, hist&oacute;rico salvo, mensagens r&aacute;pidas funcionando</li>
+    <li><strong>Corp conectado:</strong> sync autom&aacute;tico de clientes, contratos, parcelas, renova&ccedil;&otilde;es &rarr; CRM e Dashboard com dados reais</li>
+    <li><strong>Automa&ccedil;&otilde;es:</strong> boas-vindas ao emitir p&oacute;lice, aviso de parcela 5 dias antes, follow-up sem resposta, pesquisa de satisfa&ccedil;&atilde;o</li>
+  </ul>
+</div>
+
+<div style="margin-top: 32px; padding: 20px 24px; background: var(--card); border: 1px solid var(--border); border-radius: 12px;">
+  <div style="font-size: 14px; color: var(--text2); line-height: 1.7;">
+    <strong style="color: var(--text);">Links do projeto:</strong><br>
+    Plataforma: <a href="https://marpe-crm-seguros.vercel.app" target="_blank" style="color: var(--blue);">marpe-crm-seguros.vercel.app</a><br>
+    Demo interativa: <a href="https://marca-corretora-proposta.vercel.app/demo.html" target="_blank" style="color: var(--blue);">marca-corretora-proposta.vercel.app/demo.html</a><br>
+    Plano de desenvolvimento: <a href="https://marca-corretora-proposta.vercel.app/plano-dev.html" target="_blank" style="color: var(--blue);">marca-corretora-proposta.vercel.app/plano-dev.html</a>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

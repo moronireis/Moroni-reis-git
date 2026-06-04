@@ -6,12 +6,20 @@ interface NumberItem {
   suffix: string;
   label: string;
   isRed?: boolean;
+  isPending?: boolean;
+  pendingHint?: string;
 }
 
 const numbers: NumberItem[] = [
   { value: 2000, suffix: '', label: 'Câmeras monitoradas' },
-  { value: 8, suffix: '', label: 'Servidores de backup' },
-  { value: 0, prefix: 'R$', suffix: '', label: 'Consultoria e visita de avaliação', isRed: true },
+  {
+    value: 0,
+    suffix: '',
+    label: 'Clientes ativos',
+    isPending: true,
+    pendingHint: 'confirmar com cliente'
+  },
+  { value: 0, prefix: 'R$', suffix: '', label: 'Custo da primeira consultoria', isRed: true },
   { value: 150, suffix: 'TB', label: 'Em nuvem 24h por dia' },
 ];
 
@@ -46,6 +54,28 @@ function NumberCard({ item, shouldAnimate }: { item: NumberItem; shouldAnimate: 
   const count = useCountUp(item.value, 2000, shouldAnimate);
   const displayValue = item.value === 0 ? '0' : count.toLocaleString('pt-BR');
 
+  if (item.isPending) {
+    return (
+      <div className="text-center group">
+        <div
+          className="text-2xl sm:text-4xl md:text-5xl font-light mb-3"
+          style={{ color: 'rgba(230,57,70,0.3)', letterSpacing: '0.02em' }}
+        >
+          —
+        </div>
+        <div className="text-xs uppercase tracking-widest mb-1" style={{ color: 'rgba(230,57,70,0.5)' }}>
+          {item.label}
+        </div>
+        {item.pendingHint && (
+          <div style={{ fontSize: '0.6rem', color: 'rgba(160,160,160,0.4)', fontStyle: 'italic', marginTop: '2px' }}>
+            [{item.pendingHint}]
+          </div>
+        )}
+        <div className="h-0.5 mx-auto mt-4" style={{ width: '2rem', backgroundColor: 'rgba(230,57,70,0.15)' }} />
+      </div>
+    );
+  }
+
   return (
     <div className="text-center group">
       <div
@@ -56,10 +86,7 @@ function NumberCard({ item, shouldAnimate }: { item: NumberItem; shouldAnimate: 
         {displayValue}
         {item.suffix && <span className="text-2xl" style={{ color: '#e63946' }}>{item.suffix}</span>}
       </div>
-      <div
-        className="text-xs uppercase tracking-widest"
-        style={{ color: '#a0a0a0' }}
-      >
+      <div className="text-xs uppercase tracking-widest" style={{ color: '#a0a0a0' }}>
         {item.label}
       </div>
       <div

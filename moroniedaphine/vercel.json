@@ -13,6 +13,9 @@
     { "source": "/padrinho", "destination": "/padrinho.html" },
     { "source": "/madrinha", "destination": "/madrinha.html" },
     { "source": "/stories", "destination": "/stories-countdown.html" },
-    { "source": "/stories-historia", "destination": "/stories-historia.html" }
+    { "source": "/stories-historia", "destination": "/stories-historia.html" },
+    { "source": "/confirmar", "destination": "/confirmar.html" },
+    { "source": "/cha-de-cozinha", "destination": "/cha-cozinha.html" },
+    { "source": "/cerimonialista", "destination": "/cerimonialista.html" }
   ]
 }

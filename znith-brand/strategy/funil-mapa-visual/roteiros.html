@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZNITH — 15 Roteiros de Criativos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#070b16;--bg2:#0d1225;--bg3:#131a30;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#e8ecf2;--text2:#7e8a9e;--text3:#556;--gold:#f0b442;--gold-d:rgba(240,180,66,0.10);--blue:#4a9eff;--green:#34d399;--red:#f87171;--orange:#fb923c;--purple:#a78bfa;--cyan:#22d3ee;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;}
+a{color:var(--gold);text-decoration:none;}a:hover{text-decoration:underline;}
+.hero{text-align:center;padding:56px 24px 40px;border-bottom:1px solid var(--border);}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);color:var(--gold);letter-spacing:0.06em;margin-bottom:8px;}
+.hero p{font-size:0.85rem;color:var(--text2);max-width:680px;margin:0 auto 14px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.76rem;color:var(--text2);border:1px solid var(--border);padding:5px 14px;border-radius:6px;transition:all 0.2s;}
+.back-link:hover{color:var(--gold);border-color:var(--gold);text-decoration:none;}
+.container{max-width:900px;margin:0 auto;padding:0 20px;}
+.filter-bar{position:sticky;top:0;z-index:100;background:rgba(7,11,22,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:6px;overflow-x:auto;justify-content:center;flex-wrap:wrap;}
+.fbtn{font-size:0.65rem;font-weight:500;color:var(--text2);padding:5px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all 0.2s;background:none;}
+.fbtn:hover,.fbtn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-d);}
+.pill{display:inline-block;font-size:0.55rem;font-weight:600;padding:2px 7px;border-radius:4px;margin-right:3px;letter-spacing:0.03em;}
+.p-n{background:rgba(74,158,255,0.1);color:var(--blue);border:1px solid rgba(74,158,255,0.2);}
+.p-a{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.p-lb{background:rgba(248,113,113,0.08);color:var(--red);border:1px solid rgba(248,113,113,0.15);}
+.p-mg{background:rgba(52,211,153,0.08);color:var(--green);border:1px solid rgba(52,211,153,0.15);}
+.p-st{background:rgba(167,139,250,0.08);color:var(--purple);border:1px solid rgba(167,139,250,0.15);}
+.p-rs{background:rgba(251,146,60,0.08);color:var(--orange);border:1px solid rgba(251,146,60,0.15);}
+.p-time{background:rgba(255,255,255,0.04);color:var(--text2);border:1px solid rgba(255,255,255,0.08);}
+.p-pri{background:rgba(240,180,66,0.12);color:var(--gold);border:1px solid rgba(240,180,66,0.2);}
+section{padding:32px 0 48px;}
+.stitle{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:16px;padding-top:16px;}
+
+/* ── SCRIPT CARD ── */
+.script{background:var(--bg2);border:1px solid var(--border);border-radius:14px;margin-bottom:20px;overflow:hidden;transition:border-color 0.2s;}
+.script:hover{border-color:var(--border2);}
+.script-header{padding:16px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.script-header h3{font-size:0.92rem;font-weight:700;}
+.script-header .script-num{font-family:'Cinzel',serif;font-size:0.75rem;color:var(--gold);font-weight:600;margin-bottom:2px;}
+.script-pills{display:flex;flex-wrap:wrap;gap:4px;align-items:center;}
+
+.script-body{padding:20px;}
+.script-section{margin-bottom:16px;}
+.script-section:last-child{margin-bottom:0;}
+.section-label{font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.sl-hook{color:var(--red);}
+.sl-corpo{color:var(--cyan);}
+.sl-cta{color:var(--gold);}
+.sl-ad{color:var(--purple);}
+
+.hook-text{font-size:0.95rem;font-weight:700;line-height:1.35;color:#fff;padding:12px 16px;background:rgba(248,113,113,0.06);border-left:3px solid var(--red);border-radius:0 8px 8px 0;margin-bottom:4px;}
+.corpo-text{font-size:0.82rem;line-height:1.6;color:var(--text);padding:12px 16px;background:var(--bg3);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;white-space:pre-line;}
+.cta-text{font-size:0.82rem;font-weight:600;color:var(--gold);padding:10px 16px;background:var(--gold-d);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;}
+
+.ad-copy{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-top:4px;}
+.ad-copy .ad-primary{font-size:0.78rem;color:var(--text2);line-height:1.55;white-space:pre-line;margin-bottom:10px;}
+.ad-copy .ad-hl{font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:2px;}
+.ad-copy .ad-desc{font-size:0.72rem;color:var(--text3);}
+
+.tips{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:24px;}
+.tips h3{font-size:0.88rem;font-weight:700;margin-bottom:10px;color:var(--gold);}
+.tips li{font-size:0.76rem;color:var(--text2);margin-bottom:6px;padding-left:16px;position:relative;}
+.tips li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:0.4;}
+
+.footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border);font-size:0.66rem;color:var(--text3);}
+@media(max-width:600px){.script-header{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>15 Roteiros de Criativos</h1>
+  <p>Scripts prontos para gravar. Leilaine abre no celular, lê o hook, e grava. Formato descontraído, olhando pra câmera.</p>
+  <a href="index.html" class="back-link">&larr; Voltar ao Mapa de Funis</a>
+</div>
+
+<div class="filter-bar">
+  <button class="fbtn active" onclick="filterScripts('all')">Todos (15)</button>
+  <button class="fbtn" onclick="filterScripts('nichado')">Nichados (8)</button>
+  <button class="fbtn" onclick="filterScripts('amplo')">Amplos (7)</button>
+  <button class="fbtn" onclick="filterScripts('pri')">Priorizados (5)</button>
+</div>
+
+<div class="container">
+<section id="scripts"></section>
+
+<div class="tips">
+  <h3>Orientações de Gravação</h3>
+  <ul style="list-style:none;padding:0;">
+    <li><strong>Fundo:</strong> Simples, limpo — parede neutra ou escritório organizado</li>
+    <li><strong>Luz:</strong> Na frente do rosto, não contraluz</li>
+    <li><strong>Celular:</strong> Na altura dos olhos, não abaixo</li>
+    <li><strong>Hook:</strong> Olhando direto pra câmera — o olho no olho para o scroll</li>
+    <li><strong>Tom:</strong> Conversa, não apresentação. Autoridade vem da calma, não do volume</li>
+    <li><strong>Pausa:</strong> Depois de entregar número ("R$220 mil por mês." — pausa 1s)</li>
+    <li><strong>Não memorizar:</strong> Cola o roteiro no celular e lê com naturalidade</li>
+    <li><strong>Se travar:</strong> Faz de novo. Volume > perfeição</li>
+    <li><strong>Evitar:</strong> Sorriso forçado no hook (hook é sério), fundo bagunçado, ruído</li>
+  </ul>
+</div>
+</div>
+
+<div class="footer">ZNITH — Roteiros produzidos por Reis IA Agency &bull; Maio 2026</div>
+
+<script>
+const scripts = [
+  {n:1,t:"40 Orçamentos",ang:"Less Bad",angC:"lb",dur:"20s",pub:"nichado",pri:true,
+   hook:`Você mandou 40 orçamentos esse mês. Sabe quantos morreram sem resposta?`,
+   corpo:`A maioria das vidraçarias e serralherias que eu atendo perde entre 30 e 40% dos orçamentos porque ninguém liga de volta pro cliente. Ninguém manda uma mensagem. O cliente pede orçamento em 3 lugares e fecha com quem deu atenção primeiro.\n\nVocê quer saber quanto dinheiro a sua empresa está deixando escapar?`,
+   cta:`Faz a análise gratuita do seu negócio. São 6 minutos. Link na bio.`,
+   adPrimary:`Você manda orçamento. O cliente some. Você segue em frente.\n\nMas e se 35% dos orçamentos que você mandou essa semana ainda pudessem fechar — só de ligar de volta pro cliente?\n\nÉ dinheiro que escapa todo mês e você nem percebe.\n\nDescobre quanto em 6 minutos.`,
+   adHL:`Quanto sua vidraçaria perde por semana?`,adDesc:`Análise comercial gratuita. 6 minutos. Resultado na hora.`},
+  {n:2,t:"Concorrente Fechou",ang:"Less Bad",angC:"lb",dur:"30s",pub:"nichado",pri:false,
+   hook:`Aquele orçamento de R$15 mil que você mandou quinta? Seu concorrente já fechou.`,
+   corpo:`Ele respondeu em 5 minutos. Você respondeu no dia seguinte.\n\nIsso não é azar. É organização.\n\nVidraçarias e serralherias que têm um jeito organizado de vender — que ligam de volta pro cliente no mesmo dia, que mandam mensagem depois do orçamento, que acompanham até fechar — fecham até 40% mais negócio com os mesmos clientes que você já está atendendo.\n\nMesmos clientes. Mesmo mercado. Resultado diferente porque um tem organização e o outro não.`,
+   cta:`Clica no link e faz a análise gratuita. Descobre onde o dinheiro está escapando na sua operação.`,
+   adPrimary:`Você recebeu o mesmo cliente que o concorrente recebeu.\n\nEle fechou. Você ficou esperando o cliente voltar.\n\nA diferença não foi o produto. Foi quem atendeu primeiro — com organização.\n\nDescobre em 6 minutos onde a tua empresa está perdendo contrato.`,
+   adHL:`Seu concorrente está respondendo em 5 minutos`,adDesc:`Análise gratuita para vidraçarias e serralherias. Link na bio.`},
+  {n:3,t:"De R$80K pra R$220K",ang:"More Good",angC:"mg",dur:"45s",pub:"nichado",pri:true,
+   hook:`Uma serralheria em Caxias do Sul foi de R$80 mil pra R$220 mil por mês. Mudou uma coisa.`,
+   corpo:`Não contratou mais vendedor. Não abriu nova unidade. Não mudou o produto.\n\nOrganizou o jeito de vender.\n\nAntes, eles mandavam orçamento e esperavam. O cliente sumia — e eles mandavam outro orçamento pra outro cliente. Ciclo sem fim.\n\nDepois: começaram a ligar de volta pro cliente no mesmo dia, colocaram uma rotina de acompanhamento, montaram um roteiro pro vendedor seguir sem precisar do dono em cada negociação.\n\nEm 4 meses, de cada 10 orçamentos, passaram a fechar 4 em vez de 2.\n\nO mercado era o mesmo. A demanda era a mesma. O que mudou foi que pararam de deixar dinheiro na mesa.`,
+   cta:`Se você quer entender onde a tua empresa está deixando dinheiro na mesa, faz a análise gratuita. Link na bio.`,
+   adPrimary:`R$80K → R$220K por mês. Mesma cidade. Mesmo produto. Mesma equipe.\n\nO que mudou foi a organização das vendas.\n\nNenhum orçamento ficou sem acompanhamento. Nenhum cliente ficou sem resposta por mais de 2 minutos.\n\nDescobre em 6 minutos o que a tua empresa está deixando escapar.`,
+   adHL:`De R$80K para R$220K/mês — sem contratar ninguém`,adDesc:`Análise comercial gratuita. Para serralherias e vidraçarias que já vendem bem e querem vender mais.`},
+  {n:4,t:"14 Horas por Dia",ang:"Less Bad",angC:"lb",dur:"55s",pub:"nichado",pri:false,
+   hook:`Você abriu sua vidraçaria pra ter liberdade. Hoje trabalha 14 horas e não tira férias.`,
+   corpo:`Olha, eu não tô aqui pra te julgar. Eu já vi isso centenas de vezes.\n\nO dono que sabe fazer tudo. Que atende cliente, faz orçamento, acompanha obra, resolve problema de fornecedor, e ainda fecha negócio porque se largar pro vendedor o contrato escapa.\n\nE a cada mês que passa, fica mais difícil sair.\n\nO problema não é que você não sabe vender. O problema é que a empresa depende de você pra tudo — e isso não é liberdade. É uma armadilha.\n\nO que eu faço com as vidraçarias e serralherias que atendo é organizar o jeito de vender pra que ele funcione sem você estar em cada negociação. Roteiro de vendas definido. Rotina de acompanhamento no WhatsApp. Atendimento automático que responde cliente de madrugada enquanto você dorme.\n\nNão é mágica. É organização.\n\nE quando isso está no lugar, você para de ser o gargalo da própria empresa.`,
+   cta:`Quer saber por onde começa? Faz a análise gratuita. 6 minutos. Link na bio.`,
+   adPrimary:`Você trabalha 14 horas por dia numa empresa que deveria te dar liberdade.\n\nIsso não é dedicação. É sinal de que tudo depende de você — e não tem como crescer assim.\n\nOrganização não é coisa de empresa grande. É o que separa o dono que manda na empresa do dono que é mandado por ela.\n\nDescobre em 6 minutos o que precisa mudar.`,
+   adHL:`Se você tirar férias, o que acontece com as vendas?`,adDesc:`Análise gratuita para donos de vidraçarias e serralherias. 6 minutos.`},
+  {n:5,t:"Quem Liga Primeiro Fecha",ang:"More Good",angC:"mg",dur:"30s",pub:"nichado",pri:true,
+   hook:`O cliente pediu orçamento pra você e mais dois. Sabe quem fecha? Quem liga primeiro.`,
+   corpo:`Não é quem tem o melhor preço. Não é quem faz o melhor serviço. É quem dá atenção.\n\nO cliente da vidraçaria compara 3, 4 orçamentos. E ele fecha com quem responde rápido, manda mensagem perguntando se ficou alguma dúvida, e acompanha até o fechamento.\n\nIsso não é talento de vendedor. É rotina. E rotina se monta.\n\nA maioria das vidraçarias que eu atendo não perde cliente pra preço. Perde porque ninguém ligou de volta.`,
+   cta:`Descobre onde sua empresa está perdendo negócio. Análise gratuita. Link na bio.`,
+   adPrimary:`O cliente não sumiu. Você que não ligou de volta.\n\nNa vidraçaria, o cliente pede orçamento em 3 lugares. Fecha com quem dá atenção primeiro.\n\nNão é preço. É acompanhamento.\n\nDescobre em 6 minutos como organizar isso na tua empresa.`,
+   adHL:`Quem liga primeiro fecha. Quem espera perde.`,adDesc:`Análise comercial gratuita para vidraçarias e serralherias.`},
+  {n:6,t:"35% dos Orçamentos Morrem",ang:"Risco Social",angC:"rs",dur:"20s",pub:"nichado",pri:false,
+   hook:`35% dos orçamentos da sua vidraçaria morreram essa semana. Ninguém ligou. Ninguém mandou mensagem. O cliente fechou em outro lugar.`,
+   corpo:`E enquanto isso, o concorrente que tem uma rotina de acompanhamento está pegando esses mesmos clientes.\n\nPorque cliente que pede orçamento em vidraçaria está comparando no mínimo com mais dois.\n\nQuem acompanha, fecha. Quem espera, perde.`,
+   cta:`Descobre quanto a tua empresa está perdendo. Análise gratuita. Link na bio.`,
+   adPrimary:`Não é o cliente que sumiu.\n\nÉ que ninguém ligou de volta.\n\n35% dos orçamentos de vidraçarias e serralherias morrem porque ninguém acompanha o cliente depois de mandar o preço. É dinheiro que escapa toda semana.\n\nDescobre em 6 minutos quanto a tua empresa está deixando na mesa.`,
+   adHL:`35% dos seus orçamentos morreram essa semana`,adDesc:`Análise gratuita. Resultado em 6 minutos.`},
+  {n:7,t:"Duas Empresas na Mesma Cidade",ang:"Status",angC:"st",dur:"40s",pub:"nichado",pri:false,
+   hook:`Na sua cidade tem duas serralherias. Uma fecha negócio toda semana. A outra fica esperando o telefone tocar.`,
+   corpo:`Você sabe qual é qual.\n\nA que fecha tem uma coisa que a outra não tem: organização.\n\nEla manda orçamento e liga no dia seguinte. Ela sabe quantos orçamentos mandou essa semana e quantos fecharam. O vendedor dela tem um roteiro — não improvisa cada atendimento.\n\nE quando alguém pergunta "qual serralheria você indica?", o nome que vem primeiro não é sempre o da que faz o melhor serviço.\n\nÉ o da que atende melhor. Que responde mais rápido. Que acompanha até fechar.\n\nIsso não é sorte. É organização.\n\nE dá pra montar.`,
+   cta:`Quer entender como a tua empresa está hoje? Faz a análise gratuita. Link na bio.`,
+   adPrimary:`Não é sempre quem faz o melhor serviço que ganha mais negócio.\n\nÉ quem acompanha o cliente. Quem responde primeiro. Quem não esquece nenhum orçamento.\n\nIsso não é sorte. É organização.\n\nDescobre em 6 minutos o que a tua empresa precisa pra chegar lá.`,
+   adHL:`A vidraçaria que cresce não é a melhor. É a mais organizada.`,adDesc:`Análise comercial gratuita para vidraçarias e serralherias.`},
+  {n:8,t:"Vendedor que Sai e Leva Tudo",ang:"Risco Social",angC:"rs",dur:"50s",pub:"nichado",pri:false,
+   hook:`Seu melhor vendedor pediu demissão. Adivinhe o que aconteceu com os clientes dele.`,
+   corpo:`Foram junto com ele. Pro concorrente.\n\nPorque tudo que esse vendedor sabia — o nome dos clientes, o que cada um gosta, como negocia com cada um, o histórico de cada obra — estava na cabeça dele. Não estava em lugar nenhum.\n\nJá vi isso acontecer. Serralheria perdeu quase metade dos clientes em 3 meses depois que o vendedor principal saiu e foi trabalhar no concorrente da mesma cidade.\n\nSe a relação com o cliente é do vendedor e não da empresa, você tem um problema sério. Porque no dia que ele sai, ele leva a carteira inteira.\n\nO que eu faço com as serralherias e vidraçarias que atendo é tirar esse conhecimento da cabeça das pessoas e colocar num sistema da empresa. Controle de clientes atualizado. Histórico de cada negociação registrado. Roteiro de vendas que qualquer pessoa nova consegue seguir.\n\nA empresa para de ser refém de quem sabe mais.`,
+   cta:`Quer saber o quanto a tua empresa depende de uma pessoa só? Análise gratuita. 6 minutos. Link na bio.`,
+   adPrimary:`Se o seu melhor vendedor pedir demissão amanhã — quantos clientes vão com ele?\n\nNão é pergunta retórica. É o maior risco de vidraçarias e serralherias que dependem de uma pessoa pra vender.\n\nQuando tudo está na cabeça de alguém, não é da empresa. É dele.\n\nDescobre em 6 minutos como a sua empresa está exposta.`,
+   adHL:`Se seu melhor vendedor sair, quantos clientes vão junto?`,adDesc:`Análise gratuita. Para serralherias e vidraçarias.`},
+  {n:9,t:"Cliente Some Depois do Orçamento",ang:"Less Bad",angC:"lb",dur:"20s",pub:"amplo",pri:true,
+   hook:`Você manda orçamento, o cliente some — e você não faz ideia de por quê.`,
+   corpo:`Isso não é o cliente sendo difícil. É a sua empresa não acompanhando.\n\nQuando ninguém liga de volta, ninguém manda mensagem depois, ninguém pergunta se ficou alguma dúvida — o orçamento morre sozinho. O cliente fecha em outro lugar.`,
+   cta:`Descobre em 6 minutos quanto está escapando da sua empresa. Link na bio.`,
+   adPrimary:`O cliente sumiu depois do orçamento.\n\nMas antes de culpar o mercado, responde uma coisa: quantas vezes você ligou de volta depois de mandar o preço?\n\nNenhuma vez = cliente fecha com quem ligou.\n\nDescobre em 6 minutos como organizar isso na tua empresa.`,
+   adHL:`Por que o cliente some depois do orçamento?`,adDesc:`Análise comercial gratuita. 6 minutos. Resultado na hora.`},
+  {n:10,t:"Receita que Escapa",ang:"More Good",angC:"mg",dur:"40s",pub:"amplo",pri:true,
+   hook:`Sua empresa de obra fatura bem. Mas no fim do mês, cadê o dinheiro?`,
+   corpo:`Isso acontece porque tem dinheiro entrando — e tem dinheiro escapando sem você ver.\n\nO dinheiro que escapa é: os orçamentos que você mandou e nunca mais acompanhou, os clientes antigos que não recebem uma ligação sua há 6 meses, os interessados que mandaram mensagem fora do horário e ninguém respondeu.\n\nA maioria das empresas de construção civil que eu atendo perde entre R$40 mil e R$120 mil por mês em dinheiro que escapa assim.\n\nNão é o mercado. É falta de organização.\n\nE quando você mapeia onde o dinheiro está escapando, você para de trabalhar mais pra faturar igual — e começa a faturar mais com o que já tem.`,
+   cta:`Quer ver o número da tua empresa? Análise gratuita. 6 minutos. Link na bio.`,
+   adPrimary:`Empresas de construção civil com R$200K/mês de faturamento perdem em média R$60K/mês em dinheiro que nunca entra — por falta de acompanhamento, demora pra responder, e clientes antigos esquecidos.\n\nÉ dinheiro que está escapando todo mês. E tem um número específico na sua empresa.\n\nDescobre em 6 minutos. Análise gratuita.`,
+   adHL:`Você sabe quanto a sua empresa perde por mês sem saber?`,adDesc:`Análise gratuita. Para empresas de obra e serviço em construção civil.`},
+  {n:11,t:"40% a Mais Fechando os Mesmos Orçamentos",ang:"More Good",angC:"mg",dur:"35s",pub:"amplo",pri:false,
+   hook:`Empresas de construção civil que organizaram o jeito de vender fecham 40% mais negócio. Sem mais cliente. Sem mais vendedor.`,
+   corpo:`Não é mágica. Não é guru de vendas.\n\nÉ que quando você tem uma rotina — liga de volta pro cliente no dia seguinte, sabe quantos orçamentos mandou essa semana, acompanha cada um até fechar ou até o cliente dizer não — você para de perder o que já estava chegando.\n\nA maioria das empresas de obra perde 30 a 40% dos negócios antes mesmo de competir por preço. O cliente mandou mensagem, ninguém respondeu a tempo. O orçamento foi, ninguém acompanhou.\n\nOrganizar as vendas não traz mais cliente. Faz você fechar os que já tem.`,
+   cta:`Descobre onde a tua empresa está perdendo. Análise gratuita. Link na bio.`,
+   adPrimary:`Não precisa de mais cliente. Não precisa de mais vendedor.\n\nPrecisa parar de perder os negócios que já estão chegando.\n\nEmpresas de construção civil que organizam as vendas fecham 40% mais dos mesmos orçamentos.\n\nDescobre em 6 minutos o que falta na tua empresa.`,
+   adHL:`40% mais negócio fechado — sem mais clientes`,adDesc:`Análise gratuita para empresas de obra e construção civil.`},
+  {n:12,t:"Se Você Tirar Férias",ang:"Status",angC:"st",dur:"45s",pub:"amplo",pri:false,
+   hook:`Se você tirar duas semanas de férias, o que acontece com as vendas da sua empresa?`,
+   corpo:`Se a resposta honesta for "param" — ou "depende de mim" — você não tem empresa ainda. Você tem um emprego com CNPJ.\n\nToda empresa de construção civil chega num ponto onde o crescimento trava. Não porque o mercado parou. Porque tudo depende demais do dono.\n\nVocê é o único que fecha negócio de verdade. O único que o cliente grande quer falar. O único que resolve quando trava.\n\nIsso tem solução. Não é contratar mais vendedor. É organizar o jeito de vender pra que ele funcione com ou sem você no meio de cada negociação.\n\nQuando você chega lá, você não é mais o gargalo. Você é o dono.`,
+   cta:`Quer saber por onde começa? Faz a análise gratuita. Link na bio.`,
+   adPrimary:`O empresário que construiu uma empresa que vende sem ele em cada negociação é visto diferente — pelo mercado, pelos sócios, pela família.\n\nIsso não é vaidade. É ter controle.\n\nE começa com uma análise honesta de como as vendas da empresa estão hoje.\n\n6 minutos. Gratuito. Resultado na hora.`,
+   adHL:`Sua empresa vende quando você não está?`,adDesc:`Análise comercial gratuita. Para empresas de construção civil.`},
+  {n:13,t:"80% Não Sabem",ang:"Risco Social",angC:"rs",dur:"55s",pub:"amplo",pri:false,
+   hook:`80% das empresas de obra no Brasil não sabem quantos orçamentos mandaram esse mês. A tua está nesse grupo?`,
+   corpo:`Eu faço essa pergunta no começo de cada conversa com empresário.\n\nE a resposta honesta, na maioria das vezes, é: não sei.\n\nNão sabem quantos orçamentos mandaram esse mês. Não sabem quantos fecharam. Não sabem quantos clientes mandaram mensagem e ficaram sem resposta. Não sabem quantos clientes antigos não recebem uma ligação há mais de 3 meses.\n\nE não saber isso custa dinheiro.\n\nPorque o concorrente que sabe — que acompanha cada orçamento, que liga de volta no dia seguinte, que tem controle de tudo — esse concorrente está fechando os mesmos clientes que você está perdendo sem perceber.\n\nNão é falta de mercado. É não enxergar o que está acontecendo.\n\nE você não pode arrumar o que não enxerga.\n\nA análise gratuita resolve exatamente isso: em 6 minutos, você para de vender no escuro.`,
+   cta:`Clica no link e faz agora. É gratuito e leva 6 minutos.`,
+   adPrimary:`Você sabe quantos orçamentos mandou esse mês?\n\nQuantos viraram contrato?\n\nQuantos clientes antigos não recebem uma ligação sua há mais de 3 meses?\n\nSe a resposta for "não sei" — você está vendendo no escuro. E o concorrente que sabe essas respostas está fechando o que você está perdendo.\n\nDescobre em 6 minutos onde a tua empresa está deixando dinheiro na mesa.`,
+   adHL:`Você sabe quantos contratos perdeu esse mês?`,adDesc:`Análise comercial gratuita. 6 minutos. Para empresas de obra.`},
+  {n:14,t:"Mais Trabalho, Mesmo Faturamento",ang:"More Good",angC:"mg",dur:"20s",pub:"amplo",pri:false,
+   hook:`Você está trabalhando mais do que ano passado e faturando igual. Isso não é azar — é sinal.`,
+   corpo:`Quando as vendas não estão organizadas, o crescimento tem teto.\n\nVocê pega mais obra. Mais equipe. Mais custo. E o faturamento não acompanha porque os clientes continuam escapando por falta de acompanhamento.\n\nTem como faturar mais sem trabalhar mais.`,
+   cta:`Análise gratuita. 6 minutos. Link na bio.`,
+   adPrimary:`Mais obra, mesma margem. Mais equipe, mesmo lucro. Mais esforço, mesmo resultado.\n\nEsse é o teto de quem não organizou as vendas.\n\nNão é o mercado. É falta de controle.\n\nDescobre em 6 minutos onde a tua empresa está travando.`,
+   adHL:`Por que mais trabalho não está trazendo mais resultado?`,adDesc:`Análise gratuita para empresas de construção civil. 6 minutos.`},
+  {n:15,t:"Vive de Indicação",ang:"Risco Social",angC:"rs",dur:"55s",pub:"amplo",pri:false,
+   hook:`Você vive de indicação. Todo mês aparece trabalho novo. E isso é ótimo — até o dia que para.`,
+   corpo:`Olha, indicação é sinal de que você entrega bem. Eu não estou questionando isso.\n\nMas indicação não é jeito de vender organizado. É consequência de bom trabalho.\n\nE a diferença é importante.\n\nOrganização você controla. Consequência você espera.\n\nO que acontece com a sua empresa quando 3 meses seguidos a indicação vem fraca? Quando um concorrente entra na sua região cobrando mais barato? Quando o mercado esfria?\n\nEmpresas de construção civil que vivem 100% de indicação são as primeiras a sentir quando o ciclo muda — porque não têm jeito próprio de buscar cliente, acompanhar quem pediu orçamento, e ligar pros clientes antigos.\n\nNão precisa abandonar a indicação. Ela pode ser 30% da sua receita. Os outros 70% vêm de vendas que você controla.\n\nIsso é o que separa empresa que cresce de empresa que depende da sorte.`,
+   cta:`Quer saber como as vendas da tua empresa estão hoje? Análise gratuita. 6 minutos. Link na bio.`,
+   adPrimary:`Indicação é sinal de bom trabalho.\n\nMas quando para de vir — por 1 mês, por 3 meses, por um ciclo ruim — quem tem as vendas organizadas continua faturando.\n\nQuem vive só de indicação espera.\n\nNão precisa parar de receber indicação. Precisa não depender só dela.\n\nDescobre em 6 minutos como as vendas da tua empresa estão — organizadas ou não.`,
+   adHL:`Viver de indicação funciona. Até o dia que para.`,adDesc:`Análise comercial gratuita. Para empresas de construção civil e serviços.`}
+];
+
+const angLabels={lb:'Less Bad',mg:'More Good',st:'Status',rs:'Risco Social'};
+const angPills={lb:'p-lb',mg:'p-mg',st:'p-st',rs:'p-rs'};
+
+function renderScripts(list){
+  const c=document.getElementById('scripts');
+  c.innerHTML=list.map(s=>`
+    <div class="script" data-pub="${s.pub}" data-pri="${s.pri}">
+      <div class="script-header">
+        <div><div class="script-num">CRIATIVO #${s.n}</div><h3>${s.t}</h3></div>
+        <div class="script-pills">
+          ${s.pri?'<span class="pill p-pri">PRIORIZADO</span>':''}
+          <span class="pill ${s.pub==='nichado'?'p-n':'p-a'}">${s.pub==='nichado'?'Nichado':'Amplo'}</span>
+          <span class="pill ${angPills[s.angC]}">${angLabels[s.angC]}</span>
+          <span class="pill p-time">${s.dur}</span>
+        </div>
+      </div>
+      <div class="script-body">
+        <div class="script-section">
+          <div class="section-label sl-hook">HOOK — 3 PRIMEIROS SEGUNDOS</div>
+          <div class="hook-text">${s.hook}</div>
+        </div>
+        <div class="script-section">
+          <div class="section-label sl-corpo">CORPO</div>
+          <div class="corpo-text">${s.corpo}</div>
+        </div>
+        <div class="script-section">
+          <div class="section-label sl-cta">CTA — FINAL</div>
+          <div class="cta-text">${s.cta}</div>
+        </div>
+        <div class="script-section">
+          <div class="section-label sl-ad">TEXTO DO ANÚNCIO (META ADS)</div>
+          <div class="ad-copy">
+            <div class="ad-primary">${s.adPrimary}</div>
+            <div class="ad-hl">Headline: ${s.adHL}</div>
+            <div class="ad-desc">Descrição: ${s.adDesc}</div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterScripts(f){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  if(f==='all') renderScripts(scripts);
+  else if(f==='pri') renderScripts(scripts.filter(s=>s.pri));
+  else renderScripts(scripts.filter(s=>s.pub===f));
+}
+
+renderScripts(scripts);
+</script>
+</body>
+</html>

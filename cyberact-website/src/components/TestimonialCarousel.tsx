@@ -4,27 +4,37 @@ const testimonials = [
   {
     quote: "Conseguimos em pouco tempo monitorar todos os nossos imóveis com uma estratégia que nos economizou dinheiro e tempo.",
     name: "Alexandre",
-    company: "Coelho da Fonseca"
+    company: "Coelho da Fonseca",
+    result: null,
+    resultPending: true,
   },
   {
     quote: "A equipe da CyberAct resolveu em uma semana o que tentamos resolver internamente por meses. Suporte rápido e sem enrolação.",
     name: "Ricardo M.",
-    company: "Indústria Metalúrgica"
+    company: "Indústria Metalúrgica",
+    result: null,
+    resultPending: true,
   },
   {
     quote: "Desde que terceirizamos a TI com a CyberAct, zero dor de cabeça. Resposta em minutos, não em dias. Outro nível.",
     name: "Fernanda S.",
-    company: "Escritório de Advocacia"
+    company: "Escritório de Advocacia",
+    result: null,
+    resultPending: true,
   },
   {
     quote: "O projeto de rede ficou impecável. WiFi cobrindo cada canto do galpão, com garantia de 5 anos. Recomendo sem pensar.",
     name: "Carlos A.",
-    company: "Logística e Distribuição"
+    company: "Logística e Distribuição",
+    result: null,
+    resultPending: true,
   },
   {
     quote: "Depois do ransomware, achei que tínhamos perdido tudo. O backup da CyberAct restaurou em poucas horas. Salvou a empresa.",
     name: "Patrícia L.",
-    company: "Clínica Médica"
+    company: "Clínica Médica",
+    result: null,
+    resultPending: true,
   }
 ];
 
@@ -43,6 +53,8 @@ export default function TestimonialCarousel() {
     return () => clearInterval(timer);
   }, []);
 
+  const t = testimonials[current];
+
   return (
     <div className="relative overflow-hidden">
       <div className="max-w-3xl mx-auto text-center">
@@ -60,11 +72,26 @@ export default function TestimonialCarousel() {
           }}
         >
           <blockquote className="text-base sm:text-xl md:text-2xl font-light leading-relaxed mb-6 md:mb-8 px-2" style={{ color: '#ffffff', minHeight: '4rem' }}>
-            "{testimonials[current].quote}"
+            "{t.quote}"
           </blockquote>
           <div>
-            <p className="text-sm font-medium" style={{ color: '#ffffff' }}>{testimonials[current].name}</p>
-            <p className="text-xs mt-1" style={{ color: '#a0a0a0' }}>{testimonials[current].company}</p>
+            <p className="text-sm font-medium" style={{ color: '#ffffff' }}>{t.name}</p>
+            <p className="text-xs mt-1" style={{ color: '#a0a0a0' }}>{t.company}</p>
+            {t.resultPending && (
+              <p style={{
+                display: 'inline-block',
+                marginTop: '0.5rem',
+                fontSize: '0.6rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'rgba(230,57,70,0.4)',
+                border: '1px dashed rgba(230,57,70,0.2)',
+                padding: '2px 8px',
+              }}>
+                Pendente <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400, color: 'rgba(160,160,160,0.35)' }}>[resultado mensurável — ex: R$X economizados, X horas de downtime evitadas]</span>
+              </p>
+            )}
           </div>
         </div>
 

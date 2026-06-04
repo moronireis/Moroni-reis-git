@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial | Azeredo Representa&ccedil;&otilde;es - u4digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #060608;
+    --bg-secondary: #0a0a10;
+    --bg-card: #0f0f18;
+    --bg-card-hover: #141420;
+    --border: #1a1a2a;
+    --border-accent: #242440;
+    --text-primary: #e8e8f0;
+    --text-secondary: #7a7a96;
+    --text-muted: #4a4a64;
+    --accent: #4A6CF7;
+    --accent-light: #6B8AFF;
+    --accent-dim: rgba(74, 108, 247, 0.12);
+    --accent-glow: rgba(74, 108, 247, 0.06);
+    --green: #2d8a4e;
+    --green-dim: rgba(45, 138, 78, 0.12);
+    --red: #c44040;
+    --red-dim: rgba(196, 64, 64, 0.10);
+    --amber: #c49a30;
+    --amber-dim: rgba(196, 154, 48, 0.10);
+    --purple: #7a6abf;
+    --purple-dim: rgba(122, 106, 191, 0.10);
+    --cyan: #22a7c3;
+    --cyan-dim: rgba(34, 167, 195, 0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(6, 6, 8, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+  nav .logo-area { display: flex; align-items: center; gap: 12px; }
+  nav .logo-area img { height: 32px; opacity: 0.9; }
+  nav .logo-text { font-weight: 600; font-size: 16px; color: var(--text-primary); letter-spacing: -0.02em; }
+  nav .nav-tag { font-size: 11px; color: var(--accent); background: var(--accent-dim); padding: 4px 10px; border-radius: 100px; font-weight: 500; letter-spacing: 0.03em; }
+
+  section {
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 60px; opacity: 0; pointer-events: none;
+    transform: translateX(60px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto;
+  }
+  section.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+  section.prev { opacity: 0; transform: translateX(-60px); }
+  section::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none; opacity: 0.5;
+  }
+
+  .slide-controls { position: fixed; bottom: 32px; right: 40px; z-index: 200; display: flex; align-items: center; gap: 12px; }
+  .slide-counter { font-size: 12px; color: var(--text-muted); font-weight: 500; font-variant-numeric: tabular-nums; min-width: 48px; text-align: center; }
+  .slide-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 16px; }
+  .slide-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+  .slide-btn:disabled { opacity: 0.3; cursor: default; }
+  .slide-btn:disabled:hover { border-color: var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .slide-dots { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 8px; }
+  .slide-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-accent); cursor: pointer; transition: all 0.3s; }
+  .slide-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+  .slide-hint { position: fixed; bottom: 32px; left: 40px; z-index: 200; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .key-hint { display: inline-block; padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: monospace; color: var(--text-muted); background: var(--bg-card); }
+
+  .section-number { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; max-width: 900px; }
+  h2 { font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 20px; }
+  h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 12px; }
+  .subtitle { font-size: 18px; color: var(--text-secondary); max-width: 650px; line-height: 1.7; }
+  .accent { color: var(--accent); }
+  .green { color: var(--green); }
+
+  #hero { text-align: left; }
+  #hero .meta { display: flex; gap: 24px; margin-top: 40px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+  #hero .meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-badges { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+  .badge { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .badge.accent-badge { color: var(--accent); border-color: rgba(74, 108, 247, 0.25); background: var(--accent-dim); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1100px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all 0.3s ease; }
+  .card:hover { border-color: var(--border-accent); background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 18px; }
+  .card-icon.blue { background: var(--accent-dim); color: var(--accent); }
+  .card-icon.green { background: var(--green-dim); color: var(--green); }
+  .card-icon.amber { background: var(--amber-dim); color: var(--amber); }
+  .card-icon.red { background: var(--red-dim); color: var(--red); }
+  .card-icon.purple { background: var(--purple-dim); color: var(--purple); }
+  .card-icon.cyan { background: var(--cyan-dim); color: var(--cyan); }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1000px; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+  .stat-number { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+  .stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+
+  .timeline { margin-top: 40px; max-width: 800px; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent-light)); border-radius: 2px; }
+  .timeline-item { display: flex; gap: 24px; padding-bottom: 36px; position: relative; }
+  .timeline-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; z-index: 1; }
+  .timeline-dot.blue { background: #0b0e1e; color: var(--accent); border: 2px solid var(--accent); }
+  .timeline-dot.green { background: #0b1e12; color: var(--green); border: 2px solid var(--green); }
+  .timeline-content h3 { font-size: 16px; margin-bottom: 6px; }
+  .timeline-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .timeline-content .timeline-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
+
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; max-width: 900px; }
+  .comparison-col { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .comparison-col .col-header { padding: 20px 24px; font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  .comparison-col.negative .col-header { background: var(--red-dim); color: var(--red); }
+  .comparison-col.positive .col-header { background: var(--green-dim); color: var(--green); }
+  .comparison-col ul { list-style: none; padding: 20px 24px; }
+  .comparison-col li { font-size: 14px; color: var(--text-secondary); padding: 8px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .comparison-col li .icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+  .comparison-col.negative li .icon { color: var(--red); }
+  .comparison-col.positive li .icon { color: var(--green); }
+
+  .pain-list { margin-top: 32px; max-width: 700px; }
+  .pain-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--red-dim); color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; font-weight: 700; }
+  .pain-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .pain-text p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 32px; max-width: 1000px; }
+  .include-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s; }
+  .include-item:hover { border-color: var(--border-accent); }
+  .include-check { width: 22px; height: 22px; border-radius: 6px; background: var(--green-dim); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .include-text { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .include-text strong { color: var(--text-primary); font-weight: 600; }
+
+  .cta-section { text-align: center; padding: 80px; }
+  .cta-section h2 { margin-bottom: 16px; }
+  .cta-section .subtitle { margin: 0 auto 40px; text-align: center; }
+
+  .roi-highlight { background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(45, 138, 78, 0.2); border-radius: 16px; padding: 32px; margin-top: 32px; max-width: 700px; }
+  .roi-highlight .roi-number { font-size: 42px; font-weight: 800; color: var(--green); letter-spacing: -0.03em; line-height: 1; }
+  .roi-highlight .roi-desc { font-size: 14px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+  .flow-diagram { margin-top: 40px; max-width: 900px; }
+  .flow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .flow-node { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+  .flow-node.source { border-color: var(--border-accent); }
+  .flow-node.ai { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-light); }
+  .flow-node.output { border-color: var(--green); border-style: dashed; color: var(--green); }
+  .flow-label { font-size: 11px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; margin-top: 20px; }
+
+  .network-card { background: linear-gradient(135deg, var(--accent-dim), transparent); border: 1px solid rgba(74, 108, 247, 0.2); border-radius: 16px; padding: 32px; margin-top: 32px; max-width: 700px; }
+
+  @media (max-width: 768px) {
+    section { padding: 80px 24px; }
+    nav { padding: 12px 20px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .flow-row { flex-direction: column; align-items: flex-start; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { overflow: visible; height: auto; }
+    section { position: static; opacity: 1; transform: none; pointer-events: all; page-break-inside: avoid; padding: 40px; height: auto; min-height: auto; }
+    nav, .slide-controls, .slide-dots, .slide-hint { display: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-area">
+    <img src="assets/u4digital-logo.webp" alt="u4digital">
+    <span class="logo-text">u4digital</span>
+  </div>
+  <span class="nav-tag">Proposta Comercial</span>
+</nav>
+
+<div class="slide-dots" id="slideDots"></div>
+<div class="slide-hint">
+  <span class="key-hint">&larr;</span>
+  <span class="key-hint">&rarr;</span>
+  ou clique para navegar
+</div>
+<div class="slide-controls">
+  <button class="slide-btn" id="prevBtn" onclick="changeSlide(-1)">&larr;</button>
+  <span class="slide-counter" id="slideCounter">1 / 14</span>
+  <button class="slide-btn" id="nextBtn" onclick="changeSlide(1)">&rarr;</button>
+</div>
+
+<!-- SLIDE 1: HERO -->
+<section id="hero">
+  <div class="section-number">Proposta comercial</div>
+  <h1>Automa&ccedil;&atilde;o inteligente para <span class="accent">Azeredo Representa&ccedil;&otilde;es</span></h1>
+  <p class="subtitle">
+    Plataforma centralizada que conecta Mercos, WhatsApp e IA &mdash; para reativar clientes inativos, automatizar campanhas por marca e fechar pedidos sem sair do WhatsApp.
+  </p>
+  <div class="hero-badges">
+    <span class="badge accent-badge">AI-Powered</span>
+    <span class="badge">Integra&ccedil;&atilde;o Mercos</span>
+    <span class="badge">WhatsApp Inteligente</span>
+    <span class="badge">Carrinho In-Chat</span>
+    <span class="badge">Gatilhos Autom&aacute;ticos</span>
+  </div>
+  <div class="meta">
+    <span>Preparado para Cl&aacute;udio, Tiago e equipe Azeredo</span>
+    <span>Maio 2026</span>
+    <span>Confidencial</span>
+  </div>
+</section>
+
+<!-- SLIDE 2: CONTEXTO -->
+<section id="contexto">
+  <div class="section-number">01 &mdash; Contexto</div>
+  <h2>Entendemos o neg&oacute;cio</h2>
+  <p class="subtitle">Representa&ccedil;&atilde;o comercial multimarcas com 10 anos de hist&oacute;rico &mdash; e uma opera&ccedil;&atilde;o que precisa escalar sem aumentar equipe.</p>
+  <div class="stats-row fade-in">
+    <div class="stat-card"><div class="stat-number accent">1.300+</div><div class="stat-label">Clientes na carteira</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--green)">10 anos</div><div class="stat-label">De hist&oacute;rico no Mercos</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--amber)">20+</div><div class="stat-label">Representantes em campo</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--purple)">~400</div><div class="stat-label">Clientes ativos hoje</div></div>
+  </div>
+  <div class="roi-highlight fade-in" style="margin-top: 40px;">
+    <div style="font-size: 16px; color: var(--text-primary); line-height: 1.8;">
+      <strong>A Azeredo representa marcas com ciclos de recompra definidos.</strong> Stullen, PicPic, CicaDe, Polibras, BR e dezenas de outras f&aacute;bricas &mdash; cada uma com seu giro de 30 a 60 dias.<br><br>
+      O potencial j&aacute; existe na carteira. O problema &eacute; que a opera&ccedil;&atilde;o atual n&atilde;o consegue atingir todos os clientes no momento certo.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: DIAGNOSTICO -->
+<section id="diagnostico">
+  <div class="section-number">02 &mdash; Diagn&oacute;stico</div>
+  <h2>Onde est&atilde;o os gargalos</h2>
+  <p class="subtitle">Mapeamos 7 pontos cr&iacute;ticos que est&atilde;o limitando o crescimento da opera&ccedil;&atilde;o.</p>
+  <div class="pain-list fade-in">
+    <div class="pain-item">
+      <div class="pain-icon">1</div>
+      <div class="pain-text">
+        <h4>Continuidade perdida</h4>
+        <p>Hist&oacute;rico de conversas disperso em m&uacute;ltiplos WhatsApps pessoais. Equipe interna e externa atendendo o mesmo cliente sem saber o que o outro falou.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">2</div>
+      <div class="pain-text">
+        <h4>Comunica&ccedil;&atilde;o em massa imposs&iacute;vel</h4>
+        <p>Listas de transmiss&atilde;o do WhatsApp descontinuadas. Campanhas e promo&ccedil;&otilde;es exigem contato um a um. Troca de tabela n&atilde;o chega a tempo em toda a base.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">3</div>
+      <div class="pain-text">
+        <h4>Clientes inativos irrecuper&aacute;veis</h4>
+        <p>Inativo recente: ainda na mem&oacute;ria. Inativo 6+ meses: perdido. A taxa de ativos caiu de 50% para menos. S&atilde;o 800+ clientes fora do radar.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">4</div>
+      <div class="pain-text">
+        <h4>Sem gatilhos de recompra</h4>
+        <p>Cada marca tem ciclo diferente (CicaDe 30d, Polibras 45d, bal&atilde;o 30d, BR 45d). Gatilhos configurados manualmente por experi&ecirc;ncia, sem automa&ccedil;&atilde;o nenhuma.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">5</div>
+      <div class="pain-text">
+        <h4>Pedidos em formato ca&oacute;tico</h4>
+        <p>Clientes enviam foto, &aacute;udio, lista &agrave; m&atilde;o. Quase ningu&eacute;m usa o e-commerce do Mercos. Se tiver que sair do WhatsApp para outro canal, desistem.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">6</div>
+      <div class="pain-text">
+        <h4>Processos fragmentados</h4>
+        <p>Cada pessoa trabalha de um jeito. Cruzamento de planilhas no ChatGPT com limite de tokens. Montagem de projetos/pedidos sugeridos &eacute; 100% manual.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">7</div>
+      <div class="pain-text">
+        <h4>Equipe menor, mesma demanda</h4>
+        <p>De 10 na rua + 4 internas para menos. Visitas presenciais viraram &ldquo;5 minutos sociais&rdquo;. Neg&oacute;cios n&atilde;o acontecem no mesmo momento da visita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: IMPACTO -->
+<section id="impacto">
+  <div class="section-number">03 &mdash; Impacto</div>
+  <h2>Quanto custa n&atilde;o automatizar</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; max-width: 900px;" class="fade-in">
+    <div style="background: var(--red-dim); border: 1px solid rgba(196, 64, 64, 0.25); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -0.03em;">800+</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Clientes inativos<br>fora do radar</div>
+    </div>
+    <div style="background: var(--red-dim); border: 1px solid rgba(196, 64, 64, 0.25); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -0.03em;">0%</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Campanhas autom&aacute;ticas<br>hoje</div>
+    </div>
+    <div style="background: var(--red-dim); border: 1px solid rgba(196, 64, 64, 0.25); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -0.03em;">100%</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Manual: pedidos,<br>follow-ups, projetos</div>
+    </div>
+  </div>
+  <div style="margin-top: 40px; max-width: 700px; padding: 24px 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;" class="fade-in">
+    <div style="font-size: 15px; color: var(--text-primary); line-height: 1.7;">
+      Cl&aacute;udio mencionou na reuni&atilde;o: <em style="color: var(--text-secondary);">&ldquo;A nossa dificuldade hoje chama-se continuidade. N&atilde;o conseguimos continuar as coisas. Precisamos ser reinventados.&rdquo;</em>
+      <br><br>
+      Com 1.300 clientes na carteira e apenas 400 ativos, <strong>reativar 15% dos inativos pode significar 120+ clientes comprando novamente &mdash; receita que j&aacute; existia e se perdeu.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: ANTES vs DEPOIS -->
+<section id="comparacao">
+  <div class="section-number">04 &mdash; Antes vs depois</div>
+  <h2>O que muda com a automa&ccedil;&atilde;o</h2>
+  <p class="subtitle">Da opera&ccedil;&atilde;o manual e fragmentada para um sistema inteligente e unificado.</p>
+  <div class="comparison-grid fade-in">
+    <div class="comparison-col negative">
+      <div class="col-header">Processo Atual</div>
+      <ul>
+        <li><span class="icon">&times;</span> M&uacute;ltiplos WhatsApps sem hist&oacute;rico centralizado</li>
+        <li><span class="icon">&times;</span> Campanhas um a um (listas descontinuadas)</li>
+        <li><span class="icon">&times;</span> Gatilhos de recompra na mem&oacute;ria de cada um</li>
+        <li><span class="icon">&times;</span> Pedidos por foto, &aacute;udio e lista &agrave; m&atilde;o</li>
+        <li><span class="icon">&times;</span> Cruzamento de planilhas no ChatGPT (limitado)</li>
+        <li><span class="icon">&times;</span> Trabalho sobreposto: interna + rep no mesmo cliente</li>
+        <li><span class="icon">&times;</span> Inativo 6+ meses = cliente perdido</li>
+        <li><span class="icon">&times;</span> Cada um trabalha do seu jeito</li>
+      </ul>
+    </div>
+    <div class="comparison-col positive">
+      <div class="col-header">Com Plataforma Azeredo</div>
+      <ul>
+        <li><span class="icon">&check;</span> N&uacute;mero central com roteamento por segmento</li>
+        <li><span class="icon">&check;</span> Disparos segmentados por marca e regi&atilde;o</li>
+        <li><span class="icon">&check;</span> Gatilhos autom&aacute;ticos: 30d, 45d, 60d por f&aacute;brica</li>
+        <li><span class="icon">&check;</span> Carrinho de compras dentro do WhatsApp</li>
+        <li><span class="icon">&check;</span> IA cruza planilhas e gera projetos sugeridos</li>
+        <li><span class="icon">&check;</span> Vis&atilde;o 360: quem falou, quando, sobre o qu&ecirc;</li>
+        <li><span class="icon">&check;</span> Reativa&ccedil;&atilde;o autom&aacute;tica com workflow por inatividade</li>
+        <li><span class="icon">&check;</span> Processo padronizado para toda a equipe</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: SOLUCAO - DASHBOARD -->
+<section id="dashboard">
+  <div class="section-number">05 &mdash; Plataforma central</div>
+  <h2>Dashboard Azeredo</h2>
+  <p class="subtitle">Um sistema pr&oacute;prio que conecta Mercos, WhatsApp e IA em um &uacute;nico lugar.</p>
+  <div class="card-grid fade-in">
+    <div class="card">
+      <div class="card-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <h3>Vis&atilde;o 360 do Cliente</h3>
+      <p>Hist&oacute;rico completo de compras (10 anos de Mercos), &uacute;ltima conversa, ciclo de recompra, status ativo/inativo. Tudo em uma tela.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>Relat&oacute;rios por Marca</h3>
+      <p>Faturamento, ativos, inativos, pipeline &mdash; filtrado por f&aacute;brica, por representante, por regi&atilde;o. Vis&atilde;o gerencial completa.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <h3>Integra&ccedil;&atilde;o Mercos via API</h3>
+      <p>Leitura de cat&aacute;logo, hist&oacute;rico de pedidos, curva ABC. Grava&ccedil;&atilde;o de pedidos originados no WhatsApp de volta no Mercos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Cruzamento de Planilhas</h3>
+      <p>Upload de planilhas e cruzamento autom&aacute;tico com IA. Sem limites de tokens. Substitui o ChatGPT para opera&ccedil;&otilde;es de dados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: SOLUCAO - WHATSAPP -->
+<section id="whatsapp">
+  <div class="section-number">06 &mdash; WhatsApp inteligente</div>
+  <h2>Centraliza&ccedil;&atilde;o + Carrinho</h2>
+  <p class="subtitle">O cliente n&atilde;o sai do WhatsApp. Nunca. Pedido, cat&aacute;logo e pagamento &mdash; tudo no mesmo canal.</p>
+  <div class="card-grid fade-in">
+    <div class="card">
+      <div class="card-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h3>N&uacute;mero Central com Roteamento</h3>
+      <p>Um n&uacute;mero verificado (selo Meta). Cliente escolhe o segmento (festa, brinquedo, fita). Sistema direciona para o respons&aacute;vel autom&aacute;tico.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+      <h3>Carrinho de Compras In-Chat</h3>
+      <p>Troca de tela dentro do WhatsApp. Cliente seleciona produtos, quantidades e submete o pedido. Sem sair do canal. Modelo validado em opera&ccedil;&atilde;o real.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>IA Multimodal</h3>
+      <p>Interpreta fotos de produtos (match com cat&aacute;logo), transcreve &aacute;udios, l&ecirc; PDFs e listas &agrave; m&atilde;o. Entende o que o cliente quer, mesmo no formato ca&oacute;tico.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Hist&oacute;rico + Resumos</h3>
+      <p>Toda conversa registrada e acess&iacute;vel por qualquer membro da equipe. IA gera resumo autom&aacute;tico: o que foi tratado, o que ficou pendente, pr&oacute;xima a&ccedil;&atilde;o.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: SOLUCAO - AUTOMACOES -->
+<section id="automacoes">
+  <div class="section-number">07 &mdash; Automa&ccedil;&otilde;es</div>
+  <h2>Gatilhos e campanhas</h2>
+  <p class="subtitle">O sistema trabalha para voc&ecirc;s &mdash; mesmo quando ningu&eacute;m est&aacute; olhando.</p>
+  <div class="card-grid fade-in">
+    <div class="card">
+      <div class="card-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <h3>Gatilho de Recompra por Marca</h3>
+      <p>CicaDe: 30 dias. Polibras: 45 dias. Bal&atilde;o: 30 dias. BR: 45 dias. Fita: 30 dias. Cada f&aacute;brica com seu ciclo. Configur&aacute;vel.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <h3>Alertas de Inatividade</h3>
+      <p>60 dias: mensagem amig&aacute;vel. 90 dias: oferta especial. 120 dias: &uacute;ltimo contato. Workflow autom&aacute;tico de reativa&ccedil;&atilde;o progressiva.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+      <h3>Campanhas Segmentadas</h3>
+      <p>Disparo por marca, por segmento (festa, brinquedo, servi&ccedil;o), por regi&atilde;o. Promo&ccedil;&atilde;o de uma semana? Toda a base da marca notificada em minutos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <h3>Pedido Sugerido com IA</h3>
+      <p>Curva A do cliente + hist&oacute;rico Mercos = pedido pronto. O representante s&oacute; ajusta quantidades. De 30 minutos para 2 minutos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+      <h3>Troca de Tabela Autom&aacute;tica</h3>
+      <p>F&aacute;brica avisou troca de tabela? Notifica&ccedil;&atilde;o autom&aacute;tica para toda a carteira da marca com prazo e condi&ccedil;&otilde;es na tabela atual.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <h3>Cross-sell Inteligente</h3>
+      <p>Fechou PicPic? Sistema sugere marcas de festa complementares. &ldquo;Quem comprou isso tamb&eacute;m comprou&rdquo; &mdash; baseado em dados reais do Mercos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: FLUXO -->
+<section id="fluxo">
+  <div class="section-number">08 &mdash; Fluxo</div>
+  <h2>Como funciona na pr&aacute;tica</h2>
+  <p class="subtitle">Do cliente entrando em contato ao pedido registrado no Mercos &mdash; com m&iacute;nima interven&ccedil;&atilde;o manual.</p>
+  <div class="flow-diagram fade-in">
+    <div class="flow-label">Cliente entra em contato</div>
+    <div class="flow-row">
+      <div class="flow-node source">WhatsApp Central</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Bot identifica segmento</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Roteia para respons&aacute;vel</div>
+    </div>
+    <div class="flow-label">Pedido pelo carrinho</div>
+    <div class="flow-row">
+      <div class="flow-node source">Cliente abre carrinho</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Seleciona produtos + qtd</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Pedido gravado no Mercos</div>
+    </div>
+    <div class="flow-label">Gatilho de recompra</div>
+    <div class="flow-row">
+      <div class="flow-node source">Ciclo de 30/45/60 dias</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">IA monta pedido sugerido</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Mensagem autom&aacute;tica enviada</div>
+    </div>
+    <div class="flow-label">Reativa&ccedil;&atilde;o de inativo</div>
+    <div class="flow-row">
+      <div class="flow-node source">Cliente 90+ dias sem compra</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Workflow de reativa&ccedil;&atilde;o</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Retoma conversa com oferta</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: TIMELINE -->
+<section id="timeline">
+  <div class="section-number">09 &mdash; Cronograma</div>
+  <h2>Fases de implementa&ccedil;&atilde;o</h2>
+  <p class="subtitle">Come&ccedil;amos pelo que d&aacute; mais resultado imediato. Sem disrup&ccedil;&atilde;o na opera&ccedil;&atilde;o.</p>
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="timeline-dot blue">0</div>
+      <div class="timeline-content">
+        <h3>Kick-off + Mapeamento</h3>
+        <p>Coleta de acessos (Mercos, WhatsApp). Mapeamento detalhado: sentar com cada pessoa da equipe, tela a tela, entender como cada um trabalha. Levantamento de todas as marcas e seus ciclos.</p>
+        <span class="timeline-tag">Semana 1</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">1</div>
+      <div class="timeline-content">
+        <h3>Dashboard + Integra&ccedil;&atilde;o Mercos</h3>
+        <p>Plataforma central conectada ao Mercos via API. Vis&atilde;o 360 do cliente: hist&oacute;rico, &uacute;ltima compra, inatividade. WhatsApp central com roteamento por segmento e bot de primeiro atendimento.</p>
+        <span class="timeline-tag">Semanas 2&ndash;3 &mdash; Funda&ccedil;&atilde;o</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">2</div>
+      <div class="timeline-content">
+        <h3>Automa&ccedil;&otilde;es + Campanhas</h3>
+        <p>Gatilhos de recompra por marca, disparos segmentados, alertas de inatividade, follow-up autom&aacute;tico, notifica&ccedil;&atilde;o de troca de tabela. A m&aacute;quina come&ccedil;a a trabalhar sozinha.</p>
+        <span class="timeline-tag">Semanas 3&ndash;4</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">3</div>
+      <div class="timeline-content">
+        <h3>Carrinho WhatsApp + IA</h3>
+        <p>Carrinho de compras in-chat, pedido sugerido com curva A, IA multimodal (fotos, &aacute;udios, PDFs), cross-sell autom&aacute;tico, cruzamento de planilhas.</p>
+        <span class="timeline-tag">Semanas 4&ndash;5</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot green">4</div>
+      <div class="timeline-content">
+        <h3>Go Live + Treinamento</h3>
+        <p>Treinamento completo da equipe. Lan&ccedil;amento da plataforma com acompanhamento intensivo. Ajustes finos baseados no uso real. Suporte cont&iacute;nuo.</p>
+        <span class="timeline-tag">Semana 5 &mdash; Lan&ccedil;amento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: ESCOPO -->
+<section id="incluso">
+  <div class="section-number">10 &mdash; Escopo</div>
+  <h2>O que est&aacute; incluso</h2>
+  <p class="subtitle">Tudo que faz parte da entrega da plataforma Azeredo.</p>
+  <div class="includes-grid fade-in">
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Dashboard Azeredo</strong> &mdash; plataforma web pr&oacute;pria com relat&oacute;rios, pipeline e vis&atilde;o 360</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Integra&ccedil;&atilde;o Mercos API</strong> &mdash; leitura de cat&aacute;logo, hist&oacute;rico, curva ABC + grava&ccedil;&atilde;o de pedidos</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>WhatsApp Central</strong> &mdash; n&uacute;mero verificado com bot de roteamento por segmento</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Carrinho In-Chat</strong> &mdash; sele&ccedil;&atilde;o de produtos e fechamento de pedido pelo WhatsApp</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Gatilhos de Recompra</strong> &mdash; automa&ccedil;&atilde;o por marca com ciclos configur&aacute;veis</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Campanhas Segmentadas</strong> &mdash; disparo em massa por marca, segmento e regi&atilde;o</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Workflow de Reativa&ccedil;&atilde;o</strong> &mdash; sequ&ecirc;ncia autom&aacute;tica para clientes inativos</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>IA Multimodal</strong> &mdash; interpreta fotos, &aacute;udios, PDFs e gera pedidos sugeridos</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Resumos Autom&aacute;ticos</strong> &mdash; hist&oacute;rico de conversas com resumo por IA</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Treinamento da equipe</strong> &mdash; capacita&ccedil;&atilde;o presencial ou remota para toda a opera&ccedil;&atilde;o</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Cruzamento de Planilhas</strong> &mdash; upload e cruzamento com IA, sem limites de uso</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>30 dias de suporte</strong> &mdash; ajustes, novas automa&ccedil;&otilde;es e acompanhamento p&oacute;s-Go Live</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 12: ROI -->
+<section id="roi">
+  <div class="section-number">11 &mdash; Retorno</div>
+  <h2>Proje&ccedil;&atilde;o de impacto</h2>
+  <p class="subtitle">N&uacute;meros conservadores baseados na carteira e opera&ccedil;&atilde;o atuais.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; max-width: 900px;" class="fade-in">
+    <div class="stat-card" style="border-color: rgba(45, 138, 78, 0.3);">
+      <div class="stat-number" style="color: var(--green);">+200</div>
+      <div class="stat-label">Clientes reativados<br>em 90 dias (meta: 600&ndash;700 ativos)</div>
+    </div>
+    <div class="stat-card" style="border-color: rgba(74, 108, 247, 0.3);">
+      <div class="stat-number accent">15&ndash;20%</div>
+      <div class="stat-label">Taxa de reativa&ccedil;&atilde;o<br>de inativos na carteira</div>
+    </div>
+    <div class="stat-card" style="border-color: rgba(196, 154, 48, 0.3);">
+      <div class="stat-number" style="color: var(--amber);">&lt; 24h</div>
+      <div class="stat-label">Tempo de resposta<br>ap&oacute;s gatilho (hoje: dias/semanas)</div>
+    </div>
+    <div class="stat-card" style="border-color: rgba(122, 106, 191, 0.3);">
+      <div class="stat-number" style="color: var(--purple);">5 min</div>
+      <div class="stat-label">Montagem de pedido sugerido<br>(hoje: 30&ndash;60 min manual)</div>
+    </div>
+  </div>
+  <div class="roi-highlight fade-in" style="margin-top: 32px;">
+    <div style="font-size: 15px; color: var(--text-primary); line-height: 1.8;">
+      Com ticket m&eacute;dio de pedido de R$ 800&ndash;1.500 por cliente, <strong>reativar 120 clientes em 90 dias pode gerar R$ 96.000 a R$ 180.000 em receita recuperada.</strong> O investimento se paga nas primeiras semanas de opera&ccedil;&atilde;o.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: INVESTIMENTO -->
+<section id="investimento">
+  <div class="section-number">12 &mdash; Investimento</div>
+  <h2>Condi&ccedil;&otilde;es</h2>
+  <div style="max-width: 800px; margin-top: 40px;" class="fade-in">
+    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap;">
+      <div style="text-align: center; padding: 24px 48px; background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 14px; min-width: 260px;">
+        <div style="font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Investimento</div>
+        <div style="font-size: 44px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1;">R$ 10.000</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">Implementa&ccedil;&atilde;o completa</div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px;">
+      <div style="padding: 28px; background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 16px; text-align: center;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">Setup parcelado</div>
+        <div style="font-size: 36px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em;">3x R$ 3.333</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">Sem juros</div>
+      </div>
+      <div style="padding: 28px; background: linear-gradient(135deg, var(--green-dim), rgba(45,138,78,0.05)); border: 2px solid var(--green); border-radius: 16px; text-align: center; position: relative;">
+        <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.05em;">MELHOR CONDI&Ccedil;&Atilde;O</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">&Agrave; vista</div>
+        <div style="font-size: 36px; font-weight: 800; color: var(--green); letter-spacing: -0.02em;">R$ 9.000</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">10% de desconto</div>
+      </div>
+    </div>
+    <div style="padding: 24px 28px; background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(45,138,78,0.2); border-radius: 14px;">
+      <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+        <strong style="color: var(--text-primary);">O que est&aacute; incluso:</strong> dashboard Azeredo, integra&ccedil;&atilde;o Mercos API, WhatsApp central com roteamento, carrinho in-chat, gatilhos de recompra, campanhas segmentadas, IA multimodal, treinamento da equipe e 30 dias de suporte p&oacute;s-Go Live.
+        <br><br>
+        Com 120 clientes reativados a ticket m&eacute;dio de R$ 1.000, <strong style="color: var(--accent-light);">o investimento se paga em receita recuperada j&aacute; nas primeiras semanas de opera&ccedil;&atilde;o.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: PROXIMO PASSO -->
+<section class="cta-section" id="proximo">
+  <div class="section-number" style="justify-content: center;">13 &mdash; Pr&oacute;ximo passo</div>
+  <h2>Vamos come&ccedil;ar?</h2>
+  <p class="subtitle" style="margin: 0 auto; text-align: center;">
+    Pr&oacute;ximo passo: aprova&ccedil;&atilde;o da proposta, cria&ccedil;&atilde;o do grupo WhatsApp e in&iacute;cio do kick-off com mapeamento.<br>
+    Primeiras automa&ccedil;&otilde;es rodando em <strong>menos de 3 semanas</strong>.
+  </p>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+    <div style="text-align: center; padding: 20px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Quick Win em</div>
+      <div style="font-size: 20px; font-weight: 700;">&lt; 3 semanas</div>
+    </div>
+    <div style="text-align: center; padding: 20px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Plataforma completa</div>
+      <div style="font-size: 20px; font-weight: 700;">5 semanas</div>
+    </div>
+    <div style="text-align: center; padding: 20px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Clientes para reativar</div>
+      <div style="font-size: 20px; font-weight: 700;">800+</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15: OBRIGADO -->
+<section class="cta-section" id="obrigado" style="justify-content: center; text-align: center;">
+  <h2>Obrigado.</h2>
+  <p class="subtitle" style="margin: 16px auto 0; text-align: center;">
+    u4digital &mdash; Agentes de Intelig&ecirc;ncia Artificial
+  </p>
+  <div style="margin-top: 40px; font-size: 12px; color: var(--text-muted);">
+    Documento confidencial &mdash; Preparado exclusivamente para Azeredo Representa&ccedil;&otilde;es Comerciais &mdash; Maio 2026
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('section');
+  const dotsContainer = document.getElementById('slideDots');
+  const counter = document.getElementById('slideCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+  const total = slides.length;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    if (index < 0 || index >= total) return;
+    slides.forEach((s, i) => { s.classList.remove('active', 'prev'); if (i < index) s.classList.add('prev'); });
+    slides[index].classList.add('active');
+    slides[index].querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    dotsContainer.querySelectorAll('.slide-dot').forEach((d, i) => { d.classList.toggle('active', i === index); });
+    counter.textContent = (index + 1) + ' / ' + total;
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === total - 1;
+    current = index;
+  }
+
+  function changeSlide(dir) { goToSlide(current + dir); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); changeSlide(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToSlide(total - 1); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) { changeSlide(diff < 0 ? 1 : -1); }
+  });
+
+  goToSlide(0);
+</script>
+
+</body>
+</html>

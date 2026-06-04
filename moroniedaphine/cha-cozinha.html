@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chá de Cozinha — Moroni &amp; Daphine · 06.06.2026</title>
+  <meta name="description" content="Chá de Cozinha — Moroni Reis & Daphine Oliveira. 06 de junho de 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:#1B3A5C;--blue-deep:#0F2137;--blue-mid:#2A4F7A;--blue-tint:#EDF2F7;
+      --parchment:#F5F8FC;--white:#FFFFFF;--white-muted:rgba(255,255,255,0.82);
+      --white-dim:rgba(255,255,255,0.40);--gold:#D4AF37;--gold-border:rgba(212,175,55,0.30);
+      --fd:'Fraunces',Georgia,serif;--fu:'Inter',system-ui,sans-serif;
+      --ease:cubic-bezier(0.25,0.46,0.45,0.94);--eout:cubic-bezier(0.16,1,0.3,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{background:var(--blue-deep);color:var(--white);font-family:var(--fu);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font-family:inherit;border:none;outline:none;background:none;color:inherit;appearance:none}
+    .wrap{max-width:680px;margin:0 auto;padding:0 max(24px,5vw)}
+    .grain{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");mix-blend-mode:soft-light;opacity:.5}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity 700ms var(--ease),transform 700ms var(--ease)}.reveal.vis{opacity:1;transform:translateY(0)}
+    .rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}.rd5{transition-delay:.5s}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes growW{from{width:0}to{width:80px}}
+    @keyframes pulse{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(.5);opacity:.15}}
+    @keyframes glow{0%,100%{opacity:.12}50%{opacity:.22}}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px max(24px,5vw);display:flex;align-items:center;justify-content:space-between;transition:background 500ms var(--ease),backdrop-filter 500ms}
+    .nav.scrolled{background:rgba(15,33,55,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .nav__mark{font-family:var(--fd);font-weight:300;font-size:18px;letter-spacing:.08em;font-variation-settings:"opsz" 72,"SOFT" 40,"WONK" 0;color:var(--white)}
+    .nav__mark i{font-style:italic;color:var(--white);opacity:.5;padding:0 .06em}
+    .nav__links{display:flex;gap:28px;list-style:none}
+    .nav__links a{font-family:var(--fu);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:.18em;color:var(--white-dim);transition:color 400ms}
+    .nav__links a:hover,.nav__links a.active{color:var(--gold)}
+
+    /* HERO */
+    .hero{position:relative;height:100vh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:clamp(60px,10vh,120px);overflow:hidden}
+    .hero__photo{position:absolute;inset:0;z-index:0}
+    .hero__photo img{width:100%;height:130%;object-fit:cover;object-position:center 40%;filter:brightness(0.45) contrast(1.05);margin-top:-15%}
+    .hero__depth1{position:absolute;inset:0;z-index:0;background:linear-gradient(to bottom,rgba(15,33,55,0.15) 0%,rgba(15,33,55,0) 25%,rgba(15,33,55,0) 40%,rgba(15,33,55,0.40) 55%,rgba(15,33,55,0.85) 75%,rgba(15,33,55,0.96) 100%)}
+    .hero__depth2{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 50% 40% at 50% 30%,rgba(42,79,122,0.3) 0%,transparent 60%)}
+    .hero__ov{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,transparent 30%,rgba(15,33,55,0.7) 100%)}
+    .hero__c{position:relative;z-index:3;text-align:center;padding:0 24px}
+    .hero__label{font-family:var(--fu);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:.24em;color:var(--gold);opacity:0;animation:fadeIn 600ms var(--ease) .2s forwards}
+    .hero__orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 20px;opacity:0;animation:fadeIn 600ms var(--ease) .4s forwards}
+    .hero__orn-l{width:32px;height:1px;background:var(--gold);opacity:.3}
+    .hero__orn-d{width:5px;height:5px;border:1px solid var(--gold);opacity:.4;transform:rotate(45deg)}
+    .hero__names{font-family:var(--fd);font-weight:300;font-size:clamp(32px,7vw,68px);line-height:1.1;letter-spacing:-.01em;color:var(--white);font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;opacity:0;animation:fadeIn 700ms var(--ease) .6s forwards}
+    .hero__names i{font-style:italic;color:var(--white);opacity:1;padding:0 .06em;font-size:.85em}
+    .hero__div{display:block;width:0;height:1px;background:var(--gold);opacity:.5;margin:24px auto;animation:growW 700ms var(--eout) .85s forwards}
+    .hero__date{font-family:var(--fu);font-size:13px;font-weight:300;letter-spacing:.22em;color:var(--white-muted);opacity:0;animation:fadeIn 600ms var(--ease) 1s forwards}
+    .hero__scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 800ms var(--ease) 1.5s forwards}
+    .hero__scroll span{font-family:var(--fu);font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:var(--white-dim)}
+    .hero__scroll-line{width:1px;height:36px;background:var(--gold);opacity:.4;animation:pulse 2.4s var(--ease) infinite}
+
+    /* SECTIONS */
+    .sec{padding:clamp(80px,10vw,128px) 0}
+    .sec--parch{background:var(--parchment);color:var(--blue)}
+    .sec--blue{background:var(--blue);color:var(--white);position:relative}
+    .sec--blue>.wrap{position:relative;z-index:1}
+    .sec--deep{background:var(--blue-deep);color:var(--white);position:relative}
+    .sec--deep>.wrap{position:relative;z-index:1}
+    .slabel{font-family:var(--fu);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:.18em;opacity:.45;display:block;margin-bottom:16px;text-align:center}
+    .stitle{font-family:var(--fd);font-weight:300;font-size:clamp(24px,3vw,40px);line-height:1.15;letter-spacing:.02em;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 0;text-align:center;margin-bottom:16px}
+    .sdiv{display:block;width:40px;height:1px;background:var(--gold);opacity:.35;margin:0 auto 32px}
+
+    /* ORNAMENT */
+    .orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:28px 0}
+    .orn-l{width:32px;height:1px;background:var(--gold);opacity:.3}
+    .orn-d{width:4px;height:4px;border:1px solid var(--gold);opacity:.35;transform:rotate(45deg)}
+
+    /* INFO BLOCKS */
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;margin-top:48px;max-width:600px;margin-left:auto;margin-right:auto}
+    .info-block{padding:0}
+    @media(max-width:500px){.info-grid{grid-template-columns:1fr}}
+    .info-label{font-family:var(--fu);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);opacity:.6;display:block;margin-bottom:6px}
+    .info-val{font-family:var(--fd);font-weight:300;font-size:clamp(15px,2vw,18px);font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;color:var(--white);line-height:1.35;margin-bottom:4px}
+    .info-sub{font-family:var(--fu);font-size:11px;font-weight:300;color:var(--white-dim);line-height:1.6}
+    .map-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fu);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);opacity:.6;margin-top:8px;transition:opacity 400ms}
+    .map-link:hover{opacity:1}
+
+    /* FORM */
+    .field{margin-bottom:28px}
+    .field__lab{font-family:var(--fu);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);opacity:.5;display:block;margin-bottom:8px}
+    .field__in{width:100%;border:none;border-bottom:1px solid rgba(212,175,55,0.20);padding:10px 0;font-family:var(--fd);font-weight:300;font-size:16px;font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;color:var(--white);background:transparent;outline:none;transition:border-color 400ms;-moz-appearance:textfield}
+    .field__in::-webkit-outer-spin-button,.field__in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    .field__in:focus{border-color:var(--gold)}
+    .field__in::placeholder{color:var(--white-dim)}
+    select.field__in{cursor:pointer}
+    select.field__in option{background:var(--blue-deep);color:var(--white)}
+    .sbtn{display:inline-block;padding:16px 48px;font-family:var(--fu);font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:.16em;cursor:pointer;transition:all 600ms var(--ease);border:1px solid var(--gold);color:var(--gold);background:transparent}
+    .sbtn:hover{background:var(--gold);color:var(--blue-deep)}
+
+    /* GIFT CARDS */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:40px}
+    .card{border:1px solid rgba(15,33,55,0.10);padding:28px 20px;text-align:center;transition:border-color 600ms var(--ease),transform 600ms var(--ease)}
+    .card:hover{border-color:rgba(15,33,55,0.25);transform:translateY(-2px)}
+    .card__t{font-family:var(--fd);font-weight:300;font-size:16px;font-variation-settings:"opsz" 48,"SOFT" 30,"WONK" 0}
+
+    /* MANUAL CARDS */
+    .manual-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:40px}
+    .manual-card{background:var(--parchment);border:1px solid rgba(15,33,55,0.10);padding:28px 24px;text-align:center}
+    .manual-card__icon{margin-bottom:16px}
+    .manual-card__t{font-family:var(--fd);font-weight:300;font-size:16px;font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;color:var(--blue);margin-bottom:8px}
+    .manual-card__b{font-family:var(--fu);font-size:12px;font-weight:300;line-height:1.65;color:rgba(15,33,55,0.55)}
+
+    /* COUNTDOWN */
+    .countdown{display:flex;gap:0;justify-content:center;margin:40px 0 0}
+    .cd-unit{text-align:center;padding:0 clamp(16px,4vw,32px);border-right:1px solid var(--gold-border)}
+    .cd-unit:last-child{border-right:none}
+    .cd-num{font-family:var(--fd);font-weight:300;font-size:clamp(40px,7vw,64px);line-height:1;font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 0;color:var(--white)}
+    .cd-lbl{font-family:var(--fu);font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:var(--white-dim);margin-top:8px}
+
+    /* PIX */
+    .gift-pix{border:1px solid rgba(212,175,55,0.15);padding:36px 24px;text-align:center;max-width:380px;margin:0 auto}
+    .gift-pix__t{font-family:var(--fd);font-weight:300;font-size:22px;font-variation-settings:"opsz" 48,"SOFT" 30,"WONK" 0;color:var(--white);margin-bottom:8px}
+    .gift-pix__b{font-family:var(--fu);font-size:12px;line-height:1.65;color:var(--white-dim);margin-bottom:20px}
+    .gift-links{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+    .gift-link{display:block;padding:12px 24px;border:1px solid rgba(212,175,55,0.15);font-family:var(--fu);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);opacity:.6;text-align:center;transition:opacity 400ms,border-color 400ms;text-decoration:none}
+    .gift-link:hover{opacity:1;border-color:rgba(212,175,55,0.40)}
+    .gift-pix-key{font-family:var(--fd);font-weight:300;font-size:16px;font-variation-settings:"opsz" 48,"SOFT" 20,"WONK" 0;color:var(--white);margin:8px 0}
+
+    /* FOOTER MARK */
+    .footer__mark{font-family:var(--fd);font-weight:300;font-size:22px;letter-spacing:.1em;font-variation-settings:"opsz" 72,"SOFT" 40,"WONK" 0;color:var(--white)}
+    .footer__mark i{font-style:italic;color:var(--white);opacity:.5;padding:0 .08em}
+
+    @media(prefers-reduced-motion:reduce){
+      .reveal{opacity:1!important;transform:none!important}
+      .hero__label,.hero__orn,.hero__names,.hero__div,.hero__date,.hero__scroll{opacity:1!important;animation:none!important}
+      .hero__div{width:80px!important}
+    }
+    @media(max-width:600px){
+      .info-grid{grid-template-columns:1fr}
+      .info-block{border-right:none!important;padding-right:0!important;padding-left:0!important;border-bottom:1px solid var(--gold-border)!important}
+      .info-block:last-child{border-bottom:none!important}
+      .manual-grid{grid-template-columns:1fr}
+      .nav__links{display:none}
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="Chá de Cozinha — Moroni & Daphine · 06.06.2026">
+  <meta property="og:description" content="Chá de Cozinha de Moroni e Daphine. 06 de junho de 2026.">
+  <meta property="og:image" content="https://moroniedaphine.vercel.app/assets/og-image.jpg">
+  <meta property="og:url" content="https://moroniedaphine.vercel.app/cha-cozinha">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <span class="nav__mark">M<i>&amp;</i>D</span>
+  <ul class="nav__links">
+    <li><a href="#detalhes">Detalhes</a></li>
+    <li><a href="#presenca">Presença</a></li>
+    <li><a href="#presentes">Presentes</a></li>
+  </ul>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero" id="topo">
+  <div class="hero__photo"><img src="assets/fotos/templo-abraco.jpg" alt="Moroni e Daphine"></div>
+  <div class="hero__depth1"></div>
+  <div class="hero__depth2"></div>
+  <div class="hero__ov"></div>
+  <div class="grain"></div>
+  <div class="hero__c">
+    <p class="hero__label">Chá de Cozinha</p>
+    <div class="hero__orn">
+      <span class="hero__orn-l"></span>
+      <span class="hero__orn-d"></span>
+      <span class="hero__orn-l"></span>
+    </div>
+    <h1 class="hero__names">Moroni<i>&amp;</i>Daphine</h1>
+    <span class="hero__div"></span>
+    <p class="hero__date">06 de Junho de 2026</p>
+    <div style="display:flex;align-items:flex-end;justify-content:center;gap:0;margin-top:24px;opacity:0;animation:fadeIn 600ms var(--ease) 1.2s forwards;">
+      <div style="text-align:center;min-width:56px;">
+        <span id="hero-cd-d" style="font-family:var(--fd);font-weight:300;font-size:clamp(28px,4vw,44px);font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 0;color:var(--white);display:block;">--</span>
+        <span style="font-family:var(--fu);font-size:8px;text-transform:uppercase;letter-spacing:.18em;color:var(--white-dim);">Dias</span>
+      </div>
+      <span style="font-family:var(--fd);font-size:clamp(20px,3vw,32px);color:var(--gold);opacity:.25;padding:0 4px;">.</span>
+      <div style="text-align:center;min-width:56px;">
+        <span id="hero-cd-h" style="font-family:var(--fd);font-weight:300;font-size:clamp(28px,4vw,44px);font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 0;color:var(--white);display:block;">--</span>
+        <span style="font-family:var(--fu);font-size:8px;text-transform:uppercase;letter-spacing:.18em;color:var(--white-dim);">Horas</span>
+      </div>
+      <span style="font-family:var(--fd);font-size:clamp(20px,3vw,32px);color:var(--gold);opacity:.25;padding:0 4px;">.</span>
+      <div style="text-align:center;min-width:56px;">
+        <span id="hero-cd-m" style="font-family:var(--fd);font-weight:300;font-size:clamp(28px,4vw,44px);font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 0;color:var(--white);display:block;">--</span>
+        <span style="font-family:var(--fu);font-size:8px;text-transform:uppercase;letter-spacing:.18em;color:var(--white-dim);">Min</span>
+      </div>
+      <span style="font-family:var(--fd);font-size:clamp(20px,3vw,32px);color:var(--gold);opacity:.25;padding:0 4px;">.</span>
+      <div style="text-align:center;min-width:56px;">
+        <span id="hero-cd-s" style="font-family:var(--fd);font-weight:300;font-size:clamp(28px,4vw,44px);font-variation-settings:'opsz' 144,'SOFT' 50,'WONK' 0;color:var(--white);display:block;">--</span>
+        <span style="font-family:var(--fu);font-size:8px;text-transform:uppercase;letter-spacing:.18em;color:var(--white-dim);">Seg</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>Deslize para abrir</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<div style="text-align:center;padding:0;height:0;position:relative;z-index:2;"><div style="transform:translateY(-50%);display:inline-flex;align-items:center;gap:10px;"><span style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border));"></span><span style="width:5px;height:5px;border:1px solid var(--gold);opacity:.3;transform:rotate(45deg);"></span><span style="width:60px;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent);"></span></div></div>
+
+<!-- 2. SAUDACAO -->
+<section class="sec sec--parch">
+  <div class="wrap" style="text-align:center;">
+    <h2 class="stitle reveal" style="color:var(--blue);">Venha Celebrar Conosco!</h2>
+    <span class="sdiv reveal rd1"></span>
+    <p class="reveal rd2" style="font-family:var(--fu);font-size:14px;font-weight:300;line-height:1.85;color:rgba(15,33,55,0.55);max-width:520px;margin:0 auto;">
+      Antes do grande dia, queremos reunir as pessoas que amamos para um momento especial. Um chá de cozinha para nos ajudar a montar nosso primeiro lar — com carinho, risadas e muito amor.
+    </p>
+  </div>
+</section>
+
+<div style="text-align:center;padding:0;height:0;position:relative;z-index:2;"><div style="transform:translateY(-50%);display:inline-flex;align-items:center;gap:10px;"><span style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border));"></span><span style="width:5px;height:5px;border:1px solid var(--gold);opacity:.3;transform:rotate(45deg);"></span><span style="width:60px;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent);"></span></div></div>
+
+<!-- 3. DETALHES DO EVENTO -->
+<section class="sec sec--blue" id="detalhes">
+  <div class="grain"></div>
+  <div class="wrap">
+    <span class="slabel reveal" style="color:var(--gold);opacity:.5;">Detalhes</span>
+    <h2 class="stitle reveal rd1">Detalhes do Evento</h2>
+    <span class="sdiv reveal rd2"></span>
+
+    <div class="info-grid reveal rd3">
+      <div class="info-block">
+        <span class="info-label">Data</span>
+        <p class="info-val">06 de Junho de 2026</p>
+        <p class="info-sub">Sábado</p>
+      </div>
+      <div class="info-block">
+        <span class="info-label">Horário</span>
+        <p class="info-val">19h</p>
+        <p class="info-sub">Pontualmente</p>
+      </div>
+      <div class="info-block" style="grid-column:1/-1;">
+        <span class="info-label">Local</span>
+        <p class="info-val">Capela Faustino Augusto Cesar 81</p>
+        <p class="info-sub">Igreja de Jesus Cristo dos Santos dos Últimos Dias</p>
+        <a class="map-link" href="https://maps.google.com/?q=Capela+Faustino+Augusto+Cesar+81+Igreja+de+Jesus+Cristo" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Ver no mapa
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:0;height:0;position:relative;z-index:2;"><div style="transform:translateY(-50%);display:inline-flex;align-items:center;gap:10px;"><span style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border));"></span><span style="width:5px;height:5px;border:1px solid var(--gold);opacity:.3;transform:rotate(45deg);"></span><span style="width:60px;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent);"></span></div></div>
+
+<!-- 4. COMO FUNCIONA -->
+<section class="sec sec--parch">
+  <div class="wrap" style="text-align:center;">
+    <span class="slabel reveal" style="color:var(--blue);">Informações</span>
+    <h2 class="stitle reveal rd1" style="color:var(--blue);">Como Funciona</h2>
+    <span class="sdiv reveal rd2"></span>
+
+    <div class="manual-grid reveal rd3">
+      <div class="manual-card">
+        <div class="manual-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-mid)" stroke-width="1" style="opacity:.5;"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+        </div>
+        <p class="manual-card__t">Escolha um Presente</p>
+        <p class="manual-card__b">Dê uma olhadinha na nossa lista e escolha algo para nos ajudar a montar a cozinha.</p>
+      </div>
+      <div class="manual-card">
+        <div class="manual-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue-mid)" stroke-width="1" style="opacity:.5;"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/><path d="M7 17l2-2"/><path d="M15 17l2-2"/><ellipse cx="12" cy="12" rx="4" ry="2"/></svg>
+        </div>
+        <p class="manual-card__t">Traga um Prato</p>
+        <p class="manual-card__b">Cada convidado traz um prato para compartilharmos. Pode ser doce ou salgado — o que seu coração mandar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:0;height:0;position:relative;z-index:2;"><div style="transform:translateY(-50%);display:inline-flex;align-items:center;gap:10px;"><span style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border));"></span><span style="width:5px;height:5px;border:1px solid var(--gold);opacity:.3;transform:rotate(45deg);"></span><span style="width:60px;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent);"></span></div></div>
+
+<!-- 5. CONFIRMAR PRESENÇA -->
+<section class="sec sec--blue" id="presenca">
+  <div class="grain"></div>
+  <div class="wrap">
+    <span class="slabel reveal" style="color:var(--gold);opacity:.5;">RSVP</span>
+    <h2 class="stitle reveal rd1">Confirmar Presença</h2>
+    <span class="sdiv reveal rd2"></span>
+
+    <form id="rsvp-form" novalidate style="max-width:440px;margin:0 auto;">
+      <div class="field reveal rd1">
+        <label class="field__lab">Nome completo</label>
+        <input class="field__in" type="text" id="rsvp-nome" required placeholder="Seu nome completo">
+      </div>
+      <div class="field reveal rd2">
+        <label class="field__lab">WhatsApp</label>
+        <input class="field__in" type="tel" id="rsvp-whats" required placeholder="(11) 9 0000-0000">
+      </div>
+      <div class="field reveal rd3">
+        <label class="field__lab">Presente que vai levar</label>
+        <select class="field__in" id="rsvp-presente">
+          <option value="">Selecione um presente...</option>
+          <option value="Jogo de panelas">Jogo de panelas</option>
+          <option value="Jogo de talheres">Jogo de talheres</option>
+          <option value="Jogo de copos">Jogo de copos</option>
+          <option value="Jogo de pratos">Jogo de pratos</option>
+          <option value="Jogo de toalhas de banho">Jogo de toalhas de banho</option>
+          <option value="Formas de bolo">Formas de bolo</option>
+          <option value="Conjunto de potes herméticos">Conjunto de potes herméticos</option>
+          <option value="Tábua de corte">Tábua de corte</option>
+          <option value="Escorredor de louça">Escorredor de louça</option>
+          <option value="Lixeira de cozinha">Lixeira de cozinha</option>
+          <option value="Jogo de cama casal">Jogo de cama casal</option>
+          <option value="Ferro de passar">Ferro de passar</option>
+          <option value="Varal de chão">Varal de chão</option>
+          <option value="Utensílios de cozinha">Utensílios de cozinha</option>
+          <option value="Panos de prato">Panos de prato</option>
+          <option value="Temperos e condimentos">Temperos e condimentos</option>
+          <option value="Organizadores">Organizadores</option>
+          <option value="Tupperware">Tupperware</option>
+          <option value="Prefiro contribuir via PIX">Prefiro contribuir via PIX</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      <div class="field reveal rd4">
+        <label class="field__lab">Qual prato pretende trazer? <span style="opacity:.5;">(opcional)</span></label>
+        <input class="field__in" type="text" id="rsvp-prato" placeholder="Ex: bolo de chocolate, empadão...">
+      </div>
+      <div class="reveal rd5" style="text-align:center;margin-top:8px;">
+        <button type="submit" class="sbtn">Confirmar Presença</button>
+      </div>
+    </form>
+
+    <div id="rsvp-success" style="display:none;text-align:center;padding:48px 0;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px;">
+        <span style="width:40px;height:1px;background:var(--gold);opacity:.3;"></span>
+        <span style="width:5px;height:5px;border:1px solid var(--gold);opacity:.4;transform:rotate(45deg);"></span>
+        <span style="width:40px;height:1px;background:var(--gold);opacity:.3;"></span>
+      </div>
+      <p id="rsvp-success-name" style="font-family:var(--fd);font-weight:300;font-size:clamp(20px,3vw,28px);font-variation-settings:'opsz' 72,'SOFT' 30,'WONK' 0;color:var(--white);margin-bottom:12px;"></p>
+      <p style="font-family:var(--fu);font-size:13px;font-weight:300;color:var(--white-dim);line-height:1.75;">Sua presença está confirmada. Nos vemos em 06 de junho!</p>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:0;height:0;position:relative;z-index:2;"><div style="transform:translateY(-50%);display:inline-flex;align-items:center;gap:10px;"><span style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border));"></span><span style="width:5px;height:5px;border:1px solid var(--gold);opacity:.3;transform:rotate(45deg);"></span><span style="width:60px;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent);"></span></div></div>
+
+<!-- 7. PIX -->
+<section class="sec sec--blue" id="pix">
+  <div class="grain"></div>
+  <div class="wrap" style="text-align:center;">
+    <span class="slabel reveal" style="color:var(--gold);opacity:.5;">Contribuição</span>
+    <h2 class="stitle reveal rd1">Contribuição via PIX</h2>
+    <span class="sdiv reveal rd2"></span>
+
+    <div class="gift-pix reveal rd3">
+      <img src="assets/qrcode-pix.png" alt="QR Code PIX" style="width:120px;height:120px;margin:0 auto 16px;display:block;border:1px solid rgba(212,175,55,0.10);">
+      <p class="gift-pix__t">PIX</p>
+      <p class="gift-pix__b">Escaneie o QR code ou use a chave abaixo</p>
+      <p class="gift-pix-key">(11) 96334-1710</p>
+      <div class="gift-links">
+        <a class="gift-link" href="https://nubank.com.br/cobrar/fjc00u/69f7e1a0-e3b1-4947-a001-b7b871159f34" target="_blank" rel="noopener">Pagar via Nubank</a>
+        <a class="gift-link" href="https://link.mercadopago.com.br/daphineemoroni" target="_blank" rel="noopener">Pagar via Cartão</a>
+      </div>
+      <p style="font-family:var(--fu);font-size:11px;color:var(--white-dim);margin-top:16px;text-align:center;">100% do valor vai diretamente para os noivos — sem taxa de plataforma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FOOTER -->
+<section class="sec sec--deep" id="encerramento">
+  <div class="grain"></div>
+  <div class="wrap" style="text-align:center;">
+    <p class="reveal" style="font-family:var(--fd);font-weight:300;font-size:clamp(24px,3.5vw,40px);font-variation-settings:'opsz' 72,'SOFT' 30,'WONK' 0;color:var(--white);letter-spacing:.02em;margin-bottom:12px;">
+      Nos vemos em 06 de junho
+    </p>
+
+    <div class="countdown reveal rd1" id="countdown">
+      <div class="cd-unit">
+        <p class="cd-num" id="cd-d">--</p>
+        <p class="cd-lbl">Dias</p>
+      </div>
+      <div class="cd-unit">
+        <p class="cd-num" id="cd-h">--</p>
+        <p class="cd-lbl">Horas</p>
+      </div>
+      <div class="cd-unit">
+        <p class="cd-num" id="cd-m">--</p>
+        <p class="cd-lbl">Min</p>
+      </div>
+      <div class="cd-unit">
+        <p class="cd-num" id="cd-s">--</p>
+        <p class="cd-lbl">Seg</p>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;">
+      <p class="footer__mark reveal rd2">M<i>&amp;</i>D</p>
+      <span class="reveal rd2" style="display:block;width:32px;height:1px;background:var(--gold);opacity:.25;margin:16px auto;"></span>
+      <p class="reveal rd3" style="font-family:var(--fu);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim);">Chá de Cozinha</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  var SUPABASE_URL = 'https://weirdpigeon-supabase.cloudfy.live';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3Njg1MTYsImV4cCI6MTgwNTMwNDUxNn0.Hziwx8ocWnFVLHvt5DhT8nTkL2XVMa58ofjL-0hCMxw';
+
+  async function saveGuest(data) {
+    var res = await fetch(SUPABASE_URL + '/rest/v1/wedding_guests', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  }
+
+  async function notifyAdmin(nome, whatsapp, fonte) {
+    try {
+      await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'rsvp', nome: nome, whatsapp: whatsapp, fonte: fonte })
+      });
+    } catch(e) { console.log('Notify error:', e); }
+  }
+
+  // NAV SCROLL + ACTIVE
+  var nav = document.getElementById('nav');
+  var navLinks = document.querySelectorAll('.nav__links a');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    var ids = ['detalhes','presenca','presentes'];
+    var active = '';
+    ids.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && window.scrollY >= el.offsetTop - 140) active = id;
+    });
+    navLinks.forEach(function(a){
+      var href = a.getAttribute('href').replace('#','');
+      a.classList.toggle('active', href === active);
+    });
+  },{passive:true});
+
+  // REVEALS
+  var ro = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);} });
+  },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+
+  // COUNTDOWN
+  var target = new Date('2026-06-06T19:00:00-03:00').getTime();
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function setEl(id, val){ var el = document.getElementById(id); if(el) el.textContent = val; }
+  function tick(){
+    var diff = target - Date.now();
+    if(diff <= 0){
+      ['cd-d','cd-h','cd-m','cd-s','hero-cd-d','hero-cd-h','hero-cd-m','hero-cd-s'].forEach(function(id){ setEl(id,'00'); });
+      return;
+    }
+    var d = pad(Math.floor(diff/864e5));
+    var h = pad(Math.floor((diff%864e5)/36e5));
+    var m = pad(Math.floor((diff%36e5)/6e4));
+    var s = pad(Math.floor((diff%6e4)/1e3));
+    setEl('cd-d', d); setEl('hero-cd-d', d);
+    setEl('cd-h', h); setEl('hero-cd-h', h);
+    setEl('cd-m', m); setEl('hero-cd-m', m);
+    setEl('cd-s', s); setEl('hero-cd-s', s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // RSVP FORM
+  var form = document.getElementById('rsvp-form');
+  var success = document.getElementById('rsvp-success');
+  var successName = document.getElementById('rsvp-success-name');
+  if(form) form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var nome = document.getElementById('rsvp-nome');
+    var whats = document.getElementById('rsvp-whats');
+    var valid = true;
+    if(!nome.value.trim()){ nome.style.borderColor='rgba(180,0,0,0.6)'; valid=false; } else { nome.style.borderColor=''; }
+    if(!whats.value.trim()){ whats.style.borderColor='rgba(180,0,0,0.6)'; valid=false; } else { whats.style.borderColor=''; }
+    if(!valid) return;
+
+    var nomeVal = nome.value.trim();
+    var whatsVal = whats.value.trim();
+    var presenteVal = (document.getElementById('rsvp-presente') || {}).value || '';
+    var pratoVal = (document.getElementById('rsvp-prato') || {}).value || '';
+
+    var mensagem = '[CHA-COZINHA] ';
+    if(presenteVal) mensagem += 'Presente: ' + presenteVal;
+    if(pratoVal.trim()) mensagem += (mensagem.length > 15 ? ' | ' : '') + 'Prato: ' + pratoVal.trim();
+
+    try {
+      await saveGuest({
+        nome: nomeVal,
+        whatsapp: whatsVal,
+        mensagem: mensagem || null,
+        fonte: 'site',
+        interesse: 'sim'
+      });
+      await notifyAdmin(nomeVal, whatsVal, 'cha-cozinha');
+    } catch(err) { console.log('Supabase error:', err); }
+
+    form.style.display = 'none';
+    success.style.display = 'block';
+    successName.textContent = nomeVal;
+  });
+</script>
+</body>
+</html>

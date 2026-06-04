@@ -26,6 +26,12 @@ screenize-base/
 outputs/design-md/
 .claude/skills/design-md/node_modules/
 
+# Vercel build artifacts
+**/.vercel/
+
+# Temporary downloads (Drive exports, PDFs)
+downloads/
+
 # OS files
 .DS_Store
 **/.DS_Store

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chá de Casa Nova 2 — Chave + Coração</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{width:1080px;height:1350px;overflow:hidden;background:#FFFFFF;font-family:'Inter',sans-serif;margin:0}
+    .card{width:1080px;height:1350px;background:#FFFFFF;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 100px}
+
+    .border-outer{position:absolute;inset:36px;border:1px solid rgba(122,46,58,.12);pointer-events:none}
+    .border-inner{position:absolute;inset:44px;border:1px solid rgba(122,46,58,.06);pointer-events:none}
+
+    .content{display:flex;flex-direction:column;align-items:center;gap:32px;z-index:2}
+
+    .label{font-size:16px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:#8B7D6B;opacity:.55}
+    .title-block{text-align:center}
+    .title-cha{font-family:'Fraunces',serif;font-weight:300;font-size:100px;line-height:.85;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 65,"WONK" 1;font-style:italic;display:block}
+    .title-de{font-family:'Fraunces',serif;font-weight:300;font-size:42px;color:#7A2E3A;font-variation-settings:"opsz" 72,"SOFT" 60,"WONK" 1;font-style:italic;opacity:.65;display:block;margin:2px 0}
+    .title-casa{font-family:'Fraunces',serif;font-weight:400;font-size:88px;line-height:.85;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 50,"WONK" 1;font-style:italic;display:block}
+
+    .orn-row{display:flex;align-items:center;gap:14px}
+    .orn-line{width:50px;height:1px;background:#7A2E3A;opacity:.12}
+    .orn-dia{width:5px;height:5px;border:1px solid #7A2E3A;opacity:.2;transform:rotate(45deg)}
+
+    .names{font-family:'Fraunces',serif;font-weight:300;font-size:32px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 25;letter-spacing:.06em}
+    .names em{font-style:italic;opacity:.4;font-size:.75em;padding:0 6px}
+
+    .date-block{display:flex;align-items:center;gap:44px}
+    .date-col{text-align:center}
+    .date-label{font-size:12px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#8B7D6B;opacity:.45;margin-bottom:5px}
+    .date-val{font-family:'Fraunces',serif;font-weight:300;font-size:26px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 20}
+    .date-big{font-family:'Fraunces',serif;font-weight:300;font-size:120px;line-height:1;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 15}
+    .date-sep{width:1px;height:70px;background:#7A2E3A;opacity:.1}
+
+    .loc{font-size:18px;font-weight:300;color:#6B5B4E;opacity:.5;text-align:center;line-height:1.65}
+    .link-row{display:flex;flex-direction:column;align-items:center;gap:6px}
+    .link-hint{font-size:15px;font-weight:300;color:#7A2E3A;opacity:.4;letter-spacing:.03em}
+    .link-url{font-size:19px;font-weight:400;color:#7A2E3A;opacity:.7;letter-spacing:.02em}
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="border-outer"></div>
+  <div class="border-inner"></div>
+
+  <div class="content">
+    <span class="label">Vocês estão convidados para o</span>
+
+    <div class="title-block">
+      <span class="title-cha">Chá</span>
+      <span class="title-de">de</span>
+      <span class="title-casa">Casa Nova</span>
+    </div>
+
+    <div class="orn-row">
+      <span class="orn-line"></span>
+      <span class="orn-dia"></span>
+      <span class="orn-line"></span>
+    </div>
+
+    <p class="names">Moroni <em>&</em> Daphine</p>
+
+    <!-- Key with heart illustration -->
+    <svg width="260" height="220" viewBox="0 0 260 220" fill="none">
+      <!-- Key shaft -->
+      <line x1="60" y1="110" x2="195" y2="110" stroke="#8B7D6B" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+      <!-- Key head — heart shape -->
+      <path d="M60 110 C60 95,45 78,30 78 C15 78,5 90,5 102 C5 120,25 135,60 155 C95 135,115 120,115 102 C115 90,105 78,90 78 C75 78,60 95,60 110Z" stroke="#7A2E3A" stroke-width="2.5" fill="none" opacity=".4"/>
+      <!-- Key teeth -->
+      <path d="M195 110 L195 125 L188 125 L188 110" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".35"/>
+      <path d="M210 110 L210 120 L205 120 L205 110" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".35"/>
+      <path d="M225 110 L225 128 L218 128 L218 110" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".35"/>
+      <!-- Key tip -->
+      <line x1="195" y1="110" x2="240" y2="110" stroke="#8B7D6B" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+      <!-- Key ring detail -->
+      <circle cx="60" cy="115" r="4" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".2"/>
+
+      <!-- Small leaf sprig left -->
+      <path d="M22 70 C18 60,22 50,28 45" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".2"/>
+      <path d="M24 58 C18 55,16 50,18 46" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".15"/>
+      <path d="M26 62 C32 58,34 52,32 48" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".15"/>
+
+      <!-- Small leaf sprig right -->
+      <path d="M98 70 C102 60,98 50,92 45" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".2"/>
+      <path d="M96 58 C102 55,104 50,102 46" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".15"/>
+      <path d="M94 62 C88 58,86 52,88 48" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".15"/>
+
+      <!-- Ribbon/bow on key -->
+      <path d="M135 110 C130 98,118 96,115 104 C113 108,118 112,125 110" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity=".3"/>
+      <path d="M135 110 C140 98,152 96,155 104 C157 108,152 112,145 110" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity=".3"/>
+      <path d="M132 112 C130 120,128 130,126 135" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".2"/>
+      <path d="M138 112 C140 120,142 130,144 135" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".2"/>
+
+      <!-- Text under key -->
+      <text x="130" y="195" text-anchor="middle" font-family="'Fraunces',serif" font-size="18" font-style="italic" fill="#8B7D6B" opacity=".35" font-weight="300">nossa nova casa</text>
+    </svg>
+
+    <div class="date-block">
+      <div class="date-col">
+        <p class="date-label">Dia</p>
+        <p class="date-val">Sábado</p>
+      </div>
+      <span class="date-sep"></span>
+      <div class="date-col">
+        <p class="date-big">06</p>
+      </div>
+      <span class="date-sep"></span>
+      <div class="date-col">
+        <p class="date-label">Mês</p>
+        <p class="date-val">Junho</p>
+      </div>
+      <span class="date-sep"></span>
+      <div class="date-col">
+        <p class="date-label">Hora</p>
+        <p class="date-val">19h</p>
+      </div>
+    </div>
+
+    <div class="orn-row">
+      <span class="orn-line"></span>
+      <span class="orn-dia"></span>
+      <span class="orn-line"></span>
+    </div>
+
+    <p class="loc">Capela Faustino Augusto Cesar 81<br>Igreja de Jesus Cristo dos Santos dos Últimos Dias</p>
+
+    <div class="link-row">
+      <span class="link-hint">Confirme e veja a lista de presentes</span>
+      <span class="link-url">moroniedaphine.vercel.app/cha-de-cozinha</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

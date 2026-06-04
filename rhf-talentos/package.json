@@ -1,0 +1,22 @@
+{
+  "name": "rhf-talentos",
+  "version": "0.1.0",
+  "description": "AI-powered recruitment automation service for RHF Talentos",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "test-api": "tsx src/scripts/test-chatguru.ts",
+    "webhook": "tsx src/webhooks/chatguru-webhook.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.51.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

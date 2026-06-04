@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arte — Chá de Cozinha M&D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #FAF7F2;
+      font-family: 'Inter', sans-serif;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 1080px;
+      height: 1920px;
+      background: #FAF7F2;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hand-drawn wavy border */
+    .border-frame {
+      position: absolute;
+      inset: 32px;
+      pointer-events: none;
+    }
+
+    .border-frame svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 120px 100px;
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .top-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ribbon-bow {
+      margin-bottom: 16px;
+    }
+
+    .label-top {
+      font-family: 'Inter', sans-serif;
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #6B5B4E;
+      opacity: 0.7;
+    }
+
+    .event-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 108px;
+      line-height: 1.0;
+      color: #7A2E3A;
+      font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+      font-style: italic;
+      margin: 8px 0 0;
+    }
+
+    .event-name-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 72px;
+      line-height: 1.0;
+      color: #7A2E3A;
+      font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+      font-style: italic;
+    }
+
+    .couple-names {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 36px;
+      color: #6B5B4E;
+      font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 0;
+      letter-spacing: 0.06em;
+      margin-top: 12px;
+    }
+
+    .couple-names em {
+      font-style: italic;
+      opacity: 0.5;
+      font-size: 0.8em;
+      padding: 0 6px;
+    }
+
+    /* Center illustration */
+    .illustration {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 700px;
+    }
+
+    /* Date block */
+    .date-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .date-side {
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6B5B4E;
+    }
+
+    .date-day {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 140px;
+      line-height: 1;
+      color: #7A2E3A;
+      font-variation-settings: "opsz" 144, "SOFT" 20, "WONK" 0;
+      position: relative;
+    }
+
+    .date-hearts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .heart-sm {
+      color: #7A2E3A;
+      opacity: 0.5;
+    }
+
+    /* Bottom info */
+    .bottom-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .time-info {
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: #6B5B4E;
+    }
+
+    .location-info {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 300;
+      color: #6B5B4E;
+      opacity: 0.7;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+
+    .divider-line {
+      width: 80px;
+      height: 1px;
+      background: #7A2E3A;
+      opacity: 0.25;
+    }
+
+    .link-info {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: #7A2E3A;
+      letter-spacing: 0.06em;
+      opacity: 0.65;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Hand-drawn wavy border frame -->
+  <div class="border-frame">
+    <svg viewBox="0 0 1016 1856" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Wavy hand-drawn border -->
+      <path d="
+        M 60 30
+        C 80 26, 120 34, 160 28
+        C 200 22, 240 36, 280 30
+        C 320 24, 360 34, 400 28
+        C 440 22, 480 36, 520 30
+        C 560 24, 600 34, 640 28
+        C 680 22, 720 36, 760 30
+        C 800 24, 840 34, 880 28
+        C 920 22, 960 34, 990 30
+
+        C 994 60, 986 100, 992 140
+        C 998 180, 986 220, 992 260
+        C 998 300, 986 340, 992 380
+        C 998 420, 986 460, 992 500
+        C 998 540, 986 580, 992 620
+        C 998 660, 986 700, 992 740
+        C 998 780, 986 820, 992 860
+        C 998 900, 986 940, 992 980
+        C 998 1020, 986 1060, 992 1100
+        C 998 1140, 986 1180, 992 1220
+        C 998 1260, 986 1300, 992 1340
+        C 998 1380, 986 1420, 992 1460
+        C 998 1500, 986 1540, 992 1580
+        C 998 1620, 986 1660, 992 1700
+        C 998 1740, 986 1780, 990 1826
+
+        C 960 1830, 920 1822, 880 1828
+        C 840 1834, 800 1822, 760 1828
+        C 720 1834, 680 1822, 640 1828
+        C 600 1834, 560 1822, 520 1828
+        C 480 1834, 440 1822, 400 1828
+        C 360 1834, 320 1822, 280 1828
+        C 240 1834, 200 1822, 160 1828
+        C 120 1834, 80 1822, 60 1826
+
+        C 56 1790, 64 1750, 58 1710
+        C 52 1670, 64 1630, 58 1590
+        C 52 1550, 64 1510, 58 1470
+        C 52 1430, 64 1390, 58 1350
+        C 52 1310, 64 1270, 58 1230
+        C 52 1190, 64 1150, 58 1110
+        C 52 1070, 64 1030, 58 990
+        C 52 950, 64 910, 58 870
+        C 52 830, 64 790, 58 750
+        C 52 710, 64 670, 58 630
+        C 52 590, 64 550, 58 510
+        C 52 470, 64 430, 58 390
+        C 52 350, 64 310, 58 270
+        C 52 230, 64 190, 58 150
+        C 52 110, 64 70, 60 30
+        Z
+      " stroke="#6B5B4E" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <div class="content">
+
+    <!-- TOP -->
+    <div class="top-section">
+      <!-- Ribbon/bow SVG -->
+      <div class="ribbon-bow">
+        <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 30 C50 10, 20 5, 10 20 C5 30, 15 40, 30 35 C40 32, 55 30, 60 30Z" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.5"/>
+          <path d="M60 30 C70 10, 100 5, 110 20 C115 30, 105 40, 90 35 C80 32, 65 30, 60 30Z" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.5"/>
+          <path d="M55 30 C56 38, 52 50, 48 58" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <path d="M65 30 C64 38, 68 50, 72 58" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <span class="label-top">Vocês estão convidados para o</span>
+
+      <h1 class="event-name">Chá de</h1>
+      <h1 class="event-name-sub">Cozinha</h1>
+
+      <div class="couple-names">
+        Moroni <em>&</em> Daphine
+      </div>
+    </div>
+
+    <!-- CENTER ILLUSTRATION: Kitchen scene -->
+    <div class="illustration">
+      <svg width="560" height="600" viewBox="0 0 560 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Table -->
+        <ellipse cx="280" cy="420" rx="220" ry="30" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.3"/>
+        <!-- Tablecloth drape -->
+        <path d="M60 420 C80 430, 100 500, 120 520 C140 540, 160 545, 200 548 C240 550, 320 550, 360 548 C400 545, 420 540, 440 520 C460 500, 480 430, 500 420" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.35"/>
+        <!-- Tablecloth lines -->
+        <path d="M140 440 C150 480, 155 510, 160 540" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M200 445 C205 480, 208 510, 210 545" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M280 448 C280 485, 280 515, 280 550" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M360 445 C355 480, 352 510, 350 545" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M420 440 C410 480, 405 510, 400 540" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.15"/>
+
+        <!-- Cake stand (center) -->
+        <rect x="256" y="310" width="48" height="8" rx="2" stroke="#6B5B4E" stroke-width="1.8" fill="none" opacity="0.5"/>
+        <line x1="280" y1="318" x2="280" y2="370" stroke="#6B5B4E" stroke-width="1.5" opacity="0.4"/>
+        <ellipse cx="280" cy="375" rx="20" ry="4" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <rect x="256" y="370" width="48" height="6" rx="2" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+        <!-- Cake layers -->
+        <rect x="258" y="260" width="44" height="50" rx="4" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.5"/>
+        <rect x="264" y="220" width="32" height="40" rx="3" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.5"/>
+        <rect x="270" y="190" width="20" height="30" rx="2" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.5"/>
+        <!-- Cake decorations -->
+        <path d="M258 280 C265 276, 275 284, 282 276 C289 284, 295 276, 302 280" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.3"/>
+        <path d="M264 245 C269 242, 276 248, 282 242 C288 248, 293 242, 296 245" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.3"/>
+        <!-- Cherry/flower on top -->
+        <circle cx="280" cy="186" r="6" stroke="#7A2E3A" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <line x1="280" y1="180" x2="280" y2="170" stroke="#6B5B4E" stroke-width="1" opacity="0.4"/>
+        <path d="M280 170 C284 166, 288 168, 286 172" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.3"/>
+
+        <!-- Vase with flowers (left of cake) -->
+        <path d="M155 370 C155 340, 165 330, 170 320 L180 320 C185 330, 195 340, 195 370" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.45"/>
+        <ellipse cx="175" cy="372" rx="20" ry="5" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.3"/>
+        <!-- Flowers -->
+        <line x1="175" y1="320" x2="175" y2="260" stroke="#6B5B4E" stroke-width="1.2" opacity="0.35"/>
+        <circle cx="175" cy="255" r="12" stroke="#7A2E3A" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <circle cx="175" cy="255" r="4" stroke="#7A2E3A" stroke-width="1" fill="none" opacity="0.3"/>
+        <line x1="170" y1="322" x2="155" y2="275" stroke="#6B5B4E" stroke-width="1" opacity="0.3"/>
+        <circle cx="152" cy="270" r="9" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity="0.35"/>
+        <line x1="180" y1="322" x2="198" y2="280" stroke="#6B5B4E" stroke-width="1" opacity="0.3"/>
+        <circle cx="200" cy="275" r="10" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity="0.35"/>
+        <!-- Leaves -->
+        <path d="M160 290 C150 285, 145 275, 148 268" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.25"/>
+        <path d="M190 295 C200 290, 208 282, 206 276" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.25"/>
+
+        <!-- Teapot (right of cake) -->
+        <ellipse cx="400" cy="360" rx="35" ry="28" stroke="#6B5B4E" stroke-width="2" fill="none" opacity="0.45"/>
+        <!-- Teapot lid -->
+        <path d="M375 338 C380 330, 420 330, 425 338" stroke="#6B5B4E" stroke-width="1.8" fill="none" opacity="0.4"/>
+        <circle cx="400" cy="326" r="5" stroke="#6B5B4E" stroke-width="1.2" fill="none" opacity="0.35"/>
+        <!-- Spout -->
+        <path d="M435 350 C450 340, 458 330, 455 320" stroke="#6B5B4E" stroke-width="1.8" fill="none" opacity="0.4"/>
+        <!-- Handle -->
+        <path d="M365 345 C345 340, 340 360, 365 370" stroke="#6B5B4E" stroke-width="1.8" fill="none" opacity="0.4"/>
+        <!-- Steam -->
+        <path d="M448 316 C450 308, 445 302, 448 294" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.2"/>
+        <path d="M454 318 C456 310, 452 304, 455 296" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.15"/>
+
+        <!-- Teacup (far right) -->
+        <path d="M430 395 C430 380, 445 370, 465 370 C485 370, 500 380, 500 395" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <ellipse cx="465" cy="395" rx="35" ry="6" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.35"/>
+        <!-- Cup handle -->
+        <path d="M500 380 C512 378, 515 390, 500 392" stroke="#6B5B4E" stroke-width="1.2" fill="none" opacity="0.35"/>
+        <!-- Saucer -->
+        <ellipse cx="465" cy="402" rx="40" ry="7" stroke="#6B5B4E" stroke-width="1.2" fill="none" opacity="0.25"/>
+
+        <!-- Plate with utensils (far left) -->
+        <ellipse cx="90" cy="395" rx="40" ry="8" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity="0.35"/>
+        <ellipse cx="90" cy="393" rx="28" ry="5" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.2"/>
+        <!-- Fork -->
+        <line x1="55" y1="340" x2="65" y2="395" stroke="#6B5B4E" stroke-width="1.5" opacity="0.35"/>
+        <line x1="52" y1="340" x2="51" y2="320" stroke="#6B5B4E" stroke-width="1" opacity="0.3"/>
+        <line x1="55" y1="340" x2="54" y2="318" stroke="#6B5B4E" stroke-width="1" opacity="0.3"/>
+        <line x1="58" y1="340" x2="57" y2="320" stroke="#6B5B4E" stroke-width="1" opacity="0.3"/>
+        <!-- Knife -->
+        <line x1="120" y1="340" x2="110" y2="395" stroke="#6B5B4E" stroke-width="1.5" opacity="0.35"/>
+        <path d="M120 340 L122 315 C123 310, 118 310, 119 315 Z" stroke="#6B5B4E" stroke-width="1" fill="none" opacity="0.3"/>
+
+        <!-- Small cupcake (between plate and vase) -->
+        <path d="M125 385 L120 405 L140 405 L135 385" stroke="#6B5B4E" stroke-width="1.2" fill="none" opacity="0.35"/>
+        <path d="M122 385 C125 375, 130 372, 138 385" stroke="#6B5B4E" stroke-width="1.2" fill="none" opacity="0.35"/>
+        <circle cx="130" cy="372" r="3" stroke="#7A2E3A" stroke-width="1" fill="none" opacity="0.3"/>
+      </svg>
+    </div>
+
+    <!-- DATE BLOCK -->
+    <div class="date-block">
+      <div class="date-side">
+        Sábado<br>às 19h
+      </div>
+
+      <div class="date-hearts">
+        <svg class="heart-sm" width="14" height="14" viewBox="0 0 24 24" fill="#7A2E3A" opacity="0.4">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <div class="date-day">06</div>
+
+      <div class="date-hearts">
+        <svg class="heart-sm" width="14" height="14" viewBox="0 0 24 24" fill="#7A2E3A" opacity="0.4">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <div class="date-side">
+        Jun<br>2026
+      </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="bottom-section">
+      <div class="divider-line"></div>
+
+      <p class="location-info">
+        Capela Faustino Augusto Cesar 81<br>
+        Igreja de Jesus Cristo dos Santos dos Últimos Dias
+      </p>
+
+      <div class="divider-line"></div>
+
+      <p class="link-info">
+        Confirme sua presença e veja a lista de presentes:
+      </p>
+      <p class="link-info" style="font-weight: 400; opacity: 0.85; font-size: 26px;">
+        moroniedaphine.vercel.app/cha-de-cozinha
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

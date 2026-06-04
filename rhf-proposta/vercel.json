@@ -1,8 +1,11 @@
 {
   "rewrites": [
-    { "source": "/demo", "destination": "/demo.html" },
+    { "source": "/mvp", "destination": "/mvp.html" },
     { "source": "/interno", "destination": "/interno.html" },
     { "source": "/kickoff", "destination": "/kickoff.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/status", "destination": "/status.html" },
+    { "source": "/chat", "destination": "/chat.html" },
+    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

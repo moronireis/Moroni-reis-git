@@ -50,9 +50,50 @@ section.burgundy{background:var(--burgundy)}
 .ph:hover{background:var(--charcoal-warm)}
 .ph span{font-size:.55rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-q);border:1px dashed var(--border-w);padding:.5rem 1rem;max-width:220px;text-align:center;line-height:1.5}
 
-.menu-list{display:flex;flex-wrap:wrap;gap:.5rem .8rem;margin-top:1.5rem}
-.menu-pill{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92rem;color:var(--on-dark-s);padding:.35rem .9rem;border:1px solid var(--border-w);transition:all .4s var(--ease)}
-.menu-pill:hover{color:var(--gold);border-color:var(--gold)}
+.cardapio-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-w);margin-top:1rem}
+.cardapio-card{background:var(--charcoal);display:flex;flex-direction:column;cursor:pointer;transition:background .5s var(--ease)}
+.cardapio-card:hover{background:var(--charcoal-light)}
+.cardapio-card-img{aspect-ratio:16/10;overflow:hidden}
+.cardapio-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.cardapio-card:hover .cardapio-card-img img{transform:scale(1.04)}
+.cardapio-card-body{padding:1.5rem 2rem 2rem}
+.cardapio-card-tag{font-size:.5rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.cardapio-card-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--on-dark);margin:.5rem 0;line-height:1.2}
+.cardapio-card-title em{font-style:italic;color:var(--gold)}
+.cardapio-card-desc{font-size:.8rem;font-weight:300;line-height:1.7;color:var(--on-dark-s);margin-bottom:1rem}
+.cardapio-card-cta{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-style:italic;color:var(--gold);transition:color .3s var(--ease)}
+.cardapio-card:hover .cardapio-card-cta{color:var(--cream)}
+@media(max-width:768px){.cardapio-grid{grid-template-columns:1fr}}
+
+/* ── CARDAPIO MODAL ── */
+#cardapio-overlay{position:fixed;inset:0;z-index:1000;background:rgba(26,26,26,.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+#cardapio-overlay.active{opacity:1;pointer-events:all}
+.cm-inner{position:relative;width:100%;max-width:780px;max-height:90vh;margin:0 auto;padding:4rem 3rem;overflow-y:auto;overflow-x:hidden}
+@media(max-width:768px){.cm-inner{padding:3rem 1.5rem;max-height:95vh}}
+.cm-close{position:fixed;top:1.5rem;right:1.75rem;width:2.2rem;height:2.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--on-dark-m);transition:color .3s var(--ease);z-index:1001;background:none;border:none;font-size:1.4rem;line-height:1}
+.cm-close:hover{color:var(--gold)}
+.cm-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:1001;background:none;border:none;cursor:pointer;color:var(--on-dark-q);transition:color .4s var(--ease),transform .4s var(--ease);font-size:1.6rem;padding:.5rem 1rem;line-height:1}
+.cm-nav:hover{color:var(--gold)}
+.cm-prev{left:1rem}
+.cm-next{right:1rem}
+.cm-prev:hover{transform:translateY(-50%) translateX(-3px)}
+.cm-next:hover{transform:translateY(-50%) translateX(3px)}
+@media(max-width:768px){.cm-prev{left:.25rem}.cm-next{right:.25rem}}
+.cm-counter{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-m);z-index:1001}
+.cm-slide{display:none;animation:cmFade .4s var(--ease)}
+.cm-slide.active{display:block}
+@keyframes cmFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.cm-tag{font-size:.55rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.cm-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;letter-spacing:-.02em;color:var(--on-dark);margin-bottom:1.5rem}
+.cm-title em{font-style:italic;color:var(--gold)}
+.cm-hairline{width:60px;height:1px;background:var(--gold);opacity:.4;margin-bottom:2rem}
+.cm-section{margin-bottom:1.8rem}
+.cm-section-label{font-size:.58rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.cm-section-body{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;line-height:1.85;color:var(--on-dark-p)}
+.cm-consult{text-align:center;padding:3rem 1rem}
+.cm-consult p{font-weight:300;font-size:.95rem;line-height:1.8;color:var(--on-dark-s);max-width:420px;margin:0 auto 2rem}
+.cm-wa-btn{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:.35em;transition:all .4s var(--ease)}
+.cm-wa-btn:hover{color:var(--cream);border-color:var(--cream)}
 
 .cta-s{padding:6rem 0;text-align:center;border-top:1px solid var(--border-w);position:relative;overflow:hidden}
 .cta-s::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(184,134,11,.08) 0%,transparent 60%);pointer-events:none}
@@ -97,10 +138,10 @@ footer em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--g
 <div class="card-title">Casamentos, debutantes, bodas, <em>aniversários</em>.</div>
 <div class="card-body">Cardápios personalizados para cada celebração. Toda a equipe de garçons, cozinha, coordenação e logística de um evento social impecável — do coquetel de entrada à mesa de café de saída.</div>
 </div>
-<div class="ph" style="background:none"><img src="photos/mesa-interior-flores.jpg" alt="Mesa montada para evento social com arranjo de flores" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
+<div class="ph" style="background:none"><img src="photos/casal-champagne.jpg" alt="Casal brindando com champagne — casamentos e celebrações" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
 </div>
 <div class="g2" style="margin-top:1px">
-<div class="ph" style="background:none"><img src="photos/casal-champagne.jpg" alt="Casal brindando com champagne — momento de celebração" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
+<div class="ph" style="background:none"><img src="photos/corp-hall.jpg" alt="Salão corporativo montado — mesas redondas, taças, iluminação" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
 <div class="card">
 <div class="card-label">Eventos corporativos</div>
 <div class="card-title">Seu evento corporativo fica perfeito <em>com o nosso buffet</em>.</div>
@@ -110,26 +151,51 @@ footer em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--g
 </div></section>
 
 <section class="warm"><div class="container">
-<div class="sh"><div class="sn">II.</div><div><div class="st">Opções de <em>cardápio</em>.</div><p class="sl">Nossos cardápios são sugestivos — personalizamos de acordo com suas ideias e preferências. Do churrasco à gaúcha ao jantar diamante, cada evento recebe um menu desenhado para a ocasião.</p></div></div>
-<div class="menu-list">
-<span class="menu-pill">Churrasco à Gaúcha</span>
-<span class="menu-pill">Jantar Rubi</span>
-<span class="menu-pill">Jantar Esmeralda</span>
-<span class="menu-pill">Jantar Diamante</span>
-<span class="menu-pill">Jantar à Francesa</span>
-<span class="menu-pill">Boteco</span>
-<span class="menu-pill">Crepe Francês</span>
-<span class="menu-pill">Churrasco no Rechaud</span>
-<span class="menu-pill">Coquetel Ilha de Frios e Frutas</span>
-<span class="menu-pill">Coquetel com Finger Food</span>
-<span class="menu-pill">Feijoada</span>
-<span class="menu-pill">Cardápio Personalizado</span>
+<div class="sh"><div class="sn">II.</div><div><div class="st">Opções de <em>cardápio</em>.</div><p class="sl">Nossos cardápios são sugestivos — personalizamos de acordo com suas ideias e preferências. Cada evento recebe um menu desenhado para a ocasião.</p></div></div>
+
+<div class="cardapio-grid">
+<div class="cardapio-card" data-cardapio="0">
+<div class="cardapio-card-img"><img src="photos/costela-2.jpg" alt="Churrasco à Gaúcha" loading="lazy" decoding="async"></div>
+<div class="cardapio-card-body">
+<span class="cardapio-card-tag">Churrasco</span>
+<h3 class="cardapio-card-title">Churrasco <em>à Gaúcha</em></h3>
+<p class="cardapio-card-desc">08 cortes de carne, 13 saladas, guarnições completas. Servido estilo churrascaria.</p>
+<span class="cardapio-card-cta">Ver cardápio completo →</span>
 </div>
-<div class="g3" style="margin-top:2.5rem">
-<div class="ph"><span>Foto · Coquetel de entrada com salgados</span></div>
-<div class="ph"><span>Foto · Prato principal sendo emplatado</span></div>
-<div class="ph" style="background:none"><img src="photos/casal-bolo-interior.jpg" alt="Casal ao lado do bolo no interior do salão — momento de celebração" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
 </div>
+
+<div class="cardapio-card" data-cardapio="1">
+<div class="cardapio-card-img"><img src="photos/jantar-rubi.jpg" alt="Jantar Rubi" loading="lazy" decoding="async"></div>
+<div class="cardapio-card-body">
+<span class="cardapio-card-tag">Jantar</span>
+<h3 class="cardapio-card-title">Jantar <em>Rubi</em></h3>
+<p class="cardapio-card-desc">Coquetel de 40 min + prato principal com massa, carne branca e vermelha.</p>
+<span class="cardapio-card-cta">Ver cardápio completo →</span>
+</div>
+</div>
+
+<div class="cardapio-card" data-cardapio="2">
+<div class="cardapio-card-img"><img src="photos/jantar-esmeralda.jpg" alt="Jantar Esmeralda" loading="lazy" decoding="async"></div>
+<div class="cardapio-card-body">
+<span class="cardapio-card-tag">Jantar Premium</span>
+<h3 class="cardapio-card-title">Jantar <em>Esmeralda</em></h3>
+<p class="cardapio-card-desc">Finger foods, Caesar salad, massas premium, Filé Mignon e Pescada.</p>
+<span class="cardapio-card-cta">Ver cardápio completo →</span>
+</div>
+</div>
+
+<div class="cardapio-card" data-cardapio="3">
+<div class="cardapio-card-img"><img src="photos/jantar-diamante.jpg" alt="Jantar Diamante" loading="lazy" decoding="async"></div>
+<div class="cardapio-card-body">
+<span class="cardapio-card-tag">O Mais Completo</span>
+<h3 class="cardapio-card-title">Jantar <em>Diamante</em></h3>
+<p class="cardapio-card-desc">Coquetel de 1 hora com Ramequin, Salmão, Abadejo, Champanhe Chandon ou Mumm.</p>
+<span class="cardapio-card-cta">Ver cardápio completo →</span>
+</div>
+</div>
+</div>
+
+<p class="sl" style="margin-top:2rem;opacity:.7;font-style:italic">Também disponíveis: Jantar à Francesa, Boteco, Crepe Francês, Feijoada, Finger Foods e outros. <a href="https://wa.me/5511974733100" target="_blank" style="color:var(--gold);text-decoration:none">Consulte a equipe →</a></p>
 </div></section>
 
 <section><div class="container">
@@ -140,8 +206,8 @@ footer em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--g
 <div class="card"><div class="card-label">Cozinha</div><div class="card-title">Chef, cozinheiras e <em>churrasqueiros</em></div><div class="card-body">Cozinha profissional com copeiros, auxiliares e churrasqueiros especializados.</div></div>
 </div>
 <div class="g2" style="margin-top:2rem">
-<div class="ph"><span>Foto · Mãos do chef emplatando · sem rosto</span></div>
-<div class="ph"><span>Foto · Garçons servindo mesa em evento</span></div>
+<div class="ph" style="background:none"><img src="photos/costela-2.jpg" alt="Mãos do chef emplatando" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
+<div class="ph" style="background:none"><img src="photos/mesa-interior-flores.jpg" alt="Garçons servindo mesa em evento" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></div>
 </div>
 </div></section>
 
@@ -173,7 +239,193 @@ footer em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--g
 
 <footer><p>Buffet Di Matoso · Apresentação · <em>Desde 1997</em></p></footer>
 
+<!-- CARDAPIO MODAL -->
+<div id="cardapio-overlay" role="dialog" aria-modal="true" aria-label="Detalhes do cardápio">
+  <button class="cm-close" id="cm-close" aria-label="Fechar">&times;</button>
+  <button class="cm-nav cm-prev" id="cm-prev" aria-label="Cardápio anterior">&#8592;</button>
+  <button class="cm-nav cm-next" id="cm-next" aria-label="Próximo cardápio">&#8594;</button>
+  <div class="cm-counter" id="cm-counter"></div>
+  <div class="cm-inner" id="cm-inner">
+
+    <!-- 0: Churrasco à Gaúcha -->
+    <div class="cm-slide" data-index="0">
+      <div class="cm-tag">Cardápio</div>
+      <div class="cm-title">Churrasco <em>à Gaúcha</em></div>
+      <div class="cm-hairline"></div>
+      <div class="cm-section">
+        <div class="cm-section-label">Bebidas</div>
+        <div class="cm-section-body">Água Mineral, Suco Tetra Pak (2 sabores), Coca-Cola, Coca Zero, Guaraná Antártica, Guaraná Diet, Sprite, Fanta Laranja e Água com Gás. Cerveja Original. Cortesia: 01 cx cerveja sem álcool.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Guarnição (05)</div>
+        <div class="cm-section-body">Arroz Branco, Maionese de Legumes, Farofa Temperada com Linguiça e Carne, Pão Francês e Vinagrete.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Acompanhamentos (03)</div>
+        <div class="cm-section-body">Mandioca Cozida com Bacon, Polenta Frita e Batata Frita.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Saladas (13)</div>
+        <div class="cm-section-body">Árabe (Tabule), Italiana, Primavera, Verão, Alface/Tomate/Cebola, Escarola com Bacon, Agrião com Manga, Tomate Cereja com Azeitona Preta, Ovo de Codorna com Cebola Roxa, Cenoura e Beterraba Ralada, Caponata de Berinjela, Sunomono, Grão de Bico com Atum.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Carnes (08)</div>
+        <div class="cm-section-body">Picanha, Alcatra, Maminha, Costela Bovina, Linguiça Toscana, Asa de Frango, Fraldinha e Coração.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Sobremesa</div>
+        <div class="cm-section-body">Bolo com recheio à escolha + sorvete de creme.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Brinde</div>
+        <div class="cm-section-body">Champanhe nacional no balde de prata.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Mesa de Café</div>
+        <div class="cm-section-body">Samovar, porcelana, petit fours, bombons, balas.</div>
+      </div>
+    </div>
+
+    <!-- 1: Jantar Rubi -->
+    <div class="cm-slide" data-index="1">
+      <div class="cm-tag">Cardápio</div>
+      <div class="cm-title">Jantar <em>Rubi</em></div>
+      <div class="cm-hairline"></div>
+      <div class="cm-section">
+        <div class="cm-section-label">Coquetel (40 min)</div>
+        <div class="cm-section-body">05 salgados fritos + 05 salgados assados.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Saladas</div>
+        <div class="cm-section-body">04 opções em saladeiras + Salada Gourmet em taça (Di Matoso, Caprese ou Tropical).</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Prato Principal</div>
+        <div class="cm-section-body">Guarnição (02) + Massa (01) + Molho (01) + Carne Branca — Frango (01) + Carne Vermelha (01): Lagarto, Strogonoff ou Maminha.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Sobremesa, Brinde &amp; Café</div>
+        <div class="cm-section-body">Padrão Di Matoso.</div>
+      </div>
+    </div>
+
+    <!-- 2: Jantar Esmeralda -->
+    <div class="cm-slide" data-index="2">
+      <div class="cm-tag">Cardápio</div>
+      <div class="cm-title">Jantar <em>Esmeralda</em></div>
+      <div class="cm-hairline"></div>
+      <div class="cm-section">
+        <div class="cm-section-label">Coquetel (40 min)</div>
+        <div class="cm-section-body">05 fritos + 05 assados <em>ou</em> Finger Foods — 06 opções incluindo Camarão ao Limão Siciliano.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Saladas</div>
+        <div class="cm-section-body">04 opções em saladeiras + Salada Gourmet em taça (incluindo Caesar).</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Prato Principal</div>
+        <div class="cm-section-body">Guarnição premium (Arroz com Nozes/Uva Passa) + Acompanhamento premium + Massa premium (Rondelli, Canellone, Conchiglione ou Sfogliatti) + Carne Branca (incluindo Pescada) + Carne Vermelha: Filé Mignon em 6 preparações.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Sobremesa, Brinde &amp; Café</div>
+        <div class="cm-section-body">Padrão Di Matoso.</div>
+      </div>
+    </div>
+
+    <!-- 3: Jantar Diamante -->
+    <div class="cm-slide" data-index="3">
+      <div class="cm-tag">Cardápio</div>
+      <div class="cm-title">Jantar <em>Diamante</em></div>
+      <div class="cm-hairline"></div>
+      <div class="cm-section">
+        <div class="cm-section-label">Coquetel (1 hora)</div>
+        <div class="cm-section-body">05 fritos + 05 assados + Finger Foods (04 opções) + Ramequin/Cumbuquinha (02): Ceviche e Polentinha.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Saladas</div>
+        <div class="cm-section-body">04 opções incluindo Escarola ao Vinho Tinto e Mista com Frios + Salada Gourmet em taça (incluindo Caesar).</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Prato Principal</div>
+        <div class="cm-section-body">Guarnição premium + Massa premium (incluindo Nhoque Recheado) + Carne Branca (incluindo Salmão e Abadejo) + Carne Vermelha: Filé Mignon.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Brinde</div>
+        <div class="cm-section-body">Champanhe Chandon ou Mumm.</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">Sobremesa &amp; Café</div>
+        <div class="cm-section-body">Padrão Di Matoso.</div>
+      </div>
+    </div>
+
+
+  </div><!-- /cm-inner -->
+</div><!-- /cardapio-overlay -->
+
 <script>
+// ── CARDAPIO MODAL ──
+(function(){
+  const overlay=document.getElementById('cardapio-overlay');
+  const inner=document.getElementById('cm-inner');
+  const counter=document.getElementById('cm-counter');
+  const slides=Array.from(document.querySelectorAll('.cm-slide'));
+  const TOTAL=slides.length;
+  let current=0;
+
+  function showSlide(idx){
+    slides.forEach(s=>s.classList.remove('active'));
+    slides[idx].classList.add('active');
+    counter.textContent=(idx+1)+' / '+TOTAL;
+    inner.scrollTop=0;
+  }
+
+  function openModal(idx){
+    current=idx;
+    showSlide(current);
+    overlay.classList.add('active');
+    document.body.style.overflow='hidden';
+    document.getElementById('cm-close').focus();
+  }
+
+  function closeModal(){
+    overlay.classList.remove('active');
+    document.body.style.overflow='';
+  }
+
+  function prev(){current=(current-1+TOTAL)%TOTAL;showSlide(current)}
+  function next(){current=(current+1)%TOTAL;showSlide(current)}
+
+  // pill click
+  document.querySelectorAll('.menu-pill[data-cardapio]').forEach(pill=>{
+    pill.addEventListener('click',()=>openModal(parseInt(pill.dataset.cardapio,10)));
+  });
+
+  // close btn & overlay backdrop
+  document.getElementById('cm-close').addEventListener('click',closeModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal()});
+
+  // arrows
+  document.getElementById('cm-prev').addEventListener('click',function(e){e.stopPropagation();prev()});
+  document.getElementById('cm-next').addEventListener('click',function(e){e.stopPropagation();next()});
+
+  // keyboard
+  document.addEventListener('keydown',function(e){
+    if(!overlay.classList.contains('active'))return;
+    if(e.key==='Escape')closeModal();
+    else if(e.key==='ArrowLeft')prev();
+    else if(e.key==='ArrowRight')next();
+  });
+
+  // touch swipe
+  let touchStartX=0;
+  inner.addEventListener('touchstart',function(e){touchStartX=e.touches[0].clientX},{passive:true});
+  inner.addEventListener('touchend',function(e){
+    const dx=e.changedTouches[0].clientX-touchStartX;
+    if(Math.abs(dx)>50){dx<0?next():prev()}
+  },{passive:true});
+})();
+
 const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 if(!reduced){const bar=document.createElement('div');bar.id='scroll-progress';bar.setAttribute('aria-hidden','true');const fill=document.createElement('div');fill.className='fill';bar.appendChild(fill);document.body.appendChild(bar);let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);fill.style.transform='scaleX('+Math.min(p,1)+')';bar.classList.toggle('vis',window.scrollY>60);t=false});t=true}},{passive:true})}
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';io.unobserve(e.target)}})},{threshold:.1});

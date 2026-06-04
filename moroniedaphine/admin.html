@@ -256,11 +256,84 @@
       display: block;
     }
 
+    /* ── KANBAN MESAS ── */
+    .kanban-wrap { padding: 32px; display: none; }
+    .kanban-wrap.active { display: block; }
+    .kanban-toolbar {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .kanban-toolbar button {
+      font-family: var(--fu); font-size: 11px; font-weight: 400; text-transform: uppercase;
+      letter-spacing: .12em; padding: 8px 20px; cursor: pointer; border: 1px solid var(--gold-border);
+      background: transparent; color: var(--gold); opacity: .7; transition: all 300ms;
+    }
+    .kanban-toolbar button:hover { opacity: 1; background: rgba(212,175,55,0.08); }
+    .kanban-toolbar .mesa-count {
+      font-family: var(--fu); font-size: 12px; color: var(--white-dim); margin-left: auto;
+    }
+    .kanban-board {
+      display: flex; gap: 20px; overflow-x: auto; padding-bottom: 16px;
+      min-height: 400px; align-items: flex-start;
+    }
+    .kanban-col {
+      min-width: 260px; max-width: 300px; flex-shrink: 0;
+      background: var(--wine); border: 1px solid var(--gold-border); display: flex; flex-direction: column;
+    }
+    .kanban-col--unassigned { border-style: dashed; opacity: .8; }
+    .kanban-col-header {
+      padding: 16px; border-bottom: 1px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .kanban-col-title {
+      font-family: var(--fd); font-weight: 300; font-size: 18px;
+      font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 0;
+    }
+    .kanban-col-count {
+      font-family: var(--fu); font-size: 10px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--gold); opacity: .5;
+    }
+    .kanban-col-body {
+      padding: 12px; min-height: 80px; flex: 1;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .kanban-col-body.drag-over { background: rgba(212,175,55,0.06); }
+    .kanban-card {
+      padding: 12px 14px; border: 1px solid rgba(212,175,55,0.12);
+      background: var(--wine-deep); cursor: grab; transition: all 200ms;
+    }
+    .kanban-card:active { cursor: grabbing; }
+    .kanban-card.dragging { opacity: .4; }
+    .kanban-card-name {
+      font-family: var(--fd); font-weight: 300; font-size: 14px;
+      font-variation-settings: "opsz" 48, "SOFT" 20, "WONK" 0; color: var(--white);
+    }
+    .kanban-card-comp {
+      font-family: var(--fu); font-size: 10px; color: var(--white-dim);
+      margin-top: 4px; line-height: 1.5;
+    }
+    .kanban-card-fonte {
+      font-family: var(--fu); font-size: 9px; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--gold); opacity: .4; margin-top: 6px;
+    }
+    .kanban-col-actions {
+      padding: 8px 12px; border-top: 1px solid rgba(212,175,55,0.08);
+      display: flex; gap: 8px;
+    }
+    .kanban-col-actions button {
+      font-family: var(--fu); font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 10px; border: 1px solid rgba(212,175,55,0.15); background: transparent;
+      color: var(--white-dim); cursor: pointer; transition: all 200ms;
+    }
+    .kanban-col-actions button:hover { color: var(--gold); border-color: var(--gold-border); }
+    .kanban-col-actions .btn-del:hover { color: #EB5757; border-color: rgba(235,87,87,0.3); }
+
     @media (max-width: 768px) {
       .stats-bar { flex-wrap: wrap; }
       .stat { flex: 1 1 50%; }
       .header { flex-direction: column; gap: 16px; align-items: flex-start; }
       .table-wrap { padding: 16px; }
+      .kanban-wrap { padding: 16px; }
+      .kanban-col { min-width: 220px; }
     }
   </style>
 </head>
@@ -278,20 +351,33 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat__num" id="stat-total">—</div>
-    <div class="stat__label">Total Cadastrados</div>
+    <div class="stat__num" id="stat-total-pessoas">—</div>
+    <div class="stat__label">Total Pessoas</div>
+    <div class="stat__detail" id="stat-total-detail" style="font-size:10px;opacity:.4;margin-top:4px;"></div>
   </div>
   <div class="stat">
-    <div class="stat__num" id="stat-confirmados">—</div>
+    <div class="stat__num" id="stat-confirmados-pessoas">—</div>
     <div class="stat__label">Confirmados</div>
+    <div class="stat__detail" id="stat-confirmados-detail" style="font-size:10px;opacity:.4;margin-top:4px;"></div>
+  </div>
+  <div class="stat">
+    <div class="stat__num" id="stat-enviados">—</div>
+    <div class="stat__label">Enviados</div>
+    <div class="stat__detail" id="stat-enviados-detail" style="font-size:10px;opacity:.4;margin-top:4px;"></div>
   </div>
   <div class="stat">
     <div class="stat__num" id="stat-pendentes">—</div>
     <div class="stat__label">Pendentes</div>
+    <div class="stat__detail" id="stat-pendentes-detail" style="font-size:10px;opacity:.4;margin-top:4px;"></div>
   </div>
   <div class="stat">
     <div class="stat__num" id="stat-recusados">—</div>
     <div class="stat__label">Recusados</div>
+  </div>
+  <div class="stat" style="border-left:1px solid var(--gold-border);padding-left:16px;">
+    <div class="stat__num" id="stat-cha-total" style="color:var(--gold);">—</div>
+    <div class="stat__label">Chá de Cozinha</div>
+    <div class="stat__detail" id="stat-cha-detail" style="font-size:10px;opacity:.4;margin-top:4px;"></div>
   </div>
 </div>
 
@@ -303,13 +389,28 @@
   <button class="filter-tab" data-status="enviado" onclick="setFilter('enviado', this)">Convite Enviado</button>
   <button class="filter-tab" data-status="confirmado" onclick="setFilter('confirmado', this)">Confirmados</button>
   <button class="filter-tab" data-status="recusado" onclick="setFilter('recusado', this)">Recusados</button>
+  <span style="width:1px;height:20px;background:var(--gold-border);margin:0 8px;"></span>
+  <button class="filter-tab" data-status="cha-cozinha" onclick="setFilter('cha-cozinha', this)" style="color:var(--gold);opacity:.7;">Chá de Cozinha</button>
+  <span style="width:1px;height:20px;background:var(--gold-border);margin:0 8px;"></span>
+  <button class="filter-tab" data-status="mesas" onclick="setFilter('mesas', this)" style="color:#6FCF97;opacity:.8;">Mesas</button>
 </nav>
 
 <!-- TABLE -->
-<div class="table-wrap">
+<div class="table-wrap" id="table-view">
   <div id="table-container">
     <div class="state-msg" id="loading-msg">Carregando convidados...</div>
   </div>
+</div>
+
+<!-- KANBAN MESAS -->
+<div class="kanban-wrap" id="kanban-view">
+  <div class="kanban-toolbar">
+    <button onclick="addMesa()">+ Nova Mesa</button>
+    <button onclick="saveMesas()">Salvar Layout</button>
+    <button onclick="resetMesas()">Resetar</button>
+    <span class="mesa-count" id="mesa-stats"></span>
+  </div>
+  <div class="kanban-board" id="kanban-board"></div>
 </div>
 
 <script>
@@ -356,11 +457,33 @@
     await renderGuests();
   }
 
+  function copyLink(id, nome, btn) {
+    const link = 'https://moroniedaphine.vercel.app/confirmar?id=' + id;
+    navigator.clipboard.writeText(link).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copiado!';
+      btn.style.color = '#4CAF50';
+      btn.style.borderColor = '#4CAF50';
+      setTimeout(() => { btn.textContent = orig; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+    });
+  }
+
   function setFilter(status, btn) {
     currentFilter = status;
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
-    drawTable();
+
+    const tableView = document.getElementById('table-view');
+    const kanbanView = document.getElementById('kanban-view');
+    if (status === 'mesas') {
+      tableView.style.display = 'none';
+      kanbanView.classList.add('active');
+      drawKanban();
+    } else {
+      tableView.style.display = '';
+      kanbanView.classList.remove('active');
+      drawTable();
+    }
   }
 
   function formatDate(iso) {
@@ -386,27 +509,62 @@
     const container = document.getElementById('table-container');
 
     // Stats (always from allGuests regardless of filter)
-    const total = allGuests.length;
-    const confirmados = allGuests.filter(g => g.status === 'confirmado').length;
-    const pendentes = allGuests.filter(g => !g.status || g.status === 'pendente').length;
-    const recusados = allGuests.filter(g => g.status === 'recusado').length;
-    document.getElementById('stat-total').textContent = total;
-    document.getElementById('stat-confirmados').textContent = confirmados;
-    document.getElementById('stat-pendentes').textContent = pendentes;
+    function countPeople(list) {
+      let convites = list.length;
+      let acomp = 0;
+      list.forEach(g => {
+        const comps = Array.isArray(g.wedding_companions) ? g.wedding_companions.length : 0;
+        const declared = g.acompanhantes != null ? parseInt(g.acompanhantes) : 0;
+        acomp += Math.max(comps, declared);
+      });
+      return { convites, acomp, total: convites + acomp };
+    }
+
+    // Separate casamento vs chá
+    const casamentoGuests = allGuests.filter(g => !(g.mensagem && g.mensagem.includes('[CHA-COZINHA]')));
+    const chaGuests = allGuests.filter(g => g.mensagem && g.mensagem.includes('[CHA-COZINHA]'));
+
+    const all = countPeople(casamentoGuests);
+    const conf = countPeople(casamentoGuests.filter(g => g.status === 'confirmado'));
+    const env = countPeople(casamentoGuests.filter(g => g.status === 'enviado'));
+    const pend = countPeople(casamentoGuests.filter(g => !g.status || g.status === 'pendente'));
+    const recusados = casamentoGuests.filter(g => g.status === 'recusado').length;
+
+    document.getElementById('stat-total-pessoas').textContent = all.total;
+    document.getElementById('stat-total-detail').textContent = all.convites + ' convites + ' + all.acomp + ' acomp.';
+    document.getElementById('stat-confirmados-pessoas').textContent = conf.total;
+    document.getElementById('stat-confirmados-detail').textContent = conf.convites + ' convites + ' + conf.acomp + ' acomp.';
+    document.getElementById('stat-enviados').textContent = env.total;
+    document.getElementById('stat-enviados-detail').textContent = env.convites + ' convites + ' + env.acomp + ' acomp.';
+    document.getElementById('stat-pendentes').textContent = pend.total;
+    document.getElementById('stat-pendentes-detail').textContent = pend.convites + ' convites + ' + pend.acomp + ' acomp.';
     document.getElementById('stat-recusados').textContent = recusados;
 
+    // Chá de cozinha stats
+    const chaTotal = chaGuests.length;
+    const chaPresentes = chaGuests.filter(g => g.mensagem && g.mensagem.includes('Presente:')).length;
+    document.getElementById('stat-cha-total').textContent = chaTotal;
+    document.getElementById('stat-cha-detail').textContent = chaPresentes + ' com presente escolhido';
+
     // Filter
-    const guests = currentFilter === 'todos'
-      ? allGuests
-      : allGuests.filter(g => {
-          const s = g.status || 'pendente';
-          return s === currentFilter;
-        });
+    let guests;
+    if (currentFilter === 'todos') {
+      guests = allGuests.filter(g => !(g.mensagem && g.mensagem.includes('[CHA-COZINHA]')));
+    } else if (currentFilter === 'cha-cozinha') {
+      guests = allGuests.filter(g => g.mensagem && g.mensagem.includes('[CHA-COZINHA]'));
+    } else {
+      guests = allGuests.filter(g => {
+        const s = g.status || 'pendente';
+        return s === currentFilter && !(g.mensagem && g.mensagem.includes('[CHA-COZINHA]'));
+      });
+    }
 
     if (!guests.length) {
       container.innerHTML = '<div class="state-msg">Nenhum convidado encontrado.</div>';
       return;
     }
+
+    const isCha = currentFilter === 'cha-cozinha';
 
     let rows = guests.map(g => {
       const comps = Array.isArray(g.wedding_companions) ? g.wedding_companions : [];
@@ -424,6 +582,35 @@
       const restricoes = g.restricoes_alimentares ? `<div style="font-size:11px;opacity:.45;margin-top:4px;">${g.restricoes_alimentares}</div>` : '';
       const mensagem = g.mensagem ? `<div style="font-size:11px;opacity:.45;margin-top:4px;font-style:italic;">"${g.mensagem}"</div>` : '';
 
+      // Parse presente e prato from mensagem for chá
+      let presenteCha = '—';
+      let pratoCha = '—';
+      if (isCha && g.mensagem) {
+        const pm = g.mensagem.match(/Presente:\s*([^|]+)/);
+        const pp = g.mensagem.match(/Prato:\s*(.+)/);
+        if (pm) presenteCha = pm[1].trim();
+        if (pp) pratoCha = pp[1].trim();
+      }
+
+      if (isCha) {
+        return `
+          <tr>
+            <td><div class="td-name">${g.nome || '—'}</div></td>
+            <td>${g.whatsapp || '—'}</td>
+            <td><span style="color:var(--gold);font-size:12px;">${presenteCha}</span></td>
+            <td style="font-size:12px;">${pratoCha}</td>
+            <td>${badgeHTML(g.status)}</td>
+            <td>${formatDate(g.created_at)}</td>
+            <td>
+              <select class="status-select" onchange="updateStatus('${g.id}', this.value)">
+                ${selectOptions}
+              </select>
+              <button onclick="deleteGuest('${g.id}', '${(g.nome||'').replace(/'/g,"\\'")}');" style="display:block;margin-top:8px;padding:4px 12px;background:transparent;border:1px solid rgba(200,50,50,0.3);color:rgba(200,50,50,0.6);font-family:var(--fu);font-size:10px;letter-spacing:.08em;cursor:pointer;transition:all .3s;" onmouseenter="this.style.background='rgba(200,50,50,0.15)';this.style.color='#c03232'" onmouseleave="this.style.background='transparent';this.style.color='rgba(200,50,50,0.6)'">Deletar</button>
+            </td>
+          </tr>
+        `;
+      }
+
       return `
         <tr>
           <td>
@@ -437,6 +624,7 @@
           <td>${badgeHTML(g.status)}</td>
           <td>${formatDate(g.created_at)}</td>
           <td>
+            <button onclick="copyLink('${g.id}','${(g.nome||'').replace(/'/g,"\\'")}',this)" style="display:block;margin-bottom:6px;padding:4px 12px;background:transparent;border:1px solid var(--gold-border);color:var(--gold);font-family:var(--fu);font-size:10px;letter-spacing:.06em;cursor:pointer;transition:all .3s;white-space:nowrap;" onmouseenter="this.style.background='rgba(212,175,55,0.12)'" onmouseleave="this.style.background='transparent'">Copiar Link</button>
             <select class="status-select" onchange="updateStatus('${g.id}', this.value)">
               ${selectOptions}
             </select>
@@ -448,18 +636,15 @@
       `;
     }).join('');
 
+    const tableHeaders = isCha
+      ? '<th>Nome</th><th>WhatsApp</th><th>Presente</th><th>Prato</th><th>Status</th><th>Data</th><th>Ações</th>'
+      : '<th>Nome</th><th>WhatsApp</th><th>Interesse</th><th>Acomp.</th><th>Fonte</th><th>Status</th><th>Data</th><th>Ações</th>';
+
     container.innerHTML = `
       <table>
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>WhatsApp</th>
-            <th>Interesse</th>
-            <th>Acomp.</th>
-            <th>Fonte</th>
-            <th>Status</th>
-            <th>Data</th>
-            <th>Ações</th>
+            ${tableHeaders}
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -482,6 +667,252 @@
       console.error('Erro ao carregar convidados:', err);
       document.getElementById('table-container').innerHTML = '<div class="state-msg">Erro de conexão com o Supabase.</div>';
     }
+  }
+
+  // ── KANBAN MESAS ──
+  const MESAS_KEY = 'md_mesas_layout';
+
+  // Initial mesa layout — organized by family/affinity, ~8 people each
+  const INITIAL_MESAS = {
+    "Mesa 1": [
+      "61277f24-4e5c-47fe-be38-66dbd70d4cae", // Bruno Bessa (3p)
+      "e23460e4-a35f-4e03-a963-0238f703ce68", // Luciana (2p)
+      "39a49d53-1e1c-4e2e-a70b-eb1ac74278c4", // Patrícia (2p)
+      "37d51269-66e8-4442-99e1-ad368c704794"  // Rafael Reis (2p)
+    ],
+    "Mesa 2": [
+      "d82533f2-807d-4c1a-b9d5-60483d89f4bd", // Márcia B Oliveira (5p)
+      "36886148-7189-4042-a798-f8b8299cf452", // Vanderlei (2p)
+      "6d37d562-c1db-480a-8210-005ecbe7fee1", // Ricardo (1p)
+      "0cc79b33-bf9b-4e27-8d6b-b89ede711dbd"  // Sandra (1p)
+    ],
+    "Mesa 3": [
+      "69f965b6-5526-452c-b920-64295a15f832", // Rafael Dias Oliveira (4p)
+      "cbab5c36-7d50-40de-9d70-03f44e9b2328", // Luzia (1p)
+      "c539fced-1f6a-4ef1-b2f2-efbff2026eb5"  // Josenita (1p)
+    ],
+    "Mesa 4": [
+      "22cafe90-38fb-4459-be00-961c1a75296b", // Aline Santos Rodrigues (5p)
+      "268e95b2-0b1f-4f70-af6e-d44100d572f2"  // Mariana Barbosa Rodrigues (3p)
+    ],
+    "Mesa 5": [
+      "33353c5b-a38e-4cb8-9a62-a48247accdf6", // Giovanna (2p)
+      "d5c15484-2952-4762-a831-98e907e93066", // Giovanna dup (1p)
+      "f47476ef-bf3a-4993-b574-99e90b374aef"  // Michelle Rodrigues Amorim (4p)
+    ],
+    "Mesa 6": [
+      "f0b29975-3d9d-45da-a275-775cb8675e60", // Viviane Marques Rodrigues (5p)
+      "24d3e592-97dd-41d3-8e26-c99d1665d156"  // Brigham Garcia (3p)
+    ],
+    "Mesa 7": [
+      "151ff4ac-8b9e-4701-a562-decbb597addb", // Cleonice Barroso (4p)
+      "ee112924-015c-44cf-948a-a9b92ea27f43", // Danielle Amorim Lima (3p)
+      "2b218823-da75-491b-a263-816ac5ffc25d"  // Daniela Sousa (2p)
+    ],
+    "Mesa 8": [
+      "4d5bbb18-d1ee-4d51-83a8-6bdf93fee913", // Matheus Rosa (2p) - padrinho
+      "69df4382-2d3b-4baa-b49f-554a805d8880", // Arthur Leandro (2p) - padrinho
+      "1416e35c-e414-4d74-8e86-ee2348ea355c", // Fellipe Augusto (1p) - padrinho
+      "8a3e3c05-95e7-4a77-9c95-b311684990c2", // Letícya Arantes (2p) - madrinha
+      "04f3d89e-6333-41ea-8957-1c933c201d7a"  // Maria Julia Barroso (2p) - madrinha
+    ]
+  };
+
+  function loadMesasLayout() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(MESAS_KEY));
+      if (saved && Object.keys(saved).length > 0) return saved;
+      // First time: use initial layout
+      saveMesasLayout(INITIAL_MESAS);
+      return INITIAL_MESAS;
+    } catch(e) {
+      saveMesasLayout(INITIAL_MESAS);
+      return INITIAL_MESAS;
+    }
+  }
+  function saveMesasLayout(layout) {
+    localStorage.setItem(MESAS_KEY, JSON.stringify(layout));
+  }
+
+  function getConfirmedGuests() {
+    return allGuests.filter(g =>
+      g.status === 'confirmado' && !(g.mensagem && g.mensagem.includes('[CHA-COZINHA]'))
+    );
+  }
+
+  function drawKanban() {
+    const board = document.getElementById('kanban-board');
+    const confirmed = getConfirmedGuests();
+    const layout = loadMesasLayout();
+
+    // layout = { "Mesa 1": ["guest-id-1", "guest-id-2"], "Mesa 2": [...] }
+    const mesaNames = Object.keys(layout).sort((a,b) => {
+      const na = parseInt(a.replace(/\D/g,'')) || 0;
+      const nb = parseInt(b.replace(/\D/g,'')) || 0;
+      return na - nb;
+    });
+
+    // Find unassigned guests
+    const assignedIds = new Set();
+    mesaNames.forEach(m => (layout[m] || []).forEach(id => assignedIds.add(id)));
+    const unassigned = confirmed.filter(g => !assignedIds.has(g.id));
+
+    // Count people per mesa
+    function countMesaPeople(guestIds) {
+      let total = 0;
+      guestIds.forEach(id => {
+        const g = confirmed.find(x => x.id === id);
+        if (!g) return;
+        total += 1;
+        const comps = Array.isArray(g.wedding_companions) ? g.wedding_companions.length : 0;
+        total += comps;
+      });
+      return total;
+    }
+
+    function guestCard(g) {
+      const comps = Array.isArray(g.wedding_companions) ? g.wedding_companions : [];
+      const compHTML = comps.map(c => `<div>${c.nome}${c.idade ? ', ' + c.idade : ''}</div>`).join('');
+      const totalPeople = 1 + comps.length;
+      return `
+        <div class="kanban-card" draggable="true" data-guest-id="${g.id}">
+          <div class="kanban-card-name">${g.nome || '—'} <span style="font-family:var(--fu);font-size:10px;opacity:.35;">(${totalPeople})</span></div>
+          ${compHTML ? `<div class="kanban-card-comp">${compHTML}</div>` : ''}
+          <div class="kanban-card-fonte">${g.fonte || ''}</div>
+        </div>
+      `;
+    }
+
+    function mesaColumn(name, guestIds, isUnassigned) {
+      const guests = guestIds.map(id => confirmed.find(g => g.id === id)).filter(Boolean);
+      const people = countMesaPeople(guestIds);
+      return `
+        <div class="kanban-col ${isUnassigned ? 'kanban-col--unassigned' : ''}" data-mesa="${name}">
+          <div class="kanban-col-header">
+            <span class="kanban-col-title">${name}</span>
+            <span class="kanban-col-count">${people} pessoas</span>
+          </div>
+          <div class="kanban-col-body" data-mesa-drop="${name}">
+            ${guests.map(g => guestCard(g)).join('')}
+          </div>
+          ${!isUnassigned ? `
+            <div class="kanban-col-actions">
+              <button onclick="renameMesa('${name.replace(/'/g,"\\'")}')">Renomear</button>
+              <button class="btn-del" onclick="deleteMesa('${name.replace(/'/g,"\\'")}')">Remover</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    let html = mesaColumn('Sem Mesa', unassigned.map(g => g.id), true);
+    mesaNames.forEach(name => {
+      html += mesaColumn(name, layout[name] || [], false);
+    });
+
+    board.innerHTML = html;
+
+    // Stats
+    const totalPeople = confirmed.reduce((sum, g) => {
+      return sum + 1 + (Array.isArray(g.wedding_companions) ? g.wedding_companions.length : 0);
+    }, 0);
+    const assignedPeople = mesaNames.reduce((sum, m) => sum + countMesaPeople(layout[m] || []), 0);
+    document.getElementById('mesa-stats').textContent =
+      `${confirmed.length} confirmados · ${totalPeople} pessoas · ${mesaNames.length} mesas · ${totalPeople - assignedPeople} sem mesa`;
+
+    // Drag and drop
+    initDragDrop();
+  }
+
+  function initDragDrop() {
+    let draggedId = null;
+
+    document.querySelectorAll('.kanban-card').forEach(card => {
+      card.addEventListener('dragstart', e => {
+        draggedId = card.dataset.guestId;
+        card.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      card.addEventListener('dragend', () => {
+        card.classList.remove('dragging');
+        document.querySelectorAll('.kanban-col-body').forEach(b => b.classList.remove('drag-over'));
+      });
+    });
+
+    document.querySelectorAll('.kanban-col-body').forEach(dropZone => {
+      dropZone.addEventListener('dragover', e => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        dropZone.classList.add('drag-over');
+      });
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('drag-over');
+      });
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+        if (!draggedId) return;
+
+        const targetMesa = dropZone.dataset.mesaDrop;
+        const layout = loadMesasLayout();
+
+        // Remove from all mesas
+        Object.keys(layout).forEach(m => {
+          layout[m] = (layout[m] || []).filter(id => id !== draggedId);
+        });
+
+        // Add to target (if not "Sem Mesa")
+        if (targetMesa !== 'Sem Mesa') {
+          if (!layout[targetMesa]) layout[targetMesa] = [];
+          layout[targetMesa].push(draggedId);
+        }
+
+        // Clean empty
+        Object.keys(layout).forEach(m => { if (!layout[m].length) delete layout[m]; });
+
+        saveMesasLayout(layout);
+        drawKanban();
+        draggedId = null;
+      });
+    });
+  }
+
+  function addMesa() {
+    const layout = loadMesasLayout();
+    const existing = Object.keys(layout).length;
+    const name = prompt('Nome da mesa:', 'Mesa ' + (existing + 1));
+    if (!name || !name.trim()) return;
+    layout[name.trim()] = [];
+    saveMesasLayout(layout);
+    drawKanban();
+  }
+
+  function renameMesa(oldName) {
+    const newName = prompt('Novo nome:', oldName);
+    if (!newName || !newName.trim() || newName.trim() === oldName) return;
+    const layout = loadMesasLayout();
+    layout[newName.trim()] = layout[oldName] || [];
+    delete layout[oldName];
+    saveMesasLayout(layout);
+    drawKanban();
+  }
+
+  function deleteMesa(name) {
+    if (!confirm('Remover "' + name + '"? Os convidados voltarão para "Sem Mesa".')) return;
+    const layout = loadMesasLayout();
+    delete layout[name];
+    saveMesasLayout(layout);
+    drawKanban();
+  }
+
+  function saveMesas() {
+    alert('Layout salvo no navegador. As mesas serão mantidas ao recarregar.');
+  }
+
+  function resetMesas() {
+    if (!confirm('Resetar todas as mesas? Todos os convidados voltarão para "Sem Mesa".')) return;
+    localStorage.removeItem(MESAS_KEY);
+    drawKanban();
   }
 
   // Init

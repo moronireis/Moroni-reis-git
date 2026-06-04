@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chá de Casa Nova 3 — Casinha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{width:1080px;height:1350px;overflow:hidden;background:#F5F0EB;font-family:'Inter',sans-serif;margin:0}
+    .card{width:1080px;height:1350px;background:#F5F0EB;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:90px 110px 75px}
+
+    .border-frame{position:absolute;inset:30px;pointer-events:none}
+    .border-frame svg{width:100%;height:100%}
+
+    .top{display:flex;flex-direction:column;align-items:center;gap:4px;z-index:2}
+    .bow{margin-bottom:8px}
+    .label{font-size:16px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#8B7D6B;opacity:.55}
+    .title1{font-family:'Fraunces',serif;font-weight:300;font-size:88px;line-height:.95;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 55,"WONK" 1;font-style:italic}
+    .title2{font-family:'Fraunces',serif;font-weight:400;font-size:120px;line-height:.82;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 40,"WONK" 1;font-style:italic}
+    .names{font-family:'Fraunces',serif;font-weight:300;font-size:28px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 25;letter-spacing:.06em;margin-top:6px}
+    .names em{font-style:italic;opacity:.4;font-size:.75em;padding:0 5px}
+
+    .mid{z-index:2;display:flex;flex-direction:column;align-items:center;flex:1;justify-content:center}
+
+    .date-row{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:24px}
+    .date-side{font-size:20px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:#6B5B4E;text-align:center;line-height:1.5}
+    .date-num{font-family:'Fraunces',serif;font-weight:300;font-size:160px;line-height:1;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 10}
+    .date-slash{font-family:'Fraunces',serif;font-weight:200;font-size:100px;color:#7A2E3A;opacity:.15}
+    .date-month{font-family:'Fraunces',serif;font-weight:300;font-size:160px;line-height:1;color:#7A2E3A;font-variation-settings:"opsz" 144,"SOFT" 10}
+
+    .detail-row{display:flex;align-items:center;gap:36px;margin-top:10px}
+    .detail-item{text-align:center}
+    .detail-lbl{font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#8B7D6B;opacity:.45;margin-bottom:3px}
+    .detail-val{font-family:'Fraunces',serif;font-weight:300;font-size:24px;color:#6B5B4E;font-variation-settings:"opsz" 72,"SOFT" 20}
+    .detail-sep{width:1px;height:35px;background:#7A2E3A;opacity:.1}
+
+    .bot{display:flex;flex-direction:column;align-items:center;gap:14px;z-index:2}
+    .orn-row{display:flex;align-items:center;gap:12px}
+    .orn-line{width:40px;height:1px;background:#7A2E3A;opacity:.15}
+    .orn-dia{width:5px;height:5px;border:1px solid #7A2E3A;opacity:.2;transform:rotate(45deg)}
+    .loc{font-size:19px;font-weight:300;color:#6B5B4E;opacity:.5;text-align:center;line-height:1.65}
+    .divline{width:50px;height:1px;background:#7A2E3A;opacity:.15}
+    .link-hint{font-size:15px;font-weight:300;color:#7A2E3A;opacity:.4;letter-spacing:.03em}
+    .link-url{font-size:19px;font-weight:400;color:#7A2E3A;opacity:.7;letter-spacing:.02em}
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <div class="border-frame">
+    <svg viewBox="0 0 1020 1290" fill="none">
+      <path d="M80 25 C160 18,260 32,360 24 C460 16,540 32,640 24 C740 16,840 30,940 25 C960 30,975 45,980 80 C986 180,974 280,982 380 C990 480,974 580,982 680 C990 780,974 880,982 980 C978 1000,975 1020,980 1060 C975 1075,960 1085,940 1270 C840 1278,740 1264,640 1272 C540 1280,460 1264,360 1272 C260 1280,160 1264,80 1270 C60 1268,45 1258,40 1240 C34 1140,46 1040,38 940 C30 840,46 740,38 640 C30 540,46 440,38 340 C30 240,46 140,40 80 C45 50,60 32,80 25Z" stroke="#8B7D6B" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".2"/>
+    </svg>
+  </div>
+
+  <div class="top">
+    <svg class="bow" width="80" height="38" viewBox="0 0 120 60" fill="none">
+      <path d="M60 30 C50 12,22 6,12 18 C6 28,16 38,30 34 C42 31,55 30,60 30Z" stroke="#6B5B4E" stroke-width="2" fill="none" opacity=".4"/>
+      <path d="M60 30 C70 12,98 6,108 18 C114 28,104 38,90 34 C78 31,65 30,60 30Z" stroke="#6B5B4E" stroke-width="2" fill="none" opacity=".4"/>
+      <path d="M56 30 C56 36,53 46,50 54" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity=".3"/>
+      <path d="M64 30 C64 36,67 46,70 54" stroke="#6B5B4E" stroke-width="1.5" fill="none" opacity=".3"/>
+    </svg>
+    <span class="label">Vocês estão convidados</span>
+    <span class="title1">Chá de</span>
+    <span class="title2">Casa Nova</span>
+    <p class="names">Moroni <em>&</em> Daphine</p>
+  </div>
+
+  <div class="mid">
+    <!-- Cute house illustration -->
+    <svg width="340" height="320" viewBox="0 0 340 320" fill="none">
+      <!-- Roof -->
+      <path d="M170 30 L40 145 L300 145 Z" stroke="#8B7D6B" stroke-width="2.5" fill="none" stroke-linejoin="round" opacity=".35"/>
+      <!-- Roof tiles pattern -->
+      <path d="M100 100 C120 95,140 100,160 95" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".12"/>
+      <path d="M140 80 C160 75,180 80,200 75" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".12"/>
+      <path d="M180 100 C200 95,220 100,240 95" stroke="#8B7D6B" stroke-width=".8" fill="none" opacity=".12"/>
+
+      <!-- Chimney -->
+      <rect x="230" y="55" width="28" height="60" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".3"/>
+      <!-- Smoke -->
+      <path d="M244 50 C242 40,248 32,244 22" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".15"/>
+      <path d="M250 48 C248 38,254 30,250 20" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".1"/>
+
+      <!-- House body -->
+      <rect x="60" y="145" width="220" height="150" stroke="#8B7D6B" stroke-width="2.5" fill="none" opacity=".35"/>
+
+      <!-- Door -->
+      <rect x="140" y="200" width="60" height="95" rx="30 30 0 0" stroke="#8B7D6B" stroke-width="2" fill="none" opacity=".35"/>
+      <!-- Door handle -->
+      <circle cx="188" cy="255" r="4" stroke="#7A2E3A" stroke-width="1.5" fill="none" opacity=".4"/>
+
+      <!-- Left window -->
+      <rect x="78" y="175" width="42" height="42" rx="2" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".3"/>
+      <line x1="99" y1="175" x2="99" y2="217" stroke="#8B7D6B" stroke-width="1" opacity=".2"/>
+      <line x1="78" y1="196" x2="120" y2="196" stroke="#8B7D6B" stroke-width="1" opacity=".2"/>
+      <!-- Window box with flowers -->
+      <rect x="74" y="217" width="50" height="8" rx="1" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".2"/>
+      <path d="M82 217 C82 210,85 207,88 210" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".25"/>
+      <path d="M92 217 C92 208,95 205,98 208" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".25"/>
+      <path d="M102 217 C102 210,105 207,108 210" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".25"/>
+      <circle cx="88" cy="206" r="3" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/>
+      <circle cx="98" cy="204" r="3.5" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/>
+      <circle cx="108" cy="206" r="3" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/>
+
+      <!-- Right window -->
+      <rect x="220" y="175" width="42" height="42" rx="2" stroke="#8B7D6B" stroke-width="1.8" fill="none" opacity=".3"/>
+      <line x1="241" y1="175" x2="241" y2="217" stroke="#8B7D6B" stroke-width="1" opacity=".2"/>
+      <line x1="220" y1="196" x2="262" y2="196" stroke="#8B7D6B" stroke-width="1" opacity=".2"/>
+      <!-- Window box with flowers -->
+      <rect x="216" y="217" width="50" height="8" rx="1" stroke="#8B7D6B" stroke-width="1" fill="none" opacity=".2"/>
+      <path d="M224 217 C224 210,227 207,230 210" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".25"/>
+      <path d="M234 217 C234 208,237 205,240 208" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".25"/>
+      <path d="M244 217 C244 210,247 207,250 210" stroke="#7A2E3A" stroke-width="1" fill="none" opacity=".25"/>
+      <circle cx="230" cy="206" r="3" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/>
+      <circle cx="240" cy="204" r="3.5" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/>
+      <circle cx="250" cy="206" r="3" stroke="#7A2E3A" stroke-width=".8" fill="none" opacity=".2"/>
+
+      <!-- Heart on door -->
+      <path d="M170 240 C168 236,163 233,163 229 C163 226,165 224,168 224 C169 224,170 225,170 226 C170 225,171 224,172 224 C175 224,177 226,177 229 C177 233,172 236,170 240Z" stroke="#7A2E3A" stroke-width="1.2" fill="none" opacity=".35"/>
+
+      <!-- Path/walkway -->
+      <path d="M155 295 L140 315 L200 315 L185 295" stroke="#8B7D6B" stroke-width="1.2" fill="none" opacity=".2"/>
+      <line x1="165 " y1="295" x2="158" y2="315" stroke="#8B7D6B" stroke-width=".6" opacity=".12"/>
+      <line x1="175" y1="295" x2="182" y2="315" stroke="#8B7D6B" stroke-width=".6" opacity=".12"/>
+
+      <!-- Bush left -->
+      <path d="M20 280 C10 260,15 245,30 240 C40 237,50 242,55 252 C60 238,72 235,82 240 C95 247,95 265,85 280 C75 290,30 292,20 280Z" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".2"/>
+
+      <!-- Bush right -->
+      <path d="M260 280 C250 260,255 245,270 240 C280 237,290 242,295 252 C300 238,312 235,322 240 C335 247,335 265,325 280 C315 290,270 292,260 280Z" stroke="#8B7D6B" stroke-width="1.5" fill="none" opacity=".2"/>
+
+      <!-- Ground line -->
+      <line x1="10" y1="295" x2="330" y2="295" stroke="#8B7D6B" stroke-width="1.5" opacity=".15"/>
+    </svg>
+
+    <!-- Date big -->
+    <div class="date-row" style="margin-top:20px">
+      <span class="date-num">06</span>
+      <span class="date-slash">/</span>
+      <span class="date-month">06</span>
+    </div>
+
+    <div class="detail-row">
+      <div class="detail-item">
+        <p class="detail-lbl">Dia</p>
+        <p class="detail-val">Sábado</p>
+      </div>
+      <span class="detail-sep"></span>
+      <div class="detail-item">
+        <p class="detail-lbl">Horário</p>
+        <p class="detail-val">19h</p>
+      </div>
+      <span class="detail-sep"></span>
+      <div class="detail-item">
+        <p class="detail-lbl">Ano</p>
+        <p class="detail-val">2026</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bot">
+    <div class="orn-row">
+      <span class="orn-line"></span>
+      <span class="orn-dia"></span>
+      <span class="orn-line"></span>
+    </div>
+    <p class="loc">Capela Faustino Augusto Cesar 81<br>Igreja de Jesus Cristo dos Santos dos Últimos Dias</p>
+    <div class="divline"></div>
+    <span class="link-hint">Confirme e veja a lista de presentes</span>
+    <span class="link-url">moroniedaphine.vercel.app/cha-de-cozinha</span>
+  </div>
+
+</div>
+</body>
+</html>
