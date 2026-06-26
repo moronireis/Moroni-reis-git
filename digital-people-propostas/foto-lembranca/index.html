@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PERSONALIZATION TOKENS — replace before sending -->
+  <!-- {{CLIENT_NAME}}     → Full client name, e.g. "Família Oliveira"      -->
+  <!-- {{PROPOSAL_DATE}}   → Formatted date, e.g. "8 de junho de 2026"      -->
+  <!-- {{VALIDITY_DATE}}   → Validity date, e.g. "22 de junho de 2026"      -->
+  <!-- {{CUSTOM_MESSAGE}}  → Optional personal note (leave empty to hide)   -->
+
+  <title>Foto Lembrança — Digital People</title>
+  <meta name="description" content="Proposta exclusiva de Foto Lembrança para seu evento. Digital People — referência em ABC Paulista desde 1989.">
+  <meta property="og:title" content="Foto Lembrança — Digital People">
+  <meta property="og:description" content="Proposta exclusiva de Foto Lembrança. Mais de 36 anos de experiência, nota 4.9 no Google.">
+  <meta property="og:image" content="../assets/equipamentos/espelho.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#070709">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #070709;
+      --surface:   #0F0F12;
+      --surface-2: #161619;
+      --gold:      #C9A96E;
+      --gold-light:#D4B97A;
+      --gold-dim:  rgba(201,169,110,0.12);
+      --text:      #F0EDE8;
+      --text-s:    rgba(240,237,232,0.6);
+      --text-m:    rgba(240,237,232,0.35);
+      --border:    rgba(201,169,110,0.10);
+      --border-s:  rgba(201,169,110,0.06);
+      --radius:    2px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Typography ────────────────────────────────────────────── */
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    /* ─── Fade-in animation class ───────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+    .fade-up.delay-5 { transition-delay: 0.5s; }
+
+    /* ─── Section Layouts ───────────────────────────────────────── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: 96px 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-pad { padding: 64px 0; }
+    }
+
+    /* ─── Section Label ─────────────────────────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .section-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       S1 — HERO
+    ─────────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(7,7,9,0.96) 0%,
+        rgba(7,7,9,0.60) 40%,
+        rgba(7,7,9,0.20) 70%,
+        rgba(7,7,9,0.08) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 40px 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .hero-headline {
+      font-size: clamp(3.2rem, 10vw, 6.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      color: var(--text-s);
+      letter-spacing: 0.01em;
+      margin-bottom: 8px;
+    }
+
+    .hero-date {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--text-m);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+    }
+
+    .scroll-indicator span {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--gold);
+      animation: scroll-pulse 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      transform-origin: top center;
+    }
+
+    @keyframes scroll-pulse {
+      0%   { transform: scaleY(0); opacity: 0; }
+      20%  { opacity: 1; }
+      100% { transform: scaleY(1); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content { padding: 0 24px 72px; }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       S2 — SOBRE
+    ─────────────────────────────────────────────────────────────── */
+    .sobre {
+      background: var(--surface);
+      border-top: 1px solid var(--border-s);
+      border-bottom: 1px solid var(--border-s);
+    }
+
+    .sobre-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .sobre-text p {
+      font-size: 1rem;
+      color: var(--text-s);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .sobre-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .metric-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .metric-item:first-child { border-top: 1px solid var(--border); }
+
+    .metric-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .metric-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-m);
+    }
+
+    @media (max-width: 768px) {
+      .sobre-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       S3 — NOSSOS PRODUTOS
+    ─────────────────────────────────────────────────────────────── */
+    .produtos { background: var(--bg); }
+
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border-s);
+      border: 1px solid var(--border-s);
+    }
+
+    .produto-card {
+      background: var(--surface);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .produto-img-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .produto-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .produto-card:hover .produto-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .produto-body {
+      padding: 24px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .produto-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .produto-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .produto-features li {
+      font-size: 0.8125rem;
+      color: var(--text-s);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .produto-features li::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .produto-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: -0.01em;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .produtos-note {
+      margin-top: 32px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      background: var(--gold-dim);
+      border-radius: var(--radius);
+    }
+
+    .produtos-note p {
+      font-size: 0.8125rem;
+      color: var(--text-s);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .produtos-note strong {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .produtos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       S4 — COMBOS
+    ─────────────────────────────────────────────────────────────── */
+    .combos { background: var(--surface); }
+
+    .combos-header {
+      margin-bottom: 48px;
+    }
+
+    .combos-header .section-label { margin-bottom: 16px; }
+
+    .combos-subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-s);
+      font-weight: 300;
+      margin-top: 8px;
+    }
+
+    .badge-best {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border: 1px solid var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-left: 12px;
+      vertical-align: middle;
+    }
+
+    .combos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border-s);
+      border: 1px solid var(--border-s);
+    }
+
+    .combo-card {
+      background: var(--surface-2);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      transition: background 0.3s ease-out;
+    }
+
+    .combo-card:hover {
+      background: #1a1a1e;
+    }
+
+    .combo-card.highlight {
+      background: var(--gold-dim);
+    }
+
+    .combo-card.highlight:hover {
+      background: rgba(201,169,110,0.16);
+    }
+
+    .combo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .combo-original {
+      font-size: 0.8125rem;
+      color: var(--text-m);
+      font-weight: 300;
+      text-decoration: line-through;
+    }
+
+    .combo-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .combo-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.875rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .combo-savings {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      padding: 2px 6px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .combo-card.highlight .combo-savings {
+      opacity: 1;
+      border-color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .combos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .combos-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       S5 — GALERIA
+    ─────────────────────────────────────────────────────────────── */
+    .galeria { background: var(--bg); padding: 0; }
+
+    .galeria-label {
+      padding: 80px 24px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .galeria-item {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.06);
+    }
+
+    @media (max-width: 640px) {
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+      .galeria-label { padding: 64px 24px 32px; }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       S6 — PAGAMENTO + CTA
+    ─────────────────────────────────────────────────────────────── */
+    .pagamento { background: var(--surface); }
+
+    .pagamento-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .pagamento-formas h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .pagamento-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pagamento-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-s);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pagamento-list li:first-child { border-top: 1px solid var(--border); }
+
+    .pagamento-list li::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+      opacity: 0.4;
+    }
+
+    .cta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cta-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: #1DB954;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      min-height: 56px;
+      border-radius: var(--radius);
+      transition: background 0.25s ease-out,
+                  transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      align-self: flex-start;
+    }
+
+    .cta-whatsapp:hover {
+      background: #18a34a;
+      transform: translateY(-2px);
+    }
+
+    .cta-whatsapp:active {
+      transform: translateY(0);
+    }
+
+    .whatsapp-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .cta-phone {
+      font-size: 0.875rem;
+      color: var(--text-m);
+      font-weight: 300;
+    }
+
+    .cta-validity {
+      font-size: 11px;
+      color: var(--text-m);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-custom-message {
+      padding: 16px 20px;
+      border-left: 1px solid var(--gold);
+      background: var(--gold-dim);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .cta-custom-message p {
+      font-size: 0.875rem;
+      color: var(--text-s);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .pagamento-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────────────────────────────── */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border-s);
+      padding: 40px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .footer-brand span {
+      color: var(--text-m);
+      font-size: 0.875rem;
+    }
+
+    .footer-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-ig {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    .footer-confidential {
+      font-size: 10px;
+      color: var(--text-m);
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 560px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─────────────────────────────────────────────────────────
+       S1 — HERO
+  ──────────────────────────────────────────────────────────── -->
+  <section class="hero" aria-label="Capa da proposta">
+    <img
+      class="hero-bg"
+      src="../assets/equipamentos/espelho.jpg"
+      alt="Espelho Mágico Digital People em evento"
+    >
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content fade-up">
+      <p class="hero-eyebrow">Digital People · Proposta Exclusiva</p>
+      <h1 class="hero-headline font-display">Foto Lembrança</h1>
+      <p class="hero-subtitle">Preparada especialmente para <strong>{{CLIENT_NAME}}</strong></p>
+      <p class="hero-date">{{PROPOSAL_DATE}}</p>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       S2 — SOBRE
+  ──────────────────────────────────────────────────────────── -->
+  <section class="sobre section-pad" aria-label="Sobre a Digital People">
+    <div class="container">
+      <div class="sobre-inner">
+
+        <div class="sobre-text fade-up">
+          <p>Desde 1989, a Digital People transforma eventos em memórias inesquecíveis. Com mais de 36 anos de experiência e nota 4.9 no Google, somos referência em foto lembrança na região do ABC Paulista.</p>
+        </div>
+
+        <div class="sobre-metrics fade-up delay-2">
+          <div class="metric-item">
+            <span class="metric-number">36</span>
+            <span class="metric-label">Anos de Experiência</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-number">4.9</span>
+            <span class="metric-label">Nota no Google</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-number">+5.000</span>
+            <span class="metric-label">Eventos Realizados</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       S3 — NOSSOS PRODUTOS
+  ──────────────────────────────────────────────────────────── -->
+  <section class="produtos section-pad" aria-label="Nossos produtos">
+    <div class="container">
+
+      <div class="section-label fade-up">
+        <span class="section-number">01</span>
+        <div class="section-divider" aria-hidden="true"></div>
+        <h2 class="section-title">Nossos Produtos</h2>
+      </div>
+
+      <div class="produtos-grid" role="list">
+
+        <!-- Totem Fotográfico -->
+        <article class="produto-card fade-up" role="listitem">
+          <div class="produto-img-wrap">
+            <img
+              src="../assets/equipamentos/totem.jpg"
+              alt="Totem Fotográfico Digital People"
+              loading="lazy"
+            >
+          </div>
+          <div class="produto-body">
+            <h3 class="produto-name">Totem Fotográfico</h3>
+            <ul class="produto-features" aria-label="Inclui">
+              <li>Sessões Ilimitadas</li>
+              <li>Monitor + Máquina Profissional</li>
+              <li>Revelação em Impressora Profissional</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+            <p class="produto-price" aria-label="Preço: R$ 1.090,00">R$ 1.090,00</p>
+          </div>
+        </article>
+
+        <!-- Totem Retrô -->
+        <article class="produto-card fade-up delay-1" role="listitem">
+          <div class="produto-img-wrap">
+            <img
+              src="../assets/equipamentos/totem-retro.jpg"
+              alt="Totem Retrô Digital People"
+              loading="lazy"
+            >
+          </div>
+          <div class="produto-body">
+            <h3 class="produto-name">Totem Retrô</h3>
+            <ul class="produto-features" aria-label="Inclui">
+              <li>Sessões Ilimitadas</li>
+              <li>Monitor + Máquina Profissional</li>
+              <li>Revelação em Impressora Profissional</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+            <p class="produto-price" aria-label="Preço: R$ 1.349,00">R$ 1.349,00</p>
+          </div>
+        </article>
+
+        <!-- Cabine -->
+        <article class="produto-card fade-up delay-2" role="listitem">
+          <div class="produto-img-wrap">
+            <img
+              src="../assets/equipamentos/cabine.jpg"
+              alt="Cabine Fotográfica Digital People"
+              loading="lazy"
+            >
+          </div>
+          <div class="produto-body">
+            <h3 class="produto-name">Cabine</h3>
+            <ul class="produto-features" aria-label="Inclui">
+              <li>Sessões Ilimitadas</li>
+              <li>Banner Personalizado de 2 Metros</li>
+              <li>Revelação em Impressora Profissional</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+            <p class="produto-price" aria-label="Preço: R$ 1.349,00">R$ 1.349,00</p>
+          </div>
+        </article>
+
+        <!-- Espelho Mágico -->
+        <article class="produto-card fade-up delay-3" role="listitem">
+          <div class="produto-img-wrap">
+            <img
+              src="../assets/equipamentos/espelho.jpg"
+              alt="Espelho Mágico Digital People"
+              loading="lazy"
+            >
+          </div>
+          <div class="produto-body">
+            <h3 class="produto-name">Espelho Mágico</h3>
+            <ul class="produto-features" aria-label="Inclui">
+              <li>Sessões Ilimitadas</li>
+              <li>Monitor + Máquina Profissional</li>
+              <li>Revelação em Impressora Profissional</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+            <p class="produto-price" aria-label="Preço: R$ 1.349,00">R$ 1.349,00</p>
+          </div>
+        </article>
+
+        <!-- Plataforma 360° -->
+        <article class="produto-card fade-up delay-4" role="listitem">
+          <div class="produto-img-wrap">
+            <img
+              src="../assets/equipamentos/plataforma360.jpg"
+              alt="Plataforma 360 Digital People"
+              loading="lazy"
+            >
+          </div>
+          <div class="produto-body">
+            <h3 class="produto-name">Plataforma 360°</h3>
+            <ul class="produto-features" aria-label="Inclui">
+              <li>Vídeos Enviados Instantaneamente</li>
+              <li>Tecnologia Apple (iPhone)</li>
+              <li>Iluminação de Led Decorativa</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+            <p class="produto-price" aria-label="Preço: R$ 1.090,00">R$ 1.090,00</p>
+          </div>
+        </article>
+
+        <!-- Túnel Infinity -->
+        <article class="produto-card fade-up delay-5" role="listitem">
+          <div class="produto-img-wrap">
+            <img
+              src="../assets/equipamentos/tunel.jpg"
+              alt="Túnel Infinity Digital People"
+              loading="lazy"
+            >
+          </div>
+          <div class="produto-body">
+            <h3 class="produto-name">Túnel Infinity</h3>
+            <ul class="produto-features" aria-label="Inclui">
+              <li>Vídeos Enviados Instantaneamente</li>
+              <li>Tecnologia Apple (iPhone)</li>
+              <li>Iluminação de Led Decorativa</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+            <p class="produto-price" aria-label="Preço: R$ 1.349,00">R$ 1.349,00</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Shared inclusions note -->
+      <div class="produtos-note fade-up">
+        <p>
+          <strong>Todos os produtos incluem:</strong>
+          Papel Profissional · Arte Personalizada · Acessórios para Convidados · Foto em Alta Resolução
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       S4 — COMBOS EM DESTAQUE
+  ──────────────────────────────────────────────────────────── -->
+  <section class="combos section-pad" aria-label="Combos em destaque">
+    <div class="container">
+
+      <div class="combos-header">
+        <div class="section-label fade-up">
+          <span class="section-number">02</span>
+          <div class="section-divider" aria-hidden="true"></div>
+          <h2 class="section-title">
+            Combos
+            <span class="badge-best" aria-label="Melhor valor">Melhor Valor</span>
+          </h2>
+        </div>
+        <p class="combos-subtitle fade-up delay-1">Escolha 2 serviços e economize</p>
+      </div>
+
+      <div class="combos-grid" role="list">
+
+        <!-- Combo 1: Totem Fotográfico + Plataforma 360° -->
+        <article class="combo-card fade-up" role="listitem">
+          <h3 class="combo-name">Totem Fotográfico<br>+ Plataforma 360°</h3>
+          <p class="combo-original">R$ 2.180,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.599</span>
+            <span class="combo-savings">-R$ 581</span>
+          </div>
+        </article>
+
+        <!-- Combo 2: Totem Fotográfico + Túnel Infinity -->
+        <article class="combo-card fade-up delay-1" role="listitem">
+          <h3 class="combo-name">Totem Fotográfico<br>+ Túnel Infinity</h3>
+          <p class="combo-original">R$ 2.439,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.699</span>
+            <span class="combo-savings">-R$ 740</span>
+          </div>
+        </article>
+
+        <!-- Combo 3: Cabine + Plataforma 360° -->
+        <article class="combo-card fade-up delay-2" role="listitem">
+          <h3 class="combo-name">Cabine<br>+ Plataforma 360°</h3>
+          <p class="combo-original">R$ 2.439,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.899</span>
+            <span class="combo-savings">-R$ 540</span>
+          </div>
+        </article>
+
+        <!-- Combo 4: Cabine + Túnel Infinity — BEST SAVINGS -->
+        <article class="combo-card highlight fade-up delay-3" role="listitem" aria-label="Destaque: maior economia">
+          <h3 class="combo-name">Cabine<br>+ Túnel Infinity</h3>
+          <p class="combo-original">R$ 2.698,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.899</span>
+            <span class="combo-savings">-R$ 799</span>
+          </div>
+        </article>
+
+        <!-- Combo 5: Espelho Mágico + Plataforma 360° -->
+        <article class="combo-card fade-up" role="listitem">
+          <h3 class="combo-name">Espelho Mágico<br>+ Plataforma 360°</h3>
+          <p class="combo-original">R$ 2.439,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.949</span>
+            <span class="combo-savings">-R$ 490</span>
+          </div>
+        </article>
+
+        <!-- Combo 6: Espelho Mágico + Túnel Infinity -->
+        <article class="combo-card fade-up delay-1" role="listitem">
+          <h3 class="combo-name">Espelho Mágico<br>+ Túnel Infinity</h3>
+          <p class="combo-original">R$ 2.698,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.949</span>
+            <span class="combo-savings">-R$ 749</span>
+          </div>
+        </article>
+
+        <!-- Combo 7: Túnel Infinity + Plataforma 360° -->
+        <article class="combo-card fade-up delay-2" role="listitem">
+          <h3 class="combo-name">Túnel Infinity<br>+ Plataforma 360°</h3>
+          <p class="combo-original">R$ 2.439,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.799</span>
+            <span class="combo-savings">-R$ 640</span>
+          </div>
+        </article>
+
+        <!-- Combo 8: Totem Retrô + Plataforma 360° -->
+        <article class="combo-card fade-up delay-3" role="listitem">
+          <h3 class="combo-name">Totem Retrô<br>+ Plataforma 360°</h3>
+          <p class="combo-original">R$ 2.439,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.799</span>
+            <span class="combo-savings">-R$ 640</span>
+          </div>
+        </article>
+
+        <!-- Combo 9: Totem Retrô + Túnel Infinity — BEST SAVINGS -->
+        <article class="combo-card highlight fade-up delay-4" role="listitem" aria-label="Destaque: maior economia">
+          <h3 class="combo-name">Totem Retrô<br>+ Túnel Infinity</h3>
+          <p class="combo-original">R$ 2.698,00</p>
+          <div class="combo-price-row">
+            <span class="combo-price">R$ 1.799</span>
+            <span class="combo-savings">-R$ 899</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       S5 — GALERIA DE EVENTOS
+  ──────────────────────────────────────────────────────────── -->
+  <section class="galeria" aria-label="Galeria de eventos">
+    <div class="galeria-label fade-up">
+      <div class="section-label">
+        <span class="section-number">03</span>
+        <div class="section-divider" aria-hidden="true"></div>
+        <h2 class="section-title">Galeria de Eventos</h2>
+      </div>
+    </div>
+
+    <div class="galeria-grid" role="list">
+      <div class="galeria-item" role="listitem">
+        <img
+          src="../assets/fotos/festa-pista.jpg"
+          alt="Festa com pista de dança — Digital People"
+          loading="lazy"
+        >
+      </div>
+      <div class="galeria-item" role="listitem">
+        <img
+          src="../assets/fotos/cas-01.jpg"
+          alt="Casamento — Digital People"
+          loading="lazy"
+        >
+      </div>
+      <div class="galeria-item" role="listitem">
+        <img
+          src="../assets/fotos/cas-05.jpg"
+          alt="Casamento — Digital People"
+          loading="lazy"
+        >
+      </div>
+      <div class="galeria-item" role="listitem">
+        <img
+          src="../assets/fotos/deb-2027-a.jpg"
+          alt="Debutante — Digital People"
+          loading="lazy"
+        >
+      </div>
+      <div class="galeria-item" role="listitem">
+        <img
+          src="../assets/fotos/hero-opt-a.jpg"
+          alt="Evento — Digital People"
+          loading="lazy"
+        >
+      </div>
+      <div class="galeria-item" role="listitem">
+        <img
+          src="../assets/fotos/hero-opt-b.jpg"
+          alt="Evento — Digital People"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       S6 — PAGAMENTO + CTA
+  ──────────────────────────────────────────────────────────── -->
+  <section class="pagamento section-pad" aria-label="Formas de pagamento e contato">
+    <div class="container">
+      <div class="pagamento-inner">
+
+        <!-- Formas de pagamento -->
+        <div class="pagamento-formas fade-up">
+          <div class="section-label" style="margin-bottom: 32px;">
+            <span class="section-number">04</span>
+            <div class="section-divider" aria-hidden="true"></div>
+            <h2 class="section-title" style="font-size: 1.75rem;">Formas de Pagamento</h2>
+          </div>
+
+          <ul class="pagamento-list">
+            <li>Primeira parcela até 30 dias</li>
+            <li>Parcelado via PIX até o evento</li>
+            <li>Até 6x no cartão sem juros</li>
+            <li>Até 10x no cartão com juros</li>
+            <li>Sinal + quitação no dia do evento</li>
+          </ul>
+        </div>
+
+        <!-- CTA block -->
+        <div class="cta-block fade-up delay-2">
+          <h2 class="cta-headline font-display">Vamos tornar seu evento inesquecível?</h2>
+
+          <!-- {{CUSTOM_MESSAGE}} — Remove this block if no personal note -->
+          <div class="cta-custom-message">
+            <p>{{CUSTOM_MESSAGE}}</p>
+          </div>
+          <!-- END {{CUSTOM_MESSAGE}} -->
+
+          <a
+            href="https://wa.me/5511934314186?text=Ol%C3%A1%21+Vi+a+proposta+de+Foto+Lembrança+e+gostaria+de+mais+informações."
+            class="cta-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Falar pelo WhatsApp"
+          >
+            <!-- WhatsApp icon -->
+            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Falar pelo WhatsApp
+          </a>
+
+          <p class="cta-phone">(11) 9 3431-4186</p>
+          <p class="cta-validity">Proposta válida até {{VALIDITY_DATE}}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       FOOTER
+  ──────────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Digital People
+        <br>
+        <span>Desde 1989 em Mauá, SP</span>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-ig">@digitalpeople_</span>
+        <span class="footer-confidential">Documento confidencial preparado em {{PROPOSAL_DATE}}</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ─────────────────────────────────────────────────────────
+       JS — IntersectionObserver fade-in
+  ──────────────────────────────────────────────────────────── -->
+  <script>
+    (function () {
+      // Respect reduced motion preference
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        // Make all elements visible immediately
+        document.querySelectorAll('.fade-up').forEach(function (el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      // Hero content visible immediately (above fold)
+      const hero = document.querySelector('.hero .fade-up');
+      if (hero) hero.classList.add('visible');
+
+      // Observe everything else
+      document.querySelectorAll('.fade-up:not(.hero .fade-up)').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>

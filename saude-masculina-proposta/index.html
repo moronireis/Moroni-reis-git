@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial | WhatsApp Inteligente — App Sa&uacute;de Masculina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #060608;
+    --bg-secondary: #0a0a0e;
+    --bg-card: #0f0f18;
+    --bg-card-hover: #141422;
+    --border: #1a1a2a;
+    --border-accent: #242440;
+    --text-primary: #e8e8f0;
+    --text-secondary: #7a7a96;
+    --text-muted: #4a4a64;
+    --accent: #4A90FF;
+    --accent-light: #6AADFF;
+    --accent-dim: rgba(74,144,255,0.10);
+    --accent-glow: rgba(74,144,255,0.05);
+    --green: #2d8a4e;
+    --green-dim: rgba(45,138,78,0.12);
+    --red: #c44040;
+    --red-dim: rgba(196,64,64,0.10);
+    --amber: #c49a30;
+    --amber-dim: rgba(196,154,48,0.10);
+    --purple: #7a6abf;
+    --purple-dim: rgba(122,106,191,0.10);
+    --cyan: #22a7c3;
+    --cyan-dim: rgba(34,167,195,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(6,6,8,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+  .brand { font-weight: 300; font-size: 15px; letter-spacing: 0.04em; color: var(--text-primary); }
+  .brand span { color: var(--accent); }
+  .nav-tag { font-size: 11px; color: var(--accent); background: var(--accent-dim); padding: 4px 10px; border-radius: 100px; font-weight: 500; letter-spacing: 0.03em; }
+
+  section {
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 80px; opacity: 0; pointer-events: none;
+    transform: translateX(60px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+  }
+  section.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+  section.prev { opacity: 0; transform: translateX(-60px); }
+  section::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .slide-controls { position: fixed; bottom: 32px; right: 40px; z-index: 200; display: flex; align-items: center; gap: 12px; }
+  .slide-counter { font-size: 12px; color: var(--text-muted); font-weight: 500; font-variant-numeric: tabular-nums; min-width: 48px; text-align: center; }
+  .slide-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 16px; }
+  .slide-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+  .slide-btn:disabled { opacity: 0.3; cursor: default; }
+  .slide-btn:disabled:hover { border-color: var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .slide-dots { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 8px; }
+  .slide-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-accent); cursor: pointer; transition: all 0.3s; }
+  .slide-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+  .slide-hint { position: fixed; bottom: 32px; left: 40px; z-index: 200; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .key-hint { display: inline-block; padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: monospace; color: var(--text-muted); background: var(--bg-card); }
+
+  .section-number { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+  h1 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; max-width: 880px; }
+  h2 { font-size: clamp(28px, 3vw, 44px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 20px; }
+  h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 10px; }
+  .subtitle { font-size: 17px; color: var(--text-secondary); max-width: 640px; line-height: 1.75; }
+  .accent { color: var(--accent); }
+  .green { color: #3fba6a; }
+
+  .hero-badges { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+  .badge { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .badge.accent-badge { color: var(--accent); border-color: rgba(74,144,255,0.25); background: var(--accent-dim); }
+  .meta { display: flex; gap: 24px; margin-top: 36px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 36px; max-width: 1100px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 26px; transition: all 0.3s; }
+  .card:hover { border-color: var(--border-accent); background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .card-icon.blue { background: var(--accent-dim); color: var(--accent); }
+  .card-icon.green { background: var(--green-dim); color: #3fba6a; }
+  .card-icon.amber { background: var(--amber-dim); color: var(--amber); }
+  .card-icon.cyan { background: var(--cyan-dim); color: var(--cyan); }
+  .card-icon.purple { background: var(--purple-dim); color: var(--purple); }
+  .card-icon.red { background: var(--red-dim); color: var(--red); }
+  .card h3 { font-size: 15px; margin-bottom: 8px; }
+  .card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 36px; max-width: 900px; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+  .stat-number { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; max-width: 900px; }
+  .comparison-col { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .comparison-col .col-header { padding: 18px 22px; font-size: 13px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  .comparison-col.negative .col-header { background: var(--red-dim); color: var(--red); }
+  .comparison-col.positive .col-header { background: var(--green-dim); color: #3fba6a; }
+  .comparison-col ul { list-style: none; padding: 18px 22px; }
+  .comparison-col li { font-size: 13px; color: var(--text-secondary); padding: 7px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .comparison-col li:last-child { border-bottom: none; }
+  .comparison-col li .icon { flex-shrink: 0; margin-top: 1px; font-size: 13px; font-weight: 700; }
+  .comparison-col.negative li .icon { color: var(--red); }
+  .comparison-col.positive li .icon { color: #3fba6a; }
+
+  .pain-list { margin-top: 28px; max-width: 700px; }
+  .pain-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--red-dim); color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; font-weight: 700; }
+  .pain-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .pain-text p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  .flow-diagram { margin-top: 36px; max-width: 920px; }
+  .flow-label { font-size: 10px; color: var(--text-muted); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; margin-top: 24px; }
+  .flow-label:first-child { margin-top: 0; }
+  .flow-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .flow-node { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+  .flow-node.source { border-color: var(--border-accent); }
+  .flow-node.ai { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-light); }
+  .flow-node.output { border-color: #3fba6a; border-style: dashed; color: #3fba6a; }
+  .flow-node.ticket { border-color: var(--amber); border-style: dashed; color: var(--amber); }
+  .flow-arrow { color: var(--text-muted); font-size: 14px; }
+
+  .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 28px; max-width: 1000px; }
+  .include-item { display: flex; align-items: flex-start; gap: 12px; padding: 16px 18px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; }
+  .include-check { width: 20px; height: 20px; border-radius: 5px; background: var(--green-dim); color: #3fba6a; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .include-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .include-text strong { color: var(--text-primary); font-weight: 600; }
+
+  .timeline { margin-top: 36px; max-width: 780px; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), rgba(74,144,255,0.1)); border-radius: 2px; }
+  .timeline-item { display: flex; gap: 22px; padding-bottom: 28px; position: relative; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; z-index: 1; }
+  .timeline-dot.blue { background: #08101e; color: var(--accent); border: 2px solid var(--accent); }
+  .timeline-dot.dim { background: #0d0d14; color: var(--text-muted); border: 2px solid var(--border-accent); }
+  .timeline-content h3 { font-size: 15px; margin-bottom: 5px; }
+  .timeline-content p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+  .timeline-tag { display: inline-block; font-size: 10px; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
+
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; max-width: 760px; }
+  .price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 32px 28px; position: relative; transition: all 0.3s; }
+  .price-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+  .price-card.featured { border-color: rgba(74,144,255,0.4); background: linear-gradient(160deg, rgba(74,144,255,0.06) 0%, var(--bg-card) 60%); }
+  .price-card.featured::before { content: 'Recomendado'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.05em; white-space: nowrap; }
+  .price-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 20px; }
+  .price-setup { font-size: 36px; font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); line-height: 1; }
+  .price-setup-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; margin-bottom: 12px; }
+  .price-monthly { font-size: 18px; font-weight: 600; color: var(--accent); }
+  .price-monthly-label { font-size: 11px; color: var(--text-muted); }
+  .price-divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .price-feature { font-size: 12px; color: var(--text-secondary); padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+  .price-feature-icon { color: #3fba6a; flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+
+  .highlight-box { padding: 24px 28px; background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(45,138,78,0.2); border-radius: 14px; margin-top: 28px; max-width: 720px; }
+  .highlight-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
+
+  @media (max-width: 900px) {
+    section { padding: 80px 24px 80px; }
+    nav { padding: 12px 20px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+  }
+  @media print {
+    body { overflow: visible; height: auto; }
+    section { position: static; opacity: 1; transform: none; pointer-events: all; page-break-inside: avoid; padding: 40px; height: auto; min-height: auto; }
+    nav, .slide-controls, .slide-dots, .slide-hint { display: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">REIS <span>[IA]</span></div>
+  <span class="nav-tag">Proposta Comercial</span>
+</nav>
+
+<div class="slide-dots" id="slideDots"></div>
+<div class="slide-hint">
+  <span class="key-hint">&larr;</span>
+  <span class="key-hint">&rarr;</span>
+  ou clique para navegar
+</div>
+<div class="slide-controls">
+  <button class="slide-btn" id="prevBtn" onclick="changeSlide(-1)">&larr;</button>
+  <span class="slide-counter" id="slideCounter">1 / 11</span>
+  <button class="slide-btn" id="nextBtn" onclick="changeSlide(1)">&rarr;</button>
+</div>
+
+<!-- SLIDE 1: HERO -->
+<section id="hero">
+  <div class="section-number">Proposta comercial</div>
+  <h1>WhatsApp inteligente para o <span class="accent">App de Sa&uacute;de Masculina</span></h1>
+  <p class="subtitle">
+    Um &uacute;nico n&uacute;mero que converte leads do tr&aacute;fego pago e resolve o suporte dos usu&aacute;rios &mdash; com IA h&iacute;brida, sem aumentar equipe.
+  </p>
+  <div class="hero-badges">
+    <span class="badge accent-badge">IA H&iacute;brida</span>
+    <span class="badge">N&uacute;mero &Uacute;nico</span>
+    <span class="badge">FAQ Automatizado</span>
+    <span class="badge">Integra&ccedil;&atilde;o de Tickets</span>
+    <span class="badge">Sem Custo por Mensagem</span>
+  </div>
+  <div class="meta">
+    <span>Preparado para Lucas Cardoso, Douglas e Dr. &Aacute;ureo</span>
+    <span>Junho 2026</span>
+    <span>Confidencial</span>
+  </div>
+</section>
+
+<!-- SLIDE 2: CONTEXTO -->
+<section id="contexto">
+  <div class="section-number">01 &mdash; Contexto</div>
+  <h2>Entendemos o que voc&ecirc;s est&atilde;o construindo</h2>
+  <p class="subtitle">Um app de sa&uacute;de masculina chegando ao mercado com tr&aacute;fego pago como canal principal &mdash; e dois desafios em paralelo.</p>
+  <div class="stats-row fade-in">
+    <div class="stat-card">
+      <div class="stat-number accent">Leads</div>
+      <div class="stat-label">do tr&aacute;fego pago precisam ser<br>convertidos em usu&aacute;rios do app</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color:#3fba6a;">Usu&aacute;rios</div>
+      <div class="stat-label">do app v&atilde;o precisar de suporte<br>e ter d&uacute;vidas frequentes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--amber);">1 canal</div>
+      <div class="stat-label">WhatsApp como ponto central<br>para os dois p&uacute;blicos</div>
+    </div>
+  </div>
+  <div class="highlight-box fade-in">
+    <p>
+      J&aacute; trabalhamos com o Dr. &Aacute;ureo anteriormente &mdash; conhecemos a opera&ccedil;&atilde;o e a preocupa&ccedil;&atilde;o com custos.
+      Por isso a solu&ccedil;&atilde;o proposta usa <strong style="color: var(--text-primary);">API n&atilde;o-oficial do WhatsApp</strong> (sem cobrança por mensagem da Meta)
+      e <strong style="color: var(--text-primary);">IA h&iacute;brida</strong> (bot guiado + camada de IA + handoff humano) &mdash; o modelo que conv&ecirc;s concordaram na reuni&atilde;o.
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 3: O PROBLEMA -->
+<section id="problema">
+  <div class="section-number">02 &mdash; O problema sem automa&ccedil;&atilde;o</div>
+  <h2>O que acontece sem o sistema</h2>
+  <p class="subtitle">Cada lead e cada suporte dependendo de uma pessoa &mdash; o gargalo cresce com o tr&aacute;fego.</p>
+  <div class="pain-list fade-in">
+    <div class="pain-item">
+      <div class="pain-icon">1</div>
+      <div class="pain-text">
+        <h4>Lead chega, ningu&eacute;m responde na hora certa</h4>
+        <p>Tr&aacute;fego pago traz lead quente. Se o atendimento demora, o lead esfria. Cada minuto de espera custa convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">2</div>
+      <div class="pain-text">
+        <h4>Dois p&uacute;blicos, uma confus&atilde;o</h4>
+        <p>Lead novo e usu&aacute;rio com problema chegam pelo mesmo n&uacute;mero. Sem roteamento, cada atendimento come&ccedil;a do zero.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">3</div>
+      <div class="pain-text">
+        <h4>Suporte sem estrutura = churn</h4>
+        <p>Usu&aacute;rio com bug ou d&uacute;vida sem resposta r&aacute;pida cancela a assinatura. Reten&ccedil;&atilde;o depende da velocidade do suporte.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">4</div>
+      <div class="pain-text">
+        <h4>Tickets criados manualmente</h4>
+        <p>Algu&eacute;m precisa ler a mensagem, entender o problema e abrir o ticket. Com volume, isso n&atilde;o escala.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">5</div>
+      <div class="pain-text">
+        <h4>Equipe crescendo junto com o problema</h4>
+        <p>A &uacute;nica sa&iacute;da sem automa&ccedil;&atilde;o &eacute; contratar mais atendentes. Custo fixo que corrói a margem do app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: A SOLUCAO -->
+<section id="solucao">
+  <div class="section-number">03 &mdash; A solu&ccedil;&atilde;o</div>
+  <h2>Um n&uacute;mero. Dois destinos. IA no meio.</h2>
+  <p class="subtitle">O sistema identifica a inten&ccedil;&atilde;o de quem entra e roteia para o fluxo correto &mdash; sem interven&ccedil;&atilde;o manual.</p>
+  <div class="flow-diagram fade-in">
+    <div class="flow-label">Entrada &uacute;nica</div>
+    <div class="flow-row">
+      <div class="flow-node source">Lead do an&uacute;ncio</div>
+      <span class="flow-arrow">&searr;</span>
+    </div>
+    <div class="flow-row" style="margin-top: 6px;">
+      <div class="flow-node source">Usu&aacute;rio do app</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">WhatsApp Central + Roteador IA</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div class="flow-node output">Fluxo de Vendas</div>
+        <div class="flow-node ticket">Fluxo de Suporte</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px; max-width:860px;" class="fade-in">
+    <div style="background:var(--bg-card); border:1px solid rgba(74,144,255,0.25); border-radius:12px; padding:22px;">
+      <div style="font-size:10px; font-weight:700; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Fluxo 1 &mdash; Vendas</div>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">Lead do tr&aacute;fego pago &rarr; Menu guiado &rarr; D&uacute;vidas respondidas &rarr; Download / compra do app</p>
+    </div>
+    <div style="background:var(--bg-card); border:1px solid rgba(196,154,48,0.25); border-radius:12px; padding:22px;">
+      <div style="font-size:10px; font-weight:700; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Fluxo 2 &mdash; Suporte</div>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">Usu&aacute;rio do app &rarr; FAQ autom&aacute;tico &rarr; Resolvido ou &rarr; Ticket criado no seu sistema</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: FLUXO DE VENDAS -->
+<section id="vendas">
+  <div class="section-number">04 &mdash; Fluxo de vendas</div>
+  <h2>Do an&uacute;ncio ao download</h2>
+  <p class="subtitle">Lead aquecido pelo tr&aacute;fego pago chega no WhatsApp e &eacute; convertido sem depender de atendente humano.</p>
+  <div class="flow-diagram fade-in">
+    <div class="flow-label">Passo 1 &mdash; Recep&ccedil;&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node source">Lead clica no an&uacute;ncio</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Bot recebe e identifica como lead novo</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node">Boas-vindas personalizadas</div>
+    </div>
+    <div class="flow-label">Passo 2 &mdash; Qualifica&ccedil;&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node">Menu guiado</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">D&uacute;vidas? IA responde com FAQ</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node">Preço? Funcionalidades? Respondido.</div>
+    </div>
+    <div class="flow-label">Passo 3 &mdash; Convers&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node source">Lead qualificado</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Link de download / compra do app</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Convers&atilde;o registrada</div>
+    </div>
+    <div class="flow-label">Exce&ccedil;&atilde;o &mdash; quando precisa de humano</div>
+    <div class="flow-row">
+      <div class="flow-node source">D&uacute;vida fora do FAQ</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">IA tenta responder</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ticket">Handoff para atendente humano</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: FLUXO DE SUPORTE -->
+<section id="suporte">
+  <div class="section-number">05 &mdash; Fluxo de suporte</div>
+  <h2>Do relato ao ticket &mdash; sem atrito</h2>
+  <p class="subtitle">Usu&aacute;rio do app reporta problema ou d&uacute;vida. O sistema resolve ou abre ticket automaticamente no sistema de voc&ecirc;s.</p>
+  <div class="flow-diagram fade-in">
+    <div class="flow-label">Passo 1 &mdash; Identifica&ccedil;&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node source">Usu&aacute;rio do app entra no WhatsApp</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Bot identifica: &eacute; usu&aacute;rio (suporte)</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node">Menu de suporte apresentado</div>
+    </div>
+    <div class="flow-label">Passo 2 &mdash; Resolu&ccedil;&atilde;o autom&aacute;tica</div>
+    <div class="flow-row">
+      <div class="flow-node source">Usu&aacute;rio descreve o problema</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">IA busca na base de FAQ</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Resposta autom&aacute;tica (70-80% dos casos)</div>
+    </div>
+    <div class="flow-label">Passo 3 &mdash; Abertura de ticket</div>
+    <div class="flow-row">
+      <div class="flow-node source">Problema n&atilde;o resolvido pelo FAQ</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Bot coleta informa&ccedil;&otilde;es necess&aacute;rias</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ticket">Ticket criado automaticamente no seu sistema via API</div>
+    </div>
+    <div class="flow-label">Fechamento</div>
+    <div class="flow-row">
+      <div class="flow-node">Usu&aacute;rio recebe n&ordm; do ticket</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Equipe interna assume</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Resolu&ccedil;&atilde;o notificada via WhatsApp</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: TECNOLOGIA -->
+<section id="tecnologia">
+  <div class="section-number">06 &mdash; Como funciona por baixo</div>
+  <h2>Tecnologia sem burocracia</h2>
+  <p class="subtitle">Sem pagar por mensagem &agrave; Meta. Sem infraestrutura complexa. Mesma stack que usamos em produ&ccedil;&atilde;o hoje.</p>
+  <div class="card-grid fade-in">
+    <div class="card">
+      <div class="card-icon blue">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <h3>WhatsApp sem custo por mensagem</h3>
+      <p>Usamos API n&atilde;o-oficial (UazapiGO). Custo fixo de hospedagem ~R$100/m&ecirc;s, independente do volume de mensagens. API oficial da Meta cobra por mensagem &mdash; com escala, isso vira R$500-2.000/m&ecirc;s.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon cyan">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Bot h&iacute;brido (menu + IA + humano)</h3>
+      <p>Menus guiados resolvem 70-80% dos casos de forma determin&iacute;stica. IA (Claude Sonnet) cobre as perguntas abertas. Handoff humano para o que a IA n&atilde;o consegue &mdash; sem abrir email, diretamente no WhatsApp.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Integra&ccedil;&atilde;o com seu sistema de tickets</h3>
+      <p>Conectamos via REST API ao sistema que voc&ecirc; j&aacute; tem. Ticket criado automaticamente com descri&ccedil;&atilde;o, nome do usu&aacute;rio e contexto da conversa. Sem duplicar ferramentas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Base de FAQ do zero dia</h3>
+      <p>Voc&ecirc; j&aacute; tem as perguntas frequentes. N&oacute;s carregamos, estruturamos e conectamos &agrave; camada de IA. Atualizações futuras levam minutos, n&atilde;o semanas.</p>
+    </div>
+  </div>
+  <div style="margin-top:24px; padding:16px 20px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; max-width:760px; font-size:13px; color:var(--text-secondary);" class="fade-in">
+    <strong style="color:var(--text-primary);">Transpari&ecirc;ncia:</strong> A API n&atilde;o-oficial tem risco m&iacute;nimo de interrup&ccedil;&atilde;o pela Meta. Mitigamos com opera&ccedil;&atilde;o dentro dos limites de uso normal. Se o volume escalar ao ponto de justificar a API oficial (R$500+/m&ecirc;s), migramos sem reescrever o sistema.
+  </div>
+</section>
+
+<!-- SLIDE 8: ANTES vs DEPOIS -->
+<section id="comparacao">
+  <div class="section-number">07 &mdash; Antes vs depois</div>
+  <h2>O que muda na opera&ccedil;&atilde;o</h2>
+  <p class="subtitle">Da gest&atilde;o manual de cada convers&atilde;o para um sistema que trabalha enquanto voc&ecirc;s dormem.</p>
+  <div class="comparison-grid fade-in">
+    <div class="comparison-col negative">
+      <div class="col-header">Opera&ccedil;&atilde;o atual</div>
+      <ul>
+        <li><span class="icon">&times;</span> Lead espera atendimento manual</li>
+        <li><span class="icon">&times;</span> Sem roteamento: vendas e suporte misturados</li>
+        <li><span class="icon">&times;</span> Cada ticket aberto &agrave; m&atilde;o</li>
+        <li><span class="icon">&times;</span> Mesmo FAQ respondido dezenas de vezes por dia</li>
+        <li><span class="icon">&times;</span> Equipe cresce junto com o volume</li>
+        <li><span class="icon">&times;</span> Sem dados: quantos leads, qual taxa de suporte</li>
+      </ul>
+    </div>
+    <div class="comparison-col positive">
+      <div class="col-header">Com o sistema implantado</div>
+      <ul>
+        <li><span class="icon">&check;</span> Lead atendido em segundos, 24/7</li>
+        <li><span class="icon">&check;</span> Roteamento autom&aacute;tico por inten&ccedil;&atilde;o</li>
+        <li><span class="icon">&check;</span> Ticket criado automaticamente com contexto completo</li>
+        <li><span class="icon">&check;</span> FAQ responde 70-80% sem interven&ccedil;&atilde;o humana</li>
+        <li><span class="icon">&check;</span> Equipe humana s&oacute; onde &eacute; realmente necess&aacute;ria</li>
+        <li><span class="icon">&check;</span> Dashboard: volume, tempo de resposta, origem dos leads</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: INVESTIMENTO -->
+<section id="investimento">
+  <div class="section-number">08 &mdash; Investimento</div>
+  <h2>Duas op&ccedil;&otilde;es, conforme solicitado</h2>
+  <p class="subtitle">Setup &uacute;nico de implementa&ccedil;&atilde;o + mensalidade de manuten&ccedil;&atilde;o, hospedagem e suporte.</p>
+  <div class="price-grid fade-in">
+    <div class="price-card">
+      <div class="price-name">Op&ccedil;&atilde;o A &mdash; Core</div>
+      <div class="price-setup">R$ 6.500</div>
+      <div class="price-setup-label">implementa&ccedil;&atilde;o</div>
+      <div class="price-monthly">+ R$ 497<span style="font-size:13px; font-weight:400; color:var(--text-muted);">/m&ecirc;s</span></div>
+      <div class="price-monthly-label">manuten&ccedil;&atilde;o e hospedagem</div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> N&uacute;mero &uacute;nico com roteamento</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Fluxo de vendas (leads)</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Fluxo de suporte + FAQ</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Integra&ccedil;&atilde;o com sistema de tickets</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> IA h&iacute;brida (menu + Claude + handoff)</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Painel de atendimento humano</div>
+      <div class="price-feature" style="color:var(--text-muted);"><span style="color:var(--text-muted);">&#8212;</span> Dashboard anal&iacute;tico</div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-name">Op&ccedil;&atilde;o B &mdash; Com Dashboard</div>
+      <div class="price-setup">R$ 8.900</div>
+      <div class="price-setup-label">implementa&ccedil;&atilde;o</div>
+      <div class="price-monthly">+ R$ 697<span style="font-size:13px; font-weight:400; color:var(--text-muted);">/m&ecirc;s</span></div>
+      <div class="price-monthly-label">manuten&ccedil;&atilde;o, hospedagem e dados</div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Tudo da Op&ccedil;&atilde;o A</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Dashboard em tempo real</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Volume de leads por per&iacute;odo</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Taxa de resolu&ccedil;&atilde;o do FAQ</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Volume de tickets abertos</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Tempo m&eacute;dio de resposta</div>
+      <div class="price-feature"><span class="price-feature-icon">&#10003;</span> Exporta&ccedil;&atilde;o de relat&oacute;rios</div>
+    </div>
+  </div>
+  <div style="margin-top:20px; font-size:12px; color:var(--text-muted); max-width:760px;" class="fade-in">
+    O mensalidade cobre hospedagem (~R$100), custos de IA (estimado R$50-150/m&ecirc;s dependendo do volume), servidor e at&eacute; 2 atualiza&ccedil;&otilde;es de FAQ por m&ecirc;s. Novos fluxos ou integra&ccedil;&otilde;es s&atilde;o cotados separadamente.
+  </div>
+</section>
+
+<!-- SLIDE 10: CRONOGRAMA -->
+<section id="cronograma">
+  <div class="section-number">09 &mdash; Cronograma</div>
+  <h2>Do kickoff ao go-live em 6&ndash;8 semanas</h2>
+  <p class="subtitle">Fases claras, depend&ecirc;ncias m&iacute;nimas da equipe de voc&ecirc;s (apenas API docs e base de FAQ).</p>
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="timeline-dot blue">0</div>
+      <div class="timeline-content">
+        <h3>Kickoff &mdash; Semana 1</h3>
+        <p>Mapeamento detalhado dos fluxos, recebimento da documenta&ccedil;&atilde;o da API de tickets e da base de FAQ. Configura&ccedil;&atilde;o do ambiente.</p>
+        <span class="timeline-tag">Depend&ecirc;ncia: API docs + FAQ do Lucas</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">1</div>
+      <div class="timeline-content">
+        <h3>Fluxo de Vendas &mdash; Semanas 2&ndash;3</h3>
+        <p>WhatsApp conectado, roteador ativo, fluxo de leads funcionando: recep&ccedil;&atilde;o, qualifica&ccedil;&atilde;o, convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">2</div>
+      <div class="timeline-content">
+        <h3>FAQ + IA &mdash; Semanas 3&ndash;4</h3>
+        <p>Base de conhecimento carregada, camada de IA calibrada, matching sem&acirc;ntico de perguntas.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">3</div>
+      <div class="timeline-content">
+        <h3>Integra&ccedil;&atilde;o de Tickets &mdash; Semanas 4&ndash;5</h3>
+        <p>Conex&atilde;o com o sistema de tickets via API. Cria&ccedil;&atilde;o autom&aacute;tica, notifica&ccedil;&atilde;o de resolu&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">4</div>
+      <div class="timeline-content">
+        <h3>Testes &amp; Ajustes &mdash; Semanas 5&ndash;6</h3>
+        <p>Testes end-to-end, cen&aacute;rios de borda, ajuste de fluxos com base no feedback da equipe.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot dim">B</div>
+      <div class="timeline-content">
+        <h3>Dashboard (apenas Op&ccedil;&atilde;o B) &mdash; Semanas 6&ndash;7</h3>
+        <p>Constru&ccedil;&atilde;o e calibra&ccedil;&atilde;o do dashboard anal&iacute;tico em paralelo aos testes.</p>
+        <span class="timeline-tag">Apenas Op&ccedil;&atilde;o B</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue" style="background:#0a1e10; color:#3fba6a; border-color:#3fba6a;">&#10003;</div>
+      <div class="timeline-content">
+        <h3>Go-Live &mdash; Semana 7&ndash;8</h3>
+        <p>Deploy em produ&ccedil;&atilde;o, monitoramento nas primeiras 72h, handoff completo para a equipe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: PROXIMOS PASSOS -->
+<section class="cta-section" id="proximos" style="text-align:left; padding-bottom:80px;">
+  <div class="section-number">10 &mdash; Pr&oacute;ximos passos</div>
+  <h2>Vamos come&ccedil;ar?</h2>
+  <p class="subtitle" style="max-width:580px;">
+    Ap&oacute;s a aprova&ccedil;&atilde;o, agendamos o kickoff, coletamos a API do sistema de tickets e a base de FAQ &mdash; e come&ccedil;amos.
+  </p>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:36px;" class="fade-in">
+    <div style="text-align:center; padding:20px 28px; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; min-width:160px;">
+      <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Passo 1</div>
+      <div style="font-size:15px; font-weight:600;">Aprovação da proposta</div>
+    </div>
+    <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px;">&rarr;</div>
+    <div style="text-align:center; padding:20px 28px; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; min-width:160px;">
+      <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Passo 2</div>
+      <div style="font-size:15px; font-weight:600;">Kickoff + documentação</div>
+    </div>
+    <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px;">&rarr;</div>
+    <div style="text-align:center; padding:20px 28px; background:rgba(74,144,255,0.06); border:1px solid rgba(74,144,255,0.3); border-radius:12px; min-width:160px;">
+      <div style="font-size:11px; color:var(--accent); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Passo 3</div>
+      <div style="font-size:15px; font-weight:600; color:var(--accent-light);">Desenvolvimento</div>
+    </div>
+    <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px;">&rarr;</div>
+    <div style="text-align:center; padding:20px 28px; background:rgba(45,138,78,0.08); border:1px solid rgba(45,138,78,0.3); border-radius:12px; min-width:160px;">
+      <div style="font-size:11px; color:#3fba6a; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Semana 7-8</div>
+      <div style="font-size:15px; font-weight:600; color:#3fba6a;">Go-Live</div>
+    </div>
+  </div>
+  <div class="includes-grid fade-in" style="margin-top:32px;">
+    <div class="include-item">
+      <div class="include-check">&#10003;</div>
+      <div class="include-text"><strong>FAQ em m&atilde;os</strong> &mdash; voc&ecirc; j&aacute; tem, a gente carrega e estrutura.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&#10003;</div>
+      <div class="include-text"><strong>API do seu sistema de tickets</strong> &mdash; precisamos da documenta&ccedil;&atilde;o no kickoff.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&#10003;</div>
+      <div class="include-text"><strong>N&uacute;mero WhatsApp</strong> &mdash; j&aacute; tem ou provisionamos um novo.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-check">&#10003;</div>
+      <div class="include-text"><strong>30 dias de suporte p&oacute;s-go-live</strong> inclu&iacute;dos no setup.</div>
+    </div>
+  </div>
+  <div style="margin-top:36px; font-size:12px; color:var(--text-muted);">
+    Documento confidencial &mdash; Preparado exclusivamente para Lucas Cardoso, Douglas e Dr. &Aacute;ureo &mdash; Junho 2026
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('section');
+  const dotsContainer = document.getElementById('slideDots');
+  const counter = document.getElementById('slideCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+  const total = slides.length;
+
+  counter.textContent = '1 / ' + total;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    if (index < 0 || index >= total) return;
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i < index) s.classList.add('prev');
+    });
+    slides[index].classList.add('active');
+    slides[index].querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    dotsContainer.querySelectorAll('.slide-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+    counter.textContent = (index + 1) + ' / ' + total;
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === total - 1;
+    current = index;
+  }
+
+  function changeSlide(dir) { goToSlide(current + dir); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); changeSlide(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToSlide(total - 1); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) changeSlide(diff < 0 ? 1 : -1);
+  });
+
+  goToSlide(0);
+</script>
+</body>
+</html>

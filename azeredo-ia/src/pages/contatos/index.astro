@@ -1,0 +1,8 @@
+---
+import AppLayout from '../../layouts/AppLayout.astro';
+import ContatosView from '../../components/contatos/ContatosView';
+export const prerender = false;
+---
+<AppLayout title="Contatos" activeSection="contatos">
+  <ContatosView client:load />
+</AppLayout>

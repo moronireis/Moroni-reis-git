@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial | Futura do Brasil - u4digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #060608;
+    --bg-secondary: #0a0a10;
+    --bg-card: #0f0f18;
+    --bg-card-hover: #141420;
+    --border: #1a1a2a;
+    --border-accent: #242440;
+    --text-primary: #e8e8f0;
+    --text-secondary: #7a7a96;
+    --text-muted: #4a4a64;
+    --accent: #4A6CF7;
+    --accent-light: #6B8AFF;
+    --accent-dim: rgba(74, 108, 247, 0.12);
+    --accent-glow: rgba(74, 108, 247, 0.06);
+    --green: #2d8a4e;
+    --green-dim: rgba(45, 138, 78, 0.12);
+    --red: #c44040;
+    --red-dim: rgba(196, 64, 64, 0.10);
+    --amber: #c49a30;
+    --amber-dim: rgba(196, 154, 48, 0.10);
+    --purple: #7a6abf;
+    --purple-dim: rgba(122, 106, 191, 0.10);
+    --cyan: #22a7c3;
+    --cyan-dim: rgba(34, 167, 195, 0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(6, 6, 8, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+  nav .logo-area { display: flex; align-items: center; gap: 12px; }
+  nav .logo-text { font-weight: 600; font-size: 16px; color: var(--text-primary); letter-spacing: -0.02em; }
+  nav .nav-tag { font-size: 11px; color: var(--accent); background: var(--accent-dim); padding: 4px 10px; border-radius: 100px; font-weight: 500; letter-spacing: 0.03em; }
+
+  section {
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 60px; opacity: 0; pointer-events: none;
+    transform: translateX(60px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto;
+  }
+  section.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+  section.prev { opacity: 0; transform: translateX(-60px); }
+  section::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none; opacity: 0.5;
+  }
+
+  .slide-controls { position: fixed; bottom: 32px; right: 40px; z-index: 200; display: flex; align-items: center; gap: 12px; }
+  .slide-counter { font-size: 12px; color: var(--text-muted); font-weight: 500; font-variant-numeric: tabular-nums; min-width: 48px; text-align: center; }
+  .slide-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 16px; }
+  .slide-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+  .slide-btn:disabled { opacity: 0.3; cursor: default; }
+  .slide-btn:disabled:hover { border-color: var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .slide-dots { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 8px; }
+  .slide-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-accent); cursor: pointer; transition: all 0.3s; }
+  .slide-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+  .slide-hint { position: fixed; bottom: 32px; left: 40px; z-index: 200; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .key-hint { display: inline-block; padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: monospace; color: var(--text-muted); background: var(--bg-card); }
+
+  .section-number { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; max-width: 900px; }
+  h2 { font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 20px; }
+  h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 12px; }
+  .subtitle { font-size: 18px; color: var(--text-secondary); max-width: 650px; line-height: 1.7; }
+  .accent { color: var(--accent); }
+  .green { color: var(--green); }
+
+  #hero { text-align: left; }
+  #hero .meta { display: flex; gap: 24px; margin-top: 40px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+  #hero .meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-badges { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+  .badge { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-card); }
+  .badge.accent-badge { color: var(--accent); border-color: rgba(74, 108, 247, 0.25); background: var(--accent-dim); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1100px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all 0.3s ease; }
+  .card:hover { border-color: var(--border-accent); background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 18px; }
+  .card-icon.blue { background: var(--accent-dim); color: var(--accent); }
+  .card-icon.green { background: var(--green-dim); color: var(--green); }
+  .card-icon.amber { background: var(--amber-dim); color: var(--amber); }
+  .card-icon.red { background: var(--red-dim); color: var(--red); }
+  .card-icon.purple { background: var(--purple-dim); color: var(--purple); }
+  .card-icon.cyan { background: var(--cyan-dim); color: var(--cyan); }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1000px; }
+  .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+  .stat-number { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+  .stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+
+  .timeline { margin-top: 40px; max-width: 800px; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent-light)); border-radius: 2px; }
+  .timeline-item { display: flex; gap: 24px; padding-bottom: 36px; position: relative; }
+  .timeline-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; z-index: 1; }
+  .timeline-dot.blue { background: #0b0e1e; color: var(--accent); border: 2px solid var(--accent); }
+  .timeline-dot.green { background: #0b1e12; color: var(--green); border: 2px solid var(--green); }
+  .timeline-content h3 { font-size: 16px; margin-bottom: 6px; }
+  .timeline-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .timeline-content .timeline-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
+
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; max-width: 900px; }
+  .comparison-col { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .comparison-col .col-header { padding: 20px 24px; font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  .comparison-col.negative .col-header { background: var(--red-dim); color: var(--red); }
+  .comparison-col.positive .col-header { background: var(--green-dim); color: var(--green); }
+  .comparison-col ul { list-style: none; padding: 20px 24px; }
+  .comparison-col li { font-size: 14px; color: var(--text-secondary); padding: 8px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .comparison-col li .icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+  .comparison-col.negative li .icon { color: var(--red); }
+  .comparison-col.positive li .icon { color: var(--green); }
+
+  .pain-list { margin-top: 32px; max-width: 750px; }
+  .pain-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--red-dim); color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; font-weight: 700; }
+  .pain-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .pain-text p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 32px; max-width: 1000px; }
+  .include-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s; }
+  .include-item:hover { border-color: var(--border-accent); }
+  .include-check { width: 22px; height: 22px; border-radius: 6px; background: var(--green-dim); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .include-text { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .include-text strong { color: var(--text-primary); font-weight: 600; }
+
+  .roi-highlight { background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(45, 138, 78, 0.2); border-radius: 16px; padding: 32px; margin-top: 32px; max-width: 700px; }
+
+  .flow-diagram { margin-top: 40px; max-width: 960px; }
+  .flow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .flow-node { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+  .flow-node.source { border-color: var(--border-accent); }
+  .flow-node.ai { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-light); }
+  .flow-node.output { border-color: var(--green); border-style: dashed; color: var(--green); }
+  .flow-node.human { background: rgba(196, 154, 48, 0.08); border: 2px solid var(--amber); color: var(--amber); font-weight: 700; padding: 12px 24px; }
+  .flow-arrow { color: var(--text-muted); font-size: 18px; }
+  .flow-label { font-size: 11px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; margin-top: 20px; }
+
+  .network-card { background: linear-gradient(135deg, var(--accent-dim), transparent); border: 1px solid rgba(74, 108, 247, 0.2); border-radius: 16px; padding: 32px; margin-top: 32px; max-width: 700px; }
+
+  /* Background check flag badges */
+  .flag-badges { display: flex; gap: 16px; margin-top: 24px; }
+  .flag-badge { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; }
+  .flag-badge.limpo { background: var(--green-dim); color: var(--green); border: 1px solid rgba(45,138,78,0.3); }
+  .flag-badge.atencao { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(196,154,48,0.3); }
+  .flag-badge.restricao { background: var(--red-dim); color: var(--red); border: 1px solid rgba(196,64,64,0.3); }
+  .flag-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .flag-dot.green { background: var(--green); }
+  .flag-dot.amber { background: var(--amber); }
+  .flag-dot.red { background: var(--red); }
+
+  /* Report sections mockup */
+  .report-section-list { margin-top: 32px; max-width: 600px; }
+  .report-section-item { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
+  .report-section-num { width: 28px; height: 28px; border-radius: 8px; background: var(--accent-dim); color: var(--accent); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .report-section-info h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .report-section-info p { font-size: 12px; color: var(--text-secondary); }
+
+  /* Browser mockup for demo slide */
+  .browser-mockup { background: #0d0d18; border: 1px solid var(--border-accent); border-radius: 14px; overflow: hidden; margin-top: 24px; max-width: 1060px; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+  .browser-bar { background: #13131f; padding: 12px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .browser-dot.r { background: #c44040; }
+  .browser-dot.y { background: #c49a30; }
+  .browser-dot.g { background: #2d8a4e; }
+  .browser-url { flex: 1; background: #0a0a14; border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; font-size: 12px; color: var(--text-muted); font-family: monospace; }
+  .browser-content { display: flex; height: 360px; }
+  .app-sidebar { width: 180px; background: #09090f; border-right: 1px solid var(--border); padding: 20px 0; flex-shrink: 0; }
+  .app-sidebar .sidebar-logo { padding: 0 20px 20px; font-size: 13px; font-weight: 700; color: var(--text-primary); border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  .sidebar-nav-item { padding: 10px 20px; font-size: 12px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: all 0.2s; }
+  .sidebar-nav-item:hover { color: var(--text-primary); background: var(--bg-card); }
+  .sidebar-nav-item.active { color: var(--accent-light); background: var(--accent-dim); }
+  .sidebar-nav-icon { width: 16px; height: 16px; flex-shrink: 0; }
+  .app-main { flex: 1; padding: 24px; overflow: hidden; }
+  .app-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .app-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .app-stat-num { font-size: 18px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
+  .app-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+  .app-bottom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .app-candidate-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .app-candidate-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .app-candidate-disc { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 100px; background: var(--purple-dim); color: var(--purple); margin-bottom: 10px; }
+  .app-bg-flags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .app-bg-flag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .app-bg-flag.g { background: var(--green-dim); color: var(--green); }
+  .app-bg-flag.y { background: var(--amber-dim); color: var(--amber); }
+  .app-score-badge { float: right; font-size: 20px; font-weight: 800; color: var(--accent-light); letter-spacing: -0.03em; }
+  .app-report-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .app-report-title { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .app-report-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 11px; color: var(--text-secondary); }
+  .app-report-row:last-child { border-bottom: none; }
+  .app-report-row span:last-child { font-size: 10px; padding: 2px 6px; border-radius: 4px; }
+  .app-report-row span.done { background: var(--green-dim); color: var(--green); }
+  .app-report-row span.pend { background: var(--amber-dim); color: var(--amber); }
+
+  .cta-section { text-align: center; padding: 80px; }
+  .cta-section h2 { margin-bottom: 16px; }
+  .cta-section .subtitle { margin: 0 auto 40px; text-align: center; }
+
+  /* ===== INTERACTIVE DEMO STYLES ===== */
+  .d-nav-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 12px; border-radius: 7px;
+    font-size: 12px; font-weight: 500; color: #A0A3B1;
+    transition: all 0.15s; margin-bottom: 2px; user-select: none;
+  }
+  .d-nav-item:hover { background: #2A2A3C; color: #fff; }
+  .d-nav-active { background: rgba(74,108,247,0.2) !important; color: #6B8AFF !important; }
+  .d-tab-panel { animation: dFadeIn 0.18s ease; }
+  @keyframes dFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .d-stat-card {
+    background: #fff; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px 16px;
+  }
+  .d-panel {
+    background: #fff; border: 1px solid #E5E7EB; border-radius: 10px; overflow: hidden;
+  }
+  .d-panel-header {
+    padding: 12px 16px; border-bottom: 1px solid #F3F4F6;
+    font-size: 13px; font-weight: 700; color: #1F2937;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .d-feed-item { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid #F9FAFB; }
+  .d-feed-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .d-funnel-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 0; border-bottom: 1px solid #F9FAFB;
+  }
+  .d-funnel-label { font-size: 11px; color: #6B7280; width: 90px; flex-shrink: 0; }
+  .d-funnel-bar-wrap { flex: 1; height: 8px; background: #F3F4F6; border-radius: 4px; overflow: hidden; }
+  .d-funnel-bar { height: 100%; border-radius: 4px; }
+  .d-funnel-val { font-size: 11px; font-weight: 600; color: #374151; width: 46px; text-align: right; flex-shrink: 0; }
+  .d-th {
+    text-align: left; padding: 9px 12px; font-size: 10px; font-weight: 600;
+    color: #9CA3AF; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .d-td { padding: 10px 12px; font-size: 12px; color: #6B7280; border-bottom: 1px solid #F9FAFB; }
+  .d-tr:last-child .d-td { border-bottom: none; }
+  .d-tr:hover .d-td { background: #F9FAFB; }
+  .d-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 100px;
+  }
+  .d-flag-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .d-check-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid #F9FAFB;
+  }
+  .d-disc-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .d-disc-label { font-size: 11px; color: #6B7280; width: 110px; flex-shrink: 0; }
+  .d-disc-track { flex: 1; height: 7px; background: #F3F4F6; border-radius: 4px; overflow: hidden; }
+  .d-disc-bar { height: 100%; border-radius: 4px; }
+  .d-disc-pct { font-size: 11px; color: #6B7280; width: 32px; text-align: right; flex-shrink: 0; }
+  .d-strength-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
+  .d-report-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 0; border-bottom: 1px solid #F3F4F6; font-size: 12px; color: #374151;
+  }
+  .d-report-mini {
+    padding: 6px 0; font-size: 11px; color: #6B7280;
+    border-bottom: 1px solid #F9FAFB; overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 80px 24px; }
+    nav { padding: 12px 20px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .flow-row { flex-direction: column; align-items: flex-start; }
+    .app-stats-row { grid-template-columns: 1fr 1fr; }
+    .browser-content { flex-direction: column; height: auto; }
+    .app-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); display: flex; flex-direction: row; overflow-x: auto; }
+  }
+  @media print {
+    body { overflow: visible; height: auto; }
+    section { position: static; opacity: 1; transform: none; pointer-events: all; page-break-inside: avoid; padding: 40px; height: auto; min-height: auto; }
+    nav, .slide-controls, .slide-dots, .slide-hint { display: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-area">
+    <span class="logo-text">u4digital</span>
+  </div>
+  <span class="nav-tag">Proposta Comercial</span>
+</nav>
+
+<div class="slide-dots" id="slideDots"></div>
+<div class="slide-hint">
+  <span class="key-hint">&larr;</span>
+  <span class="key-hint">&rarr;</span>
+  ou clique para navegar
+</div>
+<div class="slide-controls">
+  <button class="slide-btn" id="prevBtn" onclick="changeSlide(-1)">&larr;</button>
+  <span class="slide-counter" id="slideCounter">1 / 17</span>
+  <button class="slide-btn" id="nextBtn" onclick="changeSlide(1)">&rarr;</button>
+</div>
+
+<!-- SLIDE 1: HERO -->
+<section id="hero">
+  <div class="section-number">Proposta comercial</div>
+  <h1>Plataforma Inteligente de Recrutamento<br>feita para a <span class="accent">FUTURA DO BRASIL</span></h1>
+  <p class="subtitle">
+    Automa&ccedil;&atilde;o completa do processo seletivo &mdash; do cadastro do candidato ao relat&oacute;rio consolidado entregue ao cliente. Mantendo a ess&ecirc;ncia humana que &eacute; o diferencial da Futura.
+  </p>
+  <div class="hero-badges">
+    <span class="badge accent-badge">AI-Powered</span>
+    <span class="badge">Background Check</span>
+    <span class="badge">DISC Integrado</span>
+    <span class="badge">54K+ Candidatos</span>
+    <span class="badge">Expans&atilde;o Nacional</span>
+  </div>
+  <div class="meta">
+    <span>Preparado para Telma Re | FUTURA DO BRASIL</span>
+    <span>Junho 2026</span>
+    <span>Confidencial</span>
+  </div>
+</section>
+
+<!-- SLIDE 2: CONTEXTO -->
+<section id="contexto">
+  <div class="section-number">01 &mdash; Contexto</div>
+  <h2>Entendemos o neg&oacute;cio</h2>
+  <p class="subtitle">A FUTURA &eacute; refer&ecirc;ncia em velocidade e contato humano em Santa Maria. O desafio: escalar sem perder a ess&ecirc;ncia.</p>
+  <div class="stats-row fade-in">
+    <div class="stat-card"><div class="stat-number accent">23 anos</div><div class="stat-label">De opera&ccedil;&atilde;o e confian&ccedil;a no mercado</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--green)">54.226</div><div class="stat-label">Candidatos no banco de dados</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--amber)">~200/semana</div><div class="stat-label">Contatos com candidatos</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--purple)">3 planos</div><div class="stat-label">De sele&ccedil;&atilde;o oferecidos</div></div>
+  </div>
+  <div class="roi-highlight fade-in" style="margin-top: 32px; padding: 24px 28px;">
+    <div style="font-size: 15px; color: var(--text-primary); line-height: 1.8;">
+      <strong>Modelo h&iacute;brido de receita:</strong> honor&aacute;rios do candidato + taxa da empresa. Transi&ccedil;&atilde;o em andamento para cobran&ccedil;a 100% da empresa &mdash; especialmente em vagas fora de Santa Maria. A plataforma que vamos construir viabiliza essa transi&ccedil;&atilde;o.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: DIAGNOSTICO -->
+<section id="diagnostico">
+  <div class="section-number">02 &mdash; Diagn&oacute;stico</div>
+  <h2>Onde est&aacute; o gargalo</h2>
+  <p class="subtitle">Mapeamos 5 pontos cr&iacute;ticos que est&atilde;o limitando o crescimento da opera&ccedil;&atilde;o.</p>
+  <div class="pain-list fade-in">
+    <div class="pain-item">
+      <div class="pain-icon">1</div>
+      <div class="pain-text">
+        <h4>Processos manuais consomem horas</h4>
+        <p>Triagem, contato, agendamento, pesquisa de candidatos &mdash; tudo feito na m&atilde;o. Com ~200 contatos por semana, s&atilde;o horas perdidas em tarefas repetitivas.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">2</div>
+      <div class="pain-text">
+        <h4>Entregavel b&aacute;sico limita o ticket</h4>
+        <p>Sem relat&oacute;rio consolidado (DISC, background check, an&aacute;lise), a Futura n&atilde;o consegue justificar um aumento de honor&aacute;rios. O concorrente de Passo Fundo j&aacute; oferece isso.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">3</div>
+      <div class="pain-text">
+        <h4>Evas&atilde;o entre atra&ccedil;&atilde;o e entrevista</h4>
+        <p>Maior perda no funil acontece entre a candidatura e o comparecimento na entrevista. Sem lembrete autom&aacute;tico, sem confirma&ccedil;&atilde;o, a taxa de no-show &eacute; alta.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">4</div>
+      <div class="pain-text">
+        <h4>Banco de dados em WordPress</h4>
+        <p>54 mil candidatos armazenados atr&aacute;s de um site WordPress. Risco de seguran&ccedil;a (LGPD), sem estrutura profissional, sem busca avan&ccedil;ada.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">5</div>
+      <div class="pain-text">
+        <h4>Expans&atilde;o travada por processos locais</h4>
+        <p>Para atender vagas fora de Santa Maria e crescer nacionalmente, &eacute; imposs&iacute;vel manter tudo manual. A opera&ccedil;&atilde;o n&atilde;o escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: IMPACTO FINANCEIRO -->
+<section id="impacto">
+  <div class="section-number">03 &mdash; Impacto financeiro</div>
+  <h2>Quanto custa n&atilde;o automatizar</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; max-width: 900px;" class="fade-in">
+    <div style="background: var(--red-dim); border: 1px solid rgba(196, 64, 64, 0.25); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -0.03em;">15-20h</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Horas gastas por semana<br>em processos manuais repetitivos</div>
+    </div>
+    <div style="background: var(--red-dim); border: 1px solid rgba(196, 64, 64, 0.25); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -0.03em;">Zero</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Background checks feitos hoje<br>(concorrente j&aacute; entrega)</div>
+    </div>
+    <div style="background: var(--red-dim); border: 1px solid rgba(196, 64, 64, 0.25); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -0.03em;">R$&nbsp;500&ndash;1.500</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Aumento de ticket que<br>o relat&oacute;rio consolidado viabiliza</div>
+    </div>
+  </div>
+  <div style="margin-top: 32px; max-width: 760px; padding: 24px 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;" class="fade-in">
+    <div style="font-size: 15px; color: var(--text-primary); line-height: 1.8;">
+      Telma na reuni&atilde;o: <em style="color: var(--text-secondary);">&ldquo;Para que eu possa aumentar o meu ticket m&eacute;dio, eu preciso pensar em fazer uma entrega diferente, uma entrega mais robusta.&rdquo;</em>
+    </div>
+    <div style="margin-top: 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+      O concorrente de Passo Fundo j&aacute; mostrou solu&ccedil;&atilde;o com DISC + consultas autom&aacute;ticas. Cada semana sem esse entregavel &eacute; uma semana perdendo competitividade.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: ANTES vs DEPOIS -->
+<section id="comparacao">
+  <div class="section-number">04 &mdash; Antes vs depois</div>
+  <h2>O que muda com a plataforma</h2>
+  <p class="subtitle">Da opera&ccedil;&atilde;o manual no WordPress para uma plataforma inteligente e escalavel.</p>
+  <div class="comparison-grid fade-in">
+    <div class="comparison-col negative">
+      <div class="col-header">Processo Atual</div>
+      <ul>
+        <li><span class="icon">&times;</span> Triagem manual no banco WordPress</li>
+        <li><span class="icon">&times;</span> Zero background check (criminal, trabalhista)</li>
+        <li><span class="icon">&times;</span> Sem perfil comportamental (DISC)</li>
+        <li><span class="icon">&times;</span> Curr&iacute;culo: o que o candidato manda (sem padr&atilde;o)</li>
+        <li><span class="icon">&times;</span> Entrega pro cliente: verbal ou &aacute;udio</li>
+        <li><span class="icon">&times;</span> Comunica&ccedil;&atilde;o: e-mail + WhatsApp manual</li>
+        <li><span class="icon">&times;</span> Dashboard: nenhum</li>
+        <li><span class="icon">&times;</span> Dados em WordPress sem seguran&ccedil;a LGPD</li>
+      </ul>
+    </div>
+    <div class="comparison-col positive">
+      <div class="col-header">Com Plataforma IA</div>
+      <ul>
+        <li><span class="icon">&check;</span> Match IA autom&aacute;tico contra 54K+ candidatos</li>
+        <li><span class="icon">&check;</span> Background check completo (CPF + criminal + trabalhista)</li>
+        <li><span class="icon">&check;</span> DISC integrado com score de adequa&ccedil;&atilde;o</li>
+        <li><span class="icon">&check;</span> Curr&iacute;culo formatado por IA no padr&atilde;o Futura</li>
+        <li><span class="icon">&check;</span> Relat&oacute;rio PDF profissional consolidado</li>
+        <li><span class="icon">&check;</span> Automa&ccedil;&atilde;o com templates inteligentes</li>
+        <li><span class="icon">&check;</span> M&eacute;tricas em tempo real</li>
+        <li><span class="icon">&check;</span> Supabase com LGPD nativo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: SOLUCAO (8 CARDS) -->
+<section id="solucao">
+  <div class="section-number">05 &mdash; Solu&ccedil;&atilde;o</div>
+  <h2>O que vamos construir</h2>
+  <p class="subtitle">8 m&oacute;dulos integrados que transformam a opera&ccedil;&atilde;o sem perder a ess&ecirc;ncia humana.</p>
+  <div class="card-grid fade-in">
+    <div class="card">
+      <div class="card-icon blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Portal do Candidato</h3>
+      <p>Cadastro simplificado, mobile-first, m&aacute;ximo 4 campos. UX que flui &mdash; sem travar o candidato em formul&aacute;rios infinitos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+      <h3>Banco de Dados Profissional</h3>
+      <p>Migra&ccedil;&atilde;o dos 54K candidatos para Supabase. Busca avan&ccedil;ada, filtros, LGPD nativo, seguran&ccedil;a real.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon red">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Background Check Automatizado</h3>
+      <p>CPF, ficha criminal, processos trabalhistas &mdash; tudo autom&aacute;tico ap&oacute;s cadastro. Flags verde/amarelo/vermelho.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Perfil DISC + IA</h3>
+      <p>Question&aacute;rio integrado, perfil comportamental com score de adequa&ccedil;&atilde;o candidato &times; vaga. IA cruza os dados.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Relat&oacute;rio Consolidado PDF</h3>
+      <p>O entregavel premium: DISC + background + curr&iacute;culo + parecer da Futura. Justifica cobrar mais.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon cyan">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <h3>Automa&ccedil;&atilde;o de Comunica&ccedil;&atilde;o</h3>
+      <p>E-mail + WhatsApp automatizado: lembretes, confirma&ccedil;&otilde;es, follow-up. O humano entra onde importa.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Dashboard Operacional</h3>
+      <p>Vagas abertas, funil de candidatos, taxa de comparecimento, tempo m&eacute;dio de fechamento. Vis&atilde;o total.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon green">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      </div>
+      <h3>Match Inteligente</h3>
+      <p>IA rankeia candidatos por vaga automaticamente. Telma e Dani revisam o top &mdash; n&atilde;o garimpam mais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: FLUXO AUTOMATIZADO -->
+<section id="fluxo">
+  <div class="section-number">06 &mdash; Fluxo automatizado</div>
+  <h2>Como funciona na pr&aacute;tica</h2>
+  <p class="subtitle">Do cadastro do candidato ao relat&oacute;rio entregue &mdash; com o contato humano preservado no centro.</p>
+  <div class="flow-diagram fade-in">
+    <div class="flow-label">Cadastro</div>
+    <div class="flow-row">
+      <div class="flow-node source">Candidato (portal/WhatsApp)</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Cadastro + Background Check auto</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Perfil no banco + flags</div>
+    </div>
+    <div class="flow-label">Avalia&ccedil;&atilde;o</div>
+    <div class="flow-row">
+      <div class="flow-node source">Convite DISC</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Question&aacute;rio + Score IA</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Perfil comportamental gerado</div>
+    </div>
+    <div class="flow-label">Match</div>
+    <div class="flow-row">
+      <div class="flow-node source">Empresa abre vaga</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Match IA contra 54K+</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Top candidatos rankeados</div>
+    </div>
+    <div class="flow-label">Entrevista</div>
+    <div class="flow-row">
+      <div class="flow-node source">Convite autom&aacute;tico (e-mail + whats)</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node human">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;flex-shrink:0;"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        ENTREVISTA PRESENCIAL (HUMANO)
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Parecer pessoal da Futura</div>
+    </div>
+    <div class="flow-label">Entrega</div>
+    <div class="flow-row">
+      <div class="flow-node source">Dados consolidados</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node ai">Gera relat&oacute;rio PDF</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-node output">Enviado ao cliente</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: BACKGROUND CHECK -->
+<section id="background-check">
+  <div class="section-number">07 &mdash; Background Check</div>
+  <h2>Consultas automatizadas</h2>
+  <p class="subtitle">O diferencial que o mercado j&aacute; exige &mdash; e que a Futura ainda n&atilde;o entrega.</p>
+  <div class="card-grid fade-in" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 32px;">
+    <div class="card" style="padding: 22px;">
+      <div class="card-icon green" style="width:34px;height:34px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h3 style="font-size:14px;margin-bottom:6px;">Valida&ccedil;&atilde;o de CPF</h3>
+      <p style="font-size:12px;">Receita Federal. Confirma identidade, situa&ccedil;&atilde;o cadastral.</p>
+    </div>
+    <div class="card" style="padding: 22px;">
+      <div class="card-icon red" style="width:34px;height:34px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3 style="font-size:14px;margin-bottom:6px;">Ficha Criminal</h3>
+      <p style="font-size:12px;">Antecedentes criminais federais e estaduais. Consulta autom&aacute;tica via API.</p>
+    </div>
+    <div class="card" style="padding: 22px;">
+      <div class="card-icon amber" style="width:34px;height:34px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+      </div>
+      <h3 style="font-size:14px;margin-bottom:6px;">Processos Trabalhistas</h3>
+      <p style="font-size:12px;">Hist&oacute;rico de a&ccedil;&otilde;es trabalhistas. Tribunais Regionais do Trabalho.</p>
+    </div>
+    <div class="card" style="padding: 22px;">
+      <div class="card-icon purple" style="width:34px;height:34px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3 style="font-size:14px;margin-bottom:6px;">Consulta de Cr&eacute;dito</h3>
+      <p style="font-size:12px;">Situa&ccedil;&atilde;o financeira. Opcional, conforme exig&ecirc;ncia da vaga.</p>
+    </div>
+    <div class="card" style="padding: 22px;">
+      <div class="card-icon blue" style="width:34px;height:34px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <h3 style="font-size:14px;margin-bottom:6px;">Compliance LGPD</h3>
+      <p style="font-size:12px;">Consentimento digital antes de qualquer consulta. Termo de autoriza&ccedil;&atilde;o registrado.</p>
+    </div>
+  </div>
+  <div class="flag-badges fade-in">
+    <div class="flag-badge limpo"><div class="flag-dot green"></div> Limpo</div>
+    <div class="flag-badge atencao"><div class="flag-dot amber"></div> Aten&ccedil;&atilde;o</div>
+    <div class="flag-badge restricao"><div class="flag-dot red"></div> Restri&ccedil;&atilde;o</div>
+    <div style="font-size: 13px; color: var(--text-muted); display: flex; align-items: center; margin-left: 8px;">Sinaliza&ccedil;&atilde;o autom&aacute;tica ap&oacute;s cada consulta</div>
+  </div>
+</section>
+
+<!-- SLIDE 9: RELATORIO CONSOLIDADO -->
+<section id="relatorio">
+  <div class="section-number">08 &mdash; Entregavel Premium</div>
+  <h2>O relat&oacute;rio que justifica cobrar mais</h2>
+  <p class="subtitle">De um feedback verbal para um documento profissional que impressiona o cliente.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; max-width: 900px;" class="fade-in">
+    <div class="report-section-list" style="margin-top: 0;">
+      <div class="report-section-item">
+        <div class="report-section-num">1</div>
+        <div class="report-section-info"><h4>Capa</h4><p>Marca Futura + dados da vaga + data</p></div>
+      </div>
+      <div class="report-section-item">
+        <div class="report-section-num">2</div>
+        <div class="report-section-info"><h4>Perfil do Candidato</h4><p>Dados pessoais, forma&ccedil;&atilde;o, experi&ecirc;ncia</p></div>
+      </div>
+      <div class="report-section-item">
+        <div class="report-section-num">3</div>
+        <div class="report-section-info"><h4>Curr&iacute;culo Formatado</h4><p>Gerado por IA no padr&atilde;o Futura</p></div>
+      </div>
+      <div class="report-section-item">
+        <div class="report-section-num">4</div>
+        <div class="report-section-info"><h4>Background Check</h4><p>Status de cada consulta com flags</p></div>
+      </div>
+      <div class="report-section-item">
+        <div class="report-section-num">5</div>
+        <div class="report-section-info"><h4>Perfil DISC</h4><p>Gr&aacute;fico + descri&ccedil;&atilde;o + pontos fortes/aten&ccedil;&atilde;o</p></div>
+      </div>
+      <div class="report-section-item">
+        <div class="report-section-num">6</div>
+        <div class="report-section-info"><h4>Score de Adequa&ccedil;&atilde;o</h4><p>Compatibilidade candidato &times; vaga (0&ndash;100)</p></div>
+      </div>
+      <div class="report-section-item">
+        <div class="report-section-num">7</div>
+        <div class="report-section-info"><h4>Parecer da Futura</h4><p>Considera&ccedil;&otilde;es pessoais de Telma/Dani</p></div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+      <div style="background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(45,138,78,0.25); border-radius: 16px; padding: 28px;">
+        <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 16px;">ROI do relat&oacute;rio</div>
+        <div style="font-size: 15px; color: var(--text-primary); line-height: 1.8;">
+          Se esse relat&oacute;rio te permite cobrar <strong style="color: var(--green);">R$&nbsp;300 a mais por vaga</strong>, em 2&ndash;3 vagas por m&ecirc;s voc&ecirc; j&aacute; pagou a mensalidade inteira.
+        </div>
+      </div>
+      <div style="margin-top: 20px; padding: 20px 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;">
+        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;">Diferencial vs concorrente</div>
+        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+          O concorrente de Passo Fundo entrega DISC + consultas isoladas. Aqui, o relat&oacute;rio &eacute; <strong style="color: var(--text-primary);">unificado, com a marca Futura</strong> e o parecer pessoal da Telma ou da Dani. &Eacute; inimit&aacute;vel por qualquer SaaS gen&eacute;rico.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: TIMELINE -->
+<section id="timeline">
+  <div class="section-number">09 &mdash; Cronograma</div>
+  <h2>Fases de implementa&ccedil;&atilde;o</h2>
+  <p class="subtitle">8 semanas. Come&ccedil;amos pelo que d&aacute; mais resultado imediato.</p>
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="timeline-dot blue">1</div>
+      <div class="timeline-content">
+        <h3>Funda&ccedil;&atilde;o</h3>
+        <p>Migra&ccedil;&atilde;o dos 54K candidatos para Supabase. Portal do candidato. Infraestrutura.</p>
+        <span class="timeline-tag">Semanas 1&ndash;2 &mdash; Base</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">2</div>
+      <div class="timeline-content">
+        <h3>Automa&ccedil;&atilde;o Core</h3>
+        <p>Background check automatizado. DISC integrado. Templates de e-mail. Gerador de curr&iacute;culo IA.</p>
+        <span class="timeline-tag">Semanas 3&ndash;4 &mdash; Quick Win</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot blue">3</div>
+      <div class="timeline-content">
+        <h3>Match + Relat&oacute;rio</h3>
+        <p>Gest&atilde;o de vagas. Match inteligente. Relat&oacute;rio consolidado PDF. WhatsApp automatizado.</p>
+        <span class="timeline-tag">Semanas 5&ndash;6</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot green">4</div>
+      <div class="timeline-content">
+        <h3>Refinamento</h3>
+        <p>Dashboard completo. Treinamento Telma + Dani. Ajustes finos. Suporte 30 dias.</p>
+        <span class="timeline-tag">Semanas 7&ndash;8 &mdash; Go Live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: ESCOPO -->
+<section id="incluso">
+  <div class="section-number">10 &mdash; Escopo</div>
+  <h2>O que est&aacute; incluso</h2>
+  <p class="subtitle">12 entregaveis que cobrem toda a opera&ccedil;&atilde;o da Futura.</p>
+  <div class="includes-grid fade-in">
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Migra&ccedil;&atilde;o 54K candidatos</strong> &mdash; WordPress para Supabase com limpeza e normaliza&ccedil;&atilde;o</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Portal do candidato</strong> &mdash; Cadastro, perfil, acompanhamento de vagas, mobile-first</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Background check integrado</strong> &mdash; CPF + criminal + trabalhista + cr&eacute;dito (APIs profissionais)</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Question&aacute;rio DISC + IA</strong> &mdash; Perfil comportamental com score de adequa&ccedil;&atilde;o por vaga</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Gerador de curr&iacute;culo IA</strong> &mdash; Curr&iacute;culo formatado automaticamente no padr&atilde;o Futura</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Relat&oacute;rio consolidado PDF</strong> &mdash; DISC + background + curr&iacute;culo + parecer em documento &uacute;nico</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Templates de e-mail</strong> &mdash; 5 templates automatizados (confirma&ccedil;&atilde;o, convite, lembrete, feedback, reativa&ccedil;&atilde;o)</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>WhatsApp automatizado</strong> &mdash; Lembretes, confirma&ccedil;&otilde;es, notifica&ccedil;&otilde;es de novas vagas</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Match inteligente</strong> &mdash; IA rankeia candidatos por vaga, score de adequa&ccedil;&atilde;o autom&aacute;tico</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Dashboard operacional</strong> &mdash; M&eacute;tricas em tempo real, funil, performance por cliente</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Gest&atilde;o de vagas</strong> &mdash; Abertura, triagem, acompanhamento, fechamento com status</div></div>
+    <div class="include-item"><div class="include-check">&check;</div><div class="include-text"><strong>Treinamento + suporte 30 dias</strong> &mdash; Capacita&ccedil;&atilde;o completa + acompanhamento p&oacute;s-entrega</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 12: CASE RHF -->
+<section id="cases">
+  <div class="section-number">11 &mdash; Quem j&aacute; confia</div>
+  <h2>Cases no segmento</h2>
+  <p class="subtitle">Experi&ecirc;ncia comprovada em recrutamento de alta escala.</p>
+  <div class="network-card fade-in">
+    <div style="font-size: 16px; color: var(--text-primary); line-height: 1.9;">
+      J&aacute; constru&iacute;mos para a <strong style="color: var(--accent-light);">RHF Talentos</strong> &mdash; uma das maiores redes de recrutamento do Brasil, com 800+ unidades. Substitu&iacute;mos Pandape + ChatGuru por uma plataforma personalizada com IA. Al&eacute;m da RHF, atendemos <strong>Chevrolet</strong>, <strong>Volkswagen</strong>, <strong>Grupo FloraPlac</strong> e outras empresas de refer&ecirc;ncia.
+    </div>
+  </div>
+  <div class="stats-row fade-in" style="margin-top: 32px;">
+    <div class="stat-card"><div class="stat-number accent">800+</div><div class="stat-label">Unidades RHF atendidas</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--green)">6+ anos</div><div class="stat-label">No mercado de automa&ccedil;&atilde;o</div></div>
+    <div class="stat-card"><div class="stat-number" style="color: var(--amber)">100%</div><div class="stat-label">Plataformas sob medida</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 13: VISAO DE EXPANSAO -->
+<section id="expansao">
+  <div class="section-number">12 &mdash; Vis&atilde;o de futuro</div>
+  <h2>A plataforma cresce com a Futura</h2>
+  <p class="subtitle">Hoje Santa Maria. Amanh&atilde;, o Brasil.</p>
+  <div class="network-card fade-in">
+    <div style="font-size: 15px; color: var(--text-primary); line-height: 1.9;">
+      <strong style="color: var(--accent-light);">1. Agora</strong> &mdash; Plataforma para a opera&ccedil;&atilde;o de Santa Maria. 54K candidatos, equipe atual, clientes regionais. Resultado imediato.<br><br>
+      <strong style="color: var(--accent-light);">2. Expans&atilde;o RS</strong> &mdash; Com a plataforma, atender vagas de qualquer cidade do Estado sem aumentar equipe. Banco de candidatos multiregional.<br><br>
+      <strong style="color: var(--accent-light);">3. Nacional</strong> &mdash; A mesma plataforma suporta opera&ccedil;&atilde;o nacional. Custo marginal baixo para adicionar novos operadores e regi&otilde;es.
+    </div>
+  </div>
+  <div style="margin-top: 28px; padding: 20px 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; max-width: 600px;" class="fade-in">
+    <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+      <strong style="color: var(--text-primary);">Seus 54 mil candidatos s&atilde;o ouro.</strong> Hoje est&atilde;o num cofre sem tranca. Vamos proteger e potencializar esse capital para crescer sem fronteiras.
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: DEMO INTERATIVO -->
+<section id="demo">
+  <div class="section-number">13 &mdash; Demo interativo</div>
+  <h2>Sua plataforma na pr&aacute;tica</h2>
+  <p class="subtitle" style="margin-bottom: 16px;">Clique nas abas para explorar cada m&oacute;dulo.</p>
+
+  <div class="browser-mockup fade-in" style="max-width: 1060px; box-shadow: 0 32px 100px rgba(0,0,0,0.6);">
+    <div class="browser-bar">
+      <div class="browser-dots">
+        <div class="browser-dot r"></div>
+        <div class="browser-dot y"></div>
+        <div class="browser-dot g"></div>
+      </div>
+      <div class="browser-url" id="demoBrowserUrl">app.futuradobrasil.com.br/dashboard</div>
+    </div>
+
+    <!-- APP SHELL -->
+    <div style="display:flex; height: 480px; background: #F3F4F6;">
+
+      <!-- SIDEBAR -->
+      <div style="width:180px; background:#1E1E2D; display:flex; flex-direction:column; flex-shrink:0; border-right:1px solid rgba(255,255,255,0.06);">
+        <div style="padding:16px 18px 14px; border-bottom:1px solid rgba(255,255,255,0.07);">
+          <div style="font-size:14px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Futura</div>
+          <div style="font-size:10px; color:#6B6F8A; margin-top:2px;">do Brasil</div>
+        </div>
+        <div style="padding:10px 8px; flex:1;">
+          <div class="d-nav-item d-nav-active" onclick="switchDemoTab('dashboard', this, 'app.futuradobrasil.com.br/dashboard')" style="cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:0.9;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Dashboard
+          </div>
+          <div class="d-nav-item" onclick="switchDemoTab('candidatos', this, 'app.futuradobrasil.com.br/candidatos')" style="cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Candidatos
+          </div>
+          <div class="d-nav-item" onclick="switchDemoTab('vagas', this, 'app.futuradobrasil.com.br/vagas')" style="cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            Vagas
+          </div>
+          <div class="d-nav-item" onclick="switchDemoTab('bgcheck', this, 'app.futuradobrasil.com.br/background-check')" style="cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Background
+          </div>
+          <div class="d-nav-item" onclick="switchDemoTab('disc', this, 'app.futuradobrasil.com.br/disc')" style="cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            DISC
+          </div>
+          <div class="d-nav-item" onclick="switchDemoTab('relatorios', this, 'app.futuradobrasil.com.br/relatorios')" style="cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Relat&oacute;rios
+          </div>
+        </div>
+        <div style="padding:12px 16px; border-top:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:8px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4A6CF7,#6B8AFF);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;">T</div>
+          <div>
+            <div style="font-size:11px;font-weight:600;color:#fff;">Telma Re</div>
+            <div style="font-size:10px;color:#6B6F8A;">Administrador</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+
+        <!-- TOP BAR -->
+        <div style="background:#fff; border-bottom:1px solid #E5E7EB; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0;">
+          <div id="demoTopbarTitle" style="font-size:15px; font-weight:700; color:#1F2937; letter-spacing:-0.02em;">Dashboard</div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div style="font-size:11px; font-weight:600; padding:4px 10px; border-radius:100px; background:#EFF6FF; color:#3B82F6;">Ao vivo</div>
+            <div style="width:28px;height:28px;border-radius:6px;border:1px solid #E5E7EB;background:#F9FAFB;display:flex;align-items:center;justify-content:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB PANELS -->
+        <div style="flex:1; overflow-y:auto; padding:18px 20px;" id="demoContentArea">
+
+          <!-- TAB: DASHBOARD -->
+          <div id="d-tab-dashboard" class="d-tab-panel" style="display:block;">
+            <!-- Stats -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
+              <div class="d-stat-card">
+                <div style="font-size:11px;font-weight:600;color:#6B7280;margin-bottom:6px;">Candidatos</div>
+                <div style="font-size:22px;font-weight:800;color:#4A6CF7;letter-spacing:-0.03em;">54.226</div>
+              </div>
+              <div class="d-stat-card">
+                <div style="font-size:11px;font-weight:600;color:#6B7280;margin-bottom:6px;">Vagas abertas</div>
+                <div style="font-size:22px;font-weight:800;color:#10B981;letter-spacing:-0.03em;">12</div>
+              </div>
+              <div class="d-stat-card">
+                <div style="font-size:11px;font-weight:600;color:#6B7280;margin-bottom:6px;">Confirma&ccedil;&atilde;o</div>
+                <div style="font-size:22px;font-weight:800;color:#F59E0B;letter-spacing:-0.03em;">89%</div>
+              </div>
+              <div class="d-stat-card">
+                <div style="font-size:11px;font-weight:600;color:#6B7280;margin-bottom:6px;">Tempo m&eacute;dio</div>
+                <div style="font-size:22px;font-weight:800;color:#8B5CF6;letter-spacing:-0.03em;">3,2 dias</div>
+              </div>
+            </div>
+            <!-- 2-col row -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <!-- Activity feed -->
+              <div class="d-panel">
+                <div class="d-panel-header">Atividade recente</div>
+                <div style="padding:14px 16px;">
+                  <div class="d-feed-item">
+                    <div class="d-feed-dot" style="background:#10B981;"></div>
+                    <div>
+                      <div style="font-size:12px;color:#1F2937;line-height:1.4;">Novo candidato &mdash; <strong>Ana Carolina Silva</strong> (Administra&ccedil;&atilde;o)</div>
+                      <div style="font-size:10px;color:#9CA3AF;margin-top:2px;">H&aacute; 12 min</div>
+                    </div>
+                  </div>
+                  <div class="d-feed-item">
+                    <div class="d-feed-dot" style="background:#3B82F6;"></div>
+                    <div>
+                      <div style="font-size:12px;color:#1F2937;line-height:1.4;">Background check &mdash; CPF OK &middot; Criminal OK &middot; Trabalhista OK</div>
+                      <div style="font-size:10px;color:#9CA3AF;margin-top:2px;">H&aacute; 28 min</div>
+                    </div>
+                  </div>
+                  <div class="d-feed-item">
+                    <div class="d-feed-dot" style="background:#F59E0B;"></div>
+                    <div>
+                      <div style="font-size:12px;color:#1F2937;line-height:1.4;">Vaga aberta &mdash; <strong>Analista Financeiro</strong> (Empresa Vetor)</div>
+                      <div style="font-size:10px;color:#9CA3AF;margin-top:2px;">H&aacute; 1 hora</div>
+                    </div>
+                  </div>
+                  <div class="d-feed-item">
+                    <div class="d-feed-dot" style="background:#10B981;"></div>
+                    <div>
+                      <div style="font-size:12px;color:#1F2937;line-height:1.4;">Relat&oacute;rio enviado &mdash; <strong>Gerente Comercial</strong> para TechSul Ltda</div>
+                      <div style="font-size:10px;color:#9CA3AF;margin-top:2px;">H&aacute; 2 horas</div>
+                    </div>
+                  </div>
+                  <div class="d-feed-item" style="border-bottom:none;">
+                    <div class="d-feed-dot" style="background:#8B5CF6;"></div>
+                    <div>
+                      <div style="font-size:12px;color:#1F2937;line-height:1.4;">Entrevista confirmada &mdash; <strong>Pedro Santos</strong> amanh&atilde; 14h</div>
+                      <div style="font-size:10px;color:#9CA3AF;margin-top:2px;">H&aacute; 3 horas</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Funnel chart -->
+              <div class="d-panel">
+                <div class="d-panel-header">Funil de candidatos</div>
+                <div style="padding:14px 16px;">
+                  <div class="d-funnel-row">
+                    <div class="d-funnel-label">Cadastrados</div>
+                    <div class="d-funnel-bar-wrap">
+                      <div class="d-funnel-bar" style="width:100%;background:#4A6CF7;"></div>
+                    </div>
+                    <div class="d-funnel-val">54.226</div>
+                  </div>
+                  <div class="d-funnel-row">
+                    <div class="d-funnel-label">Triados</div>
+                    <div class="d-funnel-bar-wrap">
+                      <div class="d-funnel-bar" style="width:24%;background:#3B82F6;"></div>
+                    </div>
+                    <div class="d-funnel-val">12.840</div>
+                  </div>
+                  <div class="d-funnel-row">
+                    <div class="d-funnel-label">Entrevistados</div>
+                    <div class="d-funnel-bar-wrap">
+                      <div class="d-funnel-bar" style="width:6.4%;background:#10B981;"></div>
+                    </div>
+                    <div class="d-funnel-val">3.450</div>
+                  </div>
+                  <div class="d-funnel-row">
+                    <div class="d-funnel-label">Selecionados</div>
+                    <div class="d-funnel-bar-wrap">
+                      <div class="d-funnel-bar" style="width:1.6%;background:#F59E0B;"></div>
+                    </div>
+                    <div class="d-funnel-val">890</div>
+                  </div>
+                  <div class="d-funnel-row" style="border-bottom:none;">
+                    <div class="d-funnel-label">Contratados</div>
+                    <div class="d-funnel-bar-wrap">
+                      <div class="d-funnel-bar" style="width:0.4%;background:#8B5CF6;min-width:6px;"></div>
+                    </div>
+                    <div class="d-funnel-val">234</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: CANDIDATOS -->
+          <div id="d-tab-candidatos" class="d-tab-panel" style="display:none;">
+            <div class="d-panel">
+              <div class="d-panel-header">
+                Candidatos
+                <div style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:#EFF6FF;color:#3B82F6;">54.226 total</div>
+              </div>
+              <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                  <tr style="background:#F9FAFB;border-bottom:1px solid #E5E7EB;">
+                    <th class="d-th">Nome</th>
+                    <th class="d-th">&Aacute;rea</th>
+                    <th class="d-th">DISC</th>
+                    <th class="d-th">Score</th>
+                    <th class="d-th">BG Check</th>
+                    <th class="d-th">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="d-tr">
+                    <td class="d-td" style="font-weight:600;color:#1F2937;">Ana Carolina Silva</td>
+                    <td class="d-td">Administra&ccedil;&atilde;o</td>
+                    <td class="d-td"><span class="d-badge" style="background:#F5F3FF;color:#7C3AED;">Influente (I)</span></td>
+                    <td class="d-td" style="font-weight:700;color:#4A6CF7;">87/100</td>
+                    <td class="d-td">
+                      <div style="display:flex;gap:4px;">
+                        <span class="d-flag-dot" style="background:#10B981;" title="CPF OK"></span>
+                        <span class="d-flag-dot" style="background:#10B981;" title="Criminal OK"></span>
+                        <span class="d-flag-dot" style="background:#F59E0B;" title="Trabalhista: aten&ccedil;&atilde;o"></span>
+                      </div>
+                    </td>
+                    <td class="d-td"><span class="d-badge" style="background:#EFF6FF;color:#3B82F6;">Entrevistada</span></td>
+                  </tr>
+                  <tr class="d-tr">
+                    <td class="d-td" style="font-weight:600;color:#1F2937;">Pedro Santos</td>
+                    <td class="d-td">Financeiro</td>
+                    <td class="d-td"><span class="d-badge" style="background:#FEF2F2;color:#DC2626;">Dominante (D)</span></td>
+                    <td class="d-td" style="font-weight:700;color:#4A6CF7;">92/100</td>
+                    <td class="d-td">
+                      <div style="display:flex;gap:4px;">
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                      </div>
+                    </td>
+                    <td class="d-td"><span class="d-badge" style="background:#ECFDF5;color:#059669;">Selecionado</span></td>
+                  </tr>
+                  <tr class="d-tr">
+                    <td class="d-td" style="font-weight:600;color:#1F2937;">Juliana Ferreira</td>
+                    <td class="d-td">Marketing</td>
+                    <td class="d-td"><span class="d-badge" style="background:#ECFDF5;color:#059669;">Est&aacute;vel (S)</span></td>
+                    <td class="d-td" style="font-weight:700;color:#4A6CF7;">78/100</td>
+                    <td class="d-td">
+                      <div style="display:flex;gap:4px;">
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#F59E0B;"></span>
+                      </div>
+                    </td>
+                    <td class="d-td"><span class="d-badge" style="background:#FFFBEB;color:#D97706;">Em triagem</span></td>
+                  </tr>
+                  <tr class="d-tr">
+                    <td class="d-td" style="font-weight:600;color:#1F2937;">Lucas Oliveira</td>
+                    <td class="d-td">TI</td>
+                    <td class="d-td"><span class="d-badge" style="background:#EFF6FF;color:#3B82F6;">Conforme (C)</span></td>
+                    <td class="d-td" style="font-weight:700;color:#4A6CF7;">85/100</td>
+                    <td class="d-td">
+                      <div style="display:flex;gap:4px;">
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                      </div>
+                    </td>
+                    <td class="d-td"><span class="d-badge" style="background:#EFF6FF;color:#3B82F6;">Entrevistado</span></td>
+                  </tr>
+                  <tr class="d-tr" style="border-bottom:none;">
+                    <td class="d-td" style="font-weight:600;color:#1F2937;">Maria Costa</td>
+                    <td class="d-td">RH</td>
+                    <td class="d-td"><span class="d-badge" style="background:#F5F3FF;color:#7C3AED;">Influente (I)</span></td>
+                    <td class="d-td" style="font-weight:700;color:#4A6CF7;">91/100</td>
+                    <td class="d-td">
+                      <div style="display:flex;gap:4px;">
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                        <span class="d-flag-dot" style="background:#10B981;"></span>
+                      </div>
+                    </td>
+                    <td class="d-td"><span class="d-badge" style="background:#ECFDF5;color:#059669;">Contratada</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB: VAGAS -->
+          <div id="d-tab-vagas" class="d-tab-panel" style="display:none;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="d-panel" style="padding:18px;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#1F2937;">Analista Financeiro</div>
+                    <div style="font-size:11px;color:#6B7280;margin-top:2px;">Empresa Vetor</div>
+                  </div>
+                  <span class="d-badge" style="background:#ECFDF5;color:#059669;">Aberta</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#6B7280;padding-top:10px;border-top:1px solid #F3F4F6;">
+                  <span>8 candidatos</span>
+                  <span>Score m&eacute;dio: <strong style="color:#4A6CF7;">82</strong></span>
+                </div>
+              </div>
+              <div class="d-panel" style="padding:18px;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#1F2937;">Gerente Comercial</div>
+                    <div style="font-size:11px;color:#6B7280;margin-top:2px;">TechSul Ltda</div>
+                  </div>
+                  <span class="d-badge" style="background:#FFFBEB;color:#D97706;">Em sele&ccedil;&atilde;o</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#6B7280;padding-top:10px;border-top:1px solid #F3F4F6;">
+                  <span>12 candidatos</span>
+                  <span>Score m&eacute;dio: <strong style="color:#4A6CF7;">88</strong></span>
+                </div>
+              </div>
+              <div class="d-panel" style="padding:18px;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#1F2937;">Assistente Admin</div>
+                    <div style="font-size:11px;color:#6B7280;margin-top:2px;">ABCTech</div>
+                  </div>
+                  <span class="d-badge" style="background:#F5F3FF;color:#7C3AED;">Fechada</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#6B7280;padding-top:10px;border-top:1px solid #F3F4F6;">
+                  <span>5 candidatos</span>
+                  <span>Score m&eacute;dio: <strong style="color:#4A6CF7;">79</strong></span>
+                </div>
+              </div>
+              <div class="d-panel" style="padding:18px;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#1F2937;">Coord. Marketing</div>
+                    <div style="font-size:11px;color:#6B7280;margin-top:2px;">InnovaCom</div>
+                  </div>
+                  <span class="d-badge" style="background:#ECFDF5;color:#059669;">Aberta</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#6B7280;padding-top:10px;border-top:1px solid #F3F4F6;">
+                  <span>3 candidatos</span>
+                  <span>Score m&eacute;dio: <strong style="color:#4A6CF7;">75</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: BACKGROUND CHECK -->
+          <div id="d-tab-bgcheck" class="d-tab-panel" style="display:none;">
+            <div class="d-panel">
+              <div class="d-panel-header">
+                Background Check &mdash; Consulta em andamento
+                <span class="d-badge" style="background:#FFFBEB;color:#D97706;">APTO c/ observa&ccedil;&atilde;o</span>
+              </div>
+              <div style="padding:16px 20px;">
+                <div style="display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid #F3F4F6;margin-bottom:16px;">
+                  <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4A6CF7,#6B8AFF);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;">A</div>
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:#1F2937;">Ana Carolina Silva</div>
+                    <div style="font-size:12px;color:#9CA3AF;">CPF: 123.456.***-**</div>
+                  </div>
+                </div>
+                <div class="d-check-row">
+                  <div style="display:flex;align-items:center;gap:10px;flex:1;">
+                    <div style="width:28px;height:28px;border-radius:8px;background:#ECFDF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:13px;font-weight:600;color:#1F2937;">Valida&ccedil;&atilde;o CPF</div>
+                      <div style="font-size:11px;color:#9CA3AF;">Receita Federal</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="d-badge" style="background:#ECFDF5;color:#059669;">Aprovado</span>
+                    <span style="font-size:10px;color:#9CA3AF;">0.3s</span>
+                  </div>
+                </div>
+                <div class="d-check-row">
+                  <div style="display:flex;align-items:center;gap:10px;flex:1;">
+                    <div style="width:28px;height:28px;border-radius:8px;background:#ECFDF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:13px;font-weight:600;color:#1F2937;">Ficha Criminal</div>
+                      <div style="font-size:11px;color:#9CA3AF;">Pol&iacute;cia Federal</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="d-badge" style="background:#ECFDF5;color:#059669;">Limpo</span>
+                    <span style="font-size:10px;color:#9CA3AF;">1.2s</span>
+                  </div>
+                </div>
+                <div class="d-check-row">
+                  <div style="display:flex;align-items:center;gap:10px;flex:1;">
+                    <div style="width:28px;height:28px;border-radius:8px;background:#FFFBEB;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:13px;font-weight:600;color:#1F2937;">Processos Trabalhistas</div>
+                      <div style="font-size:11px;color:#9CA3AF;">1 registro (encerrado 2019)</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="d-badge" style="background:#FFFBEB;color:#D97706;">Aten&ccedil;&atilde;o</span>
+                    <span style="font-size:10px;color:#9CA3AF;">2.1s</span>
+                  </div>
+                </div>
+                <div class="d-check-row">
+                  <div style="display:flex;align-items:center;gap:10px;flex:1;">
+                    <div style="width:28px;height:28px;border-radius:8px;background:#ECFDF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:13px;font-weight:600;color:#1F2937;">Consulta Cr&eacute;dito</div>
+                      <div style="font-size:11px;color:#9CA3AF;">ClearSale</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="d-badge" style="background:#ECFDF5;color:#059669;">Regular</span>
+                    <span style="font-size:10px;color:#9CA3AF;">0.8s</span>
+                  </div>
+                </div>
+                <div class="d-check-row" style="border-bottom:none;">
+                  <div style="display:flex;align-items:center;gap:10px;flex:1;">
+                    <div style="width:28px;height:28px;border-radius:8px;background:#ECFDF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:13px;font-weight:600;color:#1F2937;">Compliance LGPD</div>
+                      <div style="font-size:11px;color:#9CA3AF;">Consentimento &mdash; autorizado 05/06/2026</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="d-badge" style="background:#ECFDF5;color:#059669;">Autorizado</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: DISC -->
+          <div id="d-tab-disc" class="d-tab-panel" style="display:none;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div class="d-panel" style="padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #F3F4F6;">
+                  <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4A6CF7,#6B8AFF);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;">A</div>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#1F2937;">Ana Carolina Silva</div>
+                    <span class="d-badge" style="background:#F5F3FF;color:#7C3AED;margin-top:4px;display:inline-flex;">Influente (I)</span>
+                  </div>
+                </div>
+                <div style="margin-bottom:8px;">
+                  <div class="d-disc-row">
+                    <div class="d-disc-label">D &mdash; Domin&acirc;ncia</div>
+                    <div class="d-disc-track"><div class="d-disc-bar" style="width:35%;background:#EF4444;"></div></div>
+                    <div class="d-disc-pct">35%</div>
+                  </div>
+                  <div class="d-disc-row">
+                    <div class="d-disc-label" style="color:#7C3AED;font-weight:700;">I &mdash; Influ&ecirc;ncia</div>
+                    <div class="d-disc-track"><div class="d-disc-bar" style="width:82%;background:#7C3AED;"></div></div>
+                    <div class="d-disc-pct" style="color:#7C3AED;font-weight:700;">82%</div>
+                  </div>
+                  <div class="d-disc-row">
+                    <div class="d-disc-label">S &mdash; Estabilidade</div>
+                    <div class="d-disc-track"><div class="d-disc-bar" style="width:61%;background:#10B981;"></div></div>
+                    <div class="d-disc-pct">61%</div>
+                  </div>
+                  <div class="d-disc-row">
+                    <div class="d-disc-label">C &mdash; Conformidade</div>
+                    <div class="d-disc-track"><div class="d-disc-bar" style="width:44%;background:#3B82F6;"></div></div>
+                    <div class="d-disc-pct">44%</div>
+                  </div>
+                </div>
+                <div style="margin-top:14px;padding-top:14px;border-top:1px solid #F3F4F6;">
+                  <div style="font-size:11px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Adequa&ccedil;&atilde;o &mdash; Analista Financeiro</div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="flex:1;height:6px;background:#F3F4F6;border-radius:3px;overflow:hidden;"><div style="width:87%;height:100%;background:linear-gradient(90deg,#4A6CF7,#6B8AFF);border-radius:3px;"></div></div>
+                    <div style="font-size:14px;font-weight:800;color:#4A6CF7;">87/100</div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-panel" style="padding:20px;">
+                <div style="font-size:12px;font-weight:700;color:#1F2937;margin-bottom:10px;">Pontos fortes</div>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+                  <div class="d-strength-item" style="color:#059669;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Comunica&ccedil;&atilde;o</div>
+                  <div class="d-strength-item" style="color:#059669;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Trabalho em equipe</div>
+                  <div class="d-strength-item" style="color:#059669;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Criatividade</div>
+                  <div class="d-strength-item" style="color:#059669;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Persuas&atilde;o</div>
+                </div>
+                <div style="font-size:12px;font-weight:700;color:#1F2937;margin-bottom:10px;">Pontos de aten&ccedil;&atilde;o</div>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+                  <div class="d-strength-item" style="color:#D97706;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>Detalhismo</div>
+                  <div class="d-strength-item" style="color:#D97706;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>Organiza&ccedil;&atilde;o de rotina</div>
+                </div>
+                <div style="padding:12px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;">
+                  <div style="font-size:10px;font-weight:700;color:#4A6CF7;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Recomenda&ccedil;&atilde;o IA</div>
+                  <div style="font-size:11px;color:#6B7280;line-height:1.5;">Perfil adequado para fun&ccedil;&otilde;es que exigem intera&ccedil;&atilde;o com clientes e equipes. Compensar baixo C com suporte de processos estruturados.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: RELATORIOS -->
+          <div id="d-tab-relatorios" class="d-tab-panel" style="display:none;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <!-- Document preview -->
+              <div class="d-panel" style="padding:20px;">
+                <div style="background:#fff;border:1px solid #E5E7EB;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                  <div style="background:#4A6CF7;padding:14px 18px;color:#fff;">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;opacity:0.8;text-transform:uppercase;margin-bottom:2px;">FUTURA DO BRASIL</div>
+                    <div style="font-size:13px;font-weight:700;">Relat&oacute;rio de Candidato</div>
+                  </div>
+                  <div style="padding:14px 18px;">
+                    <div class="d-report-row">
+                      <span>1. Capa</span>
+                      <span class="d-badge" style="background:#ECFDF5;color:#059669;font-size:10px;padding:2px 8px;">Pronto</span>
+                    </div>
+                    <div class="d-report-row">
+                      <span>2. Perfil do Candidato</span>
+                      <span class="d-badge" style="background:#ECFDF5;color:#059669;font-size:10px;padding:2px 8px;">Pronto</span>
+                    </div>
+                    <div class="d-report-row">
+                      <span>3. Curr&iacute;culo Formatado</span>
+                      <span class="d-badge" style="background:#ECFDF5;color:#059669;font-size:10px;padding:2px 8px;">Pronto</span>
+                    </div>
+                    <div class="d-report-row">
+                      <span>4. Background Check</span>
+                      <span class="d-badge" style="background:#ECFDF5;color:#059669;font-size:10px;padding:2px 8px;">Pronto</span>
+                    </div>
+                    <div class="d-report-row">
+                      <span>5. Perfil DISC</span>
+                      <span class="d-badge" style="background:#ECFDF5;color:#059669;font-size:10px;padding:2px 8px;">Pronto</span>
+                    </div>
+                    <div class="d-report-row">
+                      <span>6. Score de Adequa&ccedil;&atilde;o</span>
+                      <span class="d-badge" style="background:#ECFDF5;color:#059669;font-size:10px;padding:2px 8px;">87/100</span>
+                    </div>
+                    <div class="d-report-row" style="border-bottom:none;">
+                      <span>7. Parecer da Futura</span>
+                      <span class="d-badge" style="background:#FFFBEB;color:#D97706;font-size:10px;padding:2px 8px;font-style:italic;">Pendente (Telma)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Actions and info -->
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div class="d-panel" style="padding:18px;">
+                  <div style="font-size:12px;font-weight:700;color:#1F2937;margin-bottom:12px;">Candidato</div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4A6CF7,#6B8AFF);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;">A</div>
+                    <div>
+                      <div style="font-size:13px;font-weight:600;color:#1F2937;">Ana Carolina Silva</div>
+                      <div style="font-size:11px;color:#9CA3AF;">Analista Financeiro &mdash; Empresa Vetor</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:8px;margin-top:14px;">
+                    <button onclick="event.stopPropagation();" style="flex:1;padding:9px 12px;background:#4A6CF7;color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+                      Gerar PDF
+                    </button>
+                    <button onclick="event.stopPropagation();" style="flex:1;padding:9px 12px;background:#fff;color:#6B7280;border:1px solid #E5E7EB;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;">
+                      Visualizar
+                    </button>
+                  </div>
+                </div>
+                <div class="d-panel" style="padding:16px;">
+                  <div style="font-size:11px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Relat&oacute;rios recentes</div>
+                  <div class="d-report-mini">Pedro Santos &mdash; Gerente Comercial <span style="float:right;color:#10B981;">Enviado</span></div>
+                  <div class="d-report-mini">Juliana Ferreira &mdash; Marketing <span style="float:right;color:#D97706;">Rascunho</span></div>
+                  <div class="d-report-mini" style="border-bottom:none;">Lucas Oliveira &mdash; TI <span style="float:right;color:#10B981;">Enviado</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /demoContentArea -->
+      </div><!-- /main -->
+    </div><!-- /app shell -->
+  </div><!-- /browser-mockup -->
+</section>
+
+<!-- SLIDE 15: INVESTIMENTO -->
+<section id="investimento">
+  <div class="section-number">14 &mdash; Investimento</div>
+  <h2>Condi&ccedil;&otilde;es</h2>
+  <div style="max-width: 800px; margin-top: 36px;" class="fade-in">
+    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 32px;">
+      <div style="text-align: center; padding: 20px 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; min-width: 180px;">
+        <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Valor de refer&ecirc;ncia</div>
+        <div style="font-size: 30px; font-weight: 700; color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--red); letter-spacing: -0.02em;">R$ 12.000</div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Automa&ccedil;&atilde;o completa com<br>8 m&oacute;dulos + IA + background check</div>
+      </div>
+      <div style="font-size: 28px; color: var(--text-muted);">&rarr;</div>
+      <div style="text-align: center; padding: 24px 36px; background: var(--accent-dim); border: 2px solid var(--accent); border-radius: 14px; min-width: 200px;">
+        <div style="font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Valor do projeto</div>
+        <div style="font-size: 44px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1;">R$ 6.500</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">Podendo parcelar em at&eacute; 4x</div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px;">
+      <div style="padding: 28px; background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 16px; text-align: center;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">Parcelado</div>
+        <div style="font-size: 34px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em;">4x R$ 1.625</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">Sem juros</div>
+      </div>
+      <div style="padding: 28px; background: linear-gradient(135deg, var(--green-dim), rgba(45,138,78,0.05)); border: 2px solid var(--green); border-radius: 16px; text-align: center; position: relative;">
+        <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.05em; white-space: nowrap;">MELHOR CONDI&Ccedil;&Atilde;O</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">&Agrave; vista</div>
+        <div style="font-size: 34px; font-weight: 800; color: var(--green); letter-spacing: -0.02em;">R$ 5.850</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">Pagamento &uacute;nico</div>
+      </div>
+    </div>
+    <div style="padding: 22px 26px; background: linear-gradient(135deg, var(--green-dim), transparent); border: 1px solid rgba(45,138,78,0.2); border-radius: 14px;">
+      <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+        Com ticket m&eacute;dio de <strong style="color: var(--text-primary);">R$&nbsp;500&ndash;1.000 por vaga</strong>, o investimento se paga ao fechar <strong style="color: var(--text-primary);">6&ndash;7 vagas a mais</strong> no primeiro trimestre. Com o relat&oacute;rio consolidado, o aumento de ticket m&eacute;dio sozinho cobre a mensalidade.
+        <br><br>
+        <strong style="color: var(--accent-light);">Recorr&ecirc;ncia mensal:</strong> Ap&oacute;s a implanta&ccedil;&atilde;o, R$&nbsp;697/m&ecirc;s para manuten&ccedil;&atilde;o, suporte, APIs de background check e custos de IA.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16: PROXIMO PASSO -->
+<section id="proximo" class="cta-section" style="text-align: center; justify-content: center;">
+  <div class="section-number" style="justify-content: center;">15 &mdash; Pr&oacute;ximo passo</div>
+  <h2>Vamos construir juntos?</h2>
+  <p class="subtitle" style="margin: 0 auto; text-align: center;">
+    Pr&oacute;ximo passo: aprova&ccedil;&atilde;o da proposta e in&iacute;cio da migra&ccedil;&atilde;o dos 54K candidatos.<br>
+    Primeiros background checks autom&aacute;ticos em menos de <strong>4 semanas</strong>.
+  </p>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+    <div style="text-align: center; padding: 20px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Quick Win em</div>
+      <div style="font-size: 20px; font-weight: 700;">&lt; 4 semanas</div>
+    </div>
+    <div style="text-align: center; padding: 20px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Projeto completo em</div>
+      <div style="font-size: 20px; font-weight: 700;">8 semanas</div>
+    </div>
+    <div style="text-align: center; padding: 20px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Candidatos migrados</div>
+      <div style="font-size: 20px; font-weight: 700;">54K+</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17: OBRIGADO -->
+<section class="cta-section" id="obrigado" style="justify-content: center; text-align: center;">
+  <h2>Obrigado.</h2>
+  <p class="subtitle" style="margin: 16px auto 0; text-align: center;">
+    u4digital &mdash; Agentes de Intelig&ecirc;ncia Artificial
+  </p>
+  <div style="margin-top: 40px; font-size: 12px; color: var(--text-muted);">
+    Documento confidencial &mdash; Preparado exclusivamente para FUTURA DO BRASIL &mdash; Junho 2026
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('section');
+  const dotsContainer = document.getElementById('slideDots');
+  const counter = document.getElementById('slideCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+  const total = slides.length;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    if (index < 0 || index >= total) return;
+    slides.forEach((s, i) => { s.classList.remove('active', 'prev'); if (i < index) s.classList.add('prev'); });
+    slides[index].classList.add('active');
+    slides[index].querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    dotsContainer.querySelectorAll('.slide-dot').forEach((d, i) => { d.classList.toggle('active', i === index); });
+    counter.textContent = (index + 1) + ' / ' + total;
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === total - 1;
+    current = index;
+  }
+
+  function changeSlide(dir) { goToSlide(current + dir); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); changeSlide(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToSlide(total - 1); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) { changeSlide(diff < 0 ? 1 : -1); }
+  });
+
+  goToSlide(0);
+
+  // ===== INTERACTIVE DEMO TAB SWITCHER =====
+  function switchDemoTab(tabId, navEl, url) {
+    // Do NOT propagate to slide navigation
+    event.stopPropagation();
+
+    // Hide all tab panels
+    var panels = document.querySelectorAll('.d-tab-panel');
+    panels.forEach(function(p) { p.style.display = 'none'; });
+
+    // Show selected panel
+    var target = document.getElementById('d-tab-' + tabId);
+    if (target) { target.style.display = 'block'; }
+
+    // Update URL bar
+    var urlBar = document.getElementById('demoBrowserUrl');
+    if (urlBar && url) { urlBar.textContent = url; }
+
+    // Update topbar title
+    var titles = {
+      dashboard: 'Dashboard',
+      candidatos: 'Candidatos',
+      vagas: 'Vagas',
+      bgcheck: 'Background Check',
+      disc: 'Perfil DISC',
+      relatorios: 'Relat\u00f3rios'
+    };
+    var topbarTitle = document.getElementById('demoTopbarTitle');
+    if (topbarTitle && titles[tabId]) { topbarTitle.textContent = titles[tabId]; }
+
+    // Update sidebar active state
+    var navItems = document.querySelectorAll('.d-nav-item');
+    navItems.forEach(function(item) { item.classList.remove('d-nav-active'); });
+    if (navEl) { navEl.classList.add('d-nav-active'); }
+  }
+</script>
+
+</body>
+</html>

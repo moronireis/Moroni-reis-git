@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contrato de Prestação de Serviços — Casa Magnólia</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23060606'/><text x='16' y='22' font-size='16' fill='%23C9B97A' text-anchor='middle' font-family='serif'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #060606;
+  --dark: #0C0C0C;
+  --card: #111;
+  --white: #F5F5F3;
+  --dim: rgba(245,245,243,.55);
+  --muted: rgba(245,245,243,.35);
+  --ghost: rgba(245,245,243,.15);
+  --accent: #C9B97A;
+  --accent-dim: rgba(201,185,122,.25);
+  --accent-glow: rgba(201,185,122,.06);
+  --green: #5ABE7A;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.75;
+  padding: 0;
+}
+
+/* ── CONFIDENTIAL BAR ── */
+.confidential-bar {
+  background: #0A0A0A;
+  color: var(--accent);
+  text-align: center;
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .55rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(201,185,122,.12);
+}
+
+/* ── CONTAINER ── */
+.contract {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 3rem 4rem;
+}
+
+/* ── HEADER ── */
+.contract-header {
+  text-align: center;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(201,185,122,.15);
+  margin-bottom: 3rem;
+}
+
+.contract-header .brand-mark {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: .08em;
+  color: var(--white);
+  margin-bottom: .5rem;
+}
+
+.contract-header .brand-mark em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.contract-header .doc-type {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  display: inline-block;
+  border: 1px solid var(--accent-dim);
+  padding: .35rem 1.2rem;
+}
+
+.contract-header h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.contract-header h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.contract-header .subtitle {
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── PARTIES ── */
+.parties {
+  background: #0A0A0A;
+  color: var(--white);
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  border: 1px solid rgba(201,185,122,.1);
+}
+
+.parties::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.parties h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.party {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(201,185,122,.1);
+}
+
+.party:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.party-label {
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+.party-name {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: .3rem;
+}
+
+.party-detail {
+  font-size: .8rem;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* ── CLAUSES ── */
+.clause {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(201,185,122,.1);
+}
+
+.clause:last-of-type {
+  border-bottom: none;
+}
+
+.clause-number {
+  font-family: var(--serif);
+  font-size: .7rem;
+  font-weight: 400;
+  letter-spacing: .15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+
+.clause h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.clause p {
+  font-size: .85rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--dim);
+  margin-bottom: .8rem;
+}
+
+.clause p:last-child {
+  margin-bottom: 0;
+}
+
+.clause strong {
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* ── SUB-ITEMS ── */
+.sub-section {
+  margin: 1.2rem 0;
+}
+
+.sub-section-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: .6rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid rgba(201,185,122,.08);
+}
+
+.deliverable-list {
+  list-style: none;
+  padding: 0;
+  margin: .8rem 0;
+}
+
+.deliverable-list li {
+  font-size: .82rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--dim);
+  padding: .5rem 0;
+  padding-left: 1.6rem;
+  position: relative;
+  border-bottom: 1px solid rgba(201,185,122,.06);
+}
+
+.deliverable-list li:last-child {
+  border-bottom: none;
+}
+
+.deliverable-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .85rem;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--accent);
+  transform: rotate(45deg);
+}
+
+.deliverable-list li strong {
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* ── VALUE TAG ── */
+.value-tag {
+  display: inline-block;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(201,185,122,.08);
+  padding: .25rem .7rem;
+  margin-top: .5rem;
+  border: 1px solid rgba(201,185,122,.12);
+}
+
+.value-total {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--accent);
+  background: rgba(201,185,122,.06);
+  padding: .4rem 1.2rem;
+  margin-top: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+/* ── GOALS TABLE ── */
+.goals-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: .82rem;
+}
+
+.goals-table th {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: left;
+  padding: .6rem .8rem;
+  border-bottom: 2px solid rgba(201,185,122,.2);
+}
+
+.goals-table td {
+  font-weight: 300;
+  color: var(--dim);
+  padding: .6rem .8rem;
+  border-bottom: 1px solid rgba(201,185,122,.06);
+}
+
+.goals-table td strong {
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* ── PAYMENT TABLE ── */
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: .82rem;
+}
+
+.payment-table th {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: left;
+  padding: .6rem .8rem;
+  border-bottom: 2px solid rgba(201,185,122,.2);
+}
+
+.payment-table td {
+  font-weight: 300;
+  color: var(--dim);
+  padding: .6rem .8rem;
+  border-bottom: 1px solid rgba(201,185,122,.06);
+}
+
+.payment-table td strong {
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* ── SIGNATURES ── */
+.signatures {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 2px solid rgba(201,185,122,.15);
+}
+
+.signatures h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.sig-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.sig-block {
+  text-align: center;
+}
+
+.sig-line {
+  border-bottom: 1px solid var(--dim);
+  margin-bottom: .6rem;
+  height: 60px;
+}
+
+.sig-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: .2rem;
+}
+
+.sig-role {
+  font-size: .7rem;
+  font-weight: 300;
+  color: var(--dim);
+}
+
+.sig-doc {
+  font-size: .7rem;
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: .15rem;
+}
+
+.witnesses-title {
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
+.date-place {
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--dim);
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,185,122,.1);
+}
+
+.date-place strong {
+  font-weight: 400;
+  color: var(--white);
+}
+
+/* ── FOOTER ── */
+.contract-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,185,122,.1);
+}
+
+.contract-footer p {
+  font-size: .65rem;
+  font-weight: 300;
+  color: var(--ghost);
+  letter-spacing: .05em;
+}
+
+/* ── PRINT ── */
+@media print {
+  .confidential-bar {
+    position: static;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #0A0A0A !important;
+    color: var(--accent) !important;
+  }
+
+  body {
+    background: var(--black);
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .contract {
+    max-width: 100%;
+    padding: 1.5cm 2cm;
+  }
+
+  .parties {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #0A0A0A !important;
+  }
+
+  .clause {
+    page-break-inside: avoid;
+  }
+
+  .signatures {
+    page-break-before: always;
+  }
+
+  .sig-line {
+    height: 80px;
+  }
+
+  a { color: inherit; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .contract {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .parties {
+    padding: 1.5rem;
+  }
+
+  .sig-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- CONFIDENTIAL BAR -->
+<div class="confidential-bar">Documento Confidencial — Uso Restrito das Partes</div>
+
+<div class="contract">
+
+  <!-- ── HEADER ── -->
+  <header class="contract-header">
+    <div class="brand-mark">Hub High Ticket <em>&</em> Casa Magnólia</div>
+    <div class="doc-type">Contrato Particular</div>
+    <h1>Contrato de Prestação <em>de Serviços</em></h1>
+    <p class="subtitle">
+      Instrumento particular que entre si celebram as partes abaixo qualificadas, para a prestação de serviços de marketing, branding e estruturação digital conforme as cláusulas e condições que seguem.
+    </p>
+  </header>
+
+  <!-- ── PARTIES ── -->
+  <div class="parties">
+    <h2>Partes Contratantes</h2>
+
+    <div class="party">
+      <div class="party-label">Contratada — Prestadora de Serviços de Marketing</div>
+      <div class="party-name">Moroni Ferreira Reis</div>
+      <div class="party-detail">
+        CPF: ___.___.___ - __<br>
+        Marca: Hub High Ticket / REIS IA<br>
+        Endereço: _______________________________________________<br>
+        E-mail: contato@moronireis.com.br<br>
+        Telefone: (___) _____-____<br>
+        Doravante denominada <strong>CONTRATADA</strong>.
+      </div>
+    </div>
+
+    <div class="party">
+      <div class="party-label">Contratante — Espaço de Eventos</div>
+      <div class="party-name">Casa Magnólia</div>
+      <div class="party-detail">
+        Razão Social: _______________________________________________<br>
+        CNPJ: __.___.___/____-__<br>
+        Representado(a) por: _______________________________________________<br>
+        Endereço: _______________________________________________<br>
+        E-mail: _______________________________________________<br>
+        Telefone: (___) _____-____<br>
+        Doravante denominada <strong>CONTRATANTE</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLÁUSULA 1 — OBJETO ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Primeira</div>
+    <h3>Do Objeto</h3>
+    <p>
+      O presente contrato tem por objeto a <strong>prestação de serviços de marketing estratégico, branding, desenvolvimento digital, gestão de tráfego pago, direção audiovisual e análise comercial</strong> pela CONTRATADA à CONTRATANTE, conforme detalhado nas cláusulas seguintes.
+    </p>
+    <p>
+      <strong>1.1.</strong> A CONTRATADA compromete-se a executar a estruturação digital completa da CONTRATANTE, incluindo marca, site, conteúdo, tráfego e audiovisual, com o objetivo de atrair e converter clientes qualificados no segmento de eventos high ticket.
+    </p>
+    <p>
+      <strong>1.2.</strong> A equipe designada para a execução dos serviços é composta por: <strong>Moroni Reis</strong> (estratégia e direção geral), <strong>Rafael Puglia</strong> (execução e tráfego) e <strong>Luiza Purificação</strong> (conteúdo e audiovisual).
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 2 — ESCOPO DE SERVIÇOS ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Segunda</div>
+    <h3>Do Escopo de Serviços</h3>
+    <p>
+      A CONTRATADA compromete-se a entregar os seguintes serviços durante a vigência do contrato:
+    </p>
+
+    <div class="sub-section">
+      <div class="sub-section-title">I. Estruturação (Mês 1)</div>
+      <ul class="deliverable-list">
+        <li><strong>Brandbook + Identidade Visual</strong> — Marca, paleta de cores, tipografia, templates de posts e stories, linguagem digital e manual de aplicação</li>
+        <li><strong>Site Institucional + Landing Pages</strong> — Site para autoridade e credibilidade, com páginas de conversão segmentadas por público (casamentos, debutantes, corporativo)</li>
+        <li><strong>Instagram Completo</strong> — Bio otimizada, destaques estratégicos, grid planejado, narrativa central e identidade visual de feed e stories</li>
+        <li><strong>Configuração de Tráfego Pago</strong> — Configuração do Meta Ads, verificação da empresa, instalação do Pixel, estruturação de campanhas e primeiros testes A/B com conteúdos existentes</li>
+        <li><strong>Definição Estratégica</strong> — Linhas editoriais, estratégia de conteúdo, briefings iniciais de captação audiovisual</li>
+      </ul>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">II. Produção + Otimização (Meses 2 e 3)</div>
+      <ul class="deliverable-list">
+        <li><strong>Audiovisual Dirigido</strong> — Produção profissional de foto e vídeo com direção estratégica da CONTRATADA, incluída no pacote</li>
+        <li><strong>Direção de Conteúdo</strong> — Narrativa, roteiros e briefings estratégicos para cada peça de conteúdo, rodando nas linhas editoriais definidas</li>
+        <li><strong>Gestão de Tráfego Pago</strong> — Campanhas Meta Ads otimizadas com base nos dados do mês anterior, testes A/B contínuos e escalonamento do que funciona</li>
+        <li><strong>Análise Comercial</strong> — Monitoramento do comportamento do lead no WhatsApp, análise de conversão e recomendações de abordagem</li>
+        <li><strong>Estratégia + Métricas</strong> — Relatórios mensais de performance com custo por seguidor qualificado, taxa de conversão e CAC</li>
+        <li><strong>Documentação de Conteúdo</strong> — Captação de bastidores, atendimentos e depoimentos de clientes para prova social</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── CLÁUSULA 3 — VIGÊNCIA ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Terceira</div>
+    <h3>Da Vigência</h3>
+    <p>
+      <strong>3.1.</strong> O presente contrato tem vigência de <strong>3 (três) meses</strong>, com início em <strong>___ de _______________ de 2026</strong> e término em <strong>___ de _______________ de 2026</strong>.
+    </p>
+    <p>
+      <strong>3.2.</strong> A entrega dos serviços de estruturação (item I da Cláusula Segunda) deverá ser concluída até o final do primeiro mês de vigência.
+    </p>
+    <p>
+      <strong>3.3.</strong> Os serviços de produção e otimização (item II da Cláusula Segunda) serão executados de forma contínua durante os meses 2 e 3 da vigência.
+    </p>
+    <p>
+      <strong>3.4.</strong> Ao término da vigência, as partes poderão negociar a renovação do contrato com escopo e condições ajustadas conforme os resultados obtidos.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 4 — INVESTIMENTO ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Quarta</div>
+    <h3>Do Investimento</h3>
+    <p>
+      <strong>4.1.</strong> Pelos serviços descritos na Cláusula Segunda, a CONTRATANTE pagará à CONTRATADA o valor mensal de <strong>R$ 10.000,00 (dez mil reais)</strong>, totalizando <strong>R$ 30.000,00 (trinta mil reais)</strong> ao longo dos 3 meses de vigência.
+    </p>
+
+    <table class="payment-table">
+      <thead>
+        <tr>
+          <th>Parcela</th>
+          <th>Valor</th>
+          <th>Vencimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1ª Parcela</strong></td>
+          <td><strong>R$ 10.000,00</strong></td>
+          <td>No ato da assinatura deste contrato</td>
+        </tr>
+        <tr>
+          <td><strong>2ª Parcela</strong></td>
+          <td><strong>R$ 10.000,00</strong></td>
+          <td>30 dias após a assinatura</td>
+        </tr>
+        <tr>
+          <td><strong>3ª Parcela</strong></td>
+          <td><strong>R$ 10.000,00</strong></td>
+          <td>60 dias após a assinatura</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="value-total">Investimento total: R$ 30.000,00</div>
+
+    <p style="margin-top: 1.2rem;">
+      <strong>4.2.</strong> O pagamento deverá ser realizado via transferência bancária (PIX ou TED) para a conta indicada pela CONTRATADA. A confirmação do pagamento deverá ser enviada por e-mail ou WhatsApp.
+    </p>
+    <p>
+      <strong>4.3.</strong> O valor inclui todos os serviços descritos na Cláusula Segunda, incluindo produção audiovisual profissional e verba de tráfego pago (Meta Ads). Não há custos adicionais.
+    </p>
+    <p>
+      <strong>4.4.</strong> Em caso de atraso no pagamento superior a 10 (dez) dias, a CONTRATADA poderá suspender a execução dos serviços até a regularização, sem prejuízo de multa de 2% (dois por cento) sobre o valor em atraso, acrescido de juros de 1% (um por cento) ao mês.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 5 — OBRIGAÇÕES DA CONTRATANTE ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Quinta</div>
+    <h3>Das Obrigações da Contratante</h3>
+    <p>
+      <strong>5.1.</strong> Fornecer à CONTRATADA acesso aos perfis de redes sociais, conta de anúncios (Meta Business) e demais plataformas necessárias para a execução dos serviços.
+    </p>
+    <p>
+      <strong>5.2.</strong> Disponibilizar o espaço, equipe e materiais necessários para as sessões de captação audiovisual, conforme agendamento prévio entre as partes.
+    </p>
+    <p>
+      <strong>5.3.</strong> Responder às demandas de aprovação de conteúdo e peças de comunicação em até 48 (quarenta e oito) horas úteis.
+    </p>
+    <p>
+      <strong>5.4.</strong> Realizar o atendimento comercial dos leads gerados com qualidade e agilidade, seguindo as orientações e scripts fornecidos pela CONTRATADA.
+    </p>
+    <p>
+      <strong>5.5.</strong> Fornecer feedback regular sobre os leads recebidos, incluindo status de conversão, objeções e qualidade percebida.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 6 — OBRIGAÇÕES DA CONTRATADA ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Sexta</div>
+    <h3>Das Obrigações da Contratada</h3>
+    <p>
+      <strong>6.1.</strong> Executar os serviços descritos na Cláusula Segunda com diligência, qualidade e dentro dos prazos estabelecidos.
+    </p>
+    <p>
+      <strong>6.2.</strong> Fornecer relatórios mensais de performance com os indicadores relevantes (custo por lead, taxa de conversão, volume de leads, CAC).
+    </p>
+    <p>
+      <strong>6.3.</strong> Manter sigilo sobre informações comerciais, financeiras e operacionais da CONTRATANTE.
+    </p>
+    <p>
+      <strong>6.4.</strong> Apresentar previamente para aprovação qualquer peça de comunicação antes da publicação.
+    </p>
+    <p>
+      <strong>6.5.</strong> Comunicar à CONTRATANTE qualquer impedimento ou atraso na execução dos serviços com antecedência mínima de 48 (quarenta e oito) horas.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 7 — METAS REFERENCIAIS ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Sétima</div>
+    <h3>Das Metas Referenciais de Performance</h3>
+    <p>
+      <strong>7.1.</strong> A CONTRATADA trabalhará com as seguintes metas como referência de performance, entendidas como <strong>objetivos e não como obrigação de resultado</strong>:
+    </p>
+
+    <table class="goals-table">
+      <thead>
+        <tr>
+          <th>Indicador</th>
+          <th>Meta</th>
+          <th>Observação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Leads qualificados por mês</strong></td>
+          <td><strong>30+</strong></td>
+          <td>Leads que iniciam conversa no WhatsApp</td>
+        </tr>
+        <tr>
+          <td><strong>Visitas agendadas por mês</strong></td>
+          <td><strong>8+</strong></td>
+          <td>Noivas que agendam visita presencial</td>
+        </tr>
+        <tr>
+          <td><strong>Taxa de conversão lead → visita</strong></td>
+          <td><strong>25%</strong></td>
+          <td>Depende do atendimento comercial</td>
+        </tr>
+        <tr>
+          <td><strong>Custo por lead qualificado</strong></td>
+          <td><strong>< R$ 30,00</strong></td>
+          <td>Via campanhas Meta Ads</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>7.2.</strong> As metas acima são referenciais e dependem de fatores externos ao controle da CONTRATADA, como qualidade do atendimento comercial, disponibilidade de datas, sazonalidade do mercado de eventos e investimento em tráfego.
+    </p>
+    <p>
+      <strong>7.3.</strong> A CONTRATADA fornecerá relatórios mensais com os indicadores atualizados e recomendações de otimização.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 8 — PROPRIEDADE INTELECTUAL ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Oitava</div>
+    <h3>Da Propriedade Intelectual e Ativos Digitais</h3>
+    <p>
+      <strong>8.1.</strong> Todos os ativos digitais criados durante a vigência deste contrato (brandbook, site, landing pages, templates, scripts comerciais) são de <strong>propriedade da CONTRATANTE</strong> e permanecerão funcionais após o término do contrato.
+    </p>
+    <p>
+      <strong>8.2.</strong> As contas de redes sociais e plataformas de anúncio são de propriedade da CONTRATANTE. A CONTRATADA terá acesso de administrador durante a vigência, que será revogado ao término do contrato, caso não renovado.
+    </p>
+    <p>
+      <strong>8.3.</strong> A CONTRATADA poderá utilizar o trabalho realizado como caso de estudo e referência em seu portfólio, desde que previamente autorizado pela CONTRATANTE.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 9 — DIREITOS DE IMAGEM ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Nona</div>
+    <h3>Dos Direitos de Imagem</h3>
+    <p>
+      <strong>9.1.</strong> O conteúdo audiovisual produzido durante a vigência (fotos, vídeos, depoimentos) poderá ser utilizado nas redes sociais, site e campanhas de tráfego da CONTRATANTE, conforme aprovação prévia.
+    </p>
+    <p>
+      <strong>9.2.</strong> A utilização de imagem de terceiros (clientes, noivas, convidados) dependerá de autorização específica de cada pessoa retratada.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 10 — RESCISÃO ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Décima</div>
+    <h3>Da Rescisão</h3>
+    <p>
+      <strong>10.1.</strong> O presente contrato poderá ser rescindido por qualquer das partes mediante notificação por escrito com antecedência mínima de <strong>15 (quinze) dias</strong>.
+    </p>
+    <p>
+      <strong>10.2.</strong> Em caso de rescisão antecipada por parte da CONTRATANTE, os valores referentes aos serviços já prestados até a data da rescisão não serão reembolsados. Valores de parcelas futuras não serão cobrados.
+    </p>
+    <p>
+      <strong>10.3.</strong> Em caso de rescisão antecipada por parte da CONTRATADA, os serviços já entregues permanecerão com a CONTRATANTE, e valores pagos referentes a serviços não prestados serão devolvidos proporcionalmente em até 15 (quinze) dias úteis.
+    </p>
+    <p>
+      <strong>10.4.</strong> Em caso de descumprimento grave por qualquer das partes, a parte prejudicada poderá rescindir o contrato imediatamente, sem prejuízo de eventuais indenizações cabíveis.
+    </p>
+    <p>
+      <strong>10.5.</strong> Constituem motivos para rescisão imediata: inadimplência superior a 30 (trinta) dias, uso indevido de acessos, violação de confidencialidade ou conduta que prejudique a imagem de qualquer das partes.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 11 — CONFIDENCIALIDADE ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Décima Primeira</div>
+    <h3>Da Confidencialidade</h3>
+    <p>
+      <strong>11.1.</strong> As partes comprometem-se a manter sigilo sobre as condições financeiras, estratégicas e operacionais deste contrato e dos serviços prestados, salvo quando necessário para cumprimento de obrigações legais ou fiscais.
+    </p>
+    <p>
+      <strong>11.2.</strong> A obrigação de confidencialidade permanece vigente por 12 (doze) meses após o término do contrato.
+    </p>
+  </div>
+
+  <!-- ── CLÁUSULA 12 — DISPOSIÇÕES GERAIS ── -->
+  <div class="clause">
+    <div class="clause-number">Cláusula Décima Segunda</div>
+    <h3>Das Disposições Gerais</h3>
+    <p>
+      <strong>12.1.</strong> As partes declaram que a presente prestação de serviços não configura relação de emprego, sociedade ou qualquer outro vínculo que não o expressamente descrito neste instrumento.
+    </p>
+    <p>
+      <strong>12.2.</strong> Qualquer alteração nas condições deste contrato deverá ser formalizada por meio de adendo escrito, assinado por ambas as partes.
+    </p>
+    <p>
+      <strong>12.3.</strong> Os casos omissos serão resolvidos de comum acordo entre as partes. Não havendo consenso, elegem o foro da Comarca de <strong>_______________</strong> para dirimir quaisquer controvérsias oriundas deste contrato, com renúncia expressa de qualquer outro, por mais privilegiado que seja.
+    </p>
+    <p>
+      <strong>12.4.</strong> As partes reconhecem que este contrato foi lido, compreendido e aceito em todos os seus termos, assinando-o na presença de 2 (duas) testemunhas.
+    </p>
+  </div>
+
+  <!-- ── SIGNATURES ── -->
+  <div class="signatures">
+    <h2>Assinaturas</h2>
+
+    <div class="sig-grid">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">Moroni Ferreira Reis</div>
+        <div class="sig-role">Contratada — Hub High Ticket / REIS IA</div>
+        <div class="sig-doc">CPF: ___.___.___ - __</div>
+      </div>
+
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">___________________________________</div>
+        <div class="sig-role">Contratante — Casa Magnólia</div>
+        <div class="sig-doc">CNPJ: __.___.___/____-__</div>
+      </div>
+    </div>
+
+    <div class="witnesses-title">Testemunhas</div>
+
+    <div class="sig-grid">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">___________________________________</div>
+        <div class="sig-role">Testemunha 1</div>
+        <div class="sig-doc">CPF: ___.___.___ - __</div>
+      </div>
+
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-name">___________________________________</div>
+        <div class="sig-role">Testemunha 2</div>
+        <div class="sig-doc">CPF: ___.___.___ - __</div>
+      </div>
+    </div>
+
+    <div class="date-place">
+      <strong>_______________</strong>, ___ de _______________ de 2026.
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="contract-footer">
+    <p>Documento gerado em 2 (duas) vias de igual teor e forma, para um só efeito.</p>
+    <p style="margin-top: .3rem;">Hub High Ticket &bull; Casa Magnólia &bull; 2026</p>
+  </div>
+
+</div>
+
+</body>
+</html>

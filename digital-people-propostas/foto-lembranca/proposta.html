@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+  ============================================================
+  DIGITAL PEOPLE — PROPOSTA FOTO LEMBRANÇA
+  Versão PDF (Playwright render)
+  ============================================================
+
+  TOKENS DE PERSONALIZAÇÃO (buscar e substituir antes de exportar):
+
+  {{CLIENT_NAME}}      → Nome do cliente, ex: "Família Souza"
+  {{PROPOSAL_DATE}}    → Data da proposta, ex: "8 de junho de 2026"
+  {{VALIDITY_DATE}}    → Validade, ex: "22 de junho de 2026"
+  {{CUSTOM_MESSAGE}}   → Mensagem pessoal (apagar o bloco inteiro se não usar)
+
+  COMO EXPORTAR PARA PDF:
+  npx playwright pdf proposta.html proposta.pdf --format=A4
+
+  ============================================================
+  -->
+  <meta charset="UTF-8">
+  <title>Foto Lembrança — Digital People</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Print Setup ─────────────────────────────────────────────── */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    /* ─── Tokens ──────────────────────────────────────────────────── */
+    :root {
+      --bg:        #070709;
+      --surface:   #0F0F12;
+      --gold:      #C9A96E;
+      --gold-light:#D4B97A;
+      --gold-dim:  rgba(201,169,110,0.12);
+      --text:      #F0EDE8;
+      --text-s:    rgba(240,237,232,0.6);
+      --text-m:    rgba(240,237,232,0.35);
+      --border:    rgba(201,169,110,0.10);
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ─── Page Base ───────────────────────────────────────────────── */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--bg);
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+
+    /* ─── Page Number ─────────────────────────────────────────────── */
+    .page-number {
+      position: absolute;
+      bottom: 8mm;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      color: var(--text-m);
+    }
+
+    /* ─── Gold Divider ────────────────────────────────────────────── */
+    .gold-line {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+
+    .gold-line-left {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 12pt;
+    }
+
+    /* ─── Gold Label ──────────────────────────────────────────────── */
+    .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8mm;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE 1 — COVER
+    ══════════════════════════════════════════════════════════════ */
+    .p1 {
+      background: var(--bg);
+    }
+
+    .p1-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .p1-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        rgba(7,7,9,0.55) 65%,
+        rgba(7,7,9,0.88) 100%
+      );
+    }
+
+    .p1-brand {
+      position: absolute;
+      top: 9mm;
+      left: 12mm;
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+    }
+
+    .p1-confidential {
+      position: absolute;
+      top: 9mm;
+      right: 12mm;
+      font-family: 'Inter', sans-serif;
+      font-size: 7pt;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .p1-content {
+      position: absolute;
+      bottom: 15%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 0 18mm;
+    }
+
+    .p1-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42pt;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 5mm;
+    }
+
+    .p1-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5pt;
+      font-weight: 300;
+      color: var(--text-s);
+      letter-spacing: 0.04em;
+      margin-top: 5mm;
+      margin-bottom: 3mm;
+    }
+
+    .p1-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.08em;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE 2 — SOBRE + TRUST
+    ══════════════════════════════════════════════════════════════ */
+    .p2 {
+      background: var(--surface);
+    }
+
+    .p2-inner {
+      padding: 20mm 15mm 12mm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .p2-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24pt;
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 6mm;
+      max-width: 145mm;
+    }
+
+    .p2-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.8;
+      max-width: 155mm;
+      margin-bottom: 9mm;
+    }
+
+    /* Trust metrics row */
+    .trust-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 10mm;
+    }
+
+    .trust-item {
+      flex: 1;
+      text-align: center;
+      padding: 5mm 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-item + .trust-item {
+      border-left: 1px solid var(--border);
+    }
+
+    .trust-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26pt;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 2mm;
+      display: block;
+    }
+
+    .trust-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-s);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    /* Features label + grid */
+    .features-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 500;
+      color: var(--text-s);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4mm;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5mm 8mm;
+    }
+
+    .feature-item {
+      font-family: 'Inter', sans-serif;
+      font-size: 8.5pt;
+      font-weight: 300;
+      color: var(--text-s);
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      line-height: 1.4;
+    }
+
+    .feature-dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE 3 & 4 — PRODUTOS
+    ══════════════════════════════════════════════════════════════ */
+    .p3, .p4 {
+      background: var(--bg);
+    }
+
+    .products-inner {
+      padding: 14mm 15mm 10mm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .products-inner .label {
+      margin-bottom: 6mm;
+    }
+
+    .product-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 7mm;
+      border: 1px solid var(--border);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .product-photo {
+      width: 78mm;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .product-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .product-text {
+      flex: 1;
+      padding: 6mm 7mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5pt;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3.5mm;
+      letter-spacing: 0.01em;
+    }
+
+    .product-features {
+      list-style: none;
+      flex: 1;
+    }
+
+    .product-features li {
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.6;
+      padding: 1mm 0;
+      border-bottom: 1px solid rgba(201,169,110,0.06);
+      padding-left: 6mm;
+      position: relative;
+    }
+
+    .product-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20pt;
+      font-weight: 300;
+      color: var(--gold);
+      text-align: right;
+      margin-top: 4mm;
+      letter-spacing: 0.02em;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE 5 — COMBOS
+    ══════════════════════════════════════════════════════════════ */
+    .p5 {
+      background: var(--surface);
+    }
+
+    .combos-inner {
+      padding: 12mm 15mm 10mm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .combos-header {
+      margin-bottom: 5mm;
+    }
+
+    .combos-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 9pt;
+      font-weight: 300;
+      color: var(--text-s);
+      letter-spacing: 0.04em;
+      margin-bottom: 4mm;
+    }
+
+    .combos-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.35);
+      padding: 2mm 5mm;
+      margin-bottom: 5mm;
+    }
+
+    /* Table */
+    .combos-table {
+      width: 100%;
+      border-collapse: collapse;
+      flex: 1;
+    }
+
+    .combos-table thead tr {
+      border-bottom: 1px solid rgba(201,169,110,0.25);
+    }
+
+    .combos-table th {
+      font-family: 'Inter', sans-serif;
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-m);
+      padding: 0 3mm 4mm 3mm;
+      text-align: left;
+    }
+
+    .combos-table th:nth-child(2),
+    .combos-table th:nth-child(3),
+    .combos-table th:nth-child(4) {
+      text-align: right;
+    }
+
+    .combos-table tbody tr {
+      border-bottom: 1px solid rgba(201,169,110,0.06);
+    }
+
+    .combos-table tbody tr:nth-child(odd) {
+      background: rgba(7,7,9,0.55);
+    }
+
+    .combos-table tbody tr.highlight {
+      border-left: 2px solid var(--gold);
+    }
+
+    .combos-table td {
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      font-weight: 300;
+      color: var(--text-s);
+      padding: 3mm 3mm;
+      vertical-align: middle;
+    }
+
+    .combos-table td:first-child {
+      font-size: 8.5pt;
+      color: var(--text);
+    }
+
+    .combos-table td:nth-child(2) {
+      text-align: right;
+      text-decoration: line-through;
+      color: var(--text-m);
+      font-size: 8pt;
+    }
+
+    .combos-table td:nth-child(3) {
+      text-align: right;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13pt;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .combos-table td:nth-child(4) {
+      text-align: right;
+    }
+
+    .economia-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 500;
+      padding: 1mm 2.5mm;
+      letter-spacing: 0.04em;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE 6 — GALERIA + PAGAMENTO
+    ══════════════════════════════════════════════════════════════ */
+    .p6 {
+      background: var(--bg);
+    }
+
+    .gallery-half {
+      height: 50%;
+      overflow: hidden;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3mm;
+      padding: 3mm;
+      height: 100%;
+    }
+
+    .gallery-cell {
+      overflow: hidden;
+    }
+
+    .gallery-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .payment-half {
+      height: 50%;
+      padding: 10mm 15mm 8mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment-list {
+      list-style: none;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .payment-list li {
+      font-family: 'Inter', sans-serif;
+      font-size: 9pt;
+      font-weight: 300;
+      color: var(--text-s);
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      padding: 3mm 0;
+      border-bottom: 1px solid rgba(201,169,110,0.06);
+    }
+
+    .payment-list li:last-child {
+      border-bottom: none;
+    }
+
+    .payment-icon {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE 7 — CTA / CLOSING
+    ══════════════════════════════════════════════════════════════ */
+    .p7 {
+      background: var(--surface);
+    }
+
+    .p7-inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20mm 18mm 24mm;
+      text-align: center;
+    }
+
+    .p7-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 27pt;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.2;
+      max-width: 130mm;
+      margin-bottom: 5mm;
+    }
+
+    .p7-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5pt;
+      font-weight: 300;
+      color: var(--text-s);
+      letter-spacing: 0.03em;
+      margin-top: 5mm;
+      margin-bottom: 8mm;
+    }
+
+    .p7-custom-message {
+      width: 100%;
+      text-align: left;
+      border-left: 2px solid var(--gold);
+      padding: 4mm 6mm;
+      background: var(--gold-dim);
+      margin-bottom: 12mm;
+      font-family: 'Inter', sans-serif;
+      font-size: 9pt;
+      font-weight: 300;
+      color: var(--text-s);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .p7-contact {
+      margin-bottom: 10mm;
+    }
+
+    .p7-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3mm;
+      margin-bottom: 3mm;
+    }
+
+    .p7-phone {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5pt;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .p7-insta {
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.06em;
+      margin-bottom: 12mm;
+    }
+
+    .p7-validity {
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.08em;
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    .p7-footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 0 18mm;
+      border-top: 1px solid var(--border);
+      padding-top: 5mm;
+    }
+
+    .p7-footer-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 500;
+      color: var(--text-s);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5mm;
+    }
+
+    .p7-footer-address {
+      font-family: 'Inter', sans-serif;
+      font-size: 7pt;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5mm;
+    }
+
+    .p7-footer-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 6.5pt;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 1 — COVER
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p1">
+
+    <img
+      class="p1-photo"
+      src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/espelho.jpg"
+      alt="Espelho Mágico Digital People"
+    >
+
+    <div class="p1-overlay"></div>
+
+    <span class="p1-brand">Digital People</span>
+    <span class="p1-confidential">Confidencial</span>
+
+    <div class="p1-content">
+      <h1 class="p1-headline">Foto Lembrança</h1>
+      <span class="gold-line"></span>
+      <p class="p1-subtitle">Proposta exclusiva para {{CLIENT_NAME}}</p>
+      <p class="p1-date">{{PROPOSAL_DATE}}</p>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 2 — SOBRE + TRUST
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p2">
+    <div class="p2-inner">
+
+      <p class="label">Quem Somos</p>
+      <h2 class="p2-heading">Desde 1989, transformando eventos em memórias inesquecíveis</h2>
+      <p class="p2-body">Com mais de 36 anos de experiência e nota 4.9 no Google, a Digital People é referência em foto lembrança na região do ABC Paulista e Grande São Paulo. Nossa equipe de profissionais qualificados e equipamentos de última geração garantem que cada convidado leve para casa uma recordação perfeita do seu evento.</p>
+
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-number">36</span>
+          <span class="trust-label">Anos de História</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-number">4.9 ★</span>
+          <span class="trust-label">Google</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-number">+5.000</span>
+          <span class="trust-label">Eventos</span>
+        </div>
+      </div>
+
+      <p class="features-label">Todos os nossos equipamentos incluem:</p>
+      <div class="features-grid">
+        <div class="feature-item"><span class="feature-dot"></span>Papel Profissional</div>
+        <div class="feature-item"><span class="feature-dot"></span>Arte Personalizada</div>
+        <div class="feature-item"><span class="feature-dot"></span>Acessórios para Convidados</div>
+        <div class="feature-item"><span class="feature-dot"></span>Máquina Fotográfica Profissional</div>
+        <div class="feature-item"><span class="feature-dot"></span>Revelação em Impressora Profissional</div>
+        <div class="feature-item"><span class="feature-dot"></span>Foto em Alta Resolução (não desbota)</div>
+      </div>
+
+    </div>
+    <span class="page-number">02</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 3 — PRODUTOS (1 de 2)
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p3">
+    <div class="products-inner">
+
+      <p class="label">Nossos Produtos</p>
+
+      <!-- Product 1: Totem Fotográfico -->
+      <div class="product-row">
+        <div class="product-photo">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/totem.jpg"
+            alt="Totem Fotográfico"
+          >
+        </div>
+        <div class="product-text">
+          <div>
+            <p class="product-name">Totem Fotográfico</p>
+            <ul class="product-features">
+              <li>Sessões Ilimitadas</li>
+              <li>Monitor + Máquina Profissional</li>
+              <li>3 Opções de Formato (Polaroide, Tirinha ou 10×15)</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+          </div>
+          <p class="product-price">R$ 1.090</p>
+        </div>
+      </div>
+
+      <!-- Product 2: Totem Retrô -->
+      <div class="product-row">
+        <div class="product-photo">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/totem-retro.jpg"
+            alt="Totem Retrô"
+          >
+        </div>
+        <div class="product-text">
+          <div>
+            <p class="product-name">Totem Retrô</p>
+            <ul class="product-features">
+              <li>Sessões Ilimitadas</li>
+              <li>Monitor + Máquina Profissional</li>
+              <li>3 Opções de Formato (Polaroide, Tirinha ou 10×15)</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+          </div>
+          <p class="product-price">R$ 1.349</p>
+        </div>
+      </div>
+
+      <!-- Product 3: Cabine -->
+      <div class="product-row">
+        <div class="product-photo">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/cabine.jpg"
+            alt="Cabine"
+          >
+        </div>
+        <div class="product-text">
+          <div>
+            <p class="product-name">Cabine</p>
+            <ul class="product-features">
+              <li>Sessões Ilimitadas</li>
+              <li>Banner Personalizado de 2 Metros</li>
+              <li>3 Opções de Formato (Polaroide, Tirinha ou 10×15)</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+          </div>
+          <p class="product-price">R$ 1.349</p>
+        </div>
+      </div>
+
+    </div>
+    <span class="page-number">03</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 4 — PRODUTOS (2 de 2)
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p4">
+    <div class="products-inner">
+
+      <p class="label">Nossos Produtos</p>
+
+      <!-- Product 4: Espelho Mágico -->
+      <div class="product-row">
+        <div class="product-photo">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/espelho.jpg"
+            alt="Espelho Mágico"
+          >
+        </div>
+        <div class="product-text">
+          <div>
+            <p class="product-name">Espelho Mágico</p>
+            <ul class="product-features">
+              <li>Sessões Ilimitadas</li>
+              <li>Monitor + Máquina Profissional</li>
+              <li>3 Opções de Formato (Polaroide, Tirinha ou 10×15)</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+          </div>
+          <p class="product-price">R$ 1.349</p>
+        </div>
+      </div>
+
+      <!-- Product 5: Plataforma 360° -->
+      <div class="product-row">
+        <div class="product-photo">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/plataforma360.jpg"
+            alt="Plataforma 360°"
+          >
+        </div>
+        <div class="product-text">
+          <div>
+            <p class="product-name">Plataforma 360°</p>
+            <ul class="product-features">
+              <li>Vídeos Enviados Instantaneamente (AirDrop ou QR-Code)</li>
+              <li>Tecnologia Apple (iPhone)</li>
+              <li>Iluminação de Led Decorativa</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+          </div>
+          <p class="product-price">R$ 1.090</p>
+        </div>
+      </div>
+
+      <!-- Product 6: Túnel Infinity -->
+      <div class="product-row">
+        <div class="product-photo">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/equipamentos/tunel.jpg"
+            alt="Túnel Infinity"
+          >
+        </div>
+        <div class="product-text">
+          <div>
+            <p class="product-name">Túnel Infinity</p>
+            <ul class="product-features">
+              <li>Vídeos Enviados Instantaneamente (AirDrop ou QR-Code)</li>
+              <li>Tecnologia Apple (iPhone)</li>
+              <li>Iluminação de Led Decorativa</li>
+              <li>Capacidade até 4 Pessoas</li>
+              <li>4 Horas de Evento</li>
+            </ul>
+          </div>
+          <p class="product-price">R$ 1.349</p>
+        </div>
+      </div>
+
+    </div>
+    <span class="page-number">04</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 5 — COMBOS
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p5">
+    <div class="combos-inner">
+
+      <div class="combos-header">
+        <p class="label" style="margin-bottom:3mm;">Combos</p>
+        <p class="combos-subtitle">Escolha 2 serviços e economize</p>
+        <span class="combos-badge">Melhor Valor</span>
+      </div>
+
+      <table class="combos-table">
+        <thead>
+          <tr>
+            <th>Combinação</th>
+            <th>Avulso</th>
+            <th>Combo</th>
+            <th>Economia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Totem Fotográfico + Plataforma 360°</td>
+            <td>R$ 2.180</td>
+            <td>R$ 1.599</td>
+            <td><span class="economia-badge">R$ 581</span></td>
+          </tr>
+          <tr>
+            <td>Totem Fotográfico + Túnel Infinity</td>
+            <td>R$ 2.439</td>
+            <td>R$ 1.699</td>
+            <td><span class="economia-badge">R$ 740</span></td>
+          </tr>
+          <tr>
+            <td>Cabine + Plataforma 360°</td>
+            <td>R$ 2.439</td>
+            <td>R$ 1.899</td>
+            <td><span class="economia-badge">R$ 540</span></td>
+          </tr>
+          <tr class="highlight">
+            <td>Cabine + Túnel Infinity</td>
+            <td>R$ 2.698</td>
+            <td>R$ 1.899</td>
+            <td><span class="economia-badge">R$ 799</span></td>
+          </tr>
+          <tr>
+            <td>Espelho Mágico + Plataforma 360°</td>
+            <td>R$ 2.439</td>
+            <td>R$ 1.949</td>
+            <td><span class="economia-badge">R$ 490</span></td>
+          </tr>
+          <tr>
+            <td>Espelho Mágico + Túnel Infinity</td>
+            <td>R$ 2.698</td>
+            <td>R$ 1.949</td>
+            <td><span class="economia-badge">R$ 749</span></td>
+          </tr>
+          <tr>
+            <td>Túnel Infinity + Plataforma 360°</td>
+            <td>R$ 2.439</td>
+            <td>R$ 1.799</td>
+            <td><span class="economia-badge">R$ 640</span></td>
+          </tr>
+          <tr>
+            <td>Totem Retrô + Plataforma 360°</td>
+            <td>R$ 2.439</td>
+            <td>R$ 1.799</td>
+            <td><span class="economia-badge">R$ 640</span></td>
+          </tr>
+          <tr class="highlight">
+            <td>Totem Retrô + Túnel Infinity</td>
+            <td>R$ 2.698</td>
+            <td>R$ 1.799</td>
+            <td><span class="economia-badge">R$ 899</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <span class="page-number">05</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 6 — GALERIA + PAGAMENTO
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p6">
+
+    <div class="gallery-half">
+      <div class="gallery-grid">
+        <div class="gallery-cell">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/fotos/festa-pista.jpg"
+            alt="Festa - pista de dança"
+          >
+        </div>
+        <div class="gallery-cell">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/fotos/cas-01.jpg"
+            alt="Evento Digital People"
+          >
+        </div>
+        <div class="gallery-cell">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/fotos/hero-opt-a.jpg"
+            alt="Momento especial"
+          >
+        </div>
+        <div class="gallery-cell">
+          <img
+            src="file:///Users/moronireis/Projetos vscode/digital-people-propostas/assets/fotos/hero-opt-b.jpg"
+            alt="Recordação perfeita"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-half">
+      <p class="label">Formas de Pagamento</p>
+      <ul class="payment-list">
+        <li><span class="payment-icon"></span>Primeira parcela até 30 dias</li>
+        <li><span class="payment-icon"></span>Parcelado via PIX até o evento</li>
+        <li><span class="payment-icon"></span>Até 6 parcelas no cartão sem juros</li>
+        <li><span class="payment-icon"></span>Até 10 parcelas no cartão com juros</li>
+        <li><span class="payment-icon"></span>Sinal e quitação no dia do evento</li>
+      </ul>
+    </div>
+
+    <span class="page-number">06</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE 7 — CTA / CLOSING
+  ═══════════════════════════════════════════════════════ -->
+  <div class="page p7">
+
+    <div class="p7-inner">
+
+      <h2 class="p7-headline">Vamos tornar seu evento inesquecível?</h2>
+      <span class="gold-line"></span>
+      <p class="p7-sub">O próximo passo é uma conversa.</p>
+
+      <!-- Remove this block entirely if {{CUSTOM_MESSAGE}} is not used -->
+      <div class="p7-custom-message">
+        {{CUSTOM_MESSAGE}}
+      </div>
+
+      <div class="p7-contact">
+        <div class="p7-whatsapp">
+          <!-- WhatsApp SVG icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#C9A96E"/>
+          </svg>
+          <span class="p7-phone">(11) 9 3431-4186</span>
+        </div>
+        <p class="p7-insta">@digitalpeople_</p>
+      </div>
+
+      <p class="p7-validity">Proposta válida até {{VALIDITY_DATE}}</p>
+
+    </div>
+
+    <div class="p7-footer">
+      <p class="p7-footer-name">Digital People — Desde 1989 em Mauá, SP</p>
+      <p class="p7-footer-address">Rua Francisco Ortega Escobar, 421 — Vila Noemia, Mauá - SP</p>
+      <p class="p7-footer-date">Documento confidencial preparado em {{PROPOSAL_DATE}}</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta Fotografia 15 Anos — Digital People</title>
+  <meta name="description" content="Proposta exclusiva de fotografia e filmagem para festa de 15 anos — Digital People, 36 anos de experiência.">
+  <meta property="og:title" content="Proposta Fotografia 15 Anos — Digital People">
+  <meta property="og:description" content="Proposta exclusiva preparada para você.">
+  <meta property="og:image" content="../assets/fotos/hero-debutante.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design System Tokens ── */
+    :root {
+      --bg:        #070709;
+      --surface:   #0F0F12;
+      --surface-2: #161619;
+      --gold:      #C9A96E;
+      --gold-light:#D4B97A;
+      --gold-dim:  rgba(201,169,110,0.12);
+      --text:      #F0EDE8;
+      --text-s:    rgba(240,237,232,0.6);
+      --text-m:    rgba(240,237,232,0.35);
+      --border:    rgba(201,169,110,0.10);
+      --border-s:  rgba(201,169,110,0.20);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── Typography ── */
+    .font-display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .container-narrow {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 7rem 0; }
+
+    /* ── Reveal Animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── Gold Rule ── */
+    .rule-gold {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .rule-gold-center {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    /* ── Label ── */
+    .label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    /* ── Gold Accent Text ── */
+    .gold { color: var(--gold); }
+
+    /* ── CTA Button ── */
+    .btn-gold {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2.25rem;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border-s);
+      cursor: pointer;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* ════════════════════════════
+       S1 — HERO
+    ════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/fotos/hero-debutante.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      will-change: transform;
+      transform: scale(1.06);
+      transition: transform 8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(7,7,9,0.22) 0%,
+        rgba(7,7,9,0.30) 40%,
+        rgba(7,7,9,0.72) 75%,
+        rgba(7,7,9,0.96) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 6rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease-out forwards;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3.2rem, 9vw, 7.2rem);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s ease-out forwards;
+    }
+
+    .hero-subtitle {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--text-s);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s ease-out forwards;
+    }
+
+    .hero-badge {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.1s ease-out forwards;
+    }
+
+    .hero-badge-item {
+      text-align: center;
+    }
+
+    .hero-badge-item strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-badge-item span {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-m);
+      margin-top: 0.3rem;
+    }
+
+    .hero-badge-sep {
+      width: 1px;
+      height: 36px;
+      background: var(--border-s);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.6s ease-out forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-m);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.15); }
+    }
+
+    /* ════════════════════════════
+       S2 — QUEM SOMOS
+    ════════════════════════════ */
+    .sobre {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sobre-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-image {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+
+    .sobre-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .sobre-image:hover img { transform: scale(1.04); }
+
+    .sobre-image-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: -1.5rem;
+      background: var(--gold);
+      color: var(--bg);
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+    }
+
+    .sobre-image-badge strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .sobre-image-badge span {
+      display: block;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .sobre-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .sobre-text p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .sobre-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-item span {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-m);
+      margin-top: 0.4rem;
+    }
+
+    /* ════════════════════════════
+       S3 — PORTFÓLIO (MASONRY)
+    ════════════════════════════ */
+    .portfolio {
+      background: var(--bg);
+    }
+
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .portfolio-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .portfolio-header p {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-s);
+    }
+
+    .masonry {
+      columns: 3;
+      column-gap: 0.75rem;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .masonry-item:hover img { transform: scale(1.04); }
+
+    /* ════════════════════════════
+       S4 — COMO TRABALHAMOS
+    ════════════════════════════ */
+    .processo {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .processo-header {
+      text-align: center;
+      margin-bottom: 4.5rem;
+    }
+
+    .processo-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .step {
+      background: var(--surface-2);
+      padding: 2.5rem 1.75rem;
+      position: relative;
+    }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold-dim);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .step-number::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 0.75rem;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .step p {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.75;
+    }
+
+    /* ════════════════════════════
+       S5 — DEPOIMENTOS
+    ════════════════════════════ */
+    .testimonials {
+      background: var(--bg);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .testimonials-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      padding: 2.5rem;
+    }
+
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-stars span {
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    .testimonial-author span {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* ════════════════════════════
+       S6 — SEU PACOTE
+    ════════════════════════════ */
+    .pacote {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pacote-header {
+      text-align: center;
+      margin-bottom: 4.5rem;
+    }
+
+    .pacote-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .pacote-header p {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-s);
+    }
+
+    /* Package Switcher */
+    .package-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 3rem;
+      border: 1px solid var(--border-s);
+      overflow: hidden;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pkg-btn {
+      padding: 0.6rem 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--text-s);
+      border: none;
+      border-right: 1px solid var(--border-s);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .pkg-btn:last-child { border-right: none; }
+
+    .pkg-btn:hover { background: var(--gold-dim); color: var(--gold); }
+
+    .pkg-btn.active {
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* Package Panel */
+    .package-panel { display: none; }
+    .package-panel.active { display: block; }
+
+    .package-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .package-visual {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .package-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .package-visual-label {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+    }
+
+    .package-details h3 {
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .package-tagline {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--text-s);
+      margin-bottom: 2rem;
+    }
+
+    .value-stack {
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .value-stack-header {
+      padding: 0.9rem 1.25rem;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .value-stack-header span {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-m);
+    }
+
+    .value-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+
+    .value-row:last-child { border-bottom: none; }
+
+    .value-row-name {
+      font-weight: 300;
+      color: var(--text-s);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .value-row-name::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .value-row-price {
+      font-weight: 400;
+      color: var(--text-m);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .value-total {
+      padding: 1.25rem;
+      background: var(--surface-2);
+      border-top: 1px solid var(--border-s);
+    }
+
+    .value-total-original {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-m);
+      margin-bottom: 0.3rem;
+    }
+
+    .value-total-original span:last-child {
+      text-decoration: line-through;
+    }
+
+    .value-total-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .value-total-main .label-inv {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-s);
+    }
+
+    .value-total-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .value-savings {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .value-installment {
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      color: var(--text-m);
+      font-weight: 300;
+    }
+
+    .cortesia-box {
+      background: var(--gold-dim);
+      border: 1px solid var(--border-s);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cortesia-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cortesia-icon svg { width: 16px; height: 16px; }
+
+    .cortesia-text strong {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cortesia-text span {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--text-s);
+    }
+
+    .package-cta {
+      display: block;
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+
+    .package-cta:hover { background: var(--gold-light); }
+
+    /* ════════════════════════════
+       S7 — PERSONALIZE
+    ════════════════════════════ */
+    .addons {
+      background: var(--bg);
+    }
+
+    .addons-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .addons-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .addons-header p {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-s);
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .addon-card {
+      background: var(--surface);
+      padding: 2rem 1.75rem;
+      transition: background 0.25s ease;
+    }
+
+    .addon-card:hover { background: var(--surface-2); }
+
+    .addon-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .addon-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    .addon-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--gold);
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    .addon-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════
+       S8 — ÁLBUNS
+    ════════════════════════════ */
+    .albuns {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .albuns-header {
+      text-align: center;
+      margin-bottom: 4.5rem;
+    }
+
+    .albuns-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .albuns-header p {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-s);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .albuns-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .album-card {
+      background: var(--surface-2);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .album-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1.5rem;
+      border: 1px solid var(--border-s);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .album-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .album-card h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .album-size {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .album-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.65;
+    }
+
+    .albuns-note {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-s);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--gold-dim);
+    }
+
+    /* ════════════════════════════
+       S9 — FORMAS DE PAGAMENTO
+    ════════════════════════════ */
+    .pagamento {
+      background: var(--bg);
+    }
+
+    .pagamento-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .pagamento-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .pagamento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .pagamento-card {
+      background: var(--surface);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+
+    .pagamento-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .pagamento-destaque {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .pagamento-card p {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.65;
+    }
+
+    .pagamento-tag {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--gold-dim);
+      color: var(--gold);
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border-s);
+    }
+
+    .pagamento-note {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-m);
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════
+       S10 — CTA FINAL
+    ════════════════════════════ */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/fotos/debutante-rosa.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.28);
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(7,7,9,0.85) 100%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 7rem 0;
+    }
+
+    .cta-content h2 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-content p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-s);
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      line-height: 1.75;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ════════════════════════════
+       S11 — FOOTER
+    ════════════════════════════ */
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2.5rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--text-m);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    .footer-years {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .footer-col h4 {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.8;
+      text-decoration: none;
+      display: block;
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-confidential {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border-s);
+      padding: 0.3rem 0.75rem;
+    }
+
+    /* ════════════════════════════
+       RESPONSIVE — 768px
+    ════════════════════════════ */
+    @media (max-width: 768px) {
+      section { padding: 5rem 0; }
+
+      .sobre-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .sobre-image-badge {
+        right: 1rem;
+      }
+
+      .masonry { columns: 2; }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .steps .step:last-child:nth-child(odd) {
+        grid-column: span 2;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .package-visual {
+        aspect-ratio: 16/9;
+        max-height: 300px;
+      }
+
+      .addons-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .albuns-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pagamento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .hero-badge {
+        gap: 1.2rem;
+      }
+    }
+
+    /* ════════════════════════════
+       RESPONSIVE — 480px
+    ════════════════════════════ */
+    @media (max-width: 480px) {
+      .masonry { columns: 1; }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .steps .step:last-child:nth-child(odd) {
+        grid-column: span 1;
+      }
+
+      .addons-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-switcher {
+        flex-wrap: wrap;
+      }
+
+      .pkg-btn {
+        flex: 1;
+        min-width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════
+     S1 — HERO
+════════════════════════════ -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Proposta exclusiva preparada para você</span>
+    <h1 class="hero-name">{{CLIENT_NAME}}</h1>
+    <p class="hero-subtitle">Fotografia &amp; Filmagem — Festa de 15 Anos</p>
+    <p class="hero-date" style="font-size:0.75rem;color:var(--text-m);margin-top:0.5rem;letter-spacing:0.1em;">{{PROPOSAL_DATE}}</p>
+
+    <div class="hero-badge">
+      <div class="hero-badge-item">
+        <strong>36</strong>
+        <span>Anos de experiência</span>
+      </div>
+      <div class="hero-badge-sep" aria-hidden="true"></div>
+      <div class="hero-badge-item">
+        <strong>4.9</strong>
+        <span>Google</span>
+      </div>
+      <div class="hero-badge-sep" aria-hidden="true"></div>
+      <div class="hero-badge-item">
+        <strong>+5.000</strong>
+        <span>Eventos registrados</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Rolar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S2 — QUEM SOMOS
+════════════════════════════ -->
+<section class="sobre" aria-label="Quem somos">
+  <div class="container">
+    <div class="sobre-inner">
+
+      <div class="sobre-image reveal">
+        <img
+          src="../assets/fotos/deb-roses.jpg"
+          alt="Fotografia de debutante — Digital People"
+          loading="lazy"
+          width="480"
+          height="600"
+        >
+        <div class="sobre-image-badge">
+          <strong>36</strong>
+          <span>Anos</span>
+        </div>
+      </div>
+
+      <div class="sobre-text">
+        <span class="label reveal reveal-delay-1">Digital People</span>
+        <div class="rule-gold reveal reveal-delay-1"></div>
+        <h2 class="reveal reveal-delay-2">36 anos registrando os momentos mais importantes da vida de milhares de famílias</h2>
+        <p class="reveal reveal-delay-3">Fundada em 1989 em Mauá, a Digital People nasceu da paixão por eternizar histórias. Sua festa de 15 anos é um dos momentos mais especiais da sua vida — e nossa equipe sabe capturar cada emoção, cada sorriso, cada detalhe, com a experiência de quem já registrou milhares de celebrações.</p>
+        <p class="reveal reveal-delay-4">Cada imagem é composta com intenção. Cada quadro de vídeo tem propósito. Não entregamos arquivos — entregamos memórias que você vai querer ver por toda a vida.</p>
+
+        <div class="sobre-stats reveal reveal-delay-5">
+          <div class="stat-item">
+            <strong>1989</strong>
+            <span>Fundação</span>
+          </div>
+          <div class="stat-item">
+            <strong>+5.000</strong>
+            <span>Eventos</span>
+          </div>
+          <div class="stat-item">
+            <strong>4.9★</strong>
+            <span>Google</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S3 — PORTFÓLIO
+════════════════════════════ -->
+<section class="portfolio" aria-label="Portfólio">
+  <div class="container">
+    <div class="portfolio-header reveal">
+      <span class="label">Portfólio</span>
+      <div class="rule-gold-center"></div>
+      <h2>Momentos que ficam para sempre</h2>
+      <p>Uma seleção do nosso trabalho em festas de 15 anos</p>
+    </div>
+
+    <div class="masonry reveal reveal-delay-1">
+      <div class="masonry-item">
+        <img src="../assets/fotos/hero-debutante.jpg"  alt="Debutante — pose principal" loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/deb-2027-a.jpg"      alt="Debutante 2027 — sessão A" loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/debutante-prata.jpg" alt="Debutante vestido prata"   loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/deb-2027-b.jpg"      alt="Debutante 2027 — sessão B" loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/deb-roses.jpg"       alt="Debutante com rosas"       loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/debutante-pink.jpg"  alt="Debutante vestido pink"    loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/deb-twirl.jpg"       alt="Debutante giro"            loading="lazy">
+      </div>
+      <div class="masonry-item">
+        <img src="../assets/fotos/debutante-rosa.jpg"  alt="Debutante vestido rosa"    loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S4 — COMO TRABALHAMOS
+════════════════════════════ -->
+<section class="processo" aria-label="Como trabalhamos">
+  <div class="container">
+    <div class="processo-header reveal">
+      <span class="label">Nosso Processo</span>
+      <div class="rule-gold-center"></div>
+      <h2>Como trabalhamos</h2>
+    </div>
+
+    <div class="steps reveal reveal-delay-1">
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">01</div>
+        <h3>Primeiro Contato</h3>
+        <p>Conversamos sobre a sua festa, entendemos cada detalhe e montamos juntos o pacote ideal para você.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">02</div>
+        <h3>Reunião de Planejamento</h3>
+        <p>Alinhamos cronograma, decoração, momentos-chave e toda a logística para que nada passe despercebido.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">03</div>
+        <h3>Ensaio Debutante</h3>
+        <p>Uma sessão especial para você brilhar na frente da câmera — e ter fotos deslumbrantes antes da grande festa.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">04</div>
+        <h3>A Grande Festa</h3>
+        <p>Nossa equipe chega cedo, se posiciona e registra cada emoção: da entrada triunfal até a última dança da festa.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">05</div>
+        <h3>Entrega e Surpresa</h3>
+        <p>Fotos tratadas, filme editado e álbum encadernado entregues com o carinho que esse momento merece.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S5 — DEPOIMENTOS
+════════════════════════════ -->
+<section class="testimonials" aria-label="Depoimentos">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <span class="label">Depoimentos</span>
+      <div class="rule-gold-center"></div>
+      <h2>O que as famílias dizem</h2>
+    </div>
+
+    <div class="testimonials-grid reveal reveal-delay-1">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars" aria-label="5 estrelas">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          "A equipe da Digital People fez minha filha se sentir uma princesa no ensaio e na festa. Cada foto capturou a emoção que sentimos. O filme ficou perfeito."
+        </blockquote>
+        <div class="testimonial-author">
+          <strong>{{TESTIMONIAL_1_NAME}}</strong>
+          <span>Festa de 15 Anos · {{TESTIMONIAL_1_YEAR}}</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars" aria-label="5 estrelas">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          "O making of ficou lindo, o ensaio da minha filha ficou deslumbrante, e o álbum é de chorar de felicidade. Recomendo de olhos fechados."
+        </blockquote>
+        <div class="testimonial-author">
+          <strong>{{TESTIMONIAL_2_NAME}}</strong>
+          <span>Festa de 15 Anos · {{TESTIMONIAL_2_YEAR}}</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars" aria-label="5 estrelas">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          "Profissionais de verdade. Sabem exatamente os melhores ângulos, os momentos que não podem ser perdidos. 36 anos de experiência fazem toda a diferença."
+        </blockquote>
+        <div class="testimonial-author">
+          <strong>{{TESTIMONIAL_3_NAME}}</strong>
+          <span>Festa de 15 Anos · {{TESTIMONIAL_3_YEAR}}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S6 — SEU PACOTE
+════════════════════════════ -->
+<section class="pacote" aria-label="Seu pacote">
+  <div class="container">
+    <div class="pacote-header reveal">
+      <span class="label">Proposta Exclusiva</span>
+      <div class="rule-gold-center"></div>
+      <h2>Seu Pacote</h2>
+      <p>Tudo que você precisa para registrar cada momento da sua festa</p>
+    </div>
+
+    <!-- Package Switcher -->
+    <div class="package-switcher reveal reveal-delay-1" role="tablist" aria-label="Selecionar pacote">
+      <button class="pkg-btn" role="tab" aria-selected="false" data-pkg="essencial">Essencial</button>
+      <button class="pkg-btn" role="tab" aria-selected="false" data-pkg="classico">Clássico</button>
+      <button class="pkg-btn active" role="tab" aria-selected="true" data-pkg="premium">Premium</button>
+      <button class="pkg-btn" role="tab" aria-selected="false" data-pkg="completo">Completo</button>
+    </div>
+
+    <!-- ── ESSENCIAL ── -->
+    <div class="package-panel" id="pkg-essencial" role="tabpanel">
+      <div class="package-inner">
+        <div class="package-visual">
+          <img src="../assets/fotos/debutante-pink.jpg" alt="Pacote Essencial — debutante" loading="lazy">
+          <span class="package-visual-label">Essencial</span>
+        </div>
+        <div class="package-details">
+          <h3>Pacote Essencial</h3>
+          <p class="package-tagline">O essencial para registrar sua festa com qualidade</p>
+
+          <div class="cortesia-box">
+            <div class="cortesia-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+              </svg>
+            </div>
+            <div class="cortesia-text">
+              <strong>Cortesia inclusa</strong>
+              <span>Ensaio Debutante</span>
+            </div>
+          </div>
+
+          <div class="value-stack">
+            <div class="value-stack-header">
+              <span>O que está incluído</span>
+              <span>Valor avulso</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">1 Fotógrafo Profissional</span>
+              <span class="value-row-price">R$ 1.600</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">1 Filmmaker Dedicado</span>
+              <span class="value-row-price">R$ 1.800</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">60 Fotos Tratadas</span>
+              <span class="value-row-price">R$ 900</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Filme Completo da Festa</span>
+              <span class="value-row-price">R$ 1.400</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Ensaio Debutante <span class="gold">(cortesia)</span></span>
+              <span class="value-row-price">R$ 880</span>
+            </div>
+            <div class="value-total">
+              <div class="value-total-original">
+                <span>Se contratados separadamente:</span>
+                <span>R$ 6.580</span>
+              </div>
+              <div class="value-total-main">
+                <span class="label-inv">Seu investimento</span>
+                <span class="value-total-price">R$ 4.800</span>
+              </div>
+              <p class="value-savings">Economia de R$ 1.780</p>
+              <p class="value-installment">ou 15x de R$ 320 no PIX</p>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/5511934314186?text=Olá! Vi a proposta para festa de 15 anos e gostaria de conversar sobre o pacote Essencial."
+            class="package-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Quero este pacote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CLÁSSICO ── -->
+    <div class="package-panel" id="pkg-classico" role="tabpanel">
+      <div class="package-inner">
+        <div class="package-visual">
+          <img src="../assets/fotos/deb-2027-a.jpg" alt="Pacote Clássico — debutante" loading="lazy">
+          <span class="package-visual-label">Clássico</span>
+        </div>
+        <div class="package-details">
+          <h3>Pacote Clássico</h3>
+          <p class="package-tagline">Para quem quer capturar cada detalhe com qualidade superior</p>
+
+          <div class="cortesia-box">
+            <div class="cortesia-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+              </svg>
+            </div>
+            <div class="cortesia-text">
+              <strong>Cortesia inclusa</strong>
+              <span>Ensaio Debutante</span>
+            </div>
+          </div>
+
+          <div class="value-stack">
+            <div class="value-stack-header">
+              <span>O que está incluído</span>
+              <span>Valor avulso</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">2 Fotógrafos Profissionais</span>
+              <span class="value-row-price">R$ 2.800</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">1 Filmmaker Dedicado</span>
+              <span class="value-row-price">R$ 1.800</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">80 Fotos Tratadas</span>
+              <span class="value-row-price">R$ 1.200</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Making Of da Debutante</span>
+              <span class="value-row-price">R$ 780</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Filme Completo da Festa</span>
+              <span class="value-row-price">R$ 1.400</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Ensaio Debutante <span class="gold">(cortesia)</span></span>
+              <span class="value-row-price">R$ 880</span>
+            </div>
+            <div class="value-total">
+              <div class="value-total-original">
+                <span>Se contratados separadamente:</span>
+                <span>R$ 8.860</span>
+              </div>
+              <div class="value-total-main">
+                <span class="label-inv">Seu investimento</span>
+                <span class="value-total-price">R$ 6.400</span>
+              </div>
+              <p class="value-savings">Economia de R$ 2.460</p>
+              <p class="value-installment">ou 15x de R$ 427 no PIX</p>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/5511934314186?text=Olá! Vi a proposta para festa de 15 anos e gostaria de conversar sobre o pacote Clássico."
+            class="package-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Quero este pacote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PREMIUM (DEFAULT) ── -->
+    <div class="package-panel active" id="pkg-premium" role="tabpanel">
+      <div class="package-inner">
+        <div class="package-visual">
+          <img src="../assets/fotos/hero-debutante.jpg" alt="Pacote Premium — debutante" loading="lazy">
+          <span class="package-visual-label">Premium</span>
+        </div>
+        <div class="package-details">
+          <h3>Pacote Premium</h3>
+          <p class="package-tagline">A escolha completa para eternizar cada emoção da sua festa</p>
+
+          <div class="cortesia-box">
+            <div class="cortesia-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+              </svg>
+            </div>
+            <div class="cortesia-text">
+              <strong>Cortesia inclusa</strong>
+              <span>Ensaio Debutante</span>
+            </div>
+          </div>
+
+          <div class="value-stack">
+            <div class="value-stack-header">
+              <span>O que está incluído</span>
+              <span>Valor avulso</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">2 Fotógrafos Profissionais</span>
+              <span class="value-row-price">R$ 2.800</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">2 Filmmakers Dedicados</span>
+              <span class="value-row-price">R$ 3.200</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Álbum Premium 25x30 com Estojo Luxo</span>
+              <span class="value-row-price">R$ 1.300</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">100 Fotos Tratadas Profissionalmente</span>
+              <span class="value-row-price">R$ 1.500</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Making Of da Debutante</span>
+              <span class="value-row-price">R$ 780</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Shortfilm + Filme Completo da Festa</span>
+              <span class="value-row-price">R$ 2.400</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Ensaio Debutante <span class="gold">(cortesia)</span></span>
+              <span class="value-row-price">R$ 880</span>
+            </div>
+            <div class="value-total">
+              <div class="value-total-original">
+                <span>Se contratados separadamente:</span>
+                <span>R$ 12.860</span>
+              </div>
+              <div class="value-total-main">
+                <span class="label-inv">Seu investimento</span>
+                <span class="value-total-price">R$ 8.460</span>
+              </div>
+              <p class="value-savings">Economia de R$ 4.400</p>
+              <p class="value-installment">ou 15x de R$ 564 no PIX</p>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/5511934314186?text=Olá! Vi a proposta para festa de 15 anos e gostaria de conversar sobre o pacote Premium."
+            class="package-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Quero este pacote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMPLETO ── -->
+    <div class="package-panel" id="pkg-completo" role="tabpanel">
+      <div class="package-inner">
+        <div class="package-visual">
+          <img src="../assets/fotos/debutante-prata.jpg" alt="Pacote Completo — debutante" loading="lazy">
+          <span class="package-visual-label">Completo</span>
+        </div>
+        <div class="package-details">
+          <h3>Pacote Completo</h3>
+          <p class="package-tagline">A experiência máxima — para uma festa inesquecível em cada detalhe</p>
+
+          <div class="cortesia-box">
+            <div class="cortesia-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+              </svg>
+            </div>
+            <div class="cortesia-text">
+              <strong>Cortesia inclusa</strong>
+              <span>Scrapbook + Ensaio Debutante e Clip</span>
+            </div>
+          </div>
+
+          <div class="value-stack">
+            <div class="value-stack-header">
+              <span>O que está incluído</span>
+              <span>Valor avulso</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">2 Fotógrafos Profissionais</span>
+              <span class="value-row-price">R$ 2.800</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">2 Filmmakers Dedicados</span>
+              <span class="value-row-price">R$ 3.200</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Álbum Premium 30x40 com Estojo Luxo</span>
+              <span class="value-row-price">R$ 1.800</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Scrapbook Personalizado <span class="gold">(cortesia)</span></span>
+              <span class="value-row-price">R$ 980</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">150 Fotos Tratadas Profissionalmente</span>
+              <span class="value-row-price">R$ 2.200</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Making Of da Debutante</span>
+              <span class="value-row-price">R$ 780</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Shortfilm + Filme Completo + Clip 4K</span>
+              <span class="value-row-price">R$ 3.600</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Espelho Mágico ou Totem Retrô</span>
+              <span class="value-row-price">R$ 1.400</span>
+            </div>
+            <div class="value-row">
+              <span class="value-row-name">Ensaio Debutante e Clip <span class="gold">(cortesia)</span></span>
+              <span class="value-row-price">R$ 1.870</span>
+            </div>
+            <div class="value-total">
+              <div class="value-total-original">
+                <span>Se contratados separadamente:</span>
+                <span>R$ 18.630</span>
+              </div>
+              <div class="value-total-main">
+                <span class="label-inv">Seu investimento</span>
+                <span class="value-total-price">R$ 13.200</span>
+              </div>
+              <p class="value-savings">Economia de R$ 5.430</p>
+              <p class="value-installment">ou 15x de R$ 880 no PIX</p>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/5511934314186?text=Olá! Vi a proposta para festa de 15 anos e gostaria de conversar sobre o pacote Completo."
+            class="package-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Quero este pacote</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S7 — PERSONALIZE
+════════════════════════════ -->
+<section class="addons" aria-label="Personalize sua cobertura">
+  <div class="container">
+    <div class="addons-header reveal">
+      <span class="label">Add-ons</span>
+      <div class="rule-gold-center"></div>
+      <h2>Personalize sua cobertura</h2>
+      <p>Adicione ao seu pacote e crie a experiência exata que você imaginou</p>
+    </div>
+
+    <div class="addons-grid reveal reveal-delay-1">
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Ensaio Debutante</span>
+          <span class="addon-price">R$ 880</span>
+        </div>
+        <p class="addon-desc">Sessão fotográfica exclusiva antes da festa — para você ter fotos deslumbrantes com toda a produção.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Clip Debutante</span>
+          <span class="addon-price">R$ 990</span>
+        </div>
+        <p class="addon-desc">Clipe especial da debutante — montagem cinematográfica para compartilhar em redes sociais e guardar para sempre.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Making Of</span>
+          <span class="addon-price">R$ 390</span>
+        </div>
+        <p class="addon-desc">Registro dos bastidores: cabelo, maquiagem, produção e os momentos emocionantes antes da festa começar.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Story Maker</span>
+          <span class="addon-price">R$ 1.400</span>
+        </div>
+        <p class="addon-desc">Conteúdo vertical editado para Stories e Reels — entregue no mesmo dia para você postar na festa.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Same Day Edit</span>
+          <span class="addon-price">R$ 1.600</span>
+        </div>
+        <p class="addon-desc">Edição de um filme especial entregue no mesmo dia do evento — exibido na própria festa para a emoção dos convidados.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Drone</span>
+          <span class="addon-price">R$ 1.400</span>
+        </div>
+        <p class="addon-desc">Imagens aéreas cinematográficas do local da festa e da chegada da debutante — perspectiva única e impactante.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <span class="addon-title">Filme 4K</span>
+          <span class="addon-price">R$ 1.400</span>
+        </div>
+        <p class="addon-desc">Upgrade para resolução 4K em todo o material filmado — qualidade máxima para uma memória que vai durar gerações.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S8 — ÁLBUNS
+════════════════════════════ -->
+<section class="albuns" aria-label="Álbuns fotográficos">
+  <div class="container">
+    <div class="albuns-header reveal">
+      <span class="label">Memória Física</span>
+      <div class="rule-gold-center"></div>
+      <h2>Álbuns Fotográficos</h2>
+      <p>Impressos com o mais alto padrão gráfico, encadernados à mão. Para você abrir daqui 30 anos e reviver cada emoção.</p>
+    </div>
+
+    <div class="albuns-grid reveal reveal-delay-1">
+
+      <div class="album-card">
+        <div class="album-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="0.5"/>
+            <line x1="3" y1="8" x2="21" y2="8"/>
+            <line x1="8" y1="3" x2="8" y2="21"/>
+          </svg>
+        </div>
+        <h3>Álbum Essencial</h3>
+        <p class="album-size">20 × 25 cm · 30 páginas</p>
+        <p class="album-desc">Capa dura premium, papel fotográfico de alta qualidade. Elegante e duradouro.</p>
+      </div>
+
+      <div class="album-card">
+        <div class="album-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="0.5"/>
+            <line x1="2" y1="7" x2="22" y2="7"/>
+            <line x1="7" y1="2" x2="7" y2="22"/>
+            <line x1="17" y1="2" x2="17" y2="22"/>
+          </svg>
+        </div>
+        <h3>Álbum Premium</h3>
+        <p class="album-size">25 × 30 cm · 50 páginas</p>
+        <p class="album-desc">Capa em couro sintético com estojo individual. Acabamento luxo com espiral em prata.</p>
+      </div>
+
+      <div class="album-card">
+        <div class="album-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="22" rx="0.5"/>
+            <line x1="1" y1="6" x2="23" y2="6"/>
+            <line x1="6" y1="1" x2="6" y2="23"/>
+            <line x1="18" y1="1" x2="18" y2="23"/>
+            <line x1="1" y1="18" x2="23" y2="18"/>
+          </svg>
+        </div>
+        <h3>Álbum Grande Formato</h3>
+        <p class="album-size">30 × 40 cm · 60 páginas</p>
+        <p class="album-desc">O máximo em apresentação. Capa em tecido italiano com estojo de veludo. Para exposição.</p>
+      </div>
+
+    </div>
+
+    <div class="albuns-note reveal reveal-delay-2">
+      Todos os álbuns são produzidos em gráfica especializada em fotografia artística. Prazo médio de entrega: 45 dias após aprovação da seleção de fotos.
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S9 — FORMAS DE PAGAMENTO
+════════════════════════════ -->
+<section class="pagamento" aria-label="Formas de pagamento">
+  <div class="container">
+    <div class="pagamento-header reveal">
+      <span class="label">Condições</span>
+      <div class="rule-gold-center"></div>
+      <h2>Formas de Pagamento</h2>
+    </div>
+
+    <div class="pagamento-grid reveal reveal-delay-1">
+
+      <div class="pagamento-card">
+        <span class="pagamento-tag">Melhor opção</span>
+        <h3>PIX Parcelado</h3>
+        <div class="pagamento-destaque">15× sem juros</div>
+        <p>Parcele seu pacote em até 15 vezes no PIX, sem acréscimos. Ideal para planejar com tranquilidade.</p>
+      </div>
+
+      <div class="pagamento-card">
+        <h3>PIX à Vista</h3>
+        <div class="pagamento-destaque">5% desconto</div>
+        <p>Pagamento único com 5% de desconto sobre o valor total do pacote contratado.</p>
+      </div>
+
+      <div class="pagamento-card">
+        <h3>Cartão de Crédito</h3>
+        <div class="pagamento-destaque">Até 12×</div>
+        <p>Parcele em até 12 vezes no cartão de crédito. Consulte taxas aplicáveis conforme a bandeira.</p>
+      </div>
+
+    </div>
+
+    <p class="pagamento-note reveal reveal-delay-2">
+      É necessário um sinal de confirmação para garantir a data. O restante pode ser parcelado conforme a modalidade escolhida.<br>
+      Entre em contato para combinar as condições que melhor atendem você.
+    </p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S10 — CTA FINAL
+════════════════════════════ -->
+<section class="cta-section" aria-label="Próximo passo">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="cta-overlay" aria-hidden="true"></div>
+
+  <div class="container cta-content">
+    <span class="label reveal">Próximo Passo</span>
+    <div class="rule-gold-center reveal reveal-delay-1"></div>
+    <h2 class="reveal reveal-delay-2">Vamos tornar sua festa inesquecível?</h2>
+    <p class="reveal reveal-delay-3">O próximo passo é uma conversa. Sem compromisso, sem pressa — no seu tempo.</p>
+
+    <!-- {{CUSTOM_MESSAGE}} — Personal note from Juliane. Remove this div if not needed -->
+    <div class="cta-custom-message reveal reveal-delay-3" style="margin:1.5rem auto;max-width:500px;padding:1.25rem 1.5rem;border-left:2px solid var(--gold);background:var(--gold-dim);font-size:0.9rem;color:var(--text-s);line-height:1.7;font-style:italic;">
+      {{CUSTOM_MESSAGE}}
+    </div>
+
+    <p class="reveal reveal-delay-3" style="font-size:0.75rem;color:var(--text-m);margin-bottom:1.5rem;">Proposta válida até <strong style="color:var(--gold);">{{VALIDITY_DATE}}</strong></p>
+
+    <div class="cta-btns reveal reveal-delay-4">
+      <a
+        href="https://wa.me/5511934314186?text=Olá! Vi a proposta para festa de 15 anos e gostaria de conversar sobre o pacote {{SELECTED_PACKAGE}}."
+        class="btn-gold"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Conversar pelo WhatsApp</a>
+      <a
+        href="tel:+5511934314186"
+        class="btn-outline"
+      >Ligar agora</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     S11 — FOOTER
+════════════════════════════ -->
+<footer class="footer" aria-label="Rodapé">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div>
+        <div class="footer-brand-name">Digital People</div>
+        <p class="footer-tagline">Fotografia &amp; Filmagem desde 1989</p>
+        <p class="footer-years">36 anos eternizando histórias</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5511934314186" target="_blank" rel="noopener noreferrer">(11) 93431-4186</a>
+        <a href="tel:+5511934314186">(11) 93431-4186</a>
+        <p>Mauá — São Paulo</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <p>Festas de 15 Anos</p>
+        <p>Casamentos</p>
+        <p>Foto Lembrança</p>
+        <p>Ensaios Fotográficos</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Digital People Fotografia. Todos os direitos reservados.</p>
+      <span class="footer-confidential">Documento confidencial preparado em {{PROPOSAL_DATE}}</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* ─── Hero BG Ken Burns ─── */
+  (function() {
+    var bg = document.getElementById('heroBg');
+    if (bg) {
+      requestAnimationFrame(function() {
+        bg.classList.add('loaded');
+      });
+    }
+  })();
+
+  /* ─── Scroll Reveal ─── */
+  (function() {
+    var elements = document.querySelectorAll('.reveal');
+    if (!elements.length) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    elements.forEach(function(el) { observer.observe(el); });
+  })();
+
+  /* ─── Package Switcher ─── */
+  (function() {
+    var btns   = document.querySelectorAll('.pkg-btn');
+    var panels = document.querySelectorAll('.package-panel');
+
+    if (!btns.length) return;
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var target = btn.getAttribute('data-pkg');
+
+        btns.forEach(function(b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        panels.forEach(function(p) {
+          p.classList.remove('active');
+        });
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        var panel = document.getElementById('pkg-' + target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  })();
+
+  /* ─── Prefers Reduced Motion ─── */
+  (function() {
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq && mq.matches) {
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

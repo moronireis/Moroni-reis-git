@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intel Competitiva — Sítio Caetê / Casa Caetê</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1E2E24;
+      --forest-light: #2A3E30;
+      --forest-dark: #151F19;
+      --gold: #C9A96E;
+      --gold-light: #D4B97A;
+      --gold-dark: #A68B5B;
+      --cream: #F5F0E8;
+      --cream-dark: #E8E0D0;
+      --charcoal: #1A1A1A;
+      --text-dark: #0D0D0D;
+      --text-muted: #6B6B6B;
+      --white: #FFFFFF;
+      --surface: #FAFAF7;
+      --border: rgba(201, 169, 110, 0.2);
+      --border-strong: rgba(201, 169, 110, 0.4);
+      --red: #DC2626;
+      --red-bg: rgba(220, 38, 38, 0.08);
+      --red-light: #FCA5A5;
+      --amber: #F59E0B;
+      --amber-bg: rgba(245, 158, 11, 0.08);
+      --amber-light: #FCD34D;
+      --green: #16A34A;
+      --green-bg: rgba(22, 163, 74, 0.08);
+      --green-light: #86EFAC;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; }
+
+    /* ── Confidential Bar ── */
+    .confidential-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--forest);
+      color: var(--gold);
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed;
+      top: 1.6rem;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0.75rem 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: var(--forest);
+      position: relative;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201, 169, 110, 0.04) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      border-radius: 100px;
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--white);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      max-width: 650px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat { text-align: left; }
+
+    .hero-stat .number {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat .label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Section Headers ── */
+    .section-header { margin-bottom: 3rem; }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      color: var(--charcoal);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 650px;
+      line-height: 1.8;
+    }
+
+    /* ── Data Grid ── */
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .data-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+    }
+
+    .data-card.full { grid-column: 1 / -1; }
+
+    .data-card-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+      font-weight: 600;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .data-row:last-child { border-bottom: none; }
+
+    .data-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .data-value {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-align: right;
+      max-width: 55%;
+    }
+
+    .data-value.gold { color: var(--gold-dark); font-weight: 600; }
+
+    .data-value a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .data-value a:hover { border-color: var(--gold); }
+
+    /* ── Threat Badge ── */
+    .threat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .threat-high { background: var(--red-bg); color: var(--red); border: 1px solid rgba(220,38,38,0.15); }
+    .threat-medium { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(245,158,11,0.15); }
+    .threat-low { background: var(--green-bg); color: var(--green); border: 1px solid rgba(22,163,74,0.15); }
+
+    /* ── Strengths/Weaknesses ── */
+    .sw-list { list-style: none; }
+
+    .sw-list li {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 0.45rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .sw-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .sw-list.strengths li::before { background: var(--green); opacity: 0.6; }
+    .sw-list.weaknesses li::before { background: var(--red); opacity: 0.5; }
+    .sw-list.neutral li::before { background: var(--amber); opacity: 0.5; }
+
+    /* ── Insight Box ── */
+    .insight-box {
+      padding: 1.5rem 2.5rem;
+      background: rgba(201,169,110,0.04);
+      border-top: 1px solid var(--border);
+      border: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+
+    .insight-box p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .insight-box strong { color: var(--forest); }
+
+    /* ── Dark Section ── */
+    .dark-section { background: var(--forest); color: var(--white); }
+    .dark-section .section-title { color: var(--white); }
+    .dark-section .section-subtitle { color: rgba(255,255,255,0.45); }
+
+    /* ── Comparison Table ── */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .comparison-table th {
+      text-align: left;
+      padding: 1rem 1.25rem;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(201,169,110,0.2);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .comparison-table td {
+      padding: 1rem 1.25rem;
+      font-size: 0.825rem;
+      color: rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: top;
+    }
+
+    .comparison-table tr:hover td {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .comparison-table tr.highlight td {
+      color: var(--gold);
+      font-weight: 500;
+      background: rgba(201,169,110,0.05);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-high { background: rgba(220, 38, 38, 0.15); color: #FCA5A5; }
+    .badge-medium { background: rgba(245, 158, 11, 0.15); color: #FCD34D; }
+    .badge-advantage { background: rgba(201, 169, 110, 0.15); color: var(--gold); }
+    .badge-low { background: rgba(22, 163, 74, 0.15); color: #86EFAC; }
+
+    .check { color: var(--gold); }
+    .x-mark { color: rgba(255,255,255,0.2); }
+
+    /* ── SWOT ── */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(201,169,110,0.15);
+      border: 1px solid rgba(201,169,110,0.15);
+    }
+
+    .swot-card {
+      background: var(--forest);
+      padding: 2.5rem;
+    }
+
+    .swot-card .swot-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+      font-weight: 600;
+    }
+
+    .swot-card ul { list-style: none; }
+
+    .swot-card li {
+      font-size: 0.825rem;
+      color: rgba(255,255,255,0.6);
+      padding: 0.45rem 0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .swot-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.8rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ── Review Cards ── */
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .review-card .stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 2px;
+    }
+
+    .review-card .quote {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .review-card .author {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .review-card .source {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+    }
+
+    /* ── URL List ── */
+    .url-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .url-item {
+      background: var(--white);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .url-item .url-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    .url-item .url-link {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      word-break: break-all;
+    }
+
+    .url-item .url-link a {
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .url-item .url-link a:hover { border-color: var(--gold); color: var(--gold-dark); }
+
+    .url-item .url-status {
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .url-status.live { color: var(--green); }
+    .url-status.down { color: var(--red); }
+    .url-status.blocked { color: var(--amber); }
+
+    /* ── Gap Cards ── */
+    .gap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .gap-card {
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .gap-card:hover { border-color: var(--border-strong); }
+
+    .gap-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.25rem;
+      color: var(--gold);
+    }
+
+    .gap-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .gap-card p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ── Score Bars ── */
+    .score-section { background: var(--surface); }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .score-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .score-card .score-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-card .score-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .score-bar-track {
+      height: 4px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    .score-bar-fill.gold { background: var(--gold); }
+    .score-bar-fill.red { background: var(--red); opacity: 0.6; }
+    .score-bar-fill.amber { background: var(--amber); opacity: 0.7; }
+    .score-bar-fill.green { background: var(--green); opacity: 0.6; }
+
+    .score-detail {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Directory Table ── */
+    .directory-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .directory-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-dark);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      background: var(--surface);
+    }
+
+    .directory-table td {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .directory-table .present { color: var(--green); font-weight: 600; }
+    .directory-table .absent { color: var(--red); opacity: 0.6; }
+
+    /* ── Takeaways ── */
+    .takeaway-card {
+      padding: 3rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .takeaway-card h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .takeaway-card h3 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .takeaway-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .takeaway-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.5rem;
+    }
+
+    .takeaway-item p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.3);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .data-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+      .url-grid { grid-template-columns: 1fr; }
+      .gap-grid { grid-template-columns: 1fr; }
+      .score-grid { grid-template-columns: 1fr; }
+      .swot-grid { grid-template-columns: 1fr; }
+      .takeaway-items { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      .nav-links { display: none; }
+      .comparison-table { font-size: 0.75rem; }
+      .comparison-table th, .comparison-table td { padding: 0.75rem 0.75rem; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 3rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confidential-bar">Documento Confidencial &mdash; Castelo dos Lagos &mdash; Junho 2026</div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">Castelo dos Lagos <span style="color: var(--gold)">/ Sitio Caete</span></a>
+      <ul class="nav-links">
+        <li><a href="#overview">Panorama</a></li>
+        <li><a href="#profile">Perfil</a></li>
+        <li><a href="#brands">Marcas</a></li>
+        <li><a href="#websites">Sites</a></li>
+        <li><a href="#social">Social</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#seo">SEO</a></li>
+        <li><a href="#ads">Ads</a></li>
+        <li><a href="#comparison">Comparativo</a></li>
+        <li><a href="#swot">SWOT</a></li>
+        <li><a href="#gaps">Brechas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="hero" id="overview">
+    <div class="container">
+      <div class="hero-content fade-in">
+        <div class="hero-badge">Inteligencia Competitiva</div>
+        <h1>Sitio Caete /<br><em>Casa Caete</em></h1>
+        <p class="hero-sub">
+          Analise profunda do ecossistema Caete &mdash; duas empresas da familia Rangel operando como concorrentes diretos na regiao de Ribeirao Pires.
+          Dados reais. Vulnerabilidades mapeadas. Oportunidades prontas para capturar.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="number">2</span>
+            <span class="label">Empresas Separadas</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">3</span>
+            <span class="label">Dominios</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">5</span>
+            <span class="label">Contas Instagram</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">224+</span>
+            <span class="label">Reviews</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">8</span>
+            <span class="label">Brechas Criticas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXECUTIVE SUMMARY ═══════════════════════ -->
+  <section style="background: var(--surface);" id="profile">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Resumo Executivo</h2>
+        <p class="section-subtitle">Visao geral do concorrente e nivel de ameaca ao Castelo dos Lagos.</p>
+      </div>
+
+      <div class="insight-box fade-in" style="margin-top: 0; border-left: 3px solid var(--gold);">
+        <p>
+          <strong>Nivel de Ameaca: MEDIO.</strong> O Sitio Caete opera com social proof excepcional (4.9/5, 224+ reviews) e pacotes completos all-in,
+          mas possui presenca digital catastrofica &mdash; homepage mostrando "Hello World" do WordPress, 2 de 3 dominios fora do ar,
+          sem blog, sem YouTube, sem TikTok, ausente dos principais diretorios. A familia Rangel opera duas empresas separadas
+          (Lucas e Gustavo Rangel) com marcas fragmentadas, diluindo SEO e confundindo o mercado. O Castelo dos Lagos compete
+          com autenticidade arquitetonica que o Sitio Caete nao pode replicar.
+        </p>
+      </div>
+
+      <div class="data-grid fade-in" style="margin-top: 2rem;">
+        <div class="data-card">
+          <span class="data-card-label">Dados Corporativos &mdash; Sitio Caete</span>
+          <div class="data-row">
+            <span class="data-label">Razao Social</span>
+            <span class="data-value">Sitio Caete Ltda</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">CNPJ</span>
+            <span class="data-value gold">47.531.491/0001-60</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Administrador</span>
+            <span class="data-value">Lucas Rangel</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Fundacao</span>
+            <span class="data-value">11/08/2022</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Capital Social</span>
+            <span class="data-value">R$ 5.000</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Endereco</span>
+            <span class="data-value">Estr. de Sapopemba, 2005 &mdash; Santa Luzia, Ribeirao Pires SP</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">CNAE</span>
+            <span class="data-value">8230-0/02 &mdash; Casas de festas e eventos</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Regime</span>
+            <span class="data-value">Simples Nacional</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Dados Corporativos &mdash; Casa Caete</span>
+          <div class="data-row">
+            <span class="data-label">Razao Social</span>
+            <span class="data-value">Casa Caete Ltda ME</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">CNPJ</span>
+            <span class="data-value gold">47.531.626/0001-98</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Administrador</span>
+            <span class="data-value">Gustavo Rangel</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Fundacao</span>
+            <span class="data-value">11/08/2022</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Endereco</span>
+            <span class="data-value">Rod. Indio Tibirica, 2027 &mdash; Itrapua, Ribeirao Pires SP</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Email</span>
+            <span class="data-value">comercial.casacaete@gmail.com</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Instagram</span>
+            <span class="data-value gold">@casacaete_ (10K seguidores)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Facebook</span>
+            <span class="data-value">23.540 curtidas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in">
+        <p><strong>Descoberta-chave:</strong> Duas empresas da mesma familia (sobrenome Rangel), registradas no mesmo dia (11/08/2022), operando venues adjacentes na mesma regiao. Lucas Rangel administra o Sitio Caete (rustico), Gustavo Rangel administra a Casa Caete (moderno). Estrategia de brand split &mdash; dois venues, duas marcas, dois perfis no casamentos.com.br, maximizando presenca em buscas regionais.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ VENUE PROFILE ═══════════════════════ -->
+  <section id="brands">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Perfil do Venue</h2>
+        <p class="section-subtitle">Infraestrutura, servicos e posicionamento do Sitio Caete.</p>
+      </div>
+
+      <div class="data-grid fade-in">
+        <div class="data-card">
+          <span class="data-card-label">Infraestrutura</span>
+          <div class="data-row">
+            <span class="data-label">Capacidade</span>
+            <span class="data-value gold">100 &mdash; 230 convidados</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Estacionamento</span>
+            <span class="data-value">100 vagas</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Ceremonias</span>
+            <span class="data-value">Ao ar livre + coberto (capela)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Estilo</span>
+            <span class="data-value">Rustico ao ar livre</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Experiencia</span>
+            <span class="data-value">10+ anos, 200+ cerimonias</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Horario</span>
+            <span class="data-value">Sex-Dom 08:00-18:00</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Tipos de Evento</span>
+            <span class="data-value">Casamentos, Debutantes, Corporativos, Aniversarios</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Servicos Inclusos (All-In)</span>
+          <ul class="sw-list strengths">
+            <li>Espaco para cerimonia (ar livre + coberto backup)</li>
+            <li>Locacao de 6 horas</li>
+            <li>Chales para noivos</li>
+            <li>Equipe de coordenacao/assessoria</li>
+            <li>Decoracao 100% flores naturais (personalizada)</li>
+            <li>Playground</li>
+            <li>Buffet completo in-house</li>
+            <li>Estacionamento</li>
+            <li>DJ + pista de danca</li>
+            <li>Gerador de energia</li>
+          </ul>
+          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.04);">
+            <span class="data-card-label" style="color: var(--red); opacity: 0.7;">Nao Incluso</span>
+            <ul class="sw-list weaknesses">
+              <li>Fotografia e filmagem</li>
+              <li>Celebrante/cerimonialista externo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="data-card full">
+          <span class="data-card-label">Preco</span>
+          <div class="data-row">
+            <span class="data-label">Pacote Base (100 convidados)</span>
+            <span class="data-value gold" style="font-size: 1.2rem;">R$ 32.333,40</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Preco por Pessoa (estimado)</span>
+            <span class="data-value">R$ 100 &mdash; R$ 115</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Fonte</span>
+            <span class="data-value"><a href="https://www.scribd.com/document/871289468/" target="_blank">Apresentacao Comercial Scribd 2024</a></span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Estrategia de Preco</span>
+            <span class="data-value">Nao exibe no site &mdash; consulta obrigatoria</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in">
+        <p><strong>Posicionamento:</strong> "Casamento ao ar livre no cenario mais encantador da Grande Sao Paulo." O modelo all-in (espaco + gastronomia + decoracao + coordenacao sob uma gestao unica) simplifica a decisao da noiva. A proposta anti-fragmentacao e um diferencial real &mdash; a noiva nao precisa contratar fornecedores separados. Porem, a decoracao "100% flores naturais" limita opcoes e pode ser mais cara para personalizar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ WEBSITES ═══════════════════════ -->
+  <section style="background: var(--surface);" id="websites">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Auditoria de Sites</h2>
+        <p class="section-subtitle">Todos os dominios e propriedades web do ecossistema Caete.</p>
+      </div>
+
+      <div class="url-grid fade-in">
+        <div class="url-item">
+          <span class="url-label">Site Principal</span>
+          <span class="url-link"><a href="https://caetesitio.com.br" target="_blank">caetesitio.com.br</a></span>
+          <span class="url-status live">Online &mdash; WordPress</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">Dominio Legacy</span>
+          <span class="url-link"><a href="https://sitiocaete.com.br" target="_blank">sitiocaete.com.br</a></span>
+          <span class="url-status down">ECONNREFUSED &mdash; Fora do Ar</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">Casa Caete</span>
+          <span class="url-link"><a href="https://caetecasa.com.br" target="_blank">caetecasa.com.br</a></span>
+          <span class="url-status down">ECONNREFUSED &mdash; Fora do Ar</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">Link in Bio (Casa Caete)</span>
+          <span class="url-link"><a href="https://linktr.ee/casacaete_" target="_blank">linktr.ee/casacaete_</a></span>
+          <span class="url-status blocked">403 &mdash; Protegido</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">Casamentos.com.br (Sitio)</span>
+          <span class="url-link"><a href="https://www.casamentos.com.br/sitio-casamento/sitio-caete--e216156" target="_blank">casamentos.com.br/...sitio-caete</a></span>
+          <span class="url-status live">Listagem Ativa</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">Casamentos.com.br (Casa)</span>
+          <span class="url-link"><a href="https://www.casamentos.com.br/chacara-casamento/casa-caete--e143641" target="_blank">casamentos.com.br/...casa-caete</a></span>
+          <span class="url-status live">Listagem Ativa</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">WhatsApp CTA</span>
+          <span class="url-link"><a href="https://wa.me/5511910157522" target="_blank">wa.me/5511910157522</a></span>
+          <span class="url-status live">Ativo</span>
+        </div>
+        <div class="url-item">
+          <span class="url-label">Apresentacao Comercial (PDF)</span>
+          <span class="url-link"><a href="https://www.scribd.com/document/871289468/" target="_blank">Scribd: Sitio Caete Oficial 2024</a></span>
+          <span class="url-status live">30 Paginas</span>
+        </div>
+      </div>
+
+      <div class="data-grid fade-in" style="margin-top: 2rem;">
+        <div class="data-card">
+          <span class="data-card-label">Auditoria &mdash; caetesitio.com.br</span>
+          <div class="data-row">
+            <span class="data-label">CMS</span>
+            <span class="data-value">WordPress (Twenty Twenty-Five)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Homepage</span>
+            <span class="data-value" style="color: var(--red);">Blog "Hello World" &mdash; Catastrofico</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Conteudo Real</span>
+            <span class="data-value">Enterrado em /sitio-caete-2026/</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Links 404</span>
+            <span class="data-value" style="color: var(--red);">Sobre, Eventos, FAQ</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Schema Markup</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Design Quality</span>
+            <span class="data-value" style="color: var(--red);">3/10</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">UX Quality</span>
+            <span class="data-value" style="color: var(--red);">2.5/10</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Paginas Encontradas</span>
+          <div class="data-row">
+            <span class="data-label">/</span>
+            <span class="data-value" style="color: var(--red);">Blog vazio (Hello World)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">/sitio-caete/</span>
+            <span class="data-value">Pagina institucional (antiga)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">/sitio-caete-2025/</span>
+            <span class="data-value">Landing page 2025</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">/sitio-caete-2026/</span>
+            <span class="data-value gold">Landing ATUAL (mais completa)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">/sample-page/</span>
+            <span class="data-value" style="color: var(--red);">Default WP (nao removido)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Formulario</span>
+            <span class="data-value">Nome, Tel, Email, Data, Convidados, Local</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in">
+        <p><strong>Vulnerabilidade critica:</strong> A homepage (caetesitio.com.br) renderiza um blog WordPress vazio com "Hello World". Todo o conteudo de marketing esta enterrado em sub-paginas (/sitio-caete-2026/). Um lead que chega pela homepage nao ve nada util. A navegacao tem links mortos (404 em Sobre, Eventos, FAQ). O tema e stock (Twenty Twenty-Five) sem customizacao visual. <strong>Esta e a maior brecha exploravel pelo Castelo dos Lagos</strong> &mdash; qualquer site minimamente profissional ja supera essa presenca.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SOCIAL MEDIA ═══════════════════════ -->
+  <section id="social">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Presenca Social</h2>
+        <p class="section-subtitle">Mapeamento completo de todas as contas e plataformas do ecossistema Caete.</p>
+      </div>
+
+      <div class="data-grid fade-in">
+        <div class="data-card">
+          <span class="data-card-label">Instagram &mdash; Ecossistema "Grupo Caete"</span>
+          <div class="data-row">
+            <span class="data-label">@sitiocaete_</span>
+            <span class="data-value gold">Conta alvo &mdash; bio: "Onde momentos viram eternidade"</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">@caetesitio</span>
+            <span class="data-value gold">13K seguidores / 382 posts</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">@casacaete_</span>
+            <span class="data-value">10K seguidores</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">@casa.caete</span>
+            <span class="data-value">8.330 seguidores / 321 posts</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Bio @caetesitio</span>
+            <span class="data-value" style="font-style: italic;">"Criamos cenarios autenticos e inesqueciveis"</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Bio @casacaete_</span>
+            <span class="data-value" style="font-style: italic;">"Casamentos unicos em meio a natureza"</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Hashtag Umbrella</span>
+            <span class="data-value gold">#grupocaete #sitiocaete #casacaete</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Posts Indexados (@sitiocaete_)</span>
+          <div class="data-row">
+            <span class="data-label">Reel Nov/2022 (1o casamento)</span>
+            <span class="data-value gold">389 likes / 10 comentarios</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Post Jan/2026 (3 formatos)</span>
+            <span class="data-value">119 likes / 5 comentarios</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Post Ago/2025</span>
+            <span class="data-value">"Casamento de Sitio original"</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Post Abr/2026</span>
+            <span class="data-value">"Wedding Day"</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Pilares de Conteudo</span>
+            <span class="data-value">Reveals, formatos cerimonia, casais, natureza, CTAs</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Estilo Visual</span>
+            <span class="data-value">Rustico, luz natural, verde, tendas transparentes</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Outras Plataformas</span>
+          <div class="data-row">
+            <span class="data-label">Facebook (Sitio Caete)</span>
+            <span class="data-value" style="color: var(--red);">92 curtidas (muito baixo)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Facebook (Casa Caete)</span>
+            <span class="data-value gold">23.540 curtidas</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">YouTube</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">TikTok</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Pinterest</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Blog</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Hashtags Usadas (@sitiocaete_)</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem;">
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#sitiocaete</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#casacaete</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#grupocaete</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#casamentonocampo</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#casarnocampo</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#casamentorustico</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#casamentoaoarlivre</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#casamentodossonhos</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#noiva</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#wedding</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#ribeiraopires</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#noivasdobrasil</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#vestidodenoiva</span>
+            <span style="font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(201,169,110,0.08); border: 1px solid var(--border); border-radius: 100px; color: var(--text-muted);">#voucasar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in">
+        <p><strong>Fragmentacao de marca:</strong> 5 contas de Instagram para o mesmo grupo. @sitiocaete_ (bio: "Onde momentos viram eternidade"), @caetesitio (13K, 382 posts), @casacaete_ (10K), @casa.caete (8.3K, 321 posts) dividem a audiencia e confundem o algoritmo. Usam a hashtag <strong>#grupocaete</strong> confirmando a operacao umbrella. O primeiro casamento documentado na conta @sitiocaete_ (Nov/2022) teve 389 likes e 10 comentarios. Posts recentes mostram ~119 likes &mdash; engagement modesto. Pilares de conteudo: reveals de decoracao, formatos de cerimonia (ar livre/tenda/capela), casais, natureza. Facebook do Sitio Caete tem apenas 92 curtidas (vs 23.5K da Casa Caete). <strong>Nenhuma presenca em YouTube, TikTok ou Pinterest.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ REVIEWS ═══════════════════════ -->
+  <section style="background: var(--surface);" id="reviews">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Social Proof & Reviews</h2>
+        <p class="section-subtitle">Analise de avaliacoes em todas as plataformas &mdash; a maior forca deste concorrente.</p>
+      </div>
+
+      <div class="data-grid fade-in">
+        <div class="data-card">
+          <span class="data-card-label">Casamentos.com.br &mdash; Sitio Caete</span>
+          <div class="data-row">
+            <span class="data-label">Nota Geral</span>
+            <span class="data-value gold" style="font-size: 1.3rem;">4.9 / 5.0</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Recomendacao</span>
+            <span class="data-value gold">98%</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Total de Reviews</span>
+            <span class="data-value gold">224+</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Flexibilidade</span>
+            <span class="data-value">5.0</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Profissionalismo</span>
+            <span class="data-value">5.0</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Qualidade do Servico</span>
+            <span class="data-value">4.9</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Tempo de Resposta</span>
+            <span class="data-value">4.9</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Custo-Beneficio</span>
+            <span class="data-value">4.9</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Outras Plataformas</span>
+          <div class="data-row">
+            <span class="data-label">Google Maps</span>
+            <span class="data-value gold">4.9/5</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">BrasilLocais</span>
+            <span class="data-value">20 reviews (maioria positiva)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Sittio.com.br</span>
+            <span class="data-value">5/5 (sem reviews escritas)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Reclame Aqui</span>
+            <span class="data-value">1 reclamacao (respondida)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Tempo Resposta RA</span>
+            <span class="data-value" style="color: var(--amber);">87 dias (muito lento)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">TripAdvisor</span>
+            <span class="data-value">Registrado, sem reviews</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Imprensa Negativa</span>
+            <span class="data-value" style="color: var(--green);">Nenhuma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header fade-in" style="margin-top: 3rem;">
+        <span class="section-number" style="font-size: 0.7rem;">Depoimentos Reais</span>
+      </div>
+
+      <div class="review-grid fade-in">
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">"O Sitio Caete foi muito mais do que um cenario... foi onde um sonho ganhou vida. Contratamos em 2023 e ate o casamento em 2025 vimos cuidado e dedicacao em cada mudanca."</p>
+          <span class="author">Eduarda L.</span>
+          <span class="source">Casamentos.com.br &mdash; Dez 2025</span>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">"A comida encantou todos os convidados, sempre fresquinha e disponivel. Os garcons foram impecaveis, discretos e atentos. A assessoria da Cassia e Evelin conquistou meu coracao."</p>
+          <span class="author">Noiva Anonima</span>
+          <span class="source">Casamentos.com.br &mdash; 2025</span>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">"A equipe foi perfeita em cada detalhe. O espaco e acolhedor, o buffet maravilhoso, a decoracao impecavel &mdash; tudo perfeito, zero falhas. Recomendo sem hesitar."</p>
+          <span class="author">Noiva Anonima</span>
+          <span class="source">Casamentos.com.br</span>
+        </div>
+      </div>
+
+      <div class="data-grid fade-in" style="margin-top: 2rem;">
+        <div class="data-card">
+          <span class="data-card-label">Temas de Elogio (por frequencia)</span>
+          <ul class="sw-list strengths">
+            <li><strong>Comida / Buffet</strong> &mdash; "nota mil", "fresquinha", "encantou os convidados"</li>
+            <li><strong>Equipe Cassia + Evelin</strong> &mdash; "anjos", "amorosas", "assertivas"</li>
+            <li><strong>Beleza natural / cenario</strong> &mdash; "lindo", "encantador", "amor a primeira vista"</li>
+            <li><strong>Profissionalismo</strong> &mdash; "nota 10", "zero falhas", "cuidado nos detalhes"</li>
+            <li><strong>Garcons</strong> &mdash; "impecaveis", "discretos e atentos"</li>
+            <li><strong>Decoracao</strong> &mdash; "exatamente o que eu sonhei", "flores naturais"</li>
+            <li><strong>Superacao de expectativas</strong> &mdash; "saiu muito melhor que o planejado"</li>
+          </ul>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Temas de Reclamacao</span>
+          <ul class="sw-list weaknesses">
+            <li><strong>Atendimento descortez</strong> &mdash; 1 caso isolado (BrasilLocais)</li>
+            <li><strong>Reposicao de buffet inadequada</strong> &mdash; 1 caso isolado (BrasilLocais)</li>
+          </ul>
+          <div style="margin-top: 1.5rem;">
+            <span class="data-card-label" style="color: var(--amber);">Problemas Operacionais</span>
+            <ul class="sw-list neutral">
+              <li><strong>GPS / navegacao</strong> &mdash; convidados relatam dificuldade para chegar</li>
+              <li><strong>Reclame Aqui</strong> &mdash; tempo de resposta de 87 dias (muito lento)</li>
+            </ul>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <span class="data-card-label" style="color: var(--green);">Staff Destaque</span>
+            <ul class="sw-list strengths">
+              <li><strong>Cassia</strong> &mdash; coordenadora mais mencionada</li>
+              <li><strong>Evelin / Evelyn</strong> &mdash; coordenadora, sempre elogiada junto com Cassia</li>
+              <li><strong>Renata</strong> &mdash; mencionada no contexto de coordenacao</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in">
+        <p><strong>Barreira competitiva:</strong> 224 reviews a 4.9/5 no casamentos.com.br e uma vantagem de volume dominante na categoria regional. A maioria dos concorrentes tem 10-80 reviews. Replicar esse volume leva anos de execucao consistente. Os nomes Cassia e Evelin funcionam como ancora de confianca personalizada &mdash; um diferencial que concorrentes sem staff iconiconao possuem. A assessora Cassia Moura tem perfil proprio no casamentos.com.br com 5.0/100%.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SEO & DIRECTORIES ═══════════════════════ -->
+  <section id="seo">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">06</span>
+        <h2 class="section-title">SEO & Diretorios</h2>
+        <p class="section-subtitle">Presenca em diretorios de casamento e performance em buscas organicas.</p>
+      </div>
+
+      <div class="data-card full fade-in" style="margin-bottom: 2rem;">
+        <span class="data-card-label">Presenca em Diretorios</span>
+        <table class="directory-table">
+          <thead>
+            <tr>
+              <th>Plataforma</th>
+              <th>Sitio Caete</th>
+              <th>Casa Caete</th>
+              <th>Observacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Casamentos.com.br</td>
+              <td class="present">Presente</td>
+              <td class="present">Presente</td>
+              <td>2 listings separados, 98% recomendacao</td>
+            </tr>
+            <tr>
+              <td>iCasei</td>
+              <td class="absent">Ausente</td>
+              <td class="absent">Ausente</td>
+              <td>Gap significativo</td>
+            </tr>
+            <tr>
+              <td>Zankyou</td>
+              <td class="absent">Ausente</td>
+              <td class="absent">Ausente</td>
+              <td>"Caete Eventos" encontrado e outro negocio</td>
+            </tr>
+            <tr>
+              <td>Guia de Casamento</td>
+              <td class="absent">Ausente</td>
+              <td class="absent">Ausente</td>
+              <td>Nenhuma listagem</td>
+            </tr>
+            <tr>
+              <td>Lapis de Noiva</td>
+              <td class="absent">Ausente</td>
+              <td class="absent">Ausente</td>
+              <td>Top plataforma bridal, gap critico</td>
+            </tr>
+            <tr>
+              <td>Google Business</td>
+              <td class="present">Presente</td>
+              <td class="present">Presente</td>
+              <td>4.9/5</td>
+            </tr>
+            <tr>
+              <td>BrasilLocais</td>
+              <td class="present">Presente</td>
+              <td class="absent">Ausente</td>
+              <td>20 reviews</td>
+            </tr>
+            <tr>
+              <td>Solutudo</td>
+              <td class="present">Presente</td>
+              <td class="absent">Ausente</td>
+              <td>Categoria correta</td>
+            </tr>
+            <tr>
+              <td>Apontador / Planeta Brasileiro</td>
+              <td class="present" style="color: var(--amber);">Presente (erro)</td>
+              <td class="absent">Ausente</td>
+              <td style="color: var(--red);">Listado como "HOTEL" &mdash; incorreto</td>
+            </tr>
+            <tr>
+              <td>TripAdvisor</td>
+              <td class="present" style="color: var(--amber);">Parcial</td>
+              <td class="absent">Ausente</td>
+              <td>Ponto de interesse, sem reviews, nao gerenciado</td>
+            </tr>
+            <tr>
+              <td>Sittio.com.br</td>
+              <td class="present">Presente</td>
+              <td class="absent">Ausente</td>
+              <td>291 views/30 dias, 36 contatos WhatsApp</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="data-grid fade-in">
+        <div class="data-card">
+          <span class="data-card-label">Rankings Google (palavras-chave)</span>
+          <div class="data-row">
+            <span class="data-label">"sitio caete ribeirao pires"</span>
+            <span class="data-value" style="color: var(--green);">Forte (branded)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">"espaco casamento ribeirao pires"</span>
+            <span class="data-value" style="color: var(--amber);">Casa Caete aparece</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">"sitio casamento SP"</span>
+            <span class="data-value" style="color: var(--amber);">Via casamentos.com.br</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">"espaco debutante ribeirao pires"</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">"casa de festas ribeirao pires"</span>
+            <span class="data-value" style="color: var(--red);">Ausente</span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">Problemas de SEO</span>
+          <ul class="sw-list weaknesses">
+            <li><strong>3 dominios fragmentam link equity</strong> &mdash; sem dominio canonico claro</li>
+            <li><strong>Zero blog / conteudo</strong> &mdash; nenhuma pagina interna indexada alem da home</li>
+            <li><strong>H1 da home e "Blog"</strong> &mdash; Google indexa conteudo errado</li>
+            <li><strong>Sem Schema Markup</strong> &mdash; faltam WeddingVenue, LocalBusiness, AggregateRating</li>
+            <li><strong>Sem Open Graph / meta social</strong> &mdash; previews feios ao compartilhar</li>
+            <li><strong>Listado como "Hotel" em 2 diretorios</strong> &mdash; categorizacao incorreta</li>
+            <li><strong>Keyword "debutante" completamente ausente</strong> &mdash; gap nao disputado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ADS ═══════════════════════ -->
+  <section style="background: var(--surface);" id="ads">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">07</span>
+        <h2 class="section-title">Midia Paga</h2>
+        <p class="section-subtitle">Inteligencia sobre anuncios no Meta (Facebook/Instagram).</p>
+      </div>
+
+      <div class="data-card full fade-in">
+        <span class="data-card-label">Status da Pesquisa</span>
+        <div class="data-row">
+          <span class="data-label">Meta Ad Library API</span>
+          <span class="data-value" style="color: var(--red);">Bloqueada &mdash; requer ativacao em facebook.com/ads/library/api</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Facebook Page ID (Sitio Caete)</span>
+          <span class="data-value gold">100089032616665</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Facebook Page ID (Casa Caete)</span>
+          <span class="data-value gold">100040327066991</span>
+        </div>
+      </div>
+
+      <div class="data-grid fade-in" style="margin-top: 2rem;">
+        <div class="data-card">
+          <span class="data-card-label">Sinais de Atividade de Ads</span>
+          <ul class="sw-list neutral">
+            <li><strong>Bio otimizada para conversao</strong> &mdash; @casacaete_ com "Beneficios especiais" + "SOLICITE UM ORCAMENTO"</li>
+            <li><strong>Linktree</strong> &mdash; indica roteamento de trafego pago via bio link</li>
+            <li><strong>Landing page com formulario</strong> &mdash; caetesitio.com.br/sitio-caete-2026/ tem captacao de leads</li>
+            <li><strong>Listagens pagas</strong> &mdash; presenca em casamentos.com.br (plataforma paga)</li>
+            <li><strong>PDF comercial no Scribd</strong> &mdash; documento de 30 paginas para envio pos-lead</li>
+          </ul>
+        </div>
+
+        <div class="data-card">
+          <span class="data-card-label">URLs para Pesquisa Manual</span>
+          <div class="data-row">
+            <span class="data-label">Ad Library (Sitio Caete)</span>
+            <span class="data-value"><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&view_all_page_id=100089032616665" target="_blank">Abrir no navegador</a></span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Ad Library (Casa Caete)</span>
+            <span class="data-value"><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&view_all_page_id=100040327066991" target="_blank">Abrir no navegador</a></span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Ad Library (busca geral)</span>
+            <span class="data-value"><a href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=sitio%20caete" target="_blank">Buscar "sitio caete"</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in">
+        <p><strong>Acao necessaria:</strong> Para extrair criativos reais dos anuncios, Moroni precisa ativar o acesso a Ad Library API em <a href="https://www.facebook.com/ads/library/api" target="_blank" style="color: var(--gold-dark);">facebook.com/ads/library/api</a> e aceitar os termos. Alternativamente, os links acima podem ser abertos diretamente no navegador para visualizacao manual. A arquitetura do funil sugere: Meta Ads &rarr; landing page (caetesitio.com.br/sitio-caete-2026/) &rarr; formulario/WhatsApp &rarr; visita ao espaco &rarr; contrato.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ COMPARISON TABLE ═══════════════════════ -->
+  <section class="dark-section" id="comparison">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">08</span>
+        <h2 class="section-title">Matriz Comparativa</h2>
+        <p class="section-subtitle">Sitio Caete vs Castelo dos Lagos &mdash; criterio a criterio.</p>
+      </div>
+
+      <table class="comparison-table fade-in">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Sitio Caete</th>
+            <th>Castelo dos Lagos</th>
+            <th>Vantagem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Capacidade</td>
+            <td>100 &mdash; 230</td>
+            <td>Variavel</td>
+            <td><span class="badge badge-medium">Empate</span></td>
+          </tr>
+          <tr>
+            <td>Estilo Arquitetonico</td>
+            <td>Rustico / campo</td>
+            <td>Castelo / medieval autentico</td>
+            <td><span class="badge badge-advantage">Castelo</span></td>
+          </tr>
+          <tr class="highlight">
+            <td>Autenticidade</td>
+            <td>Decoracao tematica</td>
+            <td>Construcao real de castelo</td>
+            <td><span class="badge badge-advantage">Castelo</span></td>
+          </tr>
+          <tr>
+            <td>Modelo de Servico</td>
+            <td>All-in (espaco + buffet + decoracao)</td>
+            <td>Espaco + fornecedores externos</td>
+            <td><span class="badge badge-high">Caete</span></td>
+          </tr>
+          <tr>
+            <td>Preco Base</td>
+            <td>R$ 32.333 (100 pax)</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-medium">Comparar</span></td>
+          </tr>
+          <tr>
+            <td>Reviews (casamentos.com.br)</td>
+            <td>4.9/5 &mdash; 224 reviews</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-high">Caete</span></td>
+          </tr>
+          <tr class="highlight">
+            <td>Website</td>
+            <td>WordPress stock / "Hello World"</td>
+            <td>Astro premium / 3-video hero</td>
+            <td><span class="badge badge-advantage">Castelo</span></td>
+          </tr>
+          <tr>
+            <td>Instagram (5 contas)</td>
+            <td>@caetesitio 13K + @casacaete_ 10K + @casa.caete 8.3K + @sitiocaete_</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-medium">Comparar</span></td>
+          </tr>
+          <tr>
+            <td>YouTube</td>
+            <td class="x-mark">Ausente</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-low">Oportunidade</span></td>
+          </tr>
+          <tr>
+            <td>TikTok</td>
+            <td class="x-mark">Ausente</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-low">Oportunidade</span></td>
+          </tr>
+          <tr>
+            <td>SEO (conteudo)</td>
+            <td>Zero blog, zero conteudo</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-advantage">Castelo</span></td>
+          </tr>
+          <tr>
+            <td>Schema Markup</td>
+            <td class="x-mark">Ausente</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-low">Oportunidade</span></td>
+          </tr>
+          <tr>
+            <td>Diretorios</td>
+            <td>casamentos.com.br apenas</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-low">Oportunidade</span></td>
+          </tr>
+          <tr>
+            <td>Equipe Destaque</td>
+            <td>Cassia + Evelin (iconicas)</td>
+            <td>&mdash;</td>
+            <td><span class="badge badge-high">Caete</span></td>
+          </tr>
+          <tr class="highlight">
+            <td>Presenca Digital Geral</td>
+            <td>Fragmentada e amadora</td>
+            <td>Site premium, marca consistente</td>
+            <td><span class="badge badge-advantage">Castelo</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SCORING ═══════════════════════ -->
+  <section class="score-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">09</span>
+        <h2 class="section-title">Scoring por Dimensao</h2>
+        <p class="section-subtitle">Avaliacao quantitativa do Sitio Caete em cada area.</p>
+      </div>
+
+      <div class="score-grid fade-in">
+        <div class="score-card">
+          <div class="score-label">Social Proof</div>
+          <div class="score-number" style="color: var(--green);">9.5</div>
+          <div class="score-bar-track"><div class="score-bar-fill green" style="width: 95%;"></div></div>
+          <div class="score-detail">224+ reviews a 4.9/5. Dominante na categoria regional. Staff iconiconao (Cassia/Evelin). Barreira de anos para replicar.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Servico / Produto</div>
+          <div class="score-number" style="color: var(--green);">8.5</div>
+          <div class="score-bar-track"><div class="score-bar-fill green" style="width: 85%;"></div></div>
+          <div class="score-detail">All-in simplifica decisao. 200+ eventos. Buffet e decoracao elogiados. Preco competitivo (R$100-115/pax).</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Instagram</div>
+          <div class="score-number" style="color: var(--amber);">6.0</div>
+          <div class="score-bar-track"><div class="score-bar-fill amber" style="width: 60%;"></div></div>
+          <div class="score-detail">13K followers (principal), mas fragmentado em 4+ contas. Presenca ativa porem diluida.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Website</div>
+          <div class="score-number" style="color: var(--red);">2.0</div>
+          <div class="score-bar-track"><div class="score-bar-fill red" style="width: 20%;"></div></div>
+          <div class="score-detail">Homepage "Hello World". 2 de 3 dominios down. Links 404. Zero customizacao visual. Catastrofico.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">SEO</div>
+          <div class="score-number" style="color: var(--red);">2.5</div>
+          <div class="score-bar-track"><div class="score-bar-fill red" style="width: 25%;"></div></div>
+          <div class="score-detail">3 dominios fragmentam autoridade. Zero blog. H1 incorreto. Sem schema. Ausente em 4+ diretorios-chave.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Multiplataforma</div>
+          <div class="score-number" style="color: var(--red);">1.5</div>
+          <div class="score-bar-track"><div class="score-bar-fill red" style="width: 15%;"></div></div>
+          <div class="score-detail">Sem YouTube, TikTok, Pinterest, blog. 100% dependente de Instagram + casamentos.com.br.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Marca / Branding</div>
+          <div class="score-number" style="color: var(--amber);">4.0</div>
+          <div class="score-bar-track"><div class="score-bar-fill amber" style="width: 40%;"></div></div>
+          <div class="score-detail">Brand split (Sitio + Casa) cria confusao. 4+ contas Instagram. Sem identidade visual consistente online.</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Gestao de Reputacao</div>
+          <div class="score-number" style="color: var(--amber);">6.5</div>
+          <div class="score-bar-track"><div class="score-bar-fill amber" style="width: 65%;"></div></div>
+          <div class="score-detail">RA limpo porem 87 dias para responder. TripAdvisor nao gerenciado. Diretorios com categorizacao errada.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SWOT ═══════════════════════ -->
+  <section class="dark-section" id="swot">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">10</span>
+        <h2 class="section-title">Analise SWOT</h2>
+        <p class="section-subtitle">Forcas, fraquezas, oportunidades e ameacas do Sitio Caete para o Castelo dos Lagos.</p>
+      </div>
+
+      <div class="swot-grid fade-in">
+        <div class="swot-card">
+          <span class="swot-label">Forcas (do Concorrente)</span>
+          <ul>
+            <li>224+ reviews a 4.9/5 &mdash; social proof dominante na regiao</li>
+            <li>Modelo all-in simplifica a vida da noiva (espaco + buffet + decoracao + assessoria)</li>
+            <li>Staff iconiconao (Cassia e Evelin) geram confianca pessoal</li>
+            <li>10+ anos de experiencia, 200+ eventos realizados</li>
+            <li>Preco competitivo (R$100-115/pessoa vs concorrentes a R$150+)</li>
+            <li>Decoracao 100% flores naturais como diferencial</li>
+            <li>Brand split (5 contas IG + 2 venues) maximiza presenca em buscas</li>
+            <li>Facebook Casa Caete com 23K+ curtidas</li>
+            <li>Presenca em portfolios de fotografos (Yamau Fotografia)</li>
+          </ul>
+        </div>
+
+        <div class="swot-card">
+          <span class="swot-label">Fraquezas (do Concorrente)</span>
+          <ul>
+            <li>Website catastrofico &mdash; homepage "Hello World", 2/3 dominios down</li>
+            <li>4+ contas Instagram fragmentam audiencia e confundem marca</li>
+            <li>Zero presenca em YouTube, TikTok, Pinterest, blog</li>
+            <li>Ausente de iCasei, Zankyou, Lapis de Noiva, Guia de Casamento</li>
+            <li>SEO destruido: 3 dominios, zero conteudo, H1 errado, sem schema</li>
+            <li>Listado como "Hotel" em 2 diretorios (categorizacao incorreta)</li>
+            <li>Reclame Aqui: 87 dias para responder (muito lento)</li>
+            <li>Sem tour virtual, sem video institucional no YouTube</li>
+            <li>Identidade visual inexistente online (tema WP stock)</li>
+          </ul>
+        </div>
+
+        <div class="swot-card">
+          <span class="swot-label">Oportunidades (para o Castelo)</span>
+          <ul>
+            <li>Dominar busca "debutante ribeirao pires" &mdash; Caete esta ausente</li>
+            <li>YouTube video tour do castelo &mdash; nenhum concorrente tem</li>
+            <li>Presenca em iCasei + Zankyou + Lapis de Noiva antes do Caete</li>
+            <li>Blog com conteudo SEO sobre casamentos na regiao</li>
+            <li>Schema markup (WeddingVenue + AggregateRating) para rich snippets</li>
+            <li>TikTok com conteudo do castelo &mdash; nicho inexplorado localmente</li>
+            <li>Site premium ja e vantagem massiva &mdash; ampliar com SEO</li>
+            <li>Autenticidade arquitetonica que nao pode ser copiada</li>
+          </ul>
+        </div>
+
+        <div class="swot-card">
+          <span class="swot-label">Ameacas (vindas do Concorrente)</span>
+          <ul>
+            <li>Se profissionalizarem o site, ganham conversao instantanea</li>
+            <li>Volume de reviews (224+) e barreira de anos para igualar</li>
+            <li>Modelo all-in e mais conveniente que fornecedores separados</li>
+            <li>Preco menor pode atrair orcamentos mais apertados</li>
+            <li>2 marcas em casamentos.com.br = dobro de visibilidade na plataforma</li>
+            <li>Staff Cassia + Evelin criam fidelizacao boca-a-boca forte</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ STRATEGIC GAPS ═══════════════════════ -->
+  <section style="background: var(--surface);" id="gaps">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">11</span>
+        <h2 class="section-title">Brechas Estrategicas</h2>
+        <p class="section-subtitle">8 vulnerabilidades exploraveis pelo Castelo dos Lagos &mdash; ranqueadas por impacto.</p>
+      </div>
+
+      <div class="gap-grid fade-in">
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <h3>1. Website Profissional</h3>
+          <p>O site do concorrente mostra "Hello World" na homepage. <strong>Qualquer site minimamente profissional ja vence.</strong> O Castelo dos Lagos ja tem site Astro premium com hero de 3 videos &mdash; essa vantagem e massiva e deve ser amplificada com SEO.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <h3>2. SEO de Conteudo</h3>
+          <p>Zero blog, zero conteudo indexado. O Castelo pode dominar buscas informacionais ("como escolher espaco casamento ribeirao pires", "casamento ao ar livre SP") com um blog ativo. Ninguem disputa essas keywords localmente.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          <h3>3. YouTube Video Tour</h3>
+          <p>Nenhum concorrente local tem canal YouTube ativo. Um tour cinematografico do castelo apareceria no Google Video Carousel para buscas de venue &mdash; canal de descoberta inexplorado.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <h3>4. Diretorios (iCasei, Zankyou, Lapis de Noiva)</h3>
+          <p>Caete esta ausente de 4 grandes diretorios de casamento. O Castelo pode registrar-se primeiro em todos e capturar backlinks de alta autoridade + trafego qualificado de noivas.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          <h3>5. Keyword "Debutante"</h3>
+          <p>"Espaco para debutante ribeirao pires" e um keyword sem nenhum venue ranqueando. O Castelo pode criar uma landing page especifica e dominar esse segmento com SEO + ads locais.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h3>6. TikTok / Reels</h3>
+          <p>Nenhum concorrente local opera no TikTok. O formato vertical favorece venues com cenarios impressionantes &mdash; o Castelo dos Lagos tem vantagem visual natural. Primeiro a entrar domina o nicho local.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+          <h3>7. Schema Markup Estruturado</h3>
+          <p>Nenhum concorrente usa schema WeddingVenue, LocalBusiness ou AggregateRating. Implementar primeiro garante rich snippets no Google (estrelas, preco, enderecos) &mdash; vantagem tecnica com custo zero.</p>
+        </div>
+
+        <div class="gap-card">
+          <svg class="gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3>8. Gestao de Reputacao Ativa</h3>
+          <p>Caete leva 87 dias para responder no Reclame Aqui. TripAdvisor nao gerenciado. Diretorios com categorizacao errada. O Castelo pode se posicionar como o venue que responde em 24h, gerencia ativamente sua presenca online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ TAKEAWAYS ═══════════════════════ -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-number">12</span>
+        <h2 class="section-title">Conclusao</h2>
+      </div>
+
+      <div class="takeaway-card fade-in">
+        <h3>O Sitio Caete e forte onde importa <em>offline</em>,<br>mas vulneravel onde importa <em>online</em></h3>
+        <div class="takeaway-items">
+          <div class="takeaway-item">
+            <h4>Respeitar</h4>
+            <p>224+ reviews a 4.9/5 e uma barreira real. O modelo all-in simplifica a vida da noiva. O staff Cassia e Evelin sao um ativo humano que nao se copia. Nao subestime a forca do boca-a-boca que esse volume de reviews gera.</p>
+          </div>
+          <div class="takeaway-item">
+            <h4>Explorar</h4>
+            <p>O digital e o flanco aberto. Website catastrofico. SEO inexistente. Sem YouTube, TikTok, Pinterest, blog. Ausente de 4 diretorios-chave. 3 dominios fragmentados. O Castelo ja tem vantagem digital &mdash; amplificar com conteudo, SEO e novos canais.</p>
+          </div>
+          <div class="takeaway-item">
+            <h4>Diferenciar</h4>
+            <p>A autenticidade arquitetonica do Castelo e um moat estrutural. Um castelo real compete numa categoria diferente de um sitio rustico. Posicionar como experiencia premium unica, nao como "mais um espaco para eventos". O keyword "debutante" e terreno virgem.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box fade-in" style="margin-top: 2rem;">
+        <p><strong>Proximos passos recomendados:</strong> (1) Registrar o Castelo dos Lagos em iCasei, Zankyou, Lapis de Noiva e Guia de Casamento. (2) Criar pagina especifica para debutantes com SEO local. (3) Abrir canal YouTube com tour cinematografico. (4) Implementar schema markup WeddingVenue + AggregateRating. (5) Considerar TikTok como canal pioneiro na regiao. (6) Ativar a Meta Ad Library API para completar a analise de criativos do concorrente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <div class="footer">
+    Castelo dos Lagos &mdash; Inteligencia Competitiva &mdash; Junho 2026 &mdash; Documento Confidencial
+  </div>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+  ============================================================
+  DIGITAL PEOPLE — PROPOSTA CASAMENTO
+  Versão: 1.0
+  ============================================================
+
+  TOKENS DE PERSONALIZAÇÃO (buscar e substituir antes de enviar):
+
+  {{CLIENT_NAME}}         → Nome do casal, ex: "Maria & João"
+  {{PROPOSAL_DATE}}       → Data da proposta, ex: "8 de junho de 2026"
+  {{VALIDITY_DATE}}       → Validade da proposta, ex: "30 de junho de 2026"
+  {{CUSTOM_MESSAGE}}      → Mensagem pessoal da Juliane (opcional, apagar bloco se não usar)
+  {{SELECTED_PACKAGE}}    → Nome do pacote para link WhatsApp, ex: "Premium"
+  {{TESTIMONIAL_1_NAME}}  → Nome do casal 1
+  {{TESTIMONIAL_1_YEAR}}  → Ano do casamento 1
+  {{TESTIMONIAL_2_NAME}}  → Nome do casal 2
+  {{TESTIMONIAL_2_YEAR}}  → Ano do casamento 2
+  {{TESTIMONIAL_3_NAME}}  → Nome do casal 3
+  {{TESTIMONIAL_3_YEAR}}  → Ano do casamento 3
+
+  PACOTE ATIVO:
+  Por padrão este template exibe o Pacote PREMIUM.
+  Para trocar, procure os comentários marcados com:
+    <!-- PACOTE: ESSENCIAL -->
+    <!-- PACOTE: CLASSICO -->
+    <!-- PACOTE: PREMIUM (DEFAULT) -->
+    <!-- PACOTE: COMPLETO -->
+  e comente/descomente o bloco correspondente.
+
+  ÁLBUM (S8):
+  Se o pacote incluir álbum (Premium e Completo incluem),
+  adicione class="hidden" à section#albuns para ocultá-la.
+  ============================================================
+  -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- OG -->
+  <meta property="og:title" content="{{CLIENT_NAME}} — Proposta Digital People" />
+  <meta property="og:description" content="Proposta exclusiva preparada com carinho para o casamento de vocês." />
+  <meta property="og:image" content="../assets/fotos/hero-casal.jpg" />
+  <meta property="og:type" content="website" />
+
+  <title>{{CLIENT_NAME}} — Proposta Digital People</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --bg:        #070709;
+      --surface:   #0F0F12;
+      --surface-2: #161619;
+      --gold:      #C9A96E;
+      --gold-light:#D4B97A;
+      --gold-dim:  rgba(201,169,110,0.12);
+      --text:      #F0EDE8;
+      --text-s:    rgba(240,237,232,0.6);
+      --text-m:    rgba(240,237,232,0.35);
+      --border:    rgba(201,169,110,0.10);
+      --border-s:  rgba(201,169,110,0.06);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 48px;
+      }
+    }
+
+    /* ============================================================
+       TYPOGRAPHY SYSTEM
+    ============================================================ */
+    .label-gold {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .display-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .body-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       REVEAL ANIMATION
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ============================================================
+       S1 — HERO
+    ============================================================ */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    #hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    #hero .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(7,7,9,0.2) 40%,
+        rgba(7,7,9,0.72) 70%,
+        rgba(7,7,9,0.92) 100%
+      );
+    }
+
+    #hero .hero-wordmark {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-m);
+      z-index: 10;
+    }
+
+    #hero .hero-content {
+      position: relative;
+      z-index: 10;
+      padding: 0 32px 80px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      #hero .hero-content {
+        padding: 0 64px 100px;
+      }
+    }
+
+    #hero .hero-couple {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: -0.01em;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    #hero .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-s);
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+    #hero .hero-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scroll-indicator .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--gold);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ============================================================
+       S2 — QUEM SOMOS
+    ============================================================ */
+    #quem-somos {
+      background: var(--surface);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    #quem-somos .qs-heading {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+
+    #quem-somos .qs-text {
+      max-width: 600px;
+      margin: 0 auto 64px;
+      font-size: 15px;
+    }
+
+    /* Trust metrics */
+    .trust-metrics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    @media (min-width: 600px) {
+      .trust-metrics {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0;
+      }
+
+      .trust-metric {
+        flex: 1;
+        max-width: 200px;
+        position: relative;
+      }
+
+      .trust-metric + .trust-metric::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 40px;
+        background: var(--border);
+      }
+    }
+
+    .trust-metric {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .trust-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-m);
+    }
+
+    /* ============================================================
+       S3 — PORTFÓLIO
+    ============================================================ */
+    #portfolio {
+      background: var(--bg);
+      padding: 80px 0 0;
+    }
+
+    #portfolio .portfolio-header {
+      text-align: center;
+      padding: 0 24px 48px;
+    }
+
+    #portfolio .portfolio-subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(1.25rem, 3vw, 1.875rem);
+      color: var(--text-s);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Masonry gallery */
+    .gallery-grid {
+      width: 100%;
+      column-count: 2;
+      column-gap: 4px;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        column-count: 3;
+      }
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      overflow: hidden;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Varying heights via aspect ratios */
+    .gallery-item.tall img { aspect-ratio: 3/4; object-fit: cover; }
+    .gallery-item.wide img { aspect-ratio: 4/3; object-fit: cover; }
+    .gallery-item.square img { aspect-ratio: 1/1; object-fit: cover; }
+    .gallery-item.hero-size img { aspect-ratio: 2/3; object-fit: cover; }
+
+    /* ============================================================
+       S4 — COMO TRABALHAMOS
+    ============================================================ */
+    #como-trabalhamos {
+      background: var(--surface);
+      padding: 100px 0;
+    }
+
+    #como-trabalhamos .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 640px;
+      margin: 0 auto;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--gold) 10%,
+        var(--gold) 90%,
+        transparent
+      );
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       S5 — DEPOIMENTOS
+    ============================================================ */
+    #depoimentos {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
+    #depoimentos .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonials-grid .testimonial-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .testimonials-grid .testimonial-card:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: none;
+        margin: 0;
+      }
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 32px 32px;
+      position: relative;
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 0.6;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.125rem;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-attr {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-m);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       S6 — SEU PACOTE
+    ============================================================ */
+    #pacote {
+      background: var(--surface);
+      padding: 100px 0;
+    }
+
+    #pacote .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .package-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 56px 40px;
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .package-card {
+        padding: 64px 64px;
+      }
+    }
+
+    .package-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .package-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-s);
+      margin-bottom: 48px;
+    }
+
+    /* Value stack table */
+    .value-stack {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .value-stack-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
+    .value-stack-header span {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-m);
+    }
+
+    .value-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-s);
+    }
+
+    .value-row:last-child {
+      border-bottom: none;
+    }
+
+    .value-item-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      flex: 1;
+      padding-right: 16px;
+    }
+
+    .value-item-price {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-s);
+      white-space: nowrap;
+    }
+
+    .value-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0 28px;
+    }
+
+    /* Pricing summary */
+    .pricing-summary {
+      margin-bottom: 32px;
+    }
+
+    .pricing-strike {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-m);
+      margin-bottom: 12px;
+    }
+
+    .pricing-strike span {
+      text-decoration: line-through;
+    }
+
+    .pricing-main-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-s);
+      margin-bottom: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .pricing-main-value {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--gold);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .pricing-economy-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,169,110,0.2);
+      color: var(--gold-light);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 6px 14px;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+
+    .pricing-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border-s);
+      margin: 24px 0;
+    }
+
+    .pricing-installments {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-s);
+      margin-bottom: 8px;
+    }
+
+    .pricing-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-m);
+    }
+
+    /* Cortesia highlight */
+    .cortesia-note {
+      margin-top: 32px;
+      padding: 16px 20px;
+      border-left: 2px solid var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .cortesia-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .cortesia-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-s);
+    }
+
+    /* ============================================================
+       S7 — PERSONALIZE
+    ============================================================ */
+    #personalize {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
+    #personalize .section-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .personalize-subtitle {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-s);
+      margin-bottom: 64px;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 480px) {
+      .addons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .addons-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .addon-card {
+      background: var(--surface);
+      border: 1px solid var(--border-s);
+      padding: 24px;
+      transition: border-color 0.3s ease;
+    }
+
+    .addon-card:hover {
+      border-color: var(--border);
+    }
+
+    .addon-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .addon-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-m);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .addon-price {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.375rem;
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       S8 — ÁLBUNS
+    ============================================================ */
+    #albuns {
+      background: var(--surface);
+      padding: 100px 0;
+    }
+
+    #albuns .section-header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .albuns-note {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-m);
+      margin-bottom: 56px;
+    }
+
+    .albuns-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 600px) {
+      .albuns-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .album-card {
+      background: var(--bg);
+      border: 1px solid var(--border-s);
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color 0.3s ease;
+    }
+
+    .album-card:hover {
+      border-color: var(--border);
+    }
+
+    .album-size {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.75rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .album-pages {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-m);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .album-detail {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-s);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .album-price {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .kit-mae {
+      background: var(--surface-2);
+      border: 1px solid var(--border-s);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .kit-mae-info {}
+
+    .kit-mae-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .kit-mae-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-m);
+    }
+
+    .kit-mae-price {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       S9 — FORMAS DE PAGAMENTO
+    ============================================================ */
+    #pagamento {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+
+    #pagamento .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .payment-list {
+      list-style: none;
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .payment-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .payment-check {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .payment-check svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .payment-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-s);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       S10 — PRÓXIMO PASSO
+    ============================================================ */
+    #proximo-passo {
+      background: var(--surface);
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    #proximo-passo .cta-heading {
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.15;
+    }
+
+    #proximo-passo .cta-sub {
+      font-size: 16px;
+      max-width: 480px;
+      margin: 0 auto 16px;
+    }
+
+    #proximo-passo .cta-custom-message {
+      max-width: 480px;
+      margin: 0 auto 48px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.0625rem;
+      color: var(--text-s);
+      padding: 20px 24px;
+      border-left: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .wa-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 18px 36px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      margin-bottom: 24px;
+    }
+
+    .wa-button:hover {
+      background: #2FE072;
+    }
+
+    .wa-button svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .cta-phone {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-m);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .cta-validity {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.04em;
+      display: block;
+    }
+
+    /* ============================================================
+       S11 — FOOTER
+    ============================================================ */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(201,169,110,0.15);
+      padding: 48px 0;
+    }
+
+    .footer-brand {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-m);
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .footer-contacts {
+        flex-direction: row;
+        justify-content: center;
+        gap: 32px;
+      }
+    }
+
+    .footer-contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-m);
+    }
+
+    .footer-contact svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    .footer-address {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-m);
+      margin-bottom: 20px;
+    }
+
+    .footer-confidential {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(240,237,232,0.2);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       S1 — HERO
+  ============================================================ -->
+  <section id="hero" aria-label="Capa da proposta">
+    <img
+      class="hero-bg"
+      src="../assets/fotos/hero-casal.jpg"
+      alt="Casal em ensaio fotográfico"
+      fetchpriority="high"
+    />
+    <div class="hero-gradient" aria-hidden="true"></div>
+
+    <span class="hero-wordmark" aria-label="Digital People">Digital People</span>
+
+    <div class="hero-content">
+      <h1 class="hero-couple">{{CLIENT_NAME}}</h1>
+      <p class="hero-sub">Proposta exclusiva preparada para vocês</p>
+      <p class="hero-date">{{PROPOSAL_DATE}}</p>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S2 — QUEM SOMOS
+  ============================================================ -->
+  <section id="quem-somos" aria-labelledby="qs-heading">
+    <div class="container">
+      <div class="reveal">
+        <span class="label-gold">Quem Somos</span>
+      </div>
+      <h2 id="qs-heading" class="display-heading qs-heading reveal reveal-delay-1">
+        36 anos registrando os momentos mais importantes da vida de milhares de famílias
+      </h2>
+      <p class="body-text qs-text reveal reveal-delay-2">
+        Fundada em 1989 em Mauá, a Digital People nasceu da paixão por eternizar histórias.
+        Com equipe própria, equipamentos profissionais e um olhar treinado por mais de três décadas,
+        cada evento que registramos carrega a dedicação de quem entende que aquele momento não volta.
+      </p>
+
+      <div class="trust-metrics reveal reveal-delay-3">
+        <div class="trust-metric">
+          <span class="trust-number">36</span>
+          <span class="trust-label">Anos de História</span>
+        </div>
+        <div class="trust-metric">
+          <span class="trust-number">4.9 ★</span>
+          <span class="trust-label">Google</span>
+        </div>
+        <div class="trust-metric">
+          <span class="trust-number">+5.000</span>
+          <span class="trust-label">Eventos Registrados</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S3 — PORTFÓLIO
+  ============================================================ -->
+  <section id="portfolio" aria-labelledby="portfolio-heading">
+    <div class="portfolio-header reveal">
+      <span class="label-gold">Portfólio</span>
+      <h2 id="portfolio-heading" class="display-heading portfolio-subtitle">
+        Cada momento conta uma história
+      </h2>
+    </div>
+
+    <!-- Full-bleed masonry — no container wrapper -->
+    <div class="gallery-grid" role="list" aria-label="Galeria de fotos de casamento">
+
+      <div class="gallery-item tall reveal" role="listitem">
+        <img
+          src="../assets/fotos/cas-01.jpg"
+          alt="Momento emocionante do casamento"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item wide reveal reveal-delay-1" role="listitem">
+        <img
+          src="../assets/fotos/noiva-bouquet.jpg"
+          alt="Noiva com buquê"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item hero-size reveal reveal-delay-2" role="listitem">
+        <img
+          src="../assets/fotos/cas-02.jpg"
+          alt="Casal de noivos"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item wide reveal reveal-delay-1" role="listitem">
+        <img
+          src="../assets/fotos/noiva-jardim.jpg"
+          alt="Noiva no jardim"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item tall reveal reveal-delay-2" role="listitem">
+        <img
+          src="../assets/fotos/cas-03.jpg"
+          alt="Cerimônia de casamento"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item square reveal reveal-delay-3" role="listitem">
+        <img
+          src="../assets/fotos/noivo-jardim.jpg"
+          alt="Noivo no jardim"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item hero-size reveal" role="listitem">
+        <img
+          src="../assets/fotos/cas-beach.jpg"
+          alt="Casal na praia"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item tall reveal reveal-delay-1" role="listitem">
+        <img
+          src="../assets/fotos/ensaio-casal.jpg"
+          alt="Ensaio do casal"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="gallery-item wide reveal reveal-delay-2" role="listitem">
+        <img
+          src="../assets/fotos/cas-04.jpg"
+          alt="Detalhes do casamento"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S4 — COMO TRABALHAMOS
+  ============================================================ -->
+  <section id="como-trabalhamos" aria-labelledby="ct-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reveal"><span class="label-gold">Como Trabalhamos</span></div>
+        <h2 id="ct-heading" class="display-heading reveal reveal-delay-1"
+            style="font-size: clamp(1.75rem, 4vw, 2.75rem); max-width: 500px; margin: 0 auto;">
+          Do primeiro contato à última entrega
+        </h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-step reveal">
+          <div class="step-number">01</div>
+          <div class="step-title">Primeiro Contato</div>
+          <p class="step-desc">
+            Conversamos sobre o seu evento, entendemos cada detalhe e montamos juntos o pacote ideal para vocês.
+          </p>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-1">
+          <div class="step-number">02</div>
+          <div class="step-title">Reunião de Planejamento</div>
+          <p class="step-desc">
+            Alinhamos cronograma, locações, momentos-chave e toda a logística para que nada passe despercebido.
+          </p>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-2">
+          <div class="step-number">03</div>
+          <div class="step-title">Ensaio Pré-Casamento</div>
+          <p class="step-desc">
+            Uma sessão descontraída para vocês se soltarem na frente da câmera — e terem fotos incríveis antes do grande dia.
+          </p>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-3">
+          <div class="step-number">04</div>
+          <div class="step-title">O Grande Dia</div>
+          <p class="step-desc">
+            Nossa equipe chega cedo, se posiciona e registra cada emoção: do making of até a última música da festa.
+          </p>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-4">
+          <div class="step-number">05</div>
+          <div class="step-title">Entrega e Surpresa</div>
+          <p class="step-desc">
+            Fotos tratadas, filme editado e álbum encadernado entregues com o carinho que esse momento merece.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S5 — DEPOIMENTOS
+  ============================================================ -->
+  <section id="depoimentos" aria-labelledby="dep-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reveal"><span class="label-gold">O que Dizem Nossos Casais</span></div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial-text">
+            A equipe da Digital People fez a gente esquecer que tinha câmera no casamento.
+            Cada foto capturou exatamente o que sentimos naquele momento. Choramos vendo o filme pela primeira vez.
+          </p>
+          <p class="testimonial-attr">— {{TESTIMONIAL_1_NAME}}, Casamento {{TESTIMONIAL_1_YEAR}}</p>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial-text">
+            O making of ficou lindo, o ensaio pré-casamento foi divertidíssimo, e o álbum é de chorar.
+            Recomendo de olhos fechados.
+          </p>
+          <p class="testimonial-attr">— {{TESTIMONIAL_2_NAME}}, Casamento {{TESTIMONIAL_2_YEAR}}</p>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial-text">
+            36 anos de experiência fazem diferença. Eles sabem exatamente onde se posicionar,
+            que ângulo usar, qual momento não perder. Profissionais de verdade.
+          </p>
+          <p class="testimonial-attr">— {{TESTIMONIAL_3_NAME}}, Casamento {{TESTIMONIAL_3_YEAR}}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S6 — SEU PACOTE
+       Trocar comentário <!-- PACOTE: X --> para ativar/desativar
+  ============================================================ -->
+  <section id="pacote" aria-labelledby="pkg-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reveal"><span class="label-gold">Seu Pacote</span></div>
+        <h2 id="pkg-heading" class="display-heading reveal reveal-delay-1"
+            style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); max-width: 480px; margin: 0 auto;">
+          Preparamos este pacote pensando em cada detalhe do seu dia
+        </h2>
+      </div>
+
+
+      <!-- ================================================
+           PACOTE: ESSENCIAL (A Culpa é das Estrelas)
+           Descomente para usar. Comente o bloco PREMIUM.
+      ================================================
+      <div class="package-card reveal">
+        <div class="package-name">Essencial</div>
+        <p class="package-tagline">O essencial para eternizar o seu grande dia</p>
+
+        <div class="value-stack">
+          <div class="value-stack-header">
+            <span>Item incluído</span>
+            <span>Valor avulso</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">1 Fotógrafo Profissional</span>
+            <span class="value-item-price">R$ 1.400</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Filmmakers Dedicados</span>
+            <span class="value-item-price">R$ 3.200</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Case Pen-drive Personalizado</span>
+            <span class="value-item-price">R$ 200</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Making Of da Noiva</span>
+            <span class="value-item-price">R$ 390</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Teaser + Filme Completo da Cerimônia</span>
+            <span class="value-item-price">R$ 1.800</span>
+          </div>
+        </div>
+
+        <div class="value-divider"></div>
+
+        <div class="pricing-summary">
+          <p class="pricing-strike">Se contratados separadamente: <span>R$ 6.990</span></p>
+          <p class="pricing-main-label">Seu investimento:</p>
+          <p class="pricing-main-value">R$ 5.760</p>
+          <span class="pricing-economy-badge">Economia de R$ 1.230</span>
+          <div class="pricing-divider"></div>
+          <p class="pricing-installments">ou 15x de R$ 384 no PIX</p>
+          <p class="pricing-note">Primeira parcela até 30 dias após a contratação</p>
+        </div>
+
+        <div class="cortesia-note">
+          <p class="cortesia-label">Cortesia incluída</p>
+          <p class="cortesia-value">Ensaio Pré-Casamento</p>
+        </div>
+      </div>
+      -->
+
+
+      <!-- ================================================
+           PACOTE: CLÁSSICO (Um Amor para Recordar)
+           Descomente para usar. Comente o bloco PREMIUM.
+      ================================================
+      <div class="package-card reveal">
+        <div class="package-name">Clássico</div>
+        <p class="package-tagline">Cobertura completa para um amor que merece ser lembrado</p>
+
+        <div class="value-stack">
+          <div class="value-stack-header">
+            <span>Item incluído</span>
+            <span>Valor avulso</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Fotógrafos Profissionais</span>
+            <span class="value-item-price">R$ 2.800</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Filmmakers Dedicados</span>
+            <span class="value-item-price">R$ 3.200</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Case Pen-drive Personalizado</span>
+            <span class="value-item-price">R$ 200</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Making Of da Noiva e do Noivo</span>
+            <span class="value-item-price">R$ 780</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Shortfilm + Filme Completo da Cerimônia</span>
+            <span class="value-item-price">R$ 2.400</span>
+          </div>
+        </div>
+
+        <div class="value-divider"></div>
+
+        <div class="pricing-summary">
+          <p class="pricing-strike">Se contratados separadamente: <span>R$ 9.380</span></p>
+          <p class="pricing-main-label">Seu investimento:</p>
+          <p class="pricing-main-value">R$ 6.990</p>
+          <span class="pricing-economy-badge">Economia de R$ 2.390</span>
+          <div class="pricing-divider"></div>
+          <p class="pricing-installments">ou 15x de R$ 466 no PIX</p>
+          <p class="pricing-note">Primeira parcela até 30 dias após a contratação</p>
+        </div>
+
+        <div class="cortesia-note">
+          <p class="cortesia-label">Cortesia incluída</p>
+          <p class="cortesia-value">Ensaio Pré-Casamento</p>
+        </div>
+      </div>
+      -->
+
+
+      <!-- ================================================
+           PACOTE: PREMIUM — DEFAULT (Simplesmente Acontece)
+      ================================================ -->
+      <div class="package-card reveal">
+        <div class="package-name">Premium</div>
+        <p class="package-tagline">Tudo que vocês precisam para registrar cada momento</p>
+
+        <div class="value-stack">
+          <div class="value-stack-header">
+            <span>Item incluído</span>
+            <span>Valor avulso</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Fotógrafos Profissionais</span>
+            <span class="value-item-price">R$ 2.800</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Filmmakers Dedicados</span>
+            <span class="value-item-price">R$ 3.200</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Álbum Premium 25x30 com Estojo Luxo</span>
+            <span class="value-item-price">R$ 1.300</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">100 Fotos Tratadas Profissionalmente</span>
+            <span class="value-item-price">R$ 1.500</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Making Of da Noiva e do Noivo</span>
+            <span class="value-item-price">R$ 780</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Shortfilm + Filme Completo da Cerimônia</span>
+            <span class="value-item-price">R$ 2.400</span>
+          </div>
+        </div>
+
+        <div class="value-divider"></div>
+
+        <div class="pricing-summary">
+          <p class="pricing-strike">Se contratados separadamente: <span>R$ 11.980</span></p>
+          <p class="pricing-main-label">Seu investimento:</p>
+          <p class="pricing-main-value">R$ 8.460</p>
+          <span class="pricing-economy-badge">Economia de R$ 3.520</span>
+          <div class="pricing-divider"></div>
+          <p class="pricing-installments">ou 15x de R$ 564 no PIX</p>
+          <p class="pricing-note">Primeira parcela até 30 dias após a contratação</p>
+        </div>
+
+        <div class="cortesia-note">
+          <p class="cortesia-label">Cortesia incluída</p>
+          <p class="cortesia-value">Ensaio Pré-Casamento</p>
+        </div>
+      </div>
+      <!-- / FIM PACOTE PREMIUM -->
+
+
+      <!-- ================================================
+           PACOTE: COMPLETO (Um Sonho Perfeito)
+           Descomente para usar. Comente o bloco PREMIUM.
+      ================================================
+      <div class="package-card reveal">
+        <div class="package-name">Completo</div>
+        <p class="package-tagline">A experiência mais completa que o amor merece</p>
+
+        <div class="value-stack">
+          <div class="value-stack-header">
+            <span>Item incluído</span>
+            <span>Valor avulso</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Fotógrafos Profissionais</span>
+            <span class="value-item-price">R$ 2.800</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">2 Filmmakers Dedicados</span>
+            <span class="value-item-price">R$ 3.200</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Álbum Premium 30x30 com Estojo Luxo</span>
+            <span class="value-item-price">R$ 1.500</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">100 Fotos Tratadas Profissionalmente</span>
+            <span class="value-item-price">R$ 1.500</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Kit Mãe — 2 Mini Álbuns Réplica</span>
+            <span class="value-item-price">R$ 700</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Making Of da Noiva e do Noivo</span>
+            <span class="value-item-price">R$ 780</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Shortfilm + Filme Completo da Cerimônia</span>
+            <span class="value-item-price">R$ 2.400</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Ensaio Pré-Casamento</span>
+            <span class="value-item-price">R$ 880</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Love Story</span>
+            <span class="value-item-price">R$ 990</span>
+          </div>
+          <div class="value-row">
+            <span class="value-item-name">Espelho Mágico ou Totem Retrô</span>
+            <span class="value-item-price">R$ 1.349</span>
+          </div>
+        </div>
+
+        <div class="value-divider"></div>
+
+        <div class="pricing-summary">
+          <p class="pricing-strike">Se contratados separadamente: <span>R$ 16.099</span></p>
+          <p class="pricing-main-label">Seu investimento:</p>
+          <p class="pricing-main-value">R$ 10.485</p>
+          <span class="pricing-economy-badge">Economia de R$ 5.614</span>
+          <div class="pricing-divider"></div>
+          <p class="pricing-installments">ou 15x de R$ 699 no PIX</p>
+          <p class="pricing-note">Primeira parcela até 30 dias após a contratação</p>
+        </div>
+
+        <div class="cortesia-note">
+          <p class="cortesia-label">Cortesia incluída</p>
+          <p class="cortesia-value">Scrapbook personalizado</p>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S7 — PERSONALIZE SUA EXPERIÊNCIA
+  ============================================================ -->
+  <section id="personalize" aria-labelledby="per-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reveal"><span class="label-gold">Personalize</span></div>
+        <h2 id="per-heading" class="display-heading reveal reveal-delay-1"
+            style="font-size: clamp(1.75rem, 4vw, 2.75rem); max-width: 520px; margin: 0 auto;">
+          Adicione experiências extras ao seu pacote
+        </h2>
+      </div>
+      <p class="personalize-subtitle reveal reveal-delay-2">
+        Cada item abaixo pode ser incorporado ao seu pacote sob consulta
+      </p>
+
+      <div class="addons-grid">
+
+        <div class="addon-card reveal">
+          <div class="addon-name">Ensaio Pré-Casamento</div>
+          <p class="addon-desc">Sessão fotográfica antes do grande dia para vocês se soltarem</p>
+          <span class="addon-price">R$ 880</span>
+        </div>
+
+        <div class="addon-card reveal reveal-delay-1">
+          <div class="addon-name">Love Story</div>
+          <p class="addon-desc">Filme pré-casamento que conta a história de vocês</p>
+          <span class="addon-price">R$ 990</span>
+        </div>
+
+        <div class="addon-card reveal reveal-delay-2">
+          <div class="addon-name">Making Of</div>
+          <p class="addon-desc">Bastidores da preparação registrados em filme</p>
+          <span class="addon-price">R$ 390</span>
+        </div>
+
+        <div class="addon-card reveal reveal-delay-1">
+          <div class="addon-name">Story Maker</div>
+          <p class="addon-desc">Cobertura e postagem em tempo real durante o evento</p>
+          <span class="addon-price">R$ 1.400</span>
+        </div>
+
+        <div class="addon-card reveal reveal-delay-2">
+          <div class="addon-name">Same Day Edit</div>
+          <p class="addon-desc">Trailer editado e exibido para os convidados no próprio evento</p>
+          <span class="addon-price">R$ 1.600</span>
+        </div>
+
+        <div class="addon-card reveal reveal-delay-3">
+          <div class="addon-name">Drone</div>
+          <p class="addon-desc">Imagens aéreas cinematográficas do evento e do local</p>
+          <span class="addon-price">R$ 1.400</span>
+        </div>
+
+        <div class="addon-card reveal reveal-delay-2">
+          <div class="addon-name">Filme em 4K</div>
+          <p class="addon-desc">Resolução máxima para seu filme — qualidade cinema</p>
+          <span class="addon-price">R$ 1.400</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S8 — ÁLBUNS
+       Se o pacote incluir álbum (Premium / Completo),
+       adicione class="hidden" na tag <section> abaixo.
+  ============================================================ -->
+  <section id="albuns" aria-labelledby="alb-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reveal"><span class="label-gold">Álbuns</span></div>
+        <h2 id="alb-heading" class="display-heading reveal reveal-delay-1"
+            style="font-size: clamp(1.75rem, 4vw, 2.75rem); max-width: 480px; margin: 0 auto;">
+          Seu casamento para sempre em suas mãos
+        </h2>
+      </div>
+      <p class="albuns-note reveal reveal-delay-2">
+        Todos os álbuns incluem 50 páginas impressas e acabamento premium
+      </p>
+
+      <div class="albuns-grid">
+
+        <div class="album-card reveal">
+          <div class="album-size">20×25</div>
+          <div class="album-pages">50 Páginas</div>
+          <p class="album-detail">Sem estojo<br/>100 fotos tratadas</p>
+          <div class="album-price">R$ 900</div>
+        </div>
+
+        <div class="album-card reveal reveal-delay-1">
+          <div class="album-size">25×30</div>
+          <div class="album-pages">50 Páginas</div>
+          <p class="album-detail">Com estojo luxo<br/>100 fotos tratadas</p>
+          <div class="album-price">R$ 1.300</div>
+        </div>
+
+        <div class="album-card reveal reveal-delay-2">
+          <div class="album-size">30×30</div>
+          <div class="album-pages">50 Páginas</div>
+          <p class="album-detail">Com estojo luxo<br/>100 fotos tratadas</p>
+          <div class="album-price">R$ 1.500</div>
+        </div>
+
+      </div>
+
+      <div class="kit-mae reveal">
+        <div class="kit-mae-info">
+          <div class="kit-mae-name">Kit Mãe</div>
+          <div class="kit-mae-desc">2 mini álbuns réplica do álbum principal</div>
+        </div>
+        <div class="kit-mae-price">R$ 700</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S9 — FORMAS DE PAGAMENTO
+  ============================================================ -->
+  <section id="pagamento" aria-labelledby="pag-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="reveal"><span class="label-gold">Formas de Pagamento</span></div>
+        <h2 id="pag-heading" class="display-heading reveal reveal-delay-1"
+            style="font-size: clamp(1.75rem, 4vw, 2.75rem); max-width: 480px; margin: 0 auto;">
+          Condições pensadas para facilitar o seu sim
+        </h2>
+      </div>
+
+      <ul class="payment-list" role="list">
+
+        <li class="payment-item reveal">
+          <span class="payment-check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7.5" stroke="#C9A96E" stroke-opacity="0.4"/>
+              <path d="M4.5 8L7 10.5L11.5 6" stroke="#C9A96E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="payment-text">Primeira parcela até 30 dias após a contratação</span>
+        </li>
+
+        <li class="payment-item reveal reveal-delay-1">
+          <span class="payment-check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7.5" stroke="#C9A96E" stroke-opacity="0.4"/>
+              <path d="M4.5 8L7 10.5L11.5 6" stroke="#C9A96E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="payment-text">Parcelamento via PIX até a data do evento</span>
+        </li>
+
+        <li class="payment-item reveal reveal-delay-2">
+          <span class="payment-check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7.5" stroke="#C9A96E" stroke-opacity="0.4"/>
+              <path d="M4.5 8L7 10.5L11.5 6" stroke="#C9A96E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="payment-text">Até 6 parcelas no cartão sem juros — consulte condições</span>
+        </li>
+
+        <li class="payment-item reveal reveal-delay-3">
+          <span class="payment-check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7.5" stroke="#C9A96E" stroke-opacity="0.4"/>
+              <path d="M4.5 8L7 10.5L11.5 6" stroke="#C9A96E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="payment-text">Até 10 parcelas no cartão com juros — consulte condições</span>
+        </li>
+
+        <li class="payment-item reveal reveal-delay-4">
+          <span class="payment-check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7.5" stroke="#C9A96E" stroke-opacity="0.4"/>
+              <path d="M4.5 8L7 10.5L11.5 6" stroke="#C9A96E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="payment-text">Sinal na contratação e quitação no dia do evento</span>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S10 — PRÓXIMO PASSO
+  ============================================================ -->
+  <section id="proximo-passo" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading" class="display-heading cta-heading reveal">
+        Vamos eternizar esse momento juntos?
+      </h2>
+      <p class="body-text cta-sub reveal reveal-delay-1">
+        O próximo passo é uma conversa. Sem compromisso, sem pressa — no seu tempo.
+      </p>
+
+      <!--
+        MENSAGEM PERSONALIZADA DA JULIANE
+        Substitua o texto abaixo por uma mensagem pessoal.
+        Se não quiser usar, adicione class="hidden" na div.
+      -->
+      <div class="cta-custom-message reveal reveal-delay-2">
+        {{CUSTOM_MESSAGE}}
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <a
+          href="https://wa.me/5511934314186?text=Ol%C3%A1!%20Vi%20a%20proposta%20de%20casamento%20e%20gostaria%20de%20conversar%20sobre%20o%20pacote%20{{SELECTED_PACKAGE}}."
+          class="wa-button"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Conversar com Digital People no WhatsApp"
+        >
+          <!-- WhatsApp icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Conversar no WhatsApp
+        </a>
+      </div>
+
+      <span class="cta-phone reveal reveal-delay-4">(11) 9 3431-4186</span>
+      <span class="cta-validity reveal reveal-delay-5">Proposta válida até {{VALIDITY_DATE}}</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       S11 — FOOTER
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <p class="footer-brand">Digital People — Desde 1989 em Mauá, SP</p>
+
+      <div class="footer-contacts">
+        <a
+          href="https://instagram.com/digitalpeople_"
+          class="footer-contact"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram Digital People"
+        >
+          <!-- Instagram icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          @digitalpeople_
+        </a>
+
+        <a
+          href="https://wa.me/5511934314186"
+          class="footer-contact"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp Digital People"
+        >
+          <!-- WhatsApp icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          (11) 9 3431-4186
+        </a>
+      </div>
+
+      <p class="footer-address">
+        Rua Francisco Ortega Escobar, 421 — Vila Noemia, Mauá - SP
+      </p>
+
+      <p class="footer-confidential">
+        Documento confidencial preparado em {{PROPOSAL_DATE}}
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Reveal on scroll (IntersectionObserver)
+  ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Respect prefers-reduced-motion
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        // Make everything visible immediately
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: '0px 0px -32px 0px'
+        }
+      );
+
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>
