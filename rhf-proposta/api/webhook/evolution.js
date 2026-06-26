@@ -5,22 +5,7 @@
  * Stores new messages in Supabase for the chat viewer to poll.
  */
 
-const SUPABASE_URL = 'https://weirdpigeon-supabase.cloudfy.live';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3Njg1MTYsImV4cCI6MTgwNTMwNDUxNn0.Hziwx8ocWnFVLHvt5DhT8nTkL2XVMa58ofjL-0hCMxw';
-
-async function supabaseInsert(table, data) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
-    method: 'POST',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify(data)
-  });
-  return res.ok;
-}
+import { insert } from '../../lib/supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -81,15 +66,21 @@ export default async function handler(req, res) {
         }
 
         // Store in Supabase
-        await supabaseInsert('rhf_messages', {
+        await insert('rhf_messages', {
           phone,
           direction: fromMe ? 'outbound' : 'inbound',
           content: text || '',
           message_type: msgType,
           chatguru_message_id: key.id || null,
           chatguru_chat_id: remoteJid,
-          raw_webhook: { event, key, pushName: msg.pushName, messageType: msg.messageType, timestamp: msg.messageTimestamp }
-        });
+          raw_webhook: {
+            event,
+            key,
+            pushName: msg.pushName,
+            messageType: msg.messageType,
+            timestamp: msg.messageTimestamp,
+          },
+        }, false);
       }
 
       return res.status(200).json({ status: 'ok', event, processed: true, count: messages.length });

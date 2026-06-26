@@ -489,6 +489,21 @@
 </head>
 <body>
 
+<!-- AUTH GUARD — must be first in body -->
+<script>
+(function(){
+  document.documentElement.style.visibility='hidden';
+  var t=localStorage.getItem('rhf_token');
+  if(!t){document.documentElement.style.visibility='';window.location.replace('/login');return;}
+  fetch('/api/auth?action=verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:t})})
+    .then(function(r){
+      if(r.ok){document.documentElement.style.visibility='';}
+      else{localStorage.removeItem('rhf_token');document.documentElement.style.visibility='';window.location.replace('/login');}
+    })
+    .catch(function(){localStorage.removeItem('rhf_token');document.documentElement.style.visibility='';window.location.replace('/login');});
+})();
+</script>
+
 <div class="sidebar">
   <div class="sidebar-brand">
     <div class="logo-icon">R</div>
@@ -537,6 +552,9 @@
       <div class="user-name">Rodrigo Silva</div>
       <div class="user-role">RHF Vale dos Sinos</div>
     </div>
+    <button onclick="(function(){localStorage.removeItem('rhf_token');window.location.replace('/login');})()" title="Sair" style="background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;color:rgba(255,255,255,0.35);transition:color 0.15s,background 0.15s;flex-shrink:0;" onmouseover="this.style.color='#EF4444';this.style.background='rgba(239,68,68,0.12)'" onmouseout="this.style.color='rgba(255,255,255,0.35)';this.style.background='none'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
   </div>
 </div>
 
@@ -569,7 +587,7 @@
           <div class="stat-icon orange">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
           </div>
-          <div class="stat-value">23</div>
+          <div class="stat-value" id="stat-vagas">23</div>
           <div class="stat-label">Vagas ativas</div>
           <div class="stat-change up">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
@@ -580,32 +598,32 @@
           <div class="stat-icon green">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <div class="stat-value">147</div>
+          <div class="stat-value" id="stat-candidates">147</div>
           <div class="stat-label">Candidatos em funil</div>
           <div class="stat-change up">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
-            +23% vs mês anterior
+            Atualizado em tempo real
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-icon blue">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="stat-value" style="color: var(--blue);">2.3 min</div>
-          <div class="stat-label">Tempo médio por currículo</div>
+          <div class="stat-value" id="stat-chats" style="color: var(--blue);">0</div>
+          <div class="stat-label">Conversas WhatsApp</div>
           <div class="stat-change up">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
-            -85% vs processo manual
+            Atualizado em tempo real
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-icon purple">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           </div>
-          <div class="stat-value">0</div>
-          <div class="stat-label">Currículos gerados (aguardando template)</div>
+          <div class="stat-value" id="stat-cvs">0</div>
+          <div class="stat-label">Currículos gerados</div>
           <div class="stat-change" style="color: var(--text-muted);">
-            Template de CV em desenvolvimento
+            Atualizado em tempo real
           </div>
         </div>
       </div>
@@ -636,7 +654,7 @@
           <div class="panel-header">
             <div class="panel-title">Atividade recente</div>
           </div>
-          <div class="panel-body" style="padding: 12px 24px;">
+          <div class="panel-body" style="padding: 12px 24px;" id="dashboard-activity">
             <div class="feed-item">
               <div class="feed-dot" style="background: var(--green);"></div>
               <div>
@@ -790,7 +808,7 @@
               <div class="panel-subtitle">Candidatos aprovados na triagem — prontos para currículo</div>
             </div>
           </div>
-          <div class="candidate-list">
+          <div class="candidate-list" id="curriculo-candidate-list">
             <div class="candidate-item selected" onclick="selectCandidate(this)">
               <div class="candidate-avatar">MR</div>
               <div>
@@ -834,24 +852,24 @@
           </div>
           <div class="panel-body">
             <div class="status-row">
-              <div class="status-icon" style="background: var(--orange-light); color: var(--orange);">5</div>
+              <div class="status-icon" style="background: var(--orange-light); color: var(--orange);" id="curriculo-queue-waiting">—</div>
               <div class="status-info">
-                <div class="status-name">Aguardando geração</div>
-                <div class="status-desc">Candidatos aprovados</div>
+                <div class="status-name">Candidatos cadastrados</div>
+                <div class="status-desc">No banco de dados</div>
               </div>
             </div>
             <div class="status-row">
-              <div class="status-icon" style="background: var(--blue-light); color: var(--blue);">2</div>
+              <div class="status-icon" style="background: var(--blue-light); color: var(--blue);">—</div>
               <div class="status-info">
-                <div class="status-name">Em revisão</div>
-                <div class="status-desc">Currículo gerado, pendente aprovação</div>
+                <div class="status-name">Aguardando Pandapé</div>
+                <div class="status-desc">Integração pendente</div>
               </div>
             </div>
             <div class="status-row">
-              <div class="status-icon" style="background: var(--green-light); color: var(--green);">12</div>
+              <div class="status-icon" style="background: var(--green-light); color: var(--green);" id="curriculo-queue-sent">—</div>
               <div class="status-info">
-                <div class="status-name">Enviados hoje</div>
-                <div class="status-desc">Entregues ao cliente</div>
+                <div class="status-name">CVs gerados total</div>
+                <div class="status-desc">Via motor de IA</div>
               </div>
             </div>
             <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);">
@@ -877,11 +895,11 @@
                 <div class="cv-source-sub">Extraídos automaticamente do ATS</div>
               </div>
             </div>
-            <div class="cv-field"><div class="cv-field-label">Nome completo</div><div class="cv-field-value">Mariana Rocha da Silva</div></div>
-            <div class="cv-field"><div class="cv-field-label">Cargo pretendido</div><div class="cv-field-value">Analista Financeiro</div></div>
-            <div class="cv-field"><div class="cv-field-label">Experiência</div><div class="cv-field-value">5 anos em controladoria e finanças. Última empresa: Tramontina S.A. (3 anos como Assistente de Controladoria)</div></div>
-            <div class="cv-field"><div class="cv-field-label">Formação</div><div class="cv-field-value">Ciências Contábeis — Unisinos (2019). Pós em Controladoria — FGV (2022)</div></div>
-            <div class="cv-field"><div class="cv-field-label">Localização</div><div class="cv-field-value">Novo Hamburgo, RS</div></div>
+            <div class="cv-field"><div class="cv-field-label">Nome completo</div><div class="cv-field-value" id="cv-field-nome">Selecione um candidato</div></div>
+            <div class="cv-field"><div class="cv-field-label">Vaga pretendida</div><div class="cv-field-value" id="cv-field-cargo">—</div></div>
+            <div class="cv-field"><div class="cv-field-label">Telefone</div><div class="cv-field-value" id="cv-field-phone">—</div></div>
+            <div class="cv-field"><div class="cv-field-label">Email</div><div class="cv-field-value" id="cv-field-email">—</div></div>
+            <div class="cv-field"><div class="cv-field-label">Estágio no funil</div><div class="cv-field-value" id="cv-field-stage">—</div></div>
           </div>
           <div class="cv-source">
             <div class="cv-source-header">
@@ -989,7 +1007,7 @@
     <div class="topbar">
       <div class="topbar-left">
         <span class="topbar-title">Vagas Ativas</span>
-        <span class="topbar-tag">23 vagas</span>
+        <span class="topbar-tag" style="background: var(--amber-light); color: var(--amber);">Pandapé pendente</span>
       </div>
       <div class="topbar-right">
         <button class="topbar-btn">Filtrar</button>
@@ -1012,6 +1030,14 @@
         <div class="stat-card">
           <div class="stat-value" style="font-size: 28px; color: var(--blue);">3.2 dias</div>
           <div class="stat-label">Tempo médio até apresentação</div>
+        </div>
+      </div>
+
+      <div style="background:var(--amber-light);border:1px solid var(--amber);border-radius:var(--radius);padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--amber);flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--amber);">Integração Pandapé pendente</div>
+          <div style="font-size:12px;color:var(--text-sec);margin-top:2px;">Os dados de vagas abaixo são demonstrativos. Após configuração das credenciais OAuth2 do Pandapé, as vagas reais serão exibidas aqui automaticamente.</div>
         </div>
       </div>
 
@@ -1130,7 +1156,7 @@
     <div class="topbar">
       <div class="topbar-left">
         <span class="topbar-title">Candidatos</span>
-        <span class="topbar-tag">147 no funil</span>
+        <span class="topbar-tag" id="candidatos-header-count">147 no funil</span>
       </div>
       <div class="topbar-right">
         <button class="topbar-btn">
@@ -1144,34 +1170,30 @@
       </div>
     </div>
     <div class="content">
-      <div class="stats-grid" style="margin-bottom: 24px;">
+      <div class="stats-grid" style="margin-bottom: 24px;" id="candidatos-stats">
         <div class="stat-card">
-          <div class="stat-value" style="font-size: 28px; color: var(--orange);">147</div>
+          <div class="stat-value" style="font-size: 28px; color: var(--orange);">—</div>
           <div class="stat-label">Total no funil</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" style="font-size: 28px; color: var(--blue);">38</div>
+          <div class="stat-value" style="font-size: 28px; color: var(--blue);">—</div>
           <div class="stat-label">Em triagem</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" style="font-size: 28px; color: var(--green);">52</div>
+          <div class="stat-value" style="font-size: 28px; color: var(--green);">—</div>
           <div class="stat-label">Qualificados</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" style="font-size: 28px; color: var(--purple);">24</div>
+          <div class="stat-value" style="font-size: 28px; color: var(--purple);">—</div>
           <div class="stat-label">Apresentados ao cliente</div>
         </div>
       </div>
 
-      <div class="cand-filters">
-        <span class="cand-filter active">Todos (147)</span>
-        <span class="cand-filter">Em triagem (38)</span>
-        <span class="cand-filter">Qualificados (52)</span>
-        <span class="cand-filter">Entrevista (33)</span>
-        <span class="cand-filter">Apresentados (24)</span>
+      <div class="cand-filters" id="candidatos-filters">
+        <span class="cand-filter active" onclick="filterCandidatos('all', this)">Todos</span>
       </div>
 
-      <div class="cand-grid">
+      <div class="cand-grid" id="candidatos-grid">
         <div class="cand-card">
           <div class="cand-card-top">
             <div class="cand-card-avatar" style="background: linear-gradient(135deg, #FF6B35, #FF8F66);">MR</div>
@@ -1696,7 +1718,12 @@
 </div>
 
 <script>
+  // ============================================================
+  // TAB SYSTEM
+  // ============================================================
   const tabs = { dashboard: 'tab-dashboard', curriculo: 'tab-curriculo', vagas: 'tab-vagas', sync: 'tab-sync', candidatos: 'tab-candidatos', chatguru: 'tab-chatguru' };
+  const tabLoaded = {};
+  let selectedCandidateId = null;
 
   function showTab(name) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -1705,33 +1732,557 @@
     const items = document.querySelectorAll('.nav-item');
     const idx = { dashboard: 0, curriculo: 1, vagas: 2, sync: 3, candidatos: 4, chatguru: 5 };
     if (items[idx[name]]) items[idx[name]].classList.add('active');
+
+    // Lazy-load data on first tab visit
+    if (!tabLoaded[name]) {
+      tabLoaded[name] = true;
+      if (name === 'dashboard') loadDashboard();
+      if (name === 'candidatos') loadCandidatos();
+      if (name === 'curriculo') loadCurriculoCandidates();
+    }
   }
+
+  // ============================================================
+  // UTILITY HELPERS
+  // ============================================================
+
+  function getInitials(name) {
+    if (!name) return '?';
+    return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  }
+
+  const AVATAR_COLORS = [
+    'linear-gradient(135deg,#FF6B35,#FF8F66)',
+    'linear-gradient(135deg,#3B82F6,#60A5FA)',
+    'linear-gradient(135deg,#8B5CF6,#A78BFA)',
+    'linear-gradient(135deg,#10B981,#34D399)',
+    'linear-gradient(135deg,#F59E0B,#FBBF24)',
+    'linear-gradient(135deg,#EF4444,#F87171)',
+    'linear-gradient(135deg,#EC4899,#F472B6)',
+  ];
+
+  function avatarColor(str) {
+    let h = 0;
+    for (let i = 0; i < (str || '').length; i++) h = (h * 31 + str.charCodeAt(i)) & 0xffffffff;
+    return AVATAR_COLORS[Math.abs(h) % AVATAR_COLORS.length];
+  }
+
+  function formatRelativeTime(iso) {
+    if (!iso) return '';
+    const diff = Date.now() - new Date(iso).getTime();
+    const min = Math.floor(diff / 60000);
+    const hr = Math.floor(diff / 3600000);
+    const day = Math.floor(diff / 86400000);
+    if (min < 1) return 'agora mesmo';
+    if (min < 60) return `há ${min} min`;
+    if (hr < 24) return `há ${hr}h`;
+    return `há ${day} dias`;
+  }
+
+  function stageBadge(stage) {
+    const map = {
+      new: ['orange', 'Em triagem'],
+      triagem: ['orange', 'Em triagem'],
+      qualified: ['green', 'Qualificado'],
+      qualificado: ['green', 'Qualificado'],
+      interview: ['purple', 'Entrevista'],
+      entrevista: ['purple', 'Entrevista'],
+      presented: ['blue', 'Apresentando'],
+      apresentado: ['blue', 'Apresentando'],
+      hired: ['green', 'Contratado'],
+      contratado: ['green', 'Contratado'],
+    };
+    const [color, label] = map[(stage || '').toLowerCase()] || ['amber', stage || 'Novo'];
+    return `<span class="badge ${color}"><span class="badge-dot ${color}"></span> ${label}</span>`;
+  }
+
+  function showError(containerId, msg) {
+    const el = document.getElementById(containerId);
+    if (el) el.innerHTML = `
+      <div style="padding:24px;text-align:center;color:var(--text-muted);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        ${msg}
+        <br><a href="#" onclick="retryTab('${containerId}')" style="font-size:12px;color:var(--orange);margin-top:8px;display:inline-block;">Tentar novamente</a>
+      </div>`;
+  }
+
+  function showLoading(containerId, text) {
+    const el = document.getElementById(containerId);
+    if (el) el.innerHTML = `
+      <div style="padding:32px;text-align:center;">
+        <div class="ai-spinner" style="margin:0 auto 12px;"></div>
+        <div style="font-size:13px;color:var(--text-muted);">${text || 'Carregando...'}</div>
+      </div>`;
+  }
+
+  // ============================================================
+  // DASHBOARD
+  // ============================================================
+
+  async function loadDashboard() {
+    // Show loading state in stat cards
+    ['stat-candidates', 'stat-cvs', 'stat-chats'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = '<span style="font-size:18px;color:var(--text-muted);">...</span>';
+    });
+
+    showLoading('dashboard-activity', 'Carregando atividade recente...');
+
+    try {
+      // Fetch in parallel
+      const [contactsRes, cvsRes, chatsRes] = await Promise.allSettled([
+        fetch('/api/contacts?limit=500').then(r => r.json()),
+        fetch('/api/cv?action=query?limit=500').then(r => r.json()),
+        fetch('/api/whatsapp?action=chats').then(r => r.json()),
+      ]);
+
+      // Candidates count
+      const candidates = contactsRes.status === 'fulfilled' && contactsRes.value.status === 'ok'
+        ? contactsRes.value.data : [];
+      const statCandidates = document.getElementById('stat-candidates');
+      if (statCandidates) statCandidates.textContent = candidates.length;
+
+      // Badge in sidebar
+      const sidebarBadges = document.querySelectorAll('.nav-badge');
+      if (sidebarBadges.length >= 2) sidebarBadges[1].textContent = candidates.length || '0';
+
+      // CVs count
+      const cvsData = cvsRes.status === 'fulfilled' && cvsRes.value.status === 'ok'
+        ? cvsRes.value : { count: 0, data: [] };
+      const statCvs = document.getElementById('stat-cvs');
+      if (statCvs) statCvs.textContent = cvsData.count || 0;
+
+      // Conversations count
+      const chats = chatsRes.status === 'fulfilled' && chatsRes.value.status === 'ok'
+        ? chatsRes.value : { count: 0, data: [] };
+      const statChats = document.getElementById('stat-chats');
+      if (statChats) statChats.textContent = chats.count || 0;
+
+      // Recent activity feed — use last 5 candidates as activity
+      renderDashboardActivity(candidates.slice(0, 5));
+
+    } catch (err) {
+      console.error('[Dashboard] Error:', err);
+      showError('dashboard-activity', 'Erro ao carregar dados do dashboard.');
+    }
+  }
+
+  function renderDashboardActivity(recentCandidates) {
+    const container = document.getElementById('dashboard-activity');
+    if (!container) return;
+
+    if (!recentCandidates || recentCandidates.length === 0) {
+      container.innerHTML = `
+        <div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px;">
+          Nenhum candidato cadastrado ainda.<br>
+          <span style="font-size:12px;">Os eventos aparecerão aqui conforme os candidatos forem adicionados.</span>
+        </div>`;
+      return;
+    }
+
+    const dotColors = ['var(--green)', 'var(--blue)', 'var(--orange)', 'var(--purple)', 'var(--amber)'];
+    const html = recentCandidates.map((c, i) => `
+      <div class="feed-item">
+        <div class="feed-dot" style="background:${dotColors[i % dotColors.length]};"></div>
+        <div>
+          <div class="feed-text"><strong>${c.name || 'Candidato'}</strong> — ${c.vacancy_name ? `Vaga: ${c.vacancy_name}` : 'Sem vaga vinculada'}</div>
+          <div class="feed-time">${formatRelativeTime(c.created_at)} · Estágio: ${c.stage || 'novo'}</div>
+        </div>
+      </div>`).join('');
+
+    container.innerHTML = html;
+  }
+
+  // ============================================================
+  // CANDIDATOS TAB
+  // ============================================================
+
+  async function loadCandidatos() {
+    showLoading('candidatos-grid', 'Carregando candidatos...');
+    showLoading('candidatos-stats', '');
+
+    try {
+      const res = await fetch('/api/contacts?limit=500');
+      const json = await res.json();
+
+      if (json.status !== 'ok') throw new Error(json.message || 'Erro na API');
+
+      const candidates = json.data || [];
+
+      // Update header badge
+      const headerTag = document.getElementById('candidatos-header-count');
+      if (headerTag) headerTag.textContent = `${candidates.length} no funil`;
+
+      // Stage counts
+      const counts = { triagem: 0, qualificado: 0, entrevista: 0, apresentado: 0 };
+      candidates.forEach(c => {
+        const s = (c.stage || '').toLowerCase();
+        if (s === 'new' || s === 'triagem') counts.triagem++;
+        else if (s === 'qualified' || s === 'qualificado') counts.qualificado++;
+        else if (s === 'interview' || s === 'entrevista') counts.entrevista++;
+        else if (s === 'presented' || s === 'apresentado') counts.apresentado++;
+      });
+
+      // Update stats section
+      const statsEl = document.getElementById('candidatos-stats');
+      if (statsEl) {
+        statsEl.innerHTML = `
+          <div class="stat-card"><div class="stat-value" style="font-size:28px;color:var(--orange);">${candidates.length}</div><div class="stat-label">Total no funil</div></div>
+          <div class="stat-card"><div class="stat-value" style="font-size:28px;color:var(--blue);">${counts.triagem}</div><div class="stat-label">Em triagem</div></div>
+          <div class="stat-card"><div class="stat-value" style="font-size:28px;color:var(--green);">${counts.qualificado}</div><div class="stat-label">Qualificados</div></div>
+          <div class="stat-card"><div class="stat-value" style="font-size:28px;color:var(--purple);">${counts.apresentado}</div><div class="stat-label">Apresentados ao cliente</div></div>`;
+      }
+
+      // Update filter bar
+      const filtersEl = document.getElementById('candidatos-filters');
+      if (filtersEl) {
+        filtersEl.innerHTML = `
+          <span class="cand-filter active" onclick="filterCandidatos('all', this)">Todos (${candidates.length})</span>
+          <span class="cand-filter" onclick="filterCandidatos('triagem', this)">Em triagem (${counts.triagem})</span>
+          <span class="cand-filter" onclick="filterCandidatos('qualificado', this)">Qualificados (${counts.qualificado})</span>
+          <span class="cand-filter" onclick="filterCandidatos('entrevista', this)">Entrevista (${counts.entrevista})</span>
+          <span class="cand-filter" onclick="filterCandidatos('apresentado', this)">Apresentados (${counts.apresentado})</span>`;
+      }
+
+      // Store for filtering
+      window._candidatesData = candidates;
+      renderCandidatoCards(candidates);
+
+    } catch (err) {
+      console.error('[Candidatos] Error:', err);
+      showError('candidatos-grid', 'Erro ao carregar candidatos. Verifique a conexão com o banco de dados.');
+    }
+  }
+
+  function filterCandidatos(stage, el) {
+    document.querySelectorAll('.cand-filter').forEach(f => f.classList.remove('active'));
+    if (el) el.classList.add('active');
+
+    const all = window._candidatesData || [];
+    if (stage === 'all') return renderCandidatoCards(all);
+
+    const filtered = all.filter(c => {
+      const s = (c.stage || '').toLowerCase();
+      if (stage === 'triagem') return s === 'new' || s === 'triagem';
+      if (stage === 'qualificado') return s === 'qualified' || s === 'qualificado';
+      if (stage === 'entrevista') return s === 'interview' || s === 'entrevista';
+      if (stage === 'apresentado') return s === 'presented' || s === 'apresentado';
+      return false;
+    });
+    renderCandidatoCards(filtered);
+  }
+
+  function renderCandidatoCards(candidates) {
+    const grid = document.getElementById('candidatos-grid');
+    if (!grid) return;
+
+    if (!candidates || candidates.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;padding:48px;text-align:center;color:var(--text-muted);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 12px;display:block;opacity:0.4;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <div style="font-size:15px;font-weight:600;color:var(--text-sec);margin-bottom:4px;">Nenhum candidato encontrado</div>
+          <div style="font-size:13px;">Os candidatos aparecerão aqui conforme o Pandapé for integrado e os leads chegarem via WhatsApp.</div>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = candidates.map(c => {
+      const initials = getInitials(c.name);
+      const color = avatarColor(c.name || '');
+      const phone = c.phone ? `<span class="cand-detail"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> ${c.phone}</span>` : '';
+      const vacancy = c.vacancy_name ? `<div class="cand-card-vaga">Vaga: ${c.vacancy_name}</div>` : '';
+      return `
+        <div class="cand-card">
+          <div class="cand-card-top">
+            <div class="cand-card-avatar" style="background:${color};">${initials}</div>
+            <div>
+              <div class="cand-card-name">${c.name || 'Sem nome'}</div>
+              <div class="cand-card-role">${c.email || ''}</div>
+              ${vacancy}
+            </div>
+          </div>
+          <div class="cand-card-details">
+            ${phone}
+            <span class="cand-detail">${formatRelativeTime(c.created_at)}</span>
+          </div>
+          <div class="cand-card-footer">
+            <div>${stageBadge(c.stage)}</div>
+            <div class="cand-card-actions">
+              <div class="cand-action-btn" title="Gerar CV" onclick="showTab('curriculo');selectCandidateById('${c.id}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div class="cand-action-btn" title="Ver mensagens" onclick="window.location='/chat'">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // ============================================================
+  // CURRICULO TAB — Candidate List + CV Generation
+  // ============================================================
+
+  async function loadCurriculoCandidates() {
+    showLoading('curriculo-candidate-list', 'Carregando candidatos...');
+
+    try {
+      const res = await fetch('/api/contacts?limit=200');
+      const json = await res.json();
+
+      if (json.status !== 'ok') throw new Error(json.message || 'Erro na API');
+      const candidates = json.data || [];
+
+      // Queue status
+      const queueEl = document.getElementById('curriculo-queue-waiting');
+      if (queueEl) queueEl.textContent = candidates.length;
+
+      // Update CVs sent count from CV query
+      fetch('/api/cv?action=query?limit=500').then(r => r.json()).then(cvsJson => {
+        if (cvsJson.status === 'ok') {
+          const cvsSentEl = document.getElementById('curriculo-queue-sent');
+          if (cvsSentEl) cvsSentEl.textContent = cvsJson.count || 0;
+        }
+      }).catch(() => {});
+
+      renderCurriculoCandidateList(candidates);
+
+    } catch (err) {
+      console.error('[Curriculo] Error:', err);
+      showError('curriculo-candidate-list', 'Erro ao carregar candidatos.');
+    }
+  }
+
+  function renderCurriculoCandidateList(candidates) {
+    const list = document.getElementById('curriculo-candidate-list');
+    if (!list) return;
+
+    if (!candidates || candidates.length === 0) {
+      list.innerHTML = `
+        <div style="padding:24px;text-align:center;color:var(--text-muted);font-size:13px;">
+          Nenhum candidato cadastrado.<br>
+          <span style="font-size:12px;">Aguardando integração com Pandapé ou recebimento de mensagens via WhatsApp.</span>
+        </div>`;
+      return;
+    }
+
+    window._curriculoCandidates = candidates;
+
+    list.innerHTML = candidates.map((c, i) => {
+      const initials = getInitials(c.name);
+      const color = avatarColor(c.name || '');
+      return `
+        <div class="candidate-item${i === 0 ? ' selected' : ''}" onclick="selectCurriculoCandidate(this, '${c.id}')" data-candidate-id="${c.id}">
+          <div class="candidate-avatar" style="${i === 0 ? `background:${color};color:#fff;` : ''}">${initials}</div>
+          <div>
+            <div class="candidate-name">${c.name || 'Sem nome'}</div>
+            <div class="candidate-role">${c.vacancy_name ? `${c.vacancy_name}` : c.email || c.phone || 'Sem vaga vinculada'}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Auto-select first
+    if (candidates.length > 0) {
+      selectCandidateById(candidates[0].id);
+    }
+  }
+
+  function selectCurriculoCandidate(el, candidateId) {
+    document.querySelectorAll('.candidate-item').forEach(c => {
+      c.classList.remove('selected');
+      const av = c.querySelector('.candidate-avatar');
+      if (av) { av.style.background = ''; av.style.color = ''; }
+    });
+    el.classList.add('selected');
+    const av = el.querySelector('.candidate-avatar');
+    const candidate = (window._curriculoCandidates || []).find(c => c.id === candidateId);
+    if (av && candidate) {
+      av.style.background = avatarColor(candidate.name || '');
+      av.style.color = '#fff';
+    }
+    selectedCandidateId = candidateId;
+    updateCurriculoSourceData(candidate);
+  }
+
+  function selectCandidateById(candidateId) {
+    selectedCandidateId = candidateId;
+    const candidate = (window._curriculoCandidates || []).find(c => c.id === candidateId);
+
+    // Highlight in list
+    document.querySelectorAll('.candidate-item').forEach(item => {
+      const isMatch = item.dataset.candidateId === candidateId;
+      item.classList.toggle('selected', isMatch);
+      const av = item.querySelector('.candidate-avatar');
+      if (av) {
+        if (isMatch && candidate) { av.style.background = avatarColor(candidate.name || ''); av.style.color = '#fff'; }
+        else { av.style.background = ''; av.style.color = ''; }
+      }
+    });
+
+    if (candidate) updateCurriculoSourceData(candidate);
+  }
+
+  function updateCurriculoSourceData(candidate) {
+    if (!candidate) return;
+
+    // Update the Pandapé source panel fields
+    const fieldMap = {
+      'cv-field-nome': candidate.name || 'Não informado',
+      'cv-field-cargo': candidate.vacancy_name || 'Não informado',
+      'cv-field-phone': candidate.phone || 'Não informado',
+      'cv-field-email': candidate.email || 'Não informado',
+      'cv-field-stage': candidate.stage || 'Não informado',
+    };
+
+    Object.entries(fieldMap).forEach(([id, value]) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    });
+
+    // Reset CV preview area on new candidate selection
+    const cvResult = document.getElementById('cvResult');
+    if (cvResult && window._lastGeneratedForCandidate !== candidate.id) {
+      cvResult.innerHTML = `
+        <div style="padding:48px;text-align:center;color:var(--text-muted);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 12px;display:block;opacity:0.3;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div style="font-size:14px;font-weight:600;color:var(--text-sec);margin-bottom:6px;">${candidate.name || 'Candidato'}</div>
+          <div style="font-size:13px;">Clique em "Gerar Currículo com IA" para criar o currículo deste candidato.</div>
+        </div>`;
+    }
+  }
+
+  // ============================================================
+  // CV GENERATION — wired to real API
+  // ============================================================
+
+  async function generateCV() {
+    const loading = document.getElementById('aiLoading');
+    const result = document.getElementById('cvResult');
+    const btn = document.getElementById('generateBtn');
+
+    if (!selectedCandidateId) {
+      alert('Selecione um candidato antes de gerar o currículo.');
+      return;
+    }
+
+    btn.style.display = 'none';
+    result.style.display = 'none';
+    loading.classList.add('show');
+
+    try {
+      const res = await fetch('/api/cv?action=generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ candidate_id: selectedCandidateId }),
+      });
+
+      const json = await res.json();
+      loading.classList.remove('show');
+
+      if (json.status === 'ok' && json.cv) {
+        window._lastGeneratedForCandidate = selectedCandidateId;
+        renderGeneratedCV(json.cv);
+        result.style.display = 'block';
+
+        // Update CVs count badge on dashboard
+        const statCvs = document.getElementById('stat-cvs');
+        if (statCvs) statCvs.textContent = (parseInt(statCvs.textContent) || 0) + 1;
+      } else {
+        const errMsg = json.message || 'Erro desconhecido.';
+        result.innerHTML = `
+          <div style="padding:32px;text-align:center;">
+            <div style="background:var(--red-light);border:1px solid var(--red);border-radius:var(--radius);padding:20px;max-width:400px;margin:0 auto;">
+              <div style="font-size:14px;font-weight:600;color:var(--red);margin-bottom:6px;">Erro ao gerar currículo</div>
+              <div style="font-size:13px;color:var(--text-sec);">${errMsg}</div>
+              ${errMsg.includes('ANTHROPIC_API_KEY') ? '<div style="font-size:12px;color:var(--text-muted);margin-top:8px;">Configure a variável ANTHROPIC_API_KEY no painel do Vercel para ativar a geração com IA.</div>' : ''}
+            </div>
+          </div>`;
+        result.style.display = 'block';
+      }
+    } catch (err) {
+      loading.classList.remove('show');
+      result.innerHTML = `
+        <div style="padding:32px;text-align:center;">
+          <div style="background:var(--red-light);border:1px solid var(--red);border-radius:var(--radius);padding:20px;max-width:400px;margin:0 auto;">
+            <div style="font-size:14px;font-weight:600;color:var(--red);margin-bottom:6px;">Erro de conexão</div>
+            <div style="font-size:13px;color:var(--text-sec);">${err.message}</div>
+          </div>
+        </div>`;
+      result.style.display = 'block';
+    } finally {
+      btn.style.display = 'inline-flex';
+    }
+  }
+
+  function renderGeneratedCV(cv) {
+    const result = document.getElementById('cvResult');
+    const sections = cv.sections || {};
+    const name = cv.candidate_name || 'Candidato';
+    const initials = getInitials(name);
+    const color = avatarColor(name);
+
+    function nl2br(text) {
+      if (!text) return '<em style="color:var(--text-muted)">Não informado</em>';
+      return text.replace(/\n/g, '<br>');
+    }
+
+    result.innerHTML = `
+      <div class="cv-preview">
+        <div class="cv-preview-badge">Gerado por IA</div>
+        <div class="cv-preview-header">
+          <div class="cv-preview-avatar" style="background:${color};">${initials}</div>
+          <div>
+            <div class="cv-preview-name">${name}</div>
+            <div class="cv-preview-role">${cv.vacancy_name || 'Candidato'}</div>
+            <div class="cv-preview-contact">Currículo gerado em ${new Date(cv.generated_at || Date.now()).toLocaleDateString('pt-BR')}</div>
+          </div>
+        </div>
+
+        ${sections.resumo ? `<div class="cv-section"><div class="cv-section-title">Resumo Profissional</div><div class="cv-section-text">${nl2br(sections.resumo)}</div></div>` : ''}
+        ${sections.experiencia ? `<div class="cv-section"><div class="cv-section-title">Experiência Profissional</div><div class="cv-section-text">${nl2br(sections.experiencia)}</div></div>` : ''}
+        ${sections.competencias ? `<div class="cv-section"><div class="cv-section-title">Competências</div><div class="cv-section-text">${nl2br(sections.competencias)}</div></div>` : ''}
+        ${sections.formacao ? `<div class="cv-section"><div class="cv-section-title">Formação Acadêmica</div><div class="cv-section-text">${nl2br(sections.formacao)}</div></div>` : ''}
+        ${sections.observacoes ? `<div class="cv-section"><div class="cv-section-title">Observações</div><div class="cv-section-text">${nl2br(sections.observacoes)}</div></div>` : ''}
+
+        ${cv.model_used ? `<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted);">Gerado com ${cv.model_used} · ${cv.prompt_tokens || 0} tokens entrada · ${cv.completion_tokens || 0} tokens saída</div>` : ''}
+      </div>
+      <div class="cv-actions">
+        <button class="cv-btn primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Enviar ao Cliente
+        </button>
+        <button class="cv-btn secondary" onclick="printCV()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Imprimir / PDF
+        </button>
+      </div>`;
+  }
+
+  function printCV() {
+    window.print();
+  }
+
+  // ============================================================
+  // LEGACY selectCandidate (kept for backward compat)
+  // ============================================================
 
   function selectCandidate(el) {
     document.querySelectorAll('.candidate-item').forEach(c => {
       c.classList.remove('selected');
-      c.querySelector('.candidate-avatar').style.background = '';
-      c.querySelector('.candidate-avatar').style.color = '';
+      const av = c.querySelector('.candidate-avatar');
+      if (av) { av.style.background = ''; av.style.color = ''; }
     });
     el.classList.add('selected');
-    el.querySelector('.candidate-avatar').style.background = 'linear-gradient(135deg, #FF6B35, #FF8F66)';
-    el.querySelector('.candidate-avatar').style.color = '#fff';
+    const av = el.querySelector('.candidate-avatar');
+    if (av) { av.style.background = 'linear-gradient(135deg,#FF6B35,#FF8F66)'; av.style.color = '#fff'; }
+    const id = el.dataset.candidateId;
+    if (id) selectedCandidateId = id;
   }
 
-  function generateCV() {
-    const loading = document.getElementById('aiLoading');
-    const result = document.getElementById('cvResult');
-    const btn = document.getElementById('generateBtn');
-    btn.style.display = 'none';
-    result.style.display = 'none';
-    loading.classList.add('show');
-    setTimeout(() => {
-      loading.classList.remove('show');
-      result.style.display = 'block';
-      btn.style.display = 'inline-flex';
-    }, 2500);
-  }
-
+  // ============================================================
+  // INIT
+  // ============================================================
   showTab('dashboard');
 </script>
 

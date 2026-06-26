@@ -5,32 +5,7 @@
  * URL: https://rhf-proposta.vercel.app/api/webhook/chatguru
  */
 
-const SUPABASE_URL = 'https://weirdpigeon-supabase.cloudfy.live';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzM3Njg1MTYsImV4cCI6MTgwNTMwNDUxNn0.Hziwx8ocWnFVLHvt5DhT8nTkL2XVMa58ofjL-0hCMxw';
-
-async function supabaseInsert(table, data) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
-    method: 'POST',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation'
-    },
-    body: JSON.stringify(data)
-  });
-  return res.json();
-}
-
-async function supabaseSelect(table, query) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-    }
-  });
-  return res.json();
-}
+import { select, insert } from '../../lib/supabase.js';
 
 export default async function handler(req, res) {
   // CORS
@@ -45,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       status: 'ok',
       service: 'RHF Talentos Webhook',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   }
 
@@ -66,18 +41,8 @@ export default async function handler(req, res) {
       tipo_mensagem = 'chat',
       phone_id,
       chat_id,
-      chat_created,
-      datetime_post,
-      tags,
-      campos_personalizados,
-      responsavel_nome,
-      responsavel_email,
-      link_chat,
       email,
-      origem,
-      campanha_id,
-      campanha_nome,
-      url_arquivo
+      url_arquivo,
     } = payload;
 
     // Normalize phone number
@@ -89,45 +54,48 @@ export default async function handler(req, res) {
     }
 
     // 1. Upsert candidate
-    const existing = await supabaseSelect('candidates', `phone=eq.${phone}&select=id`);
+    const existing = await select('candidates', `phone=eq.${phone}&select=id`);
 
     let candidateId;
     if (Array.isArray(existing) && existing.length > 0) {
       candidateId = existing[0].id;
     } else if (nome && phone) {
-      const inserted = await supabaseInsert('candidates', {
+      const inserted = await insert('candidates', {
         name: nome,
-        phone: phone,
+        phone,
         email: email || null,
         chatguru_chat_id: chat_id || null,
         chatguru_phone_id: phone_id || null,
         status: 'new',
-        raw_data: payload
+        raw_data: payload,
       });
       candidateId = Array.isArray(inserted) && inserted[0] ? inserted[0].id : null;
     }
 
     // 2. Store message
-    const messageData = {
-      phone: phone,
+    await insert('rhf_messages', {
+      phone,
       direction: 'inbound',
       content: texto_mensagem || url_arquivo || '[media]',
       message_type: tipo_mensagem || 'chat',
       chatguru_chat_id: chat_id || null,
       candidate_id: candidateId || null,
-      raw_webhook: payload
-    };
-
-    await supabaseInsert('rhf_messages', messageData);
+      raw_webhook: payload,
+    });
 
     // 3. Log sync event
-    await supabaseInsert('sync_log', {
+    await insert('sync_log', {
       source: 'chatguru',
       action: 'webhook_received',
       entity_type: 'message',
       entity_id: chat_id || phone,
       status: 'success',
-      payload: { nome, phone, tipo_mensagem, texto_mensagem: (texto_mensagem || '').substring(0, 100) }
+      payload: {
+        nome,
+        phone,
+        tipo_mensagem,
+        texto_mensagem: (texto_mensagem || '').substring(0, 100),
+      },
     });
 
     console.log(`[Webhook] Processed: ${nome} (${phone}) — ${tipo_mensagem}`);
@@ -135,7 +103,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       status: 'ok',
       candidate_id: candidateId,
-      message_stored: true
+      message_stored: true,
     });
 
   } catch (error) {
@@ -143,13 +111,13 @@ export default async function handler(req, res) {
 
     // Log error but still return 200 to ChatGuru (avoid retries)
     try {
-      await supabaseInsert('sync_log', {
+      await insert('sync_log', {
         source: 'chatguru',
         action: 'webhook_error',
         entity_type: 'message',
         status: 'error',
         error_message: error.message || String(error),
-        payload: req.body
+        payload: req.body,
       });
     } catch (_) { /* ignore logging errors */ }
 

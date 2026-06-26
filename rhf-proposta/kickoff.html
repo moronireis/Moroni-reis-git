@@ -187,6 +187,21 @@
 </head>
 <body>
 
+<!-- AUTH GUARD — must be first in body -->
+<script>
+(function(){
+  document.documentElement.style.visibility='hidden';
+  var t=localStorage.getItem('rhf_token');
+  if(!t){document.documentElement.style.visibility='';window.location.replace('/login');return;}
+  fetch('/api/auth?action=verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:t})})
+    .then(function(r){
+      if(r.ok){document.documentElement.style.visibility='';}
+      else{localStorage.removeItem('rhf_token');document.documentElement.style.visibility='';window.location.replace('/login');}
+    })
+    .catch(function(){localStorage.removeItem('rhf_token');document.documentElement.style.visibility='';window.location.replace('/login');});
+})();
+</script>
+
 <nav>
   <div class="logo-area">
     <img src="assets/u4digital-logo.webp" alt="u4digital">

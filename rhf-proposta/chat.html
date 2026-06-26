@@ -296,6 +296,21 @@
 </head>
 <body>
 
+<!-- AUTH GUARD — must be first in body -->
+<script>
+(function(){
+  document.documentElement.style.visibility='hidden';
+  var t=localStorage.getItem('rhf_token');
+  if(!t){document.documentElement.style.visibility='';window.location.replace('/login');return;}
+  fetch('/api/auth?action=verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:t})})
+    .then(function(r){
+      if(r.ok){document.documentElement.style.visibility='';}
+      else{localStorage.removeItem('rhf_token');document.documentElement.style.visibility='';window.location.replace('/login');}
+    })
+    .catch(function(){localStorage.removeItem('rhf_token');document.documentElement.style.visibility='';window.location.replace('/login');});
+})();
+</script>
+
 <!-- Top banner -->
 <div class="top-banner">
   <strong>RHF Talentos MVP</strong>
@@ -354,6 +369,9 @@
         <div class="user-name">Admin RHF</div>
         <div class="user-role">Gestora de Talentos</div>
       </div>
+      <button onclick="(function(){localStorage.removeItem('rhf_token');window.location.replace('/login');})()" title="Sair" style="background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;color:rgba(255,255,255,0.35);transition:color 0.15s,background 0.15s;flex-shrink:0;" onmouseover="this.style.color='#EF4444';this.style.background='rgba(239,68,68,0.12)'" onmouseout="this.style.color='rgba(255,255,255,0.35)';this.style.background='none'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
     </div>
   </div>
 
@@ -521,7 +539,7 @@
     }
 
     try {
-      const res = await fetch('/api/whatsapp/chats');
+      const res = await fetch('/api/whatsapp?action=chats');
       const data = await res.json();
 
       if (!data.data || data.data.length === 0) {
@@ -632,7 +650,7 @@
     }
 
     try {
-      const res = await fetch(`/api/whatsapp/chat-messages?phone=${encodeURIComponent(phone)}&limit=50`);
+      const res = await fetch(`/api/whatsapp?action=messages?phone=${encodeURIComponent(phone)}&limit=50`);
       const data = await res.json();
 
       if (!data.data || data.data.length === 0) {
@@ -710,7 +728,7 @@
     scrollToBottom();
 
     try {
-      const res = await fetch('/api/whatsapp/send', {
+      const res = await fetch('/api/whatsapp?action=send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: activePhone, text }),
