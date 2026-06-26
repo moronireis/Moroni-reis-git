@@ -16,6 +16,9 @@
 - [project_castelo_dimatoso.md](project_castelo_dimatoso.md) — Castelo dos Lagos + Di Matoso Astro sites: structure, token system, build status, key decisions.
 - [project_moroniedaphine_ds.md](project_moroniedaphine_ds.md) — M&D wedding design system preview: single index.html, deployed at moroniedaphine.vercel.app.
 
+## Project
+- [project_marpe_crm.md](project_marpe_crm.md) — Marpe CRM: Astro+React+Supabase, inline styles (no Tailwind), `marpe_` table prefix, all status options in `marpe_status_options` table.
+
 ## Patterns
 - For net-new projects (e.g. client demos), all files are IDS: CREATE. Log once at project start; no need to re-justify every file in the same empty directory.
 - Astro scaffold via `npm create astro@latest` creates a default `index.astro` and `README.md` — always Read them before Write to avoid the "file not read" error.

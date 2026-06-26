@@ -17,3 +17,11 @@ Created 2026-04-14 as part of Phase A foundation.
 
 ## Deploy gate
 - qa-agent verdict BLOCK = no deploy. No exceptions.
+
+## Project: rhf-proposta
+- [project_rhf_proposta.md](project_rhf_proposta.md) — Vercel env vars catalog (8 vars, all envs). CLI bug workaround for preview/dev vars.
+
+## Vercel CLI quirk — no-git-repo projects
+- When a Vercel project has no connected Git repo, `vercel env add NAME preview` hangs on branch selection even with `--yes`.
+- Fix: use REST API `POST /v10/projects/{id}/env?upsert=true` with `"target":["production","preview","development"]`.
+- Auth token lives at `/Users/moronireis/Library/Application Support/com.vercel.cli/auth.json`.
