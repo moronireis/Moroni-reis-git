@@ -76,14 +76,27 @@ const S = {
   empty: { padding: '60px 24px', textAlign: 'center' as const, color: '#4a6050', fontSize: '14px' },
 };
 
+const SEGMENTO_OPTIONS = ['Papelaria', 'Brinquedo', 'Bazar', 'Papelaria e Brinquedo', 'Serviço', 'Outros'];
+
+const emptyForm = {
+  razao_social: '', nome_fantasia: '', cnpj: '', phone_primary: '',
+  contato: '', cidade: '', estado: 'RS', segmento: '', status: 'ativo',
+  brand_ids: [] as string[],
+};
+
 export default function ContatosView() {
-  const { toasts, dismiss, error: showError } = useToast();
+  const { toasts, dismiss, error: showError, success: showSuccess } = useToast();
 
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [brands, setBrands] = useState<Brand[]>([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+
+  // New-contact modal
+  const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState(emptyForm);
+  const [saving, setSaving] = useState(false);
 
   // Filters
   const [q, setQ] = useState('');
@@ -133,6 +146,35 @@ export default function ContatosView() {
 
   const totalPages = Math.ceil(total / LIMIT);
 
+  const toggleFormBrand = (id: string) => {
+    setForm(f => ({
+      ...f,
+      brand_ids: f.brand_ids.includes(id) ? f.brand_ids.filter(b => b !== id) : [...f.brand_ids, id],
+    }));
+  };
+
+  const saveContact = async () => {
+    if (!form.razao_social.trim()) { showError('Razão social / nome é obrigatório'); return; }
+    setSaving(true);
+    try {
+      const res = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erro ao salvar contato');
+      showSuccess('Contato criado');
+      setShowForm(false);
+      setForm(emptyForm);
+      load(1);
+    } catch (e: any) {
+      showError(e.message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return (
     <div style={S.root}>
       <Toast toasts={toasts} onDismiss={dismiss} />
@@ -140,7 +182,20 @@ export default function ContatosView() {
       <div style={S.header}>
         <div style={S.headerTop}>
           <span style={S.title}>Contatos</span>
-          <span style={S.count}>{total.toLocaleString('pt-BR')} registros</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={S.count}>{total.toLocaleString('pt-BR')} registros</span>
+            <button
+              onClick={() => { setForm(emptyForm); setShowForm(true); }}
+              style={{
+                background: '#25D366', color: '#fff', border: 'none', borderRadius: 8,
+                padding: '7px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'inherit',
+              }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Novo contato
+            </button>
+          </div>
         </div>
         <div style={S.filters}>
           <input
@@ -243,6 +298,119 @@ export default function ContatosView() {
           </button>
         </div>
       )}
+
+      {showForm && (
+        <div
+          onClick={() => !saving && setShowForm(false)}
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 50,
+            display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '40px 16px', overflowY: 'auto',
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: '#0d1410', border: '1px solid #1c2820', borderRadius: 14,
+              width: '100%', maxWidth: 520, padding: 24,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <span style={{ fontSize: 16, fontWeight: 700, color: '#e8f0e8' }}>Novo contato</span>
+              <button onClick={() => !saving && setShowForm(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#4a6050', fontSize: 20, lineHeight: 1 }}>×</button>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <Field label="Razão social / Nome *" full>
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.razao_social}
+                  onChange={e => setForm(f => ({ ...f, razao_social: e.target.value }))} placeholder="Ex: Equipe u4digital - Teste" />
+              </Field>
+              <Field label="Nome fantasia" full>
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.nome_fantasia}
+                  onChange={e => setForm(f => ({ ...f, nome_fantasia: e.target.value }))} />
+              </Field>
+              <Field label="Telefone (WhatsApp)">
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.phone_primary}
+                  onChange={e => setForm(f => ({ ...f, phone_primary: e.target.value }))} placeholder="51999999999" />
+              </Field>
+              <Field label="Contato (pessoa)">
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.contato}
+                  onChange={e => setForm(f => ({ ...f, contato: e.target.value }))} />
+              </Field>
+              <Field label="CNPJ">
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.cnpj}
+                  onChange={e => setForm(f => ({ ...f, cnpj: e.target.value }))} />
+              </Field>
+              <Field label="Cidade">
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.cidade}
+                  onChange={e => setForm(f => ({ ...f, cidade: e.target.value }))} />
+              </Field>
+              <Field label="Estado">
+                <input style={{ ...S.input, width: '100%', boxSizing: 'border-box' }} value={form.estado}
+                  onChange={e => setForm(f => ({ ...f, estado: e.target.value }))} maxLength={2} />
+              </Field>
+              <Field label="Segmento">
+                <select style={{ ...S.select, width: '100%', boxSizing: 'border-box' }} value={form.segmento}
+                  onChange={e => setForm(f => ({ ...f, segmento: e.target.value }))}>
+                  <option value="">—</option>
+                  {SEGMENTO_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </Field>
+              <Field label="Status">
+                <select style={{ ...S.select, width: '100%', boxSizing: 'border-box' }} value={form.status}
+                  onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+                  <option value="ativo">Ativo</option>
+                  <option value="inativo_recente">Inativo recente</option>
+                  <option value="inativo_antigo">Inativo antigo</option>
+                </select>
+              </Field>
+            </div>
+
+            <div style={{ marginTop: 14 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#4a6050', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8 }}>Marcas</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {brands.map(b => {
+                  const active = form.brand_ids.includes(b.id);
+                  return (
+                    <button key={b.id} onClick={() => toggleFormBrand(b.id)} style={{
+                      padding: '5px 12px', borderRadius: 20, fontSize: 12, fontFamily: 'inherit', cursor: 'pointer', fontWeight: 500,
+                      border: active ? 'none' : '1px solid #1c2820',
+                      background: active ? '#25D366' : 'transparent',
+                      color: active ? '#fff' : '#8aaa90',
+                    }}>
+                      {b.name}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
+              <button onClick={saveContact} disabled={saving} style={{
+                background: '#25D366', color: '#fff', border: 'none', borderRadius: 8,
+                padding: '10px 24px', fontSize: 13, fontWeight: 600, cursor: saving ? 'not-allowed' : 'pointer',
+                opacity: saving ? 0.6 : 1, fontFamily: 'inherit',
+              }}>
+                {saving ? 'Salvando...' : 'Salvar contato'}
+              </button>
+              <button onClick={() => setShowForm(false)} disabled={saving} style={{
+                background: '#131a16', color: '#8aaa90', border: '1px solid #1c2820',
+                borderRadius: 8, padding: '10px 20px', fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+              }}>
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+  );
+}
+
+function Field({ label, full, children }: { label: string; full?: boolean; children: React.ReactNode }) {
+  return (
+    <label style={{ display: 'block', gridColumn: full ? '1 / -1' : 'auto' }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: '#4a6050', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>{label}</div>
+      {children}
+    </label>
   );
 }

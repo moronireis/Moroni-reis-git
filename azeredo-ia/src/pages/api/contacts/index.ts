@@ -90,6 +90,61 @@ export const GET: APIRoute = async ({ locals, url }) => {
   return json({ contacts: result, total: count || 0, page, limit });
 };
 
+// POST /api/contacts — create a contact (manual entry), optionally linked to brands
+export const POST: APIRoute = async ({ locals, request }) => {
+  const profile = requireAuth(locals as any);
+  if (profile instanceof Response) return profile;
+
+  let body: any;
+  try { body = await request.json(); } catch {
+    return json({ error: 'JSON inválido' }, 400);
+  }
+
+  const razao_social = (body.razao_social || '').trim();
+  if (!razao_social) return json({ error: 'Razão social / nome é obrigatório' }, 400);
+
+  const status = ['ativo', 'inativo_recente', 'inativo_antigo'].includes(body.status)
+    ? body.status : 'ativo';
+
+  const sb = createServerClient();
+
+  const insert: Record<string, any> = {
+    razao_social,
+    nome_fantasia: body.nome_fantasia?.trim() || null,
+    cnpj: body.cnpj?.trim() || null,
+    phone_primary: body.phone_primary?.trim() || null,
+    email: body.email?.trim() || null,
+    cidade: body.cidade?.trim() || null,
+    estado: body.estado?.trim() || 'RS',
+    segmento: body.segmento?.trim() || null,
+    contato: body.contato?.trim() || null,
+    status,
+    source: 'manual',
+  };
+
+  const { data: contact, error } = await sb
+    .from('az_contacts')
+    .insert(insert)
+    .select('id, razao_social, nome_fantasia, cnpj, phone_primary, cidade, estado, segmento, status, contato')
+    .single();
+
+  if (error) {
+    if ((error as any).code === '23505') {
+      return json({ error: 'Já existe um contato com este CNPJ' }, 409);
+    }
+    return json({ error: error.message }, 500);
+  }
+
+  // Link brands (M:N)
+  const brandIds: string[] = Array.isArray(body.brand_ids) ? body.brand_ids.filter(Boolean) : [];
+  if (brandIds.length > 0) {
+    const rows = brandIds.map((brand_id: string) => ({ contact_id: contact.id, brand_id }));
+    await sb.from('az_contact_brands').insert(rows);
+  }
+
+  return json({ contact }, 201);
+};
+
 function json(data: any, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
