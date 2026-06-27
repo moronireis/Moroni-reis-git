@@ -30,19 +30,21 @@ export async function sendWhatsAppText(
   phone: string,
   text: string,
   contactId?: string,
-  campaignId?: string
+  campaignId?: string,
+  instance?: { id: string; token: string }
 ): Promise<SendResult> {
-  const UAZAPI_URL = import.meta.env.UAZAPI_URL;
-  const UAZAPI_TOKEN = import.meta.env.UAZAPI_TOKEN;
+  const UAZAPI_URL = import.meta.env.UAZAPI_URL || 'https://u4digital.uazapi.com';
+  // Prefer the campaign's chosen sender number; fall back to the global token.
+  const token = instance?.token || import.meta.env.UAZAPI_TOKEN;
 
-  if (!UAZAPI_URL || !UAZAPI_TOKEN) {
+  if (!UAZAPI_URL || !token) {
     return { ok: false, error: 'WhatsApp not configured' };
   }
 
   const normalizedPhone = normalizePhone(phone);
 
   try {
-    const res = await fetch(`${UAZAPI_URL}/send/text?token=${UAZAPI_TOKEN}`, {
+    const res = await fetch(`${UAZAPI_URL}/send/text?token=${token}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ number: normalizedPhone, text }),
@@ -59,6 +61,7 @@ export async function sendWhatsAppText(
       await sb.from('az_messages').insert({
         contact_id: contactId,
         campaign_id: campaignId || null,
+        instance_id: instance?.id || null,
         phone: normalizedPhone,
         wa_message_id: data.messageid || null,
         direction: 'outbound',

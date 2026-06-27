@@ -25,11 +25,23 @@ export const POST: APIRoute = async ({ locals, params }) => {
   // 1. Fetch campaign — must be draft or error
   const { data: campaign, error: campErr } = await sb
     .from('az_campaigns')
-    .select('id, name, status, template_id, custom_body, segment_filter, az_templates(id, name, body)')
+    .select('id, name, status, template_id, custom_body, segment_filter, instance_id, az_templates(id, name, body), az_whatsapp_instances(id, token, status, display_name, uazapi_name)')
     .eq('id', id)
     .single();
 
   if (campErr || !campaign) return json({ error: 'Campanha não encontrada' }, 404);
+
+  // Resolve the sender number (WhatsApp instance) the blast fires from.
+  const instance = (campaign as any).az_whatsapp_instances as
+    | { id: string; token: string; status: string; display_name: string | null; uazapi_name: string }
+    | null;
+
+  if (!instance) {
+    return json({ error: 'Selecione o número de WhatsApp que fará o disparo' }, 400);
+  }
+  if (instance.status !== 'connected') {
+    return json({ error: `O número "${instance.display_name || instance.uazapi_name}" não está conectado` }, 409);
+  }
 
   if (campaign.status === 'sending') {
     return json({ error: 'Campanha já está sendo disparada' }, 409);
@@ -105,7 +117,10 @@ export const POST: APIRoute = async ({ locals, params }) => {
           segmento: contact.segmento,
         });
 
-        const result = await sendWhatsAppText(contact.phone_primary, body, contact.id, id);
+        const result = await sendWhatsAppText(contact.phone_primary, body, contact.id, id, {
+          id: instance.id,
+          token: instance.token,
+        });
 
         if (recipId) {
           await sb.from('az_campaign_recipients').update({

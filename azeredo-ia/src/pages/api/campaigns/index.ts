@@ -17,7 +17,7 @@ export const GET: APIRoute = async ({ locals, url }) => {
 
   const { data, error, count } = await sb
     .from('az_campaigns')
-    .select('id, name, status, total_count, sent_count, failed_count, created_at, started_at, completed_at, az_templates(name)', { count: 'exact' })
+    .select('id, name, status, total_count, sent_count, failed_count, created_at, started_at, completed_at, az_templates(name), az_whatsapp_instances(slot_number, display_name, uazapi_name)', { count: 'exact' })
     .order('created_at', { ascending: false })
     .range(offset, offset + limit - 1);
 
@@ -36,7 +36,7 @@ export const POST: APIRoute = async ({ locals, request }) => {
     return json({ error: 'JSON inválido' }, 400);
   }
 
-  const { name, template_id, custom_body, segment_filter } = body;
+  const { name, template_id, custom_body, segment_filter, instance_id } = body;
 
   if (!name?.trim()) return json({ error: 'Nome é obrigatório' }, 400);
   if (!template_id && !custom_body?.trim()) {
@@ -52,6 +52,7 @@ export const POST: APIRoute = async ({ locals, request }) => {
       template_id: template_id || null,
       custom_body: custom_body?.trim() || null,
       segment_filter: segment_filter || {},
+      instance_id: instance_id || null,
       status: 'draft',
       created_by: (profile as any).id,
     })

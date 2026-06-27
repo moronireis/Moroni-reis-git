@@ -15,10 +15,22 @@ interface Campaign {
   started_at: string | null;
   completed_at: string | null;
   az_templates: { name: string } | null;
+  az_whatsapp_instances: { slot_number: number; display_name: string | null; uazapi_name: string } | null;
 }
 
 interface Template { id: string; name: string; body: string; }
 interface Brand    { id: string; name: string; }
+interface Instance {
+  id: string;
+  slot_number: number;
+  display_name: string | null;
+  uazapi_name: string;
+  status: string;
+}
+
+function instanceLabel(i: Pick<Instance, 'display_name' | 'uazapi_name'>) {
+  return i.display_name || i.uazapi_name;
+}
 
 interface SegmentFilter {
   brand_ids?: string[];
@@ -189,6 +201,12 @@ function CampaignCard({
             {campaign.az_templates?.name && (
               <span style={{ fontSize: 11, color: '#4a6050' }}>
                 Template: {campaign.az_templates.name}
+              </span>
+            )}
+            {campaign.az_whatsapp_instances && (
+              <span style={{ fontSize: 11, color: '#4a6050', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>
+                {instanceLabel(campaign.az_whatsapp_instances)}
               </span>
             )}
           </div>
@@ -400,6 +418,11 @@ function NewCampaignWizard({
   const [templates, setTemplates] = useState<Template[]>([]);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
 
+  // Step 1: sender number (WhatsApp instance)
+  const [instances, setInstances] = useState<Instance[]>([]);
+  const [instanceId, setInstanceId] = useState('');
+  const [loadingInstances, setLoadingInstances] = useState(true);
+
   // Step 2: segment
   const [brands, setBrands] = useState<Brand[]>([]);
   const [loadingBrands, setLoadingBrands] = useState(true);
@@ -422,14 +445,22 @@ function NewCampaignWizard({
       .then(r => r.json())
       .then(d => { setBrands(d.brands || []); setLoadingBrands(false); })
       .catch(() => setLoadingBrands(false));
+
+    fetch('/api/instances')
+      .then(r => r.json())
+      .then(d => { setInstances(Array.isArray(d) ? d : []); setLoadingInstances(false); })
+      .catch(() => setLoadingInstances(false));
   }, []);
 
   const selectedTemplate = templates.find(t => t.id === templateId);
   const messageBody = useTemplate ? (selectedTemplate?.body || '') : customBody;
+  const connectedInstances = instances.filter(i => i.status === 'connected');
+  const selectedInstance = instances.find(i => i.id === instanceId);
 
   // Step 1 → 2: create draft campaign first
   async function goToStep2() {
     if (!name.trim()) { toast.error('Nome da campanha é obrigatório'); return; }
+    if (!instanceId) { toast.error('Selecione o número que fará o disparo'); return; }
     if (useTemplate && !templateId) { toast.error('Selecione um template'); return; }
     if (!useTemplate && !customBody.trim()) { toast.error('Escreva a mensagem'); return; }
 
@@ -442,6 +473,7 @@ function NewCampaignWizard({
           template_id: useTemplate ? templateId : null,
           custom_body: !useTemplate ? customBody.trim() : null,
           segment_filter: {},
+          instance_id: instanceId,
         }),
       });
       const d = await res.json();
@@ -568,6 +600,40 @@ function NewCampaignWizard({
               value={name}
               onChange={e => setName(e.target.value)}
             />
+          </div>
+
+          {/* Sender number (WhatsApp instance) */}
+          <div style={{ marginBottom: 16 }}>
+            <label style={labelStyle}>Disparar a partir de</label>
+            {loadingInstances ? (
+              <div style={{ fontSize: 12, color: '#4a6050' }}>Carregando números...</div>
+            ) : connectedInstances.length === 0 ? (
+              <div style={{
+                background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)',
+                borderRadius: 8, padding: '10px 14px', fontSize: 12, color: '#f59e0b', lineHeight: 1.5,
+              }}>
+                Nenhum número de WhatsApp conectado.{' '}
+                <a href="/config" style={{ color: '#25D366', textDecoration: 'none', fontWeight: 600 }}>
+                  Conecte em Configurações
+                </a>{' '}antes de criar a campanha.
+              </div>
+            ) : (
+              <>
+                <select
+                  style={inp}
+                  value={instanceId}
+                  onChange={e => setInstanceId(e.target.value)}
+                >
+                  <option value="">Selecione o número...</option>
+                  {connectedInstances.map(i => (
+                    <option key={i.id} value={i.id}>{instanceLabel(i)}</option>
+                  ))}
+                </select>
+                <div style={{ fontSize: 11, color: '#4a6050', marginTop: 4 }}>
+                  As mensagens serão enviadas deste número de WhatsApp.
+                </div>
+              </>
+            )}
           </div>
 
           {/* Toggle template vs custom */}
@@ -813,6 +879,12 @@ function NewCampaignWizard({
                 <span style={{ fontSize: 12, color: '#4a6050', width: 110, flexShrink: 0 }}>Mensagem</span>
                 <span style={{ fontSize: 12, color: '#8aaa90' }}>
                   {useTemplate ? (selectedTemplate?.name || '—') : 'Mensagem personalizada'}
+                </span>
+              </div>
+              <div style={{ display: 'flex', gap: 12 }}>
+                <span style={{ fontSize: 12, color: '#4a6050', width: 110, flexShrink: 0 }}>Número</span>
+                <span style={{ fontSize: 12, color: '#8aaa90' }}>
+                  {selectedInstance ? instanceLabel(selectedInstance) : '—'}
                 </span>
               </div>
               <div style={{ display: 'flex', gap: 12 }}>

@@ -62,6 +62,7 @@ export const PATCH: APIRoute = async ({ locals, params, request }) => {
   if (body.name !== undefined)          updates.name = body.name;
   if (body.custom_body !== undefined)   updates.custom_body = body.custom_body;
   if (body.segment_filter !== undefined) updates.segment_filter = body.segment_filter;
+  if (body.instance_id !== undefined)   updates.instance_id = body.instance_id;
 
   const { data, error } = await sb
     .from('az_campaigns')
