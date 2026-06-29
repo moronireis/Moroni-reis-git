@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import type { Contact, Message } from '../../lib/types';
 import { ContactList } from './ContactList';
 import { MessageThread } from './MessageThread';
+import { ContactDetail } from './ContactDetail';
 
 const ALL_PAGE_SIZE = 200;
 
@@ -69,6 +70,12 @@ export function ChatView() {
     fetchMessages(contact.id);
   };
 
+  const handleContactUpdate = (updated: Contact) => {
+    setSelectedContact(updated);
+    setConversations(prev => prev.map(c => c.id === updated.id ? updated : c));
+    setAllContacts(prev => prev.map(c => c.id === updated.id ? updated : c));
+  };
+
   const handleLoadMoreAll = () => {
     if (!loadingAll && hasMoreAll) fetchAllContacts(allOffset, true);
   };
@@ -86,7 +93,8 @@ export function ChatView() {
         onRefresh={() => { fetchConversations(); fetchAllContacts(0, false); }}
       />
 
-      <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {/* Middle: thread */}
+      <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         {selectedContact ? (
           <>
             {/* Thread header */}
@@ -110,12 +118,23 @@ export function ChatView() {
                         : <span style={{ color: 'rgba(244,239,230,0.9)', fontSize: '0.85rem', fontWeight: 600 }}>{initial}</span>
                       }
                     </div>
-                    <div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: '0.88rem', fontWeight: 500 }}>{label}</div>
                       <div style={{ fontSize: '0.7rem', color: 'var(--cream-dim)' }}>
                         {selectedContact.phone} · Número {selectedContact.instance_id === 'castelo1' ? '1 — (11) 9.5590-6035' : '2 — (11) 9.5590-1227'}
                       </div>
                     </div>
+                    {selectedContact.lead_stage && (
+                      <div style={{
+                        fontSize: '0.65rem', letterSpacing: '0.06em',
+                        padding: '0.2rem 0.5rem',
+                        border: '1px solid rgba(201,169,110,0.35)',
+                        color: 'var(--gold)', flexShrink: 0,
+                        textTransform: 'uppercase',
+                      }}>
+                        {selectedContact.lead_stage.replace('_', ' ')}
+                      </div>
+                    )}
                   </>
                 );
               })()}
@@ -138,6 +157,14 @@ export function ChatView() {
           </div>
         )}
       </div>
+
+      {/* Right: CRM detail panel */}
+      {selectedContact && (
+        <ContactDetail
+          contact={selectedContact}
+          onUpdate={handleContactUpdate}
+        />
+      )}
     </div>
   );
 }

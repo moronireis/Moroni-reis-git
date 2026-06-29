@@ -1,3 +1,20 @@
+export type LeadStage =
+  | 'novo'
+  | 'contato_feito'
+  | 'proposta_enviada'
+  | 'visita_agendada'
+  | 'visita_realizada'
+  | 'negociacao'
+  | 'fechado'
+  | 'perdido';
+
+export type EventType =
+  | 'casamento'
+  | 'debutante'
+  | 'corporativo'
+  | 'confraternizacao'
+  | 'outro';
+
 export interface Contact {
   id: string;
   instance_id: string;
@@ -11,6 +28,15 @@ export interface Contact {
   last_message_preview: string | null;
   unread_count: number;
   created_at: string;
+  // CRM fields
+  lead_stage: LeadStage | null;
+  event_type: EventType | null;
+  event_date: string | null;
+  guest_count: number | null;
+  budget_range: string | null;
+  email: string | null;
+  notes: string | null;
+  source: string | null;
 }
 
 export interface Message {

@@ -2,6 +2,31 @@ import type { APIRoute } from 'astro';
 import { isAuthenticated } from '../../../lib/auth';
 import { createServerSupabase } from '../../../lib/supabase-server';
 
+export const GET: APIRoute = async ({ request }) => {
+  if (!isAuthenticated(request)) return new Response('Unauthorized', { status: 401 });
+
+  const supabase = createServerSupabase();
+
+  const [
+    { count: totalContacts },
+    { count: totalMessages },
+    { count: totalPhotos },
+    { count: totalConversations },
+  ] = await Promise.all([
+    supabase.from('castelo_contacts').select('id', { count: 'exact', head: true }),
+    supabase.from('castelo_messages').select('id', { count: 'exact', head: true }),
+    supabase.from('castelo_contacts').select('id', { count: 'exact', head: true }).not('photo_url', 'is', null),
+    supabase.from('castelo_contacts').select('id', { count: 'exact', head: true }).not('last_message_at', 'is', null),
+  ]);
+
+  return new Response(JSON.stringify({
+    contacts: totalContacts || 0,
+    messages: totalMessages || 0,
+    photos: totalPhotos || 0,
+    conversations: totalConversations || 0,
+  }), { headers: { 'Content-Type': 'application/json' } });
+};
+
 export const POST: APIRoute = async ({ request }) => {
   if (!isAuthenticated(request)) return new Response('Unauthorized', { status: 401 });
 
@@ -32,7 +57,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const supabase = createServerSupabase();
 
-    // Upsert in batches of 200
+    // Upsert in batches of 200 — update name if changed (ignoreDuplicates: false)
     const BATCH = 200;
     let imported = 0;
 
@@ -47,7 +72,7 @@ export const POST: APIRoute = async ({ request }) => {
 
       const { error } = await supabase
         .from('castelo_contacts')
-        .upsert(batch, { onConflict: 'instance_id,phone', ignoreDuplicates: true });
+        .upsert(batch, { onConflict: 'instance_id,phone', ignoreDuplicates: false });
 
       if (!error) imported += batch.length;
     }
@@ -55,8 +80,8 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({
       ok: true,
       total: contacts.length,
-      imported,
-      skipped: contacts.length - individuals.length,
+      synced: imported,
+      groups_skipped: contacts.length - individuals.length,
     }), { headers: { 'Content-Type': 'application/json' } });
 
   } catch (err) {

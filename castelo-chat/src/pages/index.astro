@@ -1,7 +1,3 @@
 ---
-import { isAuthenticated } from '../lib/auth';
-if (isAuthenticated(Astro.request)) {
-  return Astro.redirect('/chat');
-}
-return Astro.redirect('/login');
+return Astro.redirect('/chat');
 ---
