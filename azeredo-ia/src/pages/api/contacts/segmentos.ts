@@ -5,26 +5,29 @@ import { createServerClient } from '../../../lib/supabase-server';
 export const prerender = false;
 
 // GET /api/contacts/segmentos
-// Segmentos reais existentes na base (com contagem) — as opções do wizard
-// eram hardcoded e não batiam com os dados ("Serviço"/"Outros" não existem;
-// "Festa" com 236 contatos ficava de fora).
+// Segmentos e status reais existentes na base (com contagem) — as opções do
+// wizard eram hardcoded e não batiam com os dados ("Serviço"/"Outros" não
+// existem; "Festa" com 236 contatos ficava de fora).
 export const GET: APIRoute = async ({ locals }) => {
   const profile = requireAuth(locals as any);
   if (profile instanceof Response) return profile;
 
   const sb = createServerClient();
   const counts = new Map<string, number>();
+  const statusCounts: Record<string, number> = {};
   let semSegmento = 0;
 
   const PAGE = 1000;
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await sb
       .from('az_contacts')
-      .select('segmento')
+      .select('segmento, status')
       .not('phone_primary', 'is', null)
       .range(from, from + PAGE - 1);
     if (error) return json({ error: error.message }, 500);
     for (const r of data || []) {
+      const st = (r.status || '').trim();
+      if (st) statusCounts[st] = (statusCounts[st] || 0) + 1;
       const s = (r.segmento || '').trim();
       if (!s) { semSegmento++; continue; }
       counts.set(s, (counts.get(s) || 0) + 1);
@@ -36,7 +39,7 @@ export const GET: APIRoute = async ({ locals }) => {
     .map(([segmento, count]) => ({ segmento, count }))
     .sort((a, b) => b.count - a.count);
 
-  return json({ segmentos, sem_segmento: semSegmento });
+  return json({ segmentos, sem_segmento: semSegmento, status_counts: statusCounts });
 };
 
 function json(data: any, status = 200) {

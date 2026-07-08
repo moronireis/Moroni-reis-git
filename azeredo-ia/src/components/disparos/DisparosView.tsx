@@ -35,10 +35,12 @@ interface SegmentFilter {
   cidade?: string;
   estado?: string;
   segmento?: string;
-  status?: string;
+  status?: string;          // legado: rascunhos antigos salvaram single-select
+  status_in?: string[];     // multi-select de status do cliente
   tags?: string[];
   include_ids?: string[];   // contatos adicionados manualmente à lista
   exclude_ids?: string[];   // contatos removidos manualmente da lista
+  manual_only?: boolean;    // lista montada do zero: só include_ids
 }
 
 interface PreviewContact {
@@ -849,12 +851,25 @@ function NewCampaignWizard({
   const [brandSearch, setBrandSearch]   = useState('');
   const [segmentos, setSegmentos]       = useState<{ segmento: string; count: number }[]>([]);
   const [semSegmento, setSemSegmento]   = useState(0);
-  const [filter, setFilter]             = useState<SegmentFilter>(existing?.segment_filter || {});
+  const [statusCounts, setStatusCounts] = useState<Record<string, number> | null>(null);
+  const [filter, setFilter]             = useState<SegmentFilter>(() => {
+    // Rascunhos antigos salvaram status single-select — migra para status_in
+    // e descarta o campo legado (senão ele continuaria filtrando no servidor).
+    const f: SegmentFilter = { ...(existing?.segment_filter || {}) };
+    if (f.status && !f.status_in) f.status_in = [f.status];
+    delete f.status;
+    return f;
+  });
   const [preview, setPreview]           = useState<PreviewResult | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [loadingMore, setLoadingMore]   = useState(false);
   const [campaignId, setCampaignId]     = useState<string | null>(existing?.id || null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Sequência + abort: só o preview mais recente pode escrever na tela
+  // (antes, cliques rápidos nos filtros intercalavam PATCH→GET e a contagem
+  // ficava velha — era preciso "desmarcar de novo" para atualizar).
+  const previewSeqRef   = useRef(0);
+  const previewAbortRef = useRef<AbortController | null>(null);
 
   // Busca para adicionar contatos manualmente à lista
   const [addQuery, setAddQuery]     = useState('');
@@ -878,10 +893,14 @@ function NewCampaignWizard({
       .then(d => { setBrands(d.brands || []); setLoadingBrands(false); })
       .catch(() => setLoadingBrands(false));
 
-    // Segmentos reais da base (as opções fixas antigas não batiam com os dados)
+    // Segmentos e status reais da base (as opções fixas antigas não batiam com os dados)
     fetch('/api/contacts/segmentos')
       .then(r => r.json())
-      .then(d => { setSegmentos(d.segmentos || []); setSemSegmento(d.sem_segmento || 0); })
+      .then(d => {
+        setSegmentos(d.segmentos || []);
+        setSemSegmento(d.sem_segmento || 0);
+        setStatusCounts(d.status_counts || null);
+      })
       .catch(() => {});
 
     fetch('/api/instances?live=1')
@@ -946,21 +965,28 @@ function NewCampaignWizard({
 
   async function loadPreview() {
     if (!campaignId) return;
+    const seq = ++previewSeqRef.current;
+    previewAbortRef.current?.abort();
+    const ctrl = new AbortController();
+    previewAbortRef.current = ctrl;
     setPreviewLoading(true);
     try {
-      await fetch(`/api/campaigns/${campaignId}`, {
-        method: 'PATCH',
+      // POST único: resolve E persiste o filtro na mesma chamada
+      const res = await fetch(`/api/campaigns/${campaignId}/preview`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ segment_filter: filter }),
+        body: JSON.stringify({ segment_filter: filter, offset: 0, limit: PREVIEW_PAGE }),
+        signal: ctrl.signal,
       });
-      const res = await fetch(`/api/campaigns/${campaignId}/preview?offset=0&limit=${PREVIEW_PAGE}`);
       const d = await res.json();
+      if (seq !== previewSeqRef.current) return; // já existe um preview mais novo
       if (res.ok) setPreview({ count: d.count, duplicates: d.duplicates || 0, contacts: d.contacts || [] });
       else { setPreview(null); toast.error(d.error || 'Erro ao montar a lista'); }
-    } catch {
-      toast.error('Erro de conexão');
+    } catch (e: any) {
+      if (e?.name === 'AbortError') return; // substituído por um preview mais novo
+      if (seq === previewSeqRef.current) toast.error('Erro de conexão');
     } finally {
-      setPreviewLoading(false);
+      if (seq === previewSeqRef.current) setPreviewLoading(false);
     }
   }
 
@@ -1020,7 +1046,22 @@ function NewCampaignWizard({
   // Step 2 → 3
   async function goToStep3() {
     if (!preview) { await loadPreview(); return; }
-    if (preview.count === 0) { toast.error('Nenhum contato corresponde ao filtro'); return; }
+    if (preview.count === 0) {
+      toast.error(filter.manual_only ? 'A lista está vazia — adicione contatos' : 'Nenhum contato corresponde ao filtro');
+      return;
+    }
+    // Persist final síncrono: garante que o disparo usa exatamente o filtro
+    // que está na tela (o save do preview é debounced e pode estar em voo).
+    try {
+      await fetch(`/api/campaigns/${campaignId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ segment_filter: filter }),
+      });
+    } catch {
+      toast.error('Erro ao salvar o filtro — tente novamente');
+      return;
+    }
     setStep(3);
   }
 
@@ -1046,6 +1087,21 @@ function NewCampaignWizard({
       const ids = f.brand_ids || [];
       return { ...f, brand_ids: ids.includes(id) ? ids.filter(b => b !== id) : [...ids, id] };
     });
+  }
+
+  function toggleStatus(value: string) {
+    setFilter(f => {
+      const cur = f.status_in || [];
+      const next = cur.includes(value) ? cur.filter(s => s !== value) : [...cur, value];
+      return { ...f, status_in: next.length > 0 ? next : undefined };
+    });
+  }
+
+  // Lista manual: mantém os demais campos no estado (voltar ao modo filtro
+  // restaura tudo) — o servidor ignora filtros quando manual_only está ativo.
+  const manualMode = !!filter.manual_only;
+  function setManualMode(on: boolean) {
+    setFilter(f => ({ ...f, manual_only: on || undefined }));
   }
 
   function toggleAllBrands() {
@@ -1222,6 +1278,40 @@ function NewCampaignWizard({
       {/* ── Step 2: Destinatários ── */}
       {step === 2 && (
         <div>
+          {/* Origem da lista: filtrar a base × montar do zero */}
+          <div style={{ marginBottom: 18 }}>
+            <label style={labelStyle}>Como montar a lista</label>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {[
+                { on: false, label: 'Filtrar a base' },
+                { on: true,  label: 'Lista manual' },
+              ].map(m => {
+                const active = manualMode === m.on;
+                return (
+                  <button
+                    key={String(m.on)}
+                    onClick={() => setManualMode(m.on)}
+                    style={{
+                      padding: '6px 16px', borderRadius: 8, fontSize: 12,
+                      fontFamily: 'inherit', cursor: 'pointer', fontWeight: 600,
+                      border: active ? '1px solid #25D366' : '1px solid #1c2820',
+                      background: active ? 'rgba(37,211,102,0.12)' : 'transparent',
+                      color: active ? '#25D366' : '#8aaa90', transition: 'all 0.1s',
+                    }}
+                  >
+                    {m.label}
+                  </button>
+                );
+              })}
+            </div>
+            {manualMode && (
+              <div style={{ fontSize: 11, color: '#4a6050', marginTop: 6 }}>
+                A lista começa vazia — busque e adicione os contatos um a um. Os filtros ficam desativados.
+              </div>
+            )}
+          </div>
+
+          {!manualMode && (<>
           {/* Brands */}
           <div style={{ marginBottom: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
@@ -1349,29 +1439,50 @@ function NewCampaignWizard({
             </div>
           </div>
 
-          {/* Status */}
+          {/* Status — multi-select com contagem real da base */}
           <div style={{ marginBottom: 14 }}>
             <label style={labelStyle}>Status do cliente</label>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {[{ value: '', label: 'Todos' }, ...STATUS_OPTIONS].map(o => {
-                const active = (filter.status || '') === o.value;
+              {(() => {
+                const selected = filter.status_in || [];
+                const chipStyle = (active: boolean) => ({
+                  padding: '4px 12px', borderRadius: 20, fontSize: 12,
+                  fontFamily: 'inherit', cursor: 'pointer', fontWeight: 500,
+                  border: active ? 'none' : '1px solid #1c2820',
+                  background: active ? '#25D366' : 'transparent',
+                  color: active ? '#fff' : '#8aaa90', transition: 'all 0.1s',
+                } as const);
                 return (
-                  <button
-                    key={o.value}
-                    onClick={() => setFilter(f => ({ ...f, status: o.value || undefined }))}
-                    style={{
-                      padding: '4px 12px', borderRadius: 20, fontSize: 12,
-                      fontFamily: 'inherit', cursor: 'pointer', fontWeight: 500,
-                      border: active ? 'none' : '1px solid #1c2820',
-                      background: active ? '#25D366' : 'transparent',
-                      color: active ? '#fff' : '#8aaa90', transition: 'all 0.1s',
-                    }}
-                  >
-                    {o.label}
-                  </button>
+                  <>
+                    <button
+                      key="__todos__"
+                      onClick={() => setFilter(f => ({ ...f, status_in: undefined }))}
+                      style={chipStyle(selected.length === 0)}
+                    >
+                      Todos
+                    </button>
+                    {STATUS_OPTIONS.map(o => {
+                      const active = selected.includes(o.value);
+                      const count = statusCounts ? (statusCounts[o.value] || 0) : null;
+                      return (
+                        <button key={o.value} onClick={() => toggleStatus(o.value)} style={chipStyle(active)}>
+                          {o.label}
+                          {count !== null && (
+                            <span style={{ opacity: 0.65, marginLeft: 5, fontSize: 10 }}>{count}</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </>
                 );
-              })}
+              })()}
             </div>
+            {(filter.status_in || []).some(s => statusCounts && !statusCounts[s]) && (
+              <div style={{ fontSize: 11, color: '#fcd34d', marginTop: 6 }}>
+                A base ainda não tem contatos com esse status — a inatividade será
+                calculada quando a planilha de última compra for importada.
+              </div>
+            )}
           </div>
 
           {/* Teste interno */}
@@ -1393,7 +1504,8 @@ function NewCampaignWizard({
                   brand_ids: hasTag ? f.brand_ids : [],
                   cidade: hasTag ? f.cidade : undefined,
                   segmento: hasTag ? f.segmento : undefined,
-                  status: hasTag ? f.status : undefined,
+                  status_in: hasTag ? f.status_in : undefined,
+                  manual_only: hasTag ? f.manual_only : undefined,
                   include_ids: hasTag ? f.include_ids : [],
                   exclude_ids: hasTag ? f.exclude_ids : [],
                 }));
@@ -1409,6 +1521,7 @@ function NewCampaignWizard({
               {(filter.tags || []).includes('u4digital') ? '✓ Ativo' : 'Ativar'}
             </button>
           </div>
+          </>)}
 
           {/* Adicionar contato manualmente */}
           <div style={{ marginBottom: 14, position: 'relative' }}>
@@ -1510,7 +1623,9 @@ function NewCampaignWizard({
                 </>
               ) : (
                 <div style={{ fontSize: 12, color: '#4a6050' }}>
-                  Ajuste os filtros acima para montar a lista de destinatários
+                  {manualMode
+                    ? 'Busque e adicione contatos acima para montar a lista'
+                    : 'Ajuste os filtros acima para montar a lista de destinatários'}
                 </div>
               )}
             </div>
@@ -1524,7 +1639,7 @@ function NewCampaignWizard({
                   }}>
                     <span style={{ flex: 1, color: '#e8f0e8', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {c.name}
-                      {c.manual && (
+                      {c.manual && !manualMode && (
                         <span style={{
                           fontSize: 9, fontWeight: 700, color: '#fcd34d',
                           background: 'rgba(251,191,36,0.1)', borderRadius: 100,

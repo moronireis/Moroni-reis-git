@@ -5,9 +5,11 @@
  *
  * segment_filter suportado:
  *   brand_ids[]  — vínculo via az_contact_brands
- *   cidade / estado / segmento (ilike; '__sem__' = segmento nulo) / status / tags[]
+ *   cidade / estado / segmento (ilike; '__sem__' = segmento nulo) / tags[]
+ *   status (legado, single) / status_in[] (multi — tem precedência)
  *   include_ids[] — contatos adicionados manualmente (fora do filtro)
  *   exclude_ids[] — contatos removidos manualmente da lista
+ *   manual_only   — lista montada do zero: ignora filtros, só include_ids
  */
 import { createServerClient } from './supabase-server';
 import { normalizePhone } from './whatsapp/send';
@@ -19,10 +21,12 @@ export interface SegmentFilter {
   cidade?: string;
   estado?: string;
   segmento?: string;
-  status?: string;
+  status?: string;      // legado: campanhas antigas salvaram single-select
+  status_in?: string[];
   tags?: string[];
   include_ids?: string[];
   exclude_ids?: string[];
+  manual_only?: boolean;
 }
 
 export interface AudienceContact {
@@ -51,14 +55,16 @@ export async function resolveAudience(
   sb: SB,
   filter: SegmentFilter
 ): Promise<{ audience: Audience | null; error: string | null }> {
-  const { brand_ids, cidade, estado, segmento, status, tags, include_ids, exclude_ids } = filter;
+  const { brand_ids, cidade, estado, segmento, status, status_in, tags, include_ids, exclude_ids, manual_only } = filter;
+
+  const statusIn = (status_in && status_in.length > 0) ? status_in : (status ? [status] : null);
 
   const applyFilters = (query: any) => {
     if (cidade)                  query = query.ilike('cidade', `%${cidade}%`);
     if (estado)                  query = query.ilike('estado', `%${estado}%`);
     if (segmento === '__sem__')  query = query.is('segmento', null);
     else if (segmento)           query = query.ilike('segmento', `%${segmento}%`);
-    if (status)                  query = query.eq('status', status);
+    if (statusIn)                query = query.in('status', statusIn);
     if (tags && tags.length > 0) query = query.contains('tags', tags);
     return query;
   };
@@ -66,7 +72,7 @@ export async function resolveAudience(
   try {
     // 1. Filtro de marcas → conjunto de contact_ids
     let contactIds: string[] | null = null;
-    if (brand_ids && brand_ids.length > 0) {
+    if (!manual_only && brand_ids && brand_ids.length > 0) {
       const idSet = new Set<string>();
       for (let from = 0; ; from += PAGE) {
         const { data: cb, error: cbErr } = await sb
@@ -83,7 +89,9 @@ export async function resolveAudience(
 
     // 2. Contatos do filtro (paginado)
     const filtered: AudienceContact[] = [];
-    if (contactIds && contactIds.length === 0) {
+    if (manual_only) {
+      // lista manual: nada vem do filtro — só os include_ids (passo 4)
+    } else if (contactIds && contactIds.length === 0) {
       // marca selecionada sem nenhum vínculo — segue só com os manuais
     } else if (contactIds) {
       for (let i = 0; i < contactIds.length; i += ID_CHUNK) {
