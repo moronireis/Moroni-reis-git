@@ -7,3 +7,4 @@ dist/
 .env*.local
 .env*.tmp
 .astro/
+scripts/relacao-nao-casados-*.json

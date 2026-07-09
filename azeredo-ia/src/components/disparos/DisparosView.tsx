@@ -37,6 +37,7 @@ interface SegmentFilter {
   segmento?: string;
   status?: string;          // legado: rascunhos antigos salvaram single-select
   status_in?: string[];     // multi-select de status do cliente
+  vendedor?: string;        // vendedor_principal (M3 — carteira Mercos)
   tags?: string[];
   include_ids?: string[];   // contatos adicionados manualmente à lista
   exclude_ids?: string[];   // contatos removidos manualmente da lista
@@ -887,6 +888,7 @@ function NewCampaignWizard({
   const [segmentos, setSegmentos]       = useState<{ segmento: string; count: number }[]>([]);
   const [semSegmento, setSemSegmento]   = useState(0);
   const [statusCounts, setStatusCounts] = useState<Record<string, number> | null>(null);
+  const [vendedores, setVendedores]     = useState<{ vendedor: string; count: number }[]>([]);
   const [filter, setFilter]             = useState<SegmentFilter>(() => {
     // Rascunhos antigos salvaram status single-select — migra para status_in
     // e descarta o campo legado (senão ele continuaria filtrando no servidor).
@@ -935,6 +937,7 @@ function NewCampaignWizard({
         setSegmentos(d.segmentos || []);
         setSemSegmento(d.sem_segmento || 0);
         setStatusCounts(d.status_counts || null);
+        setVendedores(d.vendedores || []);
       })
       .catch(() => {});
 
@@ -1596,6 +1599,48 @@ function NewCampaignWizard({
             )}
           </div>
 
+          {/* Vendedor — M3: vendedor_principal importado da carteira Mercos */}
+          {vendedores.length > 0 && (
+            <div style={{ marginBottom: 14 }}>
+              <label style={labelStyle}>Vendedor</label>
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {(() => {
+                  const chipStyle = (active: boolean) => ({
+                    padding: '4px 12px', borderRadius: 20, fontSize: 12,
+                    fontFamily: 'inherit', cursor: 'pointer', fontWeight: 500,
+                    border: active ? 'none' : '1px solid #1c2820',
+                    background: active ? '#25D366' : 'transparent',
+                    color: active ? '#fff' : '#8aaa90', transition: 'all 0.1s',
+                  } as const);
+                  return (
+                    <>
+                      <button
+                        key="__todos__"
+                        onClick={() => setFilter(f => ({ ...f, vendedor: undefined }))}
+                        style={chipStyle(!filter.vendedor)}
+                      >
+                        Todos
+                      </button>
+                      {vendedores.map(v => (
+                        <button
+                          key={v.vendedor}
+                          onClick={() => setFilter(f => ({ ...f, vendedor: f.vendedor === v.vendedor ? undefined : v.vendedor }))}
+                          style={chipStyle(filter.vendedor === v.vendedor)}
+                        >
+                          {v.vendedor}
+                          <span style={{ opacity: 0.65, marginLeft: 5, fontSize: 10 }}>{v.count}</span>
+                        </button>
+                      ))}
+                    </>
+                  );
+                })()}
+              </div>
+              <div style={{ fontSize: 11, color: '#4a6050', marginTop: 6 }}>
+                Vendedor do pedido mais recente do cliente (carteira Mercos de 09/07).
+              </div>
+            </div>
+          )}
+
           {/* Teste interno */}
           <div style={{
             marginBottom: 18, padding: '10px 14px', borderRadius: 8,
@@ -1616,6 +1661,7 @@ function NewCampaignWizard({
                   cidade: hasTag ? f.cidade : undefined,
                   segmento: hasTag ? f.segmento : undefined,
                   status_in: hasTag ? f.status_in : undefined,
+                  vendedor: hasTag ? f.vendedor : undefined,
                   manual_only: hasTag ? f.manual_only : undefined,
                   include_ids: hasTag ? f.include_ids : [],
                   exclude_ids: hasTag ? f.exclude_ids : [],

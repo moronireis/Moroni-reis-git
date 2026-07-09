@@ -7,6 +7,7 @@
  *   brand_ids[]  — vínculo via az_contact_brands
  *   cidade / estado / segmento (ilike; '__sem__' = segmento nulo) / tags[]
  *   status (legado, single) / status_in[] (multi — tem precedência)
+ *   vendedor     — vendedor_principal do contato (M3, importado da carteira Mercos)
  *   include_ids[] — contatos adicionados manualmente (fora do filtro)
  *   exclude_ids[] — contatos removidos manualmente da lista
  *   manual_only   — lista montada do zero: ignora filtros, só include_ids
@@ -23,6 +24,7 @@ export interface SegmentFilter {
   segmento?: string;
   status?: string;      // legado: campanhas antigas salvaram single-select
   status_in?: string[];
+  vendedor?: string;
   tags?: string[];
   include_ids?: string[];
   exclude_ids?: string[];
@@ -55,7 +57,7 @@ export async function resolveAudience(
   sb: SB,
   filter: SegmentFilter
 ): Promise<{ audience: Audience | null; error: string | null }> {
-  const { brand_ids, cidade, estado, segmento, status, status_in, tags, include_ids, exclude_ids, manual_only } = filter;
+  const { brand_ids, cidade, estado, segmento, status, status_in, vendedor, tags, include_ids, exclude_ids, manual_only } = filter;
 
   const statusIn = (status_in && status_in.length > 0) ? status_in : (status ? [status] : null);
 
@@ -65,6 +67,7 @@ export async function resolveAudience(
     if (segmento === '__sem__')  query = query.is('segmento', null);
     else if (segmento)           query = query.ilike('segmento', `%${segmento}%`);
     if (statusIn)                query = query.in('status', statusIn);
+    if (vendedor)                query = query.eq('vendedor_principal', vendedor);
     if (tags && tags.length > 0) query = query.contains('tags', tags);
     return query;
   };
