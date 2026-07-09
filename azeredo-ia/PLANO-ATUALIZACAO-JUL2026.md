@@ -97,7 +97,7 @@ Cada item do backlog foi cruzado com o código (`azeredo-ia/`) e com o banco de 
 | Planilha com **vendedor por cliente** (dado atual no banco está inutilizável) | Tati | M3 — segmentação por vendedor |
 | Escalar **webhook UazapiGO** com o suporte (servidor não entrega nenhum evento) | Tiago | A3 — respostas em tempo real de verdade (sem isso, vai por polling) |
 | **Definição do critério** de vínculo vendedor↔disparo | Tiago | M3 — passo 2 |
-| Criar **ANTHROPIC_API_KEY** no Vercel | Moroni | A4/A5 — recursos de IA |
+| ~~Criar chave de IA no Vercel~~ **RESOLVIDO 09/07** — `OPENAI_API_KEY` (projeto U4D) criada no Vercel; IA das Ferramentas usa OpenAI (gpt-4o) | Moroni | A4/A5 — recursos de IA |
 | **Token API Mercos** + contato com suporte | Cláudio/Tiago | F1 |
 | Acesso às **pastas do Drive** (planilhas de fábrica + fotos de exemplo) | Tati/Tiago | A4/A5 — testes com material real |
 
@@ -130,4 +130,6 @@ Ordem pensada para: (1) matar primeiro o que bloqueia o uso diário da Tati, (2)
 
 ## Changelog
 
+- 09/07/2026 — **Fase 3 (A4 + A5) ENTREGUE em produção e testada E2E com material real do Drive do cliente**. A4 Conversor IA: endpoint `/api/ferramentas/ai` (action `map-mercos`) manda cabeçalhos + até 25 linhas de amostra à OpenAI (gpt-4o, JSON mode, temperatura 0) e devolve linha de cabeçalho + mapeamento (código, nome, preço tabela, preço mínimo, IPI etc.) com confiança e notas; UI auto-mapeia no upload (badge "IA" por campo, botão re-mapear, fallback manual intacto); colunas 19 (Ativo/Inativo) e 20 (Exibir no e-commerce) expostas com padrão global + override produto a produto (tabela paginada 50/pg). Validado com a "Planilha Pedidos BR 15.06.xlsx" real (3.002 linhas, cabeçalho na linha 19 sob dados de pedido): header e código/nome/preço corretos; guard server-side impede coluna da fábrica duplicada em dois alvos. A5 Renomeador: 3ª aba de Ferramentas, upload em lote client-side (fotos nunca sobem), regra por preset (BR e Ingá embutidos), por IA (action `rename-rule` — deduziu com exatidão os dois padrões reais: `5_MO-15_01→MO-15`, `17619_baixa→17619`) ou manual (separador + trecho); prévia antes/depois com status OK/REPETIDO/FALHOU (repetido ganha `_2, _3…`), download .zip (JSZip) e presets por fábrica salvos em `az_settings` via `/api/ferramentas/rename-presets`. Deploy prod OK; smoke test em prod com sessão real: mapeamento, regra, presets e página com 3 abas. Modelo: gpt-4o após o mini errar header/preço na planilha real (custo/uso segue em centavos; override via env `OPENAI_MODEL`).
+- 08/07/2026 — **Fase 1 (parte sem dependência externa) ENTREGUE em produção** (commit `18002f9`, testada E2E): fix da race do preview (POST único resolve+persiste o filtro + sequência/abort), status multi-select com contagem real por chip + aviso de base sem inativos, modo "Lista manual" (montar do zero). Pendente da Fase 1: A1a (derivação de status inativo) — aguardando planilha de última compra da Tati.
 - 08/07/2026 — Documento criado a partir do Backlog Checkpoint 04/07/2026 + auditoria de código e banco de produção.

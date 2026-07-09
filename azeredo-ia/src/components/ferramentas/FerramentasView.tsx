@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import ConversorMercos from './ConversorMercos';
+import RenomeadorFotos from './RenomeadorFotos';
 import GerarPedido from './GerarPedido';
 
-type Tab = 'conversor' | 'pedido';
+type Tab = 'conversor' | 'renomeador' | 'pedido';
 
 const S = {
   root: { flex: 1, display: 'flex', flexDirection: 'column' as const, overflow: 'hidden', background: '#080c09' },
@@ -33,6 +34,9 @@ export default function FerramentasView() {
           <button style={S.tab(tab === 'conversor')} onClick={() => setTab('conversor')}>
             Conversor Mercos
           </button>
+          <button style={S.tab(tab === 'renomeador')} onClick={() => setTab('renomeador')}>
+            Renomeador de Fotos
+          </button>
           <button style={S.tab(tab === 'pedido')} onClick={() => setTab('pedido')}>
             Gerar Pedido
           </button>
@@ -40,8 +44,9 @@ export default function FerramentasView() {
       </div>
 
       <div style={S.content}>
-        {tab === 'conversor' && <ConversorMercos />}
-        {tab === 'pedido'    && <GerarPedido />}
+        {tab === 'conversor'  && <ConversorMercos />}
+        {tab === 'renomeador' && <RenomeadorFotos />}
+        {tab === 'pedido'     && <GerarPedido />}
       </div>
     </div>
   );
