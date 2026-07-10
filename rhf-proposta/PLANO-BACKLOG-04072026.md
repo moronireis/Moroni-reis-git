@@ -53,7 +53,20 @@ O que mudou (tudo em produção):
 
 **Spike módulo Arquivos (Bloco C):** 10 nomes prováveis de ação testados na API s18 (file_upload, archive_add, media_upload...) — TODOS "ação inválida". Caminhos restantes: (a) Rodrigo pedir a doc ao suporte ChatGuru (ele se ofereceu na call de 03/07); (b) inspecionar via DevTools a requisição de upload do painel web com o login do Tiago. Se surgir endpoint, o "Preparar" passa a subir direto e o passo manual morre.
 
-**PENDENTE:** resposta do ChatGuru sobre API de Arquivos; validação do Rodrigo no fluxo novo (importar PDF → gerar → preparar → subir no Arquivos); Fase 2 (grupos, resumo→grupo, dashboard/SLA) segue no roadmap.
+**PENDENTE:** resposta do ChatGuru sobre API de Arquivos; validação do Rodrigo no fluxo novo (importar PDF → gerar → preparar → subir no Arquivos).
+
+---
+
+## FASE 2 — IMPLEMENTADA E DEPLOYADA 10/07 (grupos, resumo→grupo, dashboard/SLA)
+
+- **Migration 008 aplicada**: tabela `chatguru_groups` (chat_number único, name, empresa, processo_numero, contato, status ativo/inativo, tags, raw, source webhook/manual, last_message_at).
+- **Grupos**: coleta automática pelo webhook (mensagem de grupo detectada por nome_grupo/@g.us/id≥15 dígitos → upsert em chatguru_groups e NÃO vira candidato) + cadastro manual no modal. `whatsapp?action=groups | group-upsert | group-delete` (delete é soft → status inativo).
+- **Resumo → grupo** (aposenta a planilha do Rodrigo): botão "Apresentar no grupo" na fila de entrega (estado 2/3) e "Resumo p/ grupo" nas ações do CV → modal com seletor de grupo (+cadastro inline), texto gerado pela IA (`whatsapp?action=summary` — nome em negrito, vaga sem nº do processo, pontos fortes, pretensão; proibido inventar/"a combinar") **editável** → `send-summary` envia via ChatGuru e grava `sent_status='apresentado'` + `presented_at` + `client_company` (abre o SLA). Falha no ChatGuru não toca o CV.
+- **SLA fecha com "Cliente respondeu"**: `cv?action=mark-response` (com desfazer) — na fila (estado 3/3) e no painel de métricas.
+- **Fila de entrega agora em 3 estágios**: 1/3 preparado → 2/3 no ChatGuru>Arquivos → 3/3 apresentado (aguardando resposta com contagem de dias / respondido).
+- **`api/metrics.js` (11/12 funções)**: `action=dashboard&days=90` → funil (gerados→preparados→disponibilizados→apresentados→respondidos), SLA médio vs referência 13,5d, CVs por recrutador, apresentados por empresa, aguardando resposta (top 20 por dias), processos desatualizados (>7d sem atualização). Painel "Acompanhamento de apresentações" no Dashboard consome tudo.
+- **E2E produção 10/07**: grupo manual criado/listado ✅; resumo IA do CV real do Jonathan perfeito ✅; send-summary para grupo fake → erro do ChatGuru sem tocar o CV ✅; mark-response set/undo ✅; metrics com funil real e atribuição por recrutador ✅; grupo fake removido (soft).
+- **PENDENTE (teste conjunto Moroni+Rodrigo)**: cadastrar um grupo real (número do grupo no ChatGuru) e enviar um resumo de verdade; primeira mensagem de grupo real via webhook para validar a coleta automática.
 
 ---
 

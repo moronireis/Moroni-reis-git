@@ -7,7 +7,7 @@
  * Supports: text, image, audio, video, document/file messages
  */
 
-import { select, insert } from '../../lib/supabase.js';
+import { select, insert, update } from '../../lib/supabase.js';
 
 // Map ChatGuru tipo_mensagem values to our content_type
 function mapContentType(tipo) {
@@ -71,6 +71,54 @@ export default async function handler(req, res) {
         console.log(`[Webhook/ChatGuru] Duplicate message ${messageId} — skipping`);
         return res.status(200).json({ status: 'skipped', reason: 'duplicate' });
       }
+    }
+
+    // ── Grupos (Fase 2): mensagem de GRUPO alimenta chatguru_groups e NUNCA vira candidato ──
+    // Detecção tolerante: campos de grupo do payload, sufixo @g.us ou id longo (15+ dígitos).
+    const rawChat = String(payload.celular ?? payload.phone ?? payload.chat_number ?? '');
+    const groupName = payload.nome_grupo ?? payload.group_name ?? payload.grupo ?? null;
+    const isGroup = Boolean(groupName) || /@g\.us/i.test(rawChat) || payload.is_group === true || phone.length >= 15;
+
+    if (isGroup) {
+      try {
+        const now = new Date().toISOString();
+        const existingGroup = await select('chatguru_groups', `chat_number=eq.${phone}&limit=1`);
+        if (Array.isArray(existingGroup) && existingGroup.length > 0) {
+          const g = existingGroup[0];
+          await update('chatguru_groups', `id=eq.${g.id}`, {
+            last_message_at: now,
+            raw: payload,
+            updated_at: now,
+            // não sobrescreve nome/empresa cadastrados manualmente
+            ...(!g.name && (groupName || nome) ? { name: String(groupName || nome).slice(0, 160) } : {}),
+          });
+        } else {
+          await insert('chatguru_groups', {
+            chat_number: phone,
+            name: String(groupName || nome || `Grupo ${phone.slice(-6)}`).slice(0, 160),
+            source: 'webhook',
+            status: 'ativo',
+            raw: payload,
+            last_message_at: now,
+          }, false);
+        }
+      } catch (err) { console.warn('[Webhook/ChatGuru] group upsert failed:', err.message); }
+
+      await insert('rhf_messages', {
+        phone,
+        direction: 'inbound',
+        content: textoMensagem || '',
+        content_type: contentType,
+        message_type: tipoMensagem || 'chat',
+        media_url: urlArquivo || null,
+        chatguru_message_id: messageId || null,
+        chatguru_chat_id: chatId || null,
+        candidate_id: null,
+        raw_webhook: payload,
+      }, false);
+
+      console.log(`[Webhook/ChatGuru] Group message stored: ${groupName || phone}`);
+      return res.status(200).json({ status: 'ok', group: true });
     }
 
     // Upsert candidate

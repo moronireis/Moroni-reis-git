@@ -654,6 +654,20 @@
         </div>
       </div>
 
+      <!-- Acompanhamento Fase 2 — substitui a planilha/pivot do Rodrigo -->
+      <div class="panel" style="margin-bottom: 20px;">
+        <div class="panel-header" style="align-items:center;">
+          <div>
+            <div class="panel-title">Acompanhamento de apresentações</div>
+            <div class="panel-subtitle">Funil, SLA de resposta e produção por recrutador — últimos 90 dias</div>
+          </div>
+          <button class="topbar-btn" onclick="loadMetricsPanel()" style="flex-shrink:0;">Atualizar</button>
+        </div>
+        <div class="panel-body" id="metrics-body" style="padding:16px 24px;">
+          <div style="color:var(--text-muted);font-size:12.5px;">Carregando métricas...</div>
+        </div>
+      </div>
+
       <div class="grid-3-1" style="margin-bottom: 20px;">
         <div class="panel">
           <div class="panel-header">
@@ -1230,6 +1244,50 @@
     </div>
   </div>
 
+  <!-- ===== MODAL: RESUMO → GRUPO DO CLIENTE ===== -->
+  <div id="groupSummaryModal" style="display:none;position:fixed;inset:0;background:rgba(13,32,53,0.55);z-index:300;align-items:center;justify-content:center;padding:20px;">
+    <div style="background:var(--bg-white);border-radius:12px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:24px 26px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <div style="font-size:17px;font-weight:700;color:var(--text);">Apresentar no grupo do cliente</div>
+        <button onclick="closeGroupSummary()" style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:14px;">A IA gera o resumo do candidato; revise, escolha o grupo do WhatsApp do cliente e envie. O envio registra a apresentação (abre o SLA).</div>
+
+      <div class="cv-field-label">Grupo do cliente</div>
+      <select id="gs-group" onchange="gsGroupChange(this)" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:13px;background:var(--bg-white);color:var(--text);margin-bottom:10px;">
+        <option value="">Carregando...</option>
+      </select>
+
+      <div id="gs-new-group" style="display:none;background:var(--bg-light);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div style="grid-column:1/-1;">
+            <div class="cv-field-label">Nome do grupo *</div>
+            <input id="gsng-name" type="text" placeholder="Ex.: RHF x Nova Era Cosméticos" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:12.5px;background:var(--bg-white);color:var(--text);">
+          </div>
+          <div>
+            <div class="cv-field-label">Número do grupo (ChatGuru) *</div>
+            <input id="gsng-number" type="text" placeholder="Só dígitos" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:12.5px;background:var(--bg-white);color:var(--text);">
+          </div>
+          <div>
+            <div class="cv-field-label">Empresa</div>
+            <input id="gsng-empresa" type="text" placeholder="Nova Era Cosméticos" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:12.5px;background:var(--bg-white);color:var(--text);">
+          </div>
+        </div>
+        <button class="cv-btn secondary" style="width:100%;justify-content:center;" onclick="gsSaveNewGroup()">Salvar grupo</button>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+        <div class="cv-field-label" style="margin:0;">Resumo do candidato (editável)</div>
+        <button onclick="gsGenerate()" style="background:var(--bg-light);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11.5px;cursor:pointer;color:var(--text);">Gerar novamente</button>
+      </div>
+      <textarea id="gs-text" rows="8" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:12.5px;background:var(--bg-white);color:var(--text);resize:vertical;line-height:1.6;margin-bottom:8px;"></textarea>
+      <div id="gs-status" style="font-size:12px;min-height:16px;margin-bottom:8px;color:var(--text-muted);"></div>
+      <button class="cv-btn primary" style="width:100%;justify-content:center;" onclick="gsSend(this)">Enviar para o grupo</button>
+    </div>
+  </div>
+
   <!-- ===== TAB: CANDIDATOS ===== -->
   <div class="tab-content" id="tab-candidatos">
     <div class="topbar">
@@ -1698,6 +1756,8 @@
           freshEl.textContent = `Última importação do Pandapé: ${when} — ${pandapeRows.length} candidato(s) com origem Pandapé.`;
         }
       }
+
+      loadMetricsPanel();
 
       // Recent activity feed — use last 5 candidates as activity
       renderDashboardActivity(candidates.slice(0, 5));
@@ -2474,6 +2534,10 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
           Preparar arquivo (ChatGuru)
         </button>
+        <button class="cv-btn secondary" onclick="openGroupSummary()" title="Gera o resumo do candidato com IA e envia para o grupo de WhatsApp do cliente">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Resumo p/ grupo
+        </button>
       </div>
       <div id="cv-action-status" style="font-size:12px;color:var(--text-muted);margin-top:8px;min-height:15px;"></div>`;
   }
@@ -2691,27 +2755,45 @@
     try {
       const res = await fetch('/api/cv?action=query&limit=60');
       const json = await res.json();
-      const rows = (json.data || []).filter(cv => cv.sent_status === 'preparado' || cv.sent_status === 'chatguru_arquivo');
+      const rows = (json.data || []).filter(cv => ['preparado', 'chatguru_arquivo', 'apresentado'].includes(cv.sent_status));
       if (rows.length === 0) {
         list.innerHTML = '<div style="padding:16px 0;color:var(--text-muted);font-size:12.5px;">Nenhum arquivo preparado ainda. Gere um currículo e clique em "Preparar arquivo (ChatGuru)".</div>';
         return;
       }
       const esc = t => String(t ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const br = d => d ? new Date(d).toLocaleDateString('pt-BR') : '';
       list.innerHTML = rows.map(cv => {
         const fname = buildCvFileName(cv);
-        const delivered = cv.sent_status === 'chatguru_arquivo';
-        const when = delivered && cv.sent_at ? new Date(cv.sent_at).toLocaleDateString('pt-BR') : '';
         const fnameAttr = esc(fname).replace(/'/g, '&#39;');
+        const st = cv.sent_status;
+        let statusLine = '', actions = '';
+
+        if (st === 'preparado') {
+          statusLine = '<span style="color:var(--text-muted);">1/3 — Aguardando upload no ChatGuru &gt; Arquivos</span>';
+          actions = `<button class="topbar-btn primary" onclick="markDelivered('${cv.id}', false)">Marcar como disponibilizado</button>`;
+        } else if (st === 'chatguru_arquivo') {
+          statusLine = `<span style="color:var(--blue);">2/3 — No ChatGuru &gt; Arquivos${cv.sent_at ? ' desde ' + br(cv.sent_at) : ''}</span>`;
+          actions = `<button class="topbar-btn primary" onclick="openGroupSummary('${cv.id}')">Apresentar no grupo</button>
+                     <button class="topbar-btn" onclick="markDelivered('${cv.id}', true)" title="Voltar para a fila">Desfazer</button>`;
+        } else { // apresentado
+          const resp = cv.client_response_at;
+          const dias = cv.presented_at ? Math.floor((Date.now() - new Date(cv.presented_at)) / 86400000) : null;
+          statusLine = resp
+            ? `<span style="color:var(--green);">3/3 — ✓ Apresentado${cv.client_company ? ' a ' + esc(cv.client_company) : ''} em ${br(cv.presented_at)} · cliente respondeu em ${br(resp)}</span>`
+            : `<span style="color:var(--orange);">3/3 — Apresentado${cv.client_company ? ' a ' + esc(cv.client_company) : ''} em ${br(cv.presented_at)} · aguardando resposta${dias !== null ? ' há ' + dias + ' dia(s)' : ''}</span>`;
+          actions = resp
+            ? `<button class="topbar-btn" onclick="markResponse('${cv.id}', true)" title="Remover registro de resposta">Desfazer resposta</button>`
+            : `<button class="topbar-btn primary" onclick="markResponse('${cv.id}', false)">Cliente respondeu</button>`;
+        }
+
         return `
-        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);${delivered ? 'opacity:0.65;' : ''}">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
           <div style="flex:1;min-width:0;">
             <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(fname)}</div>
-            <div style="font-size:11.5px;color:${delivered ? 'var(--green)' : 'var(--text-muted)'};">${delivered ? '✓ Disponibilizado no ChatGuru' + (when ? ' em ' + when : '') : 'Aguardando upload no ChatGuru > Arquivos'}</div>
+            <div style="font-size:11.5px;">${statusLine}</div>
           </div>
           ${cv.sent_file_url ? `<button class="topbar-btn" onclick="downloadPrepared('${esc(cv.sent_file_url)}', '${fnameAttr}')">Baixar</button>` : ''}
-          ${delivered
-            ? `<button class="topbar-btn" onclick="markDelivered('${cv.id}', true)" title="Voltar para a fila">Desfazer</button>`
-            : `<button class="topbar-btn primary" onclick="markDelivered('${cv.id}', false)">Marcar como disponibilizado</button>`}
+          ${actions}
         </div>`;
       }).join('');
     } catch (e) {
@@ -2746,6 +2828,175 @@
       if (json.status !== 'ok') { alert('Erro: ' + (json.message || 'falha ao atualizar')); return; }
       loadDeliveryQueue();
     } catch (e) { alert('Erro: ' + e.message); }
+  }
+
+  async function markResponse(cvId, undo) {
+    if (!undo && !confirm('Registrar que o cliente respondeu sobre este candidato? Isso fecha o SLA.')) return;
+    try {
+      const res = await fetch('/api/cv?action=mark-response', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cv_id: cvId, undo: !!undo }),
+      });
+      const json = await res.json();
+      if (json.status !== 'ok') { alert('Erro: ' + (json.message || 'falha ao atualizar')); return; }
+      loadDeliveryQueue();
+      if (typeof loadMetricsPanel === 'function') loadMetricsPanel();
+    } catch (e) { alert('Erro: ' + e.message); }
+  }
+
+  // ============================================================
+  // RESUMO → GRUPO DO CLIENTE (substitui a planilha do Rodrigo)
+  // ============================================================
+
+  let _gsCvId = null;
+
+  async function openGroupSummary(cvId) {
+    _gsCvId = cvId || window._currentCVId;
+    if (!_gsCvId) { alert('Gere o currículo primeiro.'); return; }
+    document.getElementById('gs-status').textContent = '';
+    document.getElementById('gs-new-group').style.display = 'none';
+    document.getElementById('gs-text').value = '';
+    document.getElementById('groupSummaryModal').style.display = 'flex';
+    gsLoadGroups();
+    gsGenerate();
+  }
+
+  function closeGroupSummary() { document.getElementById('groupSummaryModal').style.display = 'none'; _gsCvId = null; }
+
+  async function gsLoadGroups(selectId) {
+    const sel = document.getElementById('gs-group');
+    sel.innerHTML = '<option value="">Carregando grupos...</option>';
+    try {
+      const res = await fetch('/api/whatsapp?action=groups');
+      const json = await res.json();
+      const groups = json.data || [];
+      const esc = t => String(t ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      sel.innerHTML = '<option value="">— escolher o grupo do cliente —</option>'
+        + groups.map(g => `<option value="${g.id}" ${g.id === selectId ? 'selected' : ''}>${esc(g.name)}${g.empresa ? ' · ' + esc(g.empresa) : ''}</option>`).join('')
+        + '<option value="__new__">+ cadastrar novo grupo…</option>';
+    } catch (e) {
+      sel.innerHTML = '<option value="">Erro ao carregar grupos</option>';
+    }
+  }
+
+  function gsGroupChange(sel) {
+    document.getElementById('gs-new-group').style.display = sel.value === '__new__' ? 'block' : 'none';
+  }
+
+  async function gsSaveNewGroup() {
+    const name = document.getElementById('gsng-name').value.trim();
+    const number = document.getElementById('gsng-number').value.trim();
+    const empresa = document.getElementById('gsng-empresa').value.trim();
+    const st = document.getElementById('gs-status');
+    if (!name || !number) { st.style.color = 'var(--red)'; st.textContent = 'Informe o nome e o número do grupo.'; return; }
+    st.style.color = 'var(--text-muted)'; st.textContent = 'Salvando grupo...';
+    try {
+      const res = await fetch('/api/whatsapp?action=group-upsert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_number: number, name, empresa: empresa || undefined }),
+      });
+      const json = await res.json();
+      if (json.status !== 'ok') { st.style.color = 'var(--red)'; st.textContent = 'Erro: ' + (json.message || 'falha ao salvar'); return; }
+      st.style.color = 'var(--green)'; st.textContent = 'Grupo cadastrado.';
+      ['gsng-name','gsng-number','gsng-empresa'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('gs-new-group').style.display = 'none';
+      gsLoadGroups(json.data && json.data.id);
+    } catch (e) { st.style.color = 'var(--red)'; st.textContent = 'Erro: ' + e.message; }
+  }
+
+  async function gsGenerate() {
+    if (!_gsCvId) return;
+    const ta = document.getElementById('gs-text');
+    const st = document.getElementById('gs-status');
+    ta.value = 'Gerando resumo com IA...';
+    try {
+      const res = await fetch('/api/whatsapp?action=summary', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cv_id: _gsCvId }),
+      });
+      const json = await res.json();
+      if (json.status !== 'ok') { ta.value = ''; st.style.color = 'var(--red)'; st.textContent = 'Erro na geração: ' + (json.message || 'falha'); return; }
+      ta.value = json.text;
+      st.style.color = 'var(--text-muted)'; st.textContent = 'Revise o texto antes de enviar — você pode editar livremente.';
+    } catch (e) { ta.value = ''; st.style.color = 'var(--red)'; st.textContent = 'Erro: ' + e.message; }
+  }
+
+  async function gsSend(btn) {
+    const groupId = document.getElementById('gs-group').value;
+    const text = document.getElementById('gs-text').value.trim();
+    const st = document.getElementById('gs-status');
+    if (!groupId || groupId === '__new__') { st.style.color = 'var(--red)'; st.textContent = 'Escolha o grupo do cliente.'; return; }
+    if (text.length < 20) { st.style.color = 'var(--red)'; st.textContent = 'O resumo está vazio ou curto demais.'; return; }
+    if (!confirm('Enviar este resumo para o grupo do cliente no WhatsApp?')) return;
+    btn.disabled = true; st.style.color = 'var(--text-muted)'; st.textContent = 'Enviando para o grupo...';
+    try {
+      const res = await fetch('/api/whatsapp?action=send-summary', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cv_id: _gsCvId, group_id: groupId, text }),
+      });
+      const json = await res.json();
+      if (json.status !== 'ok') { st.style.color = 'var(--red)'; st.textContent = 'Erro: ' + (json.message || 'falha no envio'); return; }
+      st.style.color = 'var(--green)'; st.textContent = json.message || 'Enviado. Apresentação registrada.';
+      loadDeliveryQueue();
+      if (typeof loadMetricsPanel === 'function') loadMetricsPanel();
+      setTimeout(closeGroupSummary, 1800);
+    } catch (e) { st.style.color = 'var(--red)'; st.textContent = 'Erro: ' + e.message; }
+    finally { btn.disabled = false; }
+  }
+
+  // ============================================================
+  // MÉTRICAS DO DASHBOARD (Fase 2 — aposenta a planilha/pivot)
+  // ============================================================
+
+  async function loadMetricsPanel() {
+    const body = document.getElementById('metrics-body');
+    if (!body) return;
+    try {
+      const res = await fetch('/api/metrics?action=dashboard&days=90');
+      const json = await res.json();
+      if (json.status !== 'ok') throw new Error(json.message || 'falha');
+      const esc = t => String(t ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const f = json.funil || {};
+
+      const funilHtml = ['gerados','preparados','disponibilizados','apresentados','respondidos'].map((k, i) => `
+        <div style="text-align:center;flex:1;min-width:90px;">
+          <div style="font-size:22px;font-weight:700;color:${['var(--text)','var(--orange)','var(--blue)','var(--purple)','var(--green)'][i]};">${f[k] ?? 0}</div>
+          <div style="font-size:11px;color:var(--text-muted);text-transform:capitalize;">${k}</div>
+        </div>`).join('<div style="color:var(--border);font-size:16px;align-self:center;">→</div>');
+
+      const sla = json.sla || {};
+      const slaHtml = sla.media_dias !== null && sla.media_dias !== undefined
+        ? `<strong style="color:${sla.media_dias <= 13.5 ? 'var(--green)' : 'var(--red)'};">${sla.media_dias} dias</strong> (${sla.amostras} resposta${sla.amostras === 1 ? '' : 's'} · referência manual: 13,5 dias)`
+        : '<span style="color:var(--text-muted);">sem respostas registradas ainda</span>';
+
+      const listCol = (title, items, labelFn) => `
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;">${title}</div>
+          ${items.length === 0 ? '<div style="font-size:12px;color:var(--text-muted);">—</div>'
+            : items.slice(0, 5).map(labelFn).join('')}
+        </div>`;
+
+      const recrut = (json.por_recrutador || []);
+      const emp = (json.por_empresa || []);
+      const aguard = (json.aguardando_resposta || []);
+      const proc = (json.processos || []).filter(p => p.desatualizada);
+
+      body.innerHTML = `
+        <div style="display:flex;gap:8px;align-items:stretch;flex-wrap:wrap;padding:6px 0 14px;border-bottom:1px solid var(--border);margin-bottom:14px;">${funilHtml}</div>
+        <div style="font-size:12.5px;color:var(--text-sec);margin-bottom:14px;">SLA médio de resposta do cliente: ${slaHtml}</div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+          ${listCol('Currículos por recrutador (90d)', recrut, r => `<div style="display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;color:var(--text-sec);"><span>${esc(r.name)}</span><strong>${r.total}</strong></div>`)}
+          ${listCol('Apresentados por empresa', emp, r => `<div style="display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;color:var(--text-sec);"><span>${esc(r.name)}</span><strong>${r.total}</strong></div>`)}
+          ${listCol('Aguardando resposta do cliente', aguard, a => `<div style="font-size:12.5px;padding:3px 0;color:var(--text-sec);">${esc(a.candidate_name)}${a.client_company ? ' · ' + esc(a.client_company) : ''} — <strong style="color:${a.dias_aguardando > 13 ? 'var(--red)' : 'var(--orange)'};">${a.dias_aguardando}d</strong></div>`)}
+          ${listCol('Processos desatualizados (&gt;7d)', proc, p => `<div style="font-size:12.5px;padding:3px 0;color:var(--text-sec);">${esc(p.title)}${p.client_name ? ' · ' + esc(p.client_name) : ''} — <strong style="color:var(--red);">${p.dias_sem_atualizacao}d</strong></div>`)}
+        </div>`;
+    } catch (e) {
+      body.innerHTML = '<div style="color:var(--red);font-size:12.5px;">Erro ao carregar métricas: ' + e.message + '</div>';
+    }
   }
 
   loadDeliveryQueue();

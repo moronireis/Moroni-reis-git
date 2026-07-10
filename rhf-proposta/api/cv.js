@@ -46,6 +46,7 @@ export default async function handler(req, res) {
   if (action === 'send-email' && req.method === 'POST') return handleSendEmail(req, res);
   if (action === 'prepare-file' && req.method === 'POST') return handlePrepareFile(req, res);
   if (action === 'mark-delivered' && req.method === 'POST') return handleMarkDelivered(req, res);
+  if (action === 'mark-response' && req.method === 'POST') return handleMarkResponse(req, res);
   if (action === 'import-pdf' && req.method === 'POST') return handleImportPdf(req, res);
 
   return res.status(400).json({ error: 'Use action=generate (POST) | query (GET) | update (POST) | send-email (POST) | prepare-file (POST) | mark-delivered (POST) | import-pdf (POST)' });
@@ -786,6 +787,23 @@ async function handleMarkDelivered(req, res) {
     return res.status(200).json({ status: 'ok', data: rows[0] });
   } catch (error) {
     console.error('[CV mark-delivered] error:', error);
+    return res.status(500).json({ status: 'error', message: error.message });
+  }
+}
+
+// Registra a resposta do cliente ao candidato apresentado — fecha o ciclo do SLA
+// (SLA = client_response_at - presented_at; referência do Rodrigo: 13,5 dias).
+async function handleMarkResponse(req, res) {
+  const { cv_id, undo } = req.body || {};
+  if (!cv_id) return res.status(400).json({ status: 'error', message: 'cv_id é obrigatório.' });
+
+  try {
+    const patch = { client_response_at: undo ? null : new Date().toISOString() };
+    const rows = await update('generated_cvs', `id=eq.${cv_id}`, patch);
+    if (!Array.isArray(rows) || rows.length === 0) return res.status(404).json({ status: 'error', message: 'CV não encontrado.' });
+    return res.status(200).json({ status: 'ok', data: rows[0] });
+  } catch (error) {
+    console.error('[CV mark-response] error:', error);
     return res.status(500).json({ status: 'error', message: error.message });
   }
 }
