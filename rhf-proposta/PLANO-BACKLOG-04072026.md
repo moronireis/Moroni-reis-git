@@ -245,3 +245,23 @@ Front: substituir os painéis estáticos do `tab-dashboard` pelos dados reais (o
 | — | **Deploy Fase 2 + validação da planilha aposentada** | — |
 
 Total: ~3 dias úteis (Fase 1) + ~4 dias úteis (Fase 2).
+
+## CHECKPOINT 10/07 "Novos Ajustes" — IMPLEMENTADO 13/07 (commits 2c25fbb4 + 158d686f)
+
+Fonte: `~/Downloads/Checkpoint (RHF) - 1007 - Novos Ajustes.pdf` (11 itens).
+
+| # | Item do cliente | Entrega |
+|---|-----------------|---------|
+| 1/6 | Bug "getCvPdfBase64 is not defined" + card confuso | CAUSA RAIZ: a função foi cortada junto com o bloco do chat na limpeza de 10/07 — restaurada; "Preparar arquivo" funcionando de novo. Upload DIRETO no módulo Arquivos segue dependente da API (spike negativo 2×; ticket suporte via Rodrigo / DevTools com Tiago) |
+| 2 | Candidatos fake | Removidos do banco: Eduarda Kern, Ermeson, Moroni Reis + Ananda (mesmo lote de maio) com 14 CVs e 39 mensagens de teste — só o Jonathan (amostra real) ficou |
+| 3 | Card "Conversa do ChatGuru" | Removido (pipeline de dados por trás continua) |
+| 4 | Card "Status da fila" (Aguardando Pandapé) | Removido — Pandapé em standby |
+| 5 | Botão "Resumo p/ grupo" | Removido da UI (backend send-summary pronto e desligado até o Rodrigo desenhar o fluxo) |
+| 6b | Fila pouco clara | Copy autoexplicativa: Passo 1 Baixar · Passo 2 Subir no ChatGuru>Arquivos com tags · Passo 3 Marcar concluído |
+| 7 | Menu enxuto | Nav: Dashboard, Gerador de CV, **Funil de Vagas** (Vagas/Candidatos saem como itens) |
+| 9 | Funil de vagas | Aba nova: pipeline 5 etapas (Triagem → CV gerado → No ChatGuru → Apresentado → Respondido), cards com dias na etapa + badge etapa Pandapé, filtro por vaga, clique abre no Gerador; Nova Vaga/Colar texto/Novo candidato consolidados aqui |
+| 10 | Dashboard real | Mocks finais mortos ('147 no funil' etc); painel de acompanhamento (funil/SLA/recrutador/empresa/processos desatualizados) já existia da Fase 2 |
+| 11 | Design do Marpe | Liquid Glass v2 portado (tokens dark + materiais glass + orbs + a11y) com acento laranja RHF em mvp/configuracoes/admin/login; cv-print intocado |
+| 8 | Tags do ChatGuru | DEPENDÊNCIA EXTERNA: payloads no banco são da era Meta (sem tags); precisa de webhook ChatGuru real disparado (teste conjunto) OU doc do suporte — mesmo ticket do módulo Arquivos |
+
+Estratégico: Pandapé em standby (zero investimento na integração); ChatGuru é a fonte primária.
