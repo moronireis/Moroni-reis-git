@@ -248,14 +248,18 @@ async function handleListUsers(req, res) {
     const profileMap = {};
     if (Array.isArray(profiles)) profiles.forEach(p => { profileMap[p.id] = p; });
 
-    const users = authUsers.map(u => ({
-      id: u.id,
-      email: u.email,
-      created_at: u.created_at,
-      last_sign_in_at: u.last_sign_in_at,
-      is_banned: u.banned_until ? new Date(u.banned_until) > new Date() : false,
-      ...(profileMap[u.id] || { role: 'recrutador', full_name: null, chatguru_agent_id: null, pandape_manager_id: null }),
-    }));
+    // Shared Supabase instance: only users with an RHF profile belong to this platform.
+    // Users from other platforms (Azeredo, Marpe, Hub) must never appear here.
+    const users = authUsers
+      .filter(u => profileMap[u.id])
+      .map(u => ({
+        id: u.id,
+        email: u.email,
+        created_at: u.created_at,
+        last_sign_in_at: u.last_sign_in_at,
+        is_banned: u.banned_until ? new Date(u.banned_until) > new Date() : false,
+        ...profileMap[u.id],
+      }));
 
     return res.status(200).json({ status: 'ok', users });
   } catch (err) {
@@ -277,6 +281,10 @@ async function handleDisableUser(req, res) {
   const { user_id } = req.body || {};
   if (!user_id) return res.status(400).json({ error: 'user_id é obrigatório.' });
   if (user_id === admin.userId) return res.status(400).json({ error: 'Não é possível desativar sua própria conta.' });
+
+  // Shared Supabase instance: never touch users from other platforms
+  const targetProfile = await fetchUserProfile(user_id, supabaseUrl, serviceKey);
+  if (!targetProfile) return res.status(403).json({ error: 'Usuário não pertence à plataforma RHF Talentos.' });
 
   try {
     // Ban user indefinitely via Supabase Admin API
@@ -314,6 +322,10 @@ async function handleUpdateProfile(req, res) {
   }
 
   if (!user_id) return res.status(400).json({ error: 'user_id é obrigatório.' });
+
+  // Shared Supabase instance: never touch users from other platforms
+  const targetProfile = await fetchUserProfile(user_id, supabaseUrl, serviceKey);
+  if (!targetProfile) return res.status(403).json({ error: 'Usuário não pertence à plataforma RHF Talentos.' });
 
   const updates = {};
   if (role && ['admin', 'recrutador'].includes(role)) updates.role = role;
@@ -362,6 +374,10 @@ async function handleDeleteUser(req, res) {
   const { user_id } = req.body || {};
   if (!user_id) return res.status(400).json({ error: 'user_id é obrigatório.' });
   if (user_id === admin.userId) return res.status(400).json({ error: 'Não é possível remover sua própria conta.' });
+
+  // Shared Supabase instance: never touch users from other platforms
+  const targetProfile = await fetchUserProfile(user_id, supabaseUrl, serviceKey);
+  if (!targetProfile) return res.status(403).json({ error: 'Usuário não pertence à plataforma RHF Talentos.' });
 
   try {
     // Delete user profile first
